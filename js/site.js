@@ -34,9 +34,7 @@
       '<a class="brand" href="index.html">' +
         '<span class="brand-mark">' +
           '<span class="mono" aria-hidden="true"></span>' +
-          '<img class="logo-img" src="assets/logo.png" alt="NCID" ' +
-               'onload="this.parentNode.classList.add(\'has-logo\')" ' +
-               'onerror="this.parentNode.classList.add(\'no-logo\');this.remove()">' +
+          '<img class="logo-img" src="assets/logo.png" alt="NCID">' +
         '</span>' +
         '<span class="brand-text"><strong>Neuro-Cognitive</strong><small>Information Design</small></span>' +
       '</a>' +
@@ -103,6 +101,20 @@
     });
   }
 
+  function initLogo() {
+    var img = document.querySelector(".logo-img");
+    if (!img) return;
+    var list = ["assets/logo.png", "assets/logo.jpg", "assets/logo.jpeg", "assets/logo.svg", "assets/logo.webp"];
+    var i = 0;
+    img.addEventListener("load", function () { img.parentNode.classList.add("has-logo"); });
+    img.addEventListener("error", function () {
+      i++;
+      if (i < list.length) img.src = list[i];
+      else img.remove(); // fall back to the CSS monogram
+    });
+    if (img.complete && img.naturalWidth > 0) img.parentNode.classList.add("has-logo");
+  }
+
   function render() {
     var h = document.getElementById("site-header");
     if (h) { h.className = "nav"; h.innerHTML = headerHTML(); }
@@ -113,6 +125,7 @@
       b.addEventListener("click", function () { apply(b.getAttribute("data-lang")); });
     });
     apply(lang);
+    initLogo();
     initBackground();
     initReveal();
   }
