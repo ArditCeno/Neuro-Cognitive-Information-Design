@@ -37,12 +37,14 @@ Python (pandas, scipy, statsmodels) · OSF / G\*Power / NASA-TLX · MouseView.js
 
 ## 4. Files
 ```
-index.html                 SPA shell
+index.html                 landing / overview page (poster-style, EN/AL)
+css/landing.css            landing styles
+js/landing.js              landing language switch
+study.html                 participant test app (SPA shell)
 css/main.css, materials.css
 js/config.js               5 field protocols, quiz items, study parameters, CDN
 js/i18n.js                 Albanian / English strings
-js/app.js                  flow controller
-js/registration.js (inline)  demographics -> anonymous ID
+js/app.js                  flow controller (registration, calibration, modules, quiz, save)
 js/calibration.js          9-point calibration + accuracy
 js/eyetracking.js          WebGazer + mock + mouse modes, gaze sampling
 js/mouseview.js            plan-B mouse-tracking
@@ -51,7 +53,7 @@ js/aoi.js                  fixation / regression / TTFF engine
 js/stimuli.js              material loader + AOI extraction ([data-aoi])
 js/runner.js               quiz + NASA-TLX (jsPsych primary, DOM fallback)
 js/schema.js               UML class-model export assembler + readability
-js/storage.js              local buffer, JSON export, Supabase adapter
+js/storage.js              local buffer, JSON export, backend/Supabase adapters
 js/heatmap.js              Heatmap.js researcher view
 js/research.js             content-parity + AOI inspector + quality dashboard
 admin.html, js/admin.js    researcher dashboard (stats, sessions, export, delete)
@@ -70,8 +72,9 @@ Camera access requires a local server (not `file://`):
 npx serve .          # or: python -m http.server 8080
 ```
 
-Open `http://localhost:3000` (or `:8080`). Use Chrome or Edge for WebGazer +
-MediaPipe. Add `?mock=1` to run the full flow with a simulated gaze trace (no
+Open `http://localhost:3000` for the landing page, then **Start Study** (or go
+directly to `/study.html`). Use Chrome or Edge for WebGazer + MediaPipe. Add
+`?mock=1` to `study.html` to run the full flow with a simulated gaze trace (no
 webcam) — useful to validate the pipeline and the Python analysis.
 
 ## 6. Study parameters (`js/config.js`)
