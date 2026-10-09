@@ -18,3 +18,8 @@ data/figures/
 # private config (Supabase keys / endpoints) and private documents
 js/config.local.js
 *.pdf
+
+# local secrets
+.env
+backend/.env
+js/config.local.js
