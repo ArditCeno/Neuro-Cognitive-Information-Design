@@ -54,6 +54,7 @@ js/schema.js               UML class-model export assembler + readability
 js/storage.js              local buffer, JSON export, Supabase adapter
 js/heatmap.js              Heatmap.js researcher view
 js/research.js             content-parity + AOI inspector + quality dashboard
+admin.html, js/admin.js    researcher dashboard (stats, sessions, export, delete)
 materials/                 20 files: 5 fields x A/B x AL/EN
 data/session.schema.json   export JSON schema
 backend/                   Spring Boot API (Java 17) -> Supabase/PostgreSQL
@@ -175,7 +176,15 @@ export DATABASE_URL="postgresql://postgres:<pw>@db.<ref>.supabase.co:5432/postgr
 python analysis/fetch_supabase.py --output analysis/raw
 ```
 
-## 17. License
+## 17. Admin dashboard
+Open **`admin.html`** (e.g. `https://arditceno.github.io/Neuro-Cognitive-Information-Design/admin.html`).
+Enter the backend URL and the `X-Admin-Token`; the token is kept only in the
+current tab (sessionStorage), never stored or committed.
+
+Features: session-quality stats (`/api/stats`), paginated session table with
+search, full-session JSON view, CSV export, and delete (GDPR withdrawal).
+
+## 18. License
 Proprietary — Copyright (c) 2025 Ardit Ceno. All rights reserved. See [`LICENSE`](LICENSE).
 No use, copying, modification or distribution without prior written consent.
 Contact: arditceno1@gmail.com
