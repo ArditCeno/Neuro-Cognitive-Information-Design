@@ -628,3 +628,35 @@ img, svg { max-width: 100%; }
   .hero-line2 { text-align: left; }
   .hero-line2::after { margin-left: 0; }
 }
+
+/* ============================================================
+   FINAL POLISH 2 — legibility, anchors, decorative details
+   ============================================================ */
+section[id], [id] { scroll-margin-top: 96px; }      /* sticky nav offset for anchors */
+
+/* headline legibility over the photo */
+.hero-line1, .hero-line2, .hero-sub { text-shadow: 0 2px 28px rgba(0,0,0,.45); }
+.hero-sub { color: #d7e2ea; }
+
+/* stronger primary CTA */
+.btn-primary { position: relative; box-shadow: 0 12px 34px rgba(255,110,66,.28), 0 4px 14px rgba(0,0,0,.35); }
+.btn-primary:hover { filter: brightness(1.06); transform: translateY(-1px); }
+
+/* field icons gentle motion */
+.field-item .f-ico { transition: transform .25s ease, box-shadow .25s ease; }
+.field-item:hover .f-ico { transform: translateY(-3px); box-shadow: 0 0 28px color-mix(in srgb, var(--c) 55%, transparent); }
+
+/* section head underline accent */
+.section-head h2 { position: relative; padding-bottom: 8px; }
+.section-head h2::after {
+  content: ""; position: absolute; left: 0; bottom: 0; width: 54px; height: 3px; border-radius: 3px;
+  background: linear-gradient(90deg, var(--cyan), transparent);
+}
+
+/* testimonial/quote refinement */
+.quote blockquote { text-wrap: balance; }
+
+@media (max-width: 640px) {
+  .section-head h2::after { width: 40px; }
+  .hero-sub { color: #cfdbe4; }
+}
