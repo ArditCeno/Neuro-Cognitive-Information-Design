@@ -147,3 +147,51 @@ export async function submitSession(summary) {
   ]);
   return { supabase, endpoint, backend };
 }
+
+/* ------------------------- Durable submission queue ------------------------- */
+const PENDING_KEY = "ncid_pending_v1";
+
+export function hasTarget() {
+  const s = CONFIG.storage || {};
+  return !!((s.supabase && s.supabase.url) || (s.backend && s.backend.url) || (s.submission && s.submission.url));
+}
+
+function readQueue() {
+  try { return JSON.parse(localStorage.getItem(PENDING_KEY) || "[]"); }
+  catch (e) { return []; }
+}
+function writeQueue(q) {
+  try { localStorage.setItem(PENDING_KEY, JSON.stringify(q)); } catch (e) { /* ignore */ }
+}
+
+export function enqueue(summary) {
+  const q = readQueue();
+  q.push({ id: summary.participant ? summary.participant.id_anonim : "unknown", at: Date.now(), summary });
+  writeQueue(q);
+}
+
+export function pendingCount() { return readQueue().length; }
+
+/** Try to upload every queued session; drop only the ones that succeed. */
+export async function flushPending() {
+  if (!hasTarget()) return { flushed: 0, remaining: readQueue().length };
+  const q = readQueue();
+  if (!q.length) return { flushed: 0, remaining: 0 };
+  const keep = [];
+  let flushed = 0;
+  for (const item of q) {
+    const r = await submitSession(item.summary);
+    const ok = (r.supabase && r.supabase.ok) || (r.backend && r.backend.ok) || (r.endpoint && r.endpoint.ok);
+    if (ok) flushed++; else keep.push(item);
+  }
+  writeQueue(keep);
+  return { flushed, remaining: keep.length };
+}
+
+/** Submit now; if every target fails, keep it queued for a later retry. */
+export async function submitAndQueue(summary) {
+  const r = await submitSession(summary);
+  const ok = (r.supabase && r.supabase.ok) || (r.backend && r.backend.ok) || (r.endpoint && r.endpoint.ok);
+  if (!ok && hasTarget()) enqueue(summary);
+  return { ...r, queued: !ok && hasTarget() };
+}

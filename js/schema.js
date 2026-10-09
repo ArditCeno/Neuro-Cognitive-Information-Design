@@ -118,6 +118,7 @@ export function buildModule({ field, orderIndex, firstVersion, trials, nasaTlx }
 
 export function assembleSession({ participant, session, modules, biometricMetrics, quizResults, gaze }) {
   return {
+    kind: "session",
     participant,
     session,
     modules,

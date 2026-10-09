@@ -8,7 +8,7 @@
 import { CONFIG } from "./config.js";
 import { t, tr, getLang, setLang, applyI18n } from "./i18n.js";
 import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js";
-import { Storage, exportSummary, exportGaze, submitSession } from "./storage.js";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js";
 import { EyeTracking } from "./eyetracking.js";
 import { Calibration } from "./calibration.js";
 import { Stimuli } from "./stimuli.js";
@@ -85,6 +85,9 @@ function boot() {
     $("stage-research").classList.remove("hidden");
     Research.render($("stage-research"), Storage.read());
   });
+
+  // retry any sessions that failed to upload previously
+  if (hasTarget()) flushPending().catch(() => {});
 }
 
 function onLangChange() {
@@ -140,6 +143,17 @@ function onRegister(e) {
     s.session = { session_number: state.sessionNumber, gjuha: getLang(), metoda: state.mock ? "mock" : "eyetracking" };
   });
   Storage.addEvent("registration", { id });
+  // keep the registration even if the participant does not finish
+  submitAndQueue({
+    kind: "registration",
+    participant: state.participant,
+    session: Storage.read().session,
+    modules: [],
+    biometric_metrics: {},
+    quiz_results: {},
+    gaze: [],
+    exported_at: new Date().toISOString()
+  }).catch(() => {});
   showStage("setup");
 }
 
@@ -415,7 +429,8 @@ async function finishSession() {
   });
 
   const summary = buildExport();
-  await submitSession(summary);
+  const delivered = await submitAndQueue(summary);
+  if (delivered.queued) Storage.addEvent("submit_queued", { id: summary.participant.id_anonim });
 
   $("doneSummary").textContent = JSON.stringify({
     participant: summary.participant,
