@@ -574,3 +574,57 @@ body { font-size: clamp(16px, 0.6vw + 14.5px, 18px); }  /* 16-18px, no iPhone zo
 .f-ico svg { width: 26px; height: 26px; }
 .card .ico { display: grid; place-items: center; color: var(--cyan); }
 .card .ico svg { width: 28px; height: 28px; }
+
+/* ============================================================
+   FINAL POLISH — consistent layout on every device & screen
+   ============================================================ */
+:root {
+  --container: 1240px;
+  --gutter: clamp(16px, 4vw, 40px);
+  --section-y: clamp(40px, 6vw, 84px);
+  --radius: 18px;
+}
+
+/* one consistent container for every block */
+.hero2, .fields-strip, .stats-strip, .page, .wrap {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.nav { padding-inline: var(--gutter); }
+.foot { padding-inline: var(--gutter); }
+
+/* consistent vertical rhythm */
+.section { margin: var(--section-y) 0; }
+.page { padding-top: clamp(40px, 6vw, 72px); padding-bottom: clamp(48px, 7vw, 90px); }
+
+/* images never overflow */
+img, svg { max-width: 100%; }
+
+/* hero: balanced on every height */
+.hero-home { min-height: min(92vh, 940px); }
+.hero2 { padding-top: clamp(52px, 9vh, 110px); padding-bottom: clamp(44px, 8vh, 96px); }
+.hero2-left { max-width: min(100%, 940px); }
+.hero-sub { max-width: 62ch; }
+.hero-bg { background-position: center 28%; }
+.hero-overlay {
+  background:
+    linear-gradient(180deg, rgba(9,38,52,.35) 0%, rgba(9,38,52,.15) 40%, rgba(9,38,52,.85) 100%),
+    linear-gradient(90deg, rgba(9,38,52,.92) 0%, rgba(9,38,52,.55) 45%, rgba(9,38,52,.25) 100%),
+    radial-gradient(120% 90% at 78% 22%, rgba(14,127,176,.18), transparent 60%);
+}
+
+/* consistent card look */
+.card, .field-card, .flow-card, .phase, .steps li { border-radius: var(--radius); }
+.btn, .btn-lg { border-radius: 12px; }
+
+/* section head + page head alignment */
+.section-head, .page-head { max-width: 1100px; }
+
+@media (max-width: 860px) {
+  .hero-home { min-height: auto; padding-bottom: 8px; }
+  .hero2 { padding-top: 40px; padding-bottom: 34px; }
+  .hero-line2 { text-align: left; }
+  .hero-line2::after { margin-left: 0; }
+}
