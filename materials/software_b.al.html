@@ -1,0 +1,14 @@
+<h1>Kontrolli i hyrjes — Guard Clauses</h1>
+<p>I njëjti funksion, i rishkruar me <strong>guard clauses</strong>: kushtet e dështimit kontrollohen herët dhe funksioni kthehet menjëherë, duke mbajtur rrjedhën lineare.</p>
+<pre><code>function checkAccess(user) {
+  if (!user) return <span data-aoi="daljet" data-critical="true">"deny"</span>;
+  if (!user.active) return "deny";
+  if (!user.paid) return "deny";
+  return <span data-aoi="daljet_b" data-critical="true">"access"</span>;
+}</code></pre>
+<p><span data-aoi="kushtet_brendshme">Çdo kusht dështimi trajtohet veçmas dhe mbyll funksionin. Nuk ka <code>else</code> të mbivendosur, kështu që syri ndjek një linjë të drejtë.</span></p>
+<ul>
+  <li>Nuk ka thellim (nesting).</li>
+  <li>Çdo rresht ka një qëllim të vetëm.</li>
+  <li>Rruga e suksesit shihet qartë në fund.</li>
+</ul>

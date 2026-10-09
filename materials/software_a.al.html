@@ -1,0 +1,17 @@
+<h1>Kontrolli i hyrjes — checkAccess()</h1>
+<p>Funksioni i mëposhtëm përcakton nëse një përdorues ka të drejtë të hyjë në panelin e administratorit. Kushtet kontrollojnë ekzistencën, statusin aktiv dhe statusin e pagesës.</p>
+<pre><code>function checkAccess(user) {
+  if (user) {
+    if (user.active) {
+      if (user.paid) {
+        return <span data-aoi="daljet" data-critical="true">"access"</span>;
+      }
+      return "deny";
+    }
+    return "deny";
+  }
+  return "deny";
+}</code></pre>
+<p>Funksioni kthen gjithmonë një varg: <code>"access"</code> ose <code>"deny"</code>. Vini re se të gjitha kushtet kontrollohen me radhë brenda njëra-tjetrës.</p>
+<p><span data-aoi="kushtet_brendshme">Blloku i brendshëm <code>if</code> kontrollon njëkohësisht <code>user.active</code> dhe <code>user.paid</code>. Hyrja jepet vetëm kur të tre kushtet janë të vërteta: përdoruesi ekziston, është aktiv dhe ka paguar.</span></p>
+<p>Nëse përdoruesi nuk është aktiv, funksioni kthen menjëherë <code>"deny"</code>, pavarësisht statusit të pagesës.</p>

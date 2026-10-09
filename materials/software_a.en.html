@@ -1,0 +1,17 @@
+<h1>Access control — checkAccess()</h1>
+<p>The following function decides whether a user may enter the admin panel. The conditions check existence, active status, and payment status.</p>
+<pre><code>function checkAccess(user) {
+  if (user) {
+    if (user.active) {
+      if (user.paid) {
+        return <span data-aoi="daljet" data-critical="true">"access"</span>;
+      }
+      return "deny";
+    }
+    return "deny";
+  }
+  return "deny";
+}</code></pre>
+<p>The function always returns a string: <code>"access"</code> or <code>"deny"</code>. Note that all conditions are checked in sequence, one nested inside another.</p>
+<p><span data-aoi="kushtet_brendshme">The inner <code>if</code> block checks both <code>user.active</code> and <code>user.paid</code> together. Access is granted only when all three conditions are true: the user exists, is active, and has paid.</span></p>
+<p>If the user is not active, the function returns <code>"deny"</code> immediately, regardless of payment status.</p>

@@ -1,0 +1,22 @@
+<h1>Clinical Chart — SOAP &amp; Triage Format</h1>
+
+<div class="allergy" data-aoi="alergjite" data-critical="true">⚠ ALLERGY: PENICILLIN — contraindicated</div>
+
+<h2>Triage status</h2>
+<p><span class="triage yellow" data-aoi="triazhi">YELLOW TRIAGE</span> — moderate urgency</p>
+
+<h2>Vital signs</h2>
+<div class="vital-grid">
+  <div class="vital alert"><div class="v-label">Temperature</div><div class="v-value">38.9°</div></div>
+  <div class="vital alert"><div class="v-label">Blood pressure</div><div class="v-value">150/95</div></div>
+  <div class="vital"><div class="v-label">Heart rate</div><div class="v-value">112</div></div>
+  <div class="vital alert"><div class="v-label">SpO₂</div><div class="v-value">95%</div></div>
+</div>
+
+<h2>SOAP</h2>
+<div class="soap">
+  <div class="s-block"><span class="s-title">S — Subjective</span><p>Male, 54 years. Shortness of breath, productive cough, chest pain for 3 days.</p></div>
+  <div class="s-block"><span class="s-title">O — Objective</span><p>Basal crackles on the right. Temperature 38.9°C, tachycardia 112 bpm.</p></div>
+  <div class="s-block"><span class="s-title">A — Assessment</span><p>Community-acquired pneumonia. Penicillin allergy.</p></div>
+  <div class="s-block"><span class="s-title">P — Plan</span><p><span data-aoi="doza" data-critical="true">Alternative antibiotic, dose 500 mg, twice daily</span>, 7 days. Follow-up in 48 hours.</p></div>
+</div>

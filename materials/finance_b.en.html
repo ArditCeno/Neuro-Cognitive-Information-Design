@@ -1,0 +1,41 @@
+<h1>Financial Performance — Visual Overview</h1>
+<div class="kpi-grid">
+  <div class="kpi">
+    <div class="kpi-label">Revenue (Q3)</div>
+    <div class="kpi-value">195k €</div>
+    <div class="kpi-delta down">▲ +3% vs Q2</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Gross margin</div>
+    <div class="kpi-value">50%</div>
+    <div class="kpi-delta down">stable</div>
+  </div>
+  <div class="kpi alert" data-aoi="anomalia" data-critical="true">
+    <div class="kpi-label">Marketing cost (Q3)</div>
+    <div class="kpi-value">55k €</div>
+    <div class="kpi-delta up">▲ +400% out of trend</div>
+  </div>
+  <div class="kpi">
+    <div class="kpi-label">Net profit (Q3)</div>
+    <div class="kpi-value">-6k €</div>
+    <div class="kpi-delta up">▼ negative</div>
+  </div>
+</div>
+
+<div class="chart-wrap">
+  <div class="legend"><span class="cost">Marketing cost by quarter</span></div>
+  <svg class="svg-chart" viewBox="0 0 320 180" role="img" aria-label="Marketing cost by quarter">
+    <line x1="40" y1="10" x2="40" y2="150" stroke="#ccc" />
+    <line x1="40" y1="150" x2="310" y2="150" stroke="#ccc" />
+    <rect x="60"  y="130" width="50" height="20"  fill="#6ea8fe"></rect>
+    <text x="85"  y="165" font-size="11" text-anchor="middle" fill="#555">Q1</text>
+    <text x="85"  y="124" font-size="11" text-anchor="middle" fill="#333">10</text>
+    <rect x="140" y="128" width="50" height="22"  fill="#6ea8fe"></rect>
+    <text x="165" y="165" font-size="11" text-anchor="middle" fill="#555">Q2</text>
+    <text x="165" y="122" font-size="11" text-anchor="middle" fill="#333">11</text>
+    <rect data-aoi="anomalia_bar" data-critical="true" x="220" y="40" width="50" height="110" fill="#f87171"></rect>
+    <text x="245" y="32" font-size="12" text-anchor="middle" fill="#b91c1c" font-weight="700">55</text>
+    <text x="245" y="165" font-size="11" text-anchor="middle" fill="#555">Q3</text>
+  </svg>
+</div>
+<p>The marketing jump in Q3 stands out immediately: the red bar is five times the other quarters. This explains the negative net profit.</p>

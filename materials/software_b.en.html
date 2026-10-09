@@ -1,0 +1,14 @@
+<h1>Access control — Guard Clauses</h1>
+<p>The same function, rewritten with <strong>guard clauses</strong>: failure conditions are checked early and the function returns immediately, keeping the flow linear.</p>
+<pre><code>function checkAccess(user) {
+  if (!user) return <span data-aoi="daljet" data-critical="true">"deny"</span>;
+  if (!user.active) return "deny";
+  if (!user.paid) return "deny";
+  return <span data-aoi="daljet_b" data-critical="true">"access"</span>;
+}</code></pre>
+<p><span data-aoi="kushtet_brendshme">Each failure condition is handled separately and exits the function. There is no nested <code>else</code>, so the eye follows a straight line.</span></p>
+<ul>
+  <li>No nesting.</li>
+  <li>Each line has a single purpose.</li>
+  <li>The success path is visible at the end.</li>
+</ul>
