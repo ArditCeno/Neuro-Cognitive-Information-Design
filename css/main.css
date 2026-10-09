@@ -288,3 +288,24 @@ p, .lead { text-wrap: pretty; }
   .actions { gap: 10px; }
   .actions .btn { width: 100%; }
 }
+
+/* ============================================================
+   FIX: native <select> dropdowns readable on dark theme
+   ============================================================ */
+select, .form select, .admin-wrap select {
+  color-scheme: dark;
+  background-color: #0d3247;
+  color: var(--text);
+}
+select option, .form select option, .admin-wrap select option {
+  background-color: #0d3247;
+  color: #F9F9F9;
+}
+select option:checked,
+select option:hover,
+.form select option:checked {
+  background-color: #004E72;
+  color: #F9F9F9;
+}
+/* remove the light glass fill on selects (keeps them opaque + readable) */
+.form select, .admin-wrap select { background: #0d3247 !important; }
