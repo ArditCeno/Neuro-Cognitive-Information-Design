@@ -91,10 +91,17 @@ export const EyeTracking = {
   _mountVideo(retries = 25) {
     this._injectStyles();
     const host = document.getElementById("cameraPreview");
-    const vc = document.getElementById("webgazerVideoContainer");
+    const vc = document.getElementById("webgazerVideoContainer") || document.getElementById("webgazerVideoFeed");
     if (host && vc) {
       vc.classList.add("wg-mounted");
       if (vc.parentElement !== host) host.appendChild(vc);
+      const vid = vc.tagName === "VIDEO" ? vc : vc.querySelector("video");
+      if (vid) {
+        vid.setAttribute("playsinline", "");
+        vid.muted = true;
+        const p = vid.play();
+        if (p && p.catch) p.catch(() => {});
+      }
       const ph = document.getElementById("cameraPlaceholder");
       if (ph) ph.classList.add("hidden");
       return;

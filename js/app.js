@@ -53,6 +53,12 @@ function showStage(name) {
 /* ---------------------------- Boot ---------------------------- */
 function boot() {
   if (state.mock) $("mockBadge").classList.remove("hidden");
+  if (location.protocol === "file:") {
+    const warn = document.createElement("div");
+    warn.style.cssText = "background:#7a2b12;color:#fff;padding:10px 16px;text-align:center;font-weight:600;font-size:14px";
+    warn.textContent = "Open this page through a web server (http:// or https://) — the camera and documents will not load from a file:// path.";
+    document.body.prepend(warn);
+  }
   document.querySelectorAll(".langbtn").forEach((b) => {
     b.classList.toggle("active", b.getAttribute("data-lang") === getLang());
     b.addEventListener("click", () => setLang(b.getAttribute("data-lang")));

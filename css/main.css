@@ -257,3 +257,6 @@ html, body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; font-size: 
   .camera-preview { width: 100%; height: 240px; }
   .calib-area { height: 54vh; }
 }
+
+/* SVG camera placeholder */
+.camera-placeholder svg { width: 56px; height: 56px; color: var(--muted); }

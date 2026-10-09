@@ -569,3 +569,8 @@ body { font-size: clamp(16px, 0.6vw + 14.5px, 18px); }  /* 16-18px, no iPhone zo
 .hero-line2 { transform-origin: right center; }
 .hero-line1 { margin-bottom: 6px; }
 .hero-line2 { margin-bottom: 8px; }
+
+/* SVG field/hypothesis icons */
+.f-ico svg { width: 26px; height: 26px; }
+.card .ico { display: grid; place-items: center; color: var(--cyan); }
+.card .ico svg { width: 28px; height: 28px; }
