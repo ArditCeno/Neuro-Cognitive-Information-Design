@@ -16,7 +16,12 @@ pip install -r requirements.txt
 ```
 
 ## Run
-Place the exported `session_*.json` and `gaze_*.json` in a `raw/` folder, then:
+Fetch sessions from Supabase/PostgreSQL directly (optional):
+```bash
+export DATABASE_URL="postgresql://postgres:<pw>@db.<ref>.supabase.co:5432/postgres"
+python fetch_supabase.py --output ../raw
+```
+Or place the exported `session_*.json` and `gaze_*.json` in a `raw/` folder, then:
 ```bash
 python clean.py    --input ../raw --output ../data/processed
 python metrics.py  --input ../raw --output ../data/processed
