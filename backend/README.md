@@ -3,7 +3,7 @@
 REST API that receives anonymous study sessions from the web app and stores
 them in Supabase (PostgreSQL).
 
-> Copyright (c) 2025 Ardit Ceno. All rights reserved. Proprietary — see `../LICENSE`.
+> Copyright (c) 2026 Ardit Ceno. All rights reserved. Proprietary — see `../LICENSE`.
 
 ## Endpoints
 | Method | Path | Auth | Purpose |

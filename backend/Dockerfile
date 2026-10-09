@@ -1,5 +1,5 @@
 # NCID Backend
-# Copyright (c) 2025 Ardit Ceno. All rights reserved.
+# Copyright (c) 2026 Ardit Ceno. All rights reserved.
 FROM maven:3.9-eclipse-temurin-17 AS build
 WORKDIR /app
 COPY pom.xml .

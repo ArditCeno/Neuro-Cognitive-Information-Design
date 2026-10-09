@@ -3,7 +3,7 @@
  * Talks to the Spring Boot backend (/api) with an X-Admin-Token.
  * The token lives only in sessionStorage for the current tab.
  *
- * Copyright (c) 2025 Ardit Ceno. All rights reserved.
+ * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
 
 const $ = (id) => document.getElementById(id);

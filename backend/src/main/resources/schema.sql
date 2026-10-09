@@ -1,4 +1,4 @@
--- NCID Backend - Copyright (c) 2025 Ardit Ceno. All rights reserved.
+-- NCID Backend - Copyright (c) 2026 Ardit Ceno. All rights reserved.
 create extension if not exists pgcrypto;
 
 create table if not exists sessions (
