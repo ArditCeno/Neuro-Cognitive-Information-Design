@@ -37,9 +37,15 @@ Python (pandas, scipy, statsmodels) · OSF / G\*Power / NASA-TLX · MouseView.js
 
 ## 4. Files
 ```
-index.html                 landing / overview page (poster-style, EN/AL)
-css/landing.css            landing styles
-js/landing.js              landing language switch
+index.html                 Home (full-bleed hero, EN/AL)
+about.html                 About — premise, value, quote
+methodology.html           Methodology — A/B, hypotheses, metrics, flow
+fields.html                Fields — the five fields (A vs B)
+contact.html               Contact — author, email, license
+assets/logo.png            logo used in the header + favicon (add your own)
+assets/hero.jpg            full-bleed hero photo (add your own HD image)
+css/landing.css            landing / shared page styles
+js/site.js                 shared header (active link) + footer + language switch
 study.html                 participant test app (SPA shell)
 css/main.css, materials.css
 js/config.js               5 field protocols, quiz items, study parameters, CDN
@@ -188,7 +194,7 @@ Features: session-quality stats (`/api/stats`), paginated session table with
 search, full-session JSON view, CSV export, and delete (GDPR withdrawal).
 
 ## 18. License
-Proprietary — Copyright (c) 2025 Ardit Ceno. All rights reserved. See [`LICENSE`](LICENSE).
+Proprietary — Copyright (c) 2026 Ardit Ceno. All rights reserved. See [`LICENSE`](LICENSE).
 No use, copying, modification or distribution without prior written consent.
 Contact: arditceno1@gmail.com
 
