@@ -55,9 +55,39 @@
   function footerHTML() {
     return '' +
       '<span>Neuro-Cognitive Information Design</span>' +
-      '<a href="study.html" style="color:var(--cyan);text-decoration:none;font-weight:700" ' +
-         'data-en="Join the study →" data-al="Bashkohu me studimin →">Join the study →</a>' +
+      '<span class="foot-links">' +
+        '<a href="study.html" data-en="Join the study →" data-al="Bashkohu me studimin →">Join the study →</a>' +
+        '<a class="foot-social" href="https://www.linkedin.com/in/ardit-ceno-a674b5307/" target="_blank" rel="noopener" aria-label="LinkedIn">' +
+          '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9z"/></svg>' +
+        '</a>' +
+      '</span>' +
       '<span>© 2026 Ardit Ceno — All rights reserved.</span>';
+  }
+
+  function initBackground() {
+    if (document.querySelector(".bg-orbs")) return;
+    var orbs = document.createElement("div");
+    orbs.className = "bg-orbs";
+    orbs.setAttribute("aria-hidden", "true");
+    orbs.innerHTML = '<span class="orb o1"></span><span class="orb o2"></span><span class="orb o3"></span>';
+    document.body.appendChild(orbs);
+  }
+
+  function initReveal() {
+    if (!("IntersectionObserver" in window)) return;
+    var targets = document.querySelectorAll(".section, .page-head, .field-card, .card, .quote, .fields-strip, .steps li, .phase, .field-item, .hero2-left, .hero2-visual");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    targets.forEach(function (el) {
+      el.classList.add("reveal");
+      if (reduce) el.classList.add("in");
+    });
+    if (reduce) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    targets.forEach(function (el) { io.observe(el); });
   }
 
   function apply(next) {
@@ -83,6 +113,8 @@
       b.addEventListener("click", function () { apply(b.getAttribute("data-lang")); });
     });
     apply(lang);
+    initBackground();
+    initReveal();
   }
 
   window.NCID_applyLang = apply;
