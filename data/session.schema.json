@@ -1,0 +1,140 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NCID Session Summary (UML class model, Diagram 5)",
+  "type": "object",
+  "required": ["participant", "session", "modules", "biometric_metrics", "quiz_results"],
+  "properties": {
+    "participant": {
+      "type": "object",
+      "properties": {
+        "id_anonim": { "type": "string", "example": "USR_98234" },
+        "profesioni": { "type": "string" },
+        "niveli_i_ekspertizës": { "type": "string", "enum": ["Fillestar", "Student", "Profesional", "Beginner", "Professional"] },
+        "mosha": { "type": "integer" }
+      }
+    },
+    "session": {
+      "type": "object",
+      "properties": {
+        "session_number": { "type": "integer" },
+        "kalibrimi_px": { "type": ["number", "null"], "description": "mean calibration error; sessions > 150 px are excluded" },
+        "kohëzgjatja_min": { "type": ["number", "null"] },
+        "shfletuesi": { "type": "string" },
+        "pajisja": { "type": "string" },
+        "gjuha": { "type": "string", "enum": ["al", "en"] },
+        "metoda": { "type": "string", "enum": ["eyetracking", "mouse", "mock"], "description": "mouse = MouseView.js plan B" },
+        "rendi_modulave": { "type": "array", "items": { "type": "string" } },
+        "fusha": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "modules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "fusha": { "type": "string" },
+          "rendi_në_seson": { "type": "integer" },
+          "versioni_i_parë": { "type": "string", "enum": ["A", "B"] },
+          "nasa_tlx": {
+            "type": ["object", "null"],
+            "properties": {
+              "mental": { "type": "number" }, "physical": { "type": "number" },
+              "temporal": { "type": "number" }, "performance": { "type": "number" },
+              "effort": { "type": "number" }, "frustration": { "type": "number" }
+            }
+          },
+          "trials": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "versioni": { "type": "string", "enum": ["A", "B"] },
+                "stimulus": {
+                  "type": "object",
+                  "properties": {
+                    "fusha": { "type": "string" },
+                    "versioni": { "type": "string" },
+                    "gjatësia": { "type": "integer", "description": "word count" },
+                    "lexueshmëria": { "type": "number", "description": "Flesch Reading Ease (approx.)" }
+                  }
+                },
+                "koha_e_leximit_s": { "type": "number" },
+                "koha_detyrës_s": { "type": "number" },
+                "TTFF_ms": { "type": ["number", "null"] },
+                "regresione": { "type": ["integer", "null"] },
+                "fixation_duration_ms": { "type": ["number", "null"] },
+                "fixation_count": { "type": ["integer", "null"] },
+                "aoi_dwell": {
+                  "type": "array",
+                  "items": { "type": "object", "properties": { "name": { "type": "string" }, "duration_ms": { "type": "number" } } }
+                },
+                "accuracy_score_pct": { "type": "number" },
+                "response": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "zgjedhja": { "type": ["string", "null"] },
+                      "e_saktë": { "type": "boolean" },
+                      "koha_s": { "type": ["number", "null"] }
+                    }
+                  }
+                },
+                "quiz_item": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "pyetja": { "type": "string" },
+                      "përgjigja_e_saktë": { "type": ["string", "null"] },
+                      "kritike": { "type": "boolean" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "biometric_metrics": {
+      "type": "object",
+      "properties": {
+        "fixation_duration_ms": { "type": "number" },
+        "saccadic_regressions": { "type": "number" },
+        "time_to_first_fixation_ms": { "type": ["number", "null"] },
+        "task_completion_time_s": { "type": "number" },
+        "reading_time_s": { "type": ["number", "null"] },
+        "blink_rate_per_min": { "type": ["number", "null"] },
+        "head_pose": { "type": ["object", "null"] }
+      }
+    },
+    "quiz_results": {
+      "type": "object",
+      "properties": {
+        "total_questions": { "type": "integer" },
+        "correct_answers": { "type": "integer" },
+        "accuracy_score_pct": { "type": "number" }
+      }
+    },
+    "gaze": {
+      "type": "array",
+      "description": "separately exported as gaze_*.json: gaze_sample{t_ms, x, y, dx, dy, blink, head_pose}",
+      "items": {
+        "type": "object",
+        "properties": {
+          "t_ms": { "type": "number" },
+          "x": { "type": "number" },
+          "y": { "type": "number" },
+          "dx": { "type": ["number", "null"] },
+          "dy": { "type": ["number", "null"] },
+          "blink": { "type": "integer", "enum": [0, 1] },
+          "head_pose": {
+            "type": ["object", "null"],
+            "properties": { "yaw": { "type": "number" }, "pitch": { "type": "number" }, "roll": { "type": "number" } }
+          }
+        }
+      }
+    }
+  }
+}
