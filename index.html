@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neuro-Cognitive Information Design</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/materials.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">NCID</span>
+      <div>
+        <strong data-i18n="app_title">Neuro-Cognitive Information Design</strong>
+        <small data-i18n="app_subtitle">Matja e lexueshmërisë digjitale përmes eye-tracking dhe biometrisë</small>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span id="mockBadge" class="badge badge-warn hidden" data-i18n="mock_on">Test mode</span>
+      <button id="btnResearcher" class="btn btn-ghost btn-sm" data-i18n="panel_title">Researcher</button>
+      <div class="langswitch" role="group" aria-label="Language">
+        <button data-lang="al" class="langbtn">AL</button>
+        <button data-lang="en" class="langbtn">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="progressbar"><div id="progressFill"></div></div>
+  <div class="progresslabel"><span id="progressText"></span></div>
+
+  <main id="main">
+
+    <!-- WELCOME / CONSENT -->
+    <section id="stage-welcome" class="stage">
+      <h1 data-i18n="welcome_title">Welcome</h1>
+      <p class="lead" data-i18n="welcome_body"></p>
+      <div class="card">
+        <h2 data-i18n="consent_title">Consent</h2>
+        <ul class="consent-list">
+          <li data-i18n="consent_point_1"></li>
+          <li data-i18n="consent_point_2"></li>
+          <li data-i18n="consent_point_3"></li>
+          <li data-i18n="consent_point_4"></li>
+        </ul>
+      </div>
+      <div class="actions">
+        <button id="btnDecline" class="btn btn-ghost" data-i18n="consent_decline"></button>
+        <button id="btnConsent" class="btn btn-primary" data-i18n="consent_accept"></button>
+      </div>
+    </section>
+
+    <!-- REGISTRATION -->
+    <section id="stage-registration" class="stage hidden">
+      <h1 data-i18n="reg_title">Participant details</h1>
+      <form id="regForm" class="card form" novalidate>
+        <label class="field">
+          <span data-i18n="reg_name"></span>
+          <input type="text" id="regName" autocomplete="off" />
+          <small class="hint" data-i18n="reg_name_hint"></small>
+        </label>
+        <label class="field">
+          <span data-i18n="reg_age"></span>
+          <input type="number" id="regAge" min="16" max="99" required />
+        </label>
+        <label class="field">
+          <span data-i18n="reg_profession"></span>
+          <select id="regProfession" required></select>
+        </label>
+        <label class="field">
+          <span data-i18n="reg_expertise"></span>
+          <select id="regExpertise" required></select>
+        </label>
+        <p class="err hidden" id="regErr" data-i18n="reg_required"></p>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" data-i18n="next"></button>
+        </div>
+      </form>
+    </section>
+
+    <!-- SETUP + CAMERA -->
+    <section id="stage-setup" class="stage hidden">
+      <h1 data-i18n="setup_title">Device setup</h1>
+      <p class="lead" data-i18n="setup_body"></p>
+      <div class="camera-preview" id="cameraPreview">
+        <div id="cameraPlaceholder" class="camera-placeholder">📷</div>
+      </div>
+      <p id="setupMsg" class="msg"></p>
+      <div class="actions">
+        <button id="btnCamera" class="btn btn-primary" data-i18n="setup_start_camera"></button>
+        <button id="btnSetupNext" class="btn btn-primary hidden" data-i18n="next"></button>
+      </div>
+    </section>
+
+    <!-- CALIBRATION -->
+    <section id="stage-calibration" class="stage hidden">
+      <h1 data-i18n="calib_title">Eye calibration</h1>
+      <p class="lead" data-i18n="calib_instr"></p>
+      <p id="calibStatus" class="msg"></p>
+      <div id="calibArea" class="calib-area"></div>
+      <div class="actions">
+        <button id="btnRecalib" class="btn btn-ghost hidden" data-i18n="calib_retry"></button>
+        <button id="btnCalibNext" class="btn btn-primary hidden" data-i18n="calib_continue"></button>
+      </div>
+    </section>
+
+    <!-- TASK (reading + quiz + tlx) -->
+    <section id="stage-task" class="stage hidden">
+      <div class="task-head">
+        <span id="taskModule" class="pill"></span>
+        <span id="taskVersion" class="pill pill-accent"></span>
+      </div>
+
+      <div id="taskIntro" class="task-block">
+        <h1 id="taskFieldName"></h1>
+        <p class="lead" id="taskInstruction"></p>
+        <p class="task-instr" data-i18n="task_read_instr"></p>
+        <button id="btnStartReading" class="btn btn-primary" data-i18n="start"></button>
+      </div>
+
+      <div id="taskReading" class="task-block hidden">
+        <p id="docLoading" class="msg" data-i18n="doc_loading"></p>
+        <div id="doc" class="doc hidden" tabindex="0"></div>
+        <div class="actions">
+          <button id="btnReadDone" class="btn btn-primary" data-i18n="read_done"></button>
+        </div>
+      </div>
+
+      <div id="taskQuiz" class="task-block hidden"></div>
+      <div id="taskTlx" class="task-block hidden"></div>
+      <div id="taskBetween" class="task-block hidden"></div>
+    </section>
+
+    <!-- DONE -->
+    <section id="stage-done" class="stage hidden">
+      <h1 data-i18n="done_title">Thank you</h1>
+      <p class="lead" data-i18n="done_body"></p>
+      <pre id="doneSummary" class="summary-box"></pre>
+      <div class="actions">
+        <button id="btnDownload" class="btn btn-primary" data-i18n="done_download"></button>
+        <button id="btnDownloadGaze" class="btn btn-ghost" data-i18n="download_gaze"></button>
+        <button id="btnWithdraw" class="btn btn-danger" data-i18n="done_withdraw"></button>
+      </div>
+      <div class="card">
+        <h2 data-i18n="panel_title">Researcher panel</h2>
+        <p class="hint" data-i18n="panel_heatmap"></p>
+        <div id="heatmapContainer" class="heatmap-container"></div>
+      </div>
+    </section>
+
+    <!-- RESEARCHER PANEL -->
+    <section id="stage-research" class="stage hidden"></section>
+
+  </main>
+
+  <div id="gazeDot" class="gaze-dot hidden"></div>
+
+  <footer class="footer">
+    <span>Neuro-Cognitive Information Design · v1.0</span>
+  </footer>
+
+  <script src="js/config.local.js" onerror="void 0"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

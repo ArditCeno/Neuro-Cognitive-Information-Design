@@ -1,0 +1,83 @@
+/* Styling for the light-background A/B stimulus documents. */
+
+.doc { font-family: Georgia, "Times New Roman", serif; font-size: 16px; }
+.doc h1 { font-size: 22px; margin: 0 0 12px; font-family: "Segoe UI", sans-serif; }
+.doc h2 { font-size: 17px; margin: 18px 0 8px; font-family: "Segoe UI", sans-serif; }
+.doc p { margin: 10px 0; }
+.doc small { color: #666; }
+.doc ul { margin: 10px 0 10px 22px; }
+.doc li { margin: 5px 0; }
+
+/* Version A: dense / traditional */
+.doc.dense p { text-align: justify; line-height: 1.35; }
+.doc.dense h2 { font-size: 15px; }
+
+/* Version B: optimized / structured */
+.doc.optimized { font-family: "Segoe UI", system-ui, sans-serif; line-height: 1.6; }
+.doc.optimized p { margin: 9px 0; }
+
+/* Tables (finance A) */
+.doc table { border-collapse: collapse; width: 100%; margin: 14px 0; font-size: 13.5px; font-family: "Segoe UI", sans-serif; }
+.doc th, .doc td { border: 1px solid #c9c9c2; padding: 6px 9px; text-align: right; }
+.doc th:first-child, .doc td:first-child { text-align: left; }
+.doc thead th { background: #ececE6; }
+.doc .anomaly { background: #ffe3e3; font-weight: 700; }
+
+/* KPI cards (finance/business B) */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin: 14px 0; }
+.kpi {
+  background: #f3f6ff; border: 1px solid #ccd8f5; border-radius: 12px; padding: 12px 14px;
+  font-family: "Segoe UI", sans-serif;
+}
+.kpi .kpi-label { font-size: 12px; color: #4a577a; text-transform: uppercase; letter-spacing: .04em; }
+.kpi .kpi-value { font-size: 22px; font-weight: 800; color: #16213f; }
+.kpi .kpi-delta { font-size: 12px; font-weight: 700; }
+.kpi .up { color: #b91c1c; }
+.kpi .down { color: #15803d; }
+.kpi.alert { background: #fff1f1; border-color: #f5b5b5; }
+
+/* Big section cards (business B) */
+.mini-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+.mini-card { background: #f7f7f2; border: 1px solid #dcdcd2; border-radius: 12px; padding: 14px; }
+.mini-card h3 { margin: 0 0 6px; font-size: 14px; font-family: "Segoe UI", sans-serif; }
+.callout { border-left: 4px solid #6ea8fe; background: #eef4ff; padding: 10px 14px; border-radius: 0 8px 8px 0; }
+
+/* Code blocks (software) */
+.doc pre {
+  background: #1e1f2b; color: #e6e6f0; padding: 16px 18px; border-radius: 12px;
+  font-family: "Consolas", "SFMono-Regular", Menlo, monospace; font-size: 13.5px;
+  line-height: 1.55; overflow: auto;
+}
+.doc pre .kw { color: #ff8ab3; }
+.doc pre .ret { color: #9ae6b4; }
+.doc pre .cmt { color: #8a8fa8; }
+.doc code { background: #eef; padding: 1px 5px; border-radius: 4px; }
+
+/* Clinical / triage (health) */
+.triage {
+  display: inline-block; padding: 4px 12px; border-radius: 999px; font-weight: 800;
+  font-family: "Segoe UI", sans-serif; font-size: 13px;
+}
+.triage.red { background: #fee2e2; color: #b91c1c; border: 1px solid #f5a6a6; }
+.triage.yellow { background: #fef9c3; color: #a16207; border: 1px solid #f0d878; }
+.triage.green { background: #dcfce7; color: #15803d; border: 1px solid #a7e7bd; }
+.vital-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin: 12px 0; }
+.vital { border: 1px solid #ddd; border-radius: 10px; padding: 10px; text-align: center; font-family: "Segoe UI", sans-serif; }
+.vital .v-label { font-size: 11px; color: #666; text-transform: uppercase; }
+.vital .v-value { font-size: 20px; font-weight: 800; }
+.vital.alert { background: #fff1f1; border-color: #f5b5b5; }
+.soap { display: grid; gap: 10px; }
+.soap .s-block { border: 1px solid #ddd; border-radius: 10px; padding: 12px; }
+.soap .s-title { font-weight: 800; font-family: "Segoe UI", sans-serif; color: #1d4ed8; }
+.allergy { background: #fff1f1; border: 2px solid #f5a6a6; color: #b91c1c; font-weight: 800; padding: 10px 14px; border-radius: 10px; font-family: "Segoe UI", sans-serif; }
+
+.svg-chart { width: 100%; height: auto; max-height: 300px; }
+.chart-wrap { background: #fff; border: 1px solid #e2e2da; border-radius: 12px; padding: 12px; margin: 12px 0; }
+
+.legend { display: flex; gap: 16px; font-size: 12.5px; font-family: "Segoe UI", sans-serif; color: #444; }
+.legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; }
+.legend .rev::before { background: #6ea8fe; }
+.legend .cost::before { background: #ff9f43; }
+
+/* AOI debug outlines */
+body.debug-aoi [data-aoi] { outline: 2px dashed #6ea8fe; background: rgba(110,168,254,.08); }
