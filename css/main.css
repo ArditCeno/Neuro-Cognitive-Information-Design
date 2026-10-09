@@ -25,7 +25,12 @@ html, body {
   font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
   line-height: 1.5;
   min-height: 100%;
+  overflow-x: hidden;
 }
+
+/* Never let a stray WebGazer video container overflow the page. */
+body > #webgazerVideoContainer { display: none !important; }
+#webgazerFaceOverlay, #webgazerFaceFeedbackBox { display: none !important; }
 
 .hidden { display: none !important; }
 
@@ -130,13 +135,15 @@ h2 { font-size: 18px; margin: 0 0 12px; }
 
 /* ---- Camera ---- */
 .camera-preview {
-  position: relative; margin: 18px 0; width: 320px; height: 240px;
+  position: relative; margin: 18px 0; width: 360px; height: 270px;
   border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
-  background: #0b0e18;
+  background: #0b0e18; transition: border-color .2s ease;
 }
-.camera-preview video { width: 100%; height: 100%; object-fit: cover; }
+.camera-preview.ready { border-color: rgba(74, 222, 128, .6); box-shadow: 0 0 0 3px rgba(74,222,128,.12); }
+.camera-preview video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .camera-placeholder { position: absolute; inset: 0; display: grid; place-items: center; font-size: 48px; opacity: .3; }
 .msg { color: var(--accent2); min-height: 22px; }
+.camera-actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 
 /* ---- Calibration ---- */
 .calib-area {

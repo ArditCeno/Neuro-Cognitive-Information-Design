@@ -140,15 +140,18 @@ function onRegister(e) {
 /* ---------------------------- Camera & calibration ---------------------------- */
 async function onEnableCamera() {
   const msg = $("setupMsg");
+  const preview = $("cameraPreview");
   msg.textContent = t("loading");
   try {
     await EyeTracking.init({ mock: state.mock });
     if (!state.mock) await EyeTracking.startCamera();
     msg.textContent = t("setup_camera_ok");
+    if (preview) preview.classList.add("ready");
+    $("btnCamera").classList.add("hidden");
     $("btnSetupNext").classList.remove("hidden");
     if (!state.mock) setTimeout(async () => { await Biometrics.init(); Biometrics.start(); }, 800);
   } catch (err) {
-    console.warn(err);
+    console.warn("Camera error:", err);
     msg.textContent = t("setup_camera_denied");
   }
 }

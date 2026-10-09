@@ -52,36 +52,54 @@ export const EyeTracking = {
   async startCamera() {
     if (this.mock) return true;
     const wg = this.webgazer;
-    wg.setRegression("ridge");
-    try { wg.setTracker("TFFacemesh"); } catch (e) { /* fallback tracker */ }
-    if (wg.applyKalmanFilter) wg.applyKalmanFilter(true);
-    wg.setGazeListener((data, ts) => this._onGaze(data, ts));
-    await wg.begin();
-    if (wg.showVideoPreview) wg.showVideoPreview(true);
-    if (wg.showPredictionPoints) wg.showPredictionPoints(false);
-    if (wg.addMouseListener) wg.addMouseListener();
+    const safe = (fn) => { try { fn(); } catch (e) { /* optional call */ } };
+    safe(() => wg.setRegression("ridge"));
+    safe(() => wg.setTracker("TFFacemesh"));
+    safe(() => wg.applyKalmanFilter && wg.applyKalmanFilter(true));
+    safe(() => wg.setGazeListener((data, ts) => this._onGaze(data, ts)));
+    await wg.begin();                 // rejects only when the camera cannot start
     this.running = true;
+    safe(() => wg.showVideoPreview && wg.showVideoPreview(true));
+    safe(() => wg.showPredictionPoints && wg.showPredictionPoints(false));
+    safe(() => wg.addMouseListener && wg.addMouseListener());
     this._mountVideo();
     return true;
   },
 
-  _mountVideo() {
+  _injectStyles() {
+    if (document.getElementById("wgStyle")) return;
     const style = document.createElement("style");
+    style.id = "wgStyle";
     style.textContent = `
-      #webgazerVideoContainer, #cameraPreview #webgazerVideoContainer {
+      #cameraPreview { position: relative; overflow: hidden; }
+      #webgazerVideoFeed, #webgazerVideoContainer video {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important; border-radius: inherit;
+      }
+      #webgazerFaceOverlay, #webgazerFaceFeedbackBox { display: none !important; }
+      #webgazerVideoContainer.wg-mounted {
         position: absolute !important; inset: 0 !important;
         width: 100% !important; height: 100% !important;
         margin: 0 !important; z-index: 1;
       }
-      #webgazerVideoFeed { width: 100% !important; height: 100% !important; object-fit: cover !important; }
-      #webgazerFaceOverlay, #webgazerFaceFeedbackBox { display: none !important; }
+      /* safety: never let a stray WebGazer container overflow the page */
+      body > #webgazerVideoContainer { display: none !important; }
     `;
     document.head.appendChild(style);
+  },
+
+  _mountVideo(retries = 25) {
+    this._injectStyles();
     const host = document.getElementById("cameraPreview");
     const vc = document.getElementById("webgazerVideoContainer");
-    const ph = document.getElementById("cameraPlaceholder");
-    if (host && vc) host.appendChild(vc);
-    if (ph) ph.classList.add("hidden");
+    if (host && vc) {
+      vc.classList.add("wg-mounted");
+      if (vc.parentElement !== host) host.appendChild(vc);
+      const ph = document.getElementById("cameraPlaceholder");
+      if (ph) ph.classList.add("hidden");
+      return;
+    }
+    if (retries > 0) setTimeout(() => this._mountVideo(retries - 1), 120);
   },
 
   _onGaze(data, ts) {
