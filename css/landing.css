@@ -542,3 +542,18 @@ body { font-size: clamp(16px, 0.6vw + 14.5px, 18px); }  /* 16-18px, no iPhone zo
   .langbtn { padding: 6px 9px; }
   .brand-text strong { font-size: 14px; }
 }
+
+/* ============ Hero diagonal composition ============ */
+.hero2 { grid-template-columns: 1fr !important; }
+.hero2-left { display: flex; flex-direction: column; max-width: 100%; }
+.hero-line1 { margin: 0; }
+.hero-sub { text-align: center; margin: 26px auto 18px; max-width: 66ch; }
+.hero-line2 { text-align: right; margin: 0 0 10px; }
+.hero-line2::after {
+  content: ""; display: block; height: 3px; width: 140px; margin: 14px 0 0 auto;
+  border-radius: 3px; background: linear-gradient(90deg, transparent, var(--cyan));
+}
+@media (max-width: 640px) {
+  .hero-sub { margin: 20px auto 12px; }
+  .hero-line2::after { width: 90px; }
+}
