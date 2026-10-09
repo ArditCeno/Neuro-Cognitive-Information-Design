@@ -29,15 +29,17 @@ jobs:
 
       # Private config is injected from repository secrets and NEVER committed.
       # Set these in: Settings -> Secrets and variables -> Actions
-      #   SUPABASE_URL, SUPABASE_ANON_KEY   (option A)
-      #   SUBMISSION_URL                    (option B, any JSON endpoint)
+      #   BACKEND_URL                       (Spring Boot API)
+      #   SUPABASE_URL, SUPABASE_ANON_KEY   (direct Supabase REST)
+      #   SUBMISSION_URL                    (any JSON endpoint)
       - name: Generate private config from secrets
         env:
+          BACKEND_URL: ${{ secrets.BACKEND_URL }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           SUBMISSION_URL: ${{ secrets.SUBMISSION_URL }}
         run: |
-          node -e "const fs=require('fs');const s=process.env;const cfg={storage:{supabase:{url:s.SUPABASE_URL||null,anonKey:s.SUPABASE_ANON_KEY||null},submission:{url:s.SUBMISSION_URL||null,includeGaze:false}}};fs.writeFileSync('js/config.local.js','window.NCID_LOCAL='+JSON.stringify(cfg)+';');console.log('config.local.js written (secrets present:',Boolean(s.SUPABASE_URL||s.SUBMISSION_URL),')');"
+          node -e "const fs=require('fs');const s=process.env;const cfg={storage:{backend:{url:s.BACKEND_URL||null},supabase:{url:s.SUPABASE_URL||null,anonKey:s.SUPABASE_ANON_KEY||null},submission:{url:s.SUBMISSION_URL||null,includeGaze:false}}};fs.writeFileSync('js/config.local.js','window.NCID_LOCAL='+JSON.stringify(cfg)+';');console.log('config.local.js written; backend:',Boolean(s.BACKEND_URL),'supabase:',Boolean(s.SUPABASE_URL),'endpoint:',Boolean(s.SUBMISSION_URL));"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

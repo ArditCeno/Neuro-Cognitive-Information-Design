@@ -28,6 +28,7 @@ export const CONFIG = {
   storage: {
     supabase: null,
     submission: { url: null, includeGaze: false },
+    backend: { url: null },        // Spring Boot API, e.g. https://ncid-backend.onrender.com
     keyName: "ncid_session_buffer_v1",
     langKey: "ncid_lang",
     counterKey: "ncid_session_counter"

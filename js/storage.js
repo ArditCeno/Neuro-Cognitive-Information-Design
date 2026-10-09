@@ -120,11 +120,30 @@ export async function uploadToEndpoint(summary) {
   }
 }
 
+/**
+ * Spring Boot backend (POST /api/sessions).
+ */
+export async function uploadToBackend(summary) {
+  const cfg = K.backend;
+  if (!cfg || !cfg.url) return { ok: false, skipped: true };
+  try {
+    const res = await fetch(cfg.url.replace(/\/$/, "") + "/api/sessions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_anonim: summary.participant.id_anonim, summary })
+    });
+    return { ok: res.ok, status: res.status };
+  } catch (e) {
+    return { ok: false, error: String(e) };
+  }
+}
+
 /** Send the session to every configured backend. */
 export async function submitSession(summary) {
-  const [supabase, endpoint] = await Promise.all([
+  const [supabase, endpoint, backend] = await Promise.all([
     uploadToSupabase(summary),
-    uploadToEndpoint(summary)
+    uploadToEndpoint(summary),
+    uploadToBackend(summary)
   ]);
-  return { supabase, endpoint };
+  return { supabase, endpoint, backend };
 }
