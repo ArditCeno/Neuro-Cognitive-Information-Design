@@ -26,9 +26,13 @@ export const CONFIG = {
   // `submission.url` can be any endpoint that accepts a JSON POST, e.g. a
   // Google Apps Script Web App, Formspree, Formspark or your own API.
   storage: {
-    supabase: null,
+    // Supabase direct (publishable key = client-safe, protected by RLS insert-only).
+    supabase: {
+      url: "https://kvfqvnvlledzzxstgdch.supabase.co",
+      anonKey: "sb_publishable_98Vch8De9ZGxo1ofHMxDzA_ZS8ZpfUv"
+    },
     submission: { url: null, includeGaze: false },
-    backend: { url: null },        // Spring Boot API, e.g. https://ncid-backend.onrender.com
+    backend: { url: null },        // optional Spring Boot API, e.g. https://ncid-backend.onrender.com
     keyName: "ncid_session_buffer_v1",
     langKey: "ncid_lang",
     counterKey: "ncid_session_counter"
@@ -333,7 +337,19 @@ export const CONFIG = {
  */
 if (typeof window !== "undefined" && window.NCID_LOCAL) {
   const local = window.NCID_LOCAL;
-  if (local.storage) Object.assign(CONFIG.storage, local.storage);
+  if (local.storage) {
+    for (const k of Object.keys(local.storage)) {
+      const v = local.storage[k];
+      if (v == null) continue;                    // never wipe defaults with null
+      if (typeof v === "object" && !Array.isArray(v)) {
+        const clean = {};
+        for (const j of Object.keys(v)) if (v[j] != null) clean[j] = v[j];
+        CONFIG.storage[k] = Object.assign({}, CONFIG.storage[k], clean);
+      } else {
+        CONFIG.storage[k] = v;
+      }
+    }
+  }
   if (local.study) Object.assign(CONFIG.study, local.study);
   if (local.cdn) Object.assign(CONFIG.cdn, local.cdn);
 }
