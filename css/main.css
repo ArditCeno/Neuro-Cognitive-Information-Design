@@ -270,3 +270,21 @@ html, body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; font-size: 
 .topbar .app-logo { display: none; height: 44px; width: auto; max-width: 150px; object-fit: contain; }
 .topbar .brand-mark.has-logo .app-logo { display: block; }
 .topbar .brand-mark.has-logo .mono-text { display: none; }
+
+/* ============================================================
+   FINAL POLISH — consistent on every device (study app + admin)
+   ============================================================ */
+:root { --gutter: clamp(14px, 4vw, 32px); --container: 1000px; }
+#main { max-width: var(--container); margin-inline: auto; padding: clamp(18px, 4vw, 34px) var(--gutter) clamp(48px, 8vw, 80px); }
+.topbar { padding: clamp(10px, 2vw, 16px) var(--gutter); }
+.admin-wrap { max-width: 1200px; margin-inline: auto; padding: clamp(18px, 4vw, 32px) var(--gutter) clamp(48px, 8vw, 80px); }
+.card, .quiz-item, .tlx-item, .stat { border-radius: 14px; }
+.btn { border-radius: 11px; }
+h1 { text-wrap: balance; }
+p, .lead { text-wrap: pretty; }
+@media (max-width: 520px) {
+  .topbar { gap: 10px; }
+  .brand strong { font-size: 14px; }
+  .actions { gap: 10px; }
+  .actions .btn { width: 100%; }
+}
