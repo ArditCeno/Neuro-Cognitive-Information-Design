@@ -53,6 +53,8 @@ export const EyeTracking = {
     if (this.mock) return true;
     const wg = this.webgazer;
     const safe = (fn) => { try { fn(); } catch (e) { /* optional call */ } };
+    // WebGazer loads the MediaPipe FaceMesh assets from this path.
+    safe(() => { if (wg.params) wg.params.faceMeshSolutionPath = "mediapipe/face_mesh"; });
     safe(() => wg.setRegression("ridge"));
     safe(() => wg.setTracker("TFFacemesh"));
     safe(() => wg.applyKalmanFilter && wg.applyKalmanFilter(true));
