@@ -1,0 +1,19 @@
+# dependencies
+node_modules/
+.venv/
+__pycache__/
+*.pyc
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# never commit real participant data (GDPR)
+raw/
+data/processed/
+data/figures/
+
+# private config (Supabase keys / endpoints) and private documents
+js/config.local.js
+*.pdf
