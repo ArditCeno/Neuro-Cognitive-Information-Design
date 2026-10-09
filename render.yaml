@@ -5,6 +5,7 @@ services:
     name: ncid-backend
     runtime: docker
     dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
     plan: free
     envVars:
       - key: SUPABASE_DB_URL
