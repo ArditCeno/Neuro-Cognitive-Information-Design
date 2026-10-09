@@ -47,6 +47,7 @@
         '<a class="btn btn-primary pill" href="study.html">' +
           '<span data-en="Start Study" data-al="Fillo Studimin">Start Study</span> <em>→</em>' +
         '</a>' +
+        '<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
       '</div>';
   }
 
@@ -124,6 +125,19 @@
     document.querySelectorAll(".langbtn").forEach(function (b) {
       b.addEventListener("click", function () { apply(b.getAttribute("data-lang")); });
     });
+    var toggle = document.querySelector(".nav-toggle");
+    if (toggle && h) {
+      toggle.addEventListener("click", function () {
+        var open = h.classList.toggle("nav-open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      });
+      h.querySelectorAll(".nav-links a").forEach(function (a) {
+        a.addEventListener("click", function () {
+          h.classList.remove("nav-open");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
     apply(lang);
     initLogo();
     initBackground();

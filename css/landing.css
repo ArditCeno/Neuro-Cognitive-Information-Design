@@ -489,3 +489,56 @@ h4 { font-weight: 600; line-height: 1.3; }
 .btn { font-weight: 600; }
 .pill, .badge, .chip, .eyebrow { font-weight: 700; }
 .card p, .field-item p, .lead { font-weight: 400; }
+
+/* Logo lives in the header (no box/background) */
+.brand-mark { width: auto; height: auto; background: none; border: none; box-shadow: none; }
+.logo-img { display: none; height: 48px; width: auto; max-width: 190px; object-fit: contain; }
+.brand-mark.has-logo .logo-img { display: block; }
+.brand-mark.has-logo .mono { display: none; }
+
+/* ============ Responsive perfection ============ */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { font-size: clamp(16px, 0.6vw + 14.5px, 18px); }  /* 16-18px, no iPhone zoom */
+
+.nav-toggle {
+  display: none; background: rgba(255,255,255,.06); border: 1px solid var(--border);
+  border-radius: 10px; width: 42px; height: 40px; cursor: pointer; padding: 0; place-items: center;
+}
+.nav-toggle span { display: block; width: 18px; height: 2px; background: var(--text); border-radius: 2px; margin: 3px auto; transition: transform .2s, opacity .2s; }
+
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: inline-grid; }
+  .nav.nav-open .nav-links {
+    display: flex; flex-direction: column; gap: 2px;
+    position: absolute; left: 0; right: 0; top: 100%;
+    background: rgba(9, 38, 52, .97); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    padding: 10px 22px 18px; border-bottom: 1px solid var(--border);
+    box-shadow: 0 22px 45px rgba(0,0,0,.55);
+  }
+  .nav.nav-open .nav-links a { padding: 13px 2px; border-bottom: 1px solid rgba(255,255,255,.07); }
+  .nav.nav-open .nav-links a.active::after { display: none; }
+}
+
+@media (max-width: 640px) {
+  .nav { padding: 12px 16px; }
+  .brand-text small { display: none; }
+  .brand-text strong { font-size: 15px; }
+  .hero2 { padding: 42px 18px 22px; }
+  .hero-home { min-height: 84vh; }
+  .wrap, .page { padding-left: 16px; padding-right: 16px; }
+  .page { padding-top: 40px; }
+  .fields-strip, .stats-strip { padding: 20px 16px; }
+  .card, .field-card, .flow-card, .phase, .steps li { padding: 16px; }
+  .quote { padding: 22px 18px; }
+  .hero2-cta { flex-direction: column; align-items: stretch; }
+  .hero2-cta .btn { width: 100%; justify-content: center; }
+  .foot { flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+  .foot-links { justify-content: center; }
+  .section { margin: 40px 0; }
+}
+
+@media (max-width: 420px) {
+  .langbtn { padding: 6px 9px; }
+  .brand-text strong { font-size: 14px; }
+}
