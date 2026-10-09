@@ -138,15 +138,30 @@ Validate a full run in mock mode before collecting real data.
    `https://<user>.github.io/Neuro-Cognitive-Information-Design/`.
 
 ## 16. Collecting data (kept private)
-By default the app is local-first and the collected JSON never leaves the
-browser. To collect sessions over the internet, add **your own** backend:
+By default the app is local-first. To collect sessions over the internet, add a
+backend and provide its keys **as GitHub Actions secrets** (never in the repo).
+`js/config.local.js`, all `raw/` data, processed data and PDFs are gitignored.
 
-- Copy `js/config.local.example.js` to `js/config.local.js` (gitignored) and fill
-  in either:
-  - **Supabase** — `sessions(id_anonim text, payload jsonb, created_at timestamptz default now())`.
-  - **Any JSON endpoint** — Google Apps Script Web App, Formspree, your own API.
-- `js/config.local.js`, all `raw/` data, processed data and PDFs are gitignored,
-  so keys, endpoints and participant data are never published.
+**Option A — Supabase (free, EU region recommended).** Create a project and run:
+```sql
+create table sessions (
+  id_anonim  text,
+  payload    jsonb,
+  created_at timestamptz default now()
+);
+alter table sessions enable row level security;
+-- allow anonymous INSERT only (no reads with the public key)
+create policy "anon insert" on sessions for insert to anon with check (true);
+```
+Then add repository secrets **`SUPABASE_URL`** and **`SUPABASE_ANON_KEY`**
+(Settings -> Secrets and variables -> Actions).
+
+**Option B — any JSON endpoint** (Google Apps Script Web App, Formspree, own API).
+Add repository secret **`SUBMISSION_URL`**.
+
+The deploy workflow injects these into `js/config.local.js` at build time, so the
+published site submits sessions while the keys stay out of Git. Export all data
+from Supabase (or your endpoint) and drop the JSON into `analysis/raw/`.
 
 No secrets or personal data belong in the repository.
 

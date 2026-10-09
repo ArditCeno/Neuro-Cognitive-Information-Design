@@ -23,12 +23,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      # Private config is injected from repository secrets and NEVER committed.
+      # Set these in: Settings -> Secrets and variables -> Actions
+      #   SUPABASE_URL, SUPABASE_ANON_KEY   (option A)
+      #   SUBMISSION_URL                    (option B, any JSON endpoint)
+      - name: Generate private config from secrets
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          SUBMISSION_URL: ${{ secrets.SUBMISSION_URL }}
+        run: |
+          node -e "const fs=require('fs');const s=process.env;const cfg={storage:{supabase:{url:s.SUPABASE_URL||null,anonKey:s.SUPABASE_ANON_KEY||null},submission:{url:s.SUBMISSION_URL||null,includeGaze:false}}};fs.writeFileSync('js/config.local.js','window.NCID_LOCAL='+JSON.stringify(cfg)+';');console.log('config.local.js written (secrets present:',Boolean(s.SUPABASE_URL||s.SUBMISSION_URL),')');"
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
