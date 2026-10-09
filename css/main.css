@@ -232,3 +232,18 @@ h2 { font-size: 18px; margin: 0 0 12px; }
 .btn-primary { background: linear-gradient(135deg, #004E72, #FF6E42); color: #F9F9F9; }
 .btn-primary:hover { filter: brightness(1.08); }
 .calib-area { background: rgba(9, 38, 52, .5); backdrop-filter: blur(8px); }
+
+/* ============ Typography scale (Outfit) ============ */
+:root { --font: "Outfit", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; }
+html, body {
+  font-family: var(--font);
+  font-size: 17px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+h1 { font-weight: 800; line-height: 1.1; font-size: clamp(28px, 3.5vw, 40px); }
+h2 { font-weight: 700; line-height: 1.2; font-size: 22px; }
+h3 { font-weight: 700; }
+.btn { font-weight: 600; }
+.hint, small, .footer { font-size: 13px; }
+.form .field > span { font-weight: 600; }

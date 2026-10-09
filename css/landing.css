@@ -446,3 +446,46 @@ html, body { background-attachment: fixed; }
 /* headings precision */
 h1, h2, h3, h4 { letter-spacing: -.01em; }
 .section-head h2 { letter-spacing: -.015em; }
+
+/* ============ Typography scale (Outfit) ============ */
+:root { --font: "Outfit", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif; }
+
+html { font-size: 100%; }
+body {
+  font-family: var(--font);
+  font-size: 17px;         /* base 16-18 */
+  line-height: 1.6;        /* airy body */
+  font-weight: 400;
+}
+h1, h2, h3, h4, h5, .brand-text strong, .btn, .chip, .badge, .pill { font-family: var(--font); }
+
+h1 { font-weight: 800; line-height: 1.08; }
+h2 { font-weight: 700; line-height: 1.15; }
+h3 { font-weight: 700; line-height: 1.25; }
+h4 { font-weight: 600; line-height: 1.3; }
+
+/* H1 / hero: 44-76px */
+.hero2 h1 { font-size: clamp(44px, 6vw, 76px); }
+.page-head h1 { font-size: clamp(40px, 5vw, 60px); }
+
+/* H2 sections: 28-36px */
+.section-head h2 { font-size: clamp(28px, 3vw, 36px); }
+
+/* H3/H4: 20-24px */
+.card h3, .flow-card h4 { font-size: 20px; }
+.field-card h3 { font-size: 21px; }
+.field-item h4 { font-size: 17px; }
+.steps h4, .phase h4 { font-size: 17px; }
+
+/* Lead / large body */
+.lead, .hero-sub { font-size: 18px; line-height: 1.6; }
+
+/* Small / caption: 12-14px */
+.hint, small, .foot, .chip, .field-item p, .metrics-grid span, .tagline,
+.panel, .p-title, .ab-table thead th { font-size: 13px; }
+.nav-links a { font-size: 15px; }
+
+/* weights for interactive + labels */
+.btn { font-weight: 600; }
+.pill, .badge, .chip, .eyebrow { font-weight: 700; }
+.card p, .field-item p, .lead { font-weight: 400; }
