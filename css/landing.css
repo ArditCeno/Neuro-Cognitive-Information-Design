@@ -557,3 +557,15 @@ body { font-size: clamp(16px, 0.6vw + 14.5px, 18px); }  /* 16-18px, no iPhone zo
   .hero-sub { margin: 20px auto 12px; }
   .hero-line2::after { width: 90px; }
 }
+
+/* Hero headline: slightly lower height, same width */
+.hero-line1, .hero-line2 {
+  display: block;
+  line-height: 1;
+  transform: scaleY(.88);          /* shorter vertically, length unchanged */
+  transform-origin: left center;
+  margin-top: 0;
+}
+.hero-line2 { transform-origin: right center; }
+.hero-line1 { margin-bottom: 6px; }
+.hero-line2 { margin-bottom: 8px; }
