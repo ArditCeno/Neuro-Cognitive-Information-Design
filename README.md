@@ -28,7 +28,7 @@ switches to **MouseView.js** mouse-tracking (plan B) and is flagged.
 |-------|------------|
 | **Participant app** | jsPsych (flow, timing, quiz), WebGazer.js (gaze x,y), MediaPipe Face Mesh (blink, head pose), A/B stimuli in HTML |
 | **Data collection** | Timestamped logger, local buffer against loss (localStorage), anonymous ID, JSON export |
-| **Backend (optional)** | Supabase or Firebase, encrypted storage, session-quality dashboard |
+| **Backend (optional)** | Spring Boot API (`/backend`) → Supabase (PostgreSQL), encrypted storage, session-quality dashboard (`/api/stats`) |
 | **Analysis (Python)** | 01 Cleaning, 02 Metrics & AOI, 03 Statistics, 04 Figures & Heatmap.js |
 
 ## 3. Tools
@@ -56,7 +56,10 @@ js/heatmap.js              Heatmap.js researcher view
 js/research.js             content-parity + AOI inspector + quality dashboard
 materials/                 20 files: 5 fields x A/B x AL/EN
 data/session.schema.json   export JSON schema
+backend/                   Spring Boot API (Java 17) -> Supabase/PostgreSQL
 analysis/                  Python pipeline (see analysis/README.md)
+render.yaml                one-click backend hosting blueprint
+LICENSE                    proprietary license
 ```
 
 ## 5. Run locally
@@ -138,30 +141,42 @@ Validate a full run in mock mode before collecting real data.
    `https://<user>.github.io/Neuro-Cognitive-Information-Design/`.
 
 ## 16. Collecting data (kept private)
-By default the app is local-first. To collect sessions over the internet, add a
-backend and provide its keys **as GitHub Actions secrets** (never in the repo).
-`js/config.local.js`, all `raw/` data, processed data and PDFs are gitignored.
+By default the app is local-first. To collect sessions over the internet, run the
+**Spring Boot backend** (`/backend`) against **Supabase Postgres**, then give its
+URL to the frontend as a secret. Nothing secret is ever committed.
 
-**Option A — Supabase (free, EU region recommended).** Create a project and run:
+**Step 1 — Supabase.** Create a project (EU region for GDPR) and run:
 ```sql
 create table sessions (
-  id_anonim  text,
-  payload    jsonb,
-  created_at timestamptz default now()
+  id         uuid primary key default gen_random_uuid(),
+  id_anonim  text not null,
+  payload    jsonb not null,
+  created_at timestamptz not null default now()
 );
 alter table sessions enable row level security;
--- allow anonymous INSERT only (no reads with the public key)
 create policy "anon insert" on sessions for insert to anon with check (true);
 ```
-Then add repository secrets **`SUPABASE_URL`** and **`SUPABASE_ANON_KEY`**
-(Settings -> Secrets and variables -> Actions).
 
-**Option B — any JSON endpoint** (Google Apps Script Web App, Formspree, own API).
-Add repository secret **`SUBMISSION_URL`**.
+**Step 2 — Backend.** Deploy `/backend` (Docker/Render/Railway, see `backend/README.md`)
+with env vars `SUPABASE_DB_URL`, `SUPABASE_DB_USER`, `SUPABASE_DB_PASSWORD`,
+`NCID_ADMIN_TOKEN`, `NCID_ALLOWED_ORIGINS`.
 
-The deploy workflow injects these into `js/config.local.js` at build time, so the
-published site submits sessions while the keys stay out of Git. Export all data
-from Supabase (or your endpoint) and drop the JSON into `analysis/raw/`.
+**Step 3 — Frontend secret.** Add repository secret **`BACKEND_URL`**
+(Settings → Secrets and variables → Actions) = your API base, e.g.
+`https://ncid-backend.onrender.com`. The deploy workflow injects it into
+`js/config.local.js` at build time, so the published site submits sessions.
 
-No secrets or personal data belong in the repository.
+Alternative direct options: **`SUPABASE_URL` + `SUPABASE_ANON_KEY`** (REST) or
+**`SUBMISSION_URL`** (any JSON endpoint).
+
+**Step 4 — Analyze.** Export sessions, then run the Python pipeline:
+```bash
+export DATABASE_URL="postgresql://postgres:<pw>@db.<ref>.supabase.co:5432/postgres"
+python analysis/fetch_supabase.py --output analysis/raw
+```
+
+## 17. License
+Proprietary — Copyright (c) 2025 Ardit Ceno. All rights reserved. See [`LICENSE`](LICENSE).
+No use, copying, modification or distribution without prior written consent.
+Contact: arditceno1@gmail.com
 

@@ -3,6 +3,7 @@ node_modules/
 .venv/
 __pycache__/
 *.pyc
+backend/target/
 
 # OS / editor
 .DS_Store
