@@ -309,3 +309,16 @@ select option:hover,
 }
 /* remove the light glass fill on selects (keeps them opaque + readable) */
 .form select, .admin-wrap select { background: #0d3247 !important; }
+
+/* ============================================================
+   Nicer app background (gradient on html + soft light layers)
+   ============================================================ */
+html { background: radial-gradient(1200px 800px at 80% -10%, #0f3a50 0%, var(--bg) 60%); }
+body { background: transparent; }
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    radial-gradient(720px 520px at 88% -8%, rgba(14, 127, 176, .30), transparent 62%),
+    radial-gradient(620px 520px at -6% 22%, rgba(255, 110, 66, .16), transparent 60%),
+    radial-gradient(700px 600px at 50% 115%, rgba(14, 127, 176, .12), transparent 65%);
+}
