@@ -660,3 +660,25 @@ section[id], [id] { scroll-margin-top: 96px; }      /* sticky nav offset for anc
   .section-head h2::after { width: 40px; }
   .hero-sub { color: #cfdbe4; }
 }
+
+/* ============================================================
+   Mobile nav + hero polish (phone)
+   ============================================================ */
+.nav { flex-wrap: nowrap; }
+.brand { min-width: 0; }
+.brand-text { min-width: 0; }
+.brand-text strong, .brand-text small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 640px) {
+  .nav-actions .pill span { display: none; }      /* keep just the arrow */
+  .nav-actions { gap: 8px; }
+  .logo-img, .brand-mark { height: 40px; }
+  .hero-line1, .hero-line2 { font-size: clamp(34px, 10vw, 52px) !important; }
+  .hero-sub { font-size: 16px; }
+  .fields-strip { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .field-item { padding: 6px; }
+  .stats-strip { gap: 10px 20px; padding: 18px 12px; }
+  .stats-strip .stat b { font-size: 22px; }
+}
+@media (max-width: 380px) {
+  .fields-strip { grid-template-columns: 1fr; }
+}
