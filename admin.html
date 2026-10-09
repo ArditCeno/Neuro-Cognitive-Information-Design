@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NCID Admin</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <style>
+    .admin-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 22px 70px; }
+    .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 16px 0; }
+    .stat { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+    .stat .lbl { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+    .stat .val { font-size: 26px; font-weight: 800; color: var(--accent); }
+    .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; margin: 14px 0; }
+    .toolbar .field { margin: 0; }
+    .toolbar input { min-width: 260px; }
+    table.sessions { width: 100%; border-collapse: collapse; font-size: 13.5px; background: var(--panel); border-radius: var(--radius); overflow: hidden; }
+    table.sessions th, table.sessions td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
+    table.sessions th { color: var(--muted); font-weight: 600; background: var(--panel2); position: sticky; top: 0; }
+    table.sessions tr { cursor: pointer; }
+    table.sessions tr:hover td { background: var(--panel2); }
+    .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--panel2); border: 1px solid var(--border); }
+    .tag.ok { color: var(--ok); border-color: rgba(74,222,128,.4); }
+    .tag.bad { color: var(--danger); border-color: rgba(248,113,113,.4); }
+    .row-btns { display: flex; gap: 6px; }
+    .detail { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; place-items: center; z-index: 100; }
+    .detail.open { display: grid; }
+    .detail-inner { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); width: min(900px, 92vw); max-height: 86vh; overflow: auto; padding: 18px; }
+    .detail pre { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; overflow: auto; font-size: 12px; }
+    .pager { display: flex; gap: 10px; align-items: center; margin: 12px 0; color: var(--muted); }
+    .hidden { display: none !important; }
+    .admin-note { color: var(--muted); font-size: 12.5px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">NCID</span>
+      <div>
+        <strong>Session Admin</strong>
+        <small>Neuro-Cognitive Information Design — researcher dashboard</small>
+      </div>
+    </div>
+    <a class="btn btn-ghost btn-sm" href="index.html">← Participant app</a>
+  </header>
+
+  <main class="admin-wrap">
+    <div class="card">
+      <h2>Connection</h2>
+      <p class="admin-note">The admin token is kept only in this browser tab (sessionStorage) and is never stored or committed.</p>
+      <div class="toolbar">
+        <label class="field" style="flex:1">
+          <span>Backend URL</span>
+          <input type="text" id="backendUrl" placeholder="https://ncid-backend.onrender.com" />
+        </label>
+        <label class="field" style="flex:1">
+          <span>Admin token</span>
+          <input type="password" id="adminToken" placeholder="X-Admin-Token" />
+        </label>
+        <button id="btnLoad" class="btn btn-primary">Load</button>
+      </div>
+      <p id="connMsg" class="msg"></p>
+    </div>
+
+    <div id="statsBox" class="admin-grid hidden"></div>
+
+    <div class="card hidden" id="sessionsCard">
+      <div class="toolbar">
+        <label class="field" style="flex:1">
+          <span>Filter (client-side)</span>
+          <input type="text" id="filter" placeholder="id_anonim, field…" />
+        </label>
+        <button id="btnCsv" class="btn btn-ghost">Export CSV</button>
+        <button id="btnReload" class="btn btn-ghost">Refresh</button>
+      </div>
+      <div class="pager">
+        <button id="btnPrev" class="btn btn-ghost btn-sm">← Prev</button>
+        <span id="pageInfo">0</span>
+        <button id="btnNext" class="btn btn-ghost btn-sm">Next →</button>
+        <span id="sessionsInfo" class="admin-note"></span>
+      </div>
+      <div style="overflow:auto; max-height:60vh">
+        <table class="sessions">
+          <thead>
+            <tr>
+              <th>id_anonim</th><th>created_at</th><th>fields</th>
+              <th>version</th><th>calibration (px)</th><th>accuracy %</th><th></th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <div class="detail" id="detail">
+    <div class="detail-inner">
+      <div class="toolbar">
+        <h2 style="margin:0; flex:1" id="detailTitle">Session</h2>
+        <button id="btnCloseDetail" class="btn btn-ghost btn-sm">Close</button>
+      </div>
+      <pre id="detailJson"></pre>
+    </div>
+  </div>
+
+  <script src="js/config.local.js" onerror="void 0"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
