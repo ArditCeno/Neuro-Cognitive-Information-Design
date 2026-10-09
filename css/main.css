@@ -209,3 +209,26 @@ h2 { font-size: 18px; margin: 0 0 12px; }
   #main { padding: 18px 14px 60px; }
   .camera-preview { width: 100%; }
 }
+
+/* ============ Glassmorphism (study app) ============ */
+.topbar {
+  background: rgba(9, 38, 52, .6) !important;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+.card, .quiz-item, .tlx-item, .stat {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .10), rgba(255, 255, 255, .035));
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, .16);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .4), inset 0 1px 0 rgba(255, 255, 255, .2);
+}
+.form input, .form select {
+  background: rgba(255, 255, 255, .06);
+  backdrop-filter: blur(10px);
+}
+.btn-primary { background: linear-gradient(135deg, #004E72, #FF6E42); color: #F9F9F9; }
+.btn-primary:hover { filter: brightness(1.08); }
+.calib-area { background: rgba(9, 38, 52, .5); backdrop-filter: blur(8px); }

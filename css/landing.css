@@ -405,3 +405,44 @@ html, body { background-attachment: fixed; }
 .foot-social:hover { border-color: var(--cyan); color: var(--cyan) !important; }
 
 @media (max-width: 720px) { .stats-strip { gap: 12px 24px; } }
+
+/* ============ Glassmorphism (precise) ============ */
+.nav {
+  background: rgba(9, 38, 52, .58);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, .12);
+}
+
+.card, .flow-card, .phase, .steps li, .field-card, .metrics-grid, .quote, .table-scroll, .field-item {
+  position: relative;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .10) 0%, rgba(255, 255, 255, .035) 100%);
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, .16);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .40), inset 0 1px 0 rgba(255, 255, 255, .22);
+}
+.card::before, .flow-card::before, .phase::before, .steps li::before {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  background: linear-gradient(135deg, rgba(255, 255, 255, .16), transparent 42%);
+  opacity: .7;
+}
+.card:hover, .flow-card:hover, .phase:hover, .steps li:hover {
+  border-color: rgba(14, 127, 176, .6);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, .5), inset 0 1px 0 rgba(255, 255, 255, .3), 0 0 44px rgba(14, 127, 176, .22);
+}
+.field-card:hover { border-color: var(--c); box-shadow: 0 24px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.3), 0 0 44px color-mix(in srgb, var(--c) 34%, transparent); }
+
+.fields-strip, .stats-strip {
+  background: rgba(255, 255, 255, .035);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+}
+
+.f-chip, .langswitch { backdrop-filter: blur(10px); }
+.btn-ghost { backdrop-filter: blur(8px); background: rgba(255, 255, 255, .05); }
+.btn-primary { background: linear-gradient(135deg, #004E72, #FF6E42); color: #F9F9F9; }
+
+/* headings precision */
+h1, h2, h3, h4 { letter-spacing: -.01em; }
+.section-head h2 { letter-spacing: -.015em; }
