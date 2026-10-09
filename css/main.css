@@ -260,3 +260,13 @@ html, body { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; font-size: 
 
 /* SVG camera placeholder */
 .camera-placeholder svg { width: 56px; height: 56px; color: var(--muted); }
+
+/* App topbar logo (study.html / admin.html) */
+.topbar .brand-mark { position: relative; width: 44px; height: 44px; display: grid; place-items: center; flex: 0 0 auto; }
+.topbar .brand-mark .mono-text {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 11px;
+  background: linear-gradient(135deg, #004E72, #FF6E42); color: #F9F9F9; font-weight: 800; font-size: 13px;
+}
+.topbar .app-logo { display: none; height: 44px; width: auto; max-width: 150px; object-fit: contain; }
+.topbar .brand-mark.has-logo .app-logo { display: block; }
+.topbar .brand-mark.has-logo .mono-text { display: none; }

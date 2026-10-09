@@ -39,7 +39,12 @@
 <body>
   <header class="topbar">
     <div class="brand">
-      <span class="logo">NCID</span>
+      <span class="brand-mark">
+        <span class="mono-text">NCID</span>
+        <img class="app-logo" src="assets/logo.png" alt="NCID"
+             onload="this.closest('.brand-mark').classList.add('has-logo')"
+             onerror="this.remove()">
+      </span>
       <div>
         <strong>Session Admin</strong>
         <small>Neuro-Cognitive Information Design — researcher dashboard</small>
