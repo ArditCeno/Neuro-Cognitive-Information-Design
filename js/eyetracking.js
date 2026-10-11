@@ -16,7 +16,6 @@ export const EyeTracking = {
   samples: [],                 // all samples (current session)
   trial: null,                 // active trial buffer
   readingRegion: null,         // { left, top, width, height, scrollLeft, scrollTop } viewport coords
-  showDot: false,
   _mockTimer: null,
   _mockPos: null,
 
@@ -26,9 +25,6 @@ export const EyeTracking = {
     if (mock) {
       this.mode = "mock";
       this.ready = true;
-      const dot = document.getElementById("gazeDot");
-      this.showDot = !!dot;
-      if (dot) dot.classList.remove("hidden");
       return true;
     }
     this.mode = "webgazer";
@@ -43,9 +39,6 @@ export const EyeTracking = {
   async enableMouseFallback() {
     this.mode = "mouse";
     await MouseView.enable((x, y, t) => this._onGaze({ x, y }, t));
-    const dot = document.getElementById("gazeDot");
-    if (dot) dot.classList.remove("hidden");
-    this.showDot = !!dot;
     return true;
   },
 
@@ -121,12 +114,6 @@ export const EyeTracking = {
     }
     this.samples.push(s);
     if (this.trial) this.trial.samples.push(s);
-    if (this.showDot) this._moveDot(s.x, s.y);
-  },
-
-  _moveDot(x, y) {
-    const d = document.getElementById("gazeDot");
-    if (d) { d.style.left = x + "px"; d.style.top = y + "px"; }
   },
 
   /** Region of the document (viewport coordinates) used for docX/docY mapping. */
