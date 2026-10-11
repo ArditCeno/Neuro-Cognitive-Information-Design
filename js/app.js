@@ -19,6 +19,8 @@ import { Biometrics } from "./biometrics.js";
 import { Research } from "./research.js";
 import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js";
 import { LEVELS } from "./fields.js";
+import { renderNodeMap, renderHashmap } from "./visualize.js";
+import { downloadReport, emailReport, emailConfigured } from "./report.js";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -448,6 +450,34 @@ async function finishSession() {
 
   const size = Heatmap.maxDocSize([{ metrics: { fixations: state.heatPoints } }]);
   Heatmap.render($("heatmapContainer"), state.heatPoints, size);
+
+  renderReportExtras(summary);
+}
+
+async function renderReportExtras(summary) {
+  const stage = document.getElementById("stage-done");
+  if (!stage || document.getElementById("reportExtras")) return;
+  const box = document.createElement("div");
+  box.className = "card";
+  box.id = "reportExtras";
+  box.innerHTML =
+    '<h2 data-i18n="node_map">Node map</h2><div id="nodeMapBox" class="mapbox"></div>' +
+    '<h2 data-i18n="hashmap" style="margin-top:18px">Hashmap</h2><div id="hashmapBox" class="mapbox"></div>' +
+    '<div class="actions"><button id="btnPdf" class="btn btn-primary" data-i18n="download_pdf">Download PDF report</button></div>' +
+    '<p id="emailMsg" class="hint"></p>';
+  stage.appendChild(box);
+  applyI18n(box);
+  renderNodeMap(box.querySelector("#nodeMapBox"), summary);
+  renderHashmap(box.querySelector("#hashmapBox"), summary);
+  box.querySelector("#btnPdf").addEventListener("click", () => {
+    downloadReport(summary).catch((e) => alert("PDF error: " + e.message));
+  });
+  if (emailConfigured()) {
+    const msg = box.querySelector("#emailMsg");
+    msg.textContent = t("email_sending");
+    const r = await emailReport(summary);
+    msg.textContent = r.ok ? t("email_sent") : t("email_failed");
+  }
 }
 
 /* ---------------------------- Withdraw ---------------------------- */

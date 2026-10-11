@@ -79,6 +79,13 @@ export const I18N = {
     done_withdraw: "Tërhiq & fshi të dhënat",
     done_withdrawn: "Të dhënat u fshinë. Sesioni u anulua.",
 
+    node_map: "Harta e nyjeve (Node map)",
+    hashmap: "Hashmap",
+    download_pdf: "Shkarko raportin PDF",
+    email_sending: "Duke dërguar raportin me email…",
+    email_sent: "Raporti u dërgua me email.",
+    email_failed: "Dërgimi me email dështoi (kontrollo konfigurimin).",
+
     panel_title: "Panel kërkuesi",
     panel_heatmap: "Harta e nxehtësisë",
     panel_metrics: "Metrikat e provës",

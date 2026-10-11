@@ -1,0 +1,98 @@
+/*
+ * Report: PDF (with node map + hashmap) and email delivery.
+ * Copyright (c) 2026 Ardit Ceno. All rights reserved.
+ */
+import { CONFIG } from "./config.js";
+import { loadScript } from "./utils.js";
+import { flatten, layoutTree } from "./visualize.js";
+
+async function loadJsPDF() {
+  if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
+  await loadScript(CONFIG.cdn.jsPDF);
+  return window.jspdf && window.jspdf.jsPDF;
+}
+
+export async function buildReportPDF(summary) {
+  const JsPDF = await loadJsPDF();
+  if (!JsPDF) throw new Error("jsPDF not available");
+  const doc = new JsPDF({ unit: "pt", format: "a4" });
+  const W = 595, M = 40;
+  let y = M;
+
+  const line = (t, size, bold) => {
+    doc.setFont("helvetica", bold ? "bold" : "normal");
+    doc.setFontSize(size);
+    doc.text(String(t), M, y);
+    y += size + 6;
+  };
+
+  line("Neuro-Cognitive Information Design", 18, true);
+  line("Session report", 12);
+  y += 6;
+  const p = summary.participant || {};
+  line(`ID: ${p.id_anonim || "-"}   Profession: ${p.profesioni || "-"}   Expertise: ${p["niveli_i_ekspertizës"] || "-"}`, 11);
+  line(`Age: ${p.mosha || "-"}   Date: ${summary.exported_at || ""}`, 11);
+  y += 8;
+
+  // ---- Node map ----
+  line("Node map", 13, true);
+  const { nodes, edges } = layoutTree(summary);
+  const XS = 120, YS = 26, ox = M, oy = y + 6;
+  const pos = nodes.map((n, i) => ({ x: ox + n.depth * XS, y: oy + i * YS }));
+  doc.setDrawColor(160); doc.setLineWidth(0.6);
+  edges.forEach(([a, b]) => doc.line(pos[a].x + 92, pos[a].y + 6, pos[b].x, pos[b].y + 6));
+  doc.setFontSize(8);
+  nodes.forEach((n, i) => {
+    if (pos[i].y > 790) return;
+    doc.setDrawColor(180); doc.roundedRect(pos[i].x, pos[i].y, 92, 14, 3, 3);
+    doc.setTextColor(30);
+    doc.text(String(n.label).slice(0, 22), pos[i].x + 4, pos[i].y + 10);
+  });
+  doc.setTextColor(0);
+  y = oy + nodes.length * YS + 16;
+  if (y > 760) { doc.addPage(); y = M; }
+
+  // ---- Hashmap ----
+  line("Hashmap (key → value)", 13, true);
+  doc.setFontSize(8.5);
+  const rows = flatten(summary);
+  for (const [k, v] of rows) {
+    const text = `${k}: ${String(v)}`;
+    if (y > 800) { doc.addPage(); y = M; }
+    doc.text(text.slice(0, 110), M, y);
+    y += 11;
+  }
+  return doc;
+}
+
+export async function downloadReport(summary) {
+  const doc = await buildReportPDF(summary);
+  doc.save(`NCID_${(summary.participant || {}).id_anonim || "session"}.pdf`);
+}
+
+/** Send the report to the researcher's email (EmailJS). Returns a status object. */
+export async function emailReport(summary) {
+  const e = CONFIG.email || {};
+  const cfg = e.emailjs || {};
+  if (!cfg.publicKey || !cfg.serviceId || !cfg.templateId) return { ok: false, skipped: true };
+  try {
+    if (!window.emailjs) await loadScript(CONFIG.cdn.emailjs);
+    const emailjs = window.emailjs;
+    if (!emailjs) return { ok: false, error: "emailjs not loaded" };
+    const params = {
+      to_email: e.to,
+      subject: `NCID session ${(summary.participant || {}).id_anonim || ""}`,
+      message: `Profession: ${(summary.participant || {}).profesioni || ""} | Accuracy: ${(summary.quiz_results || {}).accuracy_score_pct || ""}%`,
+      summary_json: JSON.stringify(summary)
+    };
+    const res = await emailjs.send(cfg.serviceId, cfg.templateId, params, { publicKey: cfg.publicKey });
+    return { ok: true, status: res && res.status };
+  } catch (err) {
+    return { ok: false, error: String((err && err.text) || err) };
+  }
+}
+
+export function emailConfigured() {
+  const c = (CONFIG.email || {}).emailjs || {};
+  return !!(c.publicKey && c.serviceId && c.templateId);
+}
