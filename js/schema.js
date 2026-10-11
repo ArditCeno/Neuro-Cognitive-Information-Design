@@ -37,12 +37,13 @@ export function fleschReadingEase(text) {
   return round(Math.max(0, Math.min(120, score)), 1);
 }
 
-export function stimulusMeta(field, version, html) {
+export function stimulusMeta(field, version, html, level) {
   const text = stripTags(html);
   const words = text ? text.split(/\s+/).length : 0;
   return {
     fusha: field.id,
     versioni: version,
+    niveli: level || null,
     gjatësia: words,
     lexueshmëria: fleschReadingEase(text)
   };
@@ -75,7 +76,7 @@ export function alignGazeSamples(gaze, bio, windowMs = 200) {
 }
 
 /* --------------------------- Trial / Module / Session --------------------------- */
-export function buildTrial({ field, version, stimulus, readingTimeSec, taskTimeSec, metrics, quiz }) {
+export function buildTrial({ field, version, level, stimulus, readingTimeSec, taskTimeSec, metrics, quiz }) {
   const responses = (quiz || []).map((r) => ({
     zgjedhja: r.chosen,
     "e_saktë": r.correct,
@@ -92,6 +93,7 @@ export function buildTrial({ field, version, stimulus, readingTimeSec, taskTimeS
   const correct = responses.filter((r) => r["e_saktë"]).length;
   return {
     versioni: version,
+    niveli: level || null,
     stimulus,
     koha_e_leximit_s: round(readingTimeSec, 1),
     koha_detyrës_s: round(taskTimeSec, 1),
@@ -106,9 +108,10 @@ export function buildTrial({ field, version, stimulus, readingTimeSec, taskTimeS
   };
 }
 
-export function buildModule({ field, orderIndex, firstVersion, trials, nasaTlx }) {
+export function buildModule({ field, level, orderIndex, firstVersion, trials, nasaTlx }) {
   return {
     fusha: field.id,
+    niveli: level || null,
     "rendi_në_seson": orderIndex + 1,
     versioni_i_parë: firstVersion,
     trials,

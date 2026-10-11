@@ -9,8 +9,9 @@ export const Stimuli = {
   docEl: null,
   _scrollHandler: null,
 
-  async load(field, version, lang) {
-    const path = field.materials[version][lang] || field.materials[version].al;
+  async load(field, version, lang, level) {
+    const lv = (field.levels && field.levels[level]) || field;
+    const path = lv.materials[version][lang] || lv.materials[version].al;
     const res = await fetch(path, { cache: "no-store" });
     if (!res.ok) throw new Error("Material not found: " + path);
     const html = await res.text();

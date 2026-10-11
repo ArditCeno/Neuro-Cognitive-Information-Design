@@ -18,6 +18,7 @@ import { Heatmap } from "./heatmap.js";
 import { Biometrics } from "./biometrics.js";
 import { Research } from "./research.js";
 import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js";
+import { LEVELS } from "./fields.js";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -40,6 +41,7 @@ const state = {
 };
 
 const $ = (id) => document.getElementById(id);
+const levelName = (id) => tr(LEVELS.find((l) => l.id === id) || { al: id, en: id });
 
 function showStage(name) {
   STAGES.forEach((s) => $(`stage-${s}`).classList.toggle("hidden", s !== name));
@@ -106,7 +108,6 @@ function buildSelects() {
   const cur = prof.value;
   prof.innerHTML = `<option value="">${t("reg_choose")}</option>`;
   CONFIG.fields.forEach((f) => prof.appendChild(el("option", { value: f.id, text: tr(f.name) })));
-  prof.appendChild(el("option", { value: "other", text: getLang() === "en" ? "Other" : "Tjetër" }));
   prof.value = cur;
   const exp = $("regExpertise");
   const curE = exp.value;
@@ -124,14 +125,15 @@ function onRegister(e) {
   if (!age || !profession || !expertise) { $("regErr").classList.remove("hidden"); return; }
   $("regErr").classList.add("hidden");
 
-  const professionName = profession === "other"
-    ? (getLang() === "en" ? "Other" : "Tjetër")
-    : tr((CONFIG.fields.find((f) => f.id === profession) || {}).name);
+  const field = CONFIG.fields.find((f) => f.id === profession) || CONFIG.fields[0];
+  const professionName = tr(field.name);
 
   const id = anonId();
+  state.fieldId = field.id;
   state.participant = {
     id_anonim: id,
     profesioni: professionName,
+    fusha: field.id,
     niveli_i_ekspertizës: tr(CONFIG.expertiseLevels.find((l) => l.id === expertise)),
     mosha: age
   };
@@ -210,15 +212,14 @@ async function startCalibration() {
 
 /* ---------------------------- Module plan & rotation ---------------------------- */
 function startModules() {
-  const n = CONFIG.study.modulesPerSession;
-  const fields = CONFIG.fields;
-  const offset = (state.sessionNumber || 1) % fields.length;
-  const chosen = [];
-  for (let k = 0; k < n; k++) chosen.push(fields[(offset + k) % fields.length]);
+  const field = CONFIG.fields.find((f) => f.id === state.fieldId) || CONFIG.fields[0];
+  const levels = Object.keys(field.levels);           // easy, medium, hard
+  const base = (state.sessionNumber || 1);
 
-  state.modulePlan = chosen.map((field, mi) => {
-    const versions = (((state.sessionNumber || 1) + mi) % 2 === 0) ? ["A", "B"] : ["B", "A"];
-    return { field, versions, firstVersion: versions[0] };
+  // one module per level (in the participant's own profession only)
+  state.modulePlan = levels.map((level, li) => {
+    const versions = ((base + li) % 2 === 0) ? ["A", "B"] : ["B", "A"];
+    return { field, level, versions, firstVersion: versions[0] };
   });
   state.moduleIndex = 0;
   state.blockIndex = 0;
@@ -226,8 +227,9 @@ function startModules() {
 
   Storage.patch((s) => {
     s.session = s.session || {};
-    s.session.rendi_modulave = state.modulePlan.map((m) => m.field.id);
-    s.session.fusha = state.modulePlan.map((m) => tr(m.field.name));
+    s.session.fusha = field.id;
+    s.session.fusha_emri = tr(field.name);
+    s.session.nivelet = levels;
   });
 
   Runner.init($("stage-task"));
@@ -238,15 +240,15 @@ function startModules() {
 function refreshTaskLabels() {
   const m = state.modulePlan[state.moduleIndex];
   if (!m) return;
-  $("taskModule").textContent = `${t("module_title")} ${t("module_progress", { i: state.moduleIndex + 1, n: state.modulePlan.length })} · ${tr(m.field.name)}`;
+  $("taskModule").textContent = `${t("module_title")} ${t("module_progress", { i: state.moduleIndex + 1, n: state.modulePlan.length })} · ${tr(m.field.name)} · ${levelName(m.level)}`;
   $("taskFieldName").textContent = tr(m.field.name);
-  $("taskInstruction").textContent = `${t("task_do")}: ${tr(m.field.task)}`;
+  $("taskInstruction").textContent = `${t("task_do")}: ${tr(m.field.levels[m.level].task)}`;
 }
 
 function startModuleIntro() {
   const m = state.modulePlan[state.moduleIndex];
   state.moduleTrials = [];
-  $("taskModule").textContent = `${t("module_title")} ${t("module_progress", { i: state.moduleIndex + 1, n: state.modulePlan.length })} · ${tr(m.field.name)}`;
+  $("taskModule").textContent = `${t("module_title")} ${t("module_progress", { i: state.moduleIndex + 1, n: state.modulePlan.length })} · ${tr(m.field.name)} · ${levelName(m.level)}`;
   $("taskVersion").textContent = "";
   $("taskIntro").classList.remove("hidden");
   $("taskReading").classList.add("hidden");
@@ -254,7 +256,7 @@ function startModuleIntro() {
   $("taskTlx").classList.add("hidden");
   $("taskBetween").classList.add("hidden");
   $("taskFieldName").textContent = tr(m.field.name);
-  $("taskInstruction").textContent = `${t("task_do")}: ${tr(m.field.task)}`;
+  $("taskInstruction").textContent = `${t("task_do")}: ${tr(m.field.levels[m.level].task)}`;
 }
 
 /* ---------------------------- Reading trial ---------------------------- */
@@ -266,10 +268,10 @@ async function startReading() {
   $("taskReading").classList.remove("hidden");
   $("docLoading").classList.remove("hidden");
   $("doc").classList.add("hidden");
-  $("taskVersion").textContent = `${t("version_label")} ${version} · ${t("block")} ${state.blockIndex + 1}/${m.versions.length}`;
+  $("taskVersion").textContent = `${levelName(m.level)} · ${t("version_label")} ${version} · ${t("block")} ${state.blockIndex + 1}/${m.versions.length}`;
 
   try {
-    const { aois } = await Stimuli.load(m.field, version, getLang());
+    const { aois } = await Stimuli.load(m.field, version, getLang(), m.level);
     state.currentAois = aois;
     state.currentHtml = $("doc").innerHTML;
   } catch (e) {
@@ -281,8 +283,8 @@ async function startReading() {
   await sleep(120);
   Stimuli.updateRegion($("doc"));
   state.readStart = performance.now();
-  EyeTracking.startTrial(`${m.field.id}:${version}`);
-  Storage.addEvent("reading_start", { field: m.field.id, version });
+  EyeTracking.startTrial(`${m.field.id}:${m.level}:${version}`);
+  Storage.addEvent("reading_start", { field: m.field.id, level: m.level, version });
 }
 
 function onReadDone() {
@@ -296,7 +298,7 @@ function onReadDone() {
   if (metrics.fixations && metrics.fixations.length) state.heatPoints.push(...metrics.fixations);
 
   // stash for post-quiz trial assembly
-  state.pending = { field: m.field, version, metrics, readingSec: state.readingSec };
+  state.pending = { field: m.field, version, level: m.level, metrics, readingSec: state.readingSec };
 
   $("taskReading").classList.add("hidden");
   runQuiz();
@@ -316,10 +318,11 @@ async function runQuiz() {
   results.forEach((r) => { r.time_s = perItem; });
 
   const { version, metrics, readingSec } = state.pending;
+  const { level } = state.pending;
   const taskSec = round(readingSec + quizSec, 1);
 
-  const stimulus = stimulusMeta(field, version, state.currentHtml || "");
-  const trialObj = buildTrial({ field, version, stimulus, readingTimeSec: readingSec, taskTimeSec: taskSec, metrics, quiz: results });
+  const stimulus = stimulusMeta(field, version, state.currentHtml || "", level);
+  const trialObj = buildTrial({ field, version, level, stimulus, readingTimeSec: readingSec, taskTimeSec: taskSec, metrics, quiz: results });
   state.moduleTrials.push(trialObj);
 
   quizEl.classList.add("hidden");
@@ -363,6 +366,7 @@ async function finishModule(m) {
   state.moduleNasaTlx = tlx;
   state.moduleResults.push(buildModule({
     field: m.field,
+    level: m.level,
     orderIndex: state.moduleIndex,
     firstVersion: m.firstVersion,
     trials: state.moduleTrials,
