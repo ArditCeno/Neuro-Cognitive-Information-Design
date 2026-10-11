@@ -100,6 +100,10 @@ async function showDetail(id) {
     const p = parsePayload(row);
     $("detailTitle").textContent = "Session " + (row.id_anonim || id);
     $("detailJson").textContent = JSON.stringify(p, null, 2);
+    if (window.__viz) {
+      try { window.__viz.renderNodeMap($("detailNodeMap"), p); } catch (e) { /* ignore */ }
+      try { window.__viz.renderHashmap($("detailHashmap"), p); } catch (e) { /* ignore */ }
+    }
     $("detail").classList.add("open");
   } catch (e) { alert("Could not load session: " + e.message); }
 }

@@ -12,6 +12,44 @@ async function loadJsPDF() {
   return window.jspdf && window.jspdf.jsPDF;
 }
 
+/** Draw a metrics chart (accuracy vs fixation) and return a PNG data URL. */
+export function chartDataURL(summary) {
+  const mods = summary.modules || [];
+  const labels = [], acc = [], fd = [];
+  mods.forEach((m) => (m.trials || []).forEach((t) => {
+    labels.push(`${m.niveli || ""} ${t.versioni || ""}`.trim());
+    acc.push(t.accuracy_score_pct || 0);
+    fd.push(t.fixation_duration_ms || 0);
+  }));
+  const W = 620, H = 240, pad = 44, n = Math.max(1, labels.length);
+  const c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const g = c.getContext("2d");
+  g.fillStyle = "#ffffff"; g.fillRect(0, 0, W, H);
+  g.strokeStyle = "#c9c9c2"; g.lineWidth = 1;
+  g.beginPath(); g.moveTo(pad, 10); g.lineTo(pad, H - pad); g.lineTo(W - 10, H - pad); g.stroke();
+  const bw = (W - pad - 20) / n;
+  const maxFd = Math.max(1, ...fd);
+  const plot = H - pad - 30;
+  labels.forEach((l, i) => {
+    const x = pad + i * bw;
+    const hA = (acc[i] / 100) * plot;
+    g.fillStyle = "#0E7FB0"; g.fillRect(x + bw * 0.14, H - pad - hA, bw * 0.32, hA);
+    const hF = (fd[i] / maxFd) * plot;
+    g.fillStyle = "#FF6E42"; g.fillRect(x + bw * 0.54, H - pad - hF, bw * 0.32, hF);
+    g.fillStyle = "#333"; g.font = "9px sans-serif";
+    g.fillText(String(l).slice(0, 12), x + 2, H - pad + 13);
+  });
+  g.fillStyle = "#0E7FB0"; g.fillRect(pad, H - 18, 10, 10);
+  g.fillStyle = "#FF6E42"; g.fillRect(pad + 120, H - 18, 10, 10);
+  g.fillStyle = "#333"; g.font = "10px sans-serif";
+  g.fillText("Accuracy %", pad + 14, H - 9);
+  g.fillText("Fixation (ms)", pad + 134, H - 9);
+  g.fillStyle = "#111"; g.font = "bold 11px sans-serif";
+  g.fillText("Metrics by level / version", pad, 14);
+  return c.toDataURL("image/png");
+}
+
 export async function buildReportPDF(summary) {
   const JsPDF = await loadJsPDF();
   if (!JsPDF) throw new Error("jsPDF not available");
@@ -33,6 +71,16 @@ export async function buildReportPDF(summary) {
   line(`ID: ${p.id_anonim || "-"}   Profession: ${p.profesioni || "-"}   Expertise: ${p["niveli_i_ekspertizës"] || "-"}`, 11);
   line(`Age: ${p.mosha || "-"}   Date: ${summary.exported_at || ""}`, 11);
   y += 8;
+
+  // ---- Chart ----
+  line("Metrics", 13, true);
+  try {
+    const chart = chartDataURL(summary);
+    const cw = W - 2 * M;
+    doc.addImage(chart, "PNG", M, y, cw, cw * 0.38);
+    y += cw * 0.38 + 16;
+  } catch (e) { /* chart optional */ }
+  if (y > 700) { doc.addPage(); y = M; }
 
   // ---- Node map ----
   line("Node map", 13, true);
