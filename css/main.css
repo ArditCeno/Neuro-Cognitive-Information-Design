@@ -195,3 +195,25 @@ h2 { font-size: 18px; margin: 0 0 12px; }
 }
 .heatmap-container { height: 300px; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: #0b0e18; }
 
+
+/* ============================================================
+   Topbar: smaller, consistent on every device
+   ============================================================ */
+.topbar { padding: clamp(8px, 1.6vw, 13px) var(--gutter); }
+.topbar .brand { gap: 10px; }
+.topbar .brand-mark,
+.topbar .app-logo,
+.topbar .brand-mark .mono-text { height: 36px; }
+.topbar .brand-mark { width: 36px; }
+.topbar .brand-mark .mono-text { width: 36px; height: 36px; border-radius: 9px; font-size: 12px; }
+.topbar .app-logo { max-width: 120px; }
+.topbar .brand strong { font-size: 15px; line-height: 1.15; }
+.topbar .brand small { font-size: 12px; line-height: 1.15; }
+.topbar .btn-sm, .topbar .badge { padding: 6px 11px; font-size: 12.5px; }
+
+@media (max-width: 640px) {
+  .topbar .brand strong { font-size: 14px; }
+  .topbar .brand small { display: none; }
+  .topbar .brand-mark, .topbar .brand-mark .mono-text, .topbar .app-logo { height: 32px; }
+  .topbar .brand-mark, .topbar .brand-mark .mono-text { width: 32px; }
+}
