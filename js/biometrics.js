@@ -38,7 +38,7 @@ export const Biometrics = {
       await loadScript(CONFIG.cdn.mediapipeFaceMesh);
       if (!window.FaceMesh) throw new Error("FaceMesh not available");
       this._faceMesh = new window.FaceMesh({
-        locateFile: (file) => "https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/" + file
+        locateFile: (file) => "mediapipe/face_mesh/" + file
       });
       this._faceMesh.setOptions({
         maxNumFaces: 1, refineLandmarks: true, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5
@@ -73,7 +73,7 @@ export const Biometrics = {
 
   _onResults(results) {
     const lm = results.multiFaceLandmarks && results.multiFaceLandmarks[0];
-    if (!lm) return;
+    if (!lm) { this._clearDots(); return; }
     const pts = lm.map((p) => ({ x: p.x, y: p.y, z: p.z }));
 
     const ear = (eyeAspectRatio(pts, L_EYE) + eyeAspectRatio(pts, R_EYE)) / 2;
@@ -93,6 +93,54 @@ export const Biometrics = {
     this.headPose.pitch.push(pitch);
     this.headPose.roll.push(roll);
     this.samples.push({ t: performance.now(), ear: round(ear, 3), yaw: round(yaw, 3), pitch: round(pitch, 3), roll: round(roll, 3) });
+
+    this._drawDots(pts);
+  },
+
+  /* ---------- small dots over the face (scanning feedback) ---------- */
+  _ensureCanvas() {
+    const host = document.getElementById("cameraPreview");
+    if (!host) return null;
+    let c = document.getElementById("faceDots");
+    if (!c) {
+      c = document.createElement("canvas");
+      c.id = "faceDots";
+      c.style.position = "absolute";
+      c.style.inset = "0";
+      c.style.width = "100%";
+      c.style.height = "100%";
+      c.style.pointerEvents = "none";
+      c.style.zIndex = "2";
+      host.appendChild(c);
+    }
+    const w = host.clientWidth || 320, h = host.clientHeight || 240;
+    if (c.width !== w || c.height !== h) { c.width = w; c.height = h; }
+    return c;
+  },
+
+  _drawDots(pts) {
+    const c = this._ensureCanvas();
+    if (!c) return;
+    const ctx = c.getContext("2d");
+    const w = c.width, h = c.height;
+    ctx.clearRect(0, 0, w, h);
+    ctx.fillStyle = "rgba(34,211,238,.85)";
+    for (let i = 0; i < pts.length; i += 1) {
+      const x = (1 - pts[i].x) * w;  // video is mirrored
+      const y = pts[i].y * h;
+      ctx.fillRect(x - 1, y - 1, 2, 2);
+    }
+    // highlight the eyes
+    ctx.fillStyle = "rgba(255,110,66,.95)";
+    [...L_EYE, ...R_EYE].forEach((i) => {
+      const x = (1 - pts[i].x) * w, y = pts[i].y * h;
+      ctx.beginPath(); ctx.arc(x, y, 2.4, 0, Math.PI * 2); ctx.fill();
+    });
+  },
+
+  _clearDots() {
+    const c = document.getElementById("faceDots");
+    if (c) c.getContext("2d").clearRect(0, 0, c.width, c.height);
   },
 
   summary() {

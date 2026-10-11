@@ -42,12 +42,14 @@ export const CONFIG = {
 
   cdn: {
     webgazer: "https://webgazer.cs.brown.edu/webgazer.js",
-    heatmap: "https://cdn.jsdelivr.net/npm/heatmapjs@2.0.2/build/heatmap.min.js",
+    heatmap: "vendor/heatmap.min.js",
+    mediapipeFaceMesh: "mediapipe/face_mesh/face_mesh.js",
+    mouseview: null,
     jsPsych: "https://unpkg.com/jspsych@7.3.4",
     jsPsychHtmlButton: "https://unpkg.com/@jspsych/plugin-html-button-response@1.1.3",
     jsPsychSurveyLikert: "https://unpkg.com/@jspsych/plugin-survey-likert@1.1.3",
-    jsPDF: "https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js",
-    emailjs: "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
+    jsPDF: "vendor/jspdf.umd.min.js",
+    emailjs: "vendor/email.min.js"
   },
 
   fields: FIELDS,

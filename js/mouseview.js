@@ -14,11 +14,9 @@ export const MouseView = {
   _last: 0,
 
   async enable(onSample) {
-    try {
-      await loadScript(CONFIG.cdn.mouseview);
-      this.libLoaded = true;
-    } catch (e) {
-      this.libLoaded = false; // native sampler still works
+    if (CONFIG.cdn.mouseview) {
+      try { await loadScript(CONFIG.cdn.mouseview); this.libLoaded = true; }
+      catch (e) { this.libLoaded = false; /* native sampler still works */ }
     }
     this.active = true;
     this._handler = (e) => {
