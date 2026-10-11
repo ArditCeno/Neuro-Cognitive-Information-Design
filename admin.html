@@ -3,90 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <title>NCID Admin</title>
   <link rel="icon" href="assets/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/header.css" />
   <style>
-    .admin-wrap { max-width: 1200px; margin: 0 auto; padding: 24px 22px 70px; }
-    .admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin: 16px 0; }
-    .stat { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+    .admin-wrap { max-width: 1240px; margin: 0 auto; padding: 24px clamp(14px, 4vw, 32px) 70px; }
+    .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 16px 0; }
+    .stat { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 16px; backdrop-filter: blur(14px); }
     .stat .lbl { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
-    .stat .val { font-size: 26px; font-weight: 800; color: var(--accent); }
+    .stat .val { font-size: 24px; font-weight: 800; color: var(--accent2); }
     .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; margin: 14px 0; }
-    .toolbar .field { margin: 0; }
     .toolbar input { min-width: 260px; }
-    table.sessions { width: 100%; border-collapse: collapse; font-size: 13.5px; background: var(--panel); border-radius: var(--radius); overflow: hidden; }
-    table.sessions th, table.sessions td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; white-space: nowrap; }
-    table.sessions th { color: var(--muted); font-weight: 600; background: var(--panel2); position: sticky; top: 0; }
+    table.sessions { width: 100%; border-collapse: collapse; font-size: 13.5px; background: rgba(255,255,255,.05); border-radius: 14px; overflow: hidden; }
+    table.sessions th, table.sessions td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.1); text-align: left; white-space: nowrap; }
+    table.sessions th { color: var(--muted); background: rgba(255,255,255,.06); position: sticky; top: 0; }
     table.sessions tr { cursor: pointer; }
-    table.sessions tr:hover td { background: var(--panel2); }
-    .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: var(--panel2); border: 1px solid var(--border); }
-    .tag.ok { color: var(--ok); border-color: rgba(74,222,128,.4); }
-    .tag.bad { color: var(--danger); border-color: rgba(248,113,113,.4); }
-    .row-btns { display: flex; gap: 6px; }
-    .detail { position: fixed; inset: 0; background: rgba(0,0,0,.6); display: none; place-items: center; z-index: 100; }
+    table.sessions tr:hover td { background: rgba(255,255,255,.05); }
+    .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); }
+    .tag.ok { color: #3fa9d0; border-color: rgba(63,169,208,.4); }
+    .tag.bad { color: #FF6E42; border-color: rgba(255,110,66,.4); }
+    .detail { position: fixed; inset: 0; background: rgba(0,0,0,.7); display: none; place-items: center; z-index: 100; }
     .detail.open { display: grid; }
-    .detail-inner { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); width: min(900px, 92vw); max-height: 86vh; overflow: auto; padding: 18px; }
-    .detail pre { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px; overflow: auto; font-size: 12px; }
-    .pager { display: flex; gap: 10px; align-items: center; margin: 12px 0; color: var(--muted); }
+    .detail-inner { background: #0d3247; border: 1px solid rgba(255,255,255,.14); border-radius: 16px; width: min(1000px, 94vw); max-height: 90vh; overflow: auto; padding: 18px; }
+    .mapbox { margin: 6px 0 4px; }
+    .hashmap { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .hashmap th, .hashmap td { border-bottom: 1px solid rgba(255,255,255,.1); padding: 5px 8px; text-align: left; }
+    .hashmap td:first-child { color: var(--accent2); }
     .hidden { display: none !important; }
     .admin-note { color: var(--muted); font-size: 12.5px; }
+    .heat { height: 320px; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); background: #0b1a26; }
   </style>
 </head>
 <body>
   <div id="site-header"></div>
 
   <main class="admin-wrap">
-    <div class="card">
-      <h2>Connection</h2>
-      <p class="admin-note">The admin token is kept only in this browser tab (sessionStorage) and is never stored or committed.</p>
+    <section id="loginCard" class="card">
+      <h2>Researcher login</h2>
+      <p class="admin-note">Only the project owner's account is allowed.</p>
       <div class="toolbar">
-        <label class="field" style="flex:1">
-          <span>Backend URL</span>
-          <input type="text" id="backendUrl" placeholder="https://ncid-backend.onrender.com" />
-        </label>
-        <label class="field" style="flex:1">
-          <span>Admin token</span>
-          <input type="password" id="adminToken" placeholder="X-Admin-Token" />
-        </label>
-        <button id="btnLoad" class="btn btn-primary">Load</button>
+        <label class="field" style="flex:1"><span>Email</span><input type="email" id="email" placeholder="your email" /></label>
+        <label class="field" style="flex:1"><span>Password</span><input type="password" id="password" placeholder="password" /></label>
+        <button id="btnLogin" class="btn btn-primary">Log in</button>
       </div>
-      <p id="connMsg" class="msg"></p>
-    </div>
+      <p id="loginMsg" class="msg"></p>
+    </section>
 
-    <div id="statsBox" class="admin-grid hidden"></div>
-
-    <div class="card hidden" id="sessionsCard">
+    <section id="panel" class="hidden">
       <div class="toolbar">
-        <label class="field" style="flex:1">
-          <span>Filter (client-side)</span>
-          <input type="text" id="filter" placeholder="id_anonim, field…" />
-        </label>
-        <button id="btnCsv" class="btn btn-ghost">Export CSV</button>
+        <label class="field" style="flex:1"><span>Search by UUID / id_anonim / payload</span>
+          <input type="text" id="q" placeholder="2cac6e7c-… or USR_87220" /></label>
+        <button id="btnFind" class="btn btn-primary">Find by UUID</button>
         <button id="btnReload" class="btn btn-ghost">Refresh</button>
+        <button id="btnCsv" class="btn btn-ghost">Export CSV</button>
+        <button id="btnLogout" class="btn btn-ghost">Log out</button>
       </div>
-      <div class="pager">
-        <button id="btnPrev" class="btn btn-ghost btn-sm">← Prev</button>
-        <span id="pageInfo">0</span>
-        <button id="btnNext" class="btn btn-ghost btn-sm">Next →</button>
-        <span id="sessionsInfo" class="admin-note"></span>
-      </div>
+      <div id="stats" class="grid-stats hidden"></div>
       <div style="overflow:auto; max-height:60vh">
         <table class="sessions">
-          <thead>
-            <tr>
-              <th>id_anonim</th><th>created_at</th><th>fields</th>
-              <th>version</th><th>calibration (px)</th><th>accuracy %</th><th></th>
-            </tr>
-          </thead>
+          <thead><tr><th>id (uuid)</th><th>id_anonim</th><th>kind</th><th>field</th><th>created_at</th><th>calibration</th><th>accuracy %</th></tr></thead>
           <tbody id="rows"></tbody>
         </table>
       </div>
-    </div>
+      <p id="panelMsg" class="admin-note"></p>
+    </section>
   </main>
 
   <div class="detail" id="detail">
@@ -95,19 +79,25 @@
         <h2 style="margin:0; flex:1" id="detailTitle">Session</h2>
         <button id="btnCloseDetail" class="btn btn-ghost btn-sm">Close</button>
       </div>
-      <h3 style="margin:6px 0">Node map</h3>
+      <h3 style="margin:8px 0">Node map</h3>
       <div id="detailNodeMap" class="mapbox"></div>
       <h3 style="margin:10px 0 6px">Hashmap</h3>
       <div id="detailHashmap" class="mapbox"></div>
+      <h3 style="margin:10px 0 6px">Gaze heatmap</h3>
+      <div id="detailHeat" class="heat"></div>
       <h3 style="margin:10px 0 6px">Raw JSON</h3>
       <pre id="detailJson"></pre>
     </div>
   </div>
 
+  <script src="vendor/heatmap.min.js"></script>
+  <script src="vendor/supabase.js"></script>
   <script src="js/site.js"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
   <script type="module">
+    import { CONFIG } from "./js/config.js";
     import { renderNodeMap, renderHashmap } from "./js/visualize.js";
+    window.__cfg = { supabase: CONFIG.storage.supabase, email: CONFIG.email.to };
     window.__viz = { renderNodeMap, renderHashmap };
   </script>
   <script src="js/admin.js"></script>
