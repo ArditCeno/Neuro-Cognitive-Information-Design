@@ -100,6 +100,8 @@
     document.querySelectorAll(".langbtn").forEach(function (b) {
       b.classList.toggle("active", b.getAttribute("data-lang") === lang);
     });
+    // keep the host app's i18n in sync (study/admin pages)
+    if (typeof window.setLang === "function") window.setLang(lang);
   }
 
   function initLogo() {

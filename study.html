@@ -10,35 +10,11 @@
   <link rel="icon" href="assets/logo.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/header.css" />
   <link rel="stylesheet" href="css/materials.css" />
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="index.html" aria-label="Home">
-      <span class="brand-mark">
-        <span class="mono-text">NCID</span>
-        <img class="app-logo" src="assets/logo.png" alt="NCID"
-             onload="this.closest('.brand-mark').classList.add('has-logo')"
-             onerror="this.remove()">
-      </span>
-      <span class="brand-text"><strong>Neuro-Cognitive</strong><small>Information Design</small></span>
-    </a>
-    <nav class="app-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="methodology.html">Methodology</a>
-      <a href="fields.html">Fields</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-    <div class="topbar-right">
-      <span id="mockBadge" class="badge badge-warn hidden" data-i18n="mock_on">Test mode</span>
-      <button id="btnResearcher" class="btn btn-ghost btn-sm" data-i18n="panel_title">Researcher</button>
-      <div class="langswitch" role="group" aria-label="Language">
-        <button data-lang="al" class="langbtn">AL</button>
-        <button data-lang="en" class="langbtn">EN</button>
-      </div>
-    </div>
-  </header>
+  <div id="site-header"></div>
 
   <div class="progressbar"><div id="progressFill"></div></div>
   <div class="progresslabel"><span id="progressText"></span></div>
@@ -172,6 +148,7 @@
     <span>Neuro-Cognitive Information Design · v1.0</span>
   </footer>
 
+  <script src="js/site.js"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
   <script type="module" src="js/app.js"></script>
 </body>

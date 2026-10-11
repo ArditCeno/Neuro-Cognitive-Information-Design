@@ -55,18 +55,32 @@ function showStage(name) {
 }
 
 /* ---------------------------- Boot ---------------------------- */
+function mountHeaderControls() {
+  const actions = document.querySelector("#site-header .nav-actions");
+  if (!actions) return;
+  const badge = document.createElement("span");
+  badge.id = "mockBadge";
+  badge.className = "badge badge-warn" + (state.mock ? "" : " hidden");
+  badge.setAttribute("data-i18n", "mock_on");
+  badge.textContent = t("mock_on");
+  const btn = document.createElement("button");
+  btn.id = "btnResearcher";
+  btn.className = "btn btn-ghost btn-sm";
+  btn.setAttribute("data-i18n", "panel_title");
+  btn.textContent = t("panel_title");
+  actions.insertBefore(btn, actions.firstChild);
+  actions.insertBefore(badge, actions.firstChild);
+}
+
 function boot() {
-  if (state.mock) $("mockBadge").classList.remove("hidden");
+  window.setLang = setLang;
+  mountHeaderControls();
   if (location.protocol === "file:") {
     const warn = document.createElement("div");
     warn.style.cssText = "background:#7a2b12;color:#fff;padding:10px 16px;text-align:center;font-weight:600;font-size:14px";
     warn.textContent = "Open this page through a web server (http:// or https://) — the camera and documents will not load from a file:// path.";
     document.body.prepend(warn);
   }
-  document.querySelectorAll(".langbtn").forEach((b) => {
-    b.classList.toggle("active", b.getAttribute("data-lang") === getLang());
-    b.addEventListener("click", () => setLang(b.getAttribute("data-lang")));
-  });
   window.addEventListener("ncid:lang", onLangChange);
   buildSelects();
   applyI18n();
