@@ -112,10 +112,11 @@ export async function uploadToEndpoint(summary) {
     // text/plain = simple request (no CORS preflight) -> works with Google Apps Script
     const res = await fetch(cfg.url, {
       method: "POST",
+      mode: "no-cors",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(payload)
     });
-    return { ok: res.ok || res.type === "opaque", status: res.status };
+    return { ok: true, status: res.status, opaque: res.type === "opaque" };
   } catch (e) {
     return { ok: false, error: String(e) };
   }

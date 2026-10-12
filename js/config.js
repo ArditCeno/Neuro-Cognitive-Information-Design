@@ -27,7 +27,10 @@ export const CONFIG = {
       url: "https://kvfqvnvlledzzxstgdch.supabase.co",
       anonKey: "sb_publishable_98Vch8De9ZGxo1ofHMxDzA_ZS8ZpfUv"
     },
-    submission: { url: null, includeGaze: false },
+    submission: {
+      url: "https://script.google.com/macros/s/AKfycbw7e1yJvFui_uXsxkkAg8aHPtGAQ3jAh90YOKE82K-gXdbrzmvGtOad6Jivt3ukTYn2/exec",
+      includeGaze: false
+    },
     backend: { url: null },        // optional Spring Boot API
     keyName: "ncid_session_buffer_v1",
     langKey: "ncid_lang",
