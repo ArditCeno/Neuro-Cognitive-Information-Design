@@ -14,7 +14,10 @@
   <style>
     .view { padding: 0; }
     .view.hidden { display: none; }
-    #testFrame, #adminFrame { width: 100%; border: 0; display: block; height: calc(100vh - 70px); height: calc(100dvh - 70px); background: #092634; }
+    #testFrame, #adminFrame { width: 100%; border: 0; display: block; height: calc(100vh - 64px); height: calc(100dvh - 64px); background: #092634; }
+    body.fullscreen-view { overflow: hidden; }
+    body.fullscreen-view #site-footer { display: none; }
+    body.fullscreen-view .view { height: calc(100vh - 64px); height: calc(100dvh - 64px); }
     .tabs { display: flex; gap: 8px; padding: 14px clamp(16px,4vw,40px) 0; flex-wrap: wrap; }
     .tab { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); color: #f9f9f9; border-radius: 10px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
     .tab.active { background: #004E72; border-color: #004E72; }
@@ -126,18 +129,40 @@
 </main>
 
 <div id="site-footer"></div>
-<script src="js/site.js?v=6"></script>
+<script src="js/site.js?v=7"></script>
 <script>
   (function () {
+    var frames = { test: "testFrame", admin: "adminFrame" };
+    function navHeight() {
+      var h = document.querySelector("#site-header .nav");
+      return h ? h.offsetHeight : 64;
+    }
+    function resizeFrames() {
+      var H = (window.innerHeight - navHeight()) + "px";
+      Object.keys(frames).forEach(function (k) {
+        var f = document.getElementById(frames[k]);
+        if (f) f.style.height = H;
+      });
+    }
+    window.addEventListener("resize", resizeFrames);
+    window.addEventListener("orientationchange", function () { setTimeout(resizeFrames, 400); });
+
     function show(v) {
       ["view-home", "view-test", "view-admin"].forEach(function (id) {
         var el = document.getElementById(id);
         if (el) el.classList.toggle("hidden", id !== "view-" + v);
       });
-      if (v === "test") { var f = document.getElementById("testFrame"); if (!f.getAttribute("src")) f.setAttribute("src", "study.html?embed=1"); }
-      if (v === "admin") { var a = document.getElementById("adminFrame"); if (!a.getAttribute("src")) a.setAttribute("src", "admin.html?embed=1"); }
-      document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("active", t.getAttribute("data-view") === v); });
-      if (v === "home") window.scrollTo({ top: 0, behavior: "smooth" });
+      if (v !== "home") {
+        var f = document.getElementById(frames[v]);
+        if (f && !f.getAttribute("src")) f.setAttribute("src", v + ".html?embed=1");
+        document.body.classList.add("fullscreen-view");
+        if (document.getElementById("site-footer")) document.getElementById("site-footer").style.display = "none";
+        resizeFrames();
+      } else {
+        document.body.classList.remove("fullscreen-view");
+        if (document.getElementById("site-footer")) document.getElementById("site-footer").style.display = "";
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
     window.__show = show;
 

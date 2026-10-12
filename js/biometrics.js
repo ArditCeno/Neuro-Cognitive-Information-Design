@@ -124,17 +124,33 @@ export const Biometrics = {
     const ctx = c.getContext("2d");
     const w = c.width, h = c.height;
     ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = "rgba(34,211,238,.85)";
-    for (let i = 0; i < pts.length; i += 1) {
+
+    // mesh: small blue dots
+    ctx.fillStyle = "rgba(14,127,176,.9)";
+    for (let i = 0; i < pts.length; i += 2) {
       const x = (1 - pts[i].x) * w;  // video is mirrored
       const y = pts[i].y * h;
-      ctx.fillRect(x - 1, y - 1, 2, 2);
+      ctx.beginPath();
+      ctx.arc(x, y, 1.4, 0, Math.PI * 2);
+      ctx.fill();
     }
-    // highlight the eyes
-    ctx.fillStyle = "rgba(255,110,66,.95)";
+
+    // eyes: orange, glowing
+    ctx.shadowColor = "rgba(255,110,66,.9)";
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = "#FF6E42";
     [...L_EYE, ...R_EYE].forEach((i) => {
       const x = (1 - pts[i].x) * w, y = pts[i].y * h;
-      ctx.beginPath(); ctx.arc(x, y, 2.4, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+    });
+    ctx.shadowBlur = 0;
+
+    // eye centres: filled pale dots
+    ctx.fillStyle = "#F9F9F9";
+    [[33, 133], [362, 263]].forEach((pair) => {
+      const cx = (1 - (pts[pair[0]].x + pts[pair[1]].x) / 2) * w;
+      const cy = ((pts[pair[0]].y + pts[pair[1]].y) / 2) * h;
+      ctx.beginPath(); ctx.arc(cx, cy, 2, 0, Math.PI * 2); ctx.fill();
     });
   },
 
