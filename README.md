@@ -24,20 +24,6 @@
 
 Base URL: `https://arditceno.github.io/Neuro-Cognitive-Information-Design/`
 
-| Page | URL |
-|------|-----|
-| Home | https://arditceno.github.io/Neuro-Cognitive-Information-Design/ |
-| About | https://arditceno.github.io/Neuro-Cognitive-Information-Design/about.html |
-| Methodology | https://arditceno.github.io/Neuro-Cognitive-Information-Design/methodology.html |
-| Fields | https://arditceno.github.io/Neuro-Cognitive-Information-Design/fields.html |
-| Contact | https://arditceno.github.io/Neuro-Cognitive-Information-Design/contact.html |
-| **Participant test** | https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html |
-| **Admin panel** | https://arditceno.github.io/Neuro-Cognitive-Information-Design/admin.html |
-| Privacy Policy | https://arditceno.github.io/Neuro-Cognitive-Information-Design/privacy.html |
-| Terms and Conditions | https://arditceno.github.io/Neuro-Cognitive-Information-Design/terms.html |
-
-Everything is one website. Participants open the test link; the researcher opens the admin panel.
-
 ## Overview
 
 Each participant picks their profession and reads the same documents in two
