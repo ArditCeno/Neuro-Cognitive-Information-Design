@@ -1,16 +1,21 @@
 /*
- * Professions, difficulty levels and generated field definitions.
- * Each participant sees ONLY their chosen profession, across 3 levels
- * (very easy / medium / hard) in BOTH versions (A and B).
+ * Study structure (research protocol):
+ *   12 professions x 3 expertise levels x 3 modules x 2 formats (A/B).
+ *   - expertise level is a participant attribute (Fillestar / Mid / Senior)
+ *   - each expertise has 3 modules of increasing complexity
+ *   - every module exists in format A (structured) and B (compressed)
+ *   - each format has its OWN quiz (different questions on the same text)
  *
- * Copyright (c) 2026 Ardit Ceno. All rights reserved.
+ * Copyright 2026 Ardit Ceno. All rights reserved.
  */
 
-export const LEVELS = [
-  { id: "easy", al: "Shumë e lehtë", en: "Very easy" },
-  { id: "medium", al: "Mesatare", en: "Medium" },
-  { id: "hard", al: "E vështirë", en: "Hard" }
+export const EXPERTISE = [
+  { id: "fillestar", al: "Fillestar", en: "Beginner" },
+  { id: "mid", al: "Mid", en: "Mid" },
+  { id: "senior", al: "Senior", en: "Senior" }
 ];
+
+export const COMPLEXITY = { m1: "basic", m2: "intermediate", m3: "advanced" };
 
 export const PROFESSIONS = [
   { id: "software", al: "Informatikë", en: "Software" },
@@ -18,70 +23,68 @@ export const PROFESSIONS = [
   { id: "finance", al: "Financë", en: "Finance" },
   { id: "business", al: "Biznes", en: "Business" },
   { id: "health", al: "Mjekësi", en: "Medicine" },
-  { id: "nurse", al: "Infermier", en: "Nursing" },
-  { id: "pedagogue", al: "Pedagog", en: "Pedagogy" },
-  { id: "biologist", al: "Biolog", en: "Biology" },
-  { id: "biotech", al: "Bioteknolog", en: "Biotechnology" },
-  { id: "chemist", al: "Kimist", en: "Chemistry" },
-  { id: "electrical", al: "Inxhinier Elektrik", en: "Electrical Engineering" },
-  { id: "cook", al: "Kuzhinier", en: "Culinary" }
+  { id: "nurse", al: "Infermieri", en: "Nursing" },
+  { id: "pedagogue", al: "Pedagogji", en: "Pedagogy" },
+  { id: "biologist", al: "Biologji", en: "Biology" },
+  { id: "biotech", al: "Bioteknologji", en: "Biotechnology" },
+  { id: "chemist", al: "Kimi", en: "Chemistry" },
+  { id: "electrical", al: "Inxhinieri elektrike", en: "Electrical engineering" },
+  { id: "cook", al: "Kuzhinieri", en: "Culinary" }
 ];
 
-export function materialPath(id, level, version, lang) {
-  return `materials/${id}_${level}_${version.toLowerCase()}.${lang}.html`;
+export function materialPath(id, expertise, mN, version, lang) {
+  return `materials/${id}_${expertise}_m${mN}_${String(version).toLowerCase()}.${lang}.html`;
 }
 
-function materialsFor(id, level) {
-  return {
-    A: { al: materialPath(id, level, "A", "al"), en: materialPath(id, level, "A", "en") },
-    B: { al: materialPath(id, level, "B", "al"), en: materialPath(id, level, "B", "en") }
-  };
-}
-
-function taskFor(p, level) {
-  const lvl = { easy: { al: "shumë e lehtë", en: "very easy" }, medium: { al: "mesatare", en: "medium" }, hard: { al: "e vështirë", en: "hard" } }[level];
-  return {
-    al: `Lexo me kujdes dokumentin (niveli ${lvl.al}) dhe pastaj përgjigju pyetjeve.`,
-    en: `Read the document carefully (${lvl.en} level), then answer the questions.`
-  };
-}
-
-function quizFor(p) {
-  const n = p.en, a = p.al;
+function opts(en, al) {
   return [
-    { q: { al: `Cili është qëllimi kryesor i dokumentit në ${a}?`, en: `What is the main purpose of the document in ${n}?` },
-      options: [ { al: "Të informojë qartë lexuesin", en: "To clearly inform the reader" }, { al: "Të zbavitë", en: "To entertain" }, { al: "Të shesë një produkt", en: "To sell a product" }, { al: "Asnjë qëllim", en: "No purpose" } ],
-      correct: 0, critical: true },
-    { q: { al: "Kur jepet informacioni kritik në dokument?", en: "When is critical information given in the document?" },
-      options: [ { al: "Kur kushtet plotësohen", en: "When the conditions are met" }, { al: "Gjithmonë", en: "Always" }, { al: "Kurrë", en: "Never" }, { al: "Rastësisht", en: "Randomly" } ],
-      correct: 0, critical: true },
-    { q: { al: "Sa kushte/elementë duhen për rezultatin kryesor?", en: "How many conditions/elements are needed for the main result?" },
-      options: [ { al: "1", en: "1" }, { al: "2", en: "2" }, { al: "3", en: "3" }, { al: "0", en: "0" } ],
-      correct: 2, critical: false },
-    { q: { al: "Nëse një kusht nuk plotësohet, çfarë ndodh?", en: "If a condition is not met, what happens?" },
-      options: [ { al: "Refuzohet / kthehet mbrapsht", en: "It is refused / returned" }, { al: "Vazhdon normalisht", en: "It continues normally" }, { al: "Nuk ka efekt", en: "No effect" }, { al: "Asnjë", en: "None" } ],
-      correct: 0, critical: false },
-    { q: { al: "Cila paraqitje e bën më të lehtë gjetjen e informacionit?", en: "Which presentation makes finding information easier?" },
-      options: [ { al: "E strukturuar / me theksime", en: "Structured / highlighted" }, { al: "E ngjeshur / pa strukturë", en: "Dense / unstructured" }, { al: "E njëjta", en: "The same" }, { al: "Nuk dihet", en: "Unknown" } ],
-      correct: 0, critical: false },
-    { q: { al: "Sa herë rilexoi pjesë të tekstit për t'i kuptuar?", en: "How many times did you re-read parts to understand?" },
-      options: [ { al: "Asnjë herë", en: "Never" }, { al: "1–2 herë", en: "1–2 times" }, { al: "3–4 herë", en: "3–4 times" }, { al: "Shumë herë", en: "Many times" } ],
-      correct: 1, critical: false },
-    { q: { al: "A ishin të qarta afatet / vlerat kritike?", en: "Were the deadlines / critical values clear?" },
-      options: [ { al: "Po, shumë të qarta", en: "Yes, very clear" }, { al: "Mesatarisht", en: "Somewhat" }, { al: "Jo", en: "No" }, { al: "Nuk kishte", en: "There were none" } ],
-      correct: 0, critical: false },
-    { q: { al: "Sa i sigurt je për përgjigjet e dhëna?", en: "How confident are you in your answers?" },
-      options: [ { al: "Shumë i sigurt", en: "Very confident" }, { al: "I sigurt", en: "Confident" }, { al: "Pak i sigurt", en: "Slightly confident" }, { al: "Aspak", en: "Not at all" } ],
-      correct: 0, critical: false }
+    { al: al[0], en: en[0] }, { al: al[1], en: en[1] },
+    { al: al[2], en: en[2] }, { al: al[3], en: en[3] }
   ];
 }
 
-export const FIELDS = PROFESSIONS.map((p) => ({
-  id: p.id,
-  name: { al: p.al, en: p.en },
-  levels: Object.fromEntries(LEVELS.map((l) => [l.id, {
-    task: taskFor(p, l.id),
-    materials: materialsFor(p.id, l.id)
-  }])),
-  quiz: quizFor(p)
-}));
+/* Placeholder quiz, distinct for A and B (different questions on the same text). */
+function quizFor(p, expertise, mN, version) {
+  const en = p.en, al = p.al;
+  const vA = version === "A";
+  return [
+    { q: { al: `Në ${al} (${expertise}, moduli ${mN}): cili është qëllimi kryesor i tekstit?`, en: `${en} (${expertise}, module ${mN}): what is the main purpose of the text?` },
+      options: opts(["To inform", "To entertain", "To sell", "None"], ["Të informojë", "Të zbavitë", "Të shesë", "Asnjë"]), correct: 0, critical: true },
+    { q: { al: vA ? "Si është i organizuar informacioni?" : "Sa rreshta/të dhëna përmban blloku?", en: vA ? "How is the information organised?" : "How many lines/items does the block contain?" },
+      options: opts(["Clearly separated", "Compressed", "Unordered", "Missing"], ["Të ndara qartë", "Të ngjeshura", "Pa rend", "Mungojnë"]), correct: vA ? 0 : 1, critical: false },
+    { q: { al: "Sa kushte/elementë janë të nevojshëm për rezultatin kryesor?", en: "How many conditions/elements are needed for the main result?" },
+      options: opts(["1", "2", "3", "0"], ["1", "2", "3", "0"]), correct: 2, critical: false },
+    { q: { al: "Çfarë ndodh nëse një kusht nuk plotësohet?", en: "What happens if a condition is not met?" },
+      options: opts(["It is refused", "It continues", "No effect", "Unknown"], ["Refuzohet", "Vazhdon", "Pa efekt", "Nuk dihet"]), correct: 0, critical: false },
+    { q: { al: "Kush është përdoruesi/objekti kryesor i këtij informacioni?", en: "Who is the main user/subject of this information?" },
+      options: opts(["A practitioner of the field", "A child", "A tourist", "Nobody"], ["Një profesionist i fushës", "Një fëmijë", "Një turist", "Askush"]), correct: 0, critical: false },
+    { q: { al: "Sa herë rilexove pjesë të tekstit?", en: "How many times did you re-read parts of the text?" },
+      options: opts(["Never", "1-2", "3-4", "Many"], ["Asnjëherë", "1-2", "3-4", "Shumë"]), correct: 1, critical: false },
+    { q: { al: "A u regjistrua ndonjë vlerë/numër kritik?", en: "Was any critical value/number recorded?" },
+      options: opts(["Yes", "No", "Unsure", "None given"], ["Po", "Jo", "Nuk jam i sigurt", "Nuk jepet"]), correct: 0, critical: true },
+    { q: { al: "Sa i sigurt je për përgjigjet?", en: "How confident are you in your answers?" },
+      options: opts(["Very", "Somewhat", "Little", "Not at all"], ["Shumë", "Mesatarisht", "Pak", "Aspak"]), correct: 0, critical: false }
+  ];
+}
+
+function modulesFor(p, expertiseId) {
+  return [1, 2, 3].map((n) => {
+    const v = "m" + n;
+    const materials = {
+      A: { al: materialPath(p.id, expertiseId, n, "A", "al"), en: materialPath(p.id, expertiseId, n, "A", "en") },
+      B: { al: materialPath(p.id, expertiseId, n, "B", "al"), en: materialPath(p.id, expertiseId, n, "B", "en") }
+    };
+    return {
+      id: v,
+      complexity: COMPLEXITY[v],
+      materials,
+      quiz: { A: quizFor(p, expertiseId, n, "A"), B: quizFor(p, expertiseId, n, "B") }
+    };
+  });
+}
+
+export const FIELDS = PROFESSIONS.map((p) => {
+  const expertise = {};
+  EXPERTISE.forEach((e) => { expertise[e.id] = { modules: modulesFor(p, e.id) }; });
+  return { id: p.id, name: { al: p.al, en: p.en }, expertise };
+});

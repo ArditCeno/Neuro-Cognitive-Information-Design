@@ -4,13 +4,13 @@
  * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
 
-import { FIELDS } from "./fields.js";
+import { FIELDS, EXPERTISE } from "./fields.js";
 
 export const CONFIG = {
   study: {
     title: "Neuro-Cognitive Information Design",
     design: "within",              // each participant reads both A and B
-    levelsPerSession: 3,           // easy / medium / hard (their own profession only)
+    modulesPerSession: 3,          // 3 modules per expertise level
     quizPerDoc: 8,
     nasaTlx: "perModule",
     useJsPsych: true,
@@ -66,11 +66,7 @@ export const CONFIG = {
     { id: "frustration", al: "Frustrimi", en: "Frustration", low: { al: "I ulët", en: "Low" }, high: { al: "I lartë", en: "High" } }
   ],
 
-  expertiseLevels: [
-    { id: "beginner", al: "Fillestar", en: "Beginner" },
-    { id: "student", al: "Student", en: "Student" },
-    { id: "professional", al: "Profesional", en: "Professional" }
-  ]
+  expertiseLevels: EXPERTISE
 };
 
 /*

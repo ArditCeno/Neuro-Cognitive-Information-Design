@@ -17,7 +17,7 @@ export function chartDataURL(summary) {
   const mods = summary.modules || [];
   const labels = [], acc = [], fd = [];
   mods.forEach((m) => (m.trials || []).forEach((t) => {
-    labels.push(`${m.niveli || ""} ${t.versioni || ""}`.trim());
+    labels.push(`${m.module_id || ""} ${t.versioni || ""}`.trim());
     acc.push(t.accuracy_score_pct || 0);
     fd.push(t.fixation_duration_ms || 0);
   }));
@@ -144,7 +144,7 @@ export function emailTableHTML(summary) {
     html += '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px">';
     html += '<tr><th>Field</th><th>Level</th><th>Version</th><th>Accuracy %</th><th>Fixation ms</th><th>Regressions</th><th>TTFF ms</th><th>Reading s</th></tr>';
     mods.forEach((m) => (m.trials || []).forEach((t) => {
-      html += '<tr><td>' + esc(m.fusha) + '</td><td>' + esc(m.niveli) + '</td><td>' + esc(t.versioni) +
+      html += '<tr><td>' + esc(m.fusha) + '</td><td>' + esc(m.module_id) + '</td><td>' + esc(t.versioni) +
         '</td><td>' + esc(t.accuracy_score_pct) + '</td><td>' + esc(t.fixation_duration_ms) +
         '</td><td>' + esc(t.regresione) + '</td><td>' + esc(t.TTFF_ms) + '</td><td>' + esc(t.koha_e_leximit_s) + '</td></tr>';
     }));
@@ -157,7 +157,7 @@ export function emailTableHTML(summary) {
       const qs = t.quiz_item || [];
       (t.response || []).forEach((r, i) => {
         const qq = qs[i] || {};
-        html += '<tr><td>' + esc(m.niveli) + '</td><td>' + esc(t.versioni) + '</td><td>' + esc(qq.pyetja) +
+        html += '<tr><td>' + esc(m.module_id) + '</td><td>' + esc(t.versioni) + '</td><td>' + esc(qq.pyetja) +
           '</td><td>' + esc(r.zgjedhja) + '</td><td>' + (r["e_saktë"] ? "yes" : "no") + '</td></tr>';
       });
     }));

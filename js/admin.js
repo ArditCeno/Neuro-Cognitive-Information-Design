@@ -108,7 +108,7 @@
         (p.modules || []).forEach(function (m) {
           (m.trials || []).forEach(function (t) {
             var chosen = (t.response || []).map(function (x) { return x.zgjedhja; }).filter(Boolean).join(" / ");
-            if (chosen) ans.push((m.niveli ? m.niveli + " " : "") + t.versioni + ": " + chosen);
+            if (chosen) ans.push((m.module_id ? m.module_id + " " : "") + t.versioni + ": " + chosen);
           });
         });
         return '<tr><td>' + (r.id_anonim || "") + '</td><td>' + (p.kind || "session") + '</td><td>' + (acc(r) == null ? "-" : acc(r)) + '</td><td class="ans">' + (ans.join(" | ").slice(0, 140) || "-") + '</td></tr>';

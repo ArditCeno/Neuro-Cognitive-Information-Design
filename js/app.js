@@ -18,7 +18,7 @@ import { Heatmap } from "./heatmap.js";
 import { Biometrics } from "./biometrics.js";
 import { Research } from "./research.js";
 import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js";
-import { LEVELS } from "./fields.js";
+import { EXPERTISE } from "./fields.js";
 import { renderNodeMap, renderHashmap } from "./visualize.js";
 import { downloadReport, emailReport, emailConfigured } from "./report.js";
 
@@ -32,6 +32,8 @@ const state = {
   modulePlan: [],
   moduleIndex: 0,
   blockIndex: 0,
+  fieldId: null,
+  expertise: null,
   currentAois: [],
   moduleTrials: [],
   moduleResults: [],
@@ -43,7 +45,7 @@ const state = {
 };
 
 const $ = (id) => document.getElementById(id);
-const levelName = (id) => tr(LEVELS.find((l) => l.id === id) || { al: id, en: id });
+const expertiseName = (id) => tr(EXPERTISE.find((l) => l.id === id) || { al: id, en: id });
 
 function showStage(name) {
   STAGES.forEach((s) => $(`stage-${s}`).classList.toggle("hidden", s !== name));
@@ -147,6 +149,7 @@ function onRegister(e) {
 
   const id = anonId();
   state.fieldId = field.id;
+  state.expertise = expertise;
   state.participant = {
     id_anonim: id,
     emri_mbiemer: name || "",
@@ -233,13 +236,13 @@ async function startCalibration() {
 /* ---------------------------- Module plan & rotation ---------------------------- */
 function startModules() {
   const field = CONFIG.fields.find((f) => f.id === state.fieldId) || CONFIG.fields[0];
-  const levels = Object.keys(field.levels);           // easy, medium, hard
+  const expertise = (field.expertise && field.expertise[state.expertise]) ? state.expertise : "fillestar";
+  const modules = field.expertise[expertise].modules;   // 3 modules, increasing complexity
   const base = (state.sessionNumber || 1);
 
-  // one module per level (in the participant's own profession only)
-  state.modulePlan = levels.map((level, li) => {
-    const versions = ((base + li) % 2 === 0) ? ["A", "B"] : ["B", "A"];
-    return { field, level, versions, firstVersion: versions[0] };
+  state.modulePlan = modules.map((mod, i) => {
+    const versions = ((base + i) % 2 === 0) ? ["A", "B"] : ["B", "A"];   // counterbalance A/B
+    return { field, expertise, module: mod, versions, firstVersion: versions[0] };
   });
   state.moduleIndex = 0;
   state.blockIndex = 0;
@@ -249,7 +252,7 @@ function startModules() {
     s.session = s.session || {};
     s.session.fusha = field.id;
     s.session.fusha_emri = tr(field.name);
-    s.session.nivelet = levels;
+    s.session.ekspertiza = expertise;
   });
 
   Runner.init($("stage-task"));
@@ -257,18 +260,21 @@ function startModules() {
   startModuleIntro();
 }
 
+function moduleLabel(m) {
+  return `${tr(m.field.name)} · ${expertiseName(m.expertise)} · ${m.module.id.toUpperCase()} (${m.module.complexity})`;
+}
+
 function refreshTaskLabels() {
   const m = state.modulePlan[state.moduleIndex];
   if (!m) return;
-  $("taskModule").textContent = `${t("module_title")} ${t("module_progress", { i: state.moduleIndex + 1, n: state.modulePlan.length })} · ${tr(m.field.name)} · ${levelName(m.level)}`;
+  $("taskModule").textContent = `${t("module_title")} ${t("module_progress", { i: state.moduleIndex + 1, n: state.modulePlan.length })} · ${moduleLabel(m)}`;
   $("taskFieldName").textContent = tr(m.field.name);
-  $("taskInstruction").textContent = `${t("task_do")}: ${tr(m.field.levels[m.level].task)}`;
 }
 
 function startModuleIntro() {
   const m = state.modulePlan[state.moduleIndex];
   state.moduleTrials = [];
-  $("taskModule").textContent = `${t("module_title")} ${t("module_progress", { i: state.moduleIndex + 1, n: state.modulePlan.length })} · ${tr(m.field.name)} · ${levelName(m.level)}`;
+  $("taskModule").textContent = `${t("module_title")} ${t("module_progress", { i: state.moduleIndex + 1, n: state.modulePlan.length })} · ${moduleLabel(m)}`;
   $("taskVersion").textContent = "";
   $("taskIntro").classList.remove("hidden");
   $("taskReading").classList.add("hidden");
@@ -276,7 +282,9 @@ function startModuleIntro() {
   $("taskTlx").classList.add("hidden");
   $("taskBetween").classList.add("hidden");
   $("taskFieldName").textContent = tr(m.field.name);
-  $("taskInstruction").textContent = `${t("task_do")}: ${tr(m.field.levels[m.level].task)}`;
+  $("taskInstruction").textContent = getLang() === "en"
+    ? `Read the document and answer the questions for this module (${m.module.complexity} complexity).`
+    : `Lexo dokumentin dhe përgjigju pyetjeve të këtij moduli (kompleksiteti ${m.module.complexity}).`;
 }
 
 /* ---------------------------- Reading trial ---------------------------- */
@@ -288,10 +296,10 @@ async function startReading() {
   $("taskReading").classList.remove("hidden");
   $("docLoading").classList.remove("hidden");
   $("doc").classList.add("hidden");
-  $("taskVersion").textContent = `${levelName(m.level)} · ${t("version_label")} ${version} · ${t("block")} ${state.blockIndex + 1}/${m.versions.length}`;
+  $("taskVersion").textContent = `${m.module.id.toUpperCase()} · ${t("version_label")} ${version} · ${t("block")} ${state.blockIndex + 1}/${m.versions.length}`;
 
   try {
-    const { aois } = await Stimuli.load(m.field, version, getLang(), m.level);
+    const { aois } = await Stimuli.load(m.field, version, getLang(), m.expertise, m.module.id);
     state.currentAois = aois;
     state.currentHtml = $("doc").innerHTML;
   } catch (e) {
@@ -303,8 +311,8 @@ async function startReading() {
   await sleep(120);
   Stimuli.updateRegion($("doc"));
   state.readStart = performance.now();
-  EyeTracking.startTrial(`${m.field.id}:${m.level}:${version}`);
-  Storage.addEvent("reading_start", { field: m.field.id, level: m.level, version });
+  EyeTracking.startTrial(`${m.field.id}:${m.expertise}:${m.module.id}:${version}`);
+  Storage.addEvent("reading_start", { field: m.field.id, expertise: m.expertise, module: m.module.id, version });
 }
 
 function onReadDone() {
@@ -314,35 +322,35 @@ function onReadDone() {
   state.readingSec = round((performance.now() - state.readStart) / 1000, 1);
 
   const metrics = computeMetrics({ samples: trial.samples, startT: trial.startT }, state.currentAois);
-  Storage.addEvent("reading_end", { field: m.field.id, version, samples: trial.samples.length, fixations: metrics.fixation_count });
+  Storage.addEvent("reading_end", { field: m.field.id, module: m.module.id, version, samples: trial.samples.length, fixations: metrics.fixation_count });
   if (metrics.fixations && metrics.fixations.length) state.heatPoints.push(...metrics.fixations);
 
-  // stash for post-quiz trial assembly
-  state.pending = { field: m.field, version, level: m.level, metrics, readingSec: state.readingSec };
+  state.pending = { field: m.field, module: m.module, version, metrics, readingSec: state.readingSec };
 
   $("taskReading").classList.add("hidden");
   runQuiz();
 }
 
 async function runQuiz() {
-  const { field } = state.pending;
+  const { field, module, version } = state.pending;
   const quizEl = $("taskQuiz");
   quizEl.classList.remove("hidden");
   quizEl.innerHTML = "";
   Stimuli.clear();
 
+  // each format has its OWN quiz (different questions on the same text)
+  const items = module.quiz[version];
   const quizStart = performance.now();
-  const results = await Runner.runQuiz(field.quiz, quizEl);
+  const results = await Runner.runQuiz(items, quizEl);
   const quizSec = (performance.now() - quizStart) / 1000;
   const perItem = results.length ? round(quizSec / results.length, 1) : null;
   results.forEach((r) => { r.time_s = perItem; });
 
-  const { version, metrics, readingSec } = state.pending;
-  const { level } = state.pending;
+  const { metrics, readingSec } = state.pending;
   const taskSec = round(readingSec + quizSec, 1);
 
-  const stimulus = stimulusMeta(field, version, state.currentHtml || "", level);
-  const trialObj = buildTrial({ field, version, level, stimulus, readingTimeSec: readingSec, taskTimeSec: taskSec, metrics, quiz: results });
+  const stimulus = stimulusMeta(field, version, state.currentHtml || "", module.id, module.complexity);
+  const trialObj = buildTrial({ field, version, moduleId: module.id, complexity: module.complexity, stimulus, readingTimeSec: readingSec, taskTimeSec: taskSec, metrics, quiz: results });
   state.moduleTrials.push(trialObj);
 
   quizEl.classList.add("hidden");
@@ -353,7 +361,8 @@ async function runQuiz() {
     state.blockIndex++;
     showBetweenBlock();
   } else {
-    await finishModule(m);
+    const preference = await askPreference();
+    await finishModule(m, preference);
   }
 }
 
@@ -381,12 +390,15 @@ function showBetweenBlock() {
   box.appendChild(card);
 }
 
-async function finishModule(m) {
+async function finishModule(m, preference) {
   const tlx = (CONFIG.study.nasaTlx === "perModule") ? await runTlx() : null;
   state.moduleNasaTlx = tlx;
   state.moduleResults.push(buildModule({
     field: m.field,
-    level: m.level,
+    expertise: m.expertise,
+    moduleId: m.module.id,
+    complexity: m.module.complexity,
+    preference: preference || null,
     orderIndex: state.moduleIndex,
     firstVersion: m.firstVersion,
     trials: state.moduleTrials,
@@ -397,6 +409,38 @@ async function finishModule(m) {
   state.blockIndex = 0;
   if (state.moduleIndex < state.modulePlan.length) startModuleIntro();
   else await finishSession();
+}
+
+/** After both formats of a module, ask which one the participant preferred. */
+function askPreference() {
+  return new Promise((resolve) => {
+    const box = $("taskBetween");
+    box.classList.remove("hidden");
+    box.innerHTML = "";
+    const card = document.createElement("div");
+    card.className = "card";
+    const h = document.createElement("h2");
+    h.textContent = getLang() === "en" ? "Which version did you prefer?" : "Cilin version preferuat?";
+    const p = document.createElement("p");
+    p.className = "lead";
+    p.textContent = getLang() === "en"
+      ? "Both versions carry the same information. Which one was clearer and easier to understand?"
+      : "Të dyja versionet mbartin të njëjtin informacion. Cili ishte më i qartë dhe më i lehtë për t'u kuptuar?";
+    card.appendChild(h); card.appendChild(p);
+    const actions = document.createElement("div");
+    actions.className = "actions";
+    [["A", getLang() === "en" ? "Version A" : "Versioni A"],
+     ["B", getLang() === "en" ? "Version B" : "Versioni B"],
+     ["equal", getLang() === "en" ? "No difference" : "Pa dallim"]].forEach(([val, label]) => {
+      const btn = document.createElement("button");
+      btn.className = "btn btn-ghost";
+      btn.textContent = label;
+      btn.addEventListener("click", () => { box.classList.add("hidden"); box.innerHTML = ""; resolve(val); });
+      actions.appendChild(btn);
+    });
+    card.appendChild(actions);
+    box.appendChild(card);
+  });
 }
 
 async function runTlx() {
