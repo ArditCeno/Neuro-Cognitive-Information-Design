@@ -682,3 +682,38 @@ section[id], [id] { scroll-margin-top: 96px; }      /* sticky nav offset for anc
 @media (max-width: 380px) {
   .fields-strip { grid-template-columns: 1fr; }
 }
+
+/* ============================================================
+   Perfect fit on every device + tighter spacing (design unchanged)
+   ============================================================ */
+:root {
+  --section-y: clamp(22px, 3.5vw, 48px);
+  --gutter: clamp(14px, 4vw, 40px);
+}
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { overflow-x: hidden; }
+
+.section { margin: var(--section-y) 0; }
+.page { padding: clamp(24px, 4vw, 54px) var(--gutter) clamp(28px, 5vw, 60px); }
+.page-head { margin-bottom: clamp(8px, 1.5vw, 16px); }
+.section-head { margin-bottom: clamp(12px, 2vw, 20px); }
+
+.hero-home { min-height: min(86vh, 820px); }
+.hero2 { padding-top: clamp(34px, 7vh, 84px); padding-bottom: clamp(28px, 6vh, 68px); }
+.hero-sub { margin: clamp(14px, 2.4vh, 24px) auto clamp(10px, 1.6vh, 16px); }
+.hero2-cta { margin: clamp(16px, 2.6vh, 28px) 0 clamp(12px, 2vh, 22px); }
+
+.fields-strip, .stats-strip { padding-block: clamp(16px, 3vw, 28px); gap: clamp(8px, 1.5vw, 20px); }
+.card, .field-card, .flow-card, .phase, .steps li, .quote { padding: clamp(14px, 2vw, 22px); }
+.two-col, .three-col, .flow, .steps, .timeline, .fields-grid, .kpi-grid, .mini-cards { gap: clamp(10px, 1.8vw, 18px); }
+.quote { margin: clamp(22px, 4vw, 46px) 0; }
+
+@media (max-width: 900px) {
+  .hero-home { min-height: auto; }
+  .hero2 { padding-top: clamp(26px, 6vh, 54px); padding-bottom: clamp(20px, 5vh, 40px); }
+}
+@media (max-width: 640px) {
+  .page { padding-top: 20px; padding-bottom: 38px; }
+  .section { margin: 20px 0; }
+  .card, .field-card, .flow-card, .phase, .steps li { padding: 14px; }
+}

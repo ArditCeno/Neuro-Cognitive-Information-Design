@@ -14,7 +14,7 @@
   <style>
     .view { padding: 0; }
     .view.hidden { display: none; }
-    #testFrame, #adminFrame { width: 100%; border: 0; display: block; height: calc(100vh - 70px); background: #092634; }
+    #testFrame, #adminFrame { width: 100%; border: 0; display: block; height: calc(100vh - 70px); height: calc(100dvh - 70px); background: #092634; }
     .tabs { display: flex; gap: 8px; padding: 14px clamp(16px,4vw,40px) 0; flex-wrap: wrap; }
     .tab { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); color: #f9f9f9; border-radius: 10px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
     .tab.active { background: #004E72; border-color: #004E72; }
@@ -126,7 +126,7 @@
 </main>
 
 <div id="site-footer"></div>
-<script src="js/site.js?v=4"></script>
+<script src="js/site.js?v=5"></script>
 <script>
   (function () {
     function show(v) {
