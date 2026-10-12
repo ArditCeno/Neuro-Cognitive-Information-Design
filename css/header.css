@@ -60,5 +60,12 @@
   .nav .brand-text small { display: none; }
   .nav .logo-img, .nav .brand-mark .mono { height: 38px; }
   .nav .brand-mark .mono { width: 38px; }
-  .nav .pill span { display: none; }
+  .nav .pill { display: none; }              /* remove the empty buttons on phones */
+}
+
+/* CTA links: only inside the mobile menu */
+.nav-cta-link { display: none; }
+@media (max-width: 860px) {
+  .nav.nav-open .nav-links .nav-cta-link { display: block; font-weight: 700; color: #FF6E42; }
+  .nav.nav-open .nav-links .nav-cta-link::after { display: none; }
 }

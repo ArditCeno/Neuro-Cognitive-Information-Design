@@ -717,3 +717,16 @@ body { overflow-x: hidden; }
   .section { margin: 20px 0; }
   .card, .field-card, .flow-card, .phase, .steps li { padding: 14px; }
 }
+
+/* ============================================================
+   Mobile: clean header, auto hero based on screen, fields share
+   ============================================================ */
+@media (max-width: 640px) {
+  :root { --gutter: 12px; }
+  .hero-home { min-height: calc(100dvh - 62px - 150px); display: flex; align-items: center; }
+  .hero2 { padding-top: 16px; padding-bottom: 16px; }
+  .hero2-left { max-width: 100%; }
+  .hero-sub { font-size: 18px; max-width: 100%; margin: 16px auto 12px; }
+  .fields-strip { min-height: 150px; align-content: center; margin-top: 4px; }
+  .foot { padding-inline: 12px; }
+}

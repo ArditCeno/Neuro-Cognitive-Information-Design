@@ -28,7 +28,10 @@
       var active = (p.href === cur) ? " active" : "";
       return '<a class="' + active.trim() + '" href="' + p.href +
         '" data-en="' + p.en + '" data-al="' + p.al + '">' + p.en + "</a>";
-    }).join("");
+    }).join("") +
+      // shown only inside the mobile menu
+      '<a class="nav-cta-link" href="study.html" data-view="test" data-en="Start study" data-al="Fillo studimin">Start study</a>' +
+      '<a class="nav-cta-link" href="admin.html" data-view="admin" data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</a>';
 
     return '' +
       '<a class="brand" href="index.html">' +
