@@ -118,6 +118,53 @@ export async function downloadReport(summary) {
   doc.save(`NCID_${(summary.participant || {}).id_anonim || "session"}.pdf`);
 }
 
+/** Build an HTML table (rows) for the email, from a session/registration summary. */
+export function emailTableHTML(summary) {
+  const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const p = summary.participant || {};
+  const q = summary.quiz_results || {};
+  const head = [
+    ["ID", p.id_anonim || ""],
+    ["Profession", p.profesioni || ""],
+    ["Expertise", p["niveli_i_ekspertizës"] || ""],
+    ["Age", p.mosha || ""],
+    ["Type", summary.kind || "session"],
+    ["Accuracy %", q.accuracy_score_pct != null ? q.accuracy_score_pct : ""],
+    ["Date", summary.exported_at || ""]
+  ];
+  let html = '<h2>NCID ' + esc(summary.kind || "session") + '</h2>';
+  html += '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px">';
+  head.forEach((r) => { html += '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td></tr>'; });
+  html += '</table>';
+
+  const mods = summary.modules || [];
+  if (mods.length) {
+    html += '<h3>Results by level and version</h3>';
+    html += '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px">';
+    html += '<tr><th>Field</th><th>Level</th><th>Version</th><th>Accuracy %</th><th>Fixation ms</th><th>Regressions</th><th>TTFF ms</th><th>Reading s</th></tr>';
+    mods.forEach((m) => (m.trials || []).forEach((t) => {
+      html += '<tr><td>' + esc(m.fusha) + '</td><td>' + esc(m.niveli) + '</td><td>' + esc(t.versioni) +
+        '</td><td>' + esc(t.accuracy_score_pct) + '</td><td>' + esc(t.fixation_duration_ms) +
+        '</td><td>' + esc(t.regresione) + '</td><td>' + esc(t.TTFF_ms) + '</td><td>' + esc(t.koha_e_leximit_s) + '</td></tr>';
+    }));
+    html += '</table>';
+
+    html += '<h3>Answers</h3>';
+    html += '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px">';
+    html += '<tr><th>Level</th><th>Version</th><th>Question</th><th>Chosen</th><th>Correct</th></tr>';
+    mods.forEach((m) => (m.trials || []).forEach((t) => {
+      const qs = t.quiz_item || [];
+      (t.response || []).forEach((r, i) => {
+        const qq = qs[i] || {};
+        html += '<tr><td>' + esc(m.niveli) + '</td><td>' + esc(t.versioni) + '</td><td>' + esc(qq.pyetja) +
+          '</td><td>' + esc(r.zgjedhja) + '</td><td>' + (r["e_saktë"] ? "yes" : "no") + '</td></tr>';
+      });
+    }));
+    html += '</table>';
+  }
+  return html;
+}
+
 /** Send the report to the researcher's email (EmailJS). Returns a status object. */
 export async function emailReport(summary) {
   const e = CONFIG.email || {};
@@ -129,8 +176,9 @@ export async function emailReport(summary) {
     if (!emailjs) return { ok: false, error: "emailjs not loaded" };
     const params = {
       to_email: e.to,
-      subject: `NCID session ${(summary.participant || {}).id_anonim || ""}`,
+      subject: `NCID ${summary.kind || "session"} ${(summary.participant || {}).id_anonim || ""}`,
       message: `Profession: ${(summary.participant || {}).profesioni || ""} | Accuracy: ${(summary.quiz_results || {}).accuracy_score_pct || ""}%`,
+      html: emailTableHTML(summary),
       summary_json: JSON.stringify(summary)
     };
     const res = await emailjs.send(cfg.serviceId, cfg.templateId, params, { publicKey: cfg.publicKey });
