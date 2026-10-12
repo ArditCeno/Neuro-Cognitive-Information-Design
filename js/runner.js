@@ -59,6 +59,7 @@ export const Runner = {
             index: idx,
             q: tr(it.q),
             chosen: response != null ? tr(it.options[response]) : null,
+            correct_text: tr(it.options[it.correct]),
             correct: response === it.correct,
             critical: !!it.critical
           };
@@ -104,6 +105,7 @@ export const Runner = {
           index: idx,
           q: tr(it.q),
           chosen: tr(it.options[answers[idx]]),
+          correct_text: tr(it.options[it.correct]),
           correct: answers[idx] === it.correct,
           critical: !!it.critical
         })));

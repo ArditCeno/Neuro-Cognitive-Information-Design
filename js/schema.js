@@ -83,14 +83,11 @@ export function buildTrial({ field, version, moduleId, complexity, stimulus, rea
     "e_saktë": r.correct,
     koha_s: r.time_s != null ? r.time_s : null
   }));
-  const quizItems = (quiz || []).map((r) => {
-    const cfg = field.quiz[r.index];
-    return {
-      pyetja: r.q,
-      "përgjigja_e_saktë": cfg ? tr(cfg.options[cfg.correct]) : null,
-      kritike: !!r.critical
-    };
-  });
+  const quizItems = (quiz || []).map((r) => ({
+    pyetja: r.q,
+    "përgjigja_e_saktë": (r.correct_text != null) ? r.correct_text : null,
+    kritike: !!r.critical
+  }));
   const correct = responses.filter((r) => r["e_saktë"]).length;
   return {
     versioni: version,

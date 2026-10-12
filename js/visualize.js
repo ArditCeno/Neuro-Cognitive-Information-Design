@@ -34,7 +34,7 @@ export function layoutTree(summary) {
   edges.push([root, sess]);
 
   (summary.modules || []).forEach((m) => {
-    const mi = push(`${m.fusha} / ${m.niveli || ""}`, m.versioni_i_parë ? `first: ${m.versioni_i_parë}` : "", 2);
+    const mi = push(`${m.fusha} / ${m.module_id || ""}`, m.versioni_i_parë ? `first: ${m.versioni_i_parë}` : "", 2);
     edges.push([sess, mi]);
     (m.trials || []).forEach((t) => {
       const ti = push(`v${t.versioni}`, `${t.accuracy_score_pct != null ? t.accuracy_score_pct + "%" : ""}`, 3);
