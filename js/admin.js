@@ -56,12 +56,16 @@
     var q = $("q").value.trim();
     if (!q) return;
     var isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q);
-    if (!isUuid) { renderRows(); return; }
-    note("Searching by UUID…");
-    var res = await sb.from("sessions").select("id,id_anonim,payload,created_at").eq("id", q).limit(1);
+    note("Searching…");
+    var res = isUuid
+      ? await sb.from("sessions").select("id,id_anonim,payload,created_at").eq("id", q).limit(1)
+      : await sb.from("sessions").select("id,id_anonim,payload,created_at").eq("id_anonim", q).order("created_at", { ascending: false }).limit(50);
     if (res.error) { note("Error: " + res.error.message); return; }
-    if (res.data && res.data[0]) { showDetail({ id: res.data[0].id, id_anonim: res.data[0].id_anonim, created_at: res.data[0].created_at, payload: parse(res.data[0]) }); note("Found 1"); }
-    else note("Not found");
+    if (!res.data || !res.data.length) { note("Not found: " + q); return; }
+    rows = res.data.map(function (r) { return { id: r.id, id_anonim: r.id_anonim, created_at: r.created_at, payload: parse(r) }; });
+    renderStats(); renderRows();
+    note(res.data.length + " record(s) for " + q);
+    if (res.data.length === 1) showDetail(rows[0]);
   }
 
   function filtered() {

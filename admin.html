@@ -43,9 +43,9 @@
 
   <main class="admin-wrap">
     <div class="toolbar">
-      <label class="field" style="flex:1"><span>Search by UUID / id_anonim / payload</span>
-        <input type="text" id="q" placeholder="2cac6e7c-… or USR_87220" /></label>
-      <button id="btnFind" class="btn btn-primary">Find by UUID</button>
+      <label class="field" style="flex:1"><span>Search by id_anonim (UUID also works)</span>
+        <input type="text" id="q" placeholder="USR_87220" /></label>
+      <button id="btnFind" class="btn btn-primary">Find</button>
       <button id="btnReload" class="btn btn-ghost">Refresh</button>
       <button id="btnCsv" class="btn btn-ghost">Export CSV</button>
     </div>
@@ -88,7 +88,7 @@
 
   <script src="vendor/heatmap.min.js"></script>
   <script src="vendor/supabase.js"></script>
-  <script src="js/site.js?v=5"></script>
+  <script src="js/site.js?v=6"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
   <script type="module">
     import { CONFIG } from "./js/config.js";
@@ -96,6 +96,6 @@
     window.__cfg = { supabase: CONFIG.storage.supabase, fields: CONFIG.fields };
     window.__viz = { renderNodeMap, renderHashmap, renderScatter };
   </script>
-  <script src="js/admin.js?v=5"></script>
+  <script src="js/admin.js?v=6"></script>
 </body>
 </html>
