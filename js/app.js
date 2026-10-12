@@ -57,6 +57,15 @@ function showStage(name) {
 }
 
 /* ---------------------------- Boot ---------------------------- */
+window.addEventListener("error", (e) => {
+  try { alert("Gabim: " + (e.message || e.error)); } catch (x) { /* ignore */ }
+});
+window.addEventListener("unhandledrejection", (e) => {
+  const r = e.reason || {};
+  try { alert("Gabim: " + (r.message || r)); } catch (x) { /* ignore */ }
+});
+console.log("NCID app v4");
+
 function mountHeaderControls() {
   const actions = document.querySelector("#site-header .nav-actions");
   if (!actions) return;
