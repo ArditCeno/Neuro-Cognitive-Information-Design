@@ -33,6 +33,14 @@
     $("btnCloseDetail").addEventListener("click", function () { $("detail").classList.remove("open"); });
     $("detail").addEventListener("click", function (e) { if (e.target.id === "detail") $("detail").classList.remove("open"); });
     load();
+
+    // live updates
+    try {
+      sb.channel("ncid-sessions")
+        .on("postgres_changes", { event: "*", schema: "public", table: "sessions" }, function () { load(); })
+        .subscribe();
+    } catch (e) { /* realtime optional */ }
+    setInterval(function () { if (document.visibilityState === "visible") load(); }, 15000);
   }
 
   async function load() {

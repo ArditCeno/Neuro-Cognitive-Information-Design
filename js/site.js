@@ -124,6 +124,11 @@
   }
 
   function render() {
+    // embed mode: page loaded inside an iframe on the single-page app
+    if (new URLSearchParams(location.search).get("embed") === "1") {
+      document.documentElement.classList.add("embed");
+      return;
+    }
     var h = document.getElementById("site-header");
     if (h) { h.className = "nav"; h.innerHTML = headerHTML(); }
     var f = document.getElementById("site-footer");

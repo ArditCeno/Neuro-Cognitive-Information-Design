@@ -11,62 +11,156 @@
   <link rel="icon" href="assets/logo.png" />
   <link rel="stylesheet" href="css/landing.css" />
   <link rel="stylesheet" href="css/header.css" />
+  <style>
+    .view { padding: 0; }
+    .view.hidden { display: none; }
+    #testFrame, #adminFrame { width: 100%; border: 0; display: block; height: calc(100vh - 70px); background: #092634; }
+    .tabs { display: flex; gap: 8px; padding: 14px clamp(16px,4vw,40px) 0; flex-wrap: wrap; }
+    .tab { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); color: #f9f9f9; border-radius: 10px; padding: 8px 14px; font-weight: 600; cursor: pointer; }
+    .tab.active { background: #004E72; border-color: #004E72; }
+  </style>
 </head>
 <body>
 
 <div id="site-header"></div>
 
-<section class="hero-home">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero2">
-    <div class="hero2-left">
-      <h1 class="hero-line1">
-        <span data-en="An eye-tracking study of document readability." data-al="Një studim me eye-tracking i lexueshmërisë së dokumenteve.">An eye-tracking study of document readability.</span>
-      </h1>
-      <p class="hero-sub"
-         data-en="Participants read two versions of the same documents in law, finance, business, health and software. Gaze, reading time and comprehension are measured with an ordinary webcam."
-         data-al="Pjesëmarrësit lexojnë dy versione të të njëjtave dokumente në drejtësi, financë, biznes, mjekësi dhe informatikë. Shikimi, koha e leximit dhe kuptimi maten me një webcam të zakonshëm.">
-      </p>
-      <div class="hero2-cta">
-        <a class="btn btn-primary btn-lg" href="study.html">
-          <span data-en="Start the study" data-al="Fillo studimin">Start the study</span>
-        </a>
-        <a class="btn btn-ghost btn-lg" href="methodology.html" data-en="Methodology" data-al="Metodologjia">Methodology</a>
+<main>
+  <!-- HOME -->
+  <section id="view-home" class="view">
+    <section class="hero-home" id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero2">
+        <div class="hero2-left">
+          <h1 class="hero-line1">
+            <span data-en="An eye-tracking study of document readability." data-al="Një studim me eye-tracking i lexueshmërisë së dokumenteve.">An eye-tracking study of document readability.</span>
+          </h1>
+          <p class="hero-sub"
+             data-en="Participants read two versions of the same documents in law, finance, business, health and software. Gaze, reading time and comprehension are measured with an ordinary webcam."
+             data-al="Pjesëmarrësit lexojnë dy versione të të njëjtave dokumente në drejtësi, financë, biznes, mjekësi dhe informatikë. Shikimi, koha e leximit dhe kuptimi maten me një webcam të zakonshëm.">
+          </p>
+          <div class="hero2-cta">
+            <a class="btn btn-primary btn-lg" href="study.html" data-view="test"><span data-en="Start the study" data-al="Fillo studimin">Start the study</span></a>
+            <a class="btn btn-ghost btn-lg" href="admin.html" data-view="admin"><span data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</span></a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section class="fields-strip" id="fields">
-  <div class="field-item">
-    <span class="f-ico" style="--c:#0E7FB0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M8 21h8"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/></svg></span>
-    <h4 data-en="Law" data-al="Drejtësi">Law</h4>
-    <p data-en="Contracts and clauses" data-al="Kontrata dhe klauzola">Contracts and clauses</p>
-  </div>
-  <div class="field-item">
-    <span class="f-ico" style="--c:#1FA0C9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11"/><path d="M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1.1-3 2.5 1.3 2 3 2 3 .9 3 2.5-1.3 2.5-3 2.5-3-1.1-3-2.5"/></svg></span>
-    <h4 data-en="Finance" data-al="Financë">Finance</h4>
-    <p data-en="Statements and reports" data-al="Pasqyra dhe raporte">Statements and reports</p>
-  </div>
-  <div class="field-item">
-    <span class="f-ico" style="--c:#FF6E42"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg></span>
-    <h4 data-en="Business" data-al="Biznes">Business</h4>
-    <p data-en="Strategy documents" data-al="Dokumente strategjike">Strategy documents</p>
-  </div>
-  <div class="field-item">
-    <span class="f-ico" style="--c:#FF8A5C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5.5 5.5 0 0 0-7.8 0L12 7.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
-    <h4 data-en="Health" data-al="Mjekësi">Health</h4>
-    <p data-en="Clinical records" data-al="Kartela klinike">Clinical records</p>
-  </div>
-  <div class="field-item">
-    <span class="f-ico" style="--c:#2F7FA0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></span>
-    <h4 data-en="Software" data-al="Informatikë">Software</h4>
-    <p data-en="Source code" data-al="Kod burim">Source code</p>
-  </div>
-</section>
+    <section class="fields-strip" id="fields">
+      <div class="field-item">
+        <span class="f-ico" style="--c:#0E7FB0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M8 21h8"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/></svg></span>
+        <h4 data-en="Law" data-al="Drejtësi">Law</h4><p data-en="Contracts and clauses" data-al="Kontrata dhe klauzola">Contracts and clauses</p>
+      </div>
+      <div class="field-item">
+        <span class="f-ico" style="--c:#1FA0C9"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v11"/><path d="M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1.1-3 2.5 1.3 2 3 2 3 .9 3 2.5-1.3 2.5-3 2.5-3-1.1-3-2.5"/></svg></span>
+        <h4 data-en="Finance" data-al="Financë">Finance</h4><p data-en="Statements and reports" data-al="Pasqyra dhe raporte">Statements and reports</p>
+      </div>
+      <div class="field-item">
+        <span class="f-ico" style="--c:#FF6E42"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 7-7"/><path d="M14 8h6v6"/></svg></span>
+        <h4 data-en="Business" data-al="Biznes">Business</h4><p data-en="Strategy documents" data-al="Dokumente strategjike">Strategy documents</p>
+      </div>
+      <div class="field-item">
+        <span class="f-ico" style="--c:#FF8A5C"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 6.6a5.5 5.5 0 0 0-7.8 0L12 7.6l-1-1a5.5 5.5 0 1 0-7.8 7.8l8.8 8.8 8.8-8.8a5.5 5.5 0 0 0 0-7.8z"/></svg></span>
+        <h4 data-en="Health" data-al="Mjekësi">Health</h4><p data-en="Clinical records" data-al="Kartela klinike">Clinical records</p>
+      </div>
+      <div class="field-item">
+        <span class="f-ico" style="--c:#2F7FA0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6"/><path d="M8 6l-6 6 6 6"/></svg></span>
+        <h4 data-en="Software" data-al="Informatikë">Software</h4><p data-en="Source code" data-al="Kod burim">Source code</p>
+      </div>
+    </section>
+
+    <div class="page" id="about">
+      <header class="page-head"><span class="eyebrow" data-en="About" data-al="Rreth">About</span>
+        <h1 data-en="From opinion to measured evidence" data-al="Nga opinioni në provë të matur">From opinion to measured evidence</h1></header>
+      <section class="section"><div class="two-col">
+        <article class="card"><h3 data-en="The problem" data-al="Problemi">The problem</h3><p data-en="Documents are often laid out without testing. Readers spend more time and make more mistakes than necessary." data-al="Dokumentet shpesh paraqiten pa testuar. Lexuesit harxhojnë më shumë kohë dhe bëjnë më shumë gabime sesa duhet."></p></article>
+        <article class="card"><h3 data-en="The approach" data-al="Qasja">The approach</h3><p data-en="Two versions of the same facts are compared while gaze, timing and comprehension are recorded with a webcam." data-al="Krahasohen dy versione të të njëjtave fakte duke regjistruar shikimin, kohën dhe kuptimin me një webcam."></p></article>
+      </div></section>
+    </div>
+
+    <div class="page" id="methodology">
+      <header class="page-head"><span class="eyebrow" data-en="Methodology" data-al="Metodologjia">Methodology</span>
+        <h1 data-en="How the study is run" data-al="Si zhvillohet studimi">How the study is run</h1></header>
+      <section class="section"><div class="table-scroll"><table class="ab-table">
+        <thead><tr><th data-en="Field" data-al="Fusha">Field</th><th data-en="Version A" data-al="Versioni A">Version A</th><th data-en="Version B" data-al="Versioni B">Version B</th></tr></thead>
+        <tbody>
+          <tr><td data-en="Law" data-al="Drejtësi">Law</td><td data-en="Long clauses, Latin terms" data-al="Klauzola të gjata, terma latinë">Long clauses, Latin terms</td><td data-en="Plain language with headings" data-al="Gjuhë e thjeshtë me tituj">Plain language with headings</td></tr>
+          <tr><td data-en="Finance" data-al="Financë">Finance</td><td data-en="Dense number table" data-al="Tabelë numrash e ngjeshur">Dense number table</td><td data-en="Chart with highlighted figures" data-al="Grafik me shifra të theksuara">Chart with highlighted figures</td></tr>
+          <tr><td data-en="Business" data-al="Biznes">Business</td><td data-en="Long report" data-al="Raport i gjatë">Long report</td><td data-en="Summary with short sections" data-al="Përmbledhje me seksione të shkurtra">Summary with short sections</td></tr>
+          <tr><td data-en="Health" data-al="Mjekësi">Health</td><td data-en="Unstructured clinical note" data-al="Shënim klinik pa strukturë">Unstructured clinical note</td><td data-en="Structured clinical note" data-al="Shënim klinik i strukturuar">Structured clinical note</td></tr>
+          <tr><td data-en="Software" data-al="Informatikë">Software</td><td data-en="Deeply nested conditionals" data-al="Kushte të thella">Deeply nested conditionals</td><td data-en="Guard clauses" data-al="Guard clauses">Guard clauses</td></tr>
+        </tbody>
+      </table></div></section>
+      <section class="section"><div class="three-col">
+        <article class="card"><h3>H1</h3><p data-en="Dense formats cause longer fixations and more regressions." data-al="Formatet e ngjeshura shkaktojnë fiksim më të gjatë dhe më shumë regresione."></p></article>
+        <article class="card"><h3>H2</h3><p data-en="Optimised formats shorten time to first fixation and reduce errors." data-al="Formatet e optimizuara shkurtojnë kohën e gjetjes dhe reduktojnë gabimet."></p></article>
+        <article class="card"><h3>H3</h3><p data-en="Comprehension is higher for structured formats." data-al="Kuptimi është më i lartë për formatet e strukturuara."></p></article>
+      </div></section>
+    </div>
+
+    <div class="page" id="contact">
+      <header class="page-head"><span class="eyebrow" data-en="Contact" data-al="Kontakt">Contact</span>
+        <h1 data-en="Contact" data-al="Kontakt">Contact</h1></header>
+      <section class="section"><div class="two-col">
+        <article class="card"><h3 data-en="Author" data-al="Autori">Author</h3><p>Ardit Ceno</p><p style="margin-top:10px"><a class="btn btn-primary" href="mailto:arditceno82@gmail.com">arditceno82@gmail.com</a></p></article>
+        <article class="card"><h3>LinkedIn</h3><p data-en="Connect and follow the project" data-al="Lidhu dhe ndiq projektin">Connect and follow the project</p><p style="margin-top:10px"><a class="btn btn-ghost" href="https://www.linkedin.com/in/ardit-ceno-a674b5307/" target="_blank" rel="noopener">Ardit Ceno</a></p></article>
+      </div></section>
+    </div>
+  </section>
+
+  <!-- TEST -->
+  <section id="view-test" class="view hidden">
+    <div class="tabs">
+      <button class="tab active" data-view="test">Test</button>
+      <button class="tab" data-view="home">Home</button>
+      <button class="tab" data-view="admin">Admin</button>
+    </div>
+    <iframe id="testFrame" title="Test"></iframe>
+  </section>
+
+  <!-- ADMIN -->
+  <section id="view-admin" class="view hidden">
+    <div class="tabs">
+      <button class="tab active" data-view="admin">Admin</button>
+      <button class="tab" data-view="test">Test</button>
+      <button class="tab" data-view="home">Home</button>
+    </div>
+    <iframe id="adminFrame" title="Admin"></iframe>
+  </section>
+</main>
 
 <div id="site-footer"></div>
 <script src="js/site.js"></script>
+<script>
+  (function () {
+    function show(v) {
+      ["view-home", "view-test", "view-admin"].forEach(function (id) {
+        var el = document.getElementById(id);
+        if (el) el.classList.toggle("hidden", id !== "view-" + v);
+      });
+      if (v === "test") { var f = document.getElementById("testFrame"); if (!f.getAttribute("src")) f.setAttribute("src", "study.html?embed=1"); }
+      if (v === "admin") { var a = document.getElementById("adminFrame"); if (!a.getAttribute("src")) a.setAttribute("src", "admin.html?embed=1"); }
+      document.querySelectorAll(".tab").forEach(function (t) { t.classList.toggle("active", t.getAttribute("data-view") === v); });
+      if (v === "home") window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    window.__show = show;
+
+    document.addEventListener("click", function (e) {
+      var el = e.target.closest("[data-view]");
+      if (el) { e.preventDefault(); show(el.getAttribute("data-view")); return; }
+      var a = e.target.closest("a");
+      if (!a) return;
+      var href = a.getAttribute("href") || "";
+      if (/^study\.html/.test(href)) { e.preventDefault(); show("test"); return; }
+      if (/^admin\.html/.test(href)) { e.preventDefault(); show("admin"); return; }
+      if (/^(about|methodology|fields|contact)\.html$/.test(href)) {
+        e.preventDefault(); show("home");
+        var sec = document.getElementById(href.replace(".html", ""));
+        if (sec) sec.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  })();
+</script>
 </body>
 </html>
