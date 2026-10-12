@@ -682,20 +682,3 @@ section[id], [id] { scroll-margin-top: 96px; }      /* sticky nav offset for anc
 @media (max-width: 380px) {
   .fields-strip { grid-template-columns: 1fr; }
 }
-
-/* ============================================================
-   Cleanup: no gradients, no pill buttons, no animations
-   ============================================================ */
-.btn-primary { background: #004E72 !important; color: #F9F9F9 !important; box-shadow: none !important; filter: none !important; }
-.btn-primary:hover { background: #005f8a !important; }
-.langbtn.active { background: #004E72 !important; color: #F9F9F9 !important; }
-.badge { background: #004E72 !important; color: #F9F9F9 !important; border-color: #004E72 !important; }
-.grad { background: none !important; -webkit-background-clip: border-box !important; background-clip: border-box !important; color: #F9F9F9 !important; animation: none !important; }
-.bg-orbs, .orb { display: none !important; animation: none !important; }
-.reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
-.field-item .f-ico { transition: none !important; }
-.field-item:hover .f-ico { transform: none !important; box-shadow: none !important; }
-.scroll-hint { display: none !important; }
-*, *::before, *::after { animation-duration: 0s !important; }
-.pill, .nav .pill { border-radius: 12px !important; }
-html, body { background-attachment: scroll !important; }
