@@ -35,19 +35,6 @@ look and how well they understand. No video is recorded.
 fixation (ms), comprehension accuracy (%), reading and task time (s), NASA-TLX
 workload, and blink rate plus head orientation (exploratory).
 
-## Links
-
-Everything is one website with three tabs: **Home**, **Test** and **Admin**.
-
-| Page | Link |
-|------|------|
-| Website | https://arditceno.github.io/Neuro-Cognitive-Information-Design/ |
-| Participant test | https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html |
-| Admin panel | https://arditceno.github.io/Neuro-Cognitive-Information-Design/admin.html |
-| Privacy Policy | https://arditceno.github.io/Neuro-Cognitive-Information-Design/privacy.html |
-| Terms and Conditions | https://arditceno.github.io/Neuro-Cognitive-Information-Design/terms.html |
-
-Participants press **Start the study**. The researcher opens **Admin panel**.
 
 ## Quick start (local)
 
