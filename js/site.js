@@ -45,7 +45,10 @@
           '<button data-lang="al" class="langbtn">AL</button>' +
         '</div>' +
         '<a class="btn btn-primary pill" href="study.html">' +
-          '<span data-en="Start Study" data-al="Fillo Studimin">Start Study</span> <em>→</em>' +
+          '<span data-en="Start study" data-al="Fillo studimin">Start study</span>' +
+        '</a>' +
+        '<a class="btn btn-ghost pill" href="admin.html">' +
+          '<span data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</span>' +
         '</a>' +
         '<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
       '</div>';

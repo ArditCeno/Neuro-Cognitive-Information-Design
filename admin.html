@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NCID Admin</title>
+  <title>Admin | Neuro-Cognitive Information Design</title>
   <link rel="icon" href="assets/logo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,66 +11,62 @@
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/header.css" />
   <style>
-    .admin-wrap { max-width: 1240px; margin: 0 auto; padding: 24px clamp(14px, 4vw, 32px) 70px; }
+    .admin-wrap { max-width: 1280px; margin: 0 auto; padding: 24px clamp(14px, 4vw, 32px) 70px; }
     .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 16px 0; }
-    .stat { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 16px; backdrop-filter: blur(14px); }
+    .stat { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 16px; }
     .stat .lbl { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
     .stat .val { font-size: 24px; font-weight: 800; color: var(--accent2); }
     .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; margin: 14px 0; }
     .toolbar input { min-width: 260px; }
-    table.sessions { width: 100%; border-collapse: collapse; font-size: 13.5px; background: rgba(255,255,255,.05); border-radius: 14px; overflow: hidden; }
-    table.sessions th, table.sessions td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.1); text-align: left; white-space: nowrap; }
-    table.sessions th { color: var(--muted); background: rgba(255,255,255,.06); position: sticky; top: 0; }
-    table.sessions tr { cursor: pointer; }
-    table.sessions tr:hover td { background: rgba(255,255,255,.05); }
-    .tag { font-size: 11px; padding: 2px 8px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); }
-    .tag.ok { color: #3fa9d0; border-color: rgba(63,169,208,.4); }
-    .tag.bad { color: #FF6E42; border-color: rgba(255,110,66,.4); }
+    .profs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .prof { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 16px; }
+    .prof h3 { margin: 0 0 4px; font-size: 16px; }
+    .prof .sub { color: var(--muted); font-size: 12.5px; margin-bottom: 10px; }
+    .prof table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    .prof th, .prof td { border-bottom: 1px solid rgba(255,255,255,.1); padding: 5px 6px; text-align: left; }
+    .prof td.ans { color: var(--muted); }
+    .scatter { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 14px; overflow: auto; }
     .detail { position: fixed; inset: 0; background: rgba(0,0,0,.7); display: none; place-items: center; z-index: 100; }
     .detail.open { display: grid; }
     .detail-inner { background: #0d3247; border: 1px solid rgba(255,255,255,.14); border-radius: 16px; width: min(1000px, 94vw); max-height: 90vh; overflow: auto; padding: 18px; }
-    .mapbox { margin: 6px 0 4px; }
     .hashmap { width: 100%; border-collapse: collapse; font-size: 12px; }
     .hashmap th, .hashmap td { border-bottom: 1px solid rgba(255,255,255,.1); padding: 5px 8px; text-align: left; }
     .hashmap td:first-child { color: var(--accent2); }
+    .heat { height: 320px; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); background: #0b1a26; }
     .hidden { display: none !important; }
     .admin-note { color: var(--muted); font-size: 12.5px; }
-    .heat { height: 320px; border-radius: 12px; border: 1px solid rgba(255,255,255,.14); background: #0b1a26; }
+    h2.sec { margin: 28px 0 6px; }
   </style>
 </head>
 <body>
   <div id="site-header"></div>
 
   <main class="admin-wrap">
-    <section id="loginCard" class="card">
-      <h2>Researcher login</h2>
-      <p class="admin-note">Only the project owner's account is allowed.</p>
-      <div class="toolbar">
-        <label class="field" style="flex:1"><span>Email</span><input type="email" id="email" placeholder="your email" /></label>
-        <label class="field" style="flex:1"><span>Password</span><input type="password" id="password" placeholder="password" /></label>
-        <button id="btnLogin" class="btn btn-primary">Log in</button>
-      </div>
-      <p id="loginMsg" class="msg"></p>
-    </section>
+    <div class="toolbar">
+      <label class="field" style="flex:1"><span>Search by UUID / id_anonim / payload</span>
+        <input type="text" id="q" placeholder="2cac6e7c-… or USR_87220" /></label>
+      <button id="btnFind" class="btn btn-primary">Find by UUID</button>
+      <button id="btnReload" class="btn btn-ghost">Refresh</button>
+      <button id="btnCsv" class="btn btn-ghost">Export CSV</button>
+    </div>
+    <p id="panelMsg" class="admin-note"></p>
+    <div id="stats" class="grid-stats hidden"></div>
 
-    <section id="panel" class="hidden">
-      <div class="toolbar">
-        <label class="field" style="flex:1"><span>Search by UUID / id_anonim / payload</span>
-          <input type="text" id="q" placeholder="2cac6e7c-… or USR_87220" /></label>
-        <button id="btnFind" class="btn btn-primary">Find by UUID</button>
-        <button id="btnReload" class="btn btn-ghost">Refresh</button>
-        <button id="btnCsv" class="btn btn-ghost">Export CSV</button>
-        <button id="btnLogout" class="btn btn-ghost">Log out</button>
-      </div>
-      <div id="stats" class="grid-stats hidden"></div>
-      <div style="overflow:auto; max-height:60vh">
-        <table class="sessions">
-          <thead><tr><th>id (uuid)</th><th>id_anonim</th><th>kind</th><th>field</th><th>created_at</th><th>calibration</th><th>accuracy %</th></tr></thead>
-          <tbody id="rows"></tbody>
-        </table>
-      </div>
-      <p id="panelMsg" class="admin-note"></p>
-    </section>
+    <h2 class="sec">By profession</h2>
+    <p class="admin-note">Sessions grouped by the participant's profession, with their answers.</p>
+    <div id="profs" class="profs"></div>
+
+    <h2 class="sec">Map: tests done (X) vs comprehension (Y)</h2>
+    <p class="admin-note">Each point is a profession. X = number of completed tests, Y = average comprehension (%).</p>
+    <div id="scatter" class="scatter"></div>
+
+    <h2 class="sec">All records</h2>
+    <div style="overflow:auto; max-height:50vh">
+      <table class="prof" style="width:100%">
+        <thead><tr><th>id (uuid)</th><th>id_anonim</th><th>profession</th><th>kind</th><th>created_at</th><th>accuracy %</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
   </main>
 
   <div class="detail" id="detail">
@@ -80,9 +76,9 @@
         <button id="btnCloseDetail" class="btn btn-ghost btn-sm">Close</button>
       </div>
       <h3 style="margin:8px 0">Node map</h3>
-      <div id="detailNodeMap" class="mapbox"></div>
+      <div id="detailNodeMap"></div>
       <h3 style="margin:10px 0 6px">Hashmap</h3>
-      <div id="detailHashmap" class="mapbox"></div>
+      <div id="detailHashmap"></div>
       <h3 style="margin:10px 0 6px">Gaze heatmap</h3>
       <div id="detailHeat" class="heat"></div>
       <h3 style="margin:10px 0 6px">Raw JSON</h3>
@@ -96,9 +92,9 @@
   <script src="js/config.local.js" onerror="void 0"></script>
   <script type="module">
     import { CONFIG } from "./js/config.js";
-    import { renderNodeMap, renderHashmap } from "./js/visualize.js";
-    window.__cfg = { supabase: CONFIG.storage.supabase, email: CONFIG.email.to };
-    window.__viz = { renderNodeMap, renderHashmap };
+    import { renderNodeMap, renderHashmap, renderScatter } from "./js/visualize.js";
+    window.__cfg = { supabase: CONFIG.storage.supabase, fields: CONFIG.fields };
+    window.__viz = { renderNodeMap, renderHashmap, renderScatter };
   </script>
   <script src="js/admin.js"></script>
 </body>

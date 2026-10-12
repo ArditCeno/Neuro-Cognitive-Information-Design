@@ -1,7 +1,7 @@
 /*
- * NCID Admin — researcher dashboard.
- * Login restricted to the owner's email (Supabase Auth), search by UUID,
- * full session info + node map + hashmap + gaze heatmap.
+ * NCID Admin — researcher dashboard (no login for now).
+ * Reads sessions directly from Supabase, groups them by profession,
+ * shows answers, a profession map (tests vs comprehension), heatmaps.
  *
  * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
@@ -9,109 +9,131 @@
   var $ = function (id) { return document.getElementById(id); };
   var sb = null;
   var rows = [];
-  var allowed = "arditceno82@gmail.com";
+  var fields = [];
 
-  function cfg() { return window.__cfg || { supabase: null, email: allowed }; }
-  function note(el, t) { var e = $(el); if (e) e.textContent = t; }
+  function cfg() { return window.__cfg || { supabase: null, fields: [] }; }
+  function note(t) { var e = $("panelMsg"); if (e) e.textContent = t; }
   function parse(r) { var p = r.payload; if (typeof p === "string") { try { p = JSON.parse(p); } catch (e) { p = {}; } } return p || {}; }
+  function fieldName(id) { for (var i = 0; i < fields.length; i++) if (fields[i].id === id) return fields[i].name.en; return id || "unknown"; }
+  function acc(r) { var p = parse(r); var m = (p.modules || []).map(function (x) { return x.trials || []; }); var all = [].concat.apply([], m); if (!all.length) return null; var c = 0, n = 0;
+    all.forEach(function (t) { if (t.accuracy_score_pct != null) { c += t.accuracy_score_pct; n++; } }); return n ? Math.round(c / n) : null; }
 
   function init() {
     var c = cfg();
-    allowed = (c.email || allowed);
-    $("email").value = allowed;
-    if (!window.supabase) { note("loginMsg", "supabase-js not loaded"); return; }
-    if (!c.supabase || !c.supabase.url) { note("loginMsg", "Supabase not configured."); return; }
+    fields = c.fields || [];
+    if (!window.supabase) { note("supabase-js not loaded"); return; }
+    if (!c.supabase || !c.supabase.url) { note("Supabase not configured."); return; }
     sb = window.supabase.createClient(c.supabase.url, c.supabase.anonKey);
 
-    sb.auth.getSession().then(function (res) {
-      if (res && res.data && res.data.session) enterPanel();
-    });
-
-    $("btnLogin").addEventListener("click", login);
-    $("btnLogout").addEventListener("click", logout);
     $("btnReload").addEventListener("click", load);
     $("btnFind").addEventListener("click", find);
-    $("q").addEventListener("input", render);
+    $("q").addEventListener("input", renderRows);
     $("q").addEventListener("keydown", function (e) { if (e.key === "Enter") find(); });
     $("btnCsv").addEventListener("click", csv);
     $("btnCloseDetail").addEventListener("click", function () { $("detail").classList.remove("open"); });
     $("detail").addEventListener("click", function (e) { if (e.target.id === "detail") $("detail").classList.remove("open"); });
+    load();
   }
-
-  async function login() {
-    var email = $("email").value.trim().toLowerCase();
-    var password = $("password").value;
-    if (email !== allowed.toLowerCase()) { note("loginMsg", "This account is not allowed here."); return; }
-    note("loginMsg", "Signing in…");
-    var res = await sb.auth.signInWithPassword({ email: email, password: password });
-    if (res.error) { note("loginMsg", "Error: " + res.error.message); return; }
-    enterPanel();
-  }
-  async function logout() { try { await sb.auth.signOut(); } catch (e) {} location.reload(); }
-
-  function enterPanel() { $("loginCard").classList.add("hidden"); $("panel").classList.remove("hidden"); load(); }
 
   async function load() {
-    note("panelMsg", "Loading…");
-    var res = await sb.from("sessions").select("id,id_anonim,payload,created_at").order("created_at", { ascending: false }).limit(500);
-    if (res.error) { note("panelMsg", "Error: " + res.error.message); return; }
+    note("Loading…");
+    var res = await sb.from("sessions").select("id,id_anonim,payload,created_at").order("created_at", { ascending: false }).limit(1000);
+    if (res.error) { note("Error: " + res.error.message); return; }
     rows = (res.data || []).map(function (r) { return { id: r.id, id_anonim: r.id_anonim, created_at: r.created_at, payload: parse(r) }; });
-    render(); stats();
-    note("panelMsg", rows.length + " records");
+    note(rows.length + " records");
+    renderStats(); renderProfs(); renderScatter(); renderRows();
   }
 
   async function find() {
     var q = $("q").value.trim();
     if (!q) return;
     var isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q);
-    if (!isUuid) { render(); return; }
-    note("panelMsg", "Searching by UUID…");
+    if (!isUuid) { renderRows(); return; }
+    note("Searching by UUID…");
     var res = await sb.from("sessions").select("id,id_anonim,payload,created_at").eq("id", q).limit(1);
-    if (res.error) { note("panelMsg", "Error: " + res.error.message); return; }
-    if (res.data && res.data[0]) { showDetail({ id: res.data[0].id, id_anonim: res.data[0].id_anonim, created_at: res.data[0].created_at, payload: parse(res.data[0]) }); note("panelMsg", "Found 1"); }
-    else note("panelMsg", "Not found");
+    if (res.error) { note("Error: " + res.error.message); return; }
+    if (res.data && res.data[0]) { showDetail({ id: res.data[0].id, id_anonim: res.data[0].id_anonim, created_at: res.data[0].created_at, payload: parse(res.data[0]) }); note("Found 1"); }
+    else note("Not found");
   }
 
   function filtered() {
     var q = $("q").value.trim().toLowerCase();
     if (!q) return rows;
-    return rows.filter(function (r) {
-      return [r.id, r.id_anonim, JSON.stringify(r.payload)].join(" ").toLowerCase().indexOf(q) >= 0;
+    return rows.filter(function (r) { return [r.id, r.id_anonim, JSON.stringify(r.payload)].join(" ").toLowerCase().indexOf(q) >= 0; });
+  }
+
+  function grouped() {
+    var g = {};
+    rows.forEach(function (r) {
+      var p = r.payload || {};
+      var fid = (p.participant && p.participant.fusha) || (p.modules && p.modules[0] && p.modules[0].fusha) || "unknown";
+      (g[fid] = g[fid] || []).push(r);
+    });
+    return g;
+  }
+
+  function renderStats() {
+    var g = grouped();
+    var parts = {}; var full = 0;
+    rows.forEach(function (r) { parts[r.id_anonim] = 1; var p = r.payload || {}; if (p.kind === "session" || (p.modules && p.modules.length)) full++; });
+    $("stats").classList.remove("hidden");
+    $("stats").innerHTML =
+      '<div class="stat"><div class="lbl">Records</div><div class="val">' + rows.length + '</div></div>' +
+      '<div class="stat"><div class="lbl">Participants</div><div class="val">' + Object.keys(parts).length + '</div></div>' +
+      '<div class="stat"><div class="lbl">Completed tests</div><div class="val">' + full + '</div></div>' +
+      '<div class="stat"><div class="lbl">Professions</div><div class="val">' + Object.keys(g).length + '</div></div>';
+  }
+
+  function renderProfs() {
+    var g = grouped();
+    var box = $("profs"); box.innerHTML = "";
+    Object.keys(g).forEach(function (fid) {
+      var list = g[fid];
+      var sessions = list.filter(function (r) { var p = r.payload || {}; return p.kind === "session" || (p.modules && p.modules.length); });
+      var accs = sessions.map(acc).filter(function (a) { return a != null; });
+      var avg = accs.length ? Math.round(accs.reduce(function (a, b) { return a + b; }, 0) / accs.length) : 0;
+      var card = document.createElement("div");
+      card.className = "prof";
+      var rowsHtml = list.slice(0, 40).map(function (r) {
+        var p = r.payload || {};
+        var ans = [];
+        (p.modules || []).forEach(function (m) {
+          (m.trials || []).forEach(function (t) {
+            var chosen = (t.response || []).map(function (x) { return x.zgjedhja; }).filter(Boolean).join(" / ");
+            if (chosen) ans.push((m.niveli ? m.niveli + " " : "") + t.versioni + ": " + chosen);
+          });
+        });
+        return '<tr><td>' + (r.id_anonim || "") + '</td><td>' + (p.kind || "session") + '</td><td>' + (acc(r) == null ? "-" : acc(r)) + '</td><td class="ans">' + (ans.join(" | ").slice(0, 140) || "-") + '</td></tr>';
+      }).join("");
+      card.innerHTML = '<h3>' + fieldName(fid) + '</h3><div class="sub">' + sessions.length + ' completed | avg comprehension ' + avg + '%</div>' +
+        '<table><thead><tr><th>ID</th><th>kind</th><th>%</th><th>answers</th></tr></thead><tbody>' + rowsHtml + '</tbody></table>';
+      box.appendChild(card);
     });
   }
 
-  function render() {
+  function renderScatter() {
+    var g = grouped();
+    var points = Object.keys(g).map(function (fid) {
+      var sessions = g[fid].filter(function (r) { var p = r.payload || {}; return p.kind === "session" || (p.modules && p.modules.length); });
+      var accs = sessions.map(acc).filter(function (a) { return a != null; });
+      var avg = accs.length ? Math.round(accs.reduce(function (a, b) { return a + b; }, 0) / accs.length) : 0;
+      return { label: fieldName(fid), x: sessions.length, y: avg };
+    }).filter(function (p) { return p.x > 0; });
+    if (!points.length) { $("scatter").textContent = "No completed tests yet."; return; }
+    if (window.__viz && window.__viz.renderScatter) window.__viz.renderScatter($("scatter"), points);
+  }
+
+  function renderRows() {
     var tbody = $("rows"); tbody.innerHTML = "";
-    filtered().slice(0, 300).forEach(function (r) {
+    filtered().slice(0, 500).forEach(function (r) {
       var p = r.payload || {};
-      var kind = p.kind || ((p.modules && p.modules.length) ? "session" : "");
-      var field = (p.participant && p.participant.fusha) || (p.modules && p.modules[0] && p.modules[0].fusha) || "";
-      var calib = p.session && p.session.kalibrimi_px;
-      var acc = p.quiz_results && p.quiz_results.accuracy_score_pct;
-      var calTag = (calib == null) ? '<span class="tag">—</span>' : (calib < 150 ? '<span class="tag ok">' + calib + '</span>' : '<span class="tag bad">' + calib + '</span>');
+      var fid = (p.participant && p.participant.fusha) || (p.modules && p.modules[0] && p.modules[0].fusha) || "";
       var tr = document.createElement("tr");
-      tr.innerHTML = "<td>" + (r.id || "") + "</td><td>" + (r.id_anonim || "") + "</td><td>" + kind + "</td><td>" + field +
-        "</td><td>" + (r.created_at ? new Date(r.created_at).toLocaleString() : "—") + "</td><td>" + calTag + "</td><td>" + (acc == null ? "—" : acc) + "</td>";
+      tr.innerHTML = "<td>" + (r.id || "") + "</td><td>" + (r.id_anonim || "") + "</td><td>" + fieldName(fid) + "</td><td>" + (p.kind || "session") +
+        "</td><td>" + (r.created_at ? new Date(r.created_at).toLocaleString() : "-") + "</td><td>" + (acc(r) == null ? "-" : acc(r)) + "</td>";
       tr.addEventListener("click", function () { showDetail(r); });
       tbody.appendChild(tr);
     });
-  }
-
-  function stats() {
-    var total = rows.length;
-    var parts = {}; var full = 0; var bad = 0;
-    rows.forEach(function (r) {
-      parts[r.id_anonim] = 1;
-      var p = r.payload || {};
-      if (p.kind === "session" || (p.modules && p.modules.length)) full++;
-      if (p.session && p.session.kalibrimi_px >= 150) bad++;
-    });
-    $("stats").classList.remove("hidden");
-    $("stats").innerHTML =
-      '<div class="stat"><div class="lbl">Records</div><div class="val">' + total + '</div></div>' +
-      '<div class="stat"><div class="lbl">Participants</div><div class="val">' + Object.keys(parts).length + '</div></div>' +
-      '<div class="stat"><div class="lbl">Full sessions</div><div class="val">' + full + '</div></div>' +
-      '<div class="stat"><div class="lbl">Weak calibration</div><div class="val">' + bad + '</div></div>';
   }
 
   function showDetail(r) {
@@ -148,22 +170,13 @@
   }
 
   function csv() {
-    var cols = ["id", "id_anonim", "created_at", "kind", "field", "calibration_px", "accuracy_pct"];
-    var out = filtered().map(function (r) {
-      var p = r.payload || {};
-      return {
-        id: r.id, id_anonim: r.id_anonim, created_at: r.created_at,
-        kind: p.kind || "", field: (p.participant && p.participant.fusha) || "",
-        calibration_px: (p.session && p.session.kalibrimi_px) || "",
-        accuracy_pct: (p.quiz_results && p.quiz_results.accuracy_score_pct) || ""
-      };
-    });
-    var csv = [cols.join(",")].concat(out.map(function (o) {
-      return cols.map(function (c) { return '"' + String(o[c] == null ? "" : o[c]).replace(/"/g, '""') + '"'; }).join(",");
-    })).join("\n");
-    var a = document.createElement("a");
-    a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" }));
-    a.download = "ncid_sessions.csv"; a.click();
+    var cols = ["id", "id_anonim", "profession", "kind", "created_at", "accuracy_pct"];
+    var out = filtered().map(function (r) { var p = r.payload || {}; return {
+      id: r.id, id_anonim: r.id_anonim,
+      profession: fieldName((p.participant && p.participant.fusha) || ""),
+      kind: p.kind || "", created_at: r.created_at, accuracy_pct: (acc(r) == null ? "" : acc(r)) }; });
+    var csv = [cols.join(",")].concat(out.map(function (o) { return cols.map(function (c) { return '"' + String(o[c] == null ? "" : o[c]).replace(/"/g, '""') + '"'; }).join(","); })).join("\n");
+    var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" })); a.download = "ncid_sessions.csv"; a.click();
   }
 
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();

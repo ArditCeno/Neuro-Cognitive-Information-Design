@@ -81,3 +81,40 @@ export function renderHashmap(container, summary) {
 function esc(s) {
   return String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 }
+
+/** Scatter map: x = tests done, y = comprehension (%). One point per profession. */
+export function renderScatter(container, points, opts) {
+  opts = opts || {};
+  const W = 940, H = 440, padL = 56, padB = 46, padT = 20, padR = 24;
+  const maxX = Math.max(1, ...points.map((p) => p.x));
+  const maxY = 100;
+  const sx = (v) => padL + (v / maxX) * (W - padL - padR);
+  const sy = (v) => H - padB - (v / maxY) * (H - padT - padB);
+
+  let grid = "";
+  for (let i = 0; i <= 5; i++) {
+    const gx = padL + (i / 5) * (W - padL - padR);
+    const gy = H - padB - (i / 5) * (H - padT - padB);
+    grid += `<line x1="${gx}" y1="${padT}" x2="${gx}" y2="${H - padB}" stroke="rgba(255,255,255,.08)"/>`;
+    grid += `<line x1="${padL}" y1="${gy}" x2="${W - padR}" y2="${gy}" stroke="rgba(255,255,255,.08)"/>`;
+  }
+  const dots = points.map((p, i) => {
+    const cx = sx(p.x), cy = sy(p.y);
+    const label = esc(String(p.label)).slice(0, 20);
+    const anchor = cx > W - 140 ? "end" : "start";
+    const lx = cx > W - 140 ? cx - 10 : cx + 10;
+    return `<g><circle cx="${cx}" cy="${cy}" r="6" fill="#FF6E42" stroke="#F9F9F9" stroke-width="1"/>` +
+      `<text x="${lx}" y="${cy + 4}" text-anchor="${anchor}" fill="#F9F9F9" font-size="11" font-family="Outfit,sans-serif">${label} (${p.x})</text></g>`;
+  }).join("");
+
+  const svg =
+    `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" preserveAspectRatio="xMidYMid meet">` +
+    grid +
+    `<line x1="${padL}" y1="${H - padB}" x2="${W - padR}" y2="${H - padB}" stroke="rgba(255,255,255,.4)"/>` +
+    `<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H - padB}" stroke="rgba(255,255,255,.4)"/>` +
+    dots +
+    `<text x="${W / 2}" y="${H - 12}" text-anchor="middle" fill="#9fb8c6" font-size="12" font-family="Outfit,sans-serif">Tests done</text>` +
+    `<text x="16" y="${H / 2}" text-anchor="middle" fill="#9fb8c6" font-size="12" font-family="Outfit,sans-serif" transform="rotate(-90 16 ${H / 2})">Comprehension (%)</text>` +
+    `</svg>`;
+  container.innerHTML = svg;
+}
