@@ -40,8 +40,8 @@
              data-al="Pjesëmarrësit lexojnë dy versione të të njëjtave dokumente në drejtësi, financë, biznes, mjekësi dhe informatikë. Shikimi, koha e leximit dhe kuptimi maten me një webcam të zakonshëm.">
           </p>
           <div class="hero2-cta">
-            <a class="btn btn-primary btn-lg" href="study.html" data-view="test"><span data-en="Start the study" data-al="Fillo studimin">Start the study</span></a>
-            <a class="btn btn-ghost btn-lg" href="admin.html" data-view="admin"><span data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</span></a>
+            <a class="btn btn-primary btn-lg" href="https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html" data-view="test"><span data-en="Start the study" data-al="Fillo studimin">Start the study</span></a>
+            <a class="btn btn-ghost btn-lg" href="https://arditceno.github.io/Neuro-Cognitive-Information-Design/admin.html" data-view="admin"><span data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</span></a>
           </div>
         </div>
       </div>
@@ -152,8 +152,8 @@
       var a = e.target.closest("a");
       if (!a) return;
       var href = a.getAttribute("href") || "";
-      if (/^study\.html/.test(href)) { e.preventDefault(); show("test"); return; }
-      if (/^admin\.html/.test(href)) { e.preventDefault(); show("admin"); return; }
+      if (/study\.html/.test(href)) { e.preventDefault(); show("test"); return; }
+      if (/admin\.html/.test(href)) { e.preventDefault(); show("admin"); return; }
       if (/^(about|methodology|fields|contact)\.html$/.test(href)) {
         e.preventDefault(); show("home");
         var sec = document.getElementById(href.replace(".html", ""));
