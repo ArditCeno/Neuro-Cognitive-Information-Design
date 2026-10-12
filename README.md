@@ -2,7 +2,7 @@
 
 # Neuro-Cognitive Information Design
 
-**The official web platform for NCID — an eye-tracking and biometric A/B study measuring digital readability across law, finance, business, health and software.**
+**The official web platform for NCID - an eye-tracking and biometric A/B study measuring digital readability across law, finance, business, health and software.**
 
 <br>
 
@@ -22,8 +22,8 @@
 ---
 
 **NCID** replaces subjective judgement ("I like this layout") with objective
-biometric evidence. Each participant reads two versions of the same document —
-traditional (A) and optimised (B) — while gaze, timing and comprehension are
+biometric evidence. Each participant reads two versions of the same document -
+traditional (A) and optimised (B) - while gaze, timing and comprehension are
 measured, using only a webcam.
 
 - **Participant test:** [`/study.html`](https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html)
@@ -70,21 +70,21 @@ analysis/    Python: clean → metrics → stats → figures
 
 ## Privacy
 
-No video is stored — only gaze `(x, y, t)` and aggregate biometrics, tied to an
+No video is stored - only gaze `(x, y, t)` and aggregate biometrics, tied to an
 anonymous ID. Local-first by default; participants may withdraw at any time.
 Secrets and participant data are gitignored.
 
 ## Deploy & collect
 
-1. **Pages** — Settings → Pages → Source: **GitHub Actions** (workflow included).
-2. **Database** — Supabase (EU) table:
+1. **Pages** - Settings → Pages → Source: **GitHub Actions** (workflow included).
+2. **Database** - Supabase (EU) table:
    ```sql
    create table sessions (
      id uuid primary key default gen_random_uuid(),
      id_anonim text not null, payload jsonb not null,
      created_at timestamptz not null default now());
    ```
-3. **Secrets** — add `SUPABASE_URL` + `SUPABASE_ANON_KEY` (direct, recommended) or
+3. **Secrets** - add `SUPABASE_URL` + `SUPABASE_ANON_KEY` (direct, recommended) or
    deploy `backend/` and add `BACKEND_URL`. The workflow injects them at build
    time; nothing secret is committed.
 
@@ -94,6 +94,6 @@ Details: [`backend/README.md`](backend/README.md) · [`analysis/README.md`](anal
 
 <div align="center">
 
-**© 2026 Ardit Ceno — All rights reserved.** · [arditceno1@gmail.com](mailto:arditceno1@gmail.com) · [LinkedIn](https://www.linkedin.com/in/ardit-ceno-a674b5307/)
+**© 2026 Ardit Ceno - All rights reserved.** · [arditceno1@gmail.com](mailto:arditceno1@gmail.com) · [LinkedIn](https://www.linkedin.com/in/ardit-ceno-a674b5307/)
 
 </div>

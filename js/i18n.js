@@ -33,7 +33,7 @@ export const I18N = {
     reg_age: "Mosha",
     reg_profession: "Profesioni / Dega e studimit",
     reg_expertise: "Niveli i ekspertizës",
-    reg_choose: "— Zgjidh —",
+    reg_choose: "- Zgjidh -",
     reg_required: "Plotësoni moshat dhe fushat e detyrueshme.",
 
     setup_title: "Përgatitja e pajisjes",
@@ -122,7 +122,7 @@ export const I18N = {
     reg_age: "Age",
     reg_profession: "Profession / Field of study",
     reg_expertise: "Expertise level",
-    reg_choose: "— Choose —",
+    reg_choose: "Choose",
     reg_required: "Please fill in the required fields.",
 
     setup_title: "Device setup",
