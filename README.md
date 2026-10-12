@@ -1,8 +1,14 @@
 <div align="center">
 
+<img src="https://arditceno.github.io/Neuro-Cognitive-Information-Design/assets/logo.png" alt="NCID" height="90" />
+
 # Neuro-Cognitive Information Design
 
 **An eye-tracking and biometric study of document readability across law, finance, business, health and software.**
+
+<a href="https://arditceno.github.io/Neuro-Cognitive-Information-Design/"><b>https://arditceno.github.io/Neuro-Cognitive-Information-Design/</b></a>
+
+<br>
 
 [![Deploy to GitHub Pages](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/deploy-pages.yml)
 [![CI](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/ci.yml/badge.svg)](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/ci.yml)
