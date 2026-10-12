@@ -143,14 +143,16 @@ function onRegister(e) {
 
   const field = CONFIG.fields.find((f) => f.id === profession) || CONFIG.fields[0];
   const professionName = tr(field.name);
+  const name = ($("regName") ? $("regName").value.trim() : "");
 
   const id = anonId();
   state.fieldId = field.id;
   state.participant = {
     id_anonim: id,
+    emri_mbiemer: name || "",
     profesioni: professionName,
     fusha: field.id,
-    niveli_i_ekspertizës: tr(CONFIG.expertiseLevels.find((l) => l.id === expertise)),
+    "niveli_i_ekspertizës": tr(CONFIG.expertiseLevels.find((l) => l.id === expertise)),
     mosha: age
   };
   state.startedAt = now();

@@ -124,6 +124,7 @@ export function emailTableHTML(summary) {
   const p = summary.participant || {};
   const q = summary.quiz_results || {};
   const head = [
+    ["Name and surname", p.emri_mbiemer || p["emër_mbiemër"] || ""],
     ["ID", p.id_anonim || ""],
     ["Profession", p.profesioni || ""],
     ["Expertise", p["niveli_i_ekspertizës"] || ""],
