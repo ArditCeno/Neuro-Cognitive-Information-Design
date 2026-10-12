@@ -730,3 +730,22 @@ body { overflow-x: hidden; }
   .fields-strip { min-height: 150px; align-content: center; margin-top: 4px; }
   .foot { padding-inline: 12px; }
 }
+
+/* ============================================================
+   First page fills the screen (single rule, overrides earlier ones)
+   ============================================================ */
+:root { --hdr: 76px; }
+.hero-home {
+  min-height: calc(100vh - var(--hdr));
+  min-height: calc(100dvh - var(--hdr));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  padding-block: 0;
+}
+.hero-home .hero2 { width: 100%; }
+@media (max-width: 640px) {
+  :root { --hdr: 62px; }
+  .hero-home { min-height: calc(100vh - var(--hdr)); min-height: calc(100dvh - var(--hdr)); }
+}
