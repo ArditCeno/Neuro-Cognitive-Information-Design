@@ -161,8 +161,8 @@ function onRegister(e) {
     s.session = { session_number: state.sessionNumber, gjuha: getLang(), metoda: state.mock ? "mock" : "eyetracking" };
   });
   Storage.addEvent("registration", { id });
-  // keep the registration even if the participant does not finish
-  submitAndQueue({
+  // keep the registration even if the participant does not finish (saved + emailed)
+  const regSnapshot = {
     kind: "registration",
     participant: state.participant,
     session: Storage.read().session,
@@ -171,7 +171,9 @@ function onRegister(e) {
     quiz_results: {},
     gaze: [],
     exported_at: new Date().toISOString()
-  }).catch(() => {});
+  };
+  submitAndQueue(regSnapshot).catch(() => {});
+  if (emailConfigured()) emailReport(regSnapshot).catch(() => {});
   showStage("setup");
 }
 
