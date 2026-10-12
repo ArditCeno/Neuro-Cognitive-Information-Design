@@ -4,8 +4,6 @@
 
 **An eye-tracking and biometric study of document readability across law, finance, business, health and software.**
 
-<br>
-
 [![Deploy to GitHub Pages](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/deploy-pages.yml)
 [![CI](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/ci.yml/badge.svg)](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/ci.yml)
 
@@ -20,26 +18,30 @@
 
 ---
 
+## The study in one paragraph
+
+Each participant chooses their profession and reads the same documents in two
+versions: a traditional one (A) and an optimised one (B), at three difficulty
+levels (very easy, medium, hard). While they read, the study records where they
+look and how well they understand. No video is recorded.
+
+**Measured:** fixation duration (ms), saccadic regressions, time to first
+fixation (ms), comprehension accuracy (%), reading and task time (s), NASA-TLX
+workload, and blink rate plus head orientation (exploratory).
+
 ## Links
 
-Base URL: `https://arditceno.github.io/Neuro-Cognitive-Information-Design/`
+Everything is one website with three tabs: **Home**, **Test** and **Admin**.
 
-## Overview
+| Page | Link |
+|------|------|
+| Website | https://arditceno.github.io/Neuro-Cognitive-Information-Design/ |
+| Participant test | https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html |
+| Admin panel | https://arditceno.github.io/Neuro-Cognitive-Information-Design/admin.html |
+| Privacy Policy | https://arditceno.github.io/Neuro-Cognitive-Information-Design/privacy.html |
+| Terms and Conditions | https://arditceno.github.io/Neuro-Cognitive-Information-Design/terms.html |
 
-Each participant picks their profession and reads the same documents in two
-versions: a traditional one (A) and an optimised one (B), at three difficulty
-levels (very easy, medium, hard). While they read, the study records:
-
-- fixation duration (ms)
-- saccadic regressions (re-reads)
-- time to first fixation (ms)
-- comprehension accuracy (%)
-- task and reading time (s)
-- NASA-TLX (perceived workload)
-- blink rate and head orientation (exploratory)
-
-No video is recorded. Only gaze coordinates and timings are stored, linked to an
-anonymous ID.
+Participants press **Start the study**. The researcher opens **Admin panel**.
 
 ## Quick start (local)
 
@@ -47,33 +49,47 @@ anonymous ID.
 npx serve .
 ```
 
-Open `http://localhost:3000/`. The camera requires `http(s)`, not `file://`.
-Use Chrome or Edge. Add `?mock=1` to `study.html` to run with a simulated gaze
-trace (no webcam).
+Open `http://localhost:3000/`. The camera works on `http` or `https`, not from a
+local file. Use Chrome or Edge. Add `?mock=1` to `study.html` for a simulated
+gaze run (no webcam).
 
-## Structure
+## The researcher panel
 
-```
-index / about / methodology / fields / contact .html   public pages
-study.html                                             participant test
-admin.html                                             researcher panel
-privacy.html · terms.html                              legal pages
-materials/          A/B documents for each profession and level
-js/                 app, config, eye-tracking, aoi, schema, storage, visuals
-css/                landing, header, main, materials
-mediapipe/          FaceMesh assets (WebGazer)
-vendor/             heatmap.js, jsPDF, emailjs, supabase-js (local copies)
-backend/            Spring Boot API (Java 17) into Supabase or PostgreSQL
-analysis/           Python: fetch, clean, metrics, stats, figures
-```
+Open the Admin tab. It reads the sessions from Supabase and shows:
 
-## Data collection
+- a summary per profession, with each participant's answers
+- a **map**: X = tests completed, Y = average comprehension (%), one point per profession
+- full session view: node map, hashmap and a gaze **heatmap**
+- search by UUID, and CSV export
 
-- Sessions are stored in **Supabase** (PostgreSQL).
-- The admin panel reads them directly, grouped by profession, with a map of
-  tests versus comprehension and a gaze heatmap per session.
-- Optional: the Spring Boot backend (`backend/`) can be deployed for API access
-  and email delivery.
+Results refresh live (Realtime, with a 15 second fallback).
+
+## Email the results as a table
+
+Every registration and every finished session can be emailed to
+`arditceno82@gmail.com` as an HTML table, using a free **Google Apps Script**
+(no third-party account).
+
+The email contains **Name and surname, ID, Profession, Expertise, Age**, the
+results per level and version, and every answer.
+
+Full code and steps: [`email-setup/`](email-setup) (see `Code.gs` and its README).
+
+Short version:
+
+1. Open https://script.google.com, **New project**, paste the contents of
+   [`email-setup/Code.gs`](email-setup/Code.gs).
+2. **Deploy, New deployment, Web app**, Execute as **Me**, access **Anyone**.
+3. Copy the URL that ends with `/exec`.
+4. Add it in GitHub as the secret **`SUBMISSION_URL`** (Settings, Secrets and
+   variables, Actions). The deploy workflow injects it. For local use, put it in
+   `js/config.local.js`.
+
+## Data and privacy
+
+Sessions are stored in **Supabase** (PostgreSQL). No video is stored, only gaze
+coordinates and timings, linked to an anonymous ID. See
+[privacy.html](privacy.html) and [terms.html](terms.html).
 
 Required Supabase policy (SQL editor):
 
@@ -86,13 +102,33 @@ create policy "anon insert" on sessions for insert to anon with check (true);
 create policy "temp read" on sessions for select to anon using (true);
 ```
 
+## Project layout
+
+```
+index.html              one-page site: Home, Test and Admin tabs
+study.html              participant test
+admin.html              researcher panel with live results
+privacy.html terms.html legal pages
+about / methodology / fields / contact .html   public pages
+materials/    A and B documents for each profession and level
+js/           application, config, eye-tracking, storage, visuals, report
+css/          landing, header, main, materials
+mediapipe/    FaceMesh assets for WebGazer
+vendor/       heatmap.js, jsPDF, emailjs, supabase-js (local copies)
+backend/      Spring Boot API (optional)
+analysis/     Python: fetch, clean, metrics, stats, figures
+email-setup/  Google Apps Script to email results
+```
+
 ## Deployment
 
-- Hosting: GitHub Pages, published automatically by `.github/workflows/deploy-pages.yml`
-  on every push to `main` (Settings -> Pages -> Source: GitHub Actions).
+- Hosting: GitHub Pages. Publish with `.github/workflows/deploy-pages.yml` on
+  every push to `main`. In Settings, Pages, choose **Deploy from a branch**
+  (branch `main`, folder `/`) or **GitHub Actions**. On a free account the
+  repository must be public.
 - Continuous integration: `.github/workflows/ci.yml` checks the JavaScript and
   the Python analysis.
-- No build step is required for the website.
+- No build step is required.
 
 ## Analysis (Python)
 
@@ -101,11 +137,6 @@ python -m pip install -r analysis/requirements.txt
 python analysis/fetch_supabase.py --output analysis/raw
 python analysis/clean.py --input analysis/raw --output analysis/data/processed
 ```
-
-## Privacy
-
-No video is stored, only gaze coordinates and timings, tied to an anonymous ID.
-See [privacy.html](privacy.html) and [terms.html](terms.html).
 
 ---
 
