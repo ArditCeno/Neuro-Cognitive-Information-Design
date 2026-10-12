@@ -109,12 +109,13 @@ export async function uploadToEndpoint(summary) {
   try {
     const payload = { id_anonim: summary.participant.id_anonim, summary };
     if (cfg.includeGaze) payload.gaze = summary.gaze || [];
+    // text/plain = simple request (no CORS preflight) -> works with Google Apps Script
     const res = await fetch(cfg.url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(payload)
     });
-    return { ok: res.ok, status: res.status };
+    return { ok: res.ok || res.type === "opaque", status: res.status };
   } catch (e) {
     return { ok: false, error: String(e) };
   }
