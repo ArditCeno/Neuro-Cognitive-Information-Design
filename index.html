@@ -129,10 +129,11 @@
 </main>
 
 <div id="site-footer"></div>
-<script src="js/site.js?v=11"></script>
+<script src="js/site.js?v=12"></script>
 <script>
   (function () {
     var frames = { test: "testFrame", admin: "adminFrame" };
+    var files = { test: "study.html", admin: "admin.html" };
     function navHeight() {
       var h = document.querySelector("#site-header .nav");
       return h ? h.offsetHeight : 64;
@@ -155,7 +156,7 @@
       if (v !== "home") {
         var f = document.getElementById(frames[v]);
         if (f && !f.getAttribute("src")) {
-          f.setAttribute("src", "https://arditceno.github.io/Neuro-Cognitive-Information-Design/" + v + ".html?embed=1");
+          f.setAttribute("src", "https://arditceno.github.io/Neuro-Cognitive-Information-Design/" + files[v] + "?embed=1");
         }
         document.body.classList.add("fullscreen-view");
         if (document.getElementById("site-footer")) document.getElementById("site-footer").style.display = "none";
