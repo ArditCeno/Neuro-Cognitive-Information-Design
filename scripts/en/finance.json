@@ -1,0 +1,60 @@
+{
+  "id": "finance",
+  "en_name": "Finance",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Income table",
+      "facts": ["Revenue = 120,000", "Costs = 80,000", "Profit = revenue - costs = 40,000", "Profit margin = profit / revenue = 33.3%", "Variable vs fixed costs"],
+      "qA": [["With revenue 120k and costs 80k, profit is:", ["120k", "80k", "40k", "200k"], 2], ["Profit margin (40k/120k)?", ["25%", "40%", "33.3%", "50%"], 2], ["Revenue rises to 150k, costs stay 80k. Profit:", ["80k", "60k", "50k", "70k"], 3]],
+      "qB": [["Profit formula:", ["Revenue - cost", "Revenue + cost", "Cost / revenue", "Revenue x cost"], 0], ["A fixed monthly rent is:", ["Profit", "A fixed cost", "Revenue", "A variable cost"], 1], ["If costs become 130k with revenue 120k, the result is:", ["Loss 10k", "Zero", "Profit 250k", "Profit 10k"], 0]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Percentages",
+      "facts": ["Percentage = part / whole x 100", "Growth % = (new - old) / old x 100", "20% off 200 = 160", "Simple interest = principal x rate x years", "VAT is added on the net price"],
+      "qA": [["20% of 200?", ["40", "50", "100", "20"], 0], ["20% off 200 gives the price:", ["140", "120", "160", "180"], 2], ["A price rises 10% then falls 10%. The result is:", ["101%", "99% of the original", "The same", "90%"], 1]],
+      "qB": [["Growth from 100 to 125 is:", ["20%", "25%", "125%", "12.5%"], 1], ["Simple interest: 1000 x 5% x 2 years =", ["50", "10", "100", "150"], 2], ["A fall from 80 to 60 is:", ["75%", "33%", "20%", "25%"], 3]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - Budget",
+      "facts": ["A budget plans income and expenses", "The 50/30/20 rule: needs/wants/savings", "Balance = income - expenses", "Emergency fund: 3-6 months of expenses", "Compare plan with actuals monthly"],
+      "qA": [["Budget balance =", ["Expenses - 1", "Income - expenses", "Income x 2", "Income + expenses"], 1], ["Income 1000; 50/30/20 means needs:", ["200", "500", "700", "300"], 1], ["Income 1200, expenses 1350. Balance:", ["-150", "+2550", "+150", "0"], 0]],
+      "qB": [["The 50/30/20 rule: 20% goes to:", ["Savings", "Taxes", "Wants", "Rent"], 0], ["An emergency fund is usually:", ["1 day", "10 years", "3-6 months of expenses", "Not needed"], 2], ["Why compare plan with actuals?", ["It does not matter", "For decoration", "It replaces the plan", "It reveals deviations and corrects them"], 3]]
+    },
+    "mid|m1": {
+      "title": "M1 - P&L statement",
+      "facts": ["Revenue", "- COGS = gross profit", "- operating expenses = EBIT", "- interest - tax = net profit", "Example: Rev 500, COGS 300, Opex 100 -> EBIT 100"],
+      "qA": [["Gross profit =", ["Revenue - COGS", "Revenue + COGS", "Revenue - Opex", "EBIT - tax"], 0], ["Rev 500, COGS 300. Gross profit:", ["500", "200", "800", "300"], 1], ["EBIT 100, interest 20, tax 20% on pre-tax profit. Net profit:", ["64", "80", "60", "100"], 0]],
+      "qB": [["EBIT is profit before:", ["Revenue", "Salaries only", "COGS", "Interest and tax"], 3], ["Rev 500, COGS 300, Opex 100. EBIT:", ["400", "100", "300", "200"], 1], ["Gross margin with Rev 500, COGS 300:", ["40%", "20%", "30%", "60%"], 0]]
+    },
+    "mid|m2": {
+      "title": "M2 - KPIs",
+      "facts": ["Gross margin = gross profit / revenue", "ROI = (gain - investment) / investment", "Year-over-year growth (YoY)", "Current ratio = current assets / current liabilities", "A KPI without a target is useless"],
+      "qA": [["ROI formula:", ["profit + investment", "investment/profit", "(gain - investment)/investment", "profit x investment"], 2], ["Investment 1000, return 1300. ROI:", ["30%", "13%", "130%", "300%"], 0], ["Revenue 2023: 400, 2024: 460. YoY growth:", ["46%", "15%", "60%", "13%"], 1]],
+      "qB": [["YoY means:", ["Month over month", "Total", "Year over year", "Day over day"], 2], ["Current assets 300, current liabilities 200. Current ratio:", ["2", "0.5", "0.67", "1.5"], 3], ["Why must a KPI have a target?", ["For aesthetics", "Without a target success is not measured", "It must not", "Legally"], 1]]
+    },
+    "mid|m3": {
+      "title": "M3 - Comparisons",
+      "facts": ["Compare with a previous period (trend)", "Compare with the budget (variance)", "Compare with competitors (benchmark)", "Variance = actual - budget", "Normalise (per unit, per %), not just absolute amounts"],
+      "qA": [["Variance =", ["Actual - budget", "Budget/actual", "Actual x budget", "Budget - actual"], 0], ["Budget 100, actual 120. Variance:", ["-20", "0", "+20", "+120"], 2], ["Firm A: profit 50 / rev 500; B: profit 80 / rev 1000. More efficient:", ["B", "A (10% vs 8%)", "Unknown", "Equal"], 1]],
+      "qB": [["Comparison with competitors is called:", ["Budget", "Variance", "Benchmark", "Trend"], 2], ["Why normalise?", ["It must not", "For taxes", "For decoration", "To compare different sizes"], 3], ["A single year of trend is:", ["Impossible", "Enough", "Limited, more periods are needed", "Perfect"], 2]]
+    },
+    "senior|m1": {
+      "title": "M1 - Multi-factor analysis",
+      "facts": ["Sensitivity analysis: change one variable", "Multi-variable analysis simultaneously", "Contribution margin = price - variable cost", "Break-even = fixed cost / contribution margin", "Example: fixed 10,000, price 50, variable 30 -> 500 units"],
+      "qA": [["Break-even =", ["Price x cost", "Profit/revenue", "Margin/fixed cost", "Fixed cost / contribution margin"], 3], ["Fixed 10,000, price 50, variable 30. Break-even:", ["500", "333", "200", "1000"], 0], ["Why can one-variable analysis mislead?", ["No difference", "It is always exact", "Variables interact", "It is forbidden"], 2]],
+      "qB": [["Contribution margin per unit =", ["Price - variable cost", "Fixed cost", "Price + cost", "Total profit"], 0], ["Price rises to 55 (others equal). New break-even:", ["400", "333", "250", "500"], 0], ["Actual sales 450 units. The result in this model:", ["Loss (below 500)", "Zero", "Profit", "No data"], 0]]
+    },
+    "senior|m2": {
+      "title": "M2 - Valuation (NPV)",
+      "facts": ["Present value = cash flows / (1+r)^t", "NPV = sum of present values - investment", "NPV > 0: the project creates value", "The discount rate r reflects risk", "Example: invest 1000, flow 1100 after 1 year, r=10% -> NPV = 0"],
+      "qA": [["NPV > 0 means:", ["Loss", "Value creation", "No effect", "An error"], 1], ["Flow 1100 after 1 year, r=10%. Present value:", ["1210", "1000", "990", "1100"], 1], ["Flow 1210 after 2 years, r=10%. Present value:", ["968", "1210", "1000", "1100"], 2]],
+      "qB": [["The discount rate reflects:", ["Risk and cost of capital", "Fixed cost", "Price", "Both"], 0], ["Investment 1000, PV of flows 1000. NPV:", ["-1000", "0", "100", "1000"], 1], ["A higher r (others equal) makes NPV:", ["The same", "Unrelated", "Lower", "Higher"], 2]]
+    },
+    "senior|m3": {
+      "title": "M3 - Scenarios",
+      "facts": ["Base, optimistic, pessimistic scenarios", "A probability for each scenario", "Expected value = sum (prob x outcome)", "Stress test: extreme case", "Example: 30%->200, 50%->100, 20%->-50 -> 100"],
+      "qA": [["Expected value =", ["Always the simple average", "Sum prob x outcome", "Max outcome", "Min outcome"], 1], ["30%->200, 50%->100, 20%->-50. Expected value:", ["90", "150", "100", "110"], 2], ["A stress test is for:", ["Extreme cases", "Taxes", "Decoration", "Average outcomes"], 0]],
+      "qB": [["How many scenarios are usually used at minimum?", ["0", "1", "10", "3 (base/opt/pess)"], 3], ["The sum of probabilities must be:", ["100%", "200%", "50%", "Whatever"], 0], ["50%->100, 50%->-20. Expected value:", ["50", "-10", "80", "40"], 3]]
+    }
+  }
+}

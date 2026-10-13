@@ -1,0 +1,60 @@
+{
+  "id": "legal",
+  "en_name": "Law",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Elements of an article",
+      "facts": ["An article has a number, often a title, and paragraphs", "A paragraph is split into points/letters", "Hypothesis = the conditions for application", "Provision = the rule laid down", "Sanction = the consequence of a breach"],
+      "qA": [["The part stating 'when the norm applies' is called:", ["Provision", "Sanction", "Hypothesis", "Preamble"], 2], ["The part that sets the required conduct is:", ["Reference", "Hypothesis", "Sanction", "Provision"], 3], ["Norm 'If X happens, then Y must, otherwise fine'. 'Fine' is:", ["Provision", "Hypothesis", "Sanction", "Title"], 2]],
+      "qB": [["The consequence of breaching a norm is called:", ["Title", "Hypothesis", "Sanction", "Point"], 2], ["An article is usually divided into:", ["Chapters", "Paragraphs", "Books", "Volumes"], 1], ["Why is identifying the elements of an article important?", ["Only for archiving", "For correct interpretation and application", "It does not matter", "For decoration"], 1]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Basic terms",
+      "facts": ["Subjective right = a power recognised by law", "Obligation = required conduct", "Competence = authority to act", "Subject = holder of rights/obligations", "Object = that over which the right applies"],
+      "qA": [["The holder of rights and obligations is called:", ["Subject", "Provision", "Act", "Object"], 0], ["That over which the right applies is:", ["The object", "The subject", "The obligation", "The deadline"], 0], ["An institution acts beyond its competence. This usually leads to:", ["A reward", "Full validity", "Nothing", "Possible annulment/invalidity"], 3]],
+      "qB": [["The authority to act is called:", ["Sanction", "Object", "Hypothesis", "Competence"], 3], ["'Obligation' means:", ["Conduct required by the norm", "An optional power", "Competence", "Damage"], 0], ["The right of ownership is:", ["A deadline", "A sanction", "An obligation", "A subjective right"], 3]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - Deadlines",
+      "facts": ["A deadline is a period for an action", "For days: the start day is not counted", "A monthly deadline ends on the corresponding date", "If the last day is a holiday it moves to the first working day (teaching rule)", "Missing it can cause loss of the right"],
+      "qA": [["30-day deadline from 1 March. First day counted:", ["1 March", "30 March", "2 March", "31 March"], 2], ["10-day deadline from 5 September (teaching rule) ends on:", ["10 September", "15 September", "14 September", "16 September"], 1], ["The last day falls on Saturday. Under the teaching rule the deadline ends:", ["Saturday", "Friday", "Monday (first working day)", "It is lost"], 2]],
+      "qB": [["Missing a deadline can cause:", ["A reward", "Loss of the right", "Nothing", "An extension"], 1], ["A 1-month deadline from 15 January ends on:", ["14 February", "1 February", "15 March", "15 February"], 3], ["Why is correct deadline calculation critical?", ["No effect", "You may lose the right to appeal", "For aesthetics", "Only for the judge"], 1]]
+    },
+    "mid|m1": {
+      "title": "M1 - Interpreting a provision",
+      "facts": ["Linguistic: the meaning of the words", "Systematic: the place within the law", "Teleological: the purpose of the norm", "Historical: the legislator's intent", "Always start from the text"],
+      "qA": [["Interpretation according to purpose is:", ["Historical", "Linguistic", "Teleological", "Systematic"], 2], ["The first step in interpretation:", ["The judiciary", "History", "Purpose", "The text (linguistic)"], 3], ["The text is unclear; which method helps most?", ["Linguistic only", "Teleological/systematic", "None", "Roll a dice"], 1]],
+      "qB": [["Interpretation based on the norm's place in the law:", ["Systematic", "Teleological", "Linguistic", "Historical"], 0], ["Historical interpretation looks at:", ["The legislator's intent", "The dictionary", "Position", "Consequences"], 0], ["Why combine methods?", ["They increase the reliability of the reasoning", "For length", "They are always mandatory", "To avoid the text"], 0]]
+    },
+    "mid|m2": {
+      "title": "M2 - Calculating deadlines (cases)",
+      "facts": ["Counting starts the day after the event", "Calendar days vs working days", "Suspension stops the clock, interruption restarts it", "The period ends at the end of the last day", "Notification starts the period (teaching rule)"],
+      "qA": [["Calendar days include:", ["Only working days", "All days", "Only the week", "Only holidays"], 1], ["Notice 3 October, 15 calendar days. It ends:", ["18 October", "17 October", "20 October", "19 October"], 0], ["Interruption of a deadline usually:", ["Continues where it was", "Has no effect", "Cancels the right", "Starts a new period from zero"], 3]],
+      "qB": [["In the teaching rule the period starts from:", ["Next week", "Next month", "The day after notice", "The day of notice"], 2], ["Suspension of a deadline:", ["Doubles it", "Stops the clock, then continues", "Deletes it", "Restarts from zero"], 1], ["20 working days is about how many calendar days (5 days/week)?", ["~28", "20", "40", "~14"], 0]]
+    },
+    "mid|m3": {
+      "title": "M3 - Conditions and consequences",
+      "facts": ["Necessary condition: without it, no effect", "Sufficient condition: it alone suffices", "Cumulative: all needed (AND)", "Alternative: one suffices (OR)", "Order: check conditions, then the consequence"],
+      "qA": [["Cumulative conditions connect with:", ["NOT", "NONE", "AND", "OR"], 2], ["The norm requires A and B cumulatively. Only A is met. Effect:", ["Does not apply", "Half", "Applies", "Depends on the judge"], 0], ["Norm: A OR (B AND C). Only B is met. Applies?", ["Same", "No", "Partially", "Yes"], 1]],
+      "qB": [["Alternative conditions connect with:", ["AND", "OR", "NOT", "All"], 1], ["A necessary condition means:", ["It is optional", "It is a consequence", "Without it the norm does not apply", "It alone suffices"], 2], ["Norm: A OR (B AND C). A is met. Applies?", ["No", "Yes", "Only with C", "Only with B"], 1]]
+    },
+    "senior|m1": {
+      "title": "M1 - Conflict of norms",
+      "facts": ["Lex superior: the higher norm prevails", "Lex specialis: the special prevails over the general", "Lex posterior: the later prevails over the earlier", "Hierarchy: Constitution > law > sub-legal act", "Order of application: superior, then specialis, then posterior"],
+      "qA": [["Lex specialis means:", ["The later prevails", "The special prevails over the general", "The higher prevails", "None"], 1], ["A sub-legal act against a law. Prevails:", ["The sub-legal act", "The law", "Both", "None"], 1], ["Two laws at the same level; one special, the other a newer general one. Main principle:", ["Lex superior", "Lex posterior always", "Lex specialis (usually)", "Random"], 2]],
+      "qB": [["Lex posterior means:", ["The later prevails over the earlier", "The special prevails", "The higher prevails", "None"], 0], ["The correct hierarchy:", ["Law > Constitution", "Constitution > law > sub-legal act", "Act > law", "All equal"], 1], ["Lex superior is used when:", ["Never", "Norms are at the same level", "Norms are at different levels", "The norm does not exist"], 2]]
+    },
+    "senior|m2": {
+      "title": "M2 - Legal argumentation",
+      "facts": ["Structure: claim, legal basis, facts, conclusion", "Legal syllogism: norm (major premise) + fact (minor) -> conclusion", "Counter-arguments must be addressed", "Weight comes from the legal basis, not the tone", "Avoid logical fallacies (e.g., hasty generalisation)"],
+      "qA": [["The major premise of the legal syllogism is:", ["The opinion", "The conclusion", "The norm", "The fact"], 2], ["A strong argument relies on:", ["Legal basis and facts", "Word count", "Repetition", "A strong tone"], 0], ["'Two judges decided this way, so it is always so' is:", ["A valid argument", "Teleological interpretation", "A hasty generalisation", "A correct syllogism"], 2]],
+      "qB": [["The minor premise is:", ["The fact", "The sanction", "The norm", "The deadline"], 0], ["Why address the counter-argument?", ["It strengthens persuasiveness", "It does not matter", "For length", "It is forbidden"], 0], ["Good ordering of an argument:", ["Conclusion only", "Facts without a norm", "Claim, norm, facts, conclusion", "Conclusion, norm, facts"], 2]]
+    },
+    "senior|m3": {
+      "title": "M3 - Complex case",
+      "facts": ["Identify key facts and the legal question", "Find applicable norms and conflicts", "Compute the relevant deadlines", "Apply conditions (cumulative/alternative)", "Conclude with a recommendation and risk"],
+      "qA": [["The first step in case analysis:", ["Conclusion", "Recommendation", "Sanction", "Facts and the issue"], 3], ["The deadline was missed by 1 day. Main risk:", ["None", "Loss of the right of action", "A bonus", "Automatic extension"], 1], ["A case with a new general norm and an old special norm. Step:", ["Apply the new one", "Ignore both", "Analyse lex specialis vs posterior", "Decide randomly"], 2]],
+      "qB": [["After finding the norms, you check:", ["Length", "The conflict between them", "Colour", "Nothing"], 1], ["The conclusion of a case must contain:", ["Only an opinion", "A recommendation based on the norm and facts", "Nothing", "Only a citation"], 1], ["Why include a risk analysis?", ["It replaces the norm", "The client understands possible consequences", "It is mandatory in every court", "Decoration"], 1]]
+    }
+  }
+}
