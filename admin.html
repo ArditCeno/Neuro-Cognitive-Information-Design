@@ -42,12 +42,25 @@
   <div id="site-header"></div>
 
   <main class="admin-wrap">
+    <section id="loginCard" class="card">
+      <h2>Researcher login</h2>
+      <p class="admin-note">Only the project owner's account is allowed.</p>
+      <div class="toolbar">
+        <label class="field" style="flex:1"><span>Email</span><input type="email" id="email" placeholder="your email" /></label>
+        <label class="field" style="flex:1"><span>Password</span><input type="password" id="password" placeholder="password" /></label>
+        <button id="btnLogin" class="btn btn-primary">Log in</button>
+      </div>
+      <p id="loginMsg" class="msg"></p>
+    </section>
+
+    <section id="panel" class="hidden">
     <div class="toolbar">
       <label class="field" style="flex:1"><span>Search by id_anonim (UUID also works)</span>
         <input type="text" id="q" placeholder="USR_87220" /></label>
       <button id="btnFind" class="btn btn-primary">Find</button>
       <button id="btnReload" class="btn btn-ghost">Refresh</button>
       <button id="btnCsv" class="btn btn-ghost">Export CSV</button>
+      <button id="btnLogout" class="btn btn-ghost">Log out</button>
     </div>
     <p id="panelMsg" class="admin-note"></p>
     <div id="stats" class="grid-stats hidden"></div>
@@ -67,6 +80,7 @@
         <tbody id="rows"></tbody>
       </table>
     </div>
+    </section>
   </main>
 
   <div class="detail" id="detail">
@@ -88,14 +102,14 @@
 
   <script src="vendor/heatmap.min.js"></script>
   <script src="vendor/supabase.js"></script>
-  <script src="js/site.js?v=9"></script>
+  <script src="js/site.js?v=10"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
   <script type="module">
     import { CONFIG } from "./js/config.js";
     import { renderNodeMap, renderHashmap, renderScatter } from "./js/visualize.js";
-    window.__cfg = { supabase: CONFIG.storage.supabase, fields: CONFIG.fields };
+    window.__cfg = { supabase: CONFIG.storage.supabase, fields: CONFIG.fields, adminEmail: CONFIG.adminEmail };
     window.__viz = { renderNodeMap, renderHashmap, renderScatter };
   </script>
-  <script src="js/admin.js?v=9"></script>
+  <script src="js/admin.js?v=10"></script>
 </body>
 </html>

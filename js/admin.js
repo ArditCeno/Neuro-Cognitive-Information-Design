@@ -10,9 +10,11 @@
   var sb = null;
   var rows = [];
   var fields = [];
+  var allowed = "arditceno82@gmail.com";
 
-  function cfg() { return window.__cfg || { supabase: null, fields: [] }; }
+  function cfg() { return window.__cfg || { supabase: null, fields: [], adminEmail: allowed }; }
   function note(t) { var e = $("panelMsg"); if (e) e.textContent = t; }
+  function loginMsg(t) { var e = $("loginMsg"); if (e) e.textContent = t; }
   function parse(r) { var p = r.payload; if (typeof p === "string") { try { p = JSON.parse(p); } catch (e) { p = {}; } } return p || {}; }
   function fieldName(id) { for (var i = 0; i < fields.length; i++) if (fields[i].id === id) return fields[i].name.en; return id || "unknown"; }
   function acc(r) { var p = parse(r); var m = (p.modules || []).map(function (x) { return x.trials || []; }); var all = [].concat.apply([], m); if (!all.length) return null; var c = 0, n = 0;
@@ -21,9 +23,14 @@
   function init() {
     var c = cfg();
     fields = c.fields || [];
-    if (!window.supabase) { note("supabase-js not loaded"); return; }
-    if (!c.supabase || !c.supabase.url) { note("Supabase not configured."); return; }
+    allowed = c.adminEmail || allowed;
+    if (!window.supabase) { loginMsg("supabase-js not loaded"); return; }
+    if (!c.supabase || !c.supabase.url) { loginMsg("Supabase not configured."); return; }
     sb = window.supabase.createClient(c.supabase.url, c.supabase.anonKey);
+
+    $("btnLogin").addEventListener("click", login);
+    $("btnLogout").addEventListener("click", logout);
+    $("password").addEventListener("keydown", function (e) { if (e.key === "Enter") login(); });
 
     $("btnReload").addEventListener("click", load);
     $("btnFind").addEventListener("click", find);
@@ -32,9 +39,28 @@
     $("btnCsv").addEventListener("click", csv);
     $("btnCloseDetail").addEventListener("click", function () { $("detail").classList.remove("open"); });
     $("detail").addEventListener("click", function (e) { if (e.target.id === "detail") $("detail").classList.remove("open"); });
-    load();
 
-    // live updates
+    sb.auth.getSession().then(function (res) {
+      if (res && res.data && res.data.session) enterPanel();
+    });
+  }
+
+  async function login() {
+    var email = $("email").value.trim().toLowerCase();
+    var password = $("password").value;
+    if (email !== allowed.toLowerCase()) { loginMsg("This account is not allowed here."); return; }
+    loginMsg("Signing in…");
+    var res = await sb.auth.signInWithPassword({ email: email, password: password });
+    if (res.error) { loginMsg("Error: " + res.error.message); return; }
+    loginMsg("");
+    enterPanel();
+  }
+  async function logout() { try { await sb.auth.signOut(); } catch (e) {} location.reload(); }
+
+  function enterPanel() {
+    $("loginCard").classList.add("hidden");
+    $("panel").classList.remove("hidden");
+    load();
     try {
       sb.channel("ncid-sessions")
         .on("postgres_changes", { event: "*", schema: "public", table: "sessions" }, function () { load(); })

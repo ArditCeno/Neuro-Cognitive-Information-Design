@@ -32,10 +32,15 @@ export const CONFIG = {
       includeGaze: false
     },
     backend: { url: null },        // optional Spring Boot API
+    // Shared token: required by the Supabase insert policy and by the Apps Script.
+    token: "ncid_k9f3Xq2Lm7Pz",
     keyName: "ncid_session_buffer_v1",
     langKey: "ncid_lang",
     counterKey: "ncid_session_counter"
   },
+
+  // Only this account may read the data (admin login).
+  adminEmail: "arditceno82@gmail.com",
 
   // Email delivery of the full report (PDF with node map + hashmap).
   email: {

@@ -137,3 +137,18 @@ python analysis/clean.py --input analysis/raw --output analysis/data/processed
 **Copyright 2026 Ardit Ceno. All rights reserved.** · [arditceno82@gmail.com](mailto:arditceno82@gmail.com) · [LinkedIn](https://www.linkedin.com/in/ardit-ceno-a674b5307/)
 
 </div>
+
+## Security (required before sharing the link)
+
+1. In Supabase, SQL editor, run [`supabase/security.sql`](supabase/security.sql).
+   This removes public reading and protects inserts with a token.
+2. Create the owner account: Supabase, Authentication, Users, Add user
+   (email `arditceno82@gmail.com` and a password). Only this account can read.
+3. The admin panel now requires that login (email and password).
+
+Notes:
+- The token lives in `js/config.js` (`storage.token`) and in
+  `email-setup/Code.gs` (`TOKEN`) and in the policy. Change it in all three if
+  you rotate it.
+- No server password is in the repository. The publishable key is client-safe.
+- The legal pages are [privacy.html](privacy.html) and [terms.html](terms.html).

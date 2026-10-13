@@ -92,7 +92,7 @@ export async function uploadToSupabase(summary) {
         Authorization: "Bearer " + cfg.anonKey,
         Prefer: "return=minimal"
       },
-      body: JSON.stringify({ id_anonim: summary.participant.id_anonim, payload: summary })
+      body: JSON.stringify({ id_anonim: summary.participant.id_anonim, payload: summary, client_token: K.token })
     });
     return { ok: res.ok, status: res.status };
   } catch (e) {
@@ -107,7 +107,7 @@ export async function uploadToEndpoint(summary) {
   const cfg = K.submission;
   if (!cfg || !cfg.url) return { ok: false, skipped: true };
   try {
-    const payload = { id_anonim: summary.participant.id_anonim, summary };
+    const payload = { id_anonim: summary.participant.id_anonim, summary, token: K.token };
     if (cfg.includeGaze) payload.gaze = summary.gaze || [];
     // text/plain = simple request (no CORS preflight) -> works with Google Apps Script
     const res = await fetch(cfg.url, {

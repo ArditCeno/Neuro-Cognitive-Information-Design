@@ -17,10 +17,15 @@
  */
 
 var TO = "arditceno82@gmail.com";
+var TOKEN = "ncid_k9f3Xq2Lm7Pz";   // must match CONFIG.storage.token in the website
 
 function doPost(e) {
   var data = {};
   try { data = JSON.parse(e.postData.contents); } catch (err) {}
+  if (data.token !== TOKEN) {
+    return ContentService.createTextOutput(JSON.stringify({ ok: false, error: "forbidden" }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
   var s = data.summary || data;
   var id = (s.participant && s.participant.id_anonim) || data.id_anonim || "?";
   MailApp.sendEmail({
