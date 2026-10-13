@@ -1,0 +1,13 @@
+<h1>Software - senior - M3 - Diagnostikim (debugging)</h1>
+<img class="fig" src="../assets/figures/software.svg" alt="software figure">
+<ul>
+<li>A traceback is read from the bottom (last line)</li>
+<li>range(5) goes 0..4</li>
+<li>The last valid index is len-1</li>
+<li>An off-by-one error is a boundary error</li>
+<li data-aoi="kritike" data-critical="true">Reproduce the error first, then fix it</li>
+</ul>
+<pre><code>a = [1,2,3]
+for i in range(len(a)+1):   # GABIM: off-by-one
+    print(a[i])
+# Rregullim: range(len(a))</code></pre>

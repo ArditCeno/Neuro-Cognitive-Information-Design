@@ -1,0 +1,15 @@
+<h1>Software - senior - M2 - Struktura të dhënash</h1>
+<img class="fig" src="../assets/figures/software.svg" alt="software figure">
+<ul>
+<li>A stack is LIFO</li>
+<li>A queue is FIFO</li>
+<li>Set lookup is O(1) on average</li>
+<li>Balanced brackets are checked with a stack</li>
+<li>A binary tree node has at most 2 children</li>
+<li data-aoi="kritike" data-critical="true">BFS uses a queue</li>
+</ul>
+<pre><code>stack = []
+stack.append(1); stack.append(2)
+print(stack.pop())  # 2 (LIFO)
+from collections import deque
+q = deque([1,2]); print(q.popleft())  # 1 (FIFO)</code></pre>

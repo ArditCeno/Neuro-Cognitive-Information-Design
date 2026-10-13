@@ -1,0 +1,9 @@
+<h1>Software - mid - M3 - Kombinim: funksione + lista + kushte</h1>
+<img class="fig" src="../assets/figures/software.svg" alt="software figure">
+<p>d['a'] reads the value of key 'a' d.get('k', 0) returns 0 if 'k' is missing max([]) raises ValueError enumerate() yields (index, value) pairs <span data-aoi="kritike" data-critical="true">A dict counts frequencies well</span></p>
+<pre><code>def frekuenca(lst):
+    d = {}
+    for x in lst:
+        d[x] = d.get(x, 0) + 1
+    return d
+print(frekuenca([1,2,2,3,3,3]))  # {1:1,2:2,3:3}</code></pre>
