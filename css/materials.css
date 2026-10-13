@@ -81,3 +81,6 @@
 
 /* AOI debug outlines */
 body.debug-aoi [data-aoi] { outline: 2px dashed #6ea8fe; background: rgba(110,168,254,.08); }
+
+/* figures inside the stimulus documents */
+.doc .fig { display: block; width: 100%; max-width: 640px; height: auto; margin: 12px 0; border-radius: 8px; border: 1px solid #e0e0d8; }

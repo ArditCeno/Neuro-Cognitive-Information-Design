@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" font-family="Arial, sans-serif">
+  <rect width="640" height="260" fill="#F9F9F9"/>
+  <text x="16" y="26" font-size="15" font-weight="700" fill="#092634">Inxhinieri elektrike · circuit</text>
+  <g transform="translate(0,34)">
+    <rect x="80" y="40" width="480" height="160" rx="8" fill="none" stroke="#0E7FB0" stroke-width="3"/>
+    <rect x="150" y="90" width="40" height="60" fill="#092634"/><text x="170" y="128" text-anchor="middle" fill="#fff" font-size="11">V</text>
+    <rect x="330" y="90" width="70" height="40" fill="#fff" stroke="#092634"/><text x="365" y="116" text-anchor="middle" font-size="11">R</text>
+    <text x="230" y="180" font-size="12" fill="#092634">I = V / R</text>
+  </g>
+</svg>
