@@ -1,0 +1,60 @@
+{
+  "id": "health",
+  "en_name": "Medicine",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Symptoms",
+      "facts": ["A symptom is a sensation reported by the patient", "A sign is observable/measurable by the doctor", "Fever: temperature >= 38 C", "Pain is rated 0-10 (VAS/NRS)", "History: onset, duration, intensity, aggravating/relieving factors"],
+      "qA": [["A symptom is:", ["Reported by the patient", "Measured by a device", "A lab result", "A diagnosis"], 0], ["A cold measured with a thermometer is a:", ["Diagnosis", "Symptom", "Sign", "History"], 2], ["The patient says 'I feel dizzy'. This is a:", ["Sign", "Symptom", "Treatment", "Result"], 1]],
+      "qB": [["Fever is usually defined as:", [">= 36 C", ">= 35 C", ">= 38 C", ">= 40 C"], 2], ["Pain is usually rated:", ["0-10", "A-F", "1-100", "0-3"], 0], ["Which is NOT a standard part of the pain history?", ["Intensity", "Relieving factors", "Shoe colour", "Onset"], 2]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Vital signs (adult, reference)",
+      "facts": ["Normal pulse: 60-100 /min", "Normal respiration: 12-20 /min", "Normal blood pressure: about <120/80 mmHg", "Normal temperature: about 36.1-37.2 C", "Normal SpO2 >= 95%"],
+      "qA": [["Normal adult pulse:", ["120-160", "10-20", "60-100", "30-50"], 2], ["Respiration 28/min is:", ["Normal", "Bradypnea", "Apnea", "Tachypnea"], 3], ["SpO2 88% and respiration 26/min. Assessment:", ["Normal", "Concerning, needs urgent assessment", "Monitor in 1 week", "Irrelevant"], 1]],
+      "qB": [["Normal SpO2:", [">= 50%", ">= 95%", ">= 30%", ">= 70%"], 1], ["Pulse 45/min in a resting adult:", ["Bradycardia", "Arrest", "Normal", "Tachycardia"], 0], ["BP 90/50 with pulse 120. Main concern:", ["Irrelevant", "Hypertension", "Normal", "Possible shock/hypovolaemia, emergency"], 3]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - Systems and terminology",
+      "facts": ["-itis = inflammation", "-ectomy = surgical removal", "Tachycardia > 100/min; bradycardia < 60/min", "Hypertension: >= 140/90 on repeated measurements", "Dyspnea = difficulty breathing"],
+      "qA": [["The suffix '-itis' indicates:", ["Rupture", "Tumour", "Removal", "Inflammation"], 3], ["Appendectomy is:", ["A tumour", "Pain", "Inflammation of the appendix", "Removal of the appendix"], 3], ["Gastroenteritis involves:", ["Bones", "Kidney", "Stomach and intestine, inflammation", "Heart"], 2]],
+      "qB": [["'Dyspnea' means:", ["Vomiting", "Thirst", "Difficulty breathing", "Pain"], 2], ["Tachycardia:", ["Meaningless", "> 100", "< 60", "= 80"], 1], ["Hepatitis means inflammation of the:", ["Heart", "Lungs", "Kidneys", "Liver"], 3]]
+    },
+    "mid|m1": {
+      "title": "M1 - Differential diagnosis",
+      "facts": ["List of possible causes for a symptom", "Rank by probability and risk", "Start with 'can't miss' (life-threatening)", "Tests to exclude/confirm", "Reassess with new data"],
+      "qA": [["Differential diagnosis is:", ["One final diagnosis", "A list of possible causes", "Treatment", "A test"], 1], ["Chest pain: which must be urgently excluded?", ["Acute coronary syndrome", "Cough", "Allergy", "Flu"], 0], ["Sudden severe headache ('worst ever') requires:", ["Wait 1 week", "Rest at home", "Nothing", "Urgent assessment for subarachnoid haemorrhage"], 3]],
+      "qB": [["What is prioritised?", ["The nicest", "Random", "Life-threatening conditions", "Rare causes"], 2], ["Why reassess the list?", ["For decoration", "New data change the probabilities", "It must not", "For law"], 1], ["A test should be chosen to:", ["Fill a form", "Do them all", "Accumulate cost", "Confirm/exclude the hypotheses"], 3]]
+    },
+    "mid|m2": {
+      "title": "M2 - Clinical interpretation",
+      "facts": ["Link symptoms, signs and results", "Lab values are compared to reference ranges", "Hb thresholds (adult, approximate): men ~13-17 g/dL, women ~12-15 g/dL", "Normal fasting glucose ~ 70-99 mg/dL", "Interpretation depends on context"],
+      "qA": [["Lab values are compared to:", ["Age only", "Wishes", "Nothing", "Reference ranges"], 3], ["Hb 9 g/dL in an adult:", ["Impossible", "Normal", "High", "Low"], 3], ["Why does context change interpretation?", ["For decoration", "It does not", "Because everyone is the same", "Age, diseases and medications matter"], 3]],
+      "qB": [["Low Hb may indicate:", ["Diabetes", "Anaemia", "Heart disease only", "Always normal"], 1], ["Fasting glucose 85 mg/dL:", ["No interpretation", "Diabetes", "Severe hypoglycaemia", "Normal"], 3], ["A value slightly outside the range in an asymptomatic patient:", ["Always an emergency", "A certain diagnosis", "Always ignored", "Needs reassessment/repeat"], 3]]
+    },
+    "mid|m3": {
+      "title": "M3 - Simple clinical case",
+      "facts": ["Structure: complaint, history, examination, assessment, plan", "Ask about allergies and current medications", "Document clearly", "Communicate with the patient", "Plan follow-up"],
+      "qA": [["The clinical case order starts with:", ["The result", "The plan", "The bill", "The complaint"], 3], ["The plan includes:", ["Only a drug", "Only the diagnosis", "Treatment steps, tests, follow-up", "Nothing"], 2], ["A patient on an anticoagulant wants an NSAID. Action:", ["Assess bleeding risk", "Double the dose", "Give without asking", "Ignore"], 0]],
+      "qB": [["Why ask about allergies?", ["Curiosity", "Safety in treatment", "For insurance", "It must not"], 1], ["Communication with the patient should be:", ["Technical", "Understandable", "Without explanations", "Very brief"], 1], ["Good documentation aims for:", ["Nothing", "Decoration", "Continuity and safety of care", "Billing only"], 2]]
+    },
+    "senior|m1": {
+      "title": "M1 - Treatment",
+      "facts": ["Treatment is based on diagnosis, risk and guidelines", "Assess benefit vs risk", "Agreement with the patient (informed consent)", "Monitor effects and reassess", "Adjust for kidney/liver/pregnancy"],
+      "qA": [["Informed consent means:", ["The doctor decides", "The patient understands and freely agrees", "Nothing", "The family decides"], 1], ["Why adjust the dose for renal function?", ["It is not adjusted", "Drugs are eliminated by the kidneys", "For colour", "For price"], 1], ["Pregnancy and a potentially teratogenic drug. Action:", ["Give normally", "Ignore", "Reassess and choose a safer alternative", "Double it"], 2]],
+      "qB": [["A treatment decision weighs:", ["Benefit and risk", "Only the patient", "Randomly", "Only cost"], 0], ["After starting treatment:", ["Effects are monitored", "It is doubled", "Stopped immediately", "Forgotten"], 0], ["Clinical guidelines serve to:", ["Restrict judgement", "Decorate", "Standardise evidence-based care", "Nothing"], 2]]
+    },
+    "senior|m2": {
+      "title": "M2 - Interactions",
+      "facts": ["Warfarin + NSAID -> increased bleeding risk", "ACE inhibitor + potassium-sparing diuretic -> hyperkalaemia risk", "Metformin: contraindicated in severe renal impairment (eGFR < 30)", "Polypharmacy increases interactions", "Verify every combination with a reliable source"],
+      "qA": [["Warfarin + NSAID:", ["No effect", "Lowers the risk", "Bleeding risk", "Nothing"], 2], ["ACE inhibitor + potassium-sparing diuretic:", ["Increased strength", "Possible hyperkalaemia", "No effect", "Certain hypokalaemia"], 1], ["An older patient on 8 drugs. A good step:", ["Remove randomly", "Medication review (deprescribing)", "Ignore", "Add one more"], 1]],
+      "qB": [["Polypharmacy means:", ["Many drugs at once", "No drugs", "One drug", "Antibiotics only"], 0], ["Metformin with eGFR < 30:", ["Normal", "The dose is doubled", "Contraindicated", "More recommended"], 2], ["Source for interactions:", ["Memory only", "Up-to-date database/guidelines", "Anonymous internet", "None"], 1]]
+    },
+    "senior|m3": {
+      "title": "M3 - Complex case",
+      "facts": ["A patient with multiple diseases (comorbidities)", "Prioritise the life-threatening problem", "Sepsis (Sepsis-3 qSOFA): RR >= 22, altered mental status, systolic BP <= 100", ">= 2 qSOFA criteria -> high risk, urgent assessment", "Multidisciplinary team"],
+      "qA": [["qSOFA includes respiration:", [">= 12/min", ">= 22/min", "< 10", ">= 40/min"], 1], ["Systolic BP 95, RR 24, alert. qSOFA score:", ["0", "1", "2", "3"], 2], ["Why a multidisciplinary team?", ["Different competences for the complex problem", "It must not", "Legally", "To shorten"], 0]],
+      "qB": [["How many qSOFA criteria signal high risk?", ["0", ">= 2", ">= 5", "None"], 1], ["A complex patient: the first priority is:", ["Random", "The costliest", "The easiest", "The life-threatening problem"], 3], ["qSOFA is:", ["A blood test", "A screening tool (not a diagnosis)", "A drug", "A final diagnosis"], 1]]
+    }
+  }
+}

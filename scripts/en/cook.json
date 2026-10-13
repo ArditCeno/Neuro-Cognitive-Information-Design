@@ -1,0 +1,60 @@
+{
+  "id": "cook",
+  "en_name": "Culinary",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Simple recipe: omelette",
+      "facts": ["Step 1: beat 3 eggs with salt", "Step 2: heat the pan with 10 g butter", "Step 3: cook over medium heat 2-3 min", "Step 4: fold and serve", "Portion: 1"],
+      "qA": [["How many eggs in the recipe?", ["1", "6", "3", "2"], 2], ["The heat for an omelette:", ["Medium", "Zero", "Low forever", "Very high"], 0], ["Recipe for 4 people (from 1): total eggs:", ["3", "6", "12", "4"], 2]],
+      "qB": [["The first step:", ["Folding", "Beating the eggs", "Serving", "Washing the pan"], 1], ["Cooking time:", ["20 min", "1 hour", "10 s", "2-3 min"], 3], ["Butter for 4 people:", ["40 g", "10 g", "100 g", "20 g"], 0]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Hygiene and temperature",
+      "facts": ["Wash hands 20-30 s before cooking", "Danger zone: 5-60 C", "Poultry: 74 C inside", "Keep cold at or below 5 C", "Do not use the same board for raw meat and salad"],
+      "qA": [["Internal temperature of poultry:", ["50 C", "40 C", "100 C", "74 C"], 3], ["Cold food is kept below:", ["5 C", "15 C", "30 C", "20 C"], 0], ["Food at 25 C for 4 hours:", ["Strong", "No effect", "Risk of bacterial growth", "Safe"], 2]],
+      "qB": [["The bacterial danger zone:", ["5-60 C", "80-100 C", "-20-0 C", "100-200 C"], 0], ["Shared board raw meat + salad:", ["Cross-contamination", "No matter", "Fine", "Faster"], 0], ["Why a food thermometer?", ["No reason", "Decoration", "Ensures a safe temperature", "Only for fish"], 2]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - Mise en place and cuts",
+      "facts": ["Mise en place: prepare everything before cooking", "Cuts: julienne (sticks), brunoise (small cubes), dice", "A sharp knife is safer", "Hold the knife with a claw grip", "Wash, clean, portion before the heat"],
+      "qA": [["Mise en place means:", ["Fast cooking", "Cleaning after", "Serving", "Everything in place before cooking"], 3], ["Julienne:", ["Thin sticks", "Puree", "Round slices", "Small cubes"], 0], ["Why the claw grip?", ["Only speed", "Decoration", "Protects the fingers", "No reason"], 2]],
+      "qB": [["A sharp knife:", ["No difference", "Safer", "More expensive", "More dangerous"], 1], ["Brunoise:", ["Puree", "Long slices", "Sticks", "Very small cubes"], 3], ["Mise en place before the heat avoids:", ["Water", "Washing dishes", "Nothing", "Missing ingredients while cooking"], 3]]
+    },
+    "mid|m1": {
+      "title": "M1 - Coordinating processes: pasta with sauce",
+      "facts": ["1 L water per 100 g pasta", "Salt about 10 g/L", "Pasta al dente: about 8-10 min", "The sauce cooks in parallel (15 min)", "Start the boiling water first; combine at the end (1-2 min)"],
+      "qA": [["Before anything else:", ["The sauce", "The plates", "The water on the heat", "Serving"], 2], ["Salt for 3 L water (10 g/L):", ["300 g", "10 g", "3 g", "30 g"], 3], ["Sauce 15 min, water 10 min to boil, pasta 9 min. Start first:", ["The pasta", "The plates", "Nothing", "The sauce + water together"], 3]],
+      "qB": [["Pasta al dente:", ["1 min", "40 min", "8-10 min", "90 min"], 2], ["For 300 g pasta, water:", ["0.3 L", "10 L", "1 L", "3 L"], 3], ["Why parallelise?", ["No reason", "Only for cost", "Reduces total time", "For decoration"], 2]]
+    },
+    "mid|m2": {
+      "title": "M2 - Timing (Gantt)",
+      "facts": ["Example: soup 40 min, salad 10 min, dessert 30 min (cold)", "Place the longest tasks first", "Concurrency: many options with 1 cook?", "Critical path: the longest sequence", "Buffer 10%"],
+      "qA": [["The longest tasks start:", ["First", "Last", "Never", "Randomly"], 0], ["Task X 30 min, Y 20 min, independent, two cooks. Minimum total time:", ["20 min", "10 min", "30 min", "50 min"], 2], ["The critical path is extended by 5 min. Total time:", ["Same", "Doubles", "Extended by 5 min", "Reduced"], 2]],
+      "qB": [["Critical path:", ["The shortest", "The longest sequence determining the total time", "Nothing", "The cheapest"], 1], ["Buffer 10% over 40 min:", ["50 min", "80 min", "44 min", "4 min"], 2], ["Why a buffer?", ["No reason", "For law", "Reserve for delays", "Decoration"], 2]]
+    },
+    "mid|m3": {
+      "title": "M3 - Scaling recipes and yield",
+      "facts": ["Factor = desired portions / original portions", "Edible yield % = edible / purchased x 100", "Example: 1 kg purchased, 800 g edible -> 80%", "Cost per portion = total cost / portions", "Round carefully (spices are not linear)"],
+      "qA": [["Recipe for 4 -> 10 portions. Factor:", ["6", "0.4", "40", "2.5"], 3], ["Total cost 24 EUR, 8 portions. Cost/portion:", ["8 EUR", "4 EUR", "3 EUR", "2 EUR"], 2], ["Why are spices not always scaled linearly?", ["Flavour changes non-linearly", "No reason", "They are forbidden", "They are cheap"], 0]],
+      "qB": [["1 kg purchased, 800 g edible. Yield:", ["8%", "80%", "125%", "20%"], 1], ["Recipe has 200 g flour for 4. For 10:", ["500 g", "250 g", "2000 g", "800 g"], 0], ["Purchased 5 kg, yield 70%. Edible:", ["7 kg", "3.5 kg", "1.5 kg", "0.7 kg"], 1]]
+    },
+    "senior|m1": {
+      "title": "M1 - Optimisation and time management",
+      "facts": ["Batch cooking: cooking in series to reduce time", "FIFO: first in, first out", "Station order: cleaning, production, service", "Minimise time lost switching tasks", "Measure: time per portion"],
+      "qA": [["FIFO:", ["Last in", "First in, first out", "Nothing", "Random"], 1], ["Time per portion 3 min; 40 portions:", ["120 min", "1 min", "43 min", "10 min"], 0], ["Two cooks, 40 portions, 3 min/portion each. Time ~", ["10 min", "120 min", "60 min", "30 min"], 2]],
+      "qB": [["Batch cooking:", ["Desserts only", "Cooking in series", "One dish", "Nothing"], 1], ["FIFO serves to:", ["Decoration", "Reduce expired losses", "Raise the price", "No reason"], 1], ["Why minimise switching tasks?", ["For law", "Loss of focus/time", "No reason", "Decoration"], 1]]
+    },
+    "senior|m2": {
+      "title": "M2 - Food cost and pricing",
+      "facts": ["Food cost % = food cost / selling price x 100", "Typical target: about 28-35%", "Price = cost / target %", "Example: cost 3 EUR, target 30% -> price 10 EUR", "Gross margin = price - cost"],
+      "qA": [["Food cost % with cost 3 EUR, price 10 EUR:", ["30%", "7%", "13%", "3%"], 0], ["Cost 4.5 EUR, target 30%. Price:", ["1.35 EUR", "15 EUR", "13.5 EUR", "9 EUR"], 1], ["Cost rises from 3 EUR to 3.6 EUR (price 10 EUR). New food cost:", ["36%", "33%", "3.6%", "30%"], 0]],
+      "qB": [["Price with cost 3 EUR and target 30%:", ["10 EUR", "3 EUR", "9 EUR", "1 EUR"], 0], ["Price 12 EUR, cost 3.6 EUR. Food cost:", ["30%", "36%", "3.6%", "12%"], 0], ["To keep 30% with cost 3.6 EUR, the price:", ["10 EUR", "12 EUR", "9 EUR", "8 EUR"], 1]]
+    },
+    "senior|m3": {
+      "title": "M3 - HACCP and safety management",
+      "facts": ["HACCP 7 principles: hazard analysis, CCP, critical limits, monitoring, corrective actions, verification, documentation", "CCP = critical control point (e.g. cooking 74 C)", "Critical limit: e.g. at or above 74 C", "Monitoring: measurement and recording", "Corrective action when the limit is not met"],
+      "qA": [["How many HACCP principles?", ["10", "3", "5", "7"], 3], ["A critical limit example for poultry:", [">= 10 C", ">= 74 C", ">= 30 C", "<= 0 C"], 1], ["Poultry reached only 68 C. Action:", ["Discard only", "Serve", "Continue cooking until the limit is reached", "Ignore"], 2]],
+      "qB": [["CCP is:", ["A critical control point", "A price", "A dish", "A recipe"], 0], ["Monitoring:", ["Nothing", "Guesswork", "Measurement and recording", "Taste"], 2], ["Why documentation?", ["No reason", "For price", "It proves control", "For decoration"], 2]]
+    }
+  }
+}

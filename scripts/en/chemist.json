@@ -1,0 +1,60 @@
+{
+  "id": "chemist",
+  "en_name": "Chemistry",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Formulas and molar masses",
+      "facts": ["H2O: M = 18 g/mol", "CO2: M = 44 g/mol", "NaCl: M = 58.5 g/mol", "H2SO4: M = 98 g/mol", "n = m / M (mol)"],
+      "qA": [["Molar mass of H2O:", ["10", "20", "18", "16"], 2], ["Molar mass of CO2:", ["32", "44", "28", "12"], 1], ["How many moles are 49 g H2SO4?", ["1", "2", "0.5", "0.25"], 2]],
+      "qB": [["The mole formula:", ["n = M/m", "n = V/m", "n = mM", "n = m/M"], 3], ["117 g NaCl (M=58.5) is:", ["0.5 mol", "2 mol", "1 mol", "3 mol"], 1], ["36 g H2O contains:", ["3 mol", "1 mol", "0.5 mol", "2 mol"], 3]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Simple reactions",
+      "facts": ["2H2 + O2 -> 2H2O", "Mg + 2HCl -> MgCl2 + H2", "Neutralisation: HCl + NaOH -> NaCl + H2O", "Combustion: substance + O2 -> CO2 + H2O", "Conservation of mass: mass of reactants = mass of products"],
+      "qA": [["Neutralisation gives:", ["Oil", "Salt + water", "Nothing", "Gas only"], 1], ["Mg + 2HCl -> ? + H2", ["MgH", "MgO", "Mg2", "MgCl2"], 3], ["4 g H2 reacts with O2: how many g H2O (complete)?", ["44", "72", "18", "36"], 3]],
+      "qB": [["Law of conservation of mass:", ["Mass increases", "Mass stays constant", "Mass decreases", "Nothing"], 1], ["Complete combustion of hydrocarbons produces:", ["Nothing", "CO only", "CO2 and H2O", "H2 only"], 2], ["HCl is:", ["Acid", "Salt", "Alcohol", "Base"], 0]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - pH and solutions",
+      "facts": ["pH = -log[H+]", "pH < 7 acid, = 7 neutral, > 7 basic", "0.01 M HCl -> pH = 2", "Molarity M = n/V", "Each pH unit = 10x change in [H+]"],
+      "qA": [["pH 3 is:", ["Acid", "Impossible", "Basic", "Neutral"], 0], ["0.01 M HCl, pH:", ["1", "7", "2", "12"], 2], ["pH 3 vs pH 5: [H+] at pH 3 is:", ["Equal", "2x", "10x", "100x higher"], 3]],
+      "qB": [["pH 7:", ["Acid", "Basic", "Neutral", "Very acid"], 2], ["0.5 mol in 0.25 L:", ["1 M", "4 M", "0.5 M", "2 M"], 3], ["0.001 M HCl, pH:", ["2", "1", "4", "3"], 3]]
+    },
+    "mid|m1": {
+      "title": "M1 - Balancing equations",
+      "facts": ["C3H8 + 5O2 -> 3CO2 + 4H2O", "4Fe + 3O2 -> 2Fe2O3", "N2 + 3H2 -> 2NH3", "Equal atoms on both sides", "Change coefficients, not subscripts"],
+      "qA": [["N2 + 3H2 -> ?NH3. Coefficient of NH3:", ["1", "4", "3", "2"], 3], ["C3H8 + ?O2 -> 3CO2 + 4H2O. O2:", ["7", "10", "3", "5"], 3], ["2Al + 3Cl2 -> ?AlCl3", ["1", "2", "6", "3"], 1]],
+      "qB": [["When balancing we change:", ["Coefficients", "Subscripts", "Both", "Neither"], 0], ["4Fe + ?O2 -> 2Fe2O3. O2:", ["1", "4", "2", "3"], 3], ["CH4 + ?O2 -> CO2 + 2H2O. O2:", ["3", "1", "2", "4"], 2]]
+    },
+    "mid|m2": {
+      "title": "M2 - Stoichiometry",
+      "facts": ["Molar ratios from coefficients", "CH4 + 2O2 -> CO2 + 2H2O", "16 g CH4 (1 mol) -> 44 g CO2", "Limiting reactant runs out first", "% yield = actual / theoretical x 100"],
+      "qA": [["1 mol CH4 gives CO2:", ["1 mol", "2 mol", "4", "0.5"], 0], ["32 g CH4 (M=16) give CO2 (g):", ["44", "176", "88", "22"], 2], ["4 g H2 + 16 g O2 -> H2O. Limiting:", ["H2", "O2", "None", "Both"], 1]],
+      "qB": [["Limiting reactant:", ["Remains", "Product", "Catalyst", "Runs out first"], 3], ["Theoretical 50 g, actual 40 g. Yield:", ["10%", "125%", "80%", "40%"], 2], ["Produced H2O (g):", ["72", "9", "18", "36"], 2]]
+    },
+    "mid|m3": {
+      "title": "M3 - Solutions and dilution",
+      "facts": ["C1V1 = C2V2", "Molarity M = n/V", "Mass for a solution: m = M x V x Mr", "Example: 0.1 M NaCl 500 mL -> 2.925 g", "Use a volumetric flask"],
+      "qA": [["C1V1 = C2V2 is used for:", ["Electrolysis", "Heating", "Combustion", "Dilution"], 3], ["0.1 M NaCl, 500 mL: mass (M=58.5):", ["29.25 g", "0.585 g", "2.925 g", "5.85 g"], 2], ["Why a volumetric flask?", ["No reason", "For decoration", "Volume accuracy", "For price"], 2]],
+      "qB": [["The unit of molarity:", ["g", "C", "mL", "mol/L"], 3], ["Stock 2 M -> 100 mL of 0.2 M. V1 =", ["50 mL", "10 mL", "5 mL", "20 mL"], 1], ["1 L of 1 M NaOH (M=40) needs:", ["20 g", "4 g", "80 g", "40 g"], 3]]
+    },
+    "senior|m1": {
+      "title": "M1 - Reaction networks and yield",
+      "facts": ["Series reactions: the product of one is the reactant of the next", "Overall yield = product of yields", "Example: 80% x 90% = 72%", "Equilibrium: Kc = [products]/[reactants] (coefficients as powers)", "Le Chatelier: the system opposes the change"],
+      "qA": [["Yield 80% and 90% in series:", ["72%", "170%", "85%", "10%"], 0], ["N2 + 3H2 = 2NH3. Adding N2 shifts equilibrium:", ["Toward products", "Disappears", "Toward reactants", "No change"], 0], ["Three steps at 90% each. Total:", ["81%", "90%", "270%", "72.9%"], 3]],
+      "qB": [["Le Chatelier:", ["No effect", "Unrelated", "Always adds products", "The system opposes the change"], 3], ["Kc for N2 + 3H2 = 2NH3:", ["[N2][H2]/[NH3]", "[NH3]/([N2][H2])", "[NH3]2", "[NH3]2/([N2][H2]3)"], 3], ["A catalyst:", ["Speeds up equilibrium without changing Kc", "Changes Kc", "Increases equilibrium yield", "Kills the reaction"], 0]]
+    },
+    "senior|m2": {
+      "title": "M2 - Thermochemistry",
+      "facts": ["q = m x c x dT", "c(water) = 4.18 J/g/C", "Hess: total dH = sum of dH of steps", "dH < 0 exothermic; dH > 0 endothermic", "dG = dH - T dS; dG < 0 spontaneous", "Combustion of CH4: dH ~ -890 kJ/mol"],
+      "qA": [["dH < 0 means:", ["Endothermic", "No effect", "Gas", "Exothermic"], 3], ["100 g water, dT = 10 C. q =", ["4,180 J", "418 J", "41,800 J", "41.8 J"], 0], ["dH = -40 kJ, T = 300 K, dS = -0.1 kJ/K. dG =", ["-70 kJ", "+10 kJ", "-40 kJ", "-10 kJ"], 3]],
+      "qB": [["Hess's law:", ["dH is a product", "Nothing", "dH never changes", "dH is the sum of the steps"], 3], ["dH1 = -100, dH2 = -50 kJ. Total:", ["+50", "-150", "-5,000", "-50"], 1], ["dG = -10 kJ indicates a process:", ["Non-spontaneous", "At equilibrium", "Spontaneous", "Impossible"], 2]]
+    },
+    "senior|m3": {
+      "title": "M3 - Kinetics and acid-base",
+      "facts": ["Rate increases with temperature and concentration", "Rate law: v = k[A]^n", "First order: half-life t1/2 = 0.693/k", "Strong acid dissociates completely", "pH + pOH = 14 (25 C)"],
+      "qA": [["pH + pOH =", ["1", "14", "0", "7"], 1], ["k = 0.0693 s^-1, first order. t1/2 =", ["1 s", "0.0693 s", "10 s", "100 s"], 2], ["First order: after 2 half-lives, remaining:", ["25%", "50%", "12.5%", "0%"], 0]],
+      "qB": [["Raising temperature usually:", ["No effect", "Stops it", "Increases the rate", "Lowers the rate"], 2], ["pH = 12. pOH =", ["14", "7", "12", "2"], 3], ["Concentration is doubled and the rate becomes four times. Order:", ["0", "1", "2", "3"], 2]]
+    }
+  }
+}

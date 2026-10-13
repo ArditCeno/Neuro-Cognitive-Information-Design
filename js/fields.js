@@ -4942,23 +4942,23 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_fillestar_m1_a.al.html",
-                "en": "materials/business_fillestar_m1_a.al.html"
+                "en": "materials/business_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/business_fillestar_m1_b.al.html",
-                "en": "materials/business_fillestar_m1_b.al.html"
+                "en": "materials/business_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Të ardhura me çmim 20 dhe sasi 500:",
+                    "en": "Revenue with price 20 and quantity 500:",
                     "al": "Të ardhura me çmim 20 dhe sasi 500:"
                   },
                   "options": [
                     {
-                      "en": "10.000",
+                      "en": "10,000",
                       "al": "10.000"
                     },
                     {
@@ -4966,11 +4966,11 @@ export const FIELDS = [
                       "al": "520"
                     },
                     {
-                      "en": "1.000",
+                      "en": "1,000",
                       "al": "1.000"
                     },
                     {
-                      "en": "2.500",
+                      "en": "2,500",
                       "al": "2.500"
                     }
                   ],
@@ -4979,7 +4979,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Shitje firmë 200, treg 2000. Pjesa e tregut:",
+                    "en": "Firm sales 200, market 2000. Market share:",
                     "al": "Shitje firmë 200, treg 2000. Pjesa e tregut:"
                   },
                   "options": [
@@ -5005,24 +5005,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Çmimi bie nga 20 në 18 por sasia mbetet 500. Të ardhurat:",
+                    "en": "Price falls from 20 to 18 but quantity stays 500. Revenue:",
                     "al": "Çmimi bie nga 20 në 18 por sasia mbetet 500. Të ardhurat:"
                   },
                   "options": [
                     {
-                      "en": "9.000",
+                      "en": "9,000",
                       "al": "9.000"
                     },
                     {
-                      "en": "10.000",
+                      "en": "10,000",
                       "al": "10.000"
                     },
                     {
-                      "en": "11.000",
+                      "en": "11,000",
                       "al": "11.000"
                     },
                     {
-                      "en": "8.000",
+                      "en": "8,000",
                       "al": "8.000"
                     }
                   ],
@@ -5033,24 +5033,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Fitimi =",
+                    "en": "Profit =",
                     "al": "Fitimi ="
                   },
                   "options": [
                     {
-                      "en": "Të ardhura + kosta",
+                      "en": "Revenue + cost",
                       "al": "Të ardhura + kosta"
                     },
                     {
-                      "en": "Të ardhura − kosta",
+                      "en": "Revenue - cost",
                       "al": "Të ardhura − kosta"
                     },
                     {
-                      "en": "Çmimi × kosta",
+                      "en": "Price x cost",
                       "al": "Çmimi × kosta"
                     },
                     {
-                      "en": "Kosta − të ardhura",
+                      "en": "Cost - revenue",
                       "al": "Kosta − të ardhura"
                     }
                   ],
@@ -5059,24 +5059,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kosta totale 6.000 dhe të ardhura 10.000. Fitimi:",
+                    "en": "Total cost 6,000 and revenue 10,000. Profit:",
                     "al": "Kosta totale 6.000 dhe të ardhura 10.000. Fitimi:"
                   },
                   "options": [
                     {
-                      "en": "10.000",
+                      "en": "10,000",
                       "al": "10.000"
                     },
                     {
-                      "en": "6.000",
+                      "en": "6,000",
                       "al": "6.000"
                     },
                     {
-                      "en": "16.000",
+                      "en": "16,000",
                       "al": "16.000"
                     },
                     {
-                      "en": "4.000",
+                      "en": "4,000",
                       "al": "4.000"
                     }
                   ],
@@ -5085,7 +5085,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Fitimi 2.000 me të ardhura 10.000. Marzhi:",
+                    "en": "Profit 2,000 with revenue 10,000. Margin:",
                     "al": "Fitimi 2.000 me të ardhura 10.000. Marzhi:"
                   },
                   "options": [
@@ -5119,35 +5119,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_fillestar_m2_a.al.html",
-                "en": "materials/business_fillestar_m2_a.al.html"
+                "en": "materials/business_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/business_fillestar_m2_b.al.html",
-                "en": "materials/business_fillestar_m2_b.al.html"
+                "en": "materials/business_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "'M' në SMART është:",
+                    "en": "'M' in SMART is:",
                     "al": "'M' në SMART është:"
                   },
                   "options": [
                     {
-                      "en": "Madhësi",
+                      "en": "Magnitude",
                       "al": "Madhësi"
                     },
                     {
-                      "en": "Mirë",
+                      "en": "Good",
                       "al": "Mirë"
                     },
                     {
-                      "en": "I matshëm",
+                      "en": "Measurable",
                       "al": "I matshëm"
                     },
                     {
-                      "en": "Mesatar",
+                      "en": "Average",
                       "al": "Mesatar"
                     }
                   ],
@@ -5156,24 +5156,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Cili objektiv është SMART?",
+                    "en": "Which objective is SMART?",
                     "al": "Cili objektiv është SMART?"
                   },
                   "options": [
                     {
-                      "en": "Bëhu më i mirë",
+                      "en": "Be better",
                       "al": "Bëhu më i mirë"
                     },
                     {
-                      "en": "Rrit shitjet",
+                      "en": "Increase sales",
                       "al": "Rrit shitjet"
                     },
                     {
-                      "en": "Shit më shumë",
+                      "en": "Sell more",
                       "al": "Shit më shumë"
                     },
                     {
-                      "en": "Rrit shitjet me 10% deri në 31 dhjetor",
+                      "en": "Increase sales by 10% by 31 December",
                       "al": "Rrit shitjet me 10% deri në 31 dhjetor"
                     }
                   ],
@@ -5182,24 +5182,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Objektiv: +200% shitje në 1 javë, pa burime. Kritika kryesore:",
+                    "en": "Objective: +200% sales in 1 week, without resources. Main criticism:",
                     "al": "Objektiv: +200% shitje në 1 javë, pa burime. Kritika kryesore:"
                   },
                   "options": [
                     {
-                      "en": "Specifik",
+                      "en": "Specific",
                       "al": "Specifik"
                     },
                     {
-                      "en": "Jo relevant",
+                      "en": "Not relevant",
                       "al": "Jo relevant"
                     },
                     {
-                      "en": "Jo i arritshëm",
+                      "en": "Not achievable",
                       "al": "Jo i arritshëm"
                     },
                     {
-                      "en": "Jo me afat",
+                      "en": "Not time-bound",
                       "al": "Jo me afat"
                     }
                   ],
@@ -5210,24 +5210,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "'T' në SMART është:",
+                    "en": "'T' in SMART is:",
                     "al": "'T' në SMART është:"
                   },
                   "options": [
                     {
-                      "en": "Taksa",
+                      "en": "Tax",
                       "al": "Taksa"
                     },
                     {
-                      "en": "Tregu",
+                      "en": "Market",
                       "al": "Tregu"
                     },
                     {
-                      "en": "Me afat kohor",
+                      "en": "Time-bound",
                       "al": "Me afat kohor"
                     },
                     {
-                      "en": "Teknik",
+                      "en": "Technical",
                       "al": "Teknik"
                     }
                   ],
@@ -5236,24 +5236,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "'Rrit kënaqësinë e klientëve' mungon në:",
+                    "en": "'Increase customer satisfaction' lacks:",
                     "al": "'Rrit kënaqësinë e klientëve' mungon në:"
                   },
                   "options": [
                     {
-                      "en": "Të matshme dhe afat",
+                      "en": "Measurability and a deadline",
                       "al": "Të matshme dhe afat"
                     },
                     {
-                      "en": "Specifike vetëm",
+                      "en": "Only specificity",
                       "al": "Specifike vetëm"
                     },
                     {
-                      "en": "Relevante vetëm",
+                      "en": "Only relevance",
                       "al": "Relevante vetëm"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "Nothing",
                       "al": "Asnjë"
                     }
                   ],
@@ -5262,24 +5262,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse objektivat SMART ndihmojnë?",
+                    "en": "Why do SMART objectives help?",
                     "al": "Pse objektivat SMART ndihmojnë?"
                   },
                   "options": [
                     {
-                      "en": "Mundësojnë matje dhe përgjegjësi",
+                      "en": "They enable measurement and accountability",
                       "al": "Mundësojnë matje dhe përgjegjësi"
                     },
                     {
-                      "en": "Zëvendësojnë strategjinë",
+                      "en": "They replace strategy",
                       "al": "Zëvendësojnë strategjinë"
                     },
                     {
-                      "en": "Janë të ndaluara",
+                      "en": "They are forbidden",
                       "al": "Janë të ndaluara"
                     },
                     {
-                      "en": "S'ka efekt",
+                      "en": "No effect",
                       "al": "S'ka efekt"
                     }
                   ],
@@ -5296,35 +5296,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_fillestar_m3_a.al.html",
-                "en": "materials/business_fillestar_m3_a.al.html"
+                "en": "materials/business_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/business_fillestar_m3_b.al.html",
-                "en": "materials/business_fillestar_m3_b.al.html"
+                "en": "materials/business_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Mbi pikën e ekuilibrit biznesi ka:",
+                    "en": "Above break-even the business has:",
                     "al": "Mbi pikën e ekuilibrit biznesi ka:"
                   },
                   "options": [
                     {
-                      "en": "Fitim",
+                      "en": "Profit",
                       "al": "Fitim"
                     },
                     {
-                      "en": "Humbje",
+                      "en": "Loss",
                       "al": "Humbje"
                     },
                     {
-                      "en": "Zero gjithmonë",
+                      "en": "Always zero",
                       "al": "Zero gjithmonë"
                     },
                     {
-                      "en": "Taksa",
+                      "en": "Taxes",
                       "al": "Taksa"
                     }
                   ],
@@ -5333,12 +5333,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Fikse 2.000, çmim 10, ndr. 6. Ekuilibri:",
+                    "en": "Fixed 2,000, price 10, variable 6. Break-even:",
                     "al": "Fikse 2.000, çmim 10, ndr. 6. Ekuilibri:"
                   },
                   "options": [
                     {
-                      "en": "2.000",
+                      "en": "2,000",
                       "al": "2.000"
                     },
                     {
@@ -5359,7 +5359,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Shitje 600 njësi (shembulli më sipër). Fitimi:",
+                    "en": "Sales 600 units (example above). Profit:",
                     "al": "Shitje 600 njësi (shembulli më sipër). Fitimi:"
                   },
                   "options": [
@@ -5376,7 +5376,7 @@ export const FIELDS = [
                       "al": "400"
                     },
                     {
-                      "en": "1.000",
+                      "en": "1,000",
                       "al": "1.000"
                     }
                   ],
@@ -5387,12 +5387,12 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Nën pikën e ekuilibrit:",
+                    "en": "Below break-even:",
                     "al": "Nën pikën e ekuilibrit:"
                   },
                   "options": [
                     {
-                      "en": "Fitim",
+                      "en": "Profit",
                       "al": "Fitim"
                     },
                     {
@@ -5400,11 +5400,11 @@ export const FIELDS = [
                       "al": "Zero"
                     },
                     {
-                      "en": "Humbje",
+                      "en": "Loss",
                       "al": "Humbje"
                     },
                     {
-                      "en": "Rritje",
+                      "en": "Growth",
                       "al": "Rritje"
                     }
                   ],
@@ -5413,24 +5413,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rritja e çmimit (të tjerat njëlloj) e ekuilibrit:",
+                    "en": "Raising the price (others equal) makes break-even:",
                     "al": "Rritja e çmimit (të tjerat njëlloj) e ekuilibrit:"
                   },
                   "options": [
                     {
-                      "en": "Nuk e ndryshon",
+                      "en": "Unchanged",
                       "al": "Nuk e ndryshon"
                     },
                     {
-                      "en": "E rrit",
+                      "en": "Higher",
                       "al": "E rrit"
                     },
                     {
-                      "en": "E ul",
+                      "en": "Lower",
                       "al": "E ul"
                     },
                     {
-                      "en": "E dyfishon",
+                      "en": "Double",
                       "al": "E dyfishon"
                     }
                   ],
@@ -5439,12 +5439,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Çmim 12, ndr. 6, fikse 2.000. Ekuilibri:",
+                    "en": "Price 12, variable 6, fixed 2,000. Break-even:",
                     "al": "Çmim 12, ndr. 6, fikse 2.000. Ekuilibri:"
                   },
                   "options": [
                     {
-                      "en": "1.000",
+                      "en": "1,000",
                       "al": "1.000"
                     },
                     {
@@ -5477,35 +5477,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_mid_m1_a.al.html",
-                "en": "materials/business_mid_m1_a.al.html"
+                "en": "materials/business_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/business_mid_m1_b.al.html",
-                "en": "materials/business_mid_m1_b.al.html"
+                "en": "materials/business_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Mundësitë (O) janë faktorë:",
+                    "en": "Opportunities (O) are factors:",
                     "al": "Mundësitë (O) janë faktorë:"
                   },
                   "options": [
                     {
-                      "en": "Të brendshëm",
+                      "en": "Internal",
                       "al": "Të brendshëm"
                     },
                     {
-                      "en": "Ligjorë vetëm",
+                      "en": "Legal only",
                       "al": "Ligjorë vetëm"
                     },
                     {
-                      "en": "Të jashtëm",
+                      "en": "External",
                       "al": "Të jashtëm"
                     },
                     {
-                      "en": "Financiarë vetëm",
+                      "en": "Financial only",
                       "al": "Financiarë vetëm"
                     }
                   ],
@@ -5514,24 +5514,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rritja e kërkesës në treg është:",
+                    "en": "Growing market demand is a:",
                     "al": "Rritja e kërkesës në treg është:"
                   },
                   "options": [
                     {
-                      "en": "Forcë",
+                      "en": "Strength",
                       "al": "Forcë"
                     },
                     {
-                      "en": "Mundësi",
+                      "en": "Opportunity",
                       "al": "Mundësi"
                     },
                     {
-                      "en": "Kërcënim",
+                      "en": "Threat",
                       "al": "Kërcënim"
                     },
                     {
-                      "en": "Dobësi",
+                      "en": "Weakness",
                       "al": "Dobësi"
                     }
                   ],
@@ -5540,24 +5540,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Konkurrent i ri me çmime të ulëta është:",
+                    "en": "A new competitor with low prices is a:",
                     "al": "Konkurrent i ri me çmime të ulëta është:"
                   },
                   "options": [
                     {
-                      "en": "Forcë",
+                      "en": "Strength",
                       "al": "Forcë"
                     },
                     {
-                      "en": "Mundësi",
+                      "en": "Opportunity",
                       "al": "Mundësi"
                     },
                     {
-                      "en": "Dobësi",
+                      "en": "Weakness",
                       "al": "Dobësi"
                     },
                     {
-                      "en": "Kërcënim",
+                      "en": "Threat",
                       "al": "Kërcënim"
                     }
                   ],
@@ -5568,24 +5568,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Forcat (S) janë:",
+                    "en": "Strengths (S) are:",
                     "al": "Forcat (S) janë:"
                   },
                   "options": [
                     {
-                      "en": "Konkurrentët",
+                      "en": "Competitors",
                       "al": "Konkurrentët"
                     },
                     {
-                      "en": "Të jashtme",
+                      "en": "External",
                       "al": "Të jashtme"
                     },
                     {
-                      "en": "Të brendshme",
+                      "en": "Internal",
                       "al": "Të brendshme"
                     },
                     {
-                      "en": "Taksat",
+                      "en": "Taxes",
                       "al": "Taksat"
                     }
                   ],
@@ -5594,24 +5594,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Staf pa trajnim është:",
+                    "en": "Untrained staff is a:",
                     "al": "Staf pa trajnim është:"
                   },
                   "options": [
                     {
-                      "en": "Kërcënim",
+                      "en": "Threat",
                       "al": "Kërcënim"
                     },
                     {
-                      "en": "Dobësi",
+                      "en": "Weakness",
                       "al": "Dobësi"
                     },
                     {
-                      "en": "Forcë",
+                      "en": "Strength",
                       "al": "Forcë"
                     },
                     {
-                      "en": "Mundësi",
+                      "en": "Opportunity",
                       "al": "Mundësi"
                     }
                   ],
@@ -5620,24 +5620,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Strategjia 'S–O' do të thotë:",
+                    "en": "The 'S-O' strategy means:",
                     "al": "Strategjia 'S–O' do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Mbyll biznesin",
+                      "en": "Close the business",
                       "al": "Mbyll biznesin"
                     },
                     {
-                      "en": "Shmang kërcënimet",
+                      "en": "Avoid threats",
                       "al": "Shmang kërcënimet"
                     },
                     {
-                      "en": "Përdor forcat për mundësi",
+                      "en": "Use strengths for opportunities",
                       "al": "Përdor forcat për mundësi"
                     },
                     {
-                      "en": "Fshij dobësitë",
+                      "en": "Delete weaknesses",
                       "al": "Fshij dobësitë"
                     }
                   ],
@@ -5654,18 +5654,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_mid_m2_a.al.html",
-                "en": "materials/business_mid_m2_a.al.html"
+                "en": "materials/business_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/business_mid_m2_b.al.html",
-                "en": "materials/business_mid_m2_b.al.html"
+                "en": "materials/business_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Real 90 / objektiv 100 =",
+                    "en": "Actual 90 / target 100 =",
                     "al": "Real 90 / objektiv 100 ="
                   },
                   "options": [
@@ -5691,7 +5691,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Shitje Q1 100, Q2 120. Rritja:",
+                    "en": "Sales Q1 100, Q2 120. Growth:",
                     "al": "Shitje Q1 100, Q2 120. Rritja:"
                   },
                   "options": [
@@ -5717,12 +5717,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "A: 90 nga 100; B: 480 nga 500. Realizim më i mirë:",
+                    "en": "A: 90 of 100; B: 480 of 500. Better achievement:",
                     "al": "A: 90 nga 100; B: 480 nga 500. Realizim më i mirë:"
                   },
                   "options": [
                     {
-                      "en": "S'dihet",
+                      "en": "Unknown",
                       "al": "S'dihet"
                     },
                     {
@@ -5730,7 +5730,7 @@ export const FIELDS = [
                       "al": "A (90%)"
                     },
                     {
-                      "en": "Njëlloj",
+                      "en": "Equal",
                       "al": "Njëlloj"
                     },
                     {
@@ -5745,24 +5745,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Benchmark është krahasim me:",
+                    "en": "Benchmark is a comparison with:",
                     "al": "Benchmark është krahasim me:"
                   },
                   "options": [
                     {
-                      "en": "Buxhetin vetëm",
+                      "en": "The budget only",
                       "al": "Buxhetin vetëm"
                     },
                     {
-                      "en": "Konkurrencën/standardin",
+                      "en": "Competitors/standard",
                       "al": "Konkurrencën/standardin"
                     },
                     {
-                      "en": "Veten",
+                      "en": "Yourself",
                       "al": "Veten"
                     },
                     {
-                      "en": "Askënd",
+                      "en": "Nobody",
                       "al": "Askënd"
                     }
                   ],
@@ -5771,24 +5771,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse përdoren %?",
+                    "en": "Why use %?",
                     "al": "Pse përdoren %?"
                   },
                   "options": [
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "Për krahasim të drejtë mes madhësish",
+                      "en": "To compare fairly across sizes",
                       "al": "Për krahasim të drejtë mes madhësish"
                     },
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     }
                   ],
@@ -5797,7 +5797,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rritje 25% pastaj rënie 20%. Rezultati neto:",
+                    "en": "Growth 25% then a fall 20%. Net result:",
                     "al": "Rritje 25% pastaj rënie 20%. Rezultati neto:"
                   },
                   "options": [
@@ -5814,7 +5814,7 @@ export const FIELDS = [
                       "al": "0%"
                     },
                     {
-                      "en": "−5%",
+                      "en": "-5%",
                       "al": "−5%"
                     }
                   ],
@@ -5831,35 +5831,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_mid_m3_a.al.html",
-                "en": "materials/business_mid_m3_a.al.html"
+                "en": "materials/business_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/business_mid_m3_b.al.html",
-                "en": "materials/business_mid_m3_b.al.html"
+                "en": "materials/business_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "4P përfshijnë:",
+                    "en": "The 4P include:",
                     "al": "4P përfshijnë:"
                   },
                   "options": [
                     {
-                      "en": "Produkt, çmim, vend, promocion",
+                      "en": "Product, price, place, promotion",
                       "al": "Produkt, çmim, vend, promocion"
                     },
                     {
-                      "en": "Pagë, plan, projekt, proces",
+                      "en": "Pay, plan, project, process",
                       "al": "Pagë, plan, projekt, proces"
                     },
                     {
-                      "en": "Plan, pritje, politikë, pagesë",
+                      "en": "Plan, expectation, policy, payment",
                       "al": "Plan, pritje, politikë, pagesë"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     }
                   ],
@@ -5868,24 +5868,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Segmentim sipas moshës është kriter:",
+                    "en": "Segmentation by age is a criterion:",
                     "al": "Segmentim sipas moshës është kriter:"
                   },
                   "options": [
                     {
-                      "en": "Gjeografik",
+                      "en": "Geographic",
                       "al": "Gjeografik"
                     },
                     {
-                      "en": "Psikografik",
+                      "en": "Psychographic",
                       "al": "Psikografik"
                     },
                     {
-                      "en": "Demografik",
+                      "en": "Demographic",
                       "al": "Demografik"
                     },
                     {
-                      "en": "Sjelljeje",
+                      "en": "Behavioural",
                       "al": "Sjelljeje"
                     }
                   ],
@@ -5894,24 +5894,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Produkt premium me çmim shumë të ulët krijon rrezik:",
+                    "en": "A premium product at a very low price creates a risk:",
                     "al": "Produkt premium me çmim shumë të ulët krijon rrezik:"
                   },
                   "options": [
                     {
-                      "en": "Perceptim i dobët cilësie",
+                      "en": "Weak quality perception",
                       "al": "Perceptim i dobët cilësie"
                     },
                     {
-                      "en": "Rritje fitimi automatike",
+                      "en": "Automatic profit growth",
                       "al": "Rritje fitimi automatike"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     },
                     {
-                      "en": "Ligjor",
+                      "en": "Legal",
                       "al": "Ligjor"
                     }
                   ],
@@ -5922,24 +5922,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Segmentimi është:",
+                    "en": "Segmentation is:",
                     "al": "Segmentimi është:"
                   },
                   "options": [
                     {
-                      "en": "Ndarje e tregut në grupe",
+                      "en": "Dividing the market into groups",
                       "al": "Ndarje e tregut në grupe"
                     },
                     {
-                      "en": "Reklamë",
+                      "en": "Advertising",
                       "al": "Reklamë"
                     },
                     {
-                      "en": "Taksë",
+                      "en": "A tax",
                       "al": "Taksë"
                     },
                     {
-                      "en": "Rritje çmimi",
+                      "en": "A price increase",
                       "al": "Rritje çmimi"
                     }
                   ],
@@ -5948,24 +5948,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pozicionimi lidhet me:",
+                    "en": "Positioning relates to:",
                     "al": "Pozicionimi lidhet me:"
                   },
                   "options": [
                     {
-                      "en": "Kosto",
+                      "en": "Cost",
                       "al": "Kosto"
                     },
                     {
-                      "en": "Taksa",
+                      "en": "Taxes",
                       "al": "Taksa"
                     },
                     {
-                      "en": "Punonjësit",
+                      "en": "Employees",
                       "al": "Punonjësit"
                     },
                     {
-                      "en": "Perceptimin e klientit",
+                      "en": "Customer perception",
                       "al": "Perceptimin e klientit"
                     }
                   ],
@@ -5974,24 +5974,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Targetimi vjen:",
+                    "en": "Targeting comes:",
                     "al": "Targetimi vjen:"
                   },
                   "options": [
                     {
-                      "en": "Pas shitjes",
+                      "en": "After sales",
                       "al": "Pas shitjes"
                     },
                     {
-                      "en": "Pas segmentimit",
+                      "en": "After segmentation",
                       "al": "Pas segmentimit"
                     },
                     {
-                      "en": "Para segmentimit",
+                      "en": "Before segmentation",
                       "al": "Para segmentimit"
                     },
                     {
-                      "en": "Pa lidhje",
+                      "en": "Unrelated",
                       "al": "Pa lidhje"
                     }
                   ],
@@ -6012,35 +6012,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_senior_m1_a.al.html",
-                "en": "materials/business_senior_m1_a.al.html"
+                "en": "materials/business_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/business_senior_m1_b.al.html",
-                "en": "materials/business_senior_m1_b.al.html"
+                "en": "materials/business_senior_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Strategjitë gjenerike të Porterit:",
+                    "en": "Porter's generic strategies:",
                     "al": "Strategjitë gjenerike të Porterit:"
                   },
                   "options": [
                     {
-                      "en": "Plan, bëj, kontrollo",
+                      "en": "Plan, do, check",
                       "al": "Plan, bëj, kontrollo"
                     },
                     {
-                      "en": "Kosto, diferencim, fokus",
+                      "en": "Cost, differentiation, focus",
                       "al": "Kosto, diferencim, fokus"
                     },
                     {
-                      "en": "Forcë, dobësi, mundësi",
+                      "en": "Strength, weakness, opportunity",
                       "al": "Forcë, dobësi, mundësi"
                     },
                     {
-                      "en": "Çmim, vend, promocion",
+                      "en": "Price, place, promotion",
                       "al": "Çmim, vend, promocion"
                     }
                   ],
@@ -6049,24 +6049,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Cila NUK është forcë e Porterit?",
+                    "en": "Which is NOT a Porter force?",
                     "al": "Cila NUK është forcë e Porterit?"
                   },
                   "options": [
                     {
-                      "en": "Blerësit",
+                      "en": "Buyers",
                       "al": "Blerësit"
                     },
                     {
-                      "en": "Ngjyra e logos",
+                      "en": "Logo colour",
                       "al": "Ngjyra e logos"
                     },
                     {
-                      "en": "Furnitorët",
+                      "en": "Suppliers",
                       "al": "Furnitorët"
                     },
                     {
-                      "en": "Zëvendësuesit",
+                      "en": "Substitutes",
                       "al": "Zëvendësuesit"
                     }
                   ],
@@ -6075,24 +6075,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Firma konkuron me cilësi unike dhe çmim premium. Strategji:",
+                    "en": "A firm competes with unique quality and premium price. Strategy:",
                     "al": "Firma konkuron me cilësi unike dhe çmim premium. Strategji:"
                   },
                   "options": [
                     {
-                      "en": "Kosto",
+                      "en": "Cost",
                       "al": "Kosto"
                     },
                     {
-                      "en": "Diferencim",
+                      "en": "Differentiation",
                       "al": "Diferencim"
                     },
                     {
-                      "en": "Fokus pa diferencim",
+                      "en": "Focus without differentiation",
                       "al": "Fokus pa diferencim"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     }
                   ],
@@ -6103,7 +6103,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Balanced Scorecard ka perspektiva:",
+                    "en": "The Balanced Scorecard has perspectives:",
                     "al": "Balanced Scorecard ka perspektiva:"
                   },
                   "options": [
@@ -6129,24 +6129,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Udhëheqja e kostos synon:",
+                    "en": "Cost leadership aims for:",
                     "al": "Udhëheqja e kostos synon:"
                   },
                   "options": [
                     {
-                      "en": "Çmim më të ulët strukturalisht",
+                      "en": "Structurally lower price",
                       "al": "Çmim më të ulët strukturalisht"
                     },
                     {
-                      "en": "Produkt luksoz",
+                      "en": "A luxury product",
                       "al": "Produkt luksoz"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     },
                     {
-                      "en": "Reklamë më shumë",
+                      "en": "More advertising",
                       "al": "Reklamë më shumë"
                     }
                   ],
@@ -6155,24 +6155,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse lidhet strategjia me KPI?",
+                    "en": "Why link strategy to KPIs?",
                     "al": "Pse lidhet strategjia me KPI?"
                   },
                   "options": [
                     {
-                      "en": "Për dekor",
+                      "en": "For decoration",
                       "al": "Për dekor"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "Që zbatimi të matet dhe të korrigjohet",
+                      "en": "So execution is measured and corrected",
                       "al": "Që zbatimi të matet dhe të korrigjohet"
                     },
                     {
-                      "en": "S'lidhet",
+                      "en": "Unrelated",
                       "al": "S'lidhet"
                     }
                   ],
@@ -6189,18 +6189,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_senior_m2_a.al.html",
-                "en": "materials/business_senior_m2_a.al.html"
+                "en": "materials/business_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/business_senior_m2_b.al.html",
-                "en": "materials/business_senior_m2_b.al.html"
+                "en": "materials/business_senior_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "ROI me investim 100, kthim 130:",
+                    "en": "ROI with investment 100, return 130:",
                     "al": "ROI me investim 100, kthim 130:"
                   },
                   "options": [
@@ -6226,24 +6226,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Investim 50.000, fluks 20.000/vit. Shlyerja:",
+                    "en": "Investment 50,000, flow 20,000/yr. Payback:",
                     "al": "Investim 50.000, fluks 20.000/vit. Shlyerja:"
                   },
                   "options": [
                     {
-                      "en": "2 vite",
+                      "en": "2 years",
                       "al": "2 vite"
                     },
                     {
-                      "en": "5 vite",
+                      "en": "5 years",
                       "al": "5 vite"
                     },
                     {
-                      "en": "2,5 vite",
+                      "en": "2.5 years",
                       "al": "2,5 vite"
                     },
                     {
-                      "en": "3 vite",
+                      "en": "3 years",
                       "al": "3 vite"
                     }
                   ],
@@ -6252,12 +6252,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dy projekte me ROI 20%: A në 1 vit, B në 5 vite. Cili preferohet (të tjerat njëlloj)?",
+                    "en": "Two projects with ROI 20%: A in 1 year, B in 5 years. Which is preferred (others equal)?",
                     "al": "Dy projekte me ROI 20%: A në 1 vit, B në 5 vite. Cili preferohet (të tjerat njëlloj)?"
                   },
                   "options": [
                     {
-                      "en": "S'dihet",
+                      "en": "Unknown",
                       "al": "S'dihet"
                     },
                     {
@@ -6269,7 +6269,7 @@ export const FIELDS = [
                       "al": "B"
                     },
                     {
-                      "en": "Njëlloj",
+                      "en": "Equal",
                       "al": "Njëlloj"
                     }
                   ],
@@ -6280,24 +6280,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Periudha e shlyerjes =",
+                    "en": "Payback =",
                     "al": "Periudha e shlyerjes ="
                   },
                   "options": [
                     {
-                      "en": "Investim / fluks vjetor",
+                      "en": "Investment / annual flow",
                       "al": "Investim / fluks vjetor"
                     },
                     {
-                      "en": "Fluks × investim",
+                      "en": "Flow x investment",
                       "al": "Fluks × investim"
                     },
                     {
-                      "en": "Investim − fluks",
+                      "en": "Investment - flow",
                       "al": "Investim − fluks"
                     },
                     {
-                      "en": "Fluks / investim",
+                      "en": "Flow / investment",
                       "al": "Fluks / investim"
                     }
                   ],
@@ -6306,24 +6306,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kufizimi i ROI:",
+                    "en": "The limitation of ROI:",
                     "al": "Kufizimi i ROI:"
                   },
                   "options": [
                     {
-                      "en": "Nuk merr parasysh kohën",
+                      "en": "It ignores time",
                       "al": "Nuk merr parasysh kohën"
                     },
                     {
-                      "en": "Kërkon lidhje",
+                      "en": "It needs a link",
                       "al": "Kërkon lidhje"
                     },
                     {
-                      "en": "Është i pamundur",
+                      "en": "It is impossible",
                       "al": "Është i pamundur"
                     },
                     {
-                      "en": "Nuk ka",
+                      "en": "It has none",
                       "al": "Nuk ka"
                     }
                   ],
@@ -6332,24 +6332,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Investim 80.000, fluks 16.000/vit. Shlyerja:",
+                    "en": "Investment 80,000, flow 16,000/yr. Payback:",
                     "al": "Investim 80.000, fluks 16.000/vit. Shlyerja:"
                   },
                   "options": [
                     {
-                      "en": "5 vite",
+                      "en": "5 years",
                       "al": "5 vite"
                     },
                     {
-                      "en": "6 vite",
+                      "en": "6 years",
                       "al": "6 vite"
                     },
                     {
-                      "en": "4 vite",
+                      "en": "4 years",
                       "al": "4 vite"
                     },
                     {
-                      "en": "8 vite",
+                      "en": "8 years",
                       "al": "8 vite"
                     }
                   ],
@@ -6366,35 +6366,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/business_senior_m3_a.al.html",
-                "en": "materials/business_senior_m3_a.al.html"
+                "en": "materials/business_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/business_senior_m3_b.al.html",
-                "en": "materials/business_senior_m3_b.al.html"
+                "en": "materials/business_senior_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Rreziku shpesh vlerësohet si:",
+                    "en": "Risk is often rated as:",
                     "al": "Rreziku shpesh vlerësohet si:"
                   },
                   "options": [
                     {
-                      "en": "Probabilitet × ndikim",
+                      "en": "Probability x impact",
                       "al": "Probabilitet × ndikim"
                     },
                     {
-                      "en": "Vetëm ndikim",
+                      "en": "Impact only",
                       "al": "Vetëm ndikim"
                     },
                     {
-                      "en": "Probabilitet + kosto",
+                      "en": "Probability + cost",
                       "al": "Probabilitet + kosto"
                     },
                     {
-                      "en": "Vetëm probabilitet",
+                      "en": "Probability only",
                       "al": "Vetëm probabilitet"
                     }
                   ],
@@ -6403,24 +6403,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Probabilitet 0,2, ndikim 50.000. Vlera e pritur e humbjes:",
+                    "en": "Probability 0.2, impact 50,000. Expected loss:",
                     "al": "Probabilitet 0,2, ndikim 50.000. Vlera e pritur e humbjes:"
                   },
                   "options": [
                     {
-                      "en": "10.000",
+                      "en": "10,000",
                       "al": "10.000"
                     },
                     {
-                      "en": "25.000",
+                      "en": "25,000",
                       "al": "25.000"
                     },
                     {
-                      "en": "2.500",
+                      "en": "2,500",
                       "al": "2.500"
                     },
                     {
-                      "en": "50.000",
+                      "en": "50,000",
                       "al": "50.000"
                     }
                   ],
@@ -6429,24 +6429,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rrezik me probabilitet të ulët por ndikim katastrofik kërkon:",
+                    "en": "A low-probability but catastrophic impact risk requires:",
                     "al": "Rrezik me probabilitet të ulët por ndikim katastrofik kërkon:"
                   },
                   "options": [
                     {
-                      "en": "Injorim",
+                      "en": "Ignoring",
                       "al": "Injorim"
                     },
                     {
-                      "en": "Vëmendje dhe plan emergjence",
+                      "en": "Attention and a contingency plan",
                       "al": "Vëmendje dhe plan emergjence"
                     },
                     {
-                      "en": "Vetëm pranim",
+                      "en": "Accept only",
                       "al": "Vetëm pranim"
                     },
                     {
-                      "en": "Asnjë masë",
+                      "en": "No measure",
                       "al": "Asnjë masë"
                     }
                   ],
@@ -6457,24 +6457,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Siguracioni është strategji:",
+                    "en": "Insurance is a strategy of:",
                     "al": "Siguracioni është strategji:"
                   },
                   "options": [
                     {
-                      "en": "Pranim",
+                      "en": "Acceptance",
                       "al": "Pranim"
                     },
                     {
-                      "en": "Transferim",
+                      "en": "Transfer",
                       "al": "Transferim"
                     },
                     {
-                      "en": "Shmangie",
+                      "en": "Avoidance",
                       "al": "Shmangie"
                     },
                     {
-                      "en": "Zbutje",
+                      "en": "Mitigation",
                       "al": "Zbutje"
                     }
                   ],
@@ -6483,24 +6483,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Ndalimi i një aktiviteti të rrezikshëm është:",
+                    "en": "Stopping a risky activity is:",
                     "al": "Ndalimi i një aktiviteti të rrezikshëm është:"
                   },
                   "options": [
                     {
-                      "en": "Transferim",
+                      "en": "Transfer",
                       "al": "Transferim"
                     },
                     {
-                      "en": "Zbutje",
+                      "en": "Mitigation",
                       "al": "Zbutje"
                     },
                     {
-                      "en": "Shmangie",
+                      "en": "Avoidance",
                       "al": "Shmangie"
                     },
                     {
-                      "en": "Pranim",
+                      "en": "Acceptance",
                       "al": "Pranim"
                     }
                   ],
@@ -6509,24 +6509,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas masave mbetet:",
+                    "en": "After controls there remains:",
                     "al": "Pas masave mbetet:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Rrezik zero gjithmonë",
+                      "en": "Always zero risk",
                       "al": "Rrezik zero gjithmonë"
                     },
                     {
-                      "en": "Rrezik i mbetur",
+                      "en": "Residual risk",
                       "al": "Rrezik i mbetur"
                     },
                     {
-                      "en": "Fitim",
+                      "en": "Profit",
                       "al": "Fitim"
                     }
                   ],
@@ -6556,35 +6556,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_fillestar_m1_a.al.html",
-                "en": "materials/health_fillestar_m1_a.al.html"
+                "en": "materials/health_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/health_fillestar_m1_b.al.html",
-                "en": "materials/health_fillestar_m1_b.al.html"
+                "en": "materials/health_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Simptoma është:",
+                    "en": "A symptom is:",
                     "al": "Simptoma është:"
                   },
                   "options": [
                     {
-                      "en": "E raportuar nga pacienti",
+                      "en": "Reported by the patient",
                       "al": "E raportuar nga pacienti"
                     },
                     {
-                      "en": "E matur nga aparati",
+                      "en": "Measured by a device",
                       "al": "E matur nga aparati"
                     },
                     {
-                      "en": "Rezultat laboratori",
+                      "en": "A lab result",
                       "al": "Rezultat laboratori"
                     },
                     {
-                      "en": "Diagnozë",
+                      "en": "A diagnosis",
                       "al": "Diagnozë"
                     }
                   ],
@@ -6593,24 +6593,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Të ftohtit e matur me termometër është:",
+                    "en": "A cold measured with a thermometer is a:",
                     "al": "Të ftohtit e matur me termometër është:"
                   },
                   "options": [
                     {
-                      "en": "Diagnozë",
+                      "en": "Diagnosis",
                       "al": "Diagnozë"
                     },
                     {
-                      "en": "Simptomë",
+                      "en": "Symptom",
                       "al": "Simptomë"
                     },
                     {
-                      "en": "Shenjë",
+                      "en": "Sign",
                       "al": "Shenjë"
                     },
                     {
-                      "en": "Anamnezë",
+                      "en": "History",
                       "al": "Anamnezë"
                     }
                   ],
@@ -6619,24 +6619,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pacienti thotë 'kam marramendje'. Kjo është:",
+                    "en": "The patient says 'I feel dizzy'. This is a:",
                     "al": "Pacienti thotë 'kam marramendje'. Kjo është:"
                   },
                   "options": [
                     {
-                      "en": "Shenjë",
+                      "en": "Sign",
                       "al": "Shenjë"
                     },
                     {
-                      "en": "Simptomë",
+                      "en": "Symptom",
                       "al": "Simptomë"
                     },
                     {
-                      "en": "Mjekim",
+                      "en": "Treatment",
                       "al": "Mjekim"
                     },
                     {
-                      "en": "Rezultat",
+                      "en": "Result",
                       "al": "Rezultat"
                     }
                   ],
@@ -6647,24 +6647,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Ethet përkufizohen zakonisht si:",
+                    "en": "Fever is usually defined as:",
                     "al": "Ethet përkufizohen zakonisht si:"
                   },
                   "options": [
                     {
-                      "en": "≥ 36 °C",
+                      "en": ">= 36 C",
                       "al": "≥ 36 °C"
                     },
                     {
-                      "en": "≥ 35 °C",
+                      "en": ">= 35 C",
                       "al": "≥ 35 °C"
                     },
                     {
-                      "en": "≥ 38 °C",
+                      "en": ">= 38 C",
                       "al": "≥ 38 °C"
                     },
                     {
-                      "en": "≥ 40 °C",
+                      "en": ">= 40 C",
                       "al": "≥ 40 °C"
                     }
                   ],
@@ -6673,24 +6673,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Shkalla e dhimbjes zakonisht:",
+                    "en": "Pain is usually rated:",
                     "al": "Shkalla e dhimbjes zakonisht:"
                   },
                   "options": [
                     {
-                      "en": "0–10",
+                      "en": "0-10",
                       "al": "0–10"
                     },
                     {
-                      "en": "A–F",
+                      "en": "A-F",
                       "al": "A–F"
                     },
                     {
-                      "en": "1–100",
+                      "en": "1-100",
                       "al": "1–100"
                     },
                     {
-                      "en": "0–3",
+                      "en": "0-3",
                       "al": "0–3"
                     }
                   ],
@@ -6699,24 +6699,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Cili element NUK është pjesë standarde e anamnezës së dhimbjes?",
+                    "en": "Which is NOT a standard part of the pain history?",
                     "al": "Cili element NUK është pjesë standarde e anamnezës së dhimbjes?"
                   },
                   "options": [
                     {
-                      "en": "Intensiteti",
+                      "en": "Intensity",
                       "al": "Intensiteti"
                     },
                     {
-                      "en": "Faktorët lehtësues",
+                      "en": "Relieving factors",
                       "al": "Faktorët lehtësues"
                     },
                     {
-                      "en": "Ngjyra e këpucëve",
+                      "en": "Shoe colour",
                       "al": "Ngjyra e këpucëve"
                     },
                     {
-                      "en": "Fillimi",
+                      "en": "Onset",
                       "al": "Fillimi"
                     }
                   ],
@@ -6733,35 +6733,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_fillestar_m2_a.al.html",
-                "en": "materials/health_fillestar_m2_a.al.html"
+                "en": "materials/health_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/health_fillestar_m2_b.al.html",
-                "en": "materials/health_fillestar_m2_b.al.html"
+                "en": "materials/health_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Pulsi normal i të rriturit:",
+                    "en": "Normal adult pulse:",
                     "al": "Pulsi normal i të rriturit:"
                   },
                   "options": [
                     {
-                      "en": "120–160",
+                      "en": "120-160",
                       "al": "120–160"
                     },
                     {
-                      "en": "10–20",
+                      "en": "10-20",
                       "al": "10–20"
                     },
                     {
-                      "en": "60–100",
+                      "en": "60-100",
                       "al": "60–100"
                     },
                     {
-                      "en": "30–50",
+                      "en": "30-50",
                       "al": "30–50"
                     }
                   ],
@@ -6770,24 +6770,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Frymëmarrje 28/min është:",
+                    "en": "Respiration 28/min is:",
                     "al": "Frymëmarrje 28/min është:"
                   },
                   "options": [
                     {
-                      "en": "Normale",
+                      "en": "Normal",
                       "al": "Normale"
                     },
                     {
-                      "en": "Bradipne",
+                      "en": "Bradypnea",
                       "al": "Bradipne"
                     },
                     {
-                      "en": "Apne",
+                      "en": "Apnea",
                       "al": "Apne"
                     },
                     {
-                      "en": "Tahipne",
+                      "en": "Tachypnea",
                       "al": "Tahipne"
                     }
                   ],
@@ -6796,7 +6796,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "SpO₂ 88% dhe frymëmarrje 26/min. Vlerësim:",
+                    "en": "SpO2 88% and respiration 26/min. Assessment:",
                     "al": "SpO₂ 88% dhe frymëmarrje 26/min. Vlerësim:"
                   },
                   "options": [
@@ -6805,15 +6805,15 @@ export const FIELDS = [
                       "al": "Normal"
                     },
                     {
-                      "en": "Shqetësues, kërkon vlerësim urgjent",
+                      "en": "Concerning, needs urgent assessment",
                       "al": "Shqetësues, kërkon vlerësim urgjent"
                     },
                     {
-                      "en": "Vetëm monitorim pas 1 jave",
+                      "en": "Monitor in 1 week",
                       "al": "Vetëm monitorim pas 1 jave"
                     },
                     {
-                      "en": "Pa rëndësi",
+                      "en": "Irrelevant",
                       "al": "Pa rëndësi"
                     }
                   ],
@@ -6824,24 +6824,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "SpO₂ normale:",
+                    "en": "Normal SpO2:",
                     "al": "SpO₂ normale:"
                   },
                   "options": [
                     {
-                      "en": "≥ 50%",
+                      "en": ">= 50%",
                       "al": "≥ 50%"
                     },
                     {
-                      "en": "≥ 95%",
+                      "en": ">= 95%",
                       "al": "≥ 95%"
                     },
                     {
-                      "en": "≥ 30%",
+                      "en": ">= 30%",
                       "al": "≥ 30%"
                     },
                     {
-                      "en": "≥ 70%",
+                      "en": ">= 70%",
                       "al": "≥ 70%"
                     }
                   ],
@@ -6850,12 +6850,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Puls 45/min tek i rritur në prehje:",
+                    "en": "Pulse 45/min in a resting adult:",
                     "al": "Puls 45/min tek i rritur në prehje:"
                   },
                   "options": [
                     {
-                      "en": "Bradikardi",
+                      "en": "Bradycardia",
                       "al": "Bradikardi"
                     },
                     {
@@ -6867,7 +6867,7 @@ export const FIELDS = [
                       "al": "Normal"
                     },
                     {
-                      "en": "Tahikardi",
+                      "en": "Tachycardia",
                       "al": "Tahikardi"
                     }
                   ],
@@ -6876,16 +6876,16 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Tension 90/50 me puls 120. Mendimi kryesor:",
+                    "en": "BP 90/50 with pulse 120. Main concern:",
                     "al": "Tension 90/50 me puls 120. Mendimi kryesor:"
                   },
                   "options": [
                     {
-                      "en": "Pa rëndësi",
+                      "en": "Irrelevant",
                       "al": "Pa rëndësi"
                     },
                     {
-                      "en": "Hipertension",
+                      "en": "Hypertension",
                       "al": "Hipertension"
                     },
                     {
@@ -6893,7 +6893,7 @@ export const FIELDS = [
                       "al": "Normal"
                     },
                     {
-                      "en": "Mund të ketë shok/hipovolemi — urgjencë",
+                      "en": "Possible shock/hypovolaemia, emergency",
                       "al": "Mund të ketë shok/hipovolemi — urgjencë"
                     }
                   ],
@@ -6910,35 +6910,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_fillestar_m3_a.al.html",
-                "en": "materials/health_fillestar_m3_a.al.html"
+                "en": "materials/health_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/health_fillestar_m3_b.al.html",
-                "en": "materials/health_fillestar_m3_b.al.html"
+                "en": "materials/health_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Prapashtesa '-itis' tregon:",
+                    "en": "The suffix '-itis' indicates:",
                     "al": "Prapashtesa '-itis' tregon:"
                   },
                   "options": [
                     {
-                      "en": "Shqyerje",
+                      "en": "Rupture",
                       "al": "Shqyerje"
                     },
                     {
-                      "en": "Tumor",
+                      "en": "Tumour",
                       "al": "Tumor"
                     },
                     {
-                      "en": "Heqje",
+                      "en": "Removal",
                       "al": "Heqje"
                     },
                     {
-                      "en": "Inflamacion",
+                      "en": "Inflammation",
                       "al": "Inflamacion"
                     }
                   ],
@@ -6947,24 +6947,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Apendicektomi është:",
+                    "en": "Appendectomy is:",
                     "al": "Apendicektomi është:"
                   },
                   "options": [
                     {
-                      "en": "Tumor",
+                      "en": "A tumour",
                       "al": "Tumor"
                     },
                     {
-                      "en": "Dhimbje",
+                      "en": "Pain",
                       "al": "Dhimbje"
                     },
                     {
-                      "en": "Inflamacion i apendiksit",
+                      "en": "Inflammation of the appendix",
                       "al": "Inflamacion i apendiksit"
                     },
                     {
-                      "en": "Heqje e apendiksit",
+                      "en": "Removal of the appendix",
                       "al": "Heqje e apendiksit"
                     }
                   ],
@@ -6973,24 +6973,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Gastroenteriti përfshin:",
+                    "en": "Gastroenteritis involves:",
                     "al": "Gastroenteriti përfshin:"
                   },
                   "options": [
                     {
-                      "en": "Kocka",
+                      "en": "Bones",
                       "al": "Kocka"
                     },
                     {
-                      "en": "Veshka",
+                      "en": "Kidney",
                       "al": "Veshka"
                     },
                     {
-                      "en": "Stomak dhe zorrë, inflamacion",
+                      "en": "Stomach and intestine, inflammation",
                       "al": "Stomak dhe zorrë, inflamacion"
                     },
                     {
-                      "en": "Zemër",
+                      "en": "Heart",
                       "al": "Zemër"
                     }
                   ],
@@ -7001,24 +7001,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "'Dispne' do të thotë:",
+                    "en": "'Dyspnea' means:",
                     "al": "'Dispne' do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Të vjella",
+                      "en": "Vomiting",
                       "al": "Të vjella"
                     },
                     {
-                      "en": "Etje",
+                      "en": "Thirst",
                       "al": "Etje"
                     },
                     {
-                      "en": "Vështirësi frymëmarrjeje",
+                      "en": "Difficulty breathing",
                       "al": "Vështirësi frymëmarrjeje"
                     },
                     {
-                      "en": "Dhimbje",
+                      "en": "Pain",
                       "al": "Dhimbje"
                     }
                   ],
@@ -7027,12 +7027,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Tahikardi:",
+                    "en": "Tachycardia:",
                     "al": "Tahikardi:"
                   },
                   "options": [
                     {
-                      "en": "S'ka kuptim",
+                      "en": "Meaningless",
                       "al": "S'ka kuptim"
                     },
                     {
@@ -7053,24 +7053,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Hepatit do të thotë inflamacion i:",
+                    "en": "Hepatitis means inflammation of the:",
                     "al": "Hepatit do të thotë inflamacion i:"
                   },
                   "options": [
                     {
-                      "en": "Zemrës",
+                      "en": "Heart",
                       "al": "Zemrës"
                     },
                     {
-                      "en": "Mushkërive",
+                      "en": "Lungs",
                       "al": "Mushkërive"
                     },
                     {
-                      "en": "Veshkave",
+                      "en": "Kidneys",
                       "al": "Veshkave"
                     },
                     {
-                      "en": "Mëlçisë",
+                      "en": "Liver",
                       "al": "Mëlçisë"
                     }
                   ],
@@ -7091,35 +7091,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_mid_m1_a.al.html",
-                "en": "materials/health_mid_m1_a.al.html"
+                "en": "materials/health_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/health_mid_m1_b.al.html",
-                "en": "materials/health_mid_m1_b.al.html"
+                "en": "materials/health_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Diagnoza diferenciale është:",
+                    "en": "Differential diagnosis is:",
                     "al": "Diagnoza diferenciale është:"
                   },
                   "options": [
                     {
-                      "en": "Një diagnozë përfundimtare",
+                      "en": "One final diagnosis",
                       "al": "Një diagnozë përfundimtare"
                     },
                     {
-                      "en": "Listë shkaqesh të mundshme",
+                      "en": "A list of possible causes",
                       "al": "Listë shkaqesh të mundshme"
                     },
                     {
-                      "en": "Mjekim",
+                      "en": "Treatment",
                       "al": "Mjekim"
                     },
                     {
-                      "en": "Test",
+                      "en": "A test",
                       "al": "Test"
                     }
                   ],
@@ -7128,24 +7128,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dhimbje gjoksi: cila duhet përjashtuar urgjentisht?",
+                    "en": "Chest pain: which must be urgently excluded?",
                     "al": "Dhimbje gjoksi: cila duhet përjashtuar urgjentisht?"
                   },
                   "options": [
                     {
-                      "en": "Sindroma koronare akute",
+                      "en": "Acute coronary syndrome",
                       "al": "Sindroma koronare akute"
                     },
                     {
-                      "en": "Kollë",
+                      "en": "Cough",
                       "al": "Kollë"
                     },
                     {
-                      "en": "Alergji",
+                      "en": "Allergy",
                       "al": "Alergji"
                     },
                     {
-                      "en": "Gripi",
+                      "en": "Flu",
                       "al": "Gripi"
                     }
                   ],
@@ -7154,24 +7154,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dhimbje e fortë e kokës e papritur ('më e keqja ndonjëherë') kërkon:",
+                    "en": "Sudden severe headache ('worst ever') requires:",
                     "al": "Dhimbje e fortë e kokës e papritur ('më e keqja ndonjëherë') kërkon:"
                   },
                   "options": [
                     {
-                      "en": "Pritje 1 javë",
+                      "en": "Wait 1 week",
                       "al": "Pritje 1 javë"
                     },
                     {
-                      "en": "Qetësim në shtëpi",
+                      "en": "Rest at home",
                       "al": "Qetësim në shtëpi"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Vlerësim urgjent për hemoragji subaraknoidale",
+                      "en": "Urgent assessment for subarachnoid haemorrhage",
                       "al": "Vlerësim urgjent për hemoragji subaraknoidale"
                     }
                   ],
@@ -7182,24 +7182,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Çfarë përparësohet?",
+                    "en": "What is prioritised?",
                     "al": "Çfarë përparësohet?"
                   },
                   "options": [
                     {
-                      "en": "Më të lirat",
+                      "en": "The nicest",
                       "al": "Më të lirat"
                     },
                     {
-                      "en": "Të rastit",
+                      "en": "Random",
                       "al": "Të rastit"
                     },
                     {
-                      "en": "Kushtet që rrezikojnë jetën",
+                      "en": "Life-threatening conditions",
                       "al": "Kushtet që rrezikojnë jetën"
                     },
                     {
-                      "en": "Shkaqet e rralla",
+                      "en": "Rare causes",
                       "al": "Shkaqet e rralla"
                     }
                   ],
@@ -7208,24 +7208,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse rivlerësohet lista?",
+                    "en": "Why reassess the list?",
                     "al": "Pse rivlerësohet lista?"
                   },
                   "options": [
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Të dhëna të reja ndryshojnë probabilitetet",
+                      "en": "New data change the probabilities",
                       "al": "Të dhëna të reja ndryshojnë probabilitetet"
                     },
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     }
                   ],
@@ -7234,24 +7234,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Testi duhet të zgjidhet për të:",
+                    "en": "A test should be chosen to:",
                     "al": "Testi duhet të zgjidhet për të:"
                   },
                   "options": [
                     {
-                      "en": "Mbushur formular",
+                      "en": "Fill a form",
                       "al": "Mbushur formular"
                     },
                     {
-                      "en": "Bërë të gjitha",
+                      "en": "Do them all",
                       "al": "Bërë të gjitha"
                     },
                     {
-                      "en": "Mbledhur kosto",
+                      "en": "Accumulate cost",
                       "al": "Mbledhur kosto"
                     },
                     {
-                      "en": "Konfirmuar/përjashtuar hipotezat",
+                      "en": "Confirm/exclude the hypotheses",
                       "al": "Konfirmuar/përjashtuar hipotezat"
                     }
                   ],
@@ -7268,35 +7268,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_mid_m2_a.al.html",
-                "en": "materials/health_mid_m2_a.al.html"
+                "en": "materials/health_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/health_mid_m2_b.al.html",
-                "en": "materials/health_mid_m2_b.al.html"
+                "en": "materials/health_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Vlerat e laboratorit krahasohen me:",
+                    "en": "Lab values are compared to:",
                     "al": "Vlerat e laboratorit krahasohen me:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm moshën",
+                      "en": "Age only",
                       "al": "Vetëm moshën"
                     },
                     {
-                      "en": "Dëshirat",
+                      "en": "Wishes",
                       "al": "Dëshirat"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Kufijtë e referencës",
+                      "en": "Reference ranges",
                       "al": "Kufijtë e referencës"
                     }
                   ],
@@ -7305,24 +7305,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Hb 9 g/dL tek e rritur:",
+                    "en": "Hb 9 g/dL in an adult:",
                     "al": "Hb 9 g/dL tek e rritur:"
                   },
                   "options": [
                     {
-                      "en": "E pamundur",
+                      "en": "Impossible",
                       "al": "E pamundur"
                     },
                     {
-                      "en": "Normale",
+                      "en": "Normal",
                       "al": "Normale"
                     },
                     {
-                      "en": "E lartë",
+                      "en": "High",
                       "al": "E lartë"
                     },
                     {
-                      "en": "E ulët",
+                      "en": "Low",
                       "al": "E ulët"
                     }
                   ],
@@ -7331,24 +7331,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse konteksti ndryshon interpretimin?",
+                    "en": "Why does context change interpretation?",
                     "al": "Pse konteksti ndryshon interpretimin?"
                   },
                   "options": [
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "S'ndikon",
+                      "en": "It does not",
                       "al": "S'ndikon"
                     },
                     {
-                      "en": "Sepse të gjithë janë njëlloj",
+                      "en": "Because everyone is the same",
                       "al": "Sepse të gjithë janë njëlloj"
                     },
                     {
-                      "en": "Mosha, sëmundjet, mjekimet ndikojnë",
+                      "en": "Age, diseases and medications matter",
                       "al": "Mosha, sëmundjet, mjekimet ndikojnë"
                     }
                   ],
@@ -7359,24 +7359,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Hb e ulët mund të tregojë:",
+                    "en": "Low Hb may indicate:",
                     "al": "Hb e ulët mund të tregojë:"
                   },
                   "options": [
                     {
-                      "en": "Diabet",
+                      "en": "Diabetes",
                       "al": "Diabet"
                     },
                     {
-                      "en": "Anemi",
+                      "en": "Anaemia",
                       "al": "Anemi"
                     },
                     {
-                      "en": "Sëmundje e zemrës vetëm",
+                      "en": "Heart disease only",
                       "al": "Sëmundje e zemrës vetëm"
                     },
                     {
-                      "en": "Normal gjithmonë",
+                      "en": "Always normal",
                       "al": "Normal gjithmonë"
                     }
                   ],
@@ -7385,24 +7385,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Glicemi me stomak bosh 85 mg/dL:",
+                    "en": "Fasting glucose 85 mg/dL:",
                     "al": "Glicemi me stomak bosh 85 mg/dL:"
                   },
                   "options": [
                     {
-                      "en": "Pa interpretim",
+                      "en": "No interpretation",
                       "al": "Pa interpretim"
                     },
                     {
-                      "en": "Diabet",
+                      "en": "Diabetes",
                       "al": "Diabet"
                     },
                     {
-                      "en": "Hipoglicemi e rëndë",
+                      "en": "Severe hypoglycaemia",
                       "al": "Hipoglicemi e rëndë"
                     },
                     {
-                      "en": "Normale",
+                      "en": "Normal",
                       "al": "Normale"
                     }
                   ],
@@ -7411,24 +7411,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Një vlerë pak jashtë kufirit tek pacient asimptomatik:",
+                    "en": "A value slightly outside the range in an asymptomatic patient:",
                     "al": "Një vlerë pak jashtë kufirit tek pacient asimptomatik:"
                   },
                   "options": [
                     {
-                      "en": "Gjithmonë urgjencë",
+                      "en": "Always an emergency",
                       "al": "Gjithmonë urgjencë"
                     },
                     {
-                      "en": "Diagnozë e sigurt",
+                      "en": "A certain diagnosis",
                       "al": "Diagnozë e sigurt"
                     },
                     {
-                      "en": "Injorohet gjithmonë",
+                      "en": "Always ignored",
                       "al": "Injorohet gjithmonë"
                     },
                     {
-                      "en": "Kërkon rivlerësim/rimatje",
+                      "en": "Needs reassessment/repeat",
                       "al": "Kërkon rivlerësim/rimatje"
                     }
                   ],
@@ -7445,35 +7445,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_mid_m3_a.al.html",
-                "en": "materials/health_mid_m3_a.al.html"
+                "en": "materials/health_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/health_mid_m3_b.al.html",
-                "en": "materials/health_mid_m3_b.al.html"
+                "en": "materials/health_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Rendi i rastit klinik fillon me:",
+                    "en": "The clinical case order starts with:",
                     "al": "Rendi i rastit klinik fillon me:"
                   },
                   "options": [
                     {
-                      "en": "Rezultatin",
+                      "en": "The result",
                       "al": "Rezultatin"
                     },
                     {
-                      "en": "Planin",
+                      "en": "The plan",
                       "al": "Planin"
                     },
                     {
-                      "en": "Faturën",
+                      "en": "The bill",
                       "al": "Faturën"
                     },
                     {
-                      "en": "Ankesën",
+                      "en": "The complaint",
                       "al": "Ankesën"
                     }
                   ],
@@ -7482,24 +7482,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Plani përfshin:",
+                    "en": "The plan includes:",
                     "al": "Plani përfshin:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm ilaç",
+                      "en": "Only a drug",
                       "al": "Vetëm ilaç"
                     },
                     {
-                      "en": "Vetëm diagnozë",
+                      "en": "Only the diagnosis",
                       "al": "Vetëm diagnozë"
                     },
                     {
-                      "en": "Hapat e mjekimit, testet, ndjekjen",
+                      "en": "Treatment steps, tests, follow-up",
                       "al": "Hapat e mjekimit, testet, ndjekjen"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -7508,24 +7508,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pacienti merr antikoagulant dhe do NSAID. Veprim:",
+                    "en": "A patient on an anticoagulant wants an NSAID. Action:",
                     "al": "Pacienti merr antikoagulant dhe do NSAID. Veprim:"
                   },
                   "options": [
                     {
-                      "en": "Vlerëso rrezikun e gjakderdhjes",
+                      "en": "Assess bleeding risk",
                       "al": "Vlerëso rrezikun e gjakderdhjes"
                     },
                     {
-                      "en": "Dyfisho dozën",
+                      "en": "Double the dose",
                       "al": "Dyfisho dozën"
                     },
                     {
-                      "en": "Jep pa pyetur",
+                      "en": "Give without asking",
                       "al": "Jep pa pyetur"
                     },
                     {
-                      "en": "Injoro",
+                      "en": "Ignore",
                       "al": "Injoro"
                     }
                   ],
@@ -7536,24 +7536,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Pse pyetet për alergji?",
+                    "en": "Why ask about allergies?",
                     "al": "Pse pyetet për alergji?"
                   },
                   "options": [
                     {
-                      "en": "Për kuriozitet",
+                      "en": "Curiosity",
                       "al": "Për kuriozitet"
                     },
                     {
-                      "en": "Siguri në mjekim",
+                      "en": "Safety in treatment",
                       "al": "Siguri në mjekim"
                     },
                     {
-                      "en": "Për sigurim",
+                      "en": "For insurance",
                       "al": "Për sigurim"
                     },
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     }
                   ],
@@ -7562,24 +7562,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Komunikimi me pacientin duhet të jetë:",
+                    "en": "Communication with the patient should be:",
                     "al": "Komunikimi me pacientin duhet të jetë:"
                   },
                   "options": [
                     {
-                      "en": "Teknik",
+                      "en": "Technical",
                       "al": "Teknik"
                     },
                     {
-                      "en": "I kuptueshëm",
+                      "en": "Understandable",
                       "al": "I kuptueshëm"
                     },
                     {
-                      "en": "Pa shpjegime",
+                      "en": "Without explanations",
                       "al": "Pa shpjegime"
                     },
                     {
-                      "en": "Shumë i shkurtër",
+                      "en": "Very brief",
                       "al": "Shumë i shkurtër"
                     }
                   ],
@@ -7588,24 +7588,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dokumentimi i mirë synon:",
+                    "en": "Good documentation aims for:",
                     "al": "Dokumentimi i mirë synon:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Zbukurim",
+                      "en": "Decoration",
                       "al": "Zbukurim"
                     },
                     {
-                      "en": "Vazhdimësi dhe siguri e kujdesit",
+                      "en": "Continuity and safety of care",
                       "al": "Vazhdimësi dhe siguri e kujdesit"
                     },
                     {
-                      "en": "Vetëm faturimin",
+                      "en": "Billing only",
                       "al": "Vetëm faturimin"
                     }
                   ],
@@ -7626,35 +7626,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_senior_m1_a.al.html",
-                "en": "materials/health_senior_m1_a.al.html"
+                "en": "materials/health_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/health_senior_m1_b.al.html",
-                "en": "materials/health_senior_m1_b.al.html"
+                "en": "materials/health_senior_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Pëlqimi i informuar do të thotë:",
+                    "en": "Informed consent means:",
                     "al": "Pëlqimi i informuar do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Mjeku vendos",
+                      "en": "The doctor decides",
                       "al": "Mjeku vendos"
                     },
                     {
-                      "en": "Pacienti kupton dhe pranon në mënyrë të lirë",
+                      "en": "The patient understands and freely agrees",
                       "al": "Pacienti kupton dhe pranon në mënyrë të lirë"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Familja vendos",
+                      "en": "The family decides",
                       "al": "Familja vendos"
                     }
                   ],
@@ -7663,24 +7663,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse përshtatet doza në mjaftueshmëri renale?",
+                    "en": "Why adjust the dose for renal function?",
                     "al": "Pse përshtatet doza në mjaftueshmëri renale?"
                   },
                   "options": [
                     {
-                      "en": "S'përshtatet",
+                      "en": "It is not adjusted",
                       "al": "S'përshtatet"
                     },
                     {
-                      "en": "Ilaçet eliminohen nga veshkat",
+                      "en": "Drugs are eliminated by the kidneys",
                       "al": "Ilaçet eliminohen nga veshkat"
                     },
                     {
-                      "en": "Për ngjyrë",
+                      "en": "For colour",
                       "al": "Për ngjyrë"
                     },
                     {
-                      "en": "Për çmim",
+                      "en": "For price",
                       "al": "Për çmim"
                     }
                   ],
@@ -7689,24 +7689,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Shtatzëni dhe ilaç potencialisht teratogjen. Veprim:",
+                    "en": "Pregnancy and a potentially teratogenic drug. Action:",
                     "al": "Shtatzëni dhe ilaç potencialisht teratogjen. Veprim:"
                   },
                   "options": [
                     {
-                      "en": "Jep normalisht",
+                      "en": "Give normally",
                       "al": "Jep normalisht"
                     },
                     {
-                      "en": "Injoro",
+                      "en": "Ignore",
                       "al": "Injoro"
                     },
                     {
-                      "en": "Ri-vlerëso, zgjidh alternativë më të sigurt",
+                      "en": "Reassess and choose a safer alternative",
                       "al": "Ri-vlerëso, zgjidh alternativë më të sigurt"
                     },
                     {
-                      "en": "Dyfisho",
+                      "en": "Double it",
                       "al": "Dyfisho"
                     }
                   ],
@@ -7717,24 +7717,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Vendimi i trajtimit peson:",
+                    "en": "A treatment decision weighs:",
                     "al": "Vendimi i trajtimit peson:"
                   },
                   "options": [
                     {
-                      "en": "Përfitimin dhe rrezikun",
+                      "en": "Benefit and risk",
                       "al": "Përfitimin dhe rrezikun"
                     },
                     {
-                      "en": "Vetëm pacientin",
+                      "en": "Only the patient",
                       "al": "Vetëm pacientin"
                     },
                     {
-                      "en": "Rastësisht",
+                      "en": "Randomly",
                       "al": "Rastësisht"
                     },
                     {
-                      "en": "Vetëm koston",
+                      "en": "Only cost",
                       "al": "Vetëm koston"
                     }
                   ],
@@ -7743,24 +7743,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas fillimit të trajtimit:",
+                    "en": "After starting treatment:",
                     "al": "Pas fillimit të trajtimit:"
                   },
                   "options": [
                     {
-                      "en": "Monitorohen efektet",
+                      "en": "Effects are monitored",
                       "al": "Monitorohen efektet"
                     },
                     {
-                      "en": "Dyfishohet",
+                      "en": "It is doubled",
                       "al": "Dyfishohet"
                     },
                     {
-                      "en": "Ndalohet menjëherë",
+                      "en": "Stopped immediately",
                       "al": "Ndalohet menjëherë"
                     },
                     {
-                      "en": "Harrohet",
+                      "en": "Forgotten",
                       "al": "Harrohet"
                     }
                   ],
@@ -7769,24 +7769,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Udhëzuesit klinikë shërbejnë për:",
+                    "en": "Clinical guidelines serve to:",
                     "al": "Udhëzuesit klinikë shërbejnë për:"
                   },
                   "options": [
                     {
-                      "en": "Ndalim të gjykimit",
+                      "en": "Restrict judgement",
                       "al": "Ndalim të gjykimit"
                     },
                     {
-                      "en": "Dekor",
+                      "en": "Decorate",
                       "al": "Dekor"
                     },
                     {
-                      "en": "Standardizim të bazuar në prova",
+                      "en": "Standardise evidence-based care",
                       "al": "Standardizim të bazuar në prova"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -7803,11 +7803,11 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_senior_m2_a.al.html",
-                "en": "materials/health_senior_m2_a.al.html"
+                "en": "materials/health_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/health_senior_m2_b.al.html",
-                "en": "materials/health_senior_m2_b.al.html"
+                "en": "materials/health_senior_m2_b.en.html"
               }
             },
             "quiz": {
@@ -7819,19 +7819,19 @@ export const FIELDS = [
                   },
                   "options": [
                     {
-                      "en": "Pa efekt",
+                      "en": "No effect",
                       "al": "Pa efekt"
                     },
                     {
-                      "en": "Ul rrezikun",
+                      "en": "Lowers the risk",
                       "al": "Ul rrezikun"
                     },
                     {
-                      "en": "Rrezik gjakderdhjeje",
+                      "en": "Bleeding risk",
                       "al": "Rrezik gjakderdhjeje"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -7840,24 +7840,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "ACE-frenues + diuretik kursyes kaliumi:",
+                    "en": "ACE inhibitor + potassium-sparing diuretic:",
                     "al": "ACE-frenues + diuretik kursyes kaliumi:"
                   },
                   "options": [
                     {
-                      "en": "Rritje force",
+                      "en": "Increased strength",
                       "al": "Rritje force"
                     },
                     {
-                      "en": "Hiperkalemi e mundshme",
+                      "en": "Possible hyperkalaemia",
                       "al": "Hiperkalemi e mundshme"
                     },
                     {
-                      "en": "Pa efekt",
+                      "en": "No effect",
                       "al": "Pa efekt"
                     },
                     {
-                      "en": "Hipokalemi e sigurt",
+                      "en": "Certain hypokalaemia",
                       "al": "Hipokalemi e sigurt"
                     }
                   ],
@@ -7866,24 +7866,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pacienti i moshuar me 8 ilaçe. Hapi i mirë:",
+                    "en": "An older patient on 8 drugs. A good step:",
                     "al": "Pacienti i moshuar me 8 ilaçe. Hapi i mirë:"
                   },
                   "options": [
                     {
-                      "en": "Heq rastësisht",
+                      "en": "Remove randomly",
                       "al": "Heq rastësisht"
                     },
                     {
-                      "en": "Rishikim ilaçesh (deprescribing)",
+                      "en": "Medication review (deprescribing)",
                       "al": "Rishikim ilaçesh (deprescribing)"
                     },
                     {
-                      "en": "Injoro",
+                      "en": "Ignore",
                       "al": "Injoro"
                     },
                     {
-                      "en": "Shto një tjetër",
+                      "en": "Add one more",
                       "al": "Shto një tjetër"
                     }
                   ],
@@ -7894,24 +7894,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Polifarmaci do të thotë:",
+                    "en": "Polypharmacy means:",
                     "al": "Polifarmaci do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Shumë ilaçe njëkohësisht",
+                      "en": "Many drugs at once",
                       "al": "Shumë ilaçe njëkohësisht"
                     },
                     {
-                      "en": "Pa ilaçe",
+                      "en": "No drugs",
                       "al": "Pa ilaçe"
                     },
                     {
-                      "en": "Një ilaç",
+                      "en": "One drug",
                       "al": "Një ilaç"
                     },
                     {
-                      "en": "Vetëm antibiotikë",
+                      "en": "Antibiotics only",
                       "al": "Vetëm antibiotikë"
                     }
                   ],
@@ -7920,7 +7920,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Metformin me eGFR < 30:",
+                    "en": "Metformin with eGFR < 30:",
                     "al": "Metformin me eGFR < 30:"
                   },
                   "options": [
@@ -7929,15 +7929,15 @@ export const FIELDS = [
                       "al": "Normal"
                     },
                     {
-                      "en": "Doza dyfishohet",
+                      "en": "The dose is doubled",
                       "al": "Doza dyfishohet"
                     },
                     {
-                      "en": "Kundërindikuar",
+                      "en": "Contraindicated",
                       "al": "Kundërindikuar"
                     },
                     {
-                      "en": "Rekomandohet më shumë",
+                      "en": "More recommended",
                       "al": "Rekomandohet më shumë"
                     }
                   ],
@@ -7946,24 +7946,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Burimi për ndërveprime:",
+                    "en": "Source for interactions:",
                     "al": "Burimi për ndërveprime:"
                   },
                   "options": [
                     {
-                      "en": "Kujtesa vetëm",
+                      "en": "Memory only",
                       "al": "Kujtesa vetëm"
                     },
                     {
-                      "en": "Bazë të dhënash/udhëzues të përditësuar",
+                      "en": "Up-to-date database/guidelines",
                       "al": "Bazë të dhënash/udhëzues të përditësuar"
                     },
                     {
-                      "en": "Interneti anonim",
+                      "en": "Anonymous internet",
                       "al": "Interneti anonim"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     }
                   ],
@@ -7980,27 +7980,27 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/health_senior_m3_a.al.html",
-                "en": "materials/health_senior_m3_a.al.html"
+                "en": "materials/health_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/health_senior_m3_b.al.html",
-                "en": "materials/health_senior_m3_b.al.html"
+                "en": "materials/health_senior_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "qSOFA përfshin frymëmarrje:",
+                    "en": "qSOFA includes respiration:",
                     "al": "qSOFA përfshin frymëmarrje:"
                   },
                   "options": [
                     {
-                      "en": "≥ 12/min",
+                      "en": ">= 12/min",
                       "al": "≥ 12/min"
                     },
                     {
-                      "en": "≥ 22/min",
+                      "en": ">= 22/min",
                       "al": "≥ 22/min"
                     },
                     {
@@ -8008,7 +8008,7 @@ export const FIELDS = [
                       "al": "< 10"
                     },
                     {
-                      "en": "≥ 40/min",
+                      "en": ">= 40/min",
                       "al": "≥ 40/min"
                     }
                   ],
@@ -8017,7 +8017,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "TA sistolike 95, RR 24, i vigjilent. Pikë qSOFA:",
+                    "en": "Systolic BP 95, RR 24, alert. qSOFA score:",
                     "al": "TA sistolike 95, RR 24, i vigjilent. Pikë qSOFA:"
                   },
                   "options": [
@@ -8043,24 +8043,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse ekip multidisiplinar?",
+                    "en": "Why a multidisciplinary team?",
                     "al": "Pse ekip multidisiplinar?"
                   },
                   "options": [
                     {
-                      "en": "Kompetenca të ndryshme për problemin kompleks",
+                      "en": "Different competences for the complex problem",
                       "al": "Kompetenca të ndryshme për problemin kompleks"
                     },
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     },
                     {
-                      "en": "Ligjërisht",
+                      "en": "Legally",
                       "al": "Ligjërisht"
                     },
                     {
-                      "en": "Për shkurtim",
+                      "en": "To shorten",
                       "al": "Për shkurtim"
                     }
                   ],
@@ -8071,7 +8071,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Sa kritere qSOFA sinjalizojnë rrezik të lartë?",
+                    "en": "How many qSOFA criteria signal high risk?",
                     "al": "Sa kritere qSOFA sinjalizojnë rrezik të lartë?"
                   },
                   "options": [
@@ -8080,15 +8080,15 @@ export const FIELDS = [
                       "al": "0"
                     },
                     {
-                      "en": "≥ 2",
+                      "en": ">= 2",
                       "al": "≥ 2"
                     },
                     {
-                      "en": "≥ 5",
+                      "en": ">= 5",
                       "al": "≥ 5"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     }
                   ],
@@ -8097,24 +8097,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pacient komplekse: prioriteti i parë:",
+                    "en": "A complex patient: the first priority is:",
                     "al": "Pacient komplekse: prioriteti i parë:"
                   },
                   "options": [
                     {
-                      "en": "Rastësor",
+                      "en": "Random",
                       "al": "Rastësor"
                     },
                     {
-                      "en": "Më i kushtueshmi",
+                      "en": "The costliest",
                       "al": "Më i kushtueshmi"
                     },
                     {
-                      "en": "Më i lehti",
+                      "en": "The easiest",
                       "al": "Më i lehti"
                     },
                     {
-                      "en": "Problemi që kërcënon jetën",
+                      "en": "The life-threatening problem",
                       "al": "Problemi që kërcënon jetën"
                     }
                   ],
@@ -8123,24 +8123,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "qSOFA është:",
+                    "en": "qSOFA is:",
                     "al": "qSOFA është:"
                   },
                   "options": [
                     {
-                      "en": "Test gjaku",
+                      "en": "A blood test",
                       "al": "Test gjaku"
                     },
                     {
-                      "en": "Mjet depistimi (jo diagnozë)",
+                      "en": "A screening tool (not a diagnosis)",
                       "al": "Mjet depistimi (jo diagnozë)"
                     },
                     {
-                      "en": "Ilaç",
+                      "en": "A drug",
                       "al": "Ilaç"
                     },
                     {
-                      "en": "Diagnozë përfundimtare",
+                      "en": "A final diagnosis",
                       "al": "Diagnozë përfundimtare"
                     }
                   ],
@@ -8170,35 +8170,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_fillestar_m1_a.al.html",
-                "en": "materials/nurse_fillestar_m1_a.al.html"
+                "en": "materials/nurse_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_fillestar_m1_b.al.html",
-                "en": "materials/nurse_fillestar_m1_b.al.html"
+                "en": "materials/nurse_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Hapi i parë i procesit të infermierisë:",
+                    "en": "The first step of the nursing process:",
                     "al": "Hapi i parë i procesit të infermierisë:"
                   },
                   "options": [
                     {
-                      "en": "Dokumentimi",
+                      "en": "Documentation",
                       "al": "Dokumentimi"
                     },
                     {
-                      "en": "Planifikimi",
+                      "en": "Planning",
                       "al": "Planifikimi"
                     },
                     {
-                      "en": "Vlerësimi (assessment)",
+                      "en": "Assessment",
                       "al": "Vlerësimi (assessment)"
                     },
                     {
-                      "en": "Zbatimi",
+                      "en": "Implementation",
                       "al": "Zbatimi"
                     }
                   ],
@@ -8207,24 +8207,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Vendosja e objektivave bëhet në:",
+                    "en": "Setting objectives happens in:",
                     "al": "Vendosja e objektivave bëhet në:"
                   },
                   "options": [
                     {
-                      "en": "Zbatim",
+                      "en": "Implementation",
                       "al": "Zbatim"
                     },
                     {
-                      "en": "Planifikim",
+                      "en": "Planning",
                       "al": "Planifikim"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Vlerësim përfundimtar",
+                      "en": "Final evaluation",
                       "al": "Vlerësim përfundimtar"
                     }
                   ],
@@ -8233,24 +8233,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas ndërhyrjes pacienti nuk përmirësohet. Hapi tjetër:",
+                    "en": "After the intervention the patient does not improve. Next step:",
                     "al": "Pas ndërhyrjes pacienti nuk përmirësohet. Hapi tjetër:"
                   },
                   "options": [
                     {
-                      "en": "Mbyll rastin",
+                      "en": "Close the case",
                       "al": "Mbyll rastin"
                     },
                     {
-                      "en": "Rivlerëso dhe rishiko planin",
+                      "en": "Reassess and revise the plan",
                       "al": "Rivlerëso dhe rishiko planin"
                     },
                     {
-                      "en": "Fshi të dhënat",
+                      "en": "Delete the data",
                       "al": "Fshi të dhënat"
                     },
                     {
-                      "en": "Harro",
+                      "en": "Forget",
                       "al": "Harro"
                     }
                   ],
@@ -8261,7 +8261,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Sa hapa ka procesi?",
+                    "en": "How many steps does the process have?",
                     "al": "Sa hapa ka procesi?"
                   },
                   "options": [
@@ -8287,24 +8287,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kontrolli i rezultateve:",
+                    "en": "Checking outcomes is:",
                     "al": "Kontrolli i rezultateve:"
                   },
                   "options": [
                     {
-                      "en": "Diagnozë",
+                      "en": "Diagnosis",
                       "al": "Diagnozë"
                     },
                     {
-                      "en": "Planifikim",
+                      "en": "Planning",
                       "al": "Planifikim"
                     },
                     {
-                      "en": "Zbatim",
+                      "en": "Implementation",
                       "al": "Zbatim"
                     },
                     {
-                      "en": "Vlerësim përfundimtar (evaluation)",
+                      "en": "Evaluation",
                       "al": "Vlerësim përfundimtar (evaluation)"
                     }
                   ],
@@ -8313,24 +8313,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Diagnoza infermierore përshkruan:",
+                    "en": "The nursing diagnosis describes:",
                     "al": "Diagnoza infermierore përshkruan:"
                   },
                   "options": [
                     {
-                      "en": "Përgjigjen e pacientit ndaj problemit shëndetësor",
+                      "en": "The patient's response to the health problem",
                       "al": "Përgjigjen e pacientit ndaj problemit shëndetësor"
                     },
                     {
-                      "en": "Ilaçin",
+                      "en": "The drug",
                       "al": "Ilaçin"
                     },
                     {
-                      "en": "Pagesën",
+                      "en": "The payment",
                       "al": "Pagesën"
                     },
                     {
-                      "en": "Sëmundjen mjekësore",
+                      "en": "The medical disease",
                       "al": "Sëmundjen mjekësore"
                     }
                   ],
@@ -8347,18 +8347,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_fillestar_m2_a.al.html",
-                "en": "materials/nurse_fillestar_m2_a.al.html"
+                "en": "materials/nurse_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_fillestar_m2_b.al.html",
-                "en": "materials/nurse_fillestar_m2_b.al.html"
+                "en": "materials/nurse_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Sa momente të higjienës së duarve përcakton WHO?",
+                    "en": "How many hand hygiene moments does WHO define?",
                     "al": "Sa momente të higjienës së duarve përcakton WHO?"
                   },
                   "options": [
@@ -8384,7 +8384,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Fërkimi me alkool zgjat:",
+                    "en": "Alcohol rub lasts:",
                     "al": "Fërkimi me alkool zgjat:"
                   },
                   "options": [
@@ -8401,7 +8401,7 @@ export const FIELDS = [
                       "al": "5 min"
                     },
                     {
-                      "en": "20–30 s",
+                      "en": "20-30 s",
                       "al": "20–30 s"
                     }
                   ],
@@ -8410,24 +8410,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Para procedurës aseptike higjiena është:",
+                    "en": "Before an aseptic procedure hygiene is:",
                     "al": "Para procedurës aseptike higjiena është:"
                   },
                   "options": [
                     {
-                      "en": "Pas procedurës",
+                      "en": "After the procedure",
                       "al": "Pas procedurës"
                     },
                     {
-                      "en": "Opsionale",
+                      "en": "Optional",
                       "al": "Opsionale"
                     },
                     {
-                      "en": "E detyrueshme",
+                      "en": "Mandatory",
                       "al": "E detyrueshme"
                     },
                     {
-                      "en": "E panevojshme",
+                      "en": "Unnecessary",
                       "al": "E panevojshme"
                     }
                   ],
@@ -8438,7 +8438,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Larja me ujë e sapun zgjat përafërsisht:",
+                    "en": "Soap and water washing lasts about:",
                     "al": "Larja me ujë e sapun zgjat përafërsisht:"
                   },
                   "options": [
@@ -8455,7 +8455,7 @@ export const FIELDS = [
                       "al": "10 min"
                     },
                     {
-                      "en": "40–60 s",
+                      "en": "40-60 s",
                       "al": "40–60 s"
                     }
                   ],
@@ -8464,24 +8464,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Duar dukshëm të ndotura:",
+                    "en": "Visibly soiled hands:",
                     "al": "Duar dukshëm të ndotura:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Alkool vetëm",
+                      "en": "Alcohol only",
                       "al": "Alkool vetëm"
                     },
                     {
-                      "en": "Dorashka vetëm",
+                      "en": "Gloves only",
                       "al": "Dorashka vetëm"
                     },
                     {
-                      "en": "Ujë dhe sapun",
+                      "en": "Soap and water",
                       "al": "Ujë dhe sapun"
                     }
                   ],
@@ -8490,24 +8490,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dorashkat:",
+                    "en": "Gloves:",
                     "al": "Dorashkat:"
                   },
                   "options": [
                     {
-                      "en": "Nuk zëvendësojnë higjienën e duarve",
+                      "en": "Do not replace hand hygiene",
                       "al": "Nuk zëvendësojnë higjienën e duarve"
                     },
                     {
-                      "en": "Janë të ndaluara",
+                      "en": "Are forbidden",
                       "al": "Janë të ndaluara"
                     },
                     {
-                      "en": "Zëvendësojnë higjienën",
+                      "en": "Replace hand hygiene",
                       "al": "Zëvendësojnë higjienën"
                     },
                     {
-                      "en": "Përdoren pa larje",
+                      "en": "Are used without washing",
                       "al": "Përdoren pa larje"
                     }
                   ],
@@ -8524,27 +8524,27 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_fillestar_m3_a.al.html",
-                "en": "materials/nurse_fillestar_m3_a.al.html"
+                "en": "materials/nurse_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_fillestar_m3_b.al.html",
-                "en": "materials/nurse_fillestar_m3_b.al.html"
+                "en": "materials/nurse_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Identifikimi i pacientit zakonisht me:",
+                    "en": "Patient identification is usually with:",
                     "al": "Identifikimi i pacientit zakonisht me:"
                   },
                   "options": [
                     {
-                      "en": "2 identifikues",
+                      "en": "2 identifiers",
                       "al": "2 identifikues"
                     },
                     {
-                      "en": "Pa identifikim",
+                      "en": "No identification",
                       "al": "Pa identifikim"
                     },
                     {
@@ -8552,7 +8552,7 @@ export const FIELDS = [
                       "al": "1 element"
                     },
                     {
-                      "en": "Vetëm dhomën",
+                      "en": "The room only",
                       "al": "Vetëm dhomën"
                     }
                   ],
@@ -8561,24 +8561,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pëlqimi i informuar kërkon:",
+                    "en": "Informed consent requires:",
                     "al": "Pëlqimi i informuar kërkon:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm firmë",
+                      "en": "A signature only",
                       "al": "Vetëm firmë"
                     },
                     {
-                      "en": "Shpjegim dhe pranim i lirë",
+                      "en": "Explanation and free agreement",
                       "al": "Shpjegim dhe pranim i lirë"
                     },
                     {
-                      "en": "Heshtje",
+                      "en": "Silence",
                       "al": "Heshtje"
                     },
                     {
-                      "en": "Zbatim i detyrueshëm",
+                      "en": "Forced compliance",
                       "al": "Zbatim i detyrueshëm"
                     }
                   ],
@@ -8587,24 +8587,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Koleg kërkon të dhëna të një pacienti që s'e ka në kujdes. Veprim:",
+                    "en": "A colleague asks for data on a patient not in their care. Action:",
                     "al": "Koleg kërkon të dhëna të një pacienti që s'e ka në kujdes. Veprim:"
                   },
                   "options": [
                     {
-                      "en": "Poston",
+                      "en": "Post it",
                       "al": "Poston"
                     },
                     {
-                      "en": "Mohon pa nevojë ndarjeje",
+                      "en": "Decline unless sharing is needed",
                       "al": "Mohon pa nevojë ndarjeje"
                     },
                     {
-                      "en": "Lë në tavolinë",
+                      "en": "Leave it on the desk",
                       "al": "Lë në tavolinë"
                     },
                     {
-                      "en": "Jep",
+                      "en": "Give it",
                       "al": "Jep"
                     }
                   ],
@@ -8615,24 +8615,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Konfidencialiteti do të thotë:",
+                    "en": "Confidentiality means:",
                     "al": "Konfidencialiteti do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Ndaj të gjitha",
+                      "en": "Share with everyone",
                       "al": "Ndaj të gjitha"
                     },
                     {
-                      "en": "Mbrojtje e të dhënave",
+                      "en": "Protection of data",
                       "al": "Mbrojtje e të dhënave"
                     },
                     {
-                      "en": "Fshirje",
+                      "en": "Deletion",
                       "al": "Fshirje"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -8641,24 +8641,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dokumentimi duhet të jetë:",
+                    "en": "Documentation must be:",
                     "al": "Dokumentimi duhet të jetë:"
                   },
                   "options": [
                     {
-                      "en": "I paplotë",
+                      "en": "Incomplete",
                       "al": "I paplotë"
                     },
                     {
-                      "en": "I vonuar",
+                      "en": "Late",
                       "al": "I vonuar"
                     },
                     {
-                      "en": "I saktë dhe në kohë",
+                      "en": "Accurate and timely",
                       "al": "I saktë dhe në kohë"
                     },
                     {
-                      "en": "Pa firmë",
+                      "en": "Unsigned",
                       "al": "Pa firmë"
                     }
                   ],
@@ -8667,24 +8667,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Identifikimi i gabuar mund të çojë në:",
+                    "en": "Misidentification can lead to:",
                     "al": "Identifikimi i gabuar mund të çojë në:"
                   },
                   "options": [
                     {
-                      "en": "Rritje shpejtësie",
+                      "en": "Speed gain",
                       "al": "Rritje shpejtësie"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Fitim",
+                      "en": "Profit",
                       "al": "Fitim"
                     },
                     {
-                      "en": "Gabime serioze (ilaç, procedurë)",
+                      "en": "Serious errors (drug, procedure)",
                       "al": "Gabime serioze (ilaç, procedurë)"
                     }
                   ],
@@ -8705,23 +8705,23 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_mid_m1_a.al.html",
-                "en": "materials/nurse_mid_m1_a.al.html"
+                "en": "materials/nurse_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_mid_m1_b.al.html",
-                "en": "materials/nurse_mid_m1_b.al.html"
+                "en": "materials/nurse_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Frymëmarrja normale e të rriturit:",
+                    "en": "Normal adult respiration:",
                     "al": "Frymëmarrja normale e të rriturit:"
                   },
                   "options": [
                     {
-                      "en": "12–20",
+                      "en": "12-20",
                       "al": "12–20"
                     },
                     {
@@ -8729,11 +8729,11 @@ export const FIELDS = [
                       "al": "60"
                     },
                     {
-                      "en": "30–40",
+                      "en": "30-40",
                       "al": "30–40"
                     },
                     {
-                      "en": "5–8",
+                      "en": "5-8",
                       "al": "5–8"
                     }
                   ],
@@ -8742,7 +8742,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Puls 110/min:",
+                    "en": "Pulse 110/min:",
                     "al": "Puls 110/min:"
                   },
                   "options": [
@@ -8751,11 +8751,11 @@ export const FIELDS = [
                       "al": "Arrest"
                     },
                     {
-                      "en": "Tahikardi",
+                      "en": "Tachycardia",
                       "al": "Tahikardi"
                     },
                     {
-                      "en": "Bradikardi",
+                      "en": "Bradycardia",
                       "al": "Bradikardi"
                     },
                     {
@@ -8768,24 +8768,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "SpO₂ 90%, RR 28: veprim:",
+                    "en": "SpO2 90%, RR 28: action:",
                     "al": "SpO₂ 90%, RR 28: veprim:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm shënim",
+                      "en": "Note only",
                       "al": "Vetëm shënim"
                     },
                     {
-                      "en": "Pritje",
+                      "en": "Wait",
                       "al": "Pritje"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Njofto menjëherë ekipin/mjekun",
+                      "en": "Notify the team/doctor immediately",
                       "al": "Njofto menjëherë ekipin/mjekun"
                     }
                   ],
@@ -8796,24 +8796,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "SpO₂ normale:",
+                    "en": "Normal SpO2:",
                     "al": "SpO₂ normale:"
                   },
                   "options": [
                     {
-                      "en": "≥ 30%",
+                      "en": ">= 30%",
                       "al": "≥ 30%"
                     },
                     {
-                      "en": "≥ 10%",
+                      "en": ">= 10%",
                       "al": "≥ 10%"
                     },
                     {
-                      "en": "≥ 50%",
+                      "en": ">= 50%",
                       "al": "≥ 50%"
                     },
                     {
-                      "en": "≥ 95%",
+                      "en": ">= 95%",
                       "al": "≥ 95%"
                     }
                   ],
@@ -8822,24 +8822,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse regjistrohet ora?",
+                    "en": "Why record the time?",
                     "al": "Pse regjistrohet ora?"
                   },
                   "options": [
                     {
-                      "en": "Ligjërisht vetëm",
+                      "en": "Legally only",
                       "al": "Ligjërisht vetëm"
                     },
                     {
-                      "en": "Për ngjyrë",
+                      "en": "For colour",
                       "al": "Për ngjyrë"
                     },
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     },
                     {
-                      "en": "Trend dhe vazhdimësi",
+                      "en": "Trend and continuity",
                       "al": "Trend dhe vazhdimësi"
                     }
                   ],
@@ -8848,24 +8848,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Matja e TA me manshetë të gabuar:",
+                    "en": "Measuring BP with a wrong cuff:",
                     "al": "Matja e TA me manshetë të gabuar:"
                   },
                   "options": [
                     {
-                      "en": "Rrit saktësinë",
+                      "en": "Increases accuracy",
                       "al": "Rrit saktësinë"
                     },
                     {
-                      "en": "Mund të japë vlerë të gabuar",
+                      "en": "May give a wrong value",
                       "al": "Mund të japë vlerë të gabuar"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Pa efekt",
+                      "en": "No effect",
                       "al": "Pa efekt"
                     }
                   ],
@@ -8882,35 +8882,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_mid_m2_a.al.html",
-                "en": "materials/nurse_mid_m2_a.al.html"
+                "en": "materials/nurse_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_mid_m2_b.al.html",
-                "en": "materials/nurse_mid_m2_b.al.html"
+                "en": "materials/nurse_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Intervali i GCS:",
+                    "en": "GCS range:",
                     "al": "Intervali i GCS:"
                   },
                   "options": [
                     {
-                      "en": "3–15",
+                      "en": "3-15",
                       "al": "3–15"
                     },
                     {
-                      "en": "0–20",
+                      "en": "0-20",
                       "al": "0–20"
                     },
                     {
-                      "en": "1–10",
+                      "en": "1-10",
                       "al": "1–10"
                     },
                     {
-                      "en": "5–25",
+                      "en": "5-25",
                       "al": "5–25"
                     }
                   ],
@@ -8919,7 +8919,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Sy 3, verbal 4, motor 5. GCS:",
+                    "en": "Eyes 3, verbal 4, motor 5. GCS:",
                     "al": "Sy 3, verbal 4, motor 5. GCS:"
                   },
                   "options": [
@@ -8945,24 +8945,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "GCS 7: prioriteti:",
+                    "en": "GCS 7: priority:",
                     "al": "GCS 7: prioriteti:"
                   },
                   "options": [
                     {
-                      "en": "Drekë",
+                      "en": "Lunch",
                       "al": "Drekë"
                     },
                     {
-                      "en": "Mbrojtja e rrugës ajrore dhe urgjenca",
+                      "en": "Airway protection and emergency",
                       "al": "Mbrojtja e rrugës ajrore dhe urgjenca"
                     },
                     {
-                      "en": "Dokumentim",
+                      "en": "Documentation",
                       "al": "Dokumentim"
                     },
                     {
-                      "en": "Pushim",
+                      "en": "Rest",
                       "al": "Pushim"
                     }
                   ],
@@ -8973,7 +8973,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "GCS maksimal:",
+                    "en": "Maximal GCS:",
                     "al": "GCS maksimal:"
                   },
                   "options": [
@@ -8999,24 +8999,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "GCS ≤ 8 tregon:",
+                    "en": "GCS <= 8 indicates:",
                     "al": "GCS ≤ 8 tregon:"
                   },
                   "options": [
                     {
-                      "en": "Gjendje të lehtë",
+                      "en": "A mild condition",
                       "al": "Gjendje të lehtë"
                     },
                     {
-                      "en": "Gjendje të rëndë",
+                      "en": "A severe condition",
                       "al": "Gjendje të rëndë"
                     },
                     {
-                      "en": "Normale",
+                      "en": "Normal",
                       "al": "Normale"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "Nothing",
                       "al": "Asnjë"
                     }
                   ],
@@ -9025,24 +9025,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse vlerësohet dhimbja me shkallë?",
+                    "en": "Why rate pain on a scale?",
                     "al": "Pse vlerësohet dhimbja me shkallë?"
                   },
                   "options": [
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     },
                     {
-                      "en": "Matje dhe ndjekje e trendit",
+                      "en": "Measurement and trend tracking",
                       "al": "Matje dhe ndjekje e trendit"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     }
                   ],
@@ -9059,18 +9059,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_mid_m3_a.al.html",
-                "en": "materials/nurse_mid_m3_a.al.html"
+                "en": "materials/nurse_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_mid_m3_b.al.html",
-                "en": "materials/nurse_mid_m3_b.al.html"
+                "en": "materials/nurse_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Sa 'të drejta' bazë ka?",
+                    "en": "How many basic 'rights' are there?",
                     "al": "Sa 'të drejta' bazë ka?"
                   },
                   "options": [
@@ -9096,24 +9096,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Para ilaçit kontrollohet:",
+                    "en": "Before a drug you check:",
                     "al": "Para ilaçit kontrollohet:"
                   },
                   "options": [
                     {
-                      "en": "Alergjitë",
+                      "en": "Allergies",
                       "al": "Alergjitë"
                     },
                     {
-                      "en": "Moti",
+                      "en": "Weather",
                       "al": "Moti"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Ngjyra",
+                      "en": "Colour",
                       "al": "Ngjyra"
                     }
                   ],
@@ -9122,24 +9122,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dyshim për dozën. Veprim:",
+                    "en": "Doubt about the dose. Action:",
                     "al": "Dyshim për dozën. Veprim:"
                   },
                   "options": [
                     {
-                      "en": "Dyfisho",
+                      "en": "Double it",
                       "al": "Dyfisho"
                     },
                     {
-                      "en": "Injoro",
+                      "en": "Ignore",
                       "al": "Injoro"
                     },
                     {
-                      "en": "Ndalo dhe verifiko",
+                      "en": "Stop and verify",
                       "al": "Ndalo dhe verifiko"
                     },
                     {
-                      "en": "Jep sipas mendjes",
+                      "en": "Give by guess",
                       "al": "Jep sipas mendjes"
                     }
                   ],
@@ -9150,24 +9150,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Përfshin 'rrugën' (route):",
+                    "en": "'Route' is included:",
                     "al": "Përfshin 'rrugën' (route):"
                   },
                   "options": [
                     {
-                      "en": "Po",
+                      "en": "Yes",
                       "al": "Po"
                     },
                     {
-                      "en": "Jo",
+                      "en": "No",
                       "al": "Jo"
                     },
                     {
-                      "en": "Vetëm në urgjencë",
+                      "en": "Only in emergencies",
                       "al": "Vetëm në urgjencë"
                     },
                     {
-                      "en": "Asnjëherë",
+                      "en": "Never",
                       "al": "Asnjëherë"
                     }
                   ],
@@ -9176,24 +9176,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas administrimit:",
+                    "en": "After administration:",
                     "al": "Pas administrimit:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Heqje e regjistrit",
+                      "en": "Remove the record",
                       "al": "Heqje e regjistrit"
                     },
                     {
-                      "en": "Pritje 1 muaj",
+                      "en": "Wait 1 month",
                       "al": "Pritje 1 muaj"
                     },
                     {
-                      "en": "Dokumentim",
+                      "en": "Documentation",
                       "al": "Dokumentim"
                     }
                   ],
@@ -9202,24 +9202,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Efekt anësor i papritur:",
+                    "en": "An unexpected side effect:",
                     "al": "Efekt anësor i papritur:"
                   },
                   "options": [
                     {
-                      "en": "Dyfisho dozën",
+                      "en": "Double the dose",
                       "al": "Dyfisho dozën"
                     },
                     {
-                      "en": "Injoro",
+                      "en": "Ignore",
                       "al": "Injoro"
                     },
                     {
-                      "en": "Fshih",
+                      "en": "Hide",
                       "al": "Fshih"
                     },
                     {
-                      "en": "Njofto dhe dokumento",
+                      "en": "Notify and document",
                       "al": "Njofto dhe dokumento"
                     }
                   ],
@@ -9240,35 +9240,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_senior_m1_a.al.html",
-                "en": "materials/nurse_senior_m1_a.al.html"
+                "en": "materials/nurse_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_senior_m1_b.al.html",
-                "en": "materials/nurse_senior_m1_b.al.html"
+                "en": "materials/nurse_senior_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "ABC përfshin si të parën:",
+                    "en": "ABC includes as the first:",
                     "al": "ABC përfshin si të parën:"
                   },
                   "options": [
                     {
-                      "en": "Rruga ajrore",
+                      "en": "Airway",
                       "al": "Rruga ajrore"
                     },
                     {
-                      "en": "Ndërgjegjja",
+                      "en": "Consciousness",
                       "al": "Ndërgjegjja"
                     },
                     {
-                      "en": "Qarkullimi",
+                      "en": "Circulation",
                       "al": "Qarkullimi"
                     },
                     {
-                      "en": "Frymëmarrja",
+                      "en": "Breathing",
                       "al": "Frymëmarrja"
                     }
                   ],
@@ -9277,12 +9277,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pacient A: dhimbje e lehtë; B: rrugë ajrore e bllokuar. Para:",
+                    "en": "Patient A: mild pain; B: blocked airway. Priority:",
                     "al": "Pacient A: dhimbje e lehtë; B: rrugë ajrore e bllokuar. Para:"
                   },
                   "options": [
                     {
-                      "en": "Njëlloj",
+                      "en": "Equal",
                       "al": "Njëlloj"
                     },
                     {
@@ -9294,7 +9294,7 @@ export const FIELDS = [
                       "al": "B"
                     },
                     {
-                      "en": "Askush",
+                      "en": "Neither",
                       "al": "Askush"
                     }
                   ],
@@ -9303,24 +9303,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Tre pacientë; kush është më urgjent?",
+                    "en": "Three patients; who is most urgent?",
                     "al": "Tre pacientë; kush është më urgjent?"
                   },
                   "options": [
                     {
-                      "en": "Më i riu",
+                      "en": "The youngest",
                       "al": "Më i riu"
                     },
                     {
-                      "en": "Ai me kërcënim të menjëhershëm për jetën",
+                      "en": "The one with an immediate life threat",
                       "al": "Ai me kërcënim të menjëhershëm për jetën"
                     },
                     {
-                      "en": "Ai që flet më shumë",
+                      "en": "The one who talks most",
                       "al": "Ai që flet më shumë"
                     },
                     {
-                      "en": "Rendi i regjistrimit",
+                      "en": "Registration order",
                       "al": "Rendi i regjistrimit"
                     }
                   ],
@@ -9331,24 +9331,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Nevojat që prioritizohen para:",
+                    "en": "Needs prioritised before:",
                     "al": "Nevojat që prioritizohen para:"
                   },
                   "options": [
                     {
-                      "en": "Fiziologjike",
+                      "en": "Physiological",
                       "al": "Fiziologjike"
                     },
                     {
-                      "en": "Sociale",
+                      "en": "Social",
                       "al": "Sociale"
                     },
                     {
-                      "en": "Pa rend",
+                      "en": "No order",
                       "al": "Pa rend"
                     },
                     {
-                      "en": "Estetike",
+                      "en": "Aesthetic",
                       "al": "Estetike"
                     }
                   ],
@@ -9357,24 +9357,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Delegimi duhet të bazohet në:",
+                    "en": "Delegation must be based on:",
                     "al": "Delegimi duhet të bazohet në:"
                   },
                   "options": [
                     {
-                      "en": "Rastësi",
+                      "en": "Random",
                       "al": "Rastësi"
                     },
                     {
-                      "en": "Sasinë e punës",
+                      "en": "Workload",
                       "al": "Sasinë e punës"
                     },
                     {
-                      "en": "Sa mban mend",
+                      "en": "Memory",
                       "al": "Sa mban mend"
                     },
                     {
-                      "en": "Kompetencën dhe sigurinë",
+                      "en": "Competence and safety",
                       "al": "Kompetencën dhe sigurinë"
                     }
                   ],
@@ -9383,24 +9383,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse rivlerësohet vazhdimisht?",
+                    "en": "Why reassess continuously?",
                     "al": "Pse rivlerësohet vazhdimisht?"
                   },
                   "options": [
                     {
-                      "en": "Gjendja ndryshon",
+                      "en": "The condition changes",
                       "al": "Gjendja ndryshon"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     }
                   ],
@@ -9417,27 +9417,27 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_senior_m2_a.al.html",
-                "en": "materials/nurse_senior_m2_a.al.html"
+                "en": "materials/nurse_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_senior_m2_b.al.html",
-                "en": "materials/nurse_senior_m2_b.al.html"
+                "en": "materials/nurse_senior_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "E kuqe në triage:",
+                    "en": "Red in triage:",
                     "al": "E kuqe në triage:"
                   },
                   "options": [
                     {
-                      "en": "Menjëherë",
+                      "en": "Immediate",
                       "al": "Menjëherë"
                     },
                     {
-                      "en": "Vdekur",
+                      "en": "Deceased",
                       "al": "Vdekur"
                     },
                     {
@@ -9445,7 +9445,7 @@ export const FIELDS = [
                       "al": "Minor"
                     },
                     {
-                      "en": "Pa rëndësi",
+                      "en": "Irrelevant",
                       "al": "Pa rëndësi"
                     }
                   ],
@@ -9454,24 +9454,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pacienti ecën:",
+                    "en": "A patient who walks:",
                     "al": "Pacienti ecën:"
                   },
                   "options": [
                     {
-                      "en": "E kuqe",
+                      "en": "Red",
                       "al": "E kuqe"
                     },
                     {
-                      "en": "Zakonisht e gjelbër",
+                      "en": "Usually green",
                       "al": "Zakonisht e gjelbër"
                     },
                     {
-                      "en": "E zezë",
+                      "en": "Black",
                       "al": "E zezë"
                     },
                     {
-                      "en": "E verdhë",
+                      "en": "Yellow",
                       "al": "E verdhë"
                     }
                   ],
@@ -9480,24 +9480,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Frymëmarrje > 30/min:",
+                    "en": "Respiration > 30/min:",
                     "al": "Frymëmarrje > 30/min:"
                   },
                   "options": [
                     {
-                      "en": "E verdhë",
+                      "en": "Yellow",
                       "al": "E verdhë"
                     },
                     {
-                      "en": "E zezë",
+                      "en": "Black",
                       "al": "E zezë"
                     },
                     {
-                      "en": "E kuqe",
+                      "en": "Red",
                       "al": "E kuqe"
                     },
                     {
-                      "en": "E gjelbër",
+                      "en": "Green",
                       "al": "E gjelbër"
                     }
                   ],
@@ -9508,24 +9508,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "E gjelbër:",
+                    "en": "Green:",
                     "al": "E gjelbër:"
                   },
                   "options": [
                     {
-                      "en": "Vdekur",
+                      "en": "Deceased",
                       "al": "Vdekur"
                     },
                     {
-                      "en": "Menjëherë",
+                      "en": "Immediate",
                       "al": "Menjëherë"
                     },
                     {
-                      "en": "E vonuar",
+                      "en": "Delayed",
                       "al": "E vonuar"
                     },
                     {
-                      "en": "Minor/ecën",
+                      "en": "Minor/walking",
                       "al": "Minor/ecën"
                     }
                   ],
@@ -9534,24 +9534,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Nuk merr frymë edhe pas hapjes së rrugës ajrore:",
+                    "en": "Not breathing even after opening the airway:",
                     "al": "Nuk merr frymë edhe pas hapjes së rrugës ajrore:"
                   },
                   "options": [
                     {
-                      "en": "E gjelbër",
+                      "en": "Green",
                       "al": "E gjelbër"
                     },
                     {
-                      "en": "E zezë",
+                      "en": "Black",
                       "al": "E zezë"
                     },
                     {
-                      "en": "E verdhë",
+                      "en": "Yellow",
                       "al": "E verdhë"
                     },
                     {
-                      "en": "E kuqe",
+                      "en": "Red",
                       "al": "E kuqe"
                     }
                   ],
@@ -9560,24 +9560,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse triage?",
+                    "en": "Why triage?",
                     "al": "Pse triage?"
                   },
                   "options": [
                     {
-                      "en": "Për rend alfabetik",
+                      "en": "Alphabetical order",
                       "al": "Për rend alfabetik"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "Maksimizon të mbijetuarit me burime të kufizuara",
+                      "en": "Maximise survivors with limited resources",
                       "al": "Maksimizon të mbijetuarit me burime të kufizuara"
                     }
                   ],
@@ -9594,35 +9594,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/nurse_senior_m3_a.al.html",
-                "en": "materials/nurse_senior_m3_a.al.html"
+                "en": "materials/nurse_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/nurse_senior_m3_b.al.html",
-                "en": "materials/nurse_senior_m3_b.al.html"
+                "en": "materials/nurse_senior_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "SBAR ka:",
+                    "en": "SBAR has:",
                     "al": "SBAR ka:"
                   },
                   "options": [
                     {
-                      "en": "5 pjesë",
+                      "en": "5 parts",
                       "al": "5 pjesë"
                     },
                     {
-                      "en": "3 pjesë",
+                      "en": "3 parts",
                       "al": "3 pjesë"
                     },
                     {
-                      "en": "4 pjesë",
+                      "en": "4 parts",
                       "al": "4 pjesë"
                     },
                     {
-                      "en": "7 pjesë",
+                      "en": "7 parts",
                       "al": "7 pjesë"
                     }
                   ],
@@ -9631,24 +9631,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "B në SBAR:",
+                    "en": "B in SBAR:",
                     "al": "B në SBAR:"
                   },
                   "options": [
                     {
-                      "en": "Brenda",
+                      "en": "Within",
                       "al": "Brenda"
                     },
                     {
-                      "en": "Baza",
+                      "en": "Base",
                       "al": "Baza"
                     },
                     {
-                      "en": "Historiku (Background)",
+                      "en": "Background",
                       "al": "Historiku (Background)"
                     },
                     {
-                      "en": "Bilanci",
+                      "en": "Balance",
                       "al": "Bilanci"
                     }
                   ],
@@ -9657,24 +9657,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pacient në përkeqësim. Veprimi i parë:",
+                    "en": "A patient deteriorating. First action:",
                     "al": "Pacient në përkeqësim. Veprimi i parë:"
                   },
                   "options": [
                     {
-                      "en": "Largohu",
+                      "en": "Leave",
                       "al": "Largohu"
                     },
                     {
-                      "en": "Njofto/aktivizo ekipin dhe monitoro",
+                      "en": "Notify/activate the team and monitor",
                       "al": "Njofto/aktivizo ekipin dhe monitoro"
                     },
                     {
-                      "en": "Pritje",
+                      "en": "Wait",
                       "al": "Pritje"
                     },
                     {
-                      "en": "Regjistro vetëm",
+                      "en": "Document only",
                       "al": "Regjistro vetëm"
                     }
                   ],
@@ -9685,24 +9685,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "S në SBAR:",
+                    "en": "S in SBAR:",
                     "al": "S në SBAR:"
                   },
                   "options": [
                     {
-                      "en": "Siguria",
+                      "en": "Safety",
                       "al": "Siguria"
                     },
                     {
-                      "en": "Sëmundja",
+                      "en": "Disease",
                       "al": "Sëmundja"
                     },
                     {
-                      "en": "Situata",
+                      "en": "Situation",
                       "al": "Situata"
                     },
                     {
-                      "en": "Shpejtësia",
+                      "en": "Speed",
                       "al": "Shpejtësia"
                     }
                   ],
@@ -9711,24 +9711,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "R në SBAR:",
+                    "en": "R in SBAR:",
                     "al": "R në SBAR:"
                   },
                   "options": [
                     {
-                      "en": "Radioja",
+                      "en": "Radio",
                       "al": "Radioja"
                     },
                     {
-                      "en": "Rekomandimi",
+                      "en": "Recommendation",
                       "al": "Rekomandimi"
                     },
                     {
-                      "en": "Rreziku",
+                      "en": "Risk",
                       "al": "Rreziku"
                     },
                     {
-                      "en": "Rezultati",
+                      "en": "Result",
                       "al": "Rezultati"
                     }
                   ],
@@ -9737,24 +9737,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dokumentimi i kronologjisë ka rëndësi sepse:",
+                    "en": "Documenting the chronology matters because:",
                     "al": "Dokumentimi i kronologjisë ka rëndësi sepse:"
                   },
                   "options": [
                     {
-                      "en": "Për estetikë",
+                      "en": "For aesthetics",
                       "al": "Për estetikë"
                     },
                     {
-                      "en": "S'ka",
+                      "en": "It does not",
                       "al": "S'ka"
                     },
                     {
-                      "en": "Për të fshehur",
+                      "en": "To hide",
                       "al": "Për të fshehur"
                     },
                     {
-                      "en": "Mbështet kujdesin dhe përgjegjësinë",
+                      "en": "It supports care and accountability",
                       "al": "Mbështet kujdesin dhe përgjegjësinë"
                     }
                   ],
@@ -9784,35 +9784,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_fillestar_m1_a.al.html",
-                "en": "materials/pedagogue_fillestar_m1_a.al.html"
+                "en": "materials/pedagogue_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_fillestar_m1_b.al.html",
-                "en": "materials/pedagogue_fillestar_m1_b.al.html"
+                "en": "materials/pedagogue_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Mësimi nis me:",
+                    "en": "A lesson starts with:",
                     "al": "Mësimi nis me:"
                   },
                   "options": [
                     {
-                      "en": "Detyrë",
+                      "en": "Homework",
                       "al": "Detyrë"
                     },
                     {
-                      "en": "Hyrje/motivim",
+                      "en": "Introduction/motivation",
                       "al": "Hyrje/motivim"
                     },
                     {
-                      "en": "Vlerësim",
+                      "en": "Assessment",
                       "al": "Vlerësim"
                     },
                     {
-                      "en": "Pushim",
+                      "en": "Break",
                       "al": "Pushim"
                     }
                   ],
@@ -9821,24 +9821,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse nevojitet hyrja?",
+                    "en": "Why is an introduction needed?",
                     "al": "Pse nevojitet hyrja?"
                   },
                   "options": [
                     {
-                      "en": "Për kohë",
+                      "en": "For time",
                       "al": "Për kohë"
                     },
                     {
-                      "en": "Ngjall interes dhe aktivizon njohuritë e mëparshme",
+                      "en": "To spark interest and activate prior knowledge",
                       "al": "Ngjall interes dhe aktivizon njohuritë e mëparshme"
                     },
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     }
                   ],
@@ -9847,24 +9847,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Mësimi pa vlerësim:",
+                    "en": "A lesson without assessment:",
                     "al": "Mësimi pa vlerësim:"
                   },
                   "options": [
                     {
-                      "en": "Është i përsosur",
+                      "en": "Is perfect",
                       "al": "Është i përsosur"
                     },
                     {
-                      "en": "Më i shpejtë ligjërisht",
+                      "en": "Is legally faster",
                       "al": "Më i shpejtë ligjërisht"
                     },
                     {
-                      "en": "Mund të mos zbulojë të nxënit",
+                      "en": "May not reveal learning",
                       "al": "Mund të mos zbulojë të nxënit"
                     },
                     {
-                      "en": "Pa efekt",
+                      "en": "No effect",
                       "al": "Pa efekt"
                     }
                   ],
@@ -9875,24 +9875,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Praktika i përket fazës:",
+                    "en": "Practice belongs to the phase:",
                     "al": "Praktika i përket fazës:"
                   },
                   "options": [
                     {
-                      "en": "Hyrje",
+                      "en": "Introduction",
                       "al": "Hyrje"
                     },
                     {
-                      "en": "Konsolidim",
+                      "en": "Consolidation",
                       "al": "Konsolidim"
                     },
                     {
-                      "en": "Vlerësim vetëm",
+                      "en": "Assessment only",
                       "al": "Vlerësim vetëm"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     }
                   ],
@@ -9901,24 +9901,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Detyra e shtëpisë shërben për:",
+                    "en": "Homework serves for:",
                     "al": "Detyra e shtëpisë shërben për:"
                   },
                   "options": [
                     {
-                      "en": "Përforcim",
+                      "en": "Reinforcement",
                       "al": "Përforcim"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Ndëshkim",
+                      "en": "Punishment",
                       "al": "Ndëshkim"
                     },
                     {
-                      "en": "Zbukurim",
+                      "en": "Decoration",
                       "al": "Zbukurim"
                     }
                   ],
@@ -9927,24 +9927,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rendi logjik:",
+                    "en": "Logical order:",
                     "al": "Rendi logjik:"
                   },
                   "options": [
                     {
-                      "en": "Zhvillim, hyrje",
+                      "en": "Development, introduction",
                       "al": "Zhvillim, hyrje"
                     },
                     {
-                      "en": "Hyrje, zhvillim, konsolidim, vlerësim",
+                      "en": "Introduction, development, consolidation, assessment",
                       "al": "Hyrje, zhvillim, konsolidim, vlerësim"
                     },
                     {
-                      "en": "Vlerësim, hyrje, zhvillim",
+                      "en": "Assessment, introduction, development",
                       "al": "Vlerësim, hyrje, zhvillim"
                     },
                     {
-                      "en": "Çfarëdo",
+                      "en": "Whatever",
                       "al": "Çfarëdo"
                     }
                   ],
@@ -9961,35 +9961,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_fillestar_m2_a.al.html",
-                "en": "materials/pedagogue_fillestar_m2_a.al.html"
+                "en": "materials/pedagogue_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_fillestar_m2_b.al.html",
-                "en": "materials/pedagogue_fillestar_m2_b.al.html"
+                "en": "materials/pedagogue_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Objektivi duhet të përshkruajë:",
+                    "en": "The objective should describe:",
                     "al": "Objektivi duhet të përshkruajë:"
                   },
                   "options": [
                     {
-                      "en": "Çfarë ka libri",
+                      "en": "What the book has",
                       "al": "Çfarë ka libri"
                     },
                     {
-                      "en": "Çfarë bën mësuesi",
+                      "en": "What the teacher does",
                       "al": "Çfarë bën mësuesi"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Çfarë do të bëjë nxënësi",
+                      "en": "What the student will do",
                       "al": "Çfarë do të bëjë nxënësi"
                     }
                   ],
@@ -9998,24 +9998,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Cili objektiv është i mirë?",
+                    "en": "Which objective is good?",
                     "al": "Cili objektiv është i mirë?"
                   },
                   "options": [
                     {
-                      "en": "Nxënësi zgjidh 5 ushtrime me thyesa",
+                      "en": "The student solves 5 fraction exercises",
                       "al": "Nxënësi zgjidh 5 ushtrime me thyesa"
                     },
                     {
-                      "en": "Nxënësi 'kupton' ligjin",
+                      "en": "The student 'understands' the law",
                       "al": "Nxënësi 'kupton' ligjin"
                     },
                     {
-                      "en": "Nxënësi 'di' gjithçka",
+                      "en": "The student 'knows' everything",
                       "al": "Nxënësi 'di' gjithçka"
                     },
                     {
-                      "en": "Nxënësi 'ndjen'",
+                      "en": "The student 'feels'",
                       "al": "Nxënësi 'ndjen'"
                     }
                   ],
@@ -10024,12 +10024,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Objektivi 'Nxënësi do të mësojë matematikë' është:",
+                    "en": "The objective 'The student will learn mathematics' is:",
                     "al": "Objektivi 'Nxënësi do të mësojë matematikë' është:"
                   },
                   "options": [
                     {
-                      "en": "I mirë",
+                      "en": "Good",
                       "al": "I mirë"
                     },
                     {
@@ -10037,11 +10037,11 @@ export const FIELDS = [
                       "al": "SMART"
                     },
                     {
-                      "en": "Perfekt",
+                      "en": "Perfect",
                       "al": "Perfekt"
                     },
                     {
-                      "en": "Shumë i përgjithshëm, i pamatshëm",
+                      "en": "Too general, not measurable",
                       "al": "Shumë i përgjithshëm, i pamatshëm"
                     }
                   ],
@@ -10052,24 +10052,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Folje e matshme:",
+                    "en": "A measurable verb:",
                     "al": "Folje e matshme:"
                   },
                   "options": [
                     {
-                      "en": "Shijo",
+                      "en": "Enjoy",
                       "al": "Shijo"
                     },
                     {
-                      "en": "Ndjen",
+                      "en": "Feel",
                       "al": "Ndjen"
                     },
                     {
-                      "en": "Listo",
+                      "en": "List",
                       "al": "Listo"
                     },
                     {
-                      "en": "Kupton",
+                      "en": "Understand",
                       "al": "Kupton"
                     }
                   ],
@@ -10078,24 +10078,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse shmangen 'di'/'kupton'?",
+                    "en": "Why avoid 'know'/'understand'?",
                     "al": "Pse shmangen 'di'/'kupton'?"
                   },
                   "options": [
                     {
-                      "en": "Janë të vështira të matën",
+                      "en": "They are hard to measure",
                       "al": "Janë të vështira të matën"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Janë të gjata",
+                      "en": "They are long",
                       "al": "Janë të gjata"
                     },
                     {
-                      "en": "Janë të ndaluara",
+                      "en": "They are forbidden",
                       "al": "Janë të ndaluara"
                     }
                   ],
@@ -10104,24 +10104,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Objektivi duhet të lidhet me:",
+                    "en": "An objective must link to:",
                     "al": "Objektivi duhet të lidhet me:"
                   },
                   "options": [
                     {
-                      "en": "Ngjyrën e ditës",
+                      "en": "The colour of the day",
                       "al": "Ngjyrën e ditës"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Kohën e pushimit",
+                      "en": "Break time",
                       "al": "Kohën e pushimit"
                     },
                     {
-                      "en": "Vlerësimin",
+                      "en": "Assessment",
                       "al": "Vlerësimin"
                     }
                   ],
@@ -10138,35 +10138,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_fillestar_m3_a.al.html",
-                "en": "materials/pedagogue_fillestar_m3_a.al.html"
+                "en": "materials/pedagogue_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_fillestar_m3_b.al.html",
-                "en": "materials/pedagogue_fillestar_m3_b.al.html"
+                "en": "materials/pedagogue_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Rregullat e mira janë:",
+                    "en": "Good rules are:",
                     "al": "Rregullat e mira janë:"
                   },
                   "options": [
                     {
-                      "en": "Të ndryshueshme",
+                      "en": "Changeable",
                       "al": "Të ndryshueshme"
                     },
                     {
-                      "en": "Të qarta dhe të pakta",
+                      "en": "Clear and few",
                       "al": "Të qarta dhe të pakta"
                     },
                     {
-                      "en": "Sekrete",
+                      "en": "Secret",
                       "al": "Sekrete"
                     },
                     {
-                      "en": "Të shumta",
+                      "en": "Many",
                       "al": "Të shumta"
                     }
                   ],
@@ -10175,24 +10175,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rutinat ndihmojnë:",
+                    "en": "Routines help:",
                     "al": "Rutinat ndihmojnë:"
                   },
                   "options": [
                     {
-                      "en": "Janë të panevojshme",
+                      "en": "They are unnecessary",
                       "al": "Janë të panevojshme"
                     },
                     {
-                      "en": "S'ndikojnë",
+                      "en": "They do not matter",
                       "al": "S'ndikojnë"
                     },
                     {
-                      "en": "Rrisin kaosin",
+                      "en": "Increase chaos",
                       "al": "Rrisin kaosin"
                     },
                     {
-                      "en": "Zvogëlojnë kohën e humbur",
+                      "en": "Reduce lost time",
                       "al": "Zvogëlojnë kohën e humbur"
                     }
                   ],
@@ -10201,24 +10201,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rregull i mirë:",
+                    "en": "A good rule:",
                     "al": "Rregull i mirë:"
                   },
                   "options": [
                     {
-                      "en": "'Flasim një nga një'",
+                      "en": "'We speak one at a time'",
                       "al": "'Flasim një nga një'"
                     },
                     {
-                      "en": "'Mos bëj zhurmë'",
+                      "en": "'Don't make noise'",
                       "al": "'Mos bëj zhurmë'"
                     },
                     {
-                      "en": "'Mos bëj gjëra'",
+                      "en": "'Don't do things'",
                       "al": "'Mos bëj gjëra'"
                     },
                     {
-                      "en": "'Sillu mirë'",
+                      "en": "'Behave well'",
                       "al": "'Sillu mirë'"
                     }
                   ],
@@ -10229,24 +10229,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Përforcimi pozitiv:",
+                    "en": "Positive reinforcement:",
                     "al": "Përforcimi pozitiv:"
                   },
                   "options": [
                     {
-                      "en": "Ndëshkim",
+                      "en": "Punishment",
                       "al": "Ndëshkim"
                     },
                     {
-                      "en": "Zhurmë",
+                      "en": "Noise",
                       "al": "Zhurmë"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Shpërblim/njohje e sjelljes së mirë",
+                      "en": "Reward/acknowledge good behaviour",
                       "al": "Shpërblim/njohje e sjelljes së mirë"
                     }
                   ],
@@ -10255,24 +10255,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Konsekuencat duhet të jenë:",
+                    "en": "Consequences should be:",
                     "al": "Konsekuencat duhet të jenë:"
                   },
                   "options": [
                     {
-                      "en": "Të fshehta",
+                      "en": "Hidden",
                       "al": "Të fshehta"
                     },
                     {
-                      "en": "Të parashikueshme",
+                      "en": "Predictable",
                       "al": "Të parashikueshme"
                     },
                     {
-                      "en": "Çdo ditë të ndryshme",
+                      "en": "Different daily",
                       "al": "Çdo ditë të ndryshme"
                     },
                     {
-                      "en": "Të rastësishme",
+                      "en": "Random",
                       "al": "Të rastësishme"
                     }
                   ],
@@ -10281,24 +10281,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Marrëdhënia me respekt:",
+                    "en": "A respectful relationship:",
                     "al": "Marrëdhënia me respekt:"
                   },
                   "options": [
                     {
-                      "en": "S'ndikon",
+                      "en": "No effect",
                       "al": "S'ndikon"
                     },
                     {
-                      "en": "Rrit problemet",
+                      "en": "Increases problems",
                       "al": "Rrit problemet"
                     },
                     {
-                      "en": "Është e ndaluar",
+                      "en": "Is forbidden",
                       "al": "Është e ndaluar"
                     },
                     {
-                      "en": "Zvogëlon problemet",
+                      "en": "Reduces problems",
                       "al": "Zvogëlon problemet"
                     }
                   ],
@@ -10319,35 +10319,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_mid_m1_a.al.html",
-                "en": "materials/pedagogue_mid_m1_a.al.html"
+                "en": "materials/pedagogue_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_mid_m1_b.al.html",
-                "en": "materials/pedagogue_mid_m1_b.al.html"
+                "en": "materials/pedagogue_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Harta e koncepteve ka:",
+                    "en": "A concept map has:",
                     "al": "Harta e koncepteve ka:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm figura",
+                      "en": "Only figures",
                       "al": "Vetëm figura"
                     },
                     {
-                      "en": "Vetëm tekst",
+                      "en": "Only text",
                       "al": "Vetëm tekst"
                     },
                     {
-                      "en": "Koncepte dhe lidhje",
+                      "en": "Concepts and links",
                       "al": "Koncepte dhe lidhje"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -10356,24 +10356,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kundërshembulli ndihmon për:",
+                    "en": "A non-example helps with:",
                     "al": "Kundërshembulli ndihmon për:"
                   },
                   "options": [
                     {
-                      "en": "Kufijtë e konceptit",
+                      "en": "The boundaries of the concept",
                       "al": "Kufijtë e konceptit"
                     },
                     {
-                      "en": "Zbukurim",
+                      "en": "Decoration",
                       "al": "Zbukurim"
                     },
                     {
-                      "en": "Mërzi",
+                      "en": "Boredom",
                       "al": "Mërzi"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -10382,24 +10382,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Koncepti i ri nuk lidhet me asgjë të njohur. Rrezik:",
+                    "en": "A new concept links to nothing familiar. Risk:",
                     "al": "Koncepti i ri nuk lidhet me asgjë të njohur. Rrezik:"
                   },
                   "options": [
                     {
-                      "en": "Mësim sipërfaqësor",
+                      "en": "Surface learning",
                       "al": "Mësim sipërfaqësor"
                     },
                     {
-                      "en": "Mësim i thellë",
+                      "en": "Deep learning",
                       "al": "Mësim i thellë"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     },
                     {
-                      "en": "Shpejtësi",
+                      "en": "Speed",
                       "al": "Shpejtësi"
                     }
                   ],
@@ -10410,24 +10410,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Mësimi ndërtohet mbi:",
+                    "en": "Learning builds on:",
                     "al": "Mësimi ndërtohet mbi:"
                   },
                   "options": [
                     {
-                      "en": "Njohuritë ekzistuese",
+                      "en": "Prior knowledge",
                       "al": "Njohuritë ekzistuese"
                     },
                     {
-                      "en": "Memorien",
+                      "en": "Memory",
                       "al": "Memorien"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Vetëm tekstin",
+                      "en": "Text only",
                       "al": "Vetëm tekstin"
                     }
                   ],
@@ -10436,24 +10436,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kurrikula spirale:",
+                    "en": "A spiral curriculum:",
                     "al": "Kurrikula spirale:"
                   },
                   "options": [
                     {
-                      "en": "Rikthehet me më shumë thellësi",
+                      "en": "Revisits with more depth",
                       "al": "Rikthehet me më shumë thellësi"
                     },
                     {
-                      "en": "Është rastësore",
+                      "en": "Is random",
                       "al": "Është rastësore"
                     },
                     {
-                      "en": "Nuk rikthehet",
+                      "en": "Never revisits",
                       "al": "Nuk rikthehet"
                     },
                     {
-                      "en": "Vetëm 1 herë",
+                      "en": "Only once",
                       "al": "Vetëm 1 herë"
                     }
                   ],
@@ -10462,24 +10462,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Përgjithësi → veçanti ndihmon sepse:",
+                    "en": "General to specific helps because:",
                     "al": "Përgjithësi → veçanti ndihmon sepse:"
                   },
                   "options": [
                     {
-                      "en": "Është më e vështirë",
+                      "en": "It is harder",
                       "al": "Është më e vështirë"
                     },
                     {
-                      "en": "Është ligj",
+                      "en": "It is law",
                       "al": "Është ligj"
                     },
                     {
-                      "en": "Jep kornizë mendore",
+                      "en": "It gives a mental framework",
                       "al": "Jep kornizë mendore"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     }
                   ],
@@ -10496,35 +10496,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_mid_m2_a.al.html",
-                "en": "materials/pedagogue_mid_m2_a.al.html"
+                "en": "materials/pedagogue_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_mid_m2_b.al.html",
-                "en": "materials/pedagogue_mid_m2_b.al.html"
+                "en": "materials/pedagogue_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Vlerësimi formativ bëhet:",
+                    "en": "Formative assessment happens:",
                     "al": "Vlerësimi formativ bëhet:"
                   },
                   "options": [
                     {
-                      "en": "Gjatë procesit",
+                      "en": "During the process",
                       "al": "Gjatë procesit"
                     },
                     {
-                      "en": "Kurrë",
+                      "en": "Never",
                       "al": "Kurrë"
                     },
                     {
-                      "en": "Pas vitit",
+                      "en": "After the year",
                       "al": "Pas vitit"
                     },
                     {
-                      "en": "Në fund vetëm",
+                      "en": "Only at the end",
                       "al": "Në fund vetëm"
                     }
                   ],
@@ -10533,24 +10533,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rubrika:",
+                    "en": "A rubric:",
                     "al": "Rubrika:"
                   },
                   "options": [
                     {
-                      "en": "Kritere me nivele cilësie",
+                      "en": "Criteria with quality levels",
                       "al": "Kritere me nivele cilësie"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Një fjalë",
+                      "en": "One word",
                       "al": "Një fjalë"
                     },
                     {
-                      "en": "Vetëm notë",
+                      "en": "A grade only",
                       "al": "Vetëm notë"
                     }
                   ],
@@ -10559,24 +10559,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "'Punë e mirë!' si feedback e vetme:",
+                    "en": "'Good work!' as the only feedback:",
                     "al": "'Punë e mirë!' si feedback e vetme:"
                   },
                   "options": [
                     {
-                      "en": "Perfekte",
+                      "en": "Perfect",
                       "al": "Perfekte"
                     },
                     {
-                      "en": "Jo specifike, jep pak udhëzim",
+                      "en": "Not specific, gives little guidance",
                       "al": "Jo specifike, jep pak udhëzim"
                     },
                     {
-                      "en": "E mjaftueshme",
+                      "en": "Sufficient",
                       "al": "E mjaftueshme"
                     },
                     {
-                      "en": "E dëmshme",
+                      "en": "Harmful",
                       "al": "E dëmshme"
                     }
                   ],
@@ -10587,24 +10587,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Vlerësimi sumativ:",
+                    "en": "Summative assessment:",
                     "al": "Vlerësimi sumativ:"
                   },
                   "options": [
                     {
-                      "en": "Jep gjykim përmbledhës",
+                      "en": "Gives a summary judgement",
                       "al": "Jep gjykim përmbledhës"
                     },
                     {
-                      "en": "Është pa notë",
+                      "en": "Is ungraded",
                       "al": "Është pa notë"
                     },
                     {
-                      "en": "Është pa kritere",
+                      "en": "Has no criteria",
                       "al": "Është pa kritere"
                     },
                     {
-                      "en": "Është në fillim",
+                      "en": "Is at the start",
                       "al": "Është në fillim"
                     }
                   ],
@@ -10613,24 +10613,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Feedback i mirë:",
+                    "en": "Good feedback:",
                     "al": "Feedback i mirë:"
                   },
                   "options": [
                     {
-                      "en": "Pa udhëzim",
+                      "en": "No guidance",
                       "al": "Pa udhëzim"
                     },
                     {
-                      "en": "I vonë",
+                      "en": "Late",
                       "al": "I vonë"
                     },
                     {
-                      "en": "Specifik dhe në kohë",
+                      "en": "Specific and timely",
                       "al": "Specifik dhe në kohë"
                     },
                     {
-                      "en": "I paqartë",
+                      "en": "Unclear",
                       "al": "I paqartë"
                     }
                   ],
@@ -10639,24 +10639,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse vetëvlerësimi?",
+                    "en": "Why self-assessment?",
                     "al": "Pse vetëvlerësimi?"
                   },
                   "options": [
                     {
-                      "en": "S'duhet",
+                      "en": "It must not",
                       "al": "S'duhet"
                     },
                     {
-                      "en": "Për të kursyer kohë",
+                      "en": "To save time",
                       "al": "Për të kursyer kohë"
                     },
                     {
-                      "en": "Zhvillon vetërregullimin",
+                      "en": "Develops self-regulation",
                       "al": "Zhvillon vetërregullimin"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     }
                   ],
@@ -10673,35 +10673,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_mid_m3_a.al.html",
-                "en": "materials/pedagogue_mid_m3_a.al.html"
+                "en": "materials/pedagogue_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_mid_m3_b.al.html",
-                "en": "materials/pedagogue_mid_m3_b.al.html"
+                "en": "materials/pedagogue_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Niveli më i lartë në versionin e rishikuar:",
+                    "en": "The highest level in the revised version:",
                     "al": "Niveli më i lartë në versionin e rishikuar:"
                   },
                   "options": [
                     {
-                      "en": "Kujto",
+                      "en": "Remember",
                       "al": "Kujto"
                     },
                     {
-                      "en": "Krijo",
+                      "en": "Create",
                       "al": "Krijo"
                     },
                     {
-                      "en": "Zbato",
+                      "en": "Apply",
                       "al": "Zbato"
                     },
                     {
-                      "en": "Kupto",
+                      "en": "Understand",
                       "al": "Kupto"
                     }
                   ],
@@ -10710,24 +10710,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "'Krahaso dy teori' është:",
+                    "en": "'Compare two theories' is:",
                     "al": "'Krahaso dy teori' është:"
                   },
                   "options": [
                     {
-                      "en": "Krijo",
+                      "en": "Create",
                       "al": "Krijo"
                     },
                     {
-                      "en": "Kujto",
+                      "en": "Remember",
                       "al": "Kujto"
                     },
                     {
-                      "en": "Analizo",
+                      "en": "Analyse",
                       "al": "Analizo"
                     },
                     {
-                      "en": "Zbato",
+                      "en": "Apply",
                       "al": "Zbato"
                     }
                   ],
@@ -10736,24 +10736,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Detyrë vetëm me 'kujto':",
+                    "en": "A task only with 'remember':",
                     "al": "Detyrë vetëm me 'kujto':"
                   },
                   "options": [
                     {
-                      "en": "Nuk e zhvillon të menduarit kritik",
+                      "en": "Does not develop critical thinking",
                       "al": "Nuk e zhvillon të menduarit kritik"
                     },
                     {
-                      "en": "E ndaluar",
+                      "en": "Is forbidden",
                       "al": "E ndaluar"
                     },
                     {
-                      "en": "Perfekte",
+                      "en": "Is perfect",
                       "al": "Perfekte"
                     },
                     {
-                      "en": "Zhvillon të menduarit kritik",
+                      "en": "Develops critical thinking",
                       "al": "Zhvillon të menduarit kritik"
                     }
                   ],
@@ -10764,24 +10764,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Kujto është nivel:",
+                    "en": "Remember is a level:",
                     "al": "Kujto është nivel:"
                   },
                   "options": [
                     {
-                      "en": "I lartë",
+                      "en": "High",
                       "al": "I lartë"
                     },
                     {
-                      "en": "I ulët",
+                      "en": "Low",
                       "al": "I ulët"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     },
                     {
-                      "en": "I mesëm vetëm",
+                      "en": "Medium only",
                       "al": "I mesëm vetëm"
                     }
                   ],
@@ -10790,24 +10790,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "'Rendit datat' është:",
+                    "en": "'Order the dates' is:",
                     "al": "'Rendit datat' është:"
                   },
                   "options": [
                     {
-                      "en": "Kujto",
+                      "en": "Remember",
                       "al": "Kujto"
                     },
                     {
-                      "en": "Analizo",
+                      "en": "Analyse",
                       "al": "Analizo"
                     },
                     {
-                      "en": "Vlerëso",
+                      "en": "Evaluate",
                       "al": "Vlerëso"
                     },
                     {
-                      "en": "Krijo",
+                      "en": "Create",
                       "al": "Krijo"
                     }
                   ],
@@ -10816,24 +10816,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "'Dizajno një eksperiment' është:",
+                    "en": "'Design an experiment' is:",
                     "al": "'Dizajno një eksperiment' është:"
                   },
                   "options": [
                     {
-                      "en": "Zbato",
+                      "en": "Apply",
                       "al": "Zbato"
                     },
                     {
-                      "en": "Krijo",
+                      "en": "Create",
                       "al": "Krijo"
                     },
                     {
-                      "en": "Kujto",
+                      "en": "Remember",
                       "al": "Kujto"
                     },
                     {
-                      "en": "Kupto",
+                      "en": "Understand",
                       "al": "Kupto"
                     }
                   ],
@@ -10854,18 +10854,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_senior_m1_a.al.html",
-                "en": "materials/pedagogue_senior_m1_a.al.html"
+                "en": "materials/pedagogue_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_senior_m1_b.al.html",
-                "en": "materials/pedagogue_senior_m1_b.al.html"
+                "en": "materials/pedagogue_senior_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "ZPD i përket:",
+                    "en": "ZPD belongs to:",
                     "al": "ZPD i përket:"
                   },
                   "options": [
@@ -10874,7 +10874,7 @@ export const FIELDS = [
                       "al": "Vygotsky"
                     },
                     {
-                      "en": "Piaget vetëm",
+                      "en": "Piaget only",
                       "al": "Piaget vetëm"
                     },
                     {
@@ -10891,24 +10891,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Konstruktivizmi thotë se:",
+                    "en": "Constructivism says:",
                     "al": "Konstruktivizmi thotë se:"
                   },
                   "options": [
                     {
-                      "en": "Nxënësi ndërton njohuri aktivisht",
+                      "en": "The learner actively builds knowledge",
                       "al": "Nxënësi ndërton njohuri aktivisht"
                     },
                     {
-                      "en": "Njohuria transmetohet pasivisht",
+                      "en": "Knowledge is passively transmitted",
                       "al": "Njohuria transmetohet pasivisht"
                     },
                     {
-                      "en": "Vetëm memorie",
+                      "en": "Memory only",
                       "al": "Vetëm memorie"
                     },
                     {
-                      "en": "Mësuesi vendos",
+                      "en": "The teacher decides",
                       "al": "Mësuesi vendos"
                     }
                   ],
@@ -10917,24 +10917,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kombinimi i modeleve ndihmon sepse:",
+                    "en": "Combining models helps because:",
                     "al": "Kombinimi i modeleve ndihmon sepse:"
                   },
                   "options": [
                     {
-                      "en": "Është më i lirë",
+                      "en": "It is cheaper",
                       "al": "Është më i lirë"
                     },
                     {
-                      "en": "Është ligj",
+                      "en": "It is law",
                       "al": "Është ligj"
                     },
                     {
-                      "en": "Nxënësit janë të ndryshëm",
+                      "en": "Students differ",
                       "al": "Nxënësit janë të ndryshëm"
                     },
                     {
-                      "en": "S'ka arsye",
+                      "en": "No reason",
                       "al": "S'ka arsye"
                     }
                   ],
@@ -10945,24 +10945,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Bihejviorizmi theksoi:",
+                    "en": "Behaviourism emphasised:",
                     "al": "Bihejviorizmi theksoi:"
                   },
                   "options": [
                     {
-                      "en": "Ndërtim njohurish",
+                      "en": "Knowledge building",
                       "al": "Ndërtim njohurish"
                     },
                     {
-                      "en": "Stimul–reagim–përforcim",
+                      "en": "Stimulus-response-reinforcement",
                       "al": "Stimul–reagim–përforcim"
                     },
                     {
-                      "en": "Perceptimin",
+                      "en": "Perception",
                       "al": "Perceptimin"
                     },
                     {
-                      "en": "Imagjinatën",
+                      "en": "Imagination",
                       "al": "Imagjinatën"
                     }
                   ],
@@ -10971,24 +10971,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "ZPD është:",
+                    "en": "ZPD is:",
                     "al": "ZPD është:"
                   },
                   "options": [
                     {
-                      "en": "Ajo që nxënësi bën me ndihmë por jo vetë",
+                      "en": "What the learner does with help but not alone",
                       "al": "Ajo që nxënësi bën me ndihmë por jo vetë"
                     },
                     {
-                      "en": "Çfarë bën vetë",
+                      "en": "What they do alone",
                       "al": "Çfarë bën vetë"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Çfarë s'bën kurrë",
+                      "en": "What they never do",
                       "al": "Çfarë s'bën kurrë"
                     }
                   ],
@@ -10997,24 +10997,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Skafolding (scaffolding) është:",
+                    "en": "Scaffolding is:",
                     "al": "Skafolding (scaffolding) është:"
                   },
                   "options": [
                     {
-                      "en": "Mbështetje e përkohshme e hequr gradualisht",
+                      "en": "Temporary support, gradually removed",
                       "al": "Mbështetje e përkohshme e hequr gradualisht"
                     },
                     {
-                      "en": "Test",
+                      "en": "A test",
                       "al": "Test"
                     },
                     {
-                      "en": "Ndëshkim",
+                      "en": "Punishment",
                       "al": "Ndëshkim"
                     },
                     {
-                      "en": "Detyrë shtëpie",
+                      "en": "Homework",
                       "al": "Detyrë shtëpie"
                     }
                   ],
@@ -11031,35 +11031,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_senior_m2_a.al.html",
-                "en": "materials/pedagogue_senior_m2_a.al.html"
+                "en": "materials/pedagogue_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_senior_m2_b.al.html",
-                "en": "materials/pedagogue_senior_m2_b.al.html"
+                "en": "materials/pedagogue_senior_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Backward design nis nga:",
+                    "en": "Backward design starts from:",
                     "al": "Backward design nis nga:"
                   },
                   "options": [
                     {
-                      "en": "Libri",
+                      "en": "The book",
                       "al": "Libri"
                     },
                     {
-                      "en": "Orari",
+                      "en": "The schedule",
                       "al": "Orari"
                     },
                     {
-                      "en": "Aktivitetet",
+                      "en": "The activities",
                       "al": "Aktivitetet"
                     },
                     {
-                      "en": "Rezultatet e dëshiruara",
+                      "en": "The desired results",
                       "al": "Rezultatet e dëshiruara"
                     }
                   ],
@@ -11068,24 +11068,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Alignment do të thotë:",
+                    "en": "Alignment means:",
                     "al": "Alignment do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Objektiva, vlerësim, aktivitete përputhen",
+                      "en": "Objective, assessment, activities match",
                       "al": "Objektiva, vlerësim, aktivitete përputhen"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Vetëm objektiva",
+                      "en": "Objectives only",
                       "al": "Vetëm objektiva"
                     },
                     {
-                      "en": "Vetëm notim",
+                      "en": "Grading only",
                       "al": "Vetëm notim"
                     }
                   ],
@@ -11094,24 +11094,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Aktivitete të bukura që nuk lidhen me objektivin:",
+                    "en": "Nice activities that do not match the objective:",
                     "al": "Aktivitete të bukura që nuk lidhen me objektivin:"
                   },
                   "options": [
                     {
-                      "en": "Probleme alignment",
+                      "en": "Alignment problems",
                       "al": "Probleme alignment"
                     },
                     {
-                      "en": "Perfekte",
+                      "en": "Perfect",
                       "al": "Perfekte"
                     },
                     {
-                      "en": "Ligjore",
+                      "en": "Legal",
                       "al": "Ligjore"
                     },
                     {
-                      "en": "Mirë",
+                      "en": "Good",
                       "al": "Mirë"
                     }
                   ],
@@ -11122,24 +11122,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Hapi i dytë:",
+                    "en": "The second step:",
                     "al": "Hapi i dytë:"
                   },
                   "options": [
                     {
-                      "en": "Dëshmitë e vlerësimit",
+                      "en": "Assessment evidence",
                       "al": "Dëshmitë e vlerësimit"
                     },
                     {
-                      "en": "Hyrja",
+                      "en": "Introduction",
                       "al": "Hyrja"
                     },
                     {
-                      "en": "Aktivitetet",
+                      "en": "Activities",
                       "al": "Aktivitetet"
                     },
                     {
-                      "en": "Pushimi",
+                      "en": "Break",
                       "al": "Pushimi"
                     }
                   ],
@@ -11148,24 +11148,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas zbatimit:",
+                    "en": "After implementation:",
                     "al": "Pas zbatimit:"
                   },
                   "options": [
                     {
-                      "en": "Rishikohet",
+                      "en": "It is reviewed",
                       "al": "Rishikohet"
                     },
                     {
-                      "en": "Harrohet",
+                      "en": "It is forgotten",
                       "al": "Harrohet"
                     },
                     {
-                      "en": "Dyfishohet",
+                      "en": "It is doubled",
                       "al": "Dyfishohet"
                     },
                     {
-                      "en": "Fshihet",
+                      "en": "It is deleted",
                       "al": "Fshihet"
                     }
                   ],
@@ -11174,24 +11174,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse nis nga rezultatet?",
+                    "en": "Why start from the results?",
                     "al": "Pse nis nga rezultatet?"
                   },
                   "options": [
                     {
-                      "en": "Shmang aktivitete të pavlera",
+                      "en": "It avoids worthless activities",
                       "al": "Shmang aktivitete të pavlera"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     }
                   ],
@@ -11208,35 +11208,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/pedagogue_senior_m3_a.al.html",
-                "en": "materials/pedagogue_senior_m3_a.al.html"
+                "en": "materials/pedagogue_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/pedagogue_senior_m3_b.al.html",
-                "en": "materials/pedagogue_senior_m3_b.al.html"
+                "en": "materials/pedagogue_senior_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Diferencimi përshtat:",
+                    "en": "Differentiation adapts:",
                     "al": "Diferencimi përshtat:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm notat",
+                      "en": "Grades only",
                       "al": "Vetëm notat"
                     },
                     {
-                      "en": "Mësimin për nevoja të ndryshme",
+                      "en": "Learning for different needs",
                       "al": "Mësimin për nevoja të ndryshme"
                     },
                     {
-                      "en": "Për të gjithë njëlloj",
+                      "en": "The same for all",
                       "al": "Për të gjithë njëlloj"
                     },
                     {
-                      "en": "Vetëm orarin",
+                      "en": "The schedule only",
                       "al": "Vetëm orarin"
                     }
                   ],
@@ -11245,24 +11245,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Diferencim i procesit:",
+                    "en": "Process differentiation:",
                     "al": "Diferencim i procesit:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm përmbajtja",
+                      "en": "Content only",
                       "al": "Vetëm përmbajtja"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Vetëm nota",
+                      "en": "Grades only",
                       "al": "Vetëm nota"
                     },
                     {
-                      "en": "Mënyra e punës ndryshon",
+                      "en": "The way of working changes",
                       "al": "Mënyra e punës ndryshon"
                     }
                   ],
@@ -11271,24 +11271,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Një nxënës me vështirësi leximi. Hapi i mirë:",
+                    "en": "A student with reading difficulty. A good step:",
                     "al": "Një nxënës me vështirësi leximi. Hapi i mirë:"
                   },
                   "options": [
                     {
-                      "en": "Injoro",
+                      "en": "Ignore",
                       "al": "Injoro"
                     },
                     {
-                      "en": "Tekst alternativ/audio dhe mbështetje",
+                      "en": "Alternative text/audio and support",
                       "al": "Tekst alternativ/audio dhe mbështetje"
                     },
                     {
-                      "en": "Ulje standardi pa arsye",
+                      "en": "Lower the standard without reason",
                       "al": "Ulje standardi pa arsye"
                     },
                     {
-                      "en": "Ndëshkim",
+                      "en": "Punishment",
                       "al": "Ndëshkim"
                     }
                   ],
@@ -11299,24 +11299,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "UDL do të thotë:",
+                    "en": "UDL means:",
                     "al": "UDL do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Test",
+                      "en": "A test",
                       "al": "Test"
                     },
                     {
-                      "en": "Dizajn universal për të nxënë",
+                      "en": "Universal Design for Learning",
                       "al": "Dizajn universal për të nxënë"
                     },
                     {
-                      "en": "Libër",
+                      "en": "A book",
                       "al": "Libër"
                     },
                     {
-                      "en": "Ndëshkim",
+                      "en": "Punishment",
                       "al": "Ndëshkim"
                     }
                   ],
@@ -11325,24 +11325,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Grupet duhet të jenë:",
+                    "en": "Groups should be:",
                     "al": "Grupet duhet të jenë:"
                   },
                   "options": [
                     {
-                      "en": "Rastësore",
+                      "en": "Random",
                       "al": "Rastësore"
                     },
                     {
-                      "en": "Fleksibël",
+                      "en": "Flexible",
                       "al": "Fleksibël"
                     },
                     {
-                      "en": "Pa qëllim",
+                      "en": "Purposeless",
                       "al": "Pa qëllim"
                     },
                     {
-                      "en": "Fikse përgjithmonë",
+                      "en": "Fixed forever",
                       "al": "Fikse përgjithmonë"
                     }
                   ],
@@ -11351,24 +11351,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse monitorim i vazhdueshëm?",
+                    "en": "Why continuous monitoring?",
                     "al": "Pse monitorim i vazhdueshëm?"
                   },
                   "options": [
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Nevojat ndryshojnë",
+                      "en": "Needs change",
                       "al": "Nevojat ndryshojnë"
                     }
                   ],
@@ -11398,18 +11398,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_fillestar_m1_a.al.html",
-                "en": "materials/biologist_fillestar_m1_a.al.html"
+                "en": "materials/biologist_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_fillestar_m1_b.al.html",
-                "en": "materials/biologist_fillestar_m1_b.al.html"
+                "en": "materials/biologist_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Sa domene ka në sistemin me 3 domene?",
+                    "en": "How many domains in the 3-domain system?",
                     "al": "Sa domene ka në sistemin me 3 domene?"
                   },
                   "options": [
@@ -11435,24 +11435,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rangu më i gjerë (më i lartë):",
+                    "en": "The broadest (highest) rank:",
                     "al": "Rangu më i gjerë (më i lartë):"
                   },
                   "options": [
                     {
-                      "en": "Lloji",
+                      "en": "Species",
                       "al": "Lloji"
                     },
                     {
-                      "en": "Domeni",
+                      "en": "Domain",
                       "al": "Domeni"
                     },
                     {
-                      "en": "Familja",
+                      "en": "Family",
                       "al": "Familja"
                     },
                     {
-                      "en": "Gjinia",
+                      "en": "Genus",
                       "al": "Gjinia"
                     }
                   ],
@@ -11461,24 +11461,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dy organizma në të njëjtën gjini, domosdo janë edhe në:",
+                    "en": "Two organisms in the same genus are necessarily also in:",
                     "al": "Dy organizma në të njëjtën gjini, domosdo janë edhe në:"
                   },
                   "options": [
                     {
-                      "en": "Të njëjtin lloj",
+                      "en": "The same species",
                       "al": "Të njëjtin lloj"
                     },
                     {
-                      "en": "Domene të ndryshme",
+                      "en": "Different domains",
                       "al": "Domene të ndryshme"
                     },
                     {
-                      "en": "Mbretëri të ndryshme",
+                      "en": "Different kingdoms",
                       "al": "Mbretëri të ndryshme"
                     },
                     {
-                      "en": "Të njëjtën familje",
+                      "en": "The same family",
                       "al": "Të njëjtën familje"
                     }
                   ],
@@ -11489,24 +11489,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Emri binomial përbëhet nga:",
+                    "en": "A binomial name consists of:",
                     "al": "Emri binomial përbëhet nga:"
                   },
                   "options": [
                     {
-                      "en": "Klasa + ndarja",
+                      "en": "Class + phylum",
                       "al": "Klasa + ndarja"
                     },
                     {
-                      "en": "Familja + rendi",
+                      "en": "Family + order",
                       "al": "Familja + rendi"
                     },
                     {
-                      "en": "Vetëm lloji",
+                      "en": "Species only",
                       "al": "Vetëm lloji"
                     },
                     {
-                      "en": "Gjinia + lloji",
+                      "en": "Genus + species",
                       "al": "Gjinia + lloji"
                     }
                   ],
@@ -11515,24 +11515,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Homo sapiens: 'Homo' është:",
+                    "en": "Homo sapiens: 'Homo' is the:",
                     "al": "Homo sapiens: 'Homo' është:"
                   },
                   "options": [
                     {
-                      "en": "Gjinia",
+                      "en": "Genus",
                       "al": "Gjinia"
                     },
                     {
-                      "en": "Domeni",
+                      "en": "Domain",
                       "al": "Domeni"
                     },
                     {
-                      "en": "Familja",
+                      "en": "Family",
                       "al": "Familja"
                     },
                     {
-                      "en": "Lloji",
+                      "en": "Species",
                       "al": "Lloji"
                     }
                   ],
@@ -11541,24 +11541,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Bakteret me bërthamë të vërtetë:",
+                    "en": "Bacteria have a true nucleus:",
                     "al": "Bakteret me bërthamë të vërtetë:"
                   },
                   "options": [
                     {
-                      "en": "Po",
+                      "en": "Yes",
                       "al": "Po"
                     },
                     {
-                      "en": "Jo (prokariote)",
+                      "en": "No (prokaryotes)",
                       "al": "Jo (prokariote)"
                     },
                     {
-                      "en": "Vetëm disa",
+                      "en": "Only some",
                       "al": "Vetëm disa"
                     },
                     {
-                      "en": "Të gjitha",
+                      "en": "All",
                       "al": "Të gjitha"
                     }
                   ],
@@ -11575,35 +11575,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_fillestar_m2_a.al.html",
-                "en": "materials/biologist_fillestar_m2_a.al.html"
+                "en": "materials/biologist_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_fillestar_m2_b.al.html",
-                "en": "materials/biologist_fillestar_m2_b.al.html"
+                "en": "materials/biologist_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Prodhimi i ATP:",
+                    "en": "ATP production:",
                     "al": "Prodhimi i ATP:"
                   },
                   "options": [
                     {
-                      "en": "Mitokondria",
+                      "en": "Mitochondria",
                       "al": "Mitokondria"
                     },
                     {
-                      "en": "Ribozomi",
+                      "en": "Ribosome",
                       "al": "Ribozomi"
                     },
                     {
-                      "en": "Bërthama",
+                      "en": "Nucleus",
                       "al": "Bërthama"
                     },
                     {
-                      "en": "Muri",
+                      "en": "Wall",
                       "al": "Muri"
                     }
                   ],
@@ -11612,24 +11612,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Ku sintetizohen proteinat?",
+                    "en": "Where are proteins synthesised?",
                     "al": "Ku sintetizohen proteinat?"
                   },
                   "options": [
                     {
-                      "en": "Kloroplasti",
+                      "en": "Chloroplast",
                       "al": "Kloroplasti"
                     },
                     {
-                      "en": "Membrana",
+                      "en": "Membrane",
                       "al": "Membrana"
                     },
                     {
-                      "en": "Ribozomet",
+                      "en": "Ribosomes",
                       "al": "Ribozomet"
                     },
                     {
-                      "en": "Muri",
+                      "en": "Wall",
                       "al": "Muri"
                     }
                   ],
@@ -11638,7 +11638,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Qelizë me kloroplast dhe mur qelizor është:",
+                    "en": "A cell with a chloroplast and a cell wall is:",
                     "al": "Qelizë me kloroplast dhe mur qelizor është:"
                   },
                   "options": [
@@ -11647,15 +11647,15 @@ export const FIELDS = [
                       "al": "Virus"
                     },
                     {
-                      "en": "Bakteriale",
+                      "en": "Bacterial",
                       "al": "Bakteriale"
                     },
                     {
-                      "en": "Kafshe",
+                      "en": "Animal",
                       "al": "Kafshe"
                     },
                     {
-                      "en": "Bimore",
+                      "en": "Plant",
                       "al": "Bimore"
                     }
                   ],
@@ -11666,24 +11666,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Fotosinteza ndodh në:",
+                    "en": "Photosynthesis occurs in the:",
                     "al": "Fotosinteza ndodh në:"
                   },
                   "options": [
                     {
-                      "en": "Bërthamë",
+                      "en": "Nucleus",
                       "al": "Bërthamë"
                     },
                     {
-                      "en": "Kloroplast",
+                      "en": "Chloroplast",
                       "al": "Kloroplast"
                     },
                     {
-                      "en": "Ribozom",
+                      "en": "Ribosome",
                       "al": "Ribozom"
                     },
                     {
-                      "en": "Mitokondri",
+                      "en": "Mitochondria",
                       "al": "Mitokondri"
                     }
                   ],
@@ -11692,24 +11692,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Qeliza kafshësh nuk ka:",
+                    "en": "An animal cell does NOT have:",
                     "al": "Qeliza kafshësh nuk ka:"
                   },
                   "options": [
                     {
-                      "en": "Mitokondri",
+                      "en": "Mitochondria",
                       "al": "Mitokondri"
                     },
                     {
-                      "en": "Mur qelizor",
+                      "en": "Cell wall",
                       "al": "Mur qelizor"
                     },
                     {
-                      "en": "Bërthamë",
+                      "en": "Nucleus",
                       "al": "Bërthamë"
                     },
                     {
-                      "en": "Membranë",
+                      "en": "Membrane",
                       "al": "Membranë"
                     }
                   ],
@@ -11718,24 +11718,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Bërthama përmban:",
+                    "en": "The nucleus contains:",
                     "al": "Bërthama përmban:"
                   },
                   "options": [
                     {
-                      "en": "Klorofil",
+                      "en": "Chlorophyll",
                       "al": "Klorofil"
                     },
                     {
-                      "en": "ADN",
+                      "en": "DNA",
                       "al": "ADN"
                     },
                     {
-                      "en": "ATP vetëm",
+                      "en": "ATP only",
                       "al": "ATP vetëm"
                     },
                     {
-                      "en": "Muri",
+                      "en": "The wall",
                       "al": "Muri"
                     }
                   ],
@@ -11752,18 +11752,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_fillestar_m3_a.al.html",
-                "en": "materials/biologist_fillestar_m3_a.al.html"
+                "en": "materials/biologist_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_fillestar_m3_b.al.html",
-                "en": "materials/biologist_fillestar_m3_b.al.html"
+                "en": "materials/biologist_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Aa × Aa jep aa me probabilitet:",
+                    "en": "Aa x Aa gives aa with probability:",
                     "al": "Aa × Aa jep aa me probabilitet:"
                   },
                   "options": [
@@ -11789,7 +11789,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Raporti fenotipik Aa × Aa:",
+                    "en": "The phenotypic ratio of Aa x Aa:",
                     "al": "Raporti fenotipik Aa × Aa:"
                   },
                   "options": [
@@ -11815,16 +11815,16 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "AA × aa jep gjenerata F1:",
+                    "en": "AA x aa gives the F1 generation:",
                     "al": "AA × aa jep gjenerata F1:"
                   },
                   "options": [
                     {
-                      "en": "Të gjithë aa",
+                      "en": "All aa",
                       "al": "Të gjithë aa"
                     },
                     {
-                      "en": "Të gjithë Aa",
+                      "en": "All Aa",
                       "al": "Të gjithë Aa"
                     },
                     {
@@ -11832,7 +11832,7 @@ export const FIELDS = [
                       "al": "50% AA"
                     },
                     {
-                      "en": "Të gjithë AA",
+                      "en": "All AA",
                       "al": "Të gjithë AA"
                     }
                   ],
@@ -11843,24 +11843,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Fenotipi është:",
+                    "en": "The phenotype is:",
                     "al": "Fenotipi është:"
                   },
                   "options": [
                     {
-                      "en": "Shfaqja e jashtme",
+                      "en": "The external appearance",
                       "al": "Shfaqja e jashtme"
                     },
                     {
-                      "en": "Kromozomi",
+                      "en": "A chromosome",
                       "al": "Kromozomi"
                     },
                     {
-                      "en": "Vetëm gjenotipi",
+                      "en": "Only the genotype",
                       "al": "Vetëm gjenotipi"
                     },
                     {
-                      "en": "Qeliza",
+                      "en": "A cell",
                       "al": "Qeliza"
                     }
                   ],
@@ -11869,24 +11869,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Alel recesiv shfaqet kur:",
+                    "en": "A recessive allele is expressed when:",
                     "al": "Alel recesiv shfaqet kur:"
                   },
                   "options": [
                     {
-                      "en": "Është aa",
+                      "en": "It is aa",
                       "al": "Është aa"
                     },
                     {
-                      "en": "Është Aa",
+                      "en": "It is Aa",
                       "al": "Është Aa"
                     },
                     {
-                      "en": "Është AA",
+                      "en": "It is AA",
                       "al": "Është AA"
                     },
                     {
-                      "en": "Asnjëherë",
+                      "en": "Never",
                       "al": "Asnjëherë"
                     }
                   ],
@@ -11895,7 +11895,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Probabiliteti që Aa × Aa të japë fenotip dominant:",
+                    "en": "The probability that Aa x Aa gives a dominant phenotype:",
                     "al": "Probabiliteti që Aa × Aa të japë fenotip dominant:"
                   },
                   "options": [
@@ -11933,35 +11933,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_mid_m1_a.al.html",
-                "en": "materials/biologist_mid_m1_a.al.html"
+                "en": "materials/biologist_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_mid_m1_b.al.html",
-                "en": "materials/biologist_mid_m1_b.al.html"
+                "en": "materials/biologist_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Produkti oksigjen del nga:",
+                    "en": "The oxygen product comes from:",
                     "al": "Produkti oksigjen del nga:"
                   },
                   "options": [
                     {
-                      "en": "Frymëmarrja",
+                      "en": "Respiration",
                       "al": "Frymëmarrja"
                     },
                     {
-                      "en": "Fotosinteza",
+                      "en": "Photosynthesis",
                       "al": "Fotosinteza"
                     },
                     {
-                      "en": "Të dyja",
+                      "en": "Both",
                       "al": "Të dyja"
                     },
                     {
-                      "en": "Asnjëra",
+                      "en": "Neither",
                       "al": "Asnjëra"
                     }
                   ],
@@ -11970,7 +11970,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Sa molekula O₂ në fotosintezë për 1 glukozë?",
+                    "en": "How many O2 molecules in photosynthesis per glucose?",
                     "al": "Sa molekula O₂ në fotosintezë për 1 glukozë?"
                   },
                   "options": [
@@ -11996,24 +11996,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pa dritë, bima:",
+                    "en": "Without light, the plant:",
                     "al": "Pa dritë, bima:"
                   },
                   "options": [
                     {
-                      "en": "Nuk kryen fazën e dritës",
+                      "en": "Does not run the light phase",
                       "al": "Nuk kryen fazën e dritës"
                     },
                     {
-                      "en": "Vdes menjëherë",
+                      "en": "Dies immediately",
                       "al": "Vdes menjëherë"
                     },
                     {
-                      "en": "Prodhon më shumë O₂",
+                      "en": "Produces more O2",
                       "al": "Prodhon më shumë O₂"
                     },
                     {
-                      "en": "Fotosintezon njëlloj",
+                      "en": "Photosynthesises the same",
                       "al": "Fotosintezon njëlloj"
                     }
                   ],
@@ -12024,24 +12024,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Frymëmarrja çliron:",
+                    "en": "Respiration releases:",
                     "al": "Frymëmarrja çliron:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm dritë",
+                      "en": "Light only",
                       "al": "Vetëm dritë"
                     },
                     {
-                      "en": "Vetëm ujë",
+                      "en": "Water only",
                       "al": "Vetëm ujë"
                     },
                     {
-                      "en": "Energji (ATP)",
+                      "en": "Energy (ATP)",
                       "al": "Energji (ATP)"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -12050,24 +12050,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Glikoliza ndodh në:",
+                    "en": "Glycolysis occurs in the:",
                     "al": "Glikoliza ndodh në:"
                   },
                   "options": [
                     {
-                      "en": "Mitokondri",
+                      "en": "Mitochondria",
                       "al": "Mitokondri"
                     },
                     {
-                      "en": "Kloroplast",
+                      "en": "Chloroplast",
                       "al": "Kloroplast"
                     },
                     {
-                      "en": "Citoplazmë",
+                      "en": "Cytoplasm",
                       "al": "Citoplazmë"
                     },
                     {
-                      "en": "Bërthamë",
+                      "en": "Nucleus",
                       "al": "Bërthamë"
                     }
                   ],
@@ -12076,24 +12076,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Cili është reaktant në frymëmarrje?",
+                    "en": "Which is a reactant in respiration?",
                     "al": "Cili është reaktant në frymëmarrje?"
                   },
                   "options": [
                     {
-                      "en": "Klorofil",
+                      "en": "Chlorophyll",
                       "al": "Klorofil"
                     },
                     {
-                      "en": "O₂",
+                      "en": "O2",
                       "al": "O₂"
                     },
                     {
-                      "en": "CO₂",
+                      "en": "CO2",
                       "al": "CO₂"
                     },
                     {
-                      "en": "Dritë",
+                      "en": "Light",
                       "al": "Dritë"
                     }
                   ],
@@ -12110,31 +12110,31 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_mid_m2_a.al.html",
-                "en": "materials/biologist_mid_m2_a.al.html"
+                "en": "materials/biologist_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_mid_m2_b.al.html",
-                "en": "materials/biologist_mid_m2_b.al.html"
+                "en": "materials/biologist_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Replikimi i ADN ndodh në fazën:",
+                    "en": "DNA replication occurs in:",
                     "al": "Replikimi i ADN ndodh në fazën:"
                   },
                   "options": [
                     {
-                      "en": "Telofazë",
+                      "en": "Telophase",
                       "al": "Telofazë"
                     },
                     {
-                      "en": "S",
+                      "en": "S phase",
                       "al": "S"
                     },
                     {
-                      "en": "M",
+                      "en": "M phase",
                       "al": "M"
                     },
                     {
@@ -12147,7 +12147,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Mejoza jep:",
+                    "en": "Meiosis gives:",
                     "al": "Mejoza jep:"
                   },
                   "options": [
@@ -12156,15 +12156,15 @@ export const FIELDS = [
                       "al": "1"
                     },
                     {
-                      "en": "2 diploide",
+                      "en": "2 diploid",
                       "al": "2 diploide"
                     },
                     {
-                      "en": "2 haploide",
+                      "en": "2 haploid",
                       "al": "2 haploide"
                     },
                     {
-                      "en": "4 haploide",
+                      "en": "4 haploid",
                       "al": "4 haploide"
                     }
                   ],
@@ -12173,24 +12173,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kromatidet motra ndahen në:",
+                    "en": "Sister chromatids separate in:",
                     "al": "Kromatidet motra ndahen në:"
                   },
                   "options": [
                     {
-                      "en": "Profazë",
+                      "en": "Prophase",
                       "al": "Profazë"
                     },
                     {
-                      "en": "Anafazë",
+                      "en": "Anaphase",
                       "al": "Anafazë"
                     },
                     {
-                      "en": "Fazë S",
+                      "en": "S phase",
                       "al": "Fazë S"
                     },
                     {
-                      "en": "Telofazë",
+                      "en": "Telophase",
                       "al": "Telofazë"
                     }
                   ],
@@ -12201,12 +12201,12 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Mitoza jep:",
+                    "en": "Mitosis gives:",
                     "al": "Mitoza jep:"
                   },
                   "options": [
                     {
-                      "en": "2 qeliza identike",
+                      "en": "2 identical cells",
                       "al": "2 qeliza identike"
                     },
                     {
@@ -12214,7 +12214,7 @@ export const FIELDS = [
                       "al": "1"
                     },
                     {
-                      "en": "4 haploide",
+                      "en": "4 haploid",
                       "al": "4 haploide"
                     },
                     {
@@ -12227,24 +12227,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Në metafazë kromozomet:",
+                    "en": "In metaphase chromosomes:",
                     "al": "Në metafazë kromozomet:"
                   },
                   "options": [
                     {
-                      "en": "Zhduken",
+                      "en": "Disappear",
                       "al": "Zhduken"
                     },
                     {
-                      "en": "Rreshtohen në ekuator",
+                      "en": "Line up at the equator",
                       "al": "Rreshtohen në ekuator"
                     },
                     {
-                      "en": "Ndahen në skaje",
+                      "en": "Separate to the poles",
                       "al": "Ndahen në skaje"
                     },
                     {
-                      "en": "Dyfishohen",
+                      "en": "Double",
                       "al": "Dyfishohen"
                     }
                   ],
@@ -12253,7 +12253,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Qelizë 2n=46 pas mitozës ka:",
+                    "en": "A cell 2n=46 after mitosis has:",
                     "al": "Qelizë 2n=46 pas mitozës ka:"
                   },
                   "options": [
@@ -12287,35 +12287,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_mid_m3_a.al.html",
-                "en": "materials/biologist_mid_m3_a.al.html"
+                "en": "materials/biologist_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_mid_m3_b.al.html",
-                "en": "materials/biologist_mid_m3_b.al.html"
+                "en": "materials/biologist_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Cikli që përfshin avullimin:",
+                    "en": "The cycle involving evaporation:",
                     "al": "Cikli që përfshin avullimin:"
                   },
                   "options": [
                     {
-                      "en": "Karboni",
+                      "en": "Carbon",
                       "al": "Karboni"
                     },
                     {
-                      "en": "Squfuri",
+                      "en": "Sulphur",
                       "al": "Squfuri"
                     },
                     {
-                      "en": "Azoti",
+                      "en": "Nitrogen",
                       "al": "Azoti"
                     },
                     {
-                      "en": "Uji",
+                      "en": "Water",
                       "al": "Uji"
                     }
                   ],
@@ -12324,24 +12324,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Djegia e lëndëve fosile:",
+                    "en": "Burning fossil fuels:",
                     "al": "Djegia e lëndëve fosile:"
                   },
                   "options": [
                     {
-                      "en": "Rrit O₂",
+                      "en": "Increases O2",
                       "al": "Rrit O₂"
                     },
                     {
-                      "en": "Rrit CO₂",
+                      "en": "Increases CO2",
                       "al": "Rrit CO₂"
                     },
                     {
-                      "en": "Ul CO₂",
+                      "en": "Decreases CO2",
                       "al": "Ul CO₂"
                     },
                     {
-                      "en": "S'ndikon",
+                      "en": "No effect",
                       "al": "S'ndikon"
                     }
                   ],
@@ -12350,24 +12350,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Bimët marrin azotin kryesisht si:",
+                    "en": "Plants take up nitrogen mainly as:",
                     "al": "Bimët marrin azotin kryesisht si:"
                   },
                   "options": [
                     {
-                      "en": "N₂ gaz drejtpërdrejt",
+                      "en": "N2 gas directly",
                       "al": "N₂ gaz drejtpërdrejt"
                     },
                     {
-                      "en": "Nitrate/amonium nga toka",
+                      "en": "Nitrate/ammonium from soil",
                       "al": "Nitrate/amonium nga toka"
                     },
                     {
-                      "en": "Oksigjen",
+                      "en": "Oxygen",
                       "al": "Oksigjen"
                     },
                     {
-                      "en": "CO₂",
+                      "en": "CO2",
                       "al": "CO₂"
                     }
                   ],
@@ -12383,19 +12383,19 @@ export const FIELDS = [
                   },
                   "options": [
                     {
-                      "en": "Fikson azotin",
+                      "en": "Fixes nitrogen",
                       "al": "Fikson azotin"
                     },
                     {
-                      "en": "Ndot ujin",
+                      "en": "Pollutes water",
                       "al": "Ndot ujin"
                     },
                     {
-                      "en": "Është virus",
+                      "en": "Is a virus",
                       "al": "Është virus"
                     },
                     {
-                      "en": "Prodhon CO₂ vetëm",
+                      "en": "Produces CO2 only",
                       "al": "Prodhon CO₂ vetëm"
                     }
                   ],
@@ -12404,24 +12404,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Denitrifikimi kthen azotin në:",
+                    "en": "Denitrification turns nitrogen into:",
                     "al": "Denitrifikimi kthen azotin në:"
                   },
                   "options": [
                     {
-                      "en": "Karbon",
+                      "en": "Carbon",
                       "al": "Karbon"
                     },
                     {
-                      "en": "Ujë",
+                      "en": "Water",
                       "al": "Ujë"
                     },
                     {
-                      "en": "Gaz N₂",
+                      "en": "N2 gas",
                       "al": "Gaz N₂"
                     },
                     {
-                      "en": "Proteina",
+                      "en": "Protein",
                       "al": "Proteina"
                     }
                   ],
@@ -12430,24 +12430,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Fotosinteza në ciklin e karbonit:",
+                    "en": "Photosynthesis in the carbon cycle:",
                     "al": "Fotosinteza në ciklin e karbonit:"
                   },
                   "options": [
                     {
-                      "en": "Shton azot",
+                      "en": "Adds nitrogen",
                       "al": "Shton azot"
                     },
                     {
-                      "en": "Shton CO₂",
+                      "en": "Adds CO2",
                       "al": "Shton CO₂"
                     },
                     {
-                      "en": "Nuk ndikon",
+                      "en": "No effect",
                       "al": "Nuk ndikon"
                     },
                     {
-                      "en": "Heq CO₂ nga atmosfera",
+                      "en": "Removes CO2 from the atmosphere",
                       "al": "Heq CO₂ nga atmosfera"
                     }
                   ],
@@ -12468,35 +12468,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_senior_m1_a.al.html",
-                "en": "materials/biologist_senior_m1_a.al.html"
+                "en": "materials/biologist_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_senior_m1_b.al.html",
-                "en": "materials/biologist_senior_m1_b.al.html"
+                "en": "materials/biologist_senior_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Insulina:",
+                    "en": "Insulin:",
                     "al": "Insulina:"
                   },
                   "options": [
                     {
-                      "en": "Ul glicemin",
+                      "en": "Lowers blood glucose",
                       "al": "Ul glicemin"
                     },
                     {
-                      "en": "Rrit glicemin",
+                      "en": "Raises blood glucose",
                       "al": "Rrit glicemin"
                     },
                     {
-                      "en": "S'ndikon",
+                      "en": "No effect",
                       "al": "S'ndikon"
                     },
                     {
-                      "en": "Rrit presionin",
+                      "en": "Raises pressure",
                       "al": "Rrit presionin"
                     }
                   ],
@@ -12505,24 +12505,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Reagimi negativ:",
+                    "en": "Negative feedback:",
                     "al": "Reagimi negativ:"
                   },
                   "options": [
                     {
-                      "en": "Është e dëmshme",
+                      "en": "Is harmful",
                       "al": "Është e dëmshme"
                     },
                     {
-                      "en": "Nuk bën asgjë",
+                      "en": "Does nothing",
                       "al": "Nuk bën asgjë"
                     },
                     {
-                      "en": "E largon më tej",
+                      "en": "Pushes it further",
                       "al": "E largon më tej"
                     },
                     {
-                      "en": "Kthen drejt pikës së caktuar",
+                      "en": "Returns toward the set point",
                       "al": "Kthen drejt pikës së caktuar"
                     }
                   ],
@@ -12531,24 +12531,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas vakti: glicemia ngrihet. Përgjigja:",
+                    "en": "After a meal: glucose rises. The response:",
                     "al": "Pas vakti: glicemia ngrihet. Përgjigja:"
                   },
                   "options": [
                     {
-                      "en": "Rritet insulina",
+                      "en": "Insulin rises",
                       "al": "Rritet insulina"
                     },
                     {
-                      "en": "Rritet glukagoni",
+                      "en": "Glucagon rises",
                       "al": "Rritet glukagoni"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     },
                     {
-                      "en": "Rritet adrenalina vetëm",
+                      "en": "Only adrenaline rises",
                       "al": "Rritet adrenalina vetëm"
                     }
                   ],
@@ -12559,24 +12559,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Glukagoni:",
+                    "en": "Glucagon:",
                     "al": "Glukagoni:"
                   },
                   "options": [
                     {
-                      "en": "Ul glicemin",
+                      "en": "Lowers glucose",
                       "al": "Ul glicemin"
                     },
                     {
-                      "en": "Rrit glicemin",
+                      "en": "Raises glucose",
                       "al": "Rrit glicemin"
                     },
                     {
-                      "en": "Rrit oksigjenin",
+                      "en": "Raises oxygen",
                       "al": "Rrit oksigjenin"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -12585,24 +12585,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Djersitja shërben për:",
+                    "en": "Sweating serves for:",
                     "al": "Djersitja shërben për:"
                   },
                   "options": [
                     {
-                      "en": "Ftohje",
+                      "en": "Cooling",
                       "al": "Ftohje"
                     },
                     {
-                      "en": "Ngrohje",
+                      "en": "Warming",
                       "al": "Ngrohje"
                     },
                     {
-                      "en": "Ushqim",
+                      "en": "Food",
                       "al": "Ushqim"
                     },
                     {
-                      "en": "Frymëmarrje",
+                      "en": "Breathing",
                       "al": "Frymëmarrje"
                     }
                   ],
@@ -12611,24 +12611,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Shembull i reagimit pozitiv:",
+                    "en": "An example of positive feedback:",
                     "al": "Shembull i reagimit pozitiv:"
                   },
                   "options": [
                     {
-                      "en": "Insulina",
+                      "en": "Insulin",
                       "al": "Insulina"
                     },
                     {
-                      "en": "Termorregullimi",
+                      "en": "Thermoregulation",
                       "al": "Termorregullimi"
                     },
                     {
-                      "en": "Kontraksionet e lindjes (oksitocina)",
+                      "en": "Childbirth contractions (oxytocin)",
                       "al": "Kontraksionet e lindjes (oksitocina)"
                     },
                     {
-                      "en": "Djersitja",
+                      "en": "Sweating",
                       "al": "Djersitja"
                     }
                   ],
@@ -12645,18 +12645,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_senior_m2_a.al.html",
-                "en": "materials/biologist_senior_m2_a.al.html"
+                "en": "materials/biologist_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_senior_m2_b.al.html",
-                "en": "materials/biologist_senior_m2_b.al.html"
+                "en": "materials/biologist_senior_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Energji 10.000 kJ te prodhuesit. Te konsumatorët parësorë (~10%):",
+                    "en": "Energy 10,000 kJ at producers. At primary consumers (~10%):",
                     "al": "Energji 10.000 kJ te prodhuesit. Te konsumatorët parësorë (~10%):"
                   },
                   "options": [
@@ -12665,15 +12665,15 @@ export const FIELDS = [
                       "al": "100"
                     },
                     {
-                      "en": "9.000",
+                      "en": "9,000",
                       "al": "9.000"
                     },
                     {
-                      "en": "1.000",
+                      "en": "1,000",
                       "al": "1.000"
                     },
                     {
-                      "en": "5.000",
+                      "en": "5,000",
                       "al": "5.000"
                     }
                   ],
@@ -12682,24 +12682,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Hardy–Weinberg: q² = 0,04. q =",
+                    "en": "Hardy-Weinberg: q^2 = 0.04. q =",
                     "al": "Hardy–Weinberg: q² = 0,04. q ="
                   },
                   "options": [
                     {
-                      "en": "0,02",
+                      "en": "0.02",
                       "al": "0,02"
                     },
                     {
-                      "en": "0,8",
+                      "en": "0.8",
                       "al": "0,8"
                     },
                     {
-                      "en": "0,2",
+                      "en": "0.2",
                       "al": "0,2"
                     },
                     {
-                      "en": "0,4",
+                      "en": "0.4",
                       "al": "0,4"
                     }
                   ],
@@ -12708,24 +12708,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Frekuenca e heterozigotëve 2pq me p=0,8, q=0,2:",
+                    "en": "Heterozygote frequency 2pq with p=0.8, q=0.2:",
                     "al": "Frekuenca e heterozigotëve 2pq me p=0,8, q=0,2:"
                   },
                   "options": [
                     {
-                      "en": "0,32",
+                      "en": "0.32",
                       "al": "0,32"
                     },
                     {
-                      "en": "0,16",
+                      "en": "0.16",
                       "al": "0,16"
                     },
                     {
-                      "en": "0,04",
+                      "en": "0.04",
                       "al": "0,04"
                     },
                     {
-                      "en": "0,64",
+                      "en": "0.64",
                       "al": "0,64"
                     }
                   ],
@@ -12736,24 +12736,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "K në rritjen logjistike është:",
+                    "en": "K in logistic growth is:",
                     "al": "K në rritjen logjistike është:"
                   },
                   "options": [
                     {
-                      "en": "Kalori",
+                      "en": "Calorie",
                       "al": "Kalori"
                     },
                     {
-                      "en": "Kapaciteti mbajtës",
+                      "en": "Carrying capacity",
                       "al": "Kapaciteti mbajtës"
                     },
                     {
-                      "en": "Konstantja e gazit",
+                      "en": "Gas constant",
                       "al": "Konstantja e gazit"
                     },
                     {
-                      "en": "Kromozomi",
+                      "en": "Chromosome",
                       "al": "Kromozomi"
                     }
                   ],
@@ -12762,12 +12762,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Me q = 0,2, p =",
+                    "en": "With q = 0.2, p =",
                     "al": "Me q = 0,2, p ="
                   },
                   "options": [
                     {
-                      "en": "0,8",
+                      "en": "0.8",
                       "al": "0,8"
                     },
                     {
@@ -12775,11 +12775,11 @@ export const FIELDS = [
                       "al": "1"
                     },
                     {
-                      "en": "0,5",
+                      "en": "0.5",
                       "al": "0,5"
                     },
                     {
-                      "en": "0,2",
+                      "en": "0.2",
                       "al": "0,2"
                     }
                   ],
@@ -12788,24 +12788,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse rregulli i 10% kufizon zinxhirët ushqimorë?",
+                    "en": "Why does the 10% rule limit food chains?",
                     "al": "Pse rregulli i 10% kufizon zinxhirët ushqimorë?"
                   },
                   "options": [
                     {
-                      "en": "Humbje energjie në çdo nivel",
+                      "en": "Energy loss at each level",
                       "al": "Humbje energjie në çdo nivel"
                     },
                     {
-                      "en": "Mungesë ujë",
+                      "en": "Lack of water",
                       "al": "Mungesë ujë"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "Asnjë arsye",
+                      "en": "No reason",
                       "al": "Asnjë arsye"
                     }
                   ],
@@ -12822,35 +12822,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biologist_senior_m3_a.al.html",
-                "en": "materials/biologist_senior_m3_a.al.html"
+                "en": "materials/biologist_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/biologist_senior_m3_b.al.html",
-                "en": "materials/biologist_senior_m3_b.al.html"
+                "en": "materials/biologist_senior_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Burimi i variacionit të ri:",
+                    "en": "The source of new variation:",
                     "al": "Burimi i variacionit të ri:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Reshjet",
+                      "en": "Rain",
                       "al": "Reshjet"
                     },
                     {
-                      "en": "Fotosinteza",
+                      "en": "Photosynthesis",
                       "al": "Fotosinteza"
                     },
                     {
-                      "en": "Mutacioni",
+                      "en": "Mutation",
                       "al": "Mutacioni"
                     }
                   ],
@@ -12859,24 +12859,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Seleksioni natyror kërkon:",
+                    "en": "Natural selection requires:",
                     "al": "Seleksioni natyror kërkon:"
                   },
                   "options": [
                     {
-                      "en": "Vetëm mutacion",
+                      "en": "Mutation only",
                       "al": "Vetëm mutacion"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Variacion të trashëgueshëm",
+                      "en": "Heritable variation",
                       "al": "Variacion të trashëgueshëm"
                     },
                     {
-                      "en": "Vetëm migrim",
+                      "en": "Migration only",
                       "al": "Vetëm migrim"
                     }
                   ],
@@ -12885,24 +12885,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Bakteret rezistente ndaj antibiotikut shumëzohen pas përdorimit të tij sepse:",
+                    "en": "Antibiotic-resistant bacteria multiply after its use because:",
                     "al": "Bakteret rezistente ndaj antibiotikut shumëzohen pas përdorimit të tij sepse:"
                   },
                   "options": [
                     {
-                      "en": "Mungesë ushqimi",
+                      "en": "Lack of food",
                       "al": "Mungesë ushqimi"
                     },
                     {
-                      "en": "Rastësisht gjithmonë",
+                      "en": "Randomly always",
                       "al": "Rastësisht gjithmonë"
                     },
                     {
-                      "en": "Seleksion për rezistencën",
+                      "en": "Selection for resistance",
                       "al": "Seleksion për rezistencën"
                     },
                     {
-                      "en": "Antibiotiku i bën rezistentë",
+                      "en": "The antibiotic makes them resistant",
                       "al": "Antibiotiku i bën rezistentë"
                     }
                   ],
@@ -12913,24 +12913,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Drifti gjenetik ndikon më shumë te popullatat:",
+                    "en": "Genetic drift affects most:",
                     "al": "Drifti gjenetik ndikon më shumë te popullatat:"
                   },
                   "options": [
                     {
-                      "en": "Të mëdha",
+                      "en": "Large populations",
                       "al": "Të mëdha"
                     },
                     {
-                      "en": "Pa gjene",
+                      "en": "No genes",
                       "al": "Pa gjene"
                     },
                     {
-                      "en": "Të vogla",
+                      "en": "Small populations",
                       "al": "Të vogla"
                     },
                     {
-                      "en": "Pa ndryshim",
+                      "en": "No change",
                       "al": "Pa ndryshim"
                     }
                   ],
@@ -12939,24 +12939,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Specimi lidhet me:",
+                    "en": "Speciation relates to:",
                     "al": "Specimi lidhet me:"
                   },
                   "options": [
                     {
-                      "en": "Nxehtësi",
+                      "en": "Heat",
                       "al": "Nxehtësi"
                     },
                     {
-                      "en": "Ujë",
+                      "en": "Water",
                       "al": "Ujë"
                     },
                     {
-                      "en": "Izolim riprodhues",
+                      "en": "Reproductive isolation",
                       "al": "Izolim riprodhues"
                     },
                     {
-                      "en": "Fotosintezë",
+                      "en": "Photosynthesis",
                       "al": "Fotosintezë"
                     }
                   ],
@@ -12965,24 +12965,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Shkaktari kryesor i rënies së bioshumëllojshmërisë:",
+                    "en": "The main driver of biodiversity loss:",
                     "al": "Shkaktari kryesor i rënies së bioshumëllojshmërisë:"
                   },
                   "options": [
                     {
-                      "en": "Humbja e habitatit",
+                      "en": "Habitat loss",
                       "al": "Humbja e habitatit"
                     },
                     {
-                      "en": "Gjuha",
+                      "en": "Language",
                       "al": "Gjuha"
                     },
                     {
-                      "en": "Moti ditor",
+                      "en": "Daily weather",
                       "al": "Moti ditor"
                     },
                     {
-                      "en": "Çmimi",
+                      "en": "Price",
                       "al": "Çmimi"
                     }
                   ],
@@ -13012,35 +13012,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_fillestar_m1_a.al.html",
-                "en": "materials/biotech_fillestar_m1_a.al.html"
+                "en": "materials/biotech_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_fillestar_m1_b.al.html",
-                "en": "materials/biotech_fillestar_m1_b.al.html"
+                "en": "materials/biotech_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Rendi i dogmës qendrore:",
+                    "en": "The central dogma order:",
                     "al": "Rendi i dogmës qendrore:"
                   },
                   "options": [
                     {
-                      "en": "ADN→ARN→proteinë",
+                      "en": "DNA->RNA->protein",
                       "al": "ADN→ARN→proteinë"
                     },
                     {
-                      "en": "ADN→proteinë→ARN",
+                      "en": "DNA->protein->RNA",
                       "al": "ADN→proteinë→ARN"
                     },
                     {
-                      "en": "ARN→ADN→ARN",
+                      "en": "RNA->DNA->RNA",
                       "al": "ARN→ADN→ARN"
                     },
                     {
-                      "en": "Proteinë→ARN→ADN",
+                      "en": "Protein->RNA->DNA",
                       "al": "Proteinë→ARN→ADN"
                     }
                   ],
@@ -13049,24 +13049,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Përkthimi ndodh në:",
+                    "en": "Translation occurs in:",
                     "al": "Përkthimi ndodh në:"
                   },
                   "options": [
                     {
-                      "en": "Bërthamë",
+                      "en": "Nucleus",
                       "al": "Bërthamë"
                     },
                     {
-                      "en": "Membranë",
+                      "en": "Membrane",
                       "al": "Membranë"
                     },
                     {
-                      "en": "Ribozome",
+                      "en": "Ribosomes",
                       "al": "Ribozome"
                     },
                     {
-                      "en": "Mitokondri vetëm",
+                      "en": "Mitochondria only",
                       "al": "Mitokondri vetëm"
                     }
                   ],
@@ -13075,7 +13075,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Sekuencë ADN 3'-TAC-5'. ARNm komplementar:",
+                    "en": "DNA 3'-TAC-5'. Complementary mRNA:",
                     "al": "Sekuencë ADN 3'-TAC-5'. ARNm komplementar:"
                   },
                   "options": [
@@ -13103,12 +13103,12 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Kodoni ka:",
+                    "en": "A codon has:",
                     "al": "Kodoni ka:"
                   },
                   "options": [
                     {
-                      "en": "3 nukleotide",
+                      "en": "3 nucleotides",
                       "al": "3 nukleotide"
                     },
                     {
@@ -13116,7 +13116,7 @@ export const FIELDS = [
                       "al": "6"
                     },
                     {
-                      "en": "2 nukleotide",
+                      "en": "2 nucleotides",
                       "al": "2 nukleotide"
                     },
                     {
@@ -13129,7 +13129,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kodoni START:",
+                    "en": "The START codon:",
                     "al": "Kodoni START:"
                   },
                   "options": [
@@ -13155,7 +13155,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Sa kodone në një gjen me 300 nukleotide (të kodimit)?",
+                    "en": "How many codons in a gene of 300 coding nucleotides?",
                     "al": "Sa kodone në një gjen me 300 nukleotide (të kodimit)?"
                   },
                   "options": [
@@ -13189,35 +13189,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_fillestar_m2_a.al.html",
-                "en": "materials/biotech_fillestar_m2_a.al.html"
+                "en": "materials/biotech_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_fillestar_m2_b.al.html",
-                "en": "materials/biotech_fillestar_m2_b.al.html"
+                "en": "materials/biotech_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Enzima që pret ADN:",
+                    "en": "The enzyme that cuts DNA:",
                     "al": "Enzima që pret ADN:"
                   },
                   "options": [
                     {
-                      "en": "Ligaza",
+                      "en": "Ligase",
                       "al": "Ligaza"
                     },
                     {
-                      "en": "Proteaza",
+                      "en": "Protease",
                       "al": "Proteaza"
                     },
                     {
-                      "en": "Restriktive",
+                      "en": "Restriction",
                       "al": "Restriktive"
                     },
                     {
-                      "en": "Polimeraza",
+                      "en": "Polymerase",
                       "al": "Polimeraza"
                     }
                   ],
@@ -13226,24 +13226,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Plazmidi është:",
+                    "en": "A plasmid is:",
                     "al": "Plazmidi është:"
                   },
                   "options": [
                     {
-                      "en": "Lipid",
+                      "en": "A lipid",
                       "al": "Lipid"
                     },
                     {
-                      "en": "ADN rrethore e vogël",
+                      "en": "Small circular DNA",
                       "al": "ADN rrethore e vogël"
                     },
                     {
-                      "en": "Proteinë",
+                      "en": "A protein",
                       "al": "Proteinë"
                     },
                     {
-                      "en": "Qelizë",
+                      "en": "A cell",
                       "al": "Qelizë"
                     }
                   ],
@@ -13252,24 +13252,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse përdoret e njëjta enzimë restriktive për vektor dhe gjen?",
+                    "en": "Why use the same restriction enzyme for vector and gene?",
                     "al": "Pse përdoret e njëjta enzimë restriktive për vektor dhe gjen?"
                   },
                   "options": [
                     {
-                      "en": "Për çmim",
+                      "en": "For price",
                       "al": "Për çmim"
                     },
                     {
-                      "en": "Prodhon skaje komplementare",
+                      "en": "It produces complementary ends",
                       "al": "Prodhon skaje komplementare"
                     },
                     {
-                      "en": "Është më e shpejtë",
+                      "en": "It is faster",
                       "al": "Është më e shpejtë"
                     },
                     {
-                      "en": "Nuk ka arsye",
+                      "en": "No reason",
                       "al": "Nuk ka arsye"
                     }
                   ],
@@ -13280,24 +13280,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Enzima që bashkon fragmentet:",
+                    "en": "The enzyme that joins fragments:",
                     "al": "Enzima që bashkon fragmentet:"
                   },
                   "options": [
                     {
-                      "en": "Restriktive",
+                      "en": "Restriction",
                       "al": "Restriktive"
                     },
                     {
-                      "en": "Lipaza",
+                      "en": "Lipase",
                       "al": "Lipaza"
                     },
                     {
-                      "en": "Ligaza",
+                      "en": "Ligase",
                       "al": "Ligaza"
                     },
                     {
-                      "en": "Amilaza",
+                      "en": "Amylase",
                       "al": "Amilaza"
                     }
                   ],
@@ -13306,24 +13306,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Vektori:",
+                    "en": "The vector:",
                     "al": "Vektori:"
                   },
                   "options": [
                     {
-                      "en": "Pret ADN",
+                      "en": "Cuts DNA",
                       "al": "Pret ADN"
                     },
                     {
-                      "en": "Bart gjenin në qelizë",
+                      "en": "Carries the gene into the cell",
                       "al": "Bart gjenin në qelizë"
                     },
                     {
-                      "en": "Është ushqim",
+                      "en": "Is food",
                       "al": "Është ushqim"
                     },
                     {
-                      "en": "Shkatërron qelizën",
+                      "en": "Destroys the cell",
                       "al": "Shkatërron qelizën"
                     }
                   ],
@@ -13332,24 +13332,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "OMG do të thotë:",
+                    "en": "GMO means:",
                     "al": "OMG do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Origjinal",
+                      "en": "Original",
                       "al": "Origjinal"
                     },
                     {
-                      "en": "Organizëm i madh",
+                      "en": "Big organism",
                       "al": "Organizëm i madh"
                     },
                     {
-                      "en": "Organizëm me gjenom të modifikuar",
+                      "en": "Organism with a modified genome",
                       "al": "Organizëm me gjenom të modifikuar"
                     }
                   ],
@@ -13366,35 +13366,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_fillestar_m3_a.al.html",
-                "en": "materials/biotech_fillestar_m3_a.al.html"
+                "en": "materials/biotech_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_fillestar_m3_b.al.html",
-                "en": "materials/biotech_fillestar_m3_b.al.html"
+                "en": "materials/biotech_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Zgjatja në PCR ~",
+                    "en": "Extension in PCR ~",
                     "al": "Zgjatja në PCR ~"
                   },
                   "options": [
                     {
-                      "en": "4 °C",
+                      "en": "4 C",
                       "al": "4 °C"
                     },
                     {
-                      "en": "30 °C",
+                      "en": "30 C",
                       "al": "30 °C"
                     },
                     {
-                      "en": "72 °C",
+                      "en": "72 C",
                       "al": "72 °C"
                     },
                     {
-                      "en": "100 °C",
+                      "en": "100 C",
                       "al": "100 °C"
                     }
                   ],
@@ -13403,7 +13403,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas 3 ciklesh nga 1 shabllon:",
+                    "en": "After 3 cycles from 1 template:",
                     "al": "Pas 3 ciklesh nga 1 shabllon:"
                   },
                   "options": [
@@ -13429,16 +13429,16 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas 10 ciklesh teorikisht nga 1 kopje:",
+                    "en": "After 10 cycles theoretically from 1 copy:",
                     "al": "Pas 10 ciklesh teorikisht nga 1 kopje:"
                   },
                   "options": [
                     {
-                      "en": "1.024",
+                      "en": "1,024",
                       "al": "1.024"
                     },
                     {
-                      "en": "10.000",
+                      "en": "10,000",
                       "al": "10.000"
                     },
                     {
@@ -13457,24 +13457,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Denaturimi:",
+                    "en": "Denaturation:",
                     "al": "Denaturimi:"
                   },
                   "options": [
                     {
-                      "en": "Shton primerë",
+                      "en": "Adds primers",
                       "al": "Shton primerë"
                     },
                     {
-                      "en": "Ftoh",
+                      "en": "Cools",
                       "al": "Ftoh"
                     },
                     {
-                      "en": "Bashkon fijet",
+                      "en": "Joins strands",
                       "al": "Bashkon fijet"
                     },
                     {
-                      "en": "Ndan fijet e ADN",
+                      "en": "Separates the DNA strands",
                       "al": "Ndan fijet e ADN"
                     }
                   ],
@@ -13483,7 +13483,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Primerët lidhen në:",
+                    "en": "Primers bind in:",
                     "al": "Primerët lidhen në:"
                   },
                   "options": [
@@ -13492,15 +13492,15 @@ export const FIELDS = [
                       "al": "Annealing"
                     },
                     {
-                      "en": "Denaturim",
+                      "en": "Denaturation",
                       "al": "Denaturim"
                     },
                     {
-                      "en": "Ruajtje",
+                      "en": "Storage",
                       "al": "Ruajtje"
                     },
                     {
-                      "en": "Ekstensioni",
+                      "en": "Extension",
                       "al": "Ekstensioni"
                     }
                   ],
@@ -13509,24 +13509,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse nevojitet ADN polimeraza termostabile?",
+                    "en": "Why is a thermostable DNA polymerase needed?",
                     "al": "Pse nevojitet ADN polimeraza termostabile?"
                   },
                   "options": [
                     {
-                      "en": "Duron 94 °C",
+                      "en": "It withstands 94 C",
                       "al": "Duron 94 °C"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Shpejton ujin",
+                      "en": "It speeds up water",
                       "al": "Shpejton ujin"
                     },
                     {
-                      "en": "Është e lirë",
+                      "en": "It is cheap",
                       "al": "Është e lirë"
                     }
                   ],
@@ -13547,35 +13547,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_mid_m1_a.al.html",
-                "en": "materials/biotech_mid_m1_a.al.html"
+                "en": "materials/biotech_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_mid_m1_b.al.html",
-                "en": "materials/biotech_mid_m1_b.al.html"
+                "en": "materials/biotech_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "ADN lëviz drejt:",
+                    "en": "DNA moves toward:",
                     "al": "ADN lëviz drejt:"
                   },
                   "options": [
                     {
-                      "en": "Anodës (+)",
+                      "en": "The anode (+)",
                       "al": "Anodës (+)"
                     },
                     {
-                      "en": "Qëndron",
+                      "en": "It stays",
                       "al": "Qëndron"
                     },
                     {
-                      "en": "Rastësisht",
+                      "en": "Randomly",
                       "al": "Rastësisht"
                     },
                     {
-                      "en": "Katodës (−)",
+                      "en": "The cathode (-)",
                       "al": "Katodës (−)"
                     }
                   ],
@@ -13584,24 +13584,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Ladder shërben për:",
+                    "en": "A ladder is used for:",
                     "al": "Ladder shërben për:"
                   },
                   "options": [
                     {
-                      "en": "Pastrim",
+                      "en": "Cleaning",
                       "al": "Pastrim"
                     },
                     {
-                      "en": "Vlerësim madhësie",
+                      "en": "Size estimation",
                       "al": "Vlerësim madhësie"
                     },
                     {
-                      "en": "Ngjyrosje",
+                      "en": "Staining",
                       "al": "Ngjyrosje"
                     },
                     {
-                      "en": "Ngrohje",
+                      "en": "Heating",
                       "al": "Ngrohje"
                     }
                   ],
@@ -13610,7 +13610,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas elektroforezës shihet një brez në 500 bp, tjetri në 200 bp. Cili ka lëvizur më larg?",
+                    "en": "After electrophoresis one band is at 500 bp, another at 200 bp. Which moved farther?",
                     "al": "Pas elektroforezës shihet një brez në 500 bp, tjetri në 200 bp. Cili ka lëvizur më larg?"
                   },
                   "options": [
@@ -13623,11 +13623,11 @@ export const FIELDS = [
                       "al": "500 bp"
                     },
                     {
-                      "en": "S'dihet",
+                      "en": "Unknown",
                       "al": "S'dihet"
                     },
                     {
-                      "en": "Njëlloj",
+                      "en": "Equal",
                       "al": "Njëlloj"
                     }
                   ],
@@ -13638,24 +13638,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Fragmentet më të vogla:",
+                    "en": "Smaller fragments:",
                     "al": "Fragmentet më të vogla:"
                   },
                   "options": [
                     {
-                      "en": "Nuk lëvizin",
+                      "en": "Do not move",
                       "al": "Nuk lëvizin"
                     },
                     {
-                      "en": "Lëvizin më larg",
+                      "en": "Move farther",
                       "al": "Lëvizin më larg"
                     },
                     {
-                      "en": "Lëvizin më pak",
+                      "en": "Move less",
                       "al": "Lëvizin më pak"
                     },
                     {
-                      "en": "Zhduken",
+                      "en": "Disappear",
                       "al": "Zhduken"
                     }
                   ],
@@ -13664,24 +13664,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Gelli për ADN zakonisht:",
+                    "en": "The gel for DNA is usually:",
                     "al": "Gelli për ADN zakonisht:"
                   },
                   "options": [
                     {
-                      "en": "Zhelatinë ushqimore",
+                      "en": "Food gelatine",
                       "al": "Zhelatinë ushqimore"
                     },
                     {
-                      "en": "Parafinë",
+                      "en": "Paraffin",
                       "al": "Parafinë"
                     },
                     {
-                      "en": "Sheqer",
+                      "en": "Sugar",
                       "al": "Sheqer"
                     },
                     {
-                      "en": "Agaroza",
+                      "en": "Agarose",
                       "al": "Agaroza"
                     }
                   ],
@@ -13690,24 +13690,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Polariteti i gabuar i elektrodave:",
+                    "en": "Reversed electrode polarity:",
                     "al": "Polariteti i gabuar i elektrodave:"
                   },
                   "options": [
                     {
-                      "en": "ADN del nga pusi në drejtimin e gabuar",
+                      "en": "DNA runs out of the well the wrong way",
                       "al": "ADN del nga pusi në drejtimin e gabuar"
                     },
                     {
-                      "en": "Rrit shpejtësinë",
+                      "en": "Increases speed",
                       "al": "Rrit shpejtësinë"
                     },
                     {
-                      "en": "Pastron",
+                      "en": "Cleans",
                       "al": "Pastron"
                     },
                     {
-                      "en": "Pa efekt",
+                      "en": "No effect",
                       "al": "Pa efekt"
                     }
                   ],
@@ -13724,18 +13724,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_mid_m2_a.al.html",
-                "en": "materials/biotech_mid_m2_a.al.html"
+                "en": "materials/biotech_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_mid_m2_b.al.html",
-                "en": "materials/biotech_mid_m2_b.al.html"
+                "en": "materials/biotech_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Formula e holluarjes:",
+                    "en": "The dilution formula:",
                     "al": "Formula e holluarjes:"
                   },
                   "options": [
@@ -13752,7 +13752,7 @@ export const FIELDS = [
                       "al": "C = V/n"
                     },
                     {
-                      "en": "C₁V₁ = C₂V₂",
+                      "en": "C1V1 = C2V2",
                       "al": "C₁V₁ = C₂V₂"
                     }
                   ],
@@ -13761,7 +13761,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Stok 5 M → 100 mL 0,5 M. V₁ =",
+                    "en": "Stock 5 M -> 100 mL of 0.5 M. V1 =",
                     "al": "Stok 5 M → 100 mL 0,5 M. V₁ ="
                   },
                   "options": [
@@ -13787,7 +13787,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Stok 10 M. Duhen 200 mL 0,1 M. V₁ =",
+                    "en": "Stock 10 M. Need 200 mL of 0.1 M. V1 =",
                     "al": "Stok 10 M. Duhen 200 mL 0,1 M. V₁ ="
                   },
                   "options": [
@@ -13800,7 +13800,7 @@ export const FIELDS = [
                       "al": "10 mL"
                     },
                     {
-                      "en": "0,2 mL",
+                      "en": "0.2 mL",
                       "al": "0,2 mL"
                     },
                     {
@@ -13815,7 +13815,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "M është:",
+                    "en": "M is:",
                     "al": "M është:"
                   },
                   "options": [
@@ -13824,7 +13824,7 @@ export const FIELDS = [
                       "al": "g/L"
                     },
                     {
-                      "en": "°C",
+                      "en": "C",
                       "al": "°C"
                     },
                     {
@@ -13841,7 +13841,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "0,5 mol në 250 mL ka koncentrim:",
+                    "en": "0.5 mol in 250 mL has concentration:",
                     "al": "0,5 mol në 250 mL ka koncentrim:"
                   },
                   "options": [
@@ -13850,7 +13850,7 @@ export const FIELDS = [
                       "al": "4 M"
                     },
                     {
-                      "en": "0,5 M",
+                      "en": "0.5 M",
                       "al": "0,5 M"
                     },
                     {
@@ -13867,24 +13867,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse etiketohen tretësirat?",
+                    "en": "Why label solutions?",
                     "al": "Pse etiketohen tretësirat?"
                   },
                   "options": [
                     {
-                      "en": "Për ligj vetëm",
+                      "en": "For law only",
                       "al": "Për ligj vetëm"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Siguri dhe gjurmueshmëri",
+                      "en": "Safety and traceability",
                       "al": "Siguri dhe gjurmueshmëri"
                     }
                   ],
@@ -13901,35 +13901,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_mid_m3_a.al.html",
-                "en": "materials/biotech_mid_m3_a.al.html"
+                "en": "materials/biotech_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_mid_m3_b.al.html",
-                "en": "materials/biotech_mid_m3_b.al.html"
+                "en": "materials/biotech_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Dezinfektim i zakonshëm:",
+                    "en": "Common disinfection:",
                     "al": "Dezinfektim i zakonshëm:"
                   },
                   "options": [
                     {
-                      "en": "Vaj",
+                      "en": "Oil",
                       "al": "Vaj"
                     },
                     {
-                      "en": "70% etanol",
+                      "en": "70% ethanol",
                       "al": "70% etanol"
                     },
                     {
-                      "en": "Ujë i pastër",
+                      "en": "Clean water",
                       "al": "Ujë i pastër"
                     },
                     {
-                      "en": "Sheqer",
+                      "en": "Sugar",
                       "al": "Sheqer"
                     }
                   ],
@@ -13938,24 +13938,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Mbetjet biologjike:",
+                    "en": "Biological waste:",
                     "al": "Mbetjet biologjike:"
                   },
                   "options": [
                     {
-                      "en": "Kontejner i veçantë dhe autoklavim",
+                      "en": "Special container and autoclaving",
                       "al": "Kontejner i veçantë dhe autoklavim"
                     },
                     {
-                      "en": "Lavaman",
+                      "en": "Sink",
                       "al": "Lavaman"
                     },
                     {
-                      "en": "Kosh i zakonshëm",
+                      "en": "Regular bin",
                       "al": "Kosh i zakonshëm"
                     },
                     {
-                      "en": "Dritare",
+                      "en": "Window",
                       "al": "Dritare"
                     }
                   ],
@@ -13964,24 +13964,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kontaminimi i kulturës zbulohet:",
+                    "en": "Culture contamination is detected:",
                     "al": "Kontaminimi i kulturës zbulohet:"
                   },
                   "options": [
                     {
-                      "en": "Kurrë",
+                      "en": "Never",
                       "al": "Kurrë"
                     },
                     {
-                      "en": "Nuk zbulohet",
+                      "en": "It is not",
                       "al": "Nuk zbulohet"
                     },
                     {
-                      "en": "Me zbatim të kontrolleve negative",
+                      "en": "By using negative controls",
                       "al": "Me zbatim të kontrolleve negative"
                     },
                     {
-                      "en": "Vetëm nga ngjyra e dorashkës",
+                      "en": "Only from glove colour",
                       "al": "Vetëm nga ngjyra e dorashkës"
                     }
                   ],
@@ -13992,24 +13992,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "PPE përfshin:",
+                    "en": "PPE includes:",
                     "al": "PPE përfshin:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Kapele vetëm",
+                      "en": "Cap only",
                       "al": "Kapele vetëm"
                     },
                     {
-                      "en": "Dorashka, mantel, syze",
+                      "en": "Gloves, coat, glasses",
                       "al": "Dorashka, mantel, syze"
                     },
                     {
-                      "en": "Vetëm çanta",
+                      "en": "Bag only",
                       "al": "Vetëm çanta"
                     }
                   ],
@@ -14018,24 +14018,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Fletorja e laboratorit duhet:",
+                    "en": "The lab notebook must:",
                     "al": "Fletorja e laboratorit duhet:"
                   },
                   "options": [
                     {
-                      "en": "Të jetë bosh",
+                      "en": "Be empty",
                       "al": "Të jetë bosh"
                     },
                     {
-                      "en": "Të dokumentojë hapat dhe rezultatet",
+                      "en": "Document steps and results",
                       "al": "Të dokumentojë hapat dhe rezultatet"
                     },
                     {
-                      "en": "Të jetë sekrete",
+                      "en": "Be secret",
                       "al": "Të jetë sekrete"
                     },
                     {
-                      "en": "Të mos ketë data",
+                      "en": "Have no dates",
                       "al": "Të mos ketë data"
                     }
                   ],
@@ -14044,24 +14044,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse 70% etanol dhe jo 100%?",
+                    "en": "Why 70% ethanol and not 100%?",
                     "al": "Pse 70% etanol dhe jo 100%?"
                   },
                   "options": [
                     {
-                      "en": "Është më i lirë vetëm",
+                      "en": "Only cheaper",
                       "al": "Është më i lirë vetëm"
                     },
                     {
-                      "en": "Depërton më mirë dhe vret më efikas",
+                      "en": "It penetrates better and kills more effectively",
                       "al": "Depërton më mirë dhe vret më efikas"
                     },
                     {
-                      "en": "Nuk dallon",
+                      "en": "No difference",
                       "al": "Nuk dallon"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     }
                   ],
@@ -14082,35 +14082,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_senior_m1_a.al.html",
-                "en": "materials/biotech_senior_m1_a.al.html"
+                "en": "materials/biotech_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_senior_m1_b.al.html",
-                "en": "materials/biotech_senior_m1_b.al.html"
+                "en": "materials/biotech_senior_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Hapi pas ligimit:",
+                    "en": "The step after ligation:",
                     "al": "Hapi pas ligimit:"
                   },
                   "options": [
                     {
-                      "en": "Pastrimi",
+                      "en": "Cleaning",
                       "al": "Pastrimi"
                     },
                     {
-                      "en": "Izolimi",
+                      "en": "Isolation",
                       "al": "Izolimi"
                     },
                     {
-                      "en": "Transformimi",
+                      "en": "Transformation",
                       "al": "Transformimi"
                     },
                     {
-                      "en": "Prerja",
+                      "en": "Cutting",
                       "al": "Prerja"
                     }
                   ],
@@ -14119,24 +14119,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Antibiotiku në përzgjedhje shërben për:",
+                    "en": "The antibiotic in selection is for:",
                     "al": "Antibiotiku në përzgjedhje shërben për:"
                   },
                   "options": [
                     {
-                      "en": "Ushqim",
+                      "en": "Food",
                       "al": "Ushqim"
                     },
                     {
-                      "en": "Rritjen vetëm të bakterëve me plazmid",
+                      "en": "Growing only bacteria with the plasmid",
                       "al": "Rritjen vetëm të bakterëve me plazmid"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Vrasjen e të gjithëve",
+                      "en": "Killing all",
                       "al": "Vrasjen e të gjithëve"
                     }
                   ],
@@ -14145,24 +14145,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas transformimit rriten kolonitë; disa pa gjenin. Çfarë veprimi?",
+                    "en": "After transformation colonies grow; some without the gene. What action?",
                     "al": "Pas transformimit rriten kolonitë; disa pa gjenin. Çfarë veprimi?"
                   },
                   "options": [
                     {
-                      "en": "Fshi të gjitha",
+                      "en": "Delete all",
                       "al": "Fshi të gjitha"
                     },
                     {
-                      "en": "Zgjidh më të madhen",
+                      "en": "Pick the biggest",
                       "al": "Zgjidh më të madhen"
                     },
                     {
-                      "en": "Harro",
+                      "en": "Forget",
                       "al": "Harro"
                     },
                     {
-                      "en": "Skriningu (PCR/sekuencim) i kolonive",
+                      "en": "Screen the colonies (PCR/sequencing)",
                       "al": "Skriningu (PCR/sekuencim) i kolonive"
                     }
                   ],
@@ -14173,24 +14173,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Verifikimi përfundimtar zakonisht me:",
+                    "en": "Final verification is usually by:",
                     "al": "Verifikimi përfundimtar zakonisht me:"
                   },
                   "options": [
                     {
-                      "en": "Erë",
+                      "en": "Smell",
                       "al": "Erë"
                     },
                     {
-                      "en": "Sekuencim",
+                      "en": "Sequencing",
                       "al": "Sekuencim"
                     },
                     {
-                      "en": "Ngjyrosje vetëm",
+                      "en": "Staining only",
                       "al": "Ngjyrosje vetëm"
                     },
                     {
-                      "en": "Peshë",
+                      "en": "Weight",
                       "al": "Peshë"
                     }
                   ],
@@ -14199,24 +14199,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "E. coli përdoret sepse:",
+                    "en": "E. coli is used because:",
                     "al": "E. coli përdoret sepse:"
                   },
                   "options": [
                     {
-                      "en": "Rritet shpejt dhe lehtë",
+                      "en": "It grows fast and easily",
                       "al": "Rritet shpejt dhe lehtë"
                     },
                     {
-                      "en": "Është e rrezikshme gjithmonë",
+                      "en": "It is always dangerous",
                       "al": "Është e rrezikshme gjithmonë"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Është e vogël vetëm",
+                      "en": "It is only small",
                       "al": "Është e vogël vetëm"
                     }
                   ],
@@ -14225,24 +14225,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse kontrolle negative në çdo hap?",
+                    "en": "Why negative controls at each step?",
                     "al": "Pse kontrolle negative në çdo hap?"
                   },
                   "options": [
                     {
-                      "en": "Për ligj vetëm",
+                      "en": "For law only",
                       "al": "Për ligj vetëm"
                     },
                     {
-                      "en": "Zbulojnë kontaminim",
+                      "en": "They reveal contamination",
                       "al": "Zbulojnë kontaminim"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     }
                   ],
@@ -14259,31 +14259,31 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_senior_m2_a.al.html",
-                "en": "materials/biotech_senior_m2_a.al.html"
+                "en": "materials/biotech_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_senior_m2_b.al.html",
-                "en": "materials/biotech_senior_m2_b.al.html"
+                "en": "materials/biotech_senior_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Cas9 drejtohet nga:",
+                    "en": "Cas9 is guided by:",
                     "al": "Cas9 drejtohet nga:"
                   },
                   "options": [
                     {
-                      "en": "Lipid",
+                      "en": "A lipid",
                       "al": "Lipid"
                     },
                     {
-                      "en": "Proteina vetëm",
+                      "en": "The protein alone",
                       "al": "Proteina vetëm"
                     },
                     {
-                      "en": "Sheqer",
+                      "en": "Sugar",
                       "al": "Sheqer"
                     },
                     {
@@ -14296,24 +14296,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "NHEJ shpesh sjell:",
+                    "en": "NHEJ often causes:",
                     "al": "NHEJ shpesh sjell:"
                   },
                   "options": [
                     {
-                      "en": "Sintezë proteinash",
+                      "en": "Protein synthesis",
                       "al": "Sintezë proteinash"
                     },
                     {
-                      "en": "Indele",
+                      "en": "Indels",
                       "al": "Indele"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Riparim perfekt gjithmonë",
+                      "en": "Always perfect repair",
                       "al": "Riparim perfekt gjithmonë"
                     }
                   ],
@@ -14322,20 +14322,20 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rreziku kryesor i përdorimit klinik:",
+                    "en": "The main clinical risk:",
                     "al": "Rreziku kryesor i përdorimit klinik:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Çmimi i ujit",
+                      "en": "Water price",
                       "al": "Çmimi i ujit"
                     },
                     {
-                      "en": "Ngjyra",
+                      "en": "Colour",
                       "al": "Ngjyra"
                     },
                     {
@@ -14350,7 +14350,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "PAM për SpCas9:",
+                    "en": "PAM for SpCas9:",
                     "al": "PAM për SpCas9:"
                   },
                   "options": [
@@ -14367,7 +14367,7 @@ export const FIELDS = [
                       "al": "NGG"
                     },
                     {
-                      "en": "CCC vetëm",
+                      "en": "CCC only",
                       "al": "CCC vetëm"
                     }
                   ],
@@ -14376,24 +14376,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "HDR përdoret për:",
+                    "en": "HDR is used for:",
                     "al": "HDR përdoret për:"
                   },
                   "options": [
                     {
-                      "en": "Fshirje të qelizës",
+                      "en": "Cell deletion",
                       "al": "Fshirje të qelizës"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Prerje",
+                      "en": "Cutting",
                       "al": "Prerje"
                     },
                     {
-                      "en": "Futje të saktë të sekuencës",
+                      "en": "Precise sequence insertion",
                       "al": "Futje të saktë të sekuencës"
                     }
                   ],
@@ -14402,24 +14402,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse nevojitet kontroll i dyfishtë i gRNA?",
+                    "en": "Why double-check the gRNA?",
                     "al": "Pse nevojitet kontroll i dyfishtë i gRNA?"
                   },
                   "options": [
                     {
-                      "en": "Për ligj vetëm",
+                      "en": "For law only",
                       "al": "Për ligj vetëm"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Specifikim dhe ulje e off-target",
+                      "en": "Specificity and reducing off-target",
                       "al": "Specifikim dhe ulje e off-target"
                     }
                   ],
@@ -14436,35 +14436,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/biotech_senior_m3_a.al.html",
-                "en": "materials/biotech_senior_m3_a.al.html"
+                "en": "materials/biotech_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/biotech_senior_m3_b.al.html",
-                "en": "materials/biotech_senior_m3_b.al.html"
+                "en": "materials/biotech_senior_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "LOD është:",
+                    "en": "LOD is:",
                     "al": "LOD është:"
                   },
                   "options": [
                     {
-                      "en": "Kufiri i zbulimit",
+                      "en": "The limit of detection",
                       "al": "Kufiri i zbulimit"
                     },
                     {
-                      "en": "Ngarkesë",
+                      "en": "Load",
                       "al": "Ngarkesë"
                     },
                     {
-                      "en": "Kalibër",
+                      "en": "Caliber",
                       "al": "Kalibër"
                     },
                     {
-                      "en": "Sasi uji",
+                      "en": "Water amount",
                       "al": "Sasi uji"
                     }
                   ],
@@ -14473,24 +14473,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Precizioni lidhet me:",
+                    "en": "Precision relates to:",
                     "al": "Precizioni lidhet me:"
                   },
                   "options": [
                     {
-                      "en": "Përsëritshmërinë",
+                      "en": "Repeatability",
                       "al": "Përsëritshmërinë"
                     },
                     {
-                      "en": "Peshën",
+                      "en": "Weight",
                       "al": "Peshën"
                     },
                     {
-                      "en": "Ngjyrën",
+                      "en": "Colour",
                       "al": "Ngjyrën"
                     },
                     {
-                      "en": "Çmimin",
+                      "en": "Price",
                       "al": "Çmimin"
                     }
                   ],
@@ -14499,24 +14499,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kontrolli pozitiv nuk jep sinjal. Ç'do të thotë?",
+                    "en": "The positive control gives no signal. What does it mean?",
                     "al": "Kontrolli pozitiv nuk jep sinjal. Ç'do të thotë?"
                   },
                   "options": [
                     {
-                      "en": "Përfundim",
+                      "en": "Conclusion",
                       "al": "Përfundim"
                     },
                     {
-                      "en": "Rezultat i mirë",
+                      "en": "A good result",
                       "al": "Rezultat i mirë"
                     },
                     {
-                      "en": "Metoda/reagentët problematikë",
+                      "en": "The method/reagents are problematic",
                       "al": "Metoda/reagentët problematikë"
                     },
                     {
-                      "en": "S'ka rëndësi",
+                      "en": "It does not matter",
                       "al": "S'ka rëndësi"
                     }
                   ],
@@ -14527,24 +14527,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Kontrolli negativ duhet:",
+                    "en": "The negative control must:",
                     "al": "Kontrolli negativ duhet:"
                   },
                   "options": [
                     {
-                      "en": "Të jetë i panevojshëm",
+                      "en": "Be unnecessary",
                       "al": "Të jetë i panevojshëm"
                     },
                     {
-                      "en": "Të jetë bosh",
+                      "en": "Be empty",
                       "al": "Të jetë bosh"
                     },
                     {
-                      "en": "Mos të japë sinjal",
+                      "en": "Give no signal",
                       "al": "Mos të japë sinjal"
                     },
                     {
-                      "en": "Të japë sinjal",
+                      "en": "Give a signal",
                       "al": "Të japë sinjal"
                     }
                   ],
@@ -14553,24 +14553,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Saktësia (accuracy):",
+                    "en": "Accuracy:",
                     "al": "Saktësia (accuracy):"
                   },
                   "options": [
                     {
-                      "en": "Çmimi",
+                      "en": "Price",
                       "al": "Çmimi"
                     },
                     {
-                      "en": "Vetëm shpejtësia",
+                      "en": "Only speed",
                       "al": "Vetëm shpejtësia"
                     },
                     {
-                      "en": "Afërsia me vlerën e vërtetë",
+                      "en": "Closeness to the true value",
                       "al": "Afërsia me vlerën e vërtetë"
                     },
                     {
-                      "en": "Madhësia",
+                      "en": "Size",
                       "al": "Madhësia"
                     }
                   ],
@@ -14579,24 +14579,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "IQ-OQ-PQ i referohen:",
+                    "en": "IQ-OQ-PQ refer to:",
                     "al": "IQ-OQ-PQ i referohen:"
                   },
                   "options": [
                     {
-                      "en": "Emrave",
+                      "en": "Names",
                       "al": "Emrave"
                     },
                     {
-                      "en": "Kualifikimit të pajisjeve",
+                      "en": "Equipment qualification",
                       "al": "Kualifikimit të pajisjeve"
                     },
                     {
-                      "en": "Ngjyrave",
+                      "en": "Colours",
                       "al": "Ngjyrave"
                     },
                     {
-                      "en": "Çmimeve",
+                      "en": "Prices",
                       "al": "Çmimeve"
                     }
                   ],
@@ -14626,18 +14626,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_fillestar_m1_a.al.html",
-                "en": "materials/chemist_fillestar_m1_a.al.html"
+                "en": "materials/chemist_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_fillestar_m1_b.al.html",
-                "en": "materials/chemist_fillestar_m1_b.al.html"
+                "en": "materials/chemist_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Masa molare e H₂O:",
+                    "en": "Molar mass of H2O:",
                     "al": "Masa molare e H₂O:"
                   },
                   "options": [
@@ -14663,7 +14663,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Masa molare e CO₂:",
+                    "en": "Molar mass of CO2:",
                     "al": "Masa molare e CO₂:"
                   },
                   "options": [
@@ -14689,7 +14689,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Sa mol janë 49 g H₂SO₄?",
+                    "en": "How many moles are 49 g H2SO4?",
                     "al": "Sa mol janë 49 g H₂SO₄?"
                   },
                   "options": [
@@ -14702,11 +14702,11 @@ export const FIELDS = [
                       "al": "2"
                     },
                     {
-                      "en": "0,5",
+                      "en": "0.5",
                       "al": "0,5"
                     },
                     {
-                      "en": "0,25",
+                      "en": "0.25",
                       "al": "0,25"
                     }
                   ],
@@ -14717,7 +14717,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Formula e molit:",
+                    "en": "The mole formula:",
                     "al": "Formula e molit:"
                   },
                   "options": [
@@ -14743,12 +14743,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "117 g NaCl (M=58,5) janë:",
+                    "en": "117 g NaCl (M=58.5) is:",
                     "al": "117 g NaCl (M=58,5) janë:"
                   },
                   "options": [
                     {
-                      "en": "0,5 mol",
+                      "en": "0.5 mol",
                       "al": "0,5 mol"
                     },
                     {
@@ -14769,7 +14769,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "36 g H₂O përmbajnë:",
+                    "en": "36 g H2O contains:",
                     "al": "36 g H₂O përmbajnë:"
                   },
                   "options": [
@@ -14782,7 +14782,7 @@ export const FIELDS = [
                       "al": "1 mol"
                     },
                     {
-                      "en": "0,5 mol",
+                      "en": "0.5 mol",
                       "al": "0,5 mol"
                     },
                     {
@@ -14803,35 +14803,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_fillestar_m2_a.al.html",
-                "en": "materials/chemist_fillestar_m2_a.al.html"
+                "en": "materials/chemist_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_fillestar_m2_b.al.html",
-                "en": "materials/chemist_fillestar_m2_b.al.html"
+                "en": "materials/chemist_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Neutralizimi jep:",
+                    "en": "Neutralisation gives:",
                     "al": "Neutralizimi jep:"
                   },
                   "options": [
                     {
-                      "en": "Vaj",
+                      "en": "Oil",
                       "al": "Vaj"
                     },
                     {
-                      "en": "Kripë + ujë",
+                      "en": "Salt + water",
                       "al": "Kripë + ujë"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Gaz vetëm",
+                      "en": "Gas only",
                       "al": "Gaz vetëm"
                     }
                   ],
@@ -14840,7 +14840,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Mg + 2HCl → ? + H₂",
+                    "en": "Mg + 2HCl -> ? + H2",
                     "al": "Mg + 2HCl → ? + H₂"
                   },
                   "options": [
@@ -14853,11 +14853,11 @@ export const FIELDS = [
                       "al": "MgO"
                     },
                     {
-                      "en": "Mg₂",
+                      "en": "Mg2",
                       "al": "Mg₂"
                     },
                     {
-                      "en": "MgCl₂",
+                      "en": "MgCl2",
                       "al": "MgCl₂"
                     }
                   ],
@@ -14866,7 +14866,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "4 g H₂ reagojnë me O₂: sa g H₂O (reaksion i plotë)?",
+                    "en": "4 g H2 reacts with O2: how many g H2O (complete)?",
                     "al": "4 g H₂ reagojnë me O₂: sa g H₂O (reaksion i plotë)?"
                   },
                   "options": [
@@ -14894,24 +14894,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Ligji i ruajtjes së masës:",
+                    "en": "Law of conservation of mass:",
                     "al": "Ligji i ruajtjes së masës:"
                   },
                   "options": [
                     {
-                      "en": "Masa rritet",
+                      "en": "Mass increases",
                       "al": "Masa rritet"
                     },
                     {
-                      "en": "Masa mbetet e pandryshuar",
+                      "en": "Mass stays constant",
                       "al": "Masa mbetet e pandryshuar"
                     },
                     {
-                      "en": "Masa bie",
+                      "en": "Mass decreases",
                       "al": "Masa bie"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -14920,24 +14920,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Produkti i djegies së plotë të hidrokarbureve:",
+                    "en": "Complete combustion of hydrocarbons produces:",
                     "al": "Produkti i djegies së plotë të hidrokarbureve:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Vetëm CO",
+                      "en": "CO only",
                       "al": "Vetëm CO"
                     },
                     {
-                      "en": "CO₂ dhe H₂O",
+                      "en": "CO2 and H2O",
                       "al": "CO₂ dhe H₂O"
                     },
                     {
-                      "en": "Vetëm H₂",
+                      "en": "H2 only",
                       "al": "Vetëm H₂"
                     }
                   ],
@@ -14946,7 +14946,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "HCl është:",
+                    "en": "HCl is:",
                     "al": "HCl është:"
                   },
                   "options": [
@@ -14955,15 +14955,15 @@ export const FIELDS = [
                       "al": "Acid"
                     },
                     {
-                      "en": "Kripë",
+                      "en": "Salt",
                       "al": "Kripë"
                     },
                     {
-                      "en": "Alkool",
+                      "en": "Alcohol",
                       "al": "Alkool"
                     },
                     {
-                      "en": "Bazë",
+                      "en": "Base",
                       "al": "Bazë"
                     }
                   ],
@@ -14980,18 +14980,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_fillestar_m3_a.al.html",
-                "en": "materials/chemist_fillestar_m3_a.al.html"
+                "en": "materials/chemist_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_fillestar_m3_b.al.html",
-                "en": "materials/chemist_fillestar_m3_b.al.html"
+                "en": "materials/chemist_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "pH 3 është:",
+                    "en": "pH 3 is:",
                     "al": "pH 3 është:"
                   },
                   "options": [
@@ -15000,11 +15000,11 @@ export const FIELDS = [
                       "al": "Acid"
                     },
                     {
-                      "en": "I pamundur",
+                      "en": "Impossible",
                       "al": "I pamundur"
                     },
                     {
-                      "en": "Bazik",
+                      "en": "Basic",
                       "al": "Bazik"
                     },
                     {
@@ -15017,7 +15017,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "0,01 M HCl, pH:",
+                    "en": "0.01 M HCl, pH:",
                     "al": "0,01 M HCl, pH:"
                   },
                   "options": [
@@ -15043,24 +15043,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "pH 3 vs pH 5: [H⁺] i pH 3 është:",
+                    "en": "pH 3 vs pH 5: [H+] at pH 3 is:",
                     "al": "pH 3 vs pH 5: [H⁺] i pH 3 është:"
                   },
                   "options": [
                     {
-                      "en": "Njëlloj",
+                      "en": "Equal",
                       "al": "Njëlloj"
                     },
                     {
-                      "en": "2×",
+                      "en": "2x",
                       "al": "2×"
                     },
                     {
-                      "en": "10×",
+                      "en": "10x",
                       "al": "10×"
                     },
                     {
-                      "en": "100× më i lartë",
+                      "en": "100x higher",
                       "al": "100× më i lartë"
                     }
                   ],
@@ -15080,7 +15080,7 @@ export const FIELDS = [
                       "al": "Acid"
                     },
                     {
-                      "en": "Bazik",
+                      "en": "Basic",
                       "al": "Bazik"
                     },
                     {
@@ -15088,7 +15088,7 @@ export const FIELDS = [
                       "al": "Neutral"
                     },
                     {
-                      "en": "Shumë acid",
+                      "en": "Very acid",
                       "al": "Shumë acid"
                     }
                   ],
@@ -15097,7 +15097,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "0,5 mol në 0,25 L:",
+                    "en": "0.5 mol in 0.25 L:",
                     "al": "0,5 mol në 0,25 L:"
                   },
                   "options": [
@@ -15110,7 +15110,7 @@ export const FIELDS = [
                       "al": "4 M"
                     },
                     {
-                      "en": "0,5 M",
+                      "en": "0.5 M",
                       "al": "0,5 M"
                     },
                     {
@@ -15123,7 +15123,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "0,001 M HCl, pH:",
+                    "en": "0.001 M HCl, pH:",
                     "al": "0,001 M HCl, pH:"
                   },
                   "options": [
@@ -15161,18 +15161,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_mid_m1_a.al.html",
-                "en": "materials/chemist_mid_m1_a.al.html"
+                "en": "materials/chemist_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_mid_m1_b.al.html",
-                "en": "materials/chemist_mid_m1_b.al.html"
+                "en": "materials/chemist_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "N₂ + 3H₂ → ?NH₃. Koeficienti i NH₃:",
+                    "en": "N2 + 3H2 -> ?NH3. Coefficient of NH3:",
                     "al": "N₂ + 3H₂ → ?NH₃. Koeficienti i NH₃:"
                   },
                   "options": [
@@ -15198,7 +15198,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "C₃H₈ + ?O₂ → 3CO₂ + 4H₂O. O₂:",
+                    "en": "C3H8 + ?O2 -> 3CO2 + 4H2O. O2:",
                     "al": "C₃H₈ + ?O₂ → 3CO₂ + 4H₂O. O₂:"
                   },
                   "options": [
@@ -15224,7 +15224,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "2Al + 3Cl₂ → ?AlCl₃",
+                    "en": "2Al + 3Cl2 -> ?AlCl3",
                     "al": "2Al + 3Cl₂ → ?AlCl₃"
                   },
                   "options": [
@@ -15252,24 +15252,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Gjatë balancimit ndryshojmë:",
+                    "en": "When balancing we change:",
                     "al": "Gjatë balancimit ndryshojmë:"
                   },
                   "options": [
                     {
-                      "en": "Koeficientët",
+                      "en": "Coefficients",
                       "al": "Koeficientët"
                     },
                     {
-                      "en": "Indekset",
+                      "en": "Subscripts",
                       "al": "Indekset"
                     },
                     {
-                      "en": "Të dyja",
+                      "en": "Both",
                       "al": "Të dyja"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "Neither",
                       "al": "Asnjë"
                     }
                   ],
@@ -15278,7 +15278,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "4Fe + ?O₂ → 2Fe₂O₃. O₂:",
+                    "en": "4Fe + ?O2 -> 2Fe2O3. O2:",
                     "al": "4Fe + ?O₂ → 2Fe₂O₃. O₂:"
                   },
                   "options": [
@@ -15304,7 +15304,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "CH₄ + ?O₂ → CO₂ + 2H₂O. O₂:",
+                    "en": "CH4 + ?O2 -> CO2 + 2H2O. O2:",
                     "al": "CH₄ + ?O₂ → CO₂ + 2H₂O. O₂:"
                   },
                   "options": [
@@ -15338,18 +15338,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_mid_m2_a.al.html",
-                "en": "materials/chemist_mid_m2_a.al.html"
+                "en": "materials/chemist_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_mid_m2_b.al.html",
-                "en": "materials/chemist_mid_m2_b.al.html"
+                "en": "materials/chemist_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "1 mol CH₄ jep CO₂:",
+                    "en": "1 mol CH4 gives CO2:",
                     "al": "1 mol CH₄ jep CO₂:"
                   },
                   "options": [
@@ -15366,7 +15366,7 @@ export const FIELDS = [
                       "al": "4"
                     },
                     {
-                      "en": "0,5",
+                      "en": "0.5",
                       "al": "0,5"
                     }
                   ],
@@ -15375,7 +15375,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "32 g CH₄ (M=16) japin CO₂ (g):",
+                    "en": "32 g CH4 (M=16) give CO2 (g):",
                     "al": "32 g CH₄ (M=16) japin CO₂ (g):"
                   },
                   "options": [
@@ -15401,24 +15401,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "4 g H₂ + 16 g O₂ → H₂O. Kufizues:",
+                    "en": "4 g H2 + 16 g O2 -> H2O. Limiting:",
                     "al": "4 g H₂ + 16 g O₂ → H₂O. Kufizues:"
                   },
                   "options": [
                     {
-                      "en": "H₂",
+                      "en": "H2",
                       "al": "H₂"
                     },
                     {
-                      "en": "O₂",
+                      "en": "O2",
                       "al": "O₂"
                     },
                     {
-                      "en": "Asnjë",
+                      "en": "None",
                       "al": "Asnjë"
                     },
                     {
-                      "en": "Të dy",
+                      "en": "Both",
                       "al": "Të dy"
                     }
                   ],
@@ -15429,24 +15429,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Reaktant kufizues:",
+                    "en": "Limiting reactant:",
                     "al": "Reaktant kufizues:"
                   },
                   "options": [
                     {
-                      "en": "Mbetet",
+                      "en": "Remains",
                       "al": "Mbetet"
                     },
                     {
-                      "en": "Produkt",
+                      "en": "Product",
                       "al": "Produkt"
                     },
                     {
-                      "en": "Katalizator",
+                      "en": "Catalyst",
                       "al": "Katalizator"
                     },
                     {
-                      "en": "Mbaron i pari",
+                      "en": "Runs out first",
                       "al": "Mbaron i pari"
                     }
                   ],
@@ -15455,7 +15455,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Teorik 50 g, real 40 g. Rendimenti:",
+                    "en": "Theoretical 50 g, actual 40 g. Yield:",
                     "al": "Teorik 50 g, real 40 g. Rendimenti:"
                   },
                   "options": [
@@ -15481,7 +15481,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Në pyetjen e mësipërme prodhohen H₂O (g):",
+                    "en": "Produced H2O (g):",
                     "al": "Në pyetjen e mësipërme prodhohen H₂O (g):"
                   },
                   "options": [
@@ -15515,35 +15515,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_mid_m3_a.al.html",
-                "en": "materials/chemist_mid_m3_a.al.html"
+                "en": "materials/chemist_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_mid_m3_b.al.html",
-                "en": "materials/chemist_mid_m3_b.al.html"
+                "en": "materials/chemist_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "C₁V₁ = C₂V₂ përdoret për:",
+                    "en": "C1V1 = C2V2 is used for:",
                     "al": "C₁V₁ = C₂V₂ përdoret për:"
                   },
                   "options": [
                     {
-                      "en": "Elektrolizë",
+                      "en": "Electrolysis",
                       "al": "Elektrolizë"
                     },
                     {
-                      "en": "Ngrohje",
+                      "en": "Heating",
                       "al": "Ngrohje"
                     },
                     {
-                      "en": "Djegie",
+                      "en": "Combustion",
                       "al": "Djegie"
                     },
                     {
-                      "en": "Holla",
+                      "en": "Dilution",
                       "al": "Holla"
                     }
                   ],
@@ -15552,24 +15552,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "0,1 M NaCl, 500 mL: masa (M=58,5):",
+                    "en": "0.1 M NaCl, 500 mL: mass (M=58.5):",
                     "al": "0,1 M NaCl, 500 mL: masa (M=58,5):"
                   },
                   "options": [
                     {
-                      "en": "29,25 g",
+                      "en": "29.25 g",
                       "al": "29,25 g"
                     },
                     {
-                      "en": "0,585 g",
+                      "en": "0.585 g",
                       "al": "0,585 g"
                     },
                     {
-                      "en": "2,925 g",
+                      "en": "2.925 g",
                       "al": "2,925 g"
                     },
                     {
-                      "en": "5,85 g",
+                      "en": "5.85 g",
                       "al": "5,85 g"
                     }
                   ],
@@ -15578,24 +15578,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse balonë volumetrike?",
+                    "en": "Why a volumetric flask?",
                     "al": "Pse balonë volumetrike?"
                   },
                   "options": [
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Për zbukurim",
+                      "en": "For decoration",
                       "al": "Për zbukurim"
                     },
                     {
-                      "en": "Saktësi në vëllim",
+                      "en": "Volume accuracy",
                       "al": "Saktësi në vëllim"
                     },
                     {
-                      "en": "Për çmim",
+                      "en": "For price",
                       "al": "Për çmim"
                     }
                   ],
@@ -15606,7 +15606,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Njësia e molaritetit:",
+                    "en": "The unit of molarity:",
                     "al": "Njësia e molaritetit:"
                   },
                   "options": [
@@ -15615,7 +15615,7 @@ export const FIELDS = [
                       "al": "g"
                     },
                     {
-                      "en": "°C",
+                      "en": "C",
                       "al": "°C"
                     },
                     {
@@ -15632,7 +15632,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Stok 2 M → 100 mL 0,2 M. V₁ =",
+                    "en": "Stock 2 M -> 100 mL of 0.2 M. V1 =",
                     "al": "Stok 2 M → 100 mL 0,2 M. V₁ ="
                   },
                   "options": [
@@ -15658,7 +15658,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "1 L 1 M NaOH (M=40) kërkon:",
+                    "en": "1 L of 1 M NaOH (M=40) needs:",
                     "al": "1 L 1 M NaOH (M=40) kërkon:"
                   },
                   "options": [
@@ -15696,18 +15696,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_senior_m1_a.al.html",
-                "en": "materials/chemist_senior_m1_a.al.html"
+                "en": "materials/chemist_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_senior_m1_b.al.html",
-                "en": "materials/chemist_senior_m1_b.al.html"
+                "en": "materials/chemist_senior_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Rendiment 80% dhe 90% në seri:",
+                    "en": "Yield 80% and 90% in series:",
                     "al": "Rendiment 80% dhe 90% në seri:"
                   },
                   "options": [
@@ -15733,24 +15733,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "N₂ + 3H₂ ⇌ 2NH₃. Shtimi i N₂ zhvendos ekuilibrin:",
+                    "en": "N2 + 3H2 = 2NH3. Adding N2 shifts equilibrium:",
                     "al": "N₂ + 3H₂ ⇌ 2NH₃. Shtimi i N₂ zhvendos ekuilibrin:"
                   },
                   "options": [
                     {
-                      "en": "Drejt produkteve",
+                      "en": "Toward products",
                       "al": "Drejt produkteve"
                     },
                     {
-                      "en": "Zhduk",
+                      "en": "Disappears",
                       "al": "Zhduk"
                     },
                     {
-                      "en": "Drejt reaktantëve",
+                      "en": "Toward reactants",
                       "al": "Drejt reaktantëve"
                     },
                     {
-                      "en": "Pa ndryshim",
+                      "en": "No change",
                       "al": "Pa ndryshim"
                     }
                   ],
@@ -15759,7 +15759,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Tre hapa me rendiment 90% secili. Total:",
+                    "en": "Three steps at 90% each. Total:",
                     "al": "Tre hapa me rendiment 90% secili. Total:"
                   },
                   "options": [
@@ -15776,7 +15776,7 @@ export const FIELDS = [
                       "al": "270%"
                     },
                     {
-                      "en": "72,9%",
+                      "en": "72.9%",
                       "al": "72,9%"
                     }
                   ],
@@ -15792,19 +15792,19 @@ export const FIELDS = [
                   },
                   "options": [
                     {
-                      "en": "S'ka efekt",
+                      "en": "No effect",
                       "al": "S'ka efekt"
                     },
                     {
-                      "en": "Pa lidhje",
+                      "en": "Unrelated",
                       "al": "Pa lidhje"
                     },
                     {
-                      "en": "Shton gjithmonë produktet",
+                      "en": "Always adds products",
                       "al": "Shton gjithmonë produktet"
                     },
                     {
-                      "en": "Sistemi kundërvepron ndryshimit",
+                      "en": "The system opposes the change",
                       "al": "Sistemi kundërvepron ndryshimit"
                     }
                   ],
@@ -15813,24 +15813,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kc për N₂ + 3H₂ ⇌ 2NH₃:",
+                    "en": "Kc for N2 + 3H2 = 2NH3:",
                     "al": "Kc për N₂ + 3H₂ ⇌ 2NH₃:"
                   },
                   "options": [
                     {
-                      "en": "[N₂][H₂]/[NH₃]",
+                      "en": "[N2][H2]/[NH3]",
                       "al": "[N₂][H₂]/[NH₃]"
                     },
                     {
-                      "en": "[NH₃]/([N₂][H₂])",
+                      "en": "[NH3]/([N2][H2])",
                       "al": "[NH₃]/([N₂][H₂])"
                     },
                     {
-                      "en": "[NH₃]²",
+                      "en": "[NH3]2",
                       "al": "[NH₃]²"
                     },
                     {
-                      "en": "[NH₃]²/([N₂][H₂]³)",
+                      "en": "[NH3]2/([N2][H2]3)",
                       "al": "[NH₃]²/([N₂][H₂]³)"
                     }
                   ],
@@ -15839,24 +15839,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Katalizatori:",
+                    "en": "A catalyst:",
                     "al": "Katalizatori:"
                   },
                   "options": [
                     {
-                      "en": "Përshpejton arritjen e ekuilibrit pa ndryshuar Kc",
+                      "en": "Speeds up equilibrium without changing Kc",
                       "al": "Përshpejton arritjen e ekuilibrit pa ndryshuar Kc"
                     },
                     {
-                      "en": "Ndryshon Kc",
+                      "en": "Changes Kc",
                       "al": "Ndryshon Kc"
                     },
                     {
-                      "en": "Rrit rendimentin e ekuilibrit",
+                      "en": "Increases equilibrium yield",
                       "al": "Rrit rendimentin e ekuilibrit"
                     },
                     {
-                      "en": "Vret reaksionin",
+                      "en": "Kills the reaction",
                       "al": "Vret reaksionin"
                     }
                   ],
@@ -15873,35 +15873,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_senior_m2_a.al.html",
-                "en": "materials/chemist_senior_m2_a.al.html"
+                "en": "materials/chemist_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_senior_m2_b.al.html",
-                "en": "materials/chemist_senior_m2_b.al.html"
+                "en": "materials/chemist_senior_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "ΔH < 0 do të thotë:",
+                    "en": "dH < 0 means:",
                     "al": "ΔH < 0 do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Endotermik",
+                      "en": "Endothermic",
                       "al": "Endotermik"
                     },
                     {
-                      "en": "Pa efekt",
+                      "en": "No effect",
                       "al": "Pa efekt"
                     },
                     {
-                      "en": "Gaz",
+                      "en": "Gas",
                       "al": "Gaz"
                     },
                     {
-                      "en": "Eksotermik",
+                      "en": "Exothermic",
                       "al": "Eksotermik"
                     }
                   ],
@@ -15910,12 +15910,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "100 g ujë, ΔT = 10 °C. q =",
+                    "en": "100 g water, dT = 10 C. q =",
                     "al": "100 g ujë, ΔT = 10 °C. q ="
                   },
                   "options": [
                     {
-                      "en": "4.180 J",
+                      "en": "4,180 J",
                       "al": "4.180 J"
                     },
                     {
@@ -15923,11 +15923,11 @@ export const FIELDS = [
                       "al": "418 J"
                     },
                     {
-                      "en": "41.800 J",
+                      "en": "41,800 J",
                       "al": "41.800 J"
                     },
                     {
-                      "en": "41,8 J",
+                      "en": "41.8 J",
                       "al": "41,8 J"
                     }
                   ],
@@ -15936,12 +15936,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "ΔH = −40 kJ, T = 300 K, ΔS = −0,1 kJ/K. ΔG =",
+                    "en": "dH = -40 kJ, T = 300 K, dS = -0.1 kJ/K. dG =",
                     "al": "ΔH = −40 kJ, T = 300 K, ΔS = −0,1 kJ/K. ΔG ="
                   },
                   "options": [
                     {
-                      "en": "−70 kJ",
+                      "en": "-70 kJ",
                       "al": "−70 kJ"
                     },
                     {
@@ -15949,11 +15949,11 @@ export const FIELDS = [
                       "al": "+10 kJ"
                     },
                     {
-                      "en": "−40 kJ",
+                      "en": "-40 kJ",
                       "al": "−40 kJ"
                     },
                     {
-                      "en": "−10 kJ",
+                      "en": "-10 kJ",
                       "al": "−10 kJ"
                     }
                   ],
@@ -15964,24 +15964,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Ligji i Hess:",
+                    "en": "Hess's law:",
                     "al": "Ligji i Hess:"
                   },
                   "options": [
                     {
-                      "en": "ΔH është prodhim",
+                      "en": "dH is a product",
                       "al": "ΔH është prodhim"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "ΔH s'ndryshon kurrë",
+                      "en": "dH never changes",
                       "al": "ΔH s'ndryshon kurrë"
                     },
                     {
-                      "en": "ΔH është shumë e hapave",
+                      "en": "dH is the sum of the steps",
                       "al": "ΔH është shumë e hapave"
                     }
                   ],
@@ -15990,7 +15990,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "ΔH₁ = −100, ΔH₂ = −50 kJ. Total:",
+                    "en": "dH1 = -100, dH2 = -50 kJ. Total:",
                     "al": "ΔH₁ = −100, ΔH₂ = −50 kJ. Total:"
                   },
                   "options": [
@@ -15999,15 +15999,15 @@ export const FIELDS = [
                       "al": "+50"
                     },
                     {
-                      "en": "−150",
+                      "en": "-150",
                       "al": "−150"
                     },
                     {
-                      "en": "−5.000",
+                      "en": "-5,000",
                       "al": "−5.000"
                     },
                     {
-                      "en": "−50",
+                      "en": "-50",
                       "al": "−50"
                     }
                   ],
@@ -16016,24 +16016,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "ΔG = −10 kJ tregon proces:",
+                    "en": "dG = -10 kJ indicates a process:",
                     "al": "ΔG = −10 kJ tregon proces:"
                   },
                   "options": [
                     {
-                      "en": "Jo spontan",
+                      "en": "Non-spontaneous",
                       "al": "Jo spontan"
                     },
                     {
-                      "en": "Në ekuilibër",
+                      "en": "At equilibrium",
                       "al": "Në ekuilibër"
                     },
                     {
-                      "en": "Spontan",
+                      "en": "Spontaneous",
                       "al": "Spontan"
                     },
                     {
-                      "en": "I pamundur",
+                      "en": "Impossible",
                       "al": "I pamundur"
                     }
                   ],
@@ -16050,11 +16050,11 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/chemist_senior_m3_a.al.html",
-                "en": "materials/chemist_senior_m3_a.al.html"
+                "en": "materials/chemist_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/chemist_senior_m3_b.al.html",
-                "en": "materials/chemist_senior_m3_b.al.html"
+                "en": "materials/chemist_senior_m3_b.en.html"
               }
             },
             "quiz": {
@@ -16087,7 +16087,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "k = 0,0693 s⁻¹, rend 1. t½ =",
+                    "en": "k = 0.0693 s^-1, first order. t1/2 =",
                     "al": "k = 0,0693 s⁻¹, rend 1. t½ ="
                   },
                   "options": [
@@ -16096,7 +16096,7 @@ export const FIELDS = [
                       "al": "1 s"
                     },
                     {
-                      "en": "0,0693 s",
+                      "en": "0.0693 s",
                       "al": "0,0693 s"
                     },
                     {
@@ -16113,7 +16113,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rend 1: pas 2 gjysmë-jetësh mbetet:",
+                    "en": "First order: after 2 half-lives, remaining:",
                     "al": "Rend 1: pas 2 gjysmë-jetësh mbetet:"
                   },
                   "options": [
@@ -16126,7 +16126,7 @@ export const FIELDS = [
                       "al": "50%"
                     },
                     {
-                      "en": "12,5%",
+                      "en": "12.5%",
                       "al": "12,5%"
                     },
                     {
@@ -16141,24 +16141,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Rritja e temperaturës zakonisht:",
+                    "en": "Raising temperature usually:",
                     "al": "Rritja e temperaturës zakonisht:"
                   },
                   "options": [
                     {
-                      "en": "Pa efekt",
+                      "en": "No effect",
                       "al": "Pa efekt"
                     },
                     {
-                      "en": "Ndalon",
+                      "en": "Stops it",
                       "al": "Ndalon"
                     },
                     {
-                      "en": "Rrit shpejtësinë",
+                      "en": "Increases the rate",
                       "al": "Rrit shpejtësinë"
                     },
                     {
-                      "en": "Ul shpejtësinë",
+                      "en": "Lowers the rate",
                       "al": "Ul shpejtësinë"
                     }
                   ],
@@ -16193,7 +16193,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Koncentrimi dyfishohet dhe shpejtësia katërfishohet. Rendi:",
+                    "en": "Concentration is doubled and the rate becomes four times. Order:",
                     "al": "Koncentrimi dyfishohet dhe shpejtësia katërfishohet. Rendi:"
                   },
                   "options": [
@@ -16240,18 +16240,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_fillestar_m1_a.al.html",
-                "en": "materials/electrical_fillestar_m1_a.al.html"
+                "en": "materials/electrical_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_fillestar_m1_b.al.html",
-                "en": "materials/electrical_fillestar_m1_b.al.html"
+                "en": "materials/electrical_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Në seri rryma është:",
+                    "en": "In series the current is:",
                     "al": "Në seri rryma është:"
                   },
                   "options": [
@@ -16260,15 +16260,15 @@ export const FIELDS = [
                       "al": "Zero"
                     },
                     {
-                      "en": "E ndryshme",
+                      "en": "Different",
                       "al": "E ndryshme"
                     },
                     {
-                      "en": "Pafund",
+                      "en": "Infinite",
                       "al": "Pafund"
                     },
                     {
-                      "en": "E njëjtë",
+                      "en": "The same",
                       "al": "E njëjtë"
                     }
                   ],
@@ -16277,24 +16277,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "100 Ω + 200 Ω në seri:",
+                    "en": "100 ohm + 200 ohm in series:",
                     "al": "100 Ω + 200 Ω në seri:"
                   },
                   "options": [
                     {
-                      "en": "66,7 Ω",
+                      "en": "66.7 ohm",
                       "al": "66,7 Ω"
                     },
                     {
-                      "en": "200 Ω",
+                      "en": "200 ohm",
                       "al": "200 Ω"
                     },
                     {
-                      "en": "100 Ω",
+                      "en": "100 ohm",
                       "al": "100 Ω"
                     },
                     {
-                      "en": "300 Ω",
+                      "en": "300 ohm",
                       "al": "300 Ω"
                     }
                   ],
@@ -16303,24 +16303,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "100 Ω ∥ 200 Ω ≈",
+                    "en": "100 ohm || 200 ohm ~",
                     "al": "100 Ω ∥ 200 Ω ≈"
                   },
                   "options": [
                     {
-                      "en": "50 Ω",
+                      "en": "50 ohm",
                       "al": "50 Ω"
                     },
                     {
-                      "en": "150 Ω",
+                      "en": "150 ohm",
                       "al": "150 Ω"
                     },
                     {
-                      "en": "300 Ω",
+                      "en": "300 ohm",
                       "al": "300 Ω"
                     },
                     {
-                      "en": "66,7 Ω",
+                      "en": "66.7 ohm",
                       "al": "66,7 Ω"
                     }
                   ],
@@ -16331,7 +16331,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Në paralel tensioni është:",
+                    "en": "In parallel the voltage is:",
                     "al": "Në paralel tensioni është:"
                   },
                   "options": [
@@ -16340,15 +16340,15 @@ export const FIELDS = [
                       "al": "Zero"
                     },
                     {
-                      "en": "I ndryshëm",
+                      "en": "Different",
                       "al": "I ndryshëm"
                     },
                     {
-                      "en": "I njëjtë",
+                      "en": "The same",
                       "al": "I njëjtë"
                     },
                     {
-                      "en": "Rryma",
+                      "en": "The current",
                       "al": "Rryma"
                     }
                   ],
@@ -16357,24 +16357,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "100 Ω ∥ 100 Ω:",
+                    "en": "100 ohm || 100 ohm:",
                     "al": "100 Ω ∥ 100 Ω:"
                   },
                   "options": [
                     {
-                      "en": "25 Ω",
+                      "en": "25 ohm",
                       "al": "25 Ω"
                     },
                     {
-                      "en": "100 Ω",
+                      "en": "100 ohm",
                       "al": "100 Ω"
                     },
                     {
-                      "en": "200 Ω",
+                      "en": "200 ohm",
                       "al": "200 Ω"
                     },
                     {
-                      "en": "50 Ω",
+                      "en": "50 ohm",
                       "al": "50 Ω"
                     }
                   ],
@@ -16383,12 +16383,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rezistenca ekuivalente në paralel është gjithmonë:",
+                    "en": "Equivalent parallel resistance is always:",
                     "al": "Rezistenca ekuivalente në paralel është gjithmonë:"
                   },
                   "options": [
                     {
-                      "en": "Më e madhe se më e madhja",
+                      "en": "Greater than the largest",
                       "al": "Më e madhe se më e madhja"
                     },
                     {
@@ -16396,11 +16396,11 @@ export const FIELDS = [
                       "al": "Zero"
                     },
                     {
-                      "en": "Më e vogël se më e vogla",
+                      "en": "Smaller than the smallest",
                       "al": "Më e vogël se më e vogla"
                     },
                     {
-                      "en": "Njëlloj",
+                      "en": "Equal",
                       "al": "Njëlloj"
                     }
                   ],
@@ -16417,18 +16417,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_fillestar_m2_a.al.html",
-                "en": "materials/electrical_fillestar_m2_a.al.html"
+                "en": "materials/electrical_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_fillestar_m2_b.al.html",
-                "en": "materials/electrical_fillestar_m2_b.al.html"
+                "en": "materials/electrical_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Ligji i Omit:",
+                    "en": "Ohm's law:",
                     "al": "Ligji i Omit:"
                   },
                   "options": [
@@ -16445,7 +16445,7 @@ export const FIELDS = [
                       "al": "V = R/I"
                     },
                     {
-                      "en": "V = I·R",
+                      "en": "V = I x R",
                       "al": "V = I·R"
                     }
                   ],
@@ -16454,12 +16454,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "12 V mbi 4 Ω. I =",
+                    "en": "12 V across 4 ohm. I =",
                     "al": "12 V mbi 4 Ω. I ="
                   },
                   "options": [
                     {
-                      "en": "0,33 A",
+                      "en": "0.33 A",
                       "al": "0,33 A"
                     },
                     {
@@ -16485,19 +16485,19 @@ export const FIELDS = [
                   },
                   "options": [
                     {
-                      "en": "27 Ω",
+                      "en": "27 ohm",
                       "al": "27 Ω"
                     },
                     {
-                      "en": "300 Ω",
+                      "en": "300 ohm",
                       "al": "300 Ω"
                     },
                     {
-                      "en": "3 kΩ",
+                      "en": "3 kohm",
                       "al": "3 kΩ"
                     },
                     {
-                      "en": "3 Ω",
+                      "en": "3 ohm",
                       "al": "3 Ω"
                     }
                   ],
@@ -16508,12 +16508,12 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Njësia e rezistencës:",
+                    "en": "The unit of resistance:",
                     "al": "Njësia e rezistencës:"
                   },
                   "options": [
                     {
-                      "en": "Om",
+                      "en": "Ohm",
                       "al": "Om"
                     },
                     {
@@ -16521,11 +16521,11 @@ export const FIELDS = [
                       "al": "Volt"
                     },
                     {
-                      "en": "Vat",
+                      "en": "Watt",
                       "al": "Vat"
                     },
                     {
-                      "en": "Amper",
+                      "en": "Ampere",
                       "al": "Amper"
                     }
                   ],
@@ -16534,7 +16534,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "I = 2 A, R = 5 Ω. V =",
+                    "en": "I = 2 A, R = 5 ohm. V =",
                     "al": "I = 2 A, R = 5 Ω. V ="
                   },
                   "options": [
@@ -16543,7 +16543,7 @@ export const FIELDS = [
                       "al": "7 V"
                     },
                     {
-                      "en": "2,5 V",
+                      "en": "2.5 V",
                       "al": "2,5 V"
                     },
                     {
@@ -16551,7 +16551,7 @@ export const FIELDS = [
                       "al": "10 V"
                     },
                     {
-                      "en": "0,4 V",
+                      "en": "0.4 V",
                       "al": "0,4 V"
                     }
                   ],
@@ -16560,24 +16560,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rritja e V (R konstante) e rrit:",
+                    "en": "Raising V (R constant) increases:",
                     "al": "Rritja e V (R konstante) e rrit:"
                   },
                   "options": [
                     {
-                      "en": "Rezistencën",
+                      "en": "Resistance",
                       "al": "Rezistencën"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Frekuencën",
+                      "en": "Frequency",
                       "al": "Frekuencën"
                     },
                     {
-                      "en": "Rrymën",
+                      "en": "Current",
                       "al": "Rrymën"
                     }
                   ],
@@ -16594,18 +16594,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_fillestar_m3_a.al.html",
-                "en": "materials/electrical_fillestar_m3_a.al.html"
+                "en": "materials/electrical_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_fillestar_m3_b.al.html",
-                "en": "materials/electrical_fillestar_m3_b.al.html"
+                "en": "materials/electrical_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "P = V·I. Me V=12 V, I=2 A:",
+                    "en": "P = V x I. With V=12 V, I=2 A:",
                     "al": "P = V·I. Me V=12 V, I=2 A:"
                   },
                   "options": [
@@ -16622,7 +16622,7 @@ export const FIELDS = [
                       "al": "24 W"
                     },
                     {
-                      "en": "0,16 W",
+                      "en": "0.16 W",
                       "al": "0,16 W"
                     }
                   ],
@@ -16631,7 +16631,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "P = V²/R me V=10, R=5:",
+                    "en": "P = V^2/R with V=10, R=5:",
                     "al": "P = V²/R me V=10, R=5:"
                   },
                   "options": [
@@ -16657,24 +16657,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rryma dyfishohet (R konstante). Fuqia:",
+                    "en": "Current doubles (R constant). Power:",
                     "al": "Rryma dyfishohet (R konstante). Fuqia:"
                   },
                   "options": [
                     {
-                      "en": "Gjysmohet",
+                      "en": "Halves",
                       "al": "Gjysmohet"
                     },
                     {
-                      "en": "Njëlloj",
+                      "en": "Same",
                       "al": "Njëlloj"
                     },
                     {
-                      "en": "Dyfishohet",
+                      "en": "Doubles",
                       "al": "Dyfishohet"
                     },
                     {
-                      "en": "Katërfishohet",
+                      "en": "Quadruples",
                       "al": "Katërfishohet"
                     }
                   ],
@@ -16685,16 +16685,16 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Njësia e fuqisë:",
+                    "en": "The unit of power:",
                     "al": "Njësia e fuqisë:"
                   },
                   "options": [
                     {
-                      "en": "Om",
+                      "en": "Ohm",
                       "al": "Om"
                     },
                     {
-                      "en": "Amper",
+                      "en": "Ampere",
                       "al": "Amper"
                     },
                     {
@@ -16702,7 +16702,7 @@ export const FIELDS = [
                       "al": "Volt"
                     },
                     {
-                      "en": "Vat",
+                      "en": "Watt",
                       "al": "Vat"
                     }
                   ],
@@ -16711,12 +16711,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "1000 W për 2 orë:",
+                    "en": "1000 W for 2 hours:",
                     "al": "1000 W për 2 orë:"
                   },
                   "options": [
                     {
-                      "en": "0,5 kWh",
+                      "en": "0.5 kWh",
                       "al": "0,5 kWh"
                     },
                     {
@@ -16737,7 +16737,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Orë e energjisë: 60 W për 5 orë =",
+                    "en": "Energy: 60 W for 5 hours =",
                     "al": "Orë e energjisë: 60 W për 5 orë ="
                   },
                   "options": [
@@ -16746,11 +16746,11 @@ export const FIELDS = [
                       "al": "12 kWh"
                     },
                     {
-                      "en": "0,012 kWh",
+                      "en": "0.012 kWh",
                       "al": "0,012 kWh"
                     },
                     {
-                      "en": "0,3 kWh",
+                      "en": "0.3 kWh",
                       "al": "0,3 kWh"
                     },
                     {
@@ -16775,35 +16775,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_mid_m1_a.al.html",
-                "en": "materials/electrical_mid_m1_a.al.html"
+                "en": "materials/electrical_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_mid_m1_b.al.html",
-                "en": "materials/electrical_mid_m1_b.al.html"
+                "en": "materials/electrical_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "KCL lidhet me:",
+                    "en": "KCL relates to:",
                     "al": "KCL lidhet me:"
                   },
                   "options": [
                     {
-                      "en": "Ngjyrën",
+                      "en": "Colour",
                       "al": "Ngjyrën"
                     },
                     {
-                      "en": "Lakun",
+                      "en": "The loop",
                       "al": "Lakun"
                     },
                     {
-                      "en": "Kohën",
+                      "en": "Time",
                       "al": "Kohën"
                     },
                     {
-                      "en": "Nyjet",
+                      "en": "Nodes",
                       "al": "Nyjet"
                     }
                   ],
@@ -16812,7 +16812,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "12 V, 100 Ω + 200 Ω seri. I =",
+                    "en": "12 V, 100 ohm + 200 ohm series. I =",
                     "al": "12 V, 100 Ω + 200 Ω seri. I ="
                   },
                   "options": [
@@ -16838,7 +16838,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Fuqia totale e qarkut më sipër:",
+                    "en": "Total power of the circuit above:",
                     "al": "Fuqia totale e qarkut më sipër:"
                   },
                   "options": [
@@ -16847,15 +16847,15 @@ export const FIELDS = [
                       "al": "48 W"
                     },
                     {
-                      "en": "0,48 W",
+                      "en": "0.48 W",
                       "al": "0,48 W"
                     },
                     {
-                      "en": "4,8 W",
+                      "en": "4.8 W",
                       "al": "4,8 W"
                     },
                     {
-                      "en": "0,048 W",
+                      "en": "0.048 W",
                       "al": "0,048 W"
                     }
                   ],
@@ -16866,24 +16866,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "KVL lidhet me:",
+                    "en": "KVL relates to:",
                     "al": "KVL lidhet me:"
                   },
                   "options": [
                     {
-                      "en": "Kohën",
+                      "en": "Time",
                       "al": "Kohën"
                     },
                     {
-                      "en": "Nyjen",
+                      "en": "The node",
                       "al": "Nyjen"
                     },
                     {
-                      "en": "Përcjellësin",
+                      "en": "The conductor",
                       "al": "Përcjellësin"
                     },
                     {
-                      "en": "Lakun",
+                      "en": "The loop",
                       "al": "Lakun"
                     }
                   ],
@@ -16892,7 +16892,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Tensioni mbi 200 Ω:",
+                    "en": "Voltage across 200 ohm:",
                     "al": "Tensioni mbi 200 Ω:"
                   },
                   "options": [
@@ -16918,7 +16918,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Në nyje hyjnë 5 A dhe 2 A; del një degë tjetër me:",
+                    "en": "5 A and 2 A enter a node; the other branch carries:",
                     "al": "Në nyje hyjnë 5 A dhe 2 A; del një degë tjetër me:"
                   },
                   "options": [
@@ -16952,18 +16952,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_mid_m2_a.al.html",
-                "en": "materials/electrical_mid_m2_a.al.html"
+                "en": "materials/electrical_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_mid_m2_b.al.html",
-                "en": "materials/electrical_mid_m2_b.al.html"
+                "en": "materials/electrical_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "R₁ = R₂, V_in = 10 V. V_out:",
+                    "en": "R1 = R2, V_in = 10 V. V_out:",
                     "al": "R₁ = R₂, V_in = 10 V. V_out:"
                   },
                   "options": [
@@ -16972,7 +16972,7 @@ export const FIELDS = [
                       "al": "10 V"
                     },
                     {
-                      "en": "2,5 V",
+                      "en": "2.5 V",
                       "al": "2,5 V"
                     },
                     {
@@ -16989,7 +16989,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "R₁ = 1 kΩ, R₂ = 3 kΩ, V_in = 12 V. V_out:",
+                    "en": "R1 = 1 kohm, R2 = 3 kohm, V_in = 12 V. V_out:",
                     "al": "R₁ = 1 kΩ, R₂ = 3 kΩ, V_in = 12 V. V_out:"
                   },
                   "options": [
@@ -17015,7 +17015,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Max fuqi në ngarkesë kur:",
+                    "en": "Max power in the load when:",
                     "al": "Max fuqi në ngarkesë kur:"
                   },
                   "options": [
@@ -17024,7 +17024,7 @@ export const FIELDS = [
                       "al": "R_L = R_Th"
                     },
                     {
-                      "en": "R_L = ∞",
+                      "en": "R_L = infinite",
                       "al": "R_L = ∞"
                     },
                     {
@@ -17043,24 +17043,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Ndarësi i tensionit përdoret për:",
+                    "en": "A voltage divider is used to:",
                     "al": "Ndarësi i tensionit përdoret për:"
                   },
                   "options": [
                     {
-                      "en": "Frekuencë",
+                      "en": "Frequency",
                       "al": "Frekuencë"
                     },
                     {
-                      "en": "Ngrohje",
+                      "en": "Heat",
                       "al": "Ngrohje"
                     },
                     {
-                      "en": "Rritje rryme",
+                      "en": "Increase current",
                       "al": "Rritje rryme"
                     },
                     {
-                      "en": "Ulje tensioni",
+                      "en": "Reduce voltage",
                       "al": "Ulje tensioni"
                     }
                   ],
@@ -17069,24 +17069,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Në Thevenin burimet e tensionit fiken duke i zëvendësuar me:",
+                    "en": "In Thevenin, voltage sources are turned off by replacing them with:",
                     "al": "Në Thevenin burimet e tensionit fiken duke i zëvendësuar me:"
                   },
                   "options": [
                     {
-                      "en": "Qark të hapur",
+                      "en": "An open circuit",
                       "al": "Qark të hapur"
                     },
                     {
-                      "en": "Rezistencë 1 MΩ",
+                      "en": "A 1 Mohm resistor",
                       "al": "Rezistencë 1 MΩ"
                     },
                     {
-                      "en": "Qark të shkurtër",
+                      "en": "A short circuit",
                       "al": "Qark të shkurtër"
                     },
                     {
-                      "en": "Kondensator",
+                      "en": "A capacitor",
                       "al": "Kondensator"
                     }
                   ],
@@ -17095,16 +17095,16 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Ndarësi i ngarkuar nga R_L të ulët:",
+                    "en": "A divider loaded by a low R_L:",
                     "al": "Ndarësi i ngarkuar nga R_L të ulët:"
                   },
                   "options": [
                     {
-                      "en": "Njëlloj",
+                      "en": "Same",
                       "al": "Njëlloj"
                     },
                     {
-                      "en": "Tensioni dalës bie",
+                      "en": "The output voltage drops",
                       "al": "Tensioni dalës bie"
                     },
                     {
@@ -17112,7 +17112,7 @@ export const FIELDS = [
                       "al": "Zero"
                     },
                     {
-                      "en": "Rritet",
+                      "en": "Increases",
                       "al": "Rritet"
                     }
                   ],
@@ -17129,35 +17129,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_mid_m3_a.al.html",
-                "en": "materials/electrical_mid_m3_a.al.html"
+                "en": "materials/electrical_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_mid_m3_b.al.html",
-                "en": "materials/electrical_mid_m3_b.al.html"
+                "en": "materials/electrical_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Filtri RC kalimtar-ulët kalon:",
+                    "en": "A low-pass RC filter passes:",
                     "al": "Filtri RC kalimtar-ulët kalon:"
                   },
                   "options": [
                     {
-                      "en": "Frekuenca të ulëta",
+                      "en": "Low frequencies",
                       "al": "Frekuenca të ulëta"
                     },
                     {
-                      "en": "Frekuenca të larta",
+                      "en": "High frequencies",
                       "al": "Frekuenca të larta"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Të gjitha njëlloj",
+                      "en": "All equally",
                       "al": "Të gjitha njëlloj"
                     }
                   ],
@@ -17166,7 +17166,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "R = 1 kΩ, C = 1 µF. f_c ≈",
+                    "en": "R = 1 kohm, C = 1 uF. f_c ~",
                     "al": "R = 1 kΩ, C = 1 µF. f_c ≈"
                   },
                   "options": [
@@ -17179,7 +17179,7 @@ export const FIELDS = [
                       "al": "16 Hz"
                     },
                     {
-                      "en": "1,59 kHz",
+                      "en": "1.59 kHz",
                       "al": "1,59 kHz"
                     },
                     {
@@ -17192,24 +17192,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dëshirojmë f_c = 1 kHz me C = 100 nF. R ≈",
+                    "en": "We want f_c = 1 kHz with C = 100 nF. R ~",
                     "al": "Dëshirojmë f_c = 1 kHz me C = 100 nF. R ≈"
                   },
                   "options": [
                     {
-                      "en": "16 kΩ",
+                      "en": "16 kohm",
                       "al": "16 kΩ"
                     },
                     {
-                      "en": "1,6 kΩ",
+                      "en": "1.6 kohm",
                       "al": "1,6 kΩ"
                     },
                     {
-                      "en": "160 Ω",
+                      "en": "160 ohm",
                       "al": "160 Ω"
                     },
                     {
-                      "en": "10 kΩ",
+                      "en": "10 kohm",
                       "al": "10 kΩ"
                     }
                   ],
@@ -17220,7 +17220,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "−3 dB korrespondon me amplitudë:",
+                    "en": "-3 dB corresponds to amplitude:",
                     "al": "−3 dB korrespondon me amplitudë:"
                   },
                   "options": [
@@ -17237,7 +17237,7 @@ export const FIELDS = [
                       "al": "10%"
                     },
                     {
-                      "en": "70,7%",
+                      "en": "70.7%",
                       "al": "70,7%"
                     }
                   ],
@@ -17246,24 +17246,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "R dyfishohet (C njëlloj). f_c:",
+                    "en": "R is doubled (C same). f_c:",
                     "al": "R dyfishohet (C njëlloj). f_c:"
                   },
                   "options": [
                     {
-                      "en": "Njëlloj",
+                      "en": "Same",
                       "al": "Njëlloj"
                     },
                     {
-                      "en": "Dyfishohet",
+                      "en": "Doubles",
                       "al": "Dyfishohet"
                     },
                     {
-                      "en": "Gjysmohet",
+                      "en": "Halves",
                       "al": "Gjysmohet"
                     },
                     {
-                      "en": "Katërfishohet",
+                      "en": "Quadruples",
                       "al": "Katërfishohet"
                     }
                   ],
@@ -17272,24 +17272,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Në filtër kalimtar-lartë një sinjal 50 Hz me f_c = 1 kHz:",
+                    "en": "In a high-pass filter a 50 Hz signal with f_c = 1 kHz:",
                     "al": "Në filtër kalimtar-lartë një sinjal 50 Hz me f_c = 1 kHz:"
                   },
                   "options": [
                     {
-                      "en": "Pa ndryshim",
+                      "en": "No change",
                       "al": "Pa ndryshim"
                     },
                     {
-                      "en": "Kalon plotësisht",
+                      "en": "Fully passes",
                       "al": "Kalon plotësisht"
                     },
                     {
-                      "en": "Dyfishohet",
+                      "en": "Doubles",
                       "al": "Dyfishohet"
                     },
                     {
-                      "en": "Dobësohet fort",
+                      "en": "Strongly attenuated",
                       "al": "Dobësohet fort"
                     }
                   ],
@@ -17310,11 +17310,11 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_senior_m1_a.al.html",
-                "en": "materials/electrical_senior_m1_a.al.html"
+                "en": "materials/electrical_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_senior_m1_b.al.html",
-                "en": "materials/electrical_senior_m1_b.al.html"
+                "en": "materials/electrical_senior_m1_b.en.html"
               }
             },
             "quiz": {
@@ -17330,7 +17330,7 @@ export const FIELDS = [
                       "al": "2 s"
                     },
                     {
-                      "en": "0,5 s",
+                      "en": "0.5 s",
                       "al": "0,5 s"
                     },
                     {
@@ -17347,7 +17347,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "V_pik = 10 V. V_rms ≈",
+                    "en": "V_peak = 10 V. V_rms ~",
                     "al": "V_pik = 10 V. V_rms ≈"
                   },
                   "options": [
@@ -17356,7 +17356,7 @@ export const FIELDS = [
                       "al": "5 V"
                     },
                     {
-                      "en": "14,1 V",
+                      "en": "14.1 V",
                       "al": "14,1 V"
                     },
                     {
@@ -17364,7 +17364,7 @@ export const FIELDS = [
                       "al": "10 V"
                     },
                     {
-                      "en": "7,07 V",
+                      "en": "7.07 V",
                       "al": "7,07 V"
                     }
                   ],
@@ -17373,7 +17373,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Sinjal deri 4 kHz. Frekuenca minimale e kampionimit:",
+                    "en": "A signal up to 4 kHz. Minimum sampling frequency:",
                     "al": "Sinjal deri 4 kHz. Frekuenca minimale e kampionimit:"
                   },
                   "options": [
@@ -17410,11 +17410,11 @@ export const FIELDS = [
                       "al": "f_s < f_max"
                     },
                     {
-                      "en": "Pa lidhje",
+                      "en": "Unrelated",
                       "al": "Pa lidhje"
                     },
                     {
-                      "en": "f_s > 2·f_max",
+                      "en": "f_s > 2 x f_max",
                       "al": "f_s > 2·f_max"
                     },
                     {
@@ -17427,7 +17427,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Raport tensioni 10× në dB:",
+                    "en": "A voltage ratio of 10x in dB:",
                     "al": "Raport tensioni 10× në dB:"
                   },
                   "options": [
@@ -17453,16 +17453,16 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kampionim nën Nyquist shkakton:",
+                    "en": "Sampling below Nyquist causes:",
                     "al": "Kampionim nën Nyquist shkakton:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Amplifikim",
+                      "en": "Amplification",
                       "al": "Amplifikim"
                     },
                     {
@@ -17470,7 +17470,7 @@ export const FIELDS = [
                       "al": "Aliasing"
                     },
                     {
-                      "en": "Ftohje",
+                      "en": "Cooling",
                       "al": "Ftohje"
                     }
                   ],
@@ -17487,18 +17487,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_senior_m2_a.al.html",
-                "en": "materials/electrical_senior_m2_a.al.html"
+                "en": "materials/electrical_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_senior_m2_b.al.html",
-                "en": "materials/electrical_senior_m2_b.al.html"
+                "en": "materials/electrical_senior_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "τ për R=1 kΩ, C=1 µF:",
+                    "en": "tau for R=1 kohm, C=1 uF:",
                     "al": "τ për R=1 kΩ, C=1 µF:"
                   },
                   "options": [
@@ -17511,7 +17511,7 @@ export const FIELDS = [
                       "al": "1 ks"
                     },
                     {
-                      "en": "1 µs",
+                      "en": "1 us",
                       "al": "1 µs"
                     },
                     {
@@ -17524,7 +17524,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pas 1τ arrihet:",
+                    "en": "After 1 tau it reaches:",
                     "al": "Pas 1τ arrihet:"
                   },
                   "options": [
@@ -17537,11 +17537,11 @@ export const FIELDS = [
                       "al": "10%"
                     },
                     {
-                      "en": "36,8%",
+                      "en": "36.8%",
                       "al": "36,8%"
                     },
                     {
-                      "en": "63,2%",
+                      "en": "63.2%",
                       "al": "63,2%"
                     }
                   ],
@@ -17550,24 +17550,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Reagimi negativ:",
+                    "en": "Negative feedback:",
                     "al": "Reagimi negativ:"
                   },
                   "options": [
                     {
-                      "en": "E bën sistemin pa kontroll",
+                      "en": "Makes the system uncontrollable",
                       "al": "E bën sistemin pa kontroll"
                     },
                     {
-                      "en": "Rrit shtrembërimin",
+                      "en": "Increases distortion",
                       "al": "Rrit shtrembërimin"
                     },
                     {
-                      "en": "Ul kostot gjithmonë",
+                      "en": "Always lowers cost",
                       "al": "Ul kostot gjithmonë"
                     },
                     {
-                      "en": "Rrit stabilitetin",
+                      "en": "Increases stability",
                       "al": "Rrit stabilitetin"
                     }
                   ],
@@ -17578,7 +17578,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Pas 5τ arrihet rreth:",
+                    "en": "After 5 tau it reaches about:",
                     "al": "Pas 5τ arrihet rreth:"
                   },
                   "options": [
@@ -17587,7 +17587,7 @@ export const FIELDS = [
                       "al": "50%"
                     },
                     {
-                      "en": "99,3%",
+                      "en": "99.3%",
                       "al": "99,3%"
                     },
                     {
@@ -17604,7 +17604,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "A = 1000, β = 0,1. A_cl =",
+                    "en": "A = 1000, beta = 0.1. A_cl =",
                     "al": "A = 1000, β = 0,1. A_cl ="
                   },
                   "options": [
@@ -17613,7 +17613,7 @@ export const FIELDS = [
                       "al": "100"
                     },
                     {
-                      "en": "≈ 9,9",
+                      "en": "~ 9.9",
                       "al": "≈ 9,9"
                     },
                     {
@@ -17621,7 +17621,7 @@ export const FIELDS = [
                       "al": "10"
                     },
                     {
-                      "en": "0,99",
+                      "en": "0.99",
                       "al": "0,99"
                     }
                   ],
@@ -17630,7 +17630,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "A → ∞ me β = 0,1: A_cl →",
+                    "en": "A -> infinite with beta = 0.1: A_cl ->",
                     "al": "A → ∞ me β = 0,1: A_cl →"
                   },
                   "options": [
@@ -17647,7 +17647,7 @@ export const FIELDS = [
                       "al": "1"
                     },
                     {
-                      "en": "∞",
+                      "en": "infinite",
                       "al": "∞"
                     }
                   ],
@@ -17664,23 +17664,23 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/electrical_senior_m3_a.al.html",
-                "en": "materials/electrical_senior_m3_a.al.html"
+                "en": "materials/electrical_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/electrical_senior_m3_b.al.html",
-                "en": "materials/electrical_senior_m3_b.al.html"
+                "en": "materials/electrical_senior_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Amplifikator invertues: forca:",
+                    "en": "Inverting amplifier gain:",
                     "al": "Amplifikator invertues: forca:"
                   },
                   "options": [
                     {
-                      "en": "−R_f/R_in",
+                      "en": "-R_f/R_in",
                       "al": "−R_f/R_in"
                     },
                     {
@@ -17688,7 +17688,7 @@ export const FIELDS = [
                       "al": "1+R_f/R_in"
                     },
                     {
-                      "en": "R_f·R_in",
+                      "en": "R_f x R_in",
                       "al": "R_f·R_in"
                     },
                     {
@@ -17701,7 +17701,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "R_f = 10 kΩ, R_in = 1 kΩ invertues:",
+                    "en": "R_f = 10 kohm, R_in = 1 kohm inverting:",
                     "al": "R_f = 10 kΩ, R_in = 1 kΩ invertues:"
                   },
                   "options": [
@@ -17710,15 +17710,15 @@ export const FIELDS = [
                       "al": "+10"
                     },
                     {
-                      "en": "−10",
+                      "en": "-10",
                       "al": "−10"
                     },
                     {
-                      "en": "−11",
+                      "en": "-11",
                       "al": "−11"
                     },
                     {
-                      "en": "−0,1",
+                      "en": "-0.1",
                       "al": "−0,1"
                     }
                   ],
@@ -17727,7 +17727,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Hyrje 2 V, A_v = −10, furnizim ±12 V. Dalja:",
+                    "en": "Input 2 V, A_v = -10, supply +/-12 V. Output:",
                     "al": "Hyrje 2 V, A_v = −10, furnizim ±12 V. Dalja:"
                   },
                   "options": [
@@ -17740,11 +17740,11 @@ export const FIELDS = [
                       "al": "0"
                     },
                     {
-                      "en": "−20 V (brenda)",
+                      "en": "-20 V (within)",
                       "al": "−20 V (brenda)"
                     },
                     {
-                      "en": "−12 V ngopur",
+                      "en": "-12 V saturated",
                       "al": "−12 V ngopur"
                     }
                   ],
@@ -17755,12 +17755,12 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Josinvertues:",
+                    "en": "Non-inverting:",
                     "al": "Josinvertues:"
                   },
                   "options": [
                     {
-                      "en": "−R_f/R_in",
+                      "en": "-R_f/R_in",
                       "al": "−R_f/R_in"
                     },
                     {
@@ -17781,12 +17781,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "R_f = 10 kΩ, R_in = 1 kΩ josinvertues:",
+                    "en": "R_f = 10 kohm, R_in = 1 kohm non-inverting:",
                     "al": "R_f = 10 kΩ, R_in = 1 kΩ josinvertues:"
                   },
                   "options": [
                     {
-                      "en": "−10",
+                      "en": "-10",
                       "al": "−10"
                     },
                     {
@@ -17807,24 +17807,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Në op-amp ideal me reagim negativ tensioni diferencial i hyrjes është:",
+                    "en": "In an ideal op-amp with negative feedback the differential input voltage is:",
                     "al": "Në op-amp ideal me reagim negativ tensioni diferencial i hyrjes është:"
                   },
                   "options": [
                     {
-                      "en": "Shumë i lartë",
+                      "en": "Very high",
                       "al": "Shumë i lartë"
                     },
                     {
-                      "en": "Gjithmonë 1 V",
+                      "en": "Always 1 V",
                       "al": "Gjithmonë 1 V"
                     },
                     {
-                      "en": "Pafund",
+                      "en": "Infinite",
                       "al": "Pafund"
                     },
                     {
-                      "en": "≈ 0",
+                      "en": "~ 0",
                       "al": "≈ 0"
                     }
                   ],
@@ -17854,18 +17854,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_fillestar_m1_a.al.html",
-                "en": "materials/cook_fillestar_m1_a.al.html"
+                "en": "materials/cook_fillestar_m1_a.en.html"
               },
               "B": {
                 "al": "materials/cook_fillestar_m1_b.al.html",
-                "en": "materials/cook_fillestar_m1_b.al.html"
+                "en": "materials/cook_fillestar_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Sa vezë në recetë?",
+                    "en": "How many eggs in the recipe?",
                     "al": "Sa vezë në recetë?"
                   },
                   "options": [
@@ -17891,12 +17891,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Zjarri për omëletë:",
+                    "en": "The heat for an omelette:",
                     "al": "Zjarri për omëletë:"
                   },
                   "options": [
                     {
-                      "en": "Mesatar",
+                      "en": "Medium",
                       "al": "Mesatar"
                     },
                     {
@@ -17904,11 +17904,11 @@ export const FIELDS = [
                       "al": "Zero"
                     },
                     {
-                      "en": "I ulët i pafund",
+                      "en": "Low forever",
                       "al": "I ulët i pafund"
                     },
                     {
-                      "en": "Shumë i lartë",
+                      "en": "Very high",
                       "al": "Shumë i lartë"
                     }
                   ],
@@ -17917,7 +17917,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Recetën për 4 persona (nga 1): vezë totale:",
+                    "en": "Recipe for 4 people (from 1): total eggs:",
                     "al": "Recetën për 4 persona (nga 1): vezë totale:"
                   },
                   "options": [
@@ -17945,24 +17945,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Hapi i parë:",
+                    "en": "The first step:",
                     "al": "Hapi i parë:"
                   },
                   "options": [
                     {
-                      "en": "Palosja",
+                      "en": "Folding",
                       "al": "Palosja"
                     },
                     {
-                      "en": "Rrahja e vezëve",
+                      "en": "Beating the eggs",
                       "al": "Rrahja e vezëve"
                     },
                     {
-                      "en": "Servirje",
+                      "en": "Serving",
                       "al": "Servirje"
                     },
                     {
-                      "en": "Larja e tiganit",
+                      "en": "Washing the pan",
                       "al": "Larja e tiganit"
                     }
                   ],
@@ -17971,7 +17971,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Koha e gatimit:",
+                    "en": "Cooking time:",
                     "al": "Koha e gatimit:"
                   },
                   "options": [
@@ -17980,7 +17980,7 @@ export const FIELDS = [
                       "al": "20 min"
                     },
                     {
-                      "en": "1 orë",
+                      "en": "1 hour",
                       "al": "1 orë"
                     },
                     {
@@ -17988,7 +17988,7 @@ export const FIELDS = [
                       "al": "10 s"
                     },
                     {
-                      "en": "2–3 min",
+                      "en": "2-3 min",
                       "al": "2–3 min"
                     }
                   ],
@@ -17997,7 +17997,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Gjalpi për 4 persona:",
+                    "en": "Butter for 4 people:",
                     "al": "Gjalpi për 4 persona:"
                   },
                   "options": [
@@ -18031,35 +18031,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_fillestar_m2_a.al.html",
-                "en": "materials/cook_fillestar_m2_a.al.html"
+                "en": "materials/cook_fillestar_m2_a.en.html"
               },
               "B": {
                 "al": "materials/cook_fillestar_m2_b.al.html",
-                "en": "materials/cook_fillestar_m2_b.al.html"
+                "en": "materials/cook_fillestar_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Temperatura e brendshme e shpendëve:",
+                    "en": "Internal temperature of poultry:",
                     "al": "Temperatura e brendshme e shpendëve:"
                   },
                   "options": [
                     {
-                      "en": "50 °C",
+                      "en": "50 C",
                       "al": "50 °C"
                     },
                     {
-                      "en": "40 °C",
+                      "en": "40 C",
                       "al": "40 °C"
                     },
                     {
-                      "en": "100 °C",
+                      "en": "100 C",
                       "al": "100 °C"
                     },
                     {
-                      "en": "74 °C",
+                      "en": "74 C",
                       "al": "74 °C"
                     }
                   ],
@@ -18068,24 +18068,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Ushqimi i ftohtë ruhet ≤",
+                    "en": "Cold food is kept below:",
                     "al": "Ushqimi i ftohtë ruhet ≤"
                   },
                   "options": [
                     {
-                      "en": "5 °C",
+                      "en": "5 C",
                       "al": "5 °C"
                     },
                     {
-                      "en": "15 °C",
+                      "en": "15 C",
                       "al": "15 °C"
                     },
                     {
-                      "en": "30 °C",
+                      "en": "30 C",
                       "al": "30 °C"
                     },
                     {
-                      "en": "20 °C",
+                      "en": "20 C",
                       "al": "20 °C"
                     }
                   ],
@@ -18094,24 +18094,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Ushqim në 25 °C për 4 orë:",
+                    "en": "Food at 25 C for 4 hours:",
                     "al": "Ushqim në 25 °C për 4 orë:"
                   },
                   "options": [
                     {
-                      "en": "I fortë",
+                      "en": "Strong",
                       "al": "I fortë"
                     },
                     {
-                      "en": "S'ndikon",
+                      "en": "No effect",
                       "al": "S'ndikon"
                     },
                     {
-                      "en": "Rrezik rritje bakterore",
+                      "en": "Risk of bacterial growth",
                       "al": "Rrezik rritje bakterore"
                     },
                     {
-                      "en": "I sigurt",
+                      "en": "Safe",
                       "al": "I sigurt"
                     }
                   ],
@@ -18122,24 +18122,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Zona e rrezikut për bakteret:",
+                    "en": "The bacterial danger zone:",
                     "al": "Zona e rrezikut për bakteret:"
                   },
                   "options": [
                     {
-                      "en": "5–60 °C",
+                      "en": "5-60 C",
                       "al": "5–60 °C"
                     },
                     {
-                      "en": "80–100 °C",
+                      "en": "80-100 C",
                       "al": "80–100 °C"
                     },
                     {
-                      "en": "−20–0 °C",
+                      "en": "-20-0 C",
                       "al": "−20–0 °C"
                     },
                     {
-                      "en": "100–200 °C",
+                      "en": "100-200 C",
                       "al": "100–200 °C"
                     }
                   ],
@@ -18148,24 +18148,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dërrasa e përbashkët mish i papjekur + sallatë:",
+                    "en": "Shared board raw meat + salad:",
                     "al": "Dërrasa e përbashkët mish i papjekur + sallatë:"
                   },
                   "options": [
                     {
-                      "en": "Kryqëzim kontaminimi",
+                      "en": "Cross-contamination",
                       "al": "Kryqëzim kontaminimi"
                     },
                     {
-                      "en": "S'ka rëndësi",
+                      "en": "No matter",
                       "al": "S'ka rëndësi"
                     },
                     {
-                      "en": "Në rregull",
+                      "en": "Fine",
                       "al": "Në rregull"
                     },
                     {
-                      "en": "Më e shpejtë",
+                      "en": "Faster",
                       "al": "Më e shpejtë"
                     }
                   ],
@@ -18174,24 +18174,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse thermometer ushqimi?",
+                    "en": "Why a food thermometer?",
                     "al": "Pse thermometer ushqimi?"
                   },
                   "options": [
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Dekorim",
+                      "en": "Decoration",
                       "al": "Dekorim"
                     },
                     {
-                      "en": "Siguron temperaturë të sigurt",
+                      "en": "Ensures a safe temperature",
                       "al": "Siguron temperaturë të sigurt"
                     },
                     {
-                      "en": "Vetëm për peshk",
+                      "en": "Only for fish",
                       "al": "Vetëm për peshk"
                     }
                   ],
@@ -18208,35 +18208,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_fillestar_m3_a.al.html",
-                "en": "materials/cook_fillestar_m3_a.al.html"
+                "en": "materials/cook_fillestar_m3_a.en.html"
               },
               "B": {
                 "al": "materials/cook_fillestar_m3_b.al.html",
-                "en": "materials/cook_fillestar_m3_b.al.html"
+                "en": "materials/cook_fillestar_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Mise en place do të thotë:",
+                    "en": "Mise en place means:",
                     "al": "Mise en place do të thotë:"
                   },
                   "options": [
                     {
-                      "en": "Gatim i shpejtë",
+                      "en": "Fast cooking",
                       "al": "Gatim i shpejtë"
                     },
                     {
-                      "en": "Pastrim pas",
+                      "en": "Cleaning after",
                       "al": "Pastrim pas"
                     },
                     {
-                      "en": "Servirje",
+                      "en": "Serving",
                       "al": "Servirje"
                     },
                     {
-                      "en": "Gjithçka në vend para gatimit",
+                      "en": "Everything in place before cooking",
                       "al": "Gjithçka në vend para gatimit"
                     }
                   ],
@@ -18250,19 +18250,19 @@ export const FIELDS = [
                   },
                   "options": [
                     {
-                      "en": "Shkopinj të hollë",
+                      "en": "Thin sticks",
                       "al": "Shkopinj të hollë"
                     },
                     {
-                      "en": "Pure",
+                      "en": "Puree",
                       "al": "Pure"
                     },
                     {
-                      "en": "Feta të rrumbullakëta",
+                      "en": "Round slices",
                       "al": "Feta të rrumbullakëta"
                     },
                     {
-                      "en": "Kubikë të vegjël",
+                      "en": "Small cubes",
                       "al": "Kubikë të vegjël"
                     }
                   ],
@@ -18271,24 +18271,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse 'kthetra' (claw grip)?",
+                    "en": "Why the claw grip?",
                     "al": "Pse 'kthetra' (claw grip)?"
                   },
                   "options": [
                     {
-                      "en": "Rrit shpejtësinë vetëm",
+                      "en": "Only speed",
                       "al": "Rrit shpejtësinë vetëm"
                     },
                     {
-                      "en": "Dekor",
+                      "en": "Decoration",
                       "al": "Dekor"
                     },
                     {
-                      "en": "Mbron gishtat",
+                      "en": "Protects the fingers",
                       "al": "Mbron gishtat"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     }
                   ],
@@ -18299,24 +18299,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Thika e mprehtë:",
+                    "en": "A sharp knife:",
                     "al": "Thika e mprehtë:"
                   },
                   "options": [
                     {
-                      "en": "S'ka ndryshim",
+                      "en": "No difference",
                       "al": "S'ka ndryshim"
                     },
                     {
-                      "en": "Më e sigurt",
+                      "en": "Safer",
                       "al": "Më e sigurt"
                     },
                     {
-                      "en": "Më e shtrenjtë",
+                      "en": "More expensive",
                       "al": "Më e shtrenjtë"
                     },
                     {
-                      "en": "Më e rrezikshme",
+                      "en": "More dangerous",
                       "al": "Më e rrezikshme"
                     }
                   ],
@@ -18330,19 +18330,19 @@ export const FIELDS = [
                   },
                   "options": [
                     {
-                      "en": "Pure",
+                      "en": "Puree",
                       "al": "Pure"
                     },
                     {
-                      "en": "Feta të gjata",
+                      "en": "Long slices",
                       "al": "Feta të gjata"
                     },
                     {
-                      "en": "Shkopinj",
+                      "en": "Sticks",
                       "al": "Shkopinj"
                     },
                     {
-                      "en": "Kubikë shumë të vegjël",
+                      "en": "Very small cubes",
                       "al": "Kubikë shumë të vegjël"
                     }
                   ],
@@ -18351,24 +18351,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Mise en place para zjarrit shmang:",
+                    "en": "Mise en place before the heat avoids:",
                     "al": "Mise en place para zjarrit shmang:"
                   },
                   "options": [
                     {
-                      "en": "Ujin",
+                      "en": "Water",
                       "al": "Ujin"
                     },
                     {
-                      "en": "Larjen e pjatave",
+                      "en": "Washing dishes",
                       "al": "Larjen e pjatave"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Mungesën e përbërësve gjatë gatimit",
+                      "en": "Missing ingredients while cooking",
                       "al": "Mungesën e përbërësve gjatë gatimit"
                     }
                   ],
@@ -18389,35 +18389,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_mid_m1_a.al.html",
-                "en": "materials/cook_mid_m1_a.al.html"
+                "en": "materials/cook_mid_m1_a.en.html"
               },
               "B": {
                 "al": "materials/cook_mid_m1_b.al.html",
-                "en": "materials/cook_mid_m1_b.al.html"
+                "en": "materials/cook_mid_m1_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Përpara çdo gjëje vihet:",
+                    "en": "Before anything else:",
                     "al": "Përpara çdo gjëje vihet:"
                   },
                   "options": [
                     {
-                      "en": "Salca",
+                      "en": "The sauce",
                       "al": "Salca"
                     },
                     {
-                      "en": "Pjatat",
+                      "en": "The plates",
                       "al": "Pjatat"
                     },
                     {
-                      "en": "Ujin në zjarr",
+                      "en": "The water on the heat",
                       "al": "Ujin në zjarr"
                     },
                     {
-                      "en": "Servirja",
+                      "en": "Serving",
                       "al": "Servirja"
                     }
                   ],
@@ -18426,7 +18426,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kripa për 3 L ujë (10 g/L):",
+                    "en": "Salt for 3 L water (10 g/L):",
                     "al": "Kripa për 3 L ujë (10 g/L):"
                   },
                   "options": [
@@ -18452,24 +18452,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Salca kërkon 15 min, uji 10 min për të vluar, makarona 9 min. Fillo më parë:",
+                    "en": "Sauce 15 min, water 10 min to boil, pasta 9 min. Start first:",
                     "al": "Salca kërkon 15 min, uji 10 min për të vluar, makarona 9 min. Fillo më parë:"
                   },
                   "options": [
                     {
-                      "en": "Makaronat",
+                      "en": "The pasta",
                       "al": "Makaronat"
                     },
                     {
-                      "en": "Pjatat",
+                      "en": "The plates",
                       "al": "Pjatat"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Salcën + ujin njëkohësisht",
+                      "en": "The sauce + water together",
                       "al": "Salcën + ujin njëkohësisht"
                     }
                   ],
@@ -18480,7 +18480,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Makarona al dente:",
+                    "en": "Pasta al dente:",
                     "al": "Makarona al dente:"
                   },
                   "options": [
@@ -18493,7 +18493,7 @@ export const FIELDS = [
                       "al": "40 min"
                     },
                     {
-                      "en": "8–10 min",
+                      "en": "8-10 min",
                       "al": "8–10 min"
                     },
                     {
@@ -18506,12 +18506,12 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Për 300 g makarona ujë:",
+                    "en": "For 300 g pasta, water:",
                     "al": "Për 300 g makarona ujë:"
                   },
                   "options": [
                     {
-                      "en": "0,3 L",
+                      "en": "0.3 L",
                       "al": "0,3 L"
                     },
                     {
@@ -18532,24 +18532,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse paralelizim?",
+                    "en": "Why parallelise?",
                     "al": "Pse paralelizim?"
                   },
                   "options": [
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Për kosto vetëm",
+                      "en": "Only for cost",
                       "al": "Për kosto vetëm"
                     },
                     {
-                      "en": "Reduktim i kohës totale",
+                      "en": "Reduces total time",
                       "al": "Reduktim i kohës totale"
                     },
                     {
-                      "en": "Për dekor",
+                      "en": "For decoration",
                       "al": "Për dekor"
                     }
                   ],
@@ -18566,35 +18566,35 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_mid_m2_a.al.html",
-                "en": "materials/cook_mid_m2_a.al.html"
+                "en": "materials/cook_mid_m2_a.en.html"
               },
               "B": {
                 "al": "materials/cook_mid_m2_b.al.html",
-                "en": "materials/cook_mid_m2_b.al.html"
+                "en": "materials/cook_mid_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Detyrat më të gjata fillohen:",
+                    "en": "The longest tasks start:",
                     "al": "Detyrat më të gjata fillohen:"
                   },
                   "options": [
                     {
-                      "en": "Të parat",
+                      "en": "First",
                       "al": "Të parat"
                     },
                     {
-                      "en": "Të fundit",
+                      "en": "Last",
                       "al": "Të fundit"
                     },
                     {
-                      "en": "Asnjëherë",
+                      "en": "Never",
                       "al": "Asnjëherë"
                     },
                     {
-                      "en": "Rastësisht",
+                      "en": "Randomly",
                       "al": "Rastësisht"
                     }
                   ],
@@ -18603,7 +18603,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Detyra X zgjat 30 min, Y zgjat 20 min, të pavarura, dy kuzhinierë. Koha minimale totale:",
+                    "en": "Task X 30 min, Y 20 min, independent, two cooks. Minimum total time:",
                     "al": "Detyra X zgjat 30 min, Y zgjat 20 min, të pavarura, dy kuzhinierë. Koha minimale totale:"
                   },
                   "options": [
@@ -18629,24 +18629,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Rruga kritike zgjatet 5 min. Koha totale:",
+                    "en": "The critical path is extended by 5 min. Total time:",
                     "al": "Rruga kritike zgjatet 5 min. Koha totale:"
                   },
                   "options": [
                     {
-                      "en": "Mbetet njëlloj",
+                      "en": "Same",
                       "al": "Mbetet njëlloj"
                     },
                     {
-                      "en": "Dyfishohet",
+                      "en": "Doubles",
                       "al": "Dyfishohet"
                     },
                     {
-                      "en": "Zgjatet 5 min",
+                      "en": "Extended by 5 min",
                       "al": "Zgjatet 5 min"
                     },
                     {
-                      "en": "Zvogëlohet",
+                      "en": "Reduced",
                       "al": "Zvogëlohet"
                     }
                   ],
@@ -18657,24 +18657,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Rruga kritike:",
+                    "en": "Critical path:",
                     "al": "Rruga kritike:"
                   },
                   "options": [
                     {
-                      "en": "Më e shkurtra",
+                      "en": "The shortest",
                       "al": "Më e shkurtra"
                     },
                     {
-                      "en": "Sekuenca më e gjatë që përcakton kohën totale",
+                      "en": "The longest sequence determining the total time",
                       "al": "Sekuenca më e gjatë që përcakton kohën totale"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Më e lirë",
+                      "en": "The cheapest",
                       "al": "Më e lirë"
                     }
                   ],
@@ -18683,7 +18683,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Buffer 10% mbi 40 min:",
+                    "en": "Buffer 10% over 40 min:",
                     "al": "Buffer 10% mbi 40 min:"
                   },
                   "options": [
@@ -18709,24 +18709,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse buffer?",
+                    "en": "Why a buffer?",
                     "al": "Pse buffer?"
                   },
                   "options": [
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "Rezervë për vonesa",
+                      "en": "Reserve for delays",
                       "al": "Rezervë për vonesa"
                     },
                     {
-                      "en": "Dekor",
+                      "en": "Decoration",
                       "al": "Dekor"
                     }
                   ],
@@ -18743,18 +18743,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_mid_m3_a.al.html",
-                "en": "materials/cook_mid_m3_a.al.html"
+                "en": "materials/cook_mid_m3_a.en.html"
               },
               "B": {
                 "al": "materials/cook_mid_m3_b.al.html",
-                "en": "materials/cook_mid_m3_b.al.html"
+                "en": "materials/cook_mid_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Receta për 4 → 10 porcione. Faktori:",
+                    "en": "Recipe for 4 -> 10 portions. Factor:",
                     "al": "Receta për 4 → 10 porcione. Faktori:"
                   },
                   "options": [
@@ -18763,7 +18763,7 @@ export const FIELDS = [
                       "al": "6"
                     },
                     {
-                      "en": "0,4",
+                      "en": "0.4",
                       "al": "0,4"
                     },
                     {
@@ -18771,7 +18771,7 @@ export const FIELDS = [
                       "al": "40"
                     },
                     {
-                      "en": "2,5",
+                      "en": "2.5",
                       "al": "2,5"
                     }
                   ],
@@ -18780,24 +18780,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kosto totale 24 €, 8 porcione. Kosto/porcion:",
+                    "en": "Total cost 24 EUR, 8 portions. Cost/portion:",
                     "al": "Kosto totale 24 €, 8 porcione. Kosto/porcion:"
                   },
                   "options": [
                     {
-                      "en": "8 €",
+                      "en": "8 EUR",
                       "al": "8 €"
                     },
                     {
-                      "en": "4 €",
+                      "en": "4 EUR",
                       "al": "4 €"
                     },
                     {
-                      "en": "3 €",
+                      "en": "3 EUR",
                       "al": "3 €"
                     },
                     {
-                      "en": "2 €",
+                      "en": "2 EUR",
                       "al": "2 €"
                     }
                   ],
@@ -18806,24 +18806,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse erëzat nuk shkallëzohen çdo herë linearisht?",
+                    "en": "Why are spices not always scaled linearly?",
                     "al": "Pse erëzat nuk shkallëzohen çdo herë linearisht?"
                   },
                   "options": [
                     {
-                      "en": "Shija ndryshon jo lineare",
+                      "en": "Flavour changes non-linearly",
                       "al": "Shija ndryshon jo lineare"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Janë të ndaluara",
+                      "en": "They are forbidden",
                       "al": "Janë të ndaluara"
                     },
                     {
-                      "en": "Janë të lira",
+                      "en": "They are cheap",
                       "al": "Janë të lira"
                     }
                   ],
@@ -18834,7 +18834,7 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "1 kg i blerë, 800 g i ngrënshëm. Yield:",
+                    "en": "1 kg purchased, 800 g edible. Yield:",
                     "al": "1 kg i blerë, 800 g i ngrënshëm. Yield:"
                   },
                   "options": [
@@ -18860,7 +18860,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Receta ka 200 g miell për 4. Për 10:",
+                    "en": "Recipe has 200 g flour for 4. For 10:",
                     "al": "Receta ka 200 g miell për 4. Për 10:"
                   },
                   "options": [
@@ -18886,7 +18886,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Blerë 5 kg, yield 70%. I ngrënshëm:",
+                    "en": "Purchased 5 kg, yield 70%. Edible:",
                     "al": "Blerë 5 kg, yield 70%. I ngrënshëm:"
                   },
                   "options": [
@@ -18895,15 +18895,15 @@ export const FIELDS = [
                       "al": "7 kg"
                     },
                     {
-                      "en": "3,5 kg",
+                      "en": "3.5 kg",
                       "al": "3,5 kg"
                     },
                     {
-                      "en": "1,5 kg",
+                      "en": "1.5 kg",
                       "al": "1,5 kg"
                     },
                     {
-                      "en": "0,7 kg",
+                      "en": "0.7 kg",
                       "al": "0,7 kg"
                     }
                   ],
@@ -18924,11 +18924,11 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_senior_m1_a.al.html",
-                "en": "materials/cook_senior_m1_a.al.html"
+                "en": "materials/cook_senior_m1_a.en.html"
               },
               "B": {
                 "al": "materials/cook_senior_m1_b.al.html",
-                "en": "materials/cook_senior_m1_b.al.html"
+                "en": "materials/cook_senior_m1_b.en.html"
               }
             },
             "quiz": {
@@ -18940,19 +18940,19 @@ export const FIELDS = [
                   },
                   "options": [
                     {
-                      "en": "I fundit brenda",
+                      "en": "Last in",
                       "al": "I fundit brenda"
                     },
                     {
-                      "en": "I pari brenda, i pari jashtë",
+                      "en": "First in, first out",
                       "al": "I pari brenda, i pari jashtë"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "I rastit",
+                      "en": "Random",
                       "al": "I rastit"
                     }
                   ],
@@ -18961,7 +18961,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Koha për porcion 3 min; 40 porcione:",
+                    "en": "Time per portion 3 min; 40 portions:",
                     "al": "Koha për porcion 3 min; 40 porcione:"
                   },
                   "options": [
@@ -18987,7 +18987,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Dy kuzhinierë, 40 porcione, 3 min/porcion secili. Koha ≈",
+                    "en": "Two cooks, 40 portions, 3 min/portion each. Time ~",
                     "al": "Dy kuzhinierë, 40 porcione, 3 min/porcion secili. Koha ≈"
                   },
                   "options": [
@@ -19020,19 +19020,19 @@ export const FIELDS = [
                   },
                   "options": [
                     {
-                      "en": "Gatim vetëm ëmbëlsira",
+                      "en": "Desserts only",
                       "al": "Gatim vetëm ëmbëlsira"
                     },
                     {
-                      "en": "Gatim në seri",
+                      "en": "Cooking in series",
                       "al": "Gatim në seri"
                     },
                     {
-                      "en": "Gatim 1 pjatë",
+                      "en": "One dish",
                       "al": "Gatim 1 pjatë"
                     },
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     }
                   ],
@@ -19041,24 +19041,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "FIFO shërben për:",
+                    "en": "FIFO serves to:",
                     "al": "FIFO shërben për:"
                   },
                   "options": [
                     {
-                      "en": "Dekor",
+                      "en": "Decoration",
                       "al": "Dekor"
                     },
                     {
-                      "en": "Ulje të humbjes së skaduar",
+                      "en": "Reduce expired losses",
                       "al": "Ulje të humbjes së skaduar"
                     },
                     {
-                      "en": "Rrit çmimin",
+                      "en": "Raise the price",
                       "al": "Rrit çmimin"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     }
                   ],
@@ -19067,24 +19067,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse minimizohet ndërrimi i detyrave?",
+                    "en": "Why minimise switching tasks?",
                     "al": "Pse minimizohet ndërrimi i detyrave?"
                   },
                   "options": [
                     {
-                      "en": "Për ligj",
+                      "en": "For law",
                       "al": "Për ligj"
                     },
                     {
-                      "en": "Humbje fokusi/kohe",
+                      "en": "Loss of focus/time",
                       "al": "Humbje fokusi/kohe"
                     },
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Dekor",
+                      "en": "Decoration",
                       "al": "Dekor"
                     }
                   ],
@@ -19101,18 +19101,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_senior_m2_a.al.html",
-                "en": "materials/cook_senior_m2_a.al.html"
+                "en": "materials/cook_senior_m2_a.en.html"
               },
               "B": {
                 "al": "materials/cook_senior_m2_b.al.html",
-                "en": "materials/cook_senior_m2_b.al.html"
+                "en": "materials/cook_senior_m2_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Food cost % me kosto 3 €, çmim 10 €:",
+                    "en": "Food cost % with cost 3 EUR, price 10 EUR:",
                     "al": "Food cost % me kosto 3 €, çmim 10 €:"
                   },
                   "options": [
@@ -19138,24 +19138,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kosto 4,5 €, target 30%. Çmimi:",
+                    "en": "Cost 4.5 EUR, target 30%. Price:",
                     "al": "Kosto 4,5 €, target 30%. Çmimi:"
                   },
                   "options": [
                     {
-                      "en": "1,35 €",
+                      "en": "1.35 EUR",
                       "al": "1,35 €"
                     },
                     {
-                      "en": "15 €",
+                      "en": "15 EUR",
                       "al": "15 €"
                     },
                     {
-                      "en": "13,5 €",
+                      "en": "13.5 EUR",
                       "al": "13,5 €"
                     },
                     {
-                      "en": "9 €",
+                      "en": "9 EUR",
                       "al": "9 €"
                     }
                   ],
@@ -19164,7 +19164,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kosto rritet nga 3 € në 3,6 € (çmim 10 €). Food cost i ri:",
+                    "en": "Cost rises from 3 EUR to 3.6 EUR (price 10 EUR). New food cost:",
                     "al": "Kosto rritet nga 3 € në 3,6 € (çmim 10 €). Food cost i ri:"
                   },
                   "options": [
@@ -19177,7 +19177,7 @@ export const FIELDS = [
                       "al": "33%"
                     },
                     {
-                      "en": "3,6%",
+                      "en": "3.6%",
                       "al": "3,6%"
                     },
                     {
@@ -19192,24 +19192,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "Çmimi me kosto 3 € dhe target 30%:",
+                    "en": "Price with cost 3 EUR and target 30%:",
                     "al": "Çmimi me kosto 3 € dhe target 30%:"
                   },
                   "options": [
                     {
-                      "en": "10 €",
+                      "en": "10 EUR",
                       "al": "10 €"
                     },
                     {
-                      "en": "3 €",
+                      "en": "3 EUR",
                       "al": "3 €"
                     },
                     {
-                      "en": "9 €",
+                      "en": "9 EUR",
                       "al": "9 €"
                     },
                     {
-                      "en": "1 €",
+                      "en": "1 EUR",
                       "al": "1 €"
                     }
                   ],
@@ -19218,7 +19218,7 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Çmim 12 €, kosto 3,6 €. Food cost:",
+                    "en": "Price 12 EUR, cost 3.6 EUR. Food cost:",
                     "al": "Çmim 12 €, kosto 3,6 €. Food cost:"
                   },
                   "options": [
@@ -19231,7 +19231,7 @@ export const FIELDS = [
                       "al": "36%"
                     },
                     {
-                      "en": "3,6%",
+                      "en": "3.6%",
                       "al": "3,6%"
                     },
                     {
@@ -19244,24 +19244,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Për ta mbajtur 30% me kosto 3,6 €, çmimi:",
+                    "en": "To keep 30% with cost 3.6 EUR, the price:",
                     "al": "Për ta mbajtur 30% me kosto 3,6 €, çmimi:"
                   },
                   "options": [
                     {
-                      "en": "10 €",
+                      "en": "10 EUR",
                       "al": "10 €"
                     },
                     {
-                      "en": "12 €",
+                      "en": "12 EUR",
                       "al": "12 €"
                     },
                     {
-                      "en": "9 €",
+                      "en": "9 EUR",
                       "al": "9 €"
                     },
                     {
-                      "en": "8 €",
+                      "en": "8 EUR",
                       "al": "8 €"
                     }
                   ],
@@ -19278,18 +19278,18 @@ export const FIELDS = [
             "materials": {
               "A": {
                 "al": "materials/cook_senior_m3_a.al.html",
-                "en": "materials/cook_senior_m3_a.al.html"
+                "en": "materials/cook_senior_m3_a.en.html"
               },
               "B": {
                 "al": "materials/cook_senior_m3_b.al.html",
-                "en": "materials/cook_senior_m3_b.al.html"
+                "en": "materials/cook_senior_m3_b.en.html"
               }
             },
             "quiz": {
               "A": [
                 {
                   "q": {
-                    "en": "Sa parime ka HACCP?",
+                    "en": "How many HACCP principles?",
                     "al": "Sa parime ka HACCP?"
                   },
                   "options": [
@@ -19315,24 +19315,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Kufiri kritik shembull për shpendë:",
+                    "en": "A critical limit example for poultry:",
                     "al": "Kufiri kritik shembull për shpendë:"
                   },
                   "options": [
                     {
-                      "en": "≥ 10 °C",
+                      "en": ">= 10 C",
                       "al": "≥ 10 °C"
                     },
                     {
-                      "en": "≥ 74 °C",
+                      "en": ">= 74 C",
                       "al": "≥ 74 °C"
                     },
                     {
-                      "en": "≥ 30 °C",
+                      "en": ">= 30 C",
                       "al": "≥ 30 °C"
                     },
                     {
-                      "en": "≤ 0 °C",
+                      "en": "<= 0 C",
                       "al": "≤ 0 °C"
                     }
                   ],
@@ -19341,24 +19341,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Shpendi arriti vetëm 68 °C. Veprim:",
+                    "en": "Poultry reached only 68 C. Action:",
                     "al": "Shpendi arriti vetëm 68 °C. Veprim:"
                   },
                   "options": [
                     {
-                      "en": "Hidhe vetëm",
+                      "en": "Discard only",
                       "al": "Hidhe vetëm"
                     },
                     {
-                      "en": "Shërbe",
+                      "en": "Serve",
                       "al": "Shërbe"
                     },
                     {
-                      "en": "Vazhdo gatimin derisa arrin kufirin",
+                      "en": "Continue cooking until the limit is reached",
                       "al": "Vazhdo gatimin derisa arrin kufirin"
                     },
                     {
-                      "en": "Injoro",
+                      "en": "Ignore",
                       "al": "Injoro"
                     }
                   ],
@@ -19369,24 +19369,24 @@ export const FIELDS = [
               "B": [
                 {
                   "q": {
-                    "en": "CCP është:",
+                    "en": "CCP is:",
                     "al": "CCP është:"
                   },
                   "options": [
                     {
-                      "en": "Pikë kritike kontrolli",
+                      "en": "A critical control point",
                       "al": "Pikë kritike kontrolli"
                     },
                     {
-                      "en": "Çmim",
+                      "en": "A price",
                       "al": "Çmim"
                     },
                     {
-                      "en": "Pjatë",
+                      "en": "A dish",
                       "al": "Pjatë"
                     },
                     {
-                      "en": "Recetë",
+                      "en": "A recipe",
                       "al": "Recetë"
                     }
                   ],
@@ -19395,24 +19395,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Monitorimi:",
+                    "en": "Monitoring:",
                     "al": "Monitorimi:"
                   },
                   "options": [
                     {
-                      "en": "Asgjë",
+                      "en": "Nothing",
                       "al": "Asgjë"
                     },
                     {
-                      "en": "Hamendësim",
+                      "en": "Guesswork",
                       "al": "Hamendësim"
                     },
                     {
-                      "en": "Matje dhe regjistrim",
+                      "en": "Measurement and recording",
                       "al": "Matje dhe regjistrim"
                     },
                     {
-                      "en": "Shije",
+                      "en": "Taste",
                       "al": "Shije"
                     }
                   ],
@@ -19421,24 +19421,24 @@ export const FIELDS = [
                 },
                 {
                   "q": {
-                    "en": "Pse dokumentim?",
+                    "en": "Why documentation?",
                     "al": "Pse dokumentim?"
                   },
                   "options": [
                     {
-                      "en": "Pa arsye",
+                      "en": "No reason",
                       "al": "Pa arsye"
                     },
                     {
-                      "en": "Për çmim",
+                      "en": "For price",
                       "al": "Për çmim"
                     },
                     {
-                      "en": "Dëshmon kontrollin",
+                      "en": "It proves control",
                       "al": "Dëshmon kontrollin"
                     },
                     {
-                      "en": "Për dekor",
+                      "en": "For decoration",
                       "al": "Për dekor"
                     }
                   ],

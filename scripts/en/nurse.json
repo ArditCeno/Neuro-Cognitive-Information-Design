@@ -1,0 +1,60 @@
+{
+  "id": "nurse",
+  "en_name": "Nursing",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Care sequence (nursing process)",
+      "facts": ["5 steps: assessment, nursing diagnosis, planning, implementation, evaluation", "Assessment gathers data", "Planning sets objectives", "Implementation carries out interventions", "Evaluation checks outcomes"],
+      "qA": [["The first step of the nursing process:", ["Documentation", "Planning", "Assessment", "Implementation"], 2], ["Setting objectives happens in:", ["Implementation", "Planning", "Nothing", "Final evaluation"], 1], ["After the intervention the patient does not improve. Next step:", ["Close the case", "Reassess and revise the plan", "Delete the data", "Forget"], 1]],
+      "qB": [["How many steps does the process have?", ["5", "3", "7", "9"], 0], ["Checking outcomes is:", ["Diagnosis", "Planning", "Implementation", "Evaluation"], 3], ["The nursing diagnosis describes:", ["The patient's response to the health problem", "The drug", "The payment", "The medical disease"], 0]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Hand hygiene",
+      "facts": ["WHO: 5 moments: before patient contact, before aseptic procedure, after body fluid exposure, after patient contact, after contact with the patient's surroundings", "Soap and water: 40-60 seconds", "Alcohol rub: 20-30 seconds", "Hands must be dry after washing", "When visibly soiled: soap and water"],
+      "qA": [["How many hand hygiene moments does WHO define?", ["10", "5", "7", "3"], 1], ["Alcohol rub lasts:", ["3 s", "2 min", "5 min", "20-30 s"], 3], ["Before an aseptic procedure hygiene is:", ["After the procedure", "Optional", "Mandatory", "Unnecessary"], 2]],
+      "qB": [["Soap and water washing lasts about:", ["5 s", "3 min", "10 min", "40-60 s"], 3], ["Visibly soiled hands:", ["Nothing", "Alcohol only", "Gloves only", "Soap and water"], 3], ["Gloves:", ["Do not replace hand hygiene", "Are forbidden", "Replace hand hygiene", "Are used without washing"], 0]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - Rights and communication",
+      "facts": ["Confidentiality of patient data", "Informed consent", "Identify the patient with 2 identifiers", "Clear and respectful communication", "Accurate and timely documentation"],
+      "qA": [["Patient identification is usually with:", ["2 identifiers", "No identification", "1 element", "The room only"], 0], ["Informed consent requires:", ["A signature only", "Explanation and free agreement", "Silence", "Forced compliance"], 1], ["A colleague asks for data on a patient not in their care. Action:", ["Post it", "Decline unless sharing is needed", "Leave it on the desk", "Give it"], 1]],
+      "qB": [["Confidentiality means:", ["Share with everyone", "Protection of data", "Deletion", "Nothing"], 1], ["Documentation must be:", ["Incomplete", "Late", "Accurate and timely", "Unsigned"], 2], ["Misidentification can lead to:", ["Speed gain", "Nothing", "Profit", "Serious errors (drug, procedure)"], 3]]
+    },
+    "mid|m1": {
+      "title": "M1 - Parameters",
+      "facts": ["Pulse, BP, respiration, temperature, SpO2", "Normal pulse 60-100 /min (adult)", "Normal respiration 12-20 /min", "SpO2 >= 95%", "Record all with time and units"],
+      "qA": [["Normal adult respiration:", ["12-20", "60", "30-40", "5-8"], 0], ["Pulse 110/min:", ["Arrest", "Tachycardia", "Bradycardia", "Normal"], 1], ["SpO2 90%, RR 28: action:", ["Note only", "Wait", "Nothing", "Notify the team/doctor immediately"], 3]],
+      "qB": [["Normal SpO2:", [">= 30%", ">= 10%", ">= 50%", ">= 95%"], 3], ["Why record the time?", ["Legally only", "For colour", "It must not", "Trend and continuity"], 3], ["Measuring BP with a wrong cuff:", ["Increases accuracy", "May give a wrong value", "Nothing", "No effect"], 1]]
+    },
+    "mid|m2": {
+      "title": "M2 - Assessment",
+      "facts": ["GCS: eyes (1-4), verbal (1-5), motor (1-6); total 3-15", "GCS 15 = fully alert", "GCS <= 8 = severe (airway risk)", "Pain 0-10", "Full head-to-toe assessment"],
+      "qA": [["GCS range:", ["3-15", "0-20", "1-10", "5-25"], 0], ["Eyes 3, verbal 4, motor 5. GCS:", ["10", "9", "15", "12"], 3], ["GCS 7: priority:", ["Lunch", "Airway protection and emergency", "Documentation", "Rest"], 1]],
+      "qB": [["Maximal GCS:", ["20", "8", "10", "15"], 3], ["GCS <= 8 indicates:", ["A mild condition", "A severe condition", "Normal", "Nothing"], 1], ["Why rate pain on a scale?", ["For law", "It must not", "Measurement and trend tracking", "For decoration"], 2]]
+    },
+    "mid|m3": {
+      "title": "M3 - Medication administration",
+      "facts": ["5 rights: patient, drug, dose, route, time", "Check allergies", "Document after administration", "Monitor side effects", "When in doubt: stop and verify"],
+      "qA": [["How many basic 'rights' are there?", ["7", "10", "5", "3"], 2], ["Before a drug you check:", ["Allergies", "Weather", "Nothing", "Colour"], 0], ["Doubt about the dose. Action:", ["Double it", "Ignore", "Stop and verify", "Give by guess"], 2]],
+      "qB": [["'Route' is included:", ["Yes", "No", "Only in emergencies", "Never"], 0], ["After administration:", ["Nothing", "Remove the record", "Wait 1 month", "Documentation"], 3], ["An unexpected side effect:", ["Double the dose", "Ignore", "Hide", "Notify and document"], 3]]
+    },
+    "senior|m1": {
+      "title": "M1 - Prioritisation",
+      "facts": ["ABC: airway, breathing, circulation", "Prioritise life threats", "Maslow's pyramid: physiological needs before social", "Delegation: the right task to the right staff", "Continuous reassessment"],
+      "qA": [["ABC includes as the first:", ["Airway", "Consciousness", "Circulation", "Breathing"], 0], ["Patient A: mild pain; B: blocked airway. Priority:", ["Equal", "A", "B", "Neither"], 2], ["Three patients; who is most urgent?", ["The youngest", "The one with an immediate life threat", "The one who talks most", "Registration order"], 1]],
+      "qB": [["Needs prioritised before:", ["Physiological", "Social", "No order", "Aesthetic"], 0], ["Delegation must be based on:", ["Random", "Workload", "Memory", "Competence and safety"], 3], ["Why reassess continuously?", ["The condition changes", "For law", "It must not", "For decoration"], 0]]
+    },
+    "senior|m2": {
+      "title": "M2 - Triage and emergency (START)",
+      "facts": ["Red = Immediate", "Yellow = Delayed", "Green = Minor (walking)", "Black = Deceased/unsurvivable", "START: walking? breathing? capillary refill? consciousness?"],
+      "qA": [["Red in triage:", ["Immediate", "Deceased", "Minor", "Irrelevant"], 0], ["A patient who walks:", ["Red", "Usually green", "Black", "Yellow"], 1], ["Respiration > 30/min:", ["Yellow", "Black", "Red", "Green"], 2]],
+      "qB": [["Green:", ["Deceased", "Immediate", "Delayed", "Minor/walking"], 3], ["Not breathing even after opening the airway:", ["Green", "Black", "Yellow", "Red"], 1], ["Why triage?", ["Alphabetical order", "For decoration", "For law", "Maximise survivors with limited resources"], 3]]
+    },
+    "senior|m3": {
+      "title": "M3 - Emergency case",
+      "facts": ["Notify with SBAR: situation, background, assessment, recommendation", "Activate the response team", "Monitor continuously", "Document the chronology", "Inform the family per policy"],
+      "qA": [["SBAR has:", ["5 parts", "3 parts", "4 parts", "7 parts"], 2], ["B in SBAR:", ["Within", "Base", "Background", "Balance"], 2], ["A patient deteriorating. First action:", ["Leave", "Notify/activate the team and monitor", "Wait", "Document only"], 1]],
+      "qB": [["S in SBAR:", ["Safety", "Disease", "Situation", "Speed"], 2], ["R in SBAR:", ["Radio", "Recommendation", "Risk", "Result"], 1], ["Documenting the chronology matters because:", ["For aesthetics", "It does not", "To hide", "It supports care and accountability"], 3]]
+    }
+  }
+}

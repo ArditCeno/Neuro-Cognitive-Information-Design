@@ -1,0 +1,60 @@
+{
+  "id": "biologist",
+  "en_name": "Biology",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Classification",
+      "facts": ["Ranks: domain, kingdom, phylum, class, order, family, genus, species", "3 domains: Bacteria, Archaea, Eukarya", "Binomial name: genus + species (Homo sapiens)", "Humans are in the kingdom Animalia", "Similar species are grouped in the same genus"],
+      "qA": [["How many domains in the 3-domain system?", ["8", "2", "3", "5"], 2], ["The broadest (highest) rank:", ["Species", "Domain", "Family", "Genus"], 1], ["Two organisms in the same genus are necessarily also in:", ["The same species", "Different domains", "Different kingdoms", "The same family"], 3]],
+      "qB": [["A binomial name consists of:", ["Class + phylum", "Family + order", "Species only", "Genus + species"], 3], ["Homo sapiens: 'Homo' is the:", ["Genus", "Domain", "Family", "Species"], 0], ["Bacteria have a true nucleus:", ["Yes", "No (prokaryotes)", "Only some", "All"], 1]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Cell diagrams",
+      "facts": ["Nucleus: genetic material", "Mitochondria: ATP production", "Ribosomes: protein synthesis", "Chloroplast: photosynthesis (plants/algae only)", "Cell wall: in plants, not animals"],
+      "qA": [["ATP production:", ["Mitochondria", "Ribosome", "Nucleus", "Wall"], 0], ["Where are proteins synthesised?", ["Chloroplast", "Membrane", "Ribosomes", "Wall"], 2], ["A cell with a chloroplast and a cell wall is:", ["Virus", "Bacterial", "Animal", "Plant"], 3]],
+      "qB": [["Photosynthesis occurs in the:", ["Nucleus", "Chloroplast", "Ribosome", "Mitochondria"], 1], ["An animal cell does NOT have:", ["Mitochondria", "Cell wall", "Nucleus", "Membrane"], 1], ["The nucleus contains:", ["Chlorophyll", "DNA", "ATP only", "The wall"], 1]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - Basic genetics",
+      "facts": ["Gene = unit of inheritance", "Dominant allele (A), recessive (a)", "Genotype AA/Aa/aa; phenotype = expression", "Cross Aa x Aa -> 1AA : 2Aa : 1aa", "Phenotype ratio 3:1 (dominant:recessive)"],
+      "qA": [["Aa x Aa gives aa with probability:", ["50%", "0%", "25%", "75%"], 2], ["The phenotypic ratio of Aa x Aa:", ["1:2:1", "3:1", "9:3", "1:1"], 1], ["AA x aa gives the F1 generation:", ["All aa", "All Aa", "50% AA", "All AA"], 1]],
+      "qB": [["The phenotype is:", ["The external appearance", "A chromosome", "Only the genotype", "A cell"], 0], ["A recessive allele is expressed when:", ["It is aa", "It is Aa", "It is AA", "Never"], 0], ["The probability that Aa x Aa gives a dominant phenotype:", ["50%", "25%", "100%", "75%"], 3]]
+    },
+    "mid|m1": {
+      "title": "M1 - Photosynthesis and respiration",
+      "facts": ["Photosynthesis: 6CO2 + 6H2O + light -> C6H12O6 + 6O2", "Cellular respiration: C6H12O6 + 6O2 -> 6CO2 + 6H2O + ATP", "Photosynthesis stores energy; respiration releases it", "Glycolysis occurs in the cytoplasm", "Krebs cycle in the mitochondrial matrix"],
+      "qA": [["The oxygen product comes from:", ["Respiration", "Photosynthesis", "Both", "Neither"], 1], ["How many O2 molecules in photosynthesis per glucose?", ["12", "6", "1", "3"], 1], ["Without light, the plant:", ["Does not run the light phase", "Dies immediately", "Produces more O2", "Photosynthesises the same"], 0]],
+      "qB": [["Respiration releases:", ["Light only", "Water only", "Energy (ATP)", "Nothing"], 2], ["Glycolysis occurs in the:", ["Mitochondria", "Chloroplast", "Cytoplasm", "Nucleus"], 2], ["Which is a reactant in respiration?", ["Chlorophyll", "O2", "CO2", "Light"], 1]]
+    },
+    "mid|m2": {
+      "title": "M2 - Cell cycle and division",
+      "facts": ["Cell cycle: G1, S, G2, M", "S = DNA replication", "Mitosis: prophase, metaphase, anaphase, telophase (PMAT)", "Mitosis gives 2 identical diploid cells", "Meiosis gives 4 haploid cells"],
+      "qA": [["DNA replication occurs in:", ["Telophase", "S phase", "M phase", "G1"], 1], ["Meiosis gives:", ["1", "2 diploid", "2 haploid", "4 haploid"], 3], ["Sister chromatids separate in:", ["Prophase", "Anaphase", "S phase", "Telophase"], 1]],
+      "qB": [["Mitosis gives:", ["2 identical cells", "1", "4 haploid", "8"], 0], ["In metaphase chromosomes:", ["Disappear", "Line up at the equator", "Separate to the poles", "Double"], 1], ["A cell 2n=46 after mitosis has:", ["23", "12", "46", "92"], 2]]
+    },
+    "mid|m3": {
+      "title": "M3 - Biogeochemical cycles",
+      "facts": ["Carbon cycle: photosynthesis <-> respiration, combustion", "Nitrogen cycle: fixation, nitrification, denitrification", "Water cycle: evaporation, condensation, precipitation", "Nitrogen-fixing bacteria (e.g. Rhizobium) in legume nodules", "Human activity increases atmospheric CO2"],
+      "qA": [["The cycle involving evaporation:", ["Carbon", "Sulphur", "Nitrogen", "Water"], 3], ["Burning fossil fuels:", ["Increases O2", "Increases CO2", "Decreases CO2", "No effect"], 1], ["Plants take up nitrogen mainly as:", ["N2 gas directly", "Nitrate/ammonium from soil", "Oxygen", "CO2"], 1]],
+      "qB": [["Rhizobium:", ["Fixes nitrogen", "Pollutes water", "Is a virus", "Produces CO2 only"], 0], ["Denitrification turns nitrogen into:", ["Carbon", "Water", "N2 gas", "Protein"], 2], ["Photosynthesis in the carbon cycle:", ["Adds nitrogen", "Adds CO2", "No effect", "Removes CO2 from the atmosphere"], 3]]
+    },
+    "senior|m1": {
+      "title": "M1 - Systems and homeostasis",
+      "facts": ["Homeostasis maintains a stable internal state", "Negative feedback returns the value toward the set point", "Insulin lowers blood glucose; glucagon raises it", "Thermoregulation: sweating, shivering", "Positive feedback reinforces the change (e.g. birth)"],
+      "qA": [["Insulin:", ["Lowers blood glucose", "Raises blood glucose", "No effect", "Raises pressure"], 0], ["Negative feedback:", ["Is harmful", "Does nothing", "Pushes it further", "Returns toward the set point"], 3], ["After a meal: glucose rises. The response:", ["Insulin rises", "Glucagon rises", "None", "Only adrenaline rises"], 0]],
+      "qB": [["Glucagon:", ["Lowers glucose", "Raises glucose", "Raises oxygen", "Nothing"], 1], ["Sweating serves for:", ["Cooling", "Warming", "Food", "Breathing"], 0], ["An example of positive feedback:", ["Insulin", "Thermoregulation", "Childbirth contractions (oxytocin)", "Sweating"], 2]]
+    },
+    "senior|m2": {
+      "title": "M2 - Population and ecosystem ecology",
+      "facts": ["10% rule: about 10% of energy passes to the next trophic level", "Logistic growth: limited by carrying capacity (K)", "Exponential growth: without limits", "Hardy-Weinberg: p^2 + 2pq + q^2 = 1", "Example: q^2 = 0.04 -> q = 0.2, p = 0.8, 2pq = 0.32"],
+      "qA": [["Energy 10,000 kJ at producers. At primary consumers (~10%):", ["100", "9,000", "1,000", "5,000"], 2], ["Hardy-Weinberg: q^2 = 0.04. q =", ["0.02", "0.8", "0.2", "0.4"], 2], ["Heterozygote frequency 2pq with p=0.8, q=0.2:", ["0.32", "0.16", "0.04", "0.64"], 0]],
+      "qB": [["K in logistic growth is:", ["Calorie", "Carrying capacity", "Gas constant", "Chromosome"], 1], ["With q = 0.2, p =", ["0.8", "1", "0.5", "0.2"], 0], ["Why does the 10% rule limit food chains?", ["Energy loss at each level", "Lack of water", "For law", "No reason"], 0]]
+    },
+    "senior|m3": {
+      "title": "M3 - Evolution and biodiversity",
+      "facts": ["Natural selection: variation, inheritance, differential reproduction", "Mutations create variation", "Genetic drift: random changes, especially in small populations", "Speciation: reproductive isolation", "Habitat loss is the main driver of species loss"],
+      "qA": [["The source of new variation:", ["Nothing", "Rain", "Photosynthesis", "Mutation"], 3], ["Natural selection requires:", ["Mutation only", "Nothing", "Heritable variation", "Migration only"], 2], ["Antibiotic-resistant bacteria multiply after its use because:", ["Lack of food", "Randomly always", "Selection for resistance", "The antibiotic makes them resistant"], 2]],
+      "qB": [["Genetic drift affects most:", ["Large populations", "No genes", "Small populations", "No change"], 2], ["Speciation relates to:", ["Heat", "Water", "Reproductive isolation", "Photosynthesis"], 2], ["The main driver of biodiversity loss:", ["Habitat loss", "Language", "Daily weather", "Price"], 0]]
+    }
+  }
+}

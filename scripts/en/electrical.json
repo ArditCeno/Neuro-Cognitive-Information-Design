@@ -1,0 +1,60 @@
+{
+  "id": "electrical",
+  "en_name": "Electrical engineering",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Basic circuits",
+      "facts": ["Circuit: source, conductors, load", "Series: R_total = R1 + R2", "Parallel: 1/R = 1/R1 + 1/R2", "In series the current is the same", "In parallel the voltage is the same"],
+      "qA": [["In series the current is:", ["Zero", "Different", "Infinite", "The same"], 3], ["100 ohm + 200 ohm in series:", ["66.7 ohm", "200 ohm", "100 ohm", "300 ohm"], 3], ["100 ohm || 200 ohm ~", ["50 ohm", "150 ohm", "300 ohm", "66.7 ohm"], 3]],
+      "qB": [["In parallel the voltage is:", ["Zero", "Different", "The same", "The current"], 2], ["100 ohm || 100 ohm:", ["25 ohm", "100 ohm", "200 ohm", "50 ohm"], 3], ["Equivalent parallel resistance is always:", ["Greater than the largest", "Zero", "Smaller than the smallest", "Equal"], 2]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Ohm's law",
+      "facts": ["V = I x R", "I = V / R", "R = V / I", "12 V across 4 ohm -> 3 A", "Units: V (volt), A (ampere), ohm"],
+      "qA": [["Ohm's law:", ["V = I+R", "V = I/R", "V = R/I", "V = I x R"], 3], ["12 V across 4 ohm. I =", ["0.33 A", "3 A", "48 A", "8 A"], 1], ["V = 9 V, I = 3 mA. R =", ["27 ohm", "300 ohm", "3 kohm", "3 ohm"], 2]],
+      "qB": [["The unit of resistance:", ["Ohm", "Volt", "Watt", "Ampere"], 0], ["I = 2 A, R = 5 ohm. V =", ["7 V", "2.5 V", "10 V", "0.4 V"], 2], ["Raising V (R constant) increases:", ["Resistance", "Nothing", "Frequency", "Current"], 3]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - Power and energy",
+      "facts": ["P = V x I", "P = I^2 x R = V^2/R", "Energy E = P x t", "1 kWh = 1000 W for 1 hour", "Unit: watt (W)"],
+      "qA": [["P = V x I. With V=12 V, I=2 A:", ["14 W", "6 W", "24 W", "0.16 W"], 2], ["P = V^2/R with V=10, R=5:", ["2 W", "20 W", "10 W", "50 W"], 1], ["Current doubles (R constant). Power:", ["Halves", "Same", "Doubles", "Quadruples"], 3]],
+      "qB": [["The unit of power:", ["Ohm", "Ampere", "Volt", "Watt"], 3], ["1000 W for 2 hours:", ["0.5 kWh", "2 kWh", "1 kWh", "2000 kWh"], 1], ["Energy: 60 W for 5 hours =", ["12 kWh", "0.012 kWh", "0.3 kWh", "300 kWh"], 2]]
+    },
+    "mid|m1": {
+      "title": "M1 - KCL and KVL",
+      "facts": ["KCL: sum of currents at a node = 0", "KVL: sum of voltages around a loop = 0", "12 V across 100 ohm + 200 ohm in series -> I = 40 mA", "V across 100 ohm = 4 V; across 200 ohm = 8 V", "Verify with a power balance"],
+      "qA": [["KCL relates to:", ["Colour", "The loop", "Time", "Nodes"], 3], ["12 V, 100 ohm + 200 ohm series. I =", ["4 mA", "400 mA", "120 mA", "40 mA"], 3], ["Total power of the circuit above:", ["48 W", "0.48 W", "4.8 W", "0.048 W"], 1]],
+      "qB": [["KVL relates to:", ["Time", "The node", "The conductor", "The loop"], 3], ["Voltage across 200 ohm:", ["2 V", "4 V", "12 V", "8 V"], 3], ["5 A and 2 A enter a node; the other branch carries:", ["7 A", "10 A", "3 A", "0"], 0]]
+    },
+    "mid|m2": {
+      "title": "M2 - Voltage divider and Thevenin",
+      "facts": ["V_out = V_in x R2/(R1+R2)", "V_in = 10 V, R1 = R2 -> V_out = 5 V", "Thevenin: source + series R", "R_Th = resistance seen from the output (sources off)", "Maximum power: R_L = R_Th"],
+      "qA": [["R1 = R2, V_in = 10 V. V_out:", ["10 V", "2.5 V", "5 V", "0 V"], 2], ["R1 = 1 kohm, R2 = 3 kohm, V_in = 12 V. V_out:", ["4 V", "3 V", "6 V", "9 V"], 3], ["Max power in the load when:", ["R_L = R_Th", "R_L = infinite", "R_L = 10 R_Th", "R_L = 0"], 0]],
+      "qB": [["A voltage divider is used to:", ["Frequency", "Heat", "Increase current", "Reduce voltage"], 3], ["In Thevenin, voltage sources are turned off by replacing them with:", ["An open circuit", "A 1 Mohm resistor", "A short circuit", "A capacitor"], 2], ["A divider loaded by a low R_L:", ["Same", "The output voltage drops", "Zero", "Increases"], 1]]
+    },
+    "mid|m3": {
+      "title": "M3 - RC filters",
+      "facts": ["Cut-off frequency f_c = 1/(2 pi R C)", "R = 1 kohm, C = 1 uF -> f_c ~ 159 Hz", "Low-pass RC: passes low frequencies", "High-pass RC: passes high frequencies", "At f_c amplitude = 70.7% (-3 dB)"],
+      "qA": [["A low-pass RC filter passes:", ["Low frequencies", "High frequencies", "Nothing", "All equally"], 0], ["R = 1 kohm, C = 1 uF. f_c ~", ["159 Hz", "16 Hz", "1.59 kHz", "10 kHz"], 0], ["We want f_c = 1 kHz with C = 100 nF. R ~", ["16 kohm", "1.6 kohm", "160 ohm", "10 kohm"], 1]],
+      "qB": [["-3 dB corresponds to amplitude:", ["90%", "50%", "10%", "70.7%"], 3], ["R is doubled (C same). f_c:", ["Same", "Doubles", "Halves", "Quadruples"], 2], ["In a high-pass filter a 50 Hz signal with f_c = 1 kHz:", ["No change", "Fully passes", "Doubles", "Strongly attenuated"], 3]]
+    },
+    "senior|m1": {
+      "title": "M1 - Signals",
+      "facts": ["Period T = 1/f", "V_rms (sinusoidal) = V_peak / sqrt(2)", "Nyquist: f_s > 2 x f_max", "dB (voltage) = 20 log10(V2/V1)", "Spectrum: any periodic signal = many sinusoids (Fourier)"],
+      "qA": [["f = 50 Hz. T =", ["2 s", "0.5 s", "20 ms", "50 s"], 2], ["V_peak = 10 V. V_rms ~", ["5 V", "14.1 V", "10 V", "7.07 V"], 3], ["A signal up to 4 kHz. Minimum sampling frequency:", ["> 4 kHz", "> 2 kHz", "> 16 kHz", "> 8 kHz"], 3]],
+      "qB": [["Nyquist:", ["f_s < f_max", "Unrelated", "f_s > 2 x f_max", "f_s = f_max/2"], 2], ["A voltage ratio of 10x in dB:", ["40 dB", "10 dB", "100 dB", "20 dB"], 3], ["Sampling below Nyquist causes:", ["Nothing", "Amplification", "Aliasing", "Cooling"], 2]]
+    },
+    "senior|m2": {
+      "title": "M2 - Systems and feedback",
+      "facts": ["First-order system: tau = R x C", "After t = tau, a step input reaches ~63.2%", "After 5 tau ~ 99.3%", "Negative feedback: A_cl = A/(1 + A x beta)", "Negative feedback increases stability and reduces distortion"],
+      "qA": [["tau for R=1 kohm, C=1 uF:", ["1 s", "1 ks", "1 us", "1 ms"], 3], ["After 1 tau it reaches:", ["99%", "10%", "36.8%", "63.2%"], 3], ["Negative feedback:", ["Makes the system uncontrollable", "Increases distortion", "Always lowers cost", "Increases stability"], 3]],
+      "qB": [["After 5 tau it reaches about:", ["50%", "99.3%", "63%", "10%"], 1], ["A = 1000, beta = 0.1. A_cl =", ["100", "~ 9.9", "10", "0.99"], 1], ["A -> infinite with beta = 0.1: A_cl ->", ["0", "10", "1", "infinite"], 1]]
+    },
+    "senior|m3": {
+      "title": "M3 - Op-amp",
+      "facts": ["Inverting: A_v = -R_f/R_in", "Non-inverting: A_v = 1 + R_f/R_in", "Ideal: infinite input resistance, virtual ground", "R_f = 10 kohm, R_in = 1 kohm -> inverting -10", "Saturation at the supply levels"],
+      "qA": [["Inverting amplifier gain:", ["-R_f/R_in", "1+R_f/R_in", "R_f x R_in", "R_in/R_f"], 0], ["R_f = 10 kohm, R_in = 1 kohm inverting:", ["+10", "-10", "-11", "-0.1"], 1], ["Input 2 V, A_v = -10, supply +/-12 V. Output:", ["+20 V", "0", "-20 V (within)", "-12 V saturated"], 3]],
+      "qB": [["Non-inverting:", ["-R_f/R_in", "1 + R_f/R_in", "R_f", "0"], 1], ["R_f = 10 kohm, R_in = 1 kohm non-inverting:", ["-10", "11", "10", "9"], 1], ["In an ideal op-amp with negative feedback the differential input voltage is:", ["Very high", "Always 1 V", "Infinite", "~ 0"], 3]]
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "id": "biotech",
+  "en_name": "Biotechnology",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Central dogma",
+      "facts": ["DNA -> RNA (transcription) -> protein (translation)", "Transcription in the nucleus (eukaryotes)", "Translation in ribosomes", "Codon = 3 nucleotides", "START codon = AUG (methionine)"],
+      "qA": [["The central dogma order:", ["DNA->RNA->protein", "DNA->protein->RNA", "RNA->DNA->RNA", "Protein->RNA->DNA"], 0], ["Translation occurs in:", ["Nucleus", "Membrane", "Ribosomes", "Mitochondria only"], 2], ["DNA 3'-TAC-5'. Complementary mRNA:", ["UAC", "ATG", "AUG", "TAC"], 2]],
+      "qB": [["A codon has:", ["3 nucleotides", "6", "2 nucleotides", "4"], 0], ["The START codon:", ["AUG", "GGG", "CCC", "UAA"], 0], ["How many codons in a gene of 300 coding nucleotides?", ["300", "100", "900", "30"], 1]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Basic terms",
+      "facts": ["Plasmid: a small circular DNA", "Vector: a carrier of a gene", "Restriction enzyme: cuts DNA at specific sites", "Ligase: joins fragments", "GMO: an organism with modified genetic material"],
+      "qA": [["The enzyme that cuts DNA:", ["Ligase", "Protease", "Restriction", "Polymerase"], 2], ["A plasmid is:", ["A lipid", "Small circular DNA", "A protein", "A cell"], 1], ["Why use the same restriction enzyme for vector and gene?", ["For price", "It produces complementary ends", "It is faster", "No reason"], 1]],
+      "qB": [["The enzyme that joins fragments:", ["Restriction", "Lipase", "Ligase", "Amylase"], 2], ["The vector:", ["Cuts DNA", "Carries the gene into the cell", "Is food", "Destroys the cell"], 1], ["GMO means:", ["Nothing", "Original", "Big organism", "Organism with a modified genome"], 3]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - PCR scheme",
+      "facts": ["Denaturation ~94-98 C", "Primer annealing ~50-65 C", "Extension ~72 C", "Each cycle doubles the copies (theoretically)", "After n cycles: 2^n copies from 1 template"],
+      "qA": [["Extension in PCR ~", ["4 C", "30 C", "72 C", "100 C"], 2], ["After 3 cycles from 1 template:", ["8", "3", "9", "6"], 0], ["After 10 cycles theoretically from 1 copy:", ["1,024", "10,000", "20", "100"], 0]],
+      "qB": [["Denaturation:", ["Adds primers", "Cools", "Joins strands", "Separates the DNA strands"], 3], ["Primers bind in:", ["Annealing", "Denaturation", "Storage", "Extension"], 0], ["Why is a thermostable DNA polymerase needed?", ["It withstands 94 C", "No reason", "It speeds up water", "It is cheap"], 0]]
+    },
+    "mid|m1": {
+      "title": "M1 - Gel electrophoresis",
+      "facts": ["DNA is negatively charged -> moves toward the anode (+)", "Small fragments move farther", "Agarose: a gel for DNA", "A ladder shows sizes", "Staining (e.g. SYBR Safe) and UV/blue visualisation"],
+      "qA": [["DNA moves toward:", ["The anode (+)", "It stays", "Randomly", "The cathode (-)"], 0], ["A ladder is used for:", ["Cleaning", "Size estimation", "Staining", "Heating"], 1], ["After electrophoresis one band is at 500 bp, another at 200 bp. Which moved farther?", ["200 bp", "500 bp", "Unknown", "Equal"], 0]],
+      "qB": [["Smaller fragments:", ["Do not move", "Move farther", "Move less", "Disappear"], 1], ["The gel for DNA is usually:", ["Food gelatine", "Paraffin", "Sugar", "Agarose"], 3], ["Reversed electrode polarity:", ["DNA runs out of the well the wrong way", "Increases speed", "Cleans", "No effect"], 0]]
+    },
+    "mid|m2": {
+      "title": "M2 - Solutions and dilution",
+      "facts": ["C1V1 = C2V2", "Stock 5 M -> 100 mL of 0.5 M: V1 = 10 mL", "Molarity M = n / V (mol/L)", "Use clean/sterile water", "Label with date, contents, concentration"],
+      "qA": [["The dilution formula:", ["C = mV", "V = C + n", "C = V/n", "C1V1 = C2V2"], 3], ["Stock 5 M -> 100 mL of 0.5 M. V1 =", ["5 mL", "10 mL", "50 mL", "1 mL"], 1], ["Stock 10 M. Need 200 mL of 0.1 M. V1 =", ["2 mL", "10 mL", "0.2 mL", "20 mL"], 0]],
+      "qB": [["M is:", ["g/L", "C", "mL", "mol/L"], 3], ["0.5 mol in 250 mL has concentration:", ["4 M", "0.5 M", "1 M", "2 M"], 3], ["Why label solutions?", ["For law only", "No reason", "For decoration", "Safety and traceability"], 3]]
+    },
+    "mid|m3": {
+      "title": "M3 - Sterile technique and safety",
+      "facts": ["Work near a flame/biosafety cabinet", "Surface disinfection (e.g. 70% ethanol)", "Personal protective equipment (PPE)", "Biological waste in special containers (autoclaving)", "Document in a lab notebook"],
+      "qA": [["Common disinfection:", ["Oil", "70% ethanol", "Clean water", "Sugar"], 1], ["Biological waste:", ["Special container and autoclaving", "Sink", "Regular bin", "Window"], 0], ["Culture contamination is detected:", ["Never", "It is not", "By using negative controls", "Only from glove colour"], 2]],
+      "qB": [["PPE includes:", ["Nothing", "Cap only", "Gloves, coat, glasses", "Bag only"], 2], ["The lab notebook must:", ["Be empty", "Document steps and results", "Be secret", "Have no dates"], 1], ["Why 70% ethanol and not 100%?", ["Only cheaper", "It penetrates better and kills more effectively", "No difference", "No reason"], 1]]
+    },
+    "senior|m1": {
+      "title": "M1 - Gene cloning",
+      "facts": ["1) Isolate the gene/DNA", "2) Cut with restriction enzymes", "3) Ligate into a vector", "4) Transform into bacteria (e.g. E. coli)", "5) Select (antibiotic) and verify (sequencing)"],
+      "qA": [["The step after ligation:", ["Cleaning", "Isolation", "Transformation", "Cutting"], 2], ["The antibiotic in selection is for:", ["Food", "Growing only bacteria with the plasmid", "Nothing", "Killing all"], 1], ["After transformation colonies grow; some without the gene. What action?", ["Delete all", "Pick the biggest", "Forget", "Screen the colonies (PCR/sequencing)"], 3]],
+      "qB": [["Final verification is usually by:", ["Smell", "Sequencing", "Staining only", "Weight"], 1], ["E. coli is used because:", ["It grows fast and easily", "It is always dangerous", "No reason", "It is only small"], 0], ["Why negative controls at each step?", ["For law only", "They reveal contamination", "For decoration", "No reason"], 1]]
+    },
+    "senior|m2": {
+      "title": "M2 - CRISPR-Cas9",
+      "facts": ["Cas9 cuts DNA guided by a guide RNA (gRNA)", "A PAM (e.g. NGG for SpCas9) is needed near the target", "The double-strand break (DSB) is repaired by NHEJ or HDR", "NHEJ often causes indels (gene knockout)", "Risk: off-target cuts"],
+      "qA": [["Cas9 is guided by:", ["A lipid", "The protein alone", "Sugar", "gRNA"], 3], ["NHEJ often causes:", ["Protein synthesis", "Indels", "Nothing", "Always perfect repair"], 1], ["The main clinical risk:", ["Nothing", "Water price", "Colour", "Off-target"], 3]],
+      "qB": [["PAM for SpCas9:", ["AAA", "TTT", "NGG", "CCC only"], 2], ["HDR is used for:", ["Cell deletion", "Nothing", "Cutting", "Precise sequence insertion"], 3], ["Why double-check the gRNA?", ["For law only", "For decoration", "No reason", "Specificity and reducing off-target"], 3]]
+    },
+    "senior|m3": {
+      "title": "M3 - Validation",
+      "facts": ["Validation shows the method works for its purpose", "Parameters: accuracy, precision, specificity, linearity, LOD, LOQ", "Positive and negative controls", "Replicates (e.g. n=3) and statistics", "GMP/IQ-OQ-PQ for equipment"],
+      "qA": [["LOD is:", ["The limit of detection", "Load", "Caliber", "Water amount"], 0], ["Precision relates to:", ["Repeatability", "Weight", "Colour", "Price"], 0], ["The positive control gives no signal. What does it mean?", ["Conclusion", "A good result", "The method/reagents are problematic", "It does not matter"], 2]],
+      "qB": [["The negative control must:", ["Be unnecessary", "Be empty", "Give no signal", "Give a signal"], 2], ["Accuracy:", ["Price", "Only speed", "Closeness to the true value", "Size"], 2], ["IQ-OQ-PQ refer to:", ["Names", "Equipment qualification", "Colours", "Prices"], 1]]
+    }
+  }
+}

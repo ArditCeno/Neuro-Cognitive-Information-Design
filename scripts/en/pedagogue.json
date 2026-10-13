@@ -1,0 +1,60 @@
+{
+  "id": "pedagogue",
+  "en_name": "Pedagogy",
+  "modules": {
+    "fillestar|m1": {
+      "title": "M1 - Lesson plan",
+      "facts": ["Introduction (motivation)", "Development (content)", "Consolidation (practice)", "Assessment", "Homework"],
+      "qA": [["A lesson starts with:", ["Homework", "Introduction/motivation", "Assessment", "Break"], 1], ["Why is an introduction needed?", ["For time", "To spark interest and activate prior knowledge", "It must not", "For law"], 1], ["A lesson without assessment:", ["Is perfect", "Is legally faster", "May not reveal learning", "No effect"], 2]],
+      "qB": [["Practice belongs to the phase:", ["Introduction", "Consolidation", "Assessment only", "None"], 1], ["Homework serves for:", ["Reinforcement", "Nothing", "Punishment", "Decoration"], 0], ["Logical order:", ["Development, introduction", "Introduction, development, consolidation, assessment", "Assessment, introduction, development", "Whatever"], 1]]
+    },
+    "fillestar|m2": {
+      "title": "M2 - Objectives",
+      "facts": ["An objective describes what the student will do", "Measurable verbs (list, compare, solve)", "Avoid vague verbs (understand, know)", "One objective = one outcome", "Linked to assessment"],
+      "qA": [["The objective should describe:", ["What the book has", "What the teacher does", "Nothing", "What the student will do"], 3], ["Which objective is good?", ["The student solves 5 fraction exercises", "The student 'understands' the law", "The student 'knows' everything", "The student 'feels'"], 0], ["The objective 'The student will learn mathematics' is:", ["Good", "SMART", "Perfect", "Too general, not measurable"], 3]],
+      "qB": [["A measurable verb:", ["Enjoy", "Feel", "List", "Understand"], 2], ["Why avoid 'know'/'understand'?", ["They are hard to measure", "No reason", "They are long", "They are forbidden"], 0], ["An objective must link to:", ["The colour of the day", "Nothing", "Break time", "Assessment"], 3]]
+    },
+    "fillestar|m3": {
+      "title": "M3 - Classroom management",
+      "facts": ["Clear, few, positive rules", "Routines for start/end", "Positive reinforcement", "Predictable consequences", "Respectful relationships"],
+      "qA": [["Good rules are:", ["Changeable", "Clear and few", "Secret", "Many"], 1], ["Routines help:", ["They are unnecessary", "They do not matter", "Increase chaos", "Reduce lost time"], 3], ["A good rule:", ["'We speak one at a time'", "'Don't make noise'", "'Don't do things'", "'Behave well'"], 0]],
+      "qB": [["Positive reinforcement:", ["Punishment", "Noise", "Nothing", "Reward/acknowledge good behaviour"], 3], ["Consequences should be:", ["Hidden", "Predictable", "Different daily", "Random"], 1], ["A respectful relationship:", ["No effect", "Increases problems", "Is forbidden", "Reduces problems"], 3]]
+    },
+    "mid|m1": {
+      "title": "M1 - Organising concepts",
+      "facts": ["Concept map: concepts + links", "From general to specific", "Build on prior knowledge", "Examples and non-examples", "Spiral: revisit concepts deeper"],
+      "qA": [["A concept map has:", ["Only figures", "Only text", "Concepts and links", "Nothing"], 2], ["A non-example helps with:", ["The boundaries of the concept", "Decoration", "Boredom", "Nothing"], 0], ["A new concept links to nothing familiar. Risk:", ["Surface learning", "Deep learning", "None", "Speed"], 0]],
+      "qB": [["Learning builds on:", ["Prior knowledge", "Memory", "Nothing", "Text only"], 0], ["A spiral curriculum:", ["Revisits with more depth", "Is random", "Never revisits", "Only once"], 0], ["General to specific helps because:", ["It is harder", "It is law", "It gives a mental framework", "No reason"], 2]]
+    },
+    "mid|m2": {
+      "title": "M2 - Assessment",
+      "facts": ["Formative: during learning to improve", "Summative: at the end for a grade", "Criteria and rubrics", "Specific and timely feedback", "Self-assessment"],
+      "qA": [["Formative assessment happens:", ["During the process", "Never", "After the year", "Only at the end"], 0], ["A rubric:", ["Criteria with quality levels", "Nothing", "One word", "A grade only"], 0], ["'Good work!' as the only feedback:", ["Perfect", "Not specific, gives little guidance", "Sufficient", "Harmful"], 1]],
+      "qB": [["Summative assessment:", ["Gives a summary judgement", "Is ungraded", "Has no criteria", "Is at the start"], 0], ["Good feedback:", ["No guidance", "Late", "Specific and timely", "Unclear"], 2], ["Why self-assessment?", ["It must not", "To save time", "Develops self-regulation", "For law"], 2]]
+    },
+    "mid|m3": {
+      "title": "M3 - Bloom's taxonomy",
+      "facts": ["Revised: remember, understand, apply, analyse, evaluate, create", "Lower levels: remember, understand", "Higher levels: analyse, evaluate, create", "Verbs match the levels", "Tasks should include higher levels"],
+      "qA": [["The highest level in the revised version:", ["Remember", "Create", "Apply", "Understand"], 1], ["'Compare two theories' is:", ["Create", "Remember", "Analyse", "Apply"], 2], ["A task only with 'remember':", ["Does not develop critical thinking", "Is forbidden", "Is perfect", "Develops critical thinking"], 0]],
+      "qB": [["Remember is a level:", ["High", "Low", "None", "Medium only"], 1], ["'Order the dates' is:", ["Remember", "Analyse", "Evaluate", "Create"], 0], ["'Design an experiment' is:", ["Apply", "Create", "Remember", "Understand"], 1]]
+    },
+    "senior|m1": {
+      "title": "M1 - Integrating models",
+      "facts": ["Constructivism: the learner builds knowledge", "Behaviourism: stimulus-response-reinforcement", "Cognitivism: information processing", "Vygotsky: zone of proximal development (ZPD)", "Combine by goal and students"],
+      "qA": [["ZPD belongs to:", ["Vygotsky", "Piaget only", "Bloom", "Skinner"], 0], ["Constructivism says:", ["The learner actively builds knowledge", "Knowledge is passively transmitted", "Memory only", "The teacher decides"], 0], ["Combining models helps because:", ["It is cheaper", "It is law", "Students differ", "No reason"], 2]],
+      "qB": [["Behaviourism emphasised:", ["Knowledge building", "Stimulus-response-reinforcement", "Perception", "Imagination"], 1], ["ZPD is:", ["What the learner does with help but not alone", "What they do alone", "Nothing", "What they never do"], 0], ["Scaffolding is:", ["Temporary support, gradually removed", "A test", "Punishment", "Homework"], 0]]
+    },
+    "senior|m2": {
+      "title": "M2 - Planning (backward design)",
+      "facts": ["Step 1: desired results", "Step 2: assessment evidence", "Step 3: learning activities", "Alignment of objective-assessment-activity", "Review after implementation"],
+      "qA": [["Backward design starts from:", ["The book", "The schedule", "The activities", "The desired results"], 3], ["Alignment means:", ["Objective, assessment, activities match", "Nothing", "Objectives only", "Grading only"], 0], ["Nice activities that do not match the objective:", ["Alignment problems", "Perfect", "Legal", "Good"], 0]],
+      "qB": [["The second step:", ["Assessment evidence", "Introduction", "Activities", "Break"], 0], ["After implementation:", ["It is reviewed", "It is forgotten", "It is doubled", "It is deleted"], 0], ["Why start from the results?", ["It avoids worthless activities", "For law", "For decoration", "No reason"], 0]]
+    },
+    "senior|m3": {
+      "title": "M3 - Differentiation and inclusion",
+      "facts": ["Differentiation: content, process, product", "Different levels of tasks", "UDL: multiple means of representation/expression/engagement", "Flexible groups", "Continuous monitoring"],
+      "qA": [["Differentiation adapts:", ["Grades only", "Learning for different needs", "The same for all", "The schedule only"], 1], ["Process differentiation:", ["Content only", "Nothing", "Grades only", "The way of working changes"], 3], ["A student with reading difficulty. A good step:", ["Ignore", "Alternative text/audio and support", "Lower the standard without reason", "Punishment"], 1]],
+      "qB": [["UDL means:", ["A test", "Universal Design for Learning", "A book", "Punishment"], 1], ["Groups should be:", ["Random", "Flexible", "Purposeless", "Fixed forever"], 1], ["Why continuous monitoring?", ["For law", "For decoration", "No reason", "Needs change"], 3]]
+    }
+  }
+}
