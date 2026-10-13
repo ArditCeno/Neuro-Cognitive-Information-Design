@@ -109,7 +109,8 @@ function boot() {
   $("btnDownload").addEventListener("click", () => exportSummary(buildExport()));
   $("btnDownloadGaze").addEventListener("click", () => exportGaze(buildExport()));
   $("btnWithdraw").addEventListener("click", withdraw);
-  $("btnResearcher").addEventListener("click", () => {
+  const rb = $("btnResearcher");
+  if (rb) rb.addEventListener("click", () => {
     STAGES.forEach((s) => $(`stage-${s}`).classList.add("hidden"));
     $("stage-research").classList.remove("hidden");
     Research.render($("stage-research"), Storage.read());
