@@ -1,8 +1,14 @@
-<h1>Informatikë - Mid - Moduli 3 (advanced)</h1>
-<h2>Informacion</h2>
+<h1>Informatikë - Mid - M3 — Kombinim: funksione + lista + kushte</h1>
 <ul>
-<li>Fakti A: kufiri është 48,500.</li>
-<li>Fakti B: afati 60 ditë, njoftimi i shkeljes 30 ditë.</li>
-<li data-aoi="kritike" data-critical="true">Fakti C: anomalia 55,000 kundrejt trendit 10,000.</li>
+<li>Funksion që merr listë dhe kthen listë të filtruar</li>
+<li>Dictionary: çelës→vlerë, d['a']=1</li>
+<li>Numërim me dict: d[k]=d.get(k,0)+1</li>
+<li>enumerate() jep (indeks, vlerë)</li>
+<li data-aoi="kritike" data-critical="true">Testo me raste kufitare: listë bosh</li>
 </ul>
-<p>Ky informacion është ndarë në pika të qarta dhe hapësira logjike.</p>
+<h2>Kod / formulë</h2><pre><code>def frekuenca(lst):
+    d = {}
+    for x in lst:
+        d[x] = d.get(x, 0) + 1
+    return d
+print(frekuenca([1,2,2,3,3,3]))  # {1:1,2:2,3:3}</code></pre>

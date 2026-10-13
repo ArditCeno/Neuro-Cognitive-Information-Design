@@ -1,2 +1,8 @@
-<h1>Informatikë - Mid - Moduli 3 (advanced)</h1>
-<p>Fakti A: kufiri është 48,500. Fakti B: afati 60 ditë, njoftimi i shkeljes 30 ditë. Fakti C: anomalia 55,000 kundrejt trendit 10,000. <span data-aoi="kritike" data-critical="true">Fakti C: anomalia 55,000 kundrejt trendit 10,000.</span> Ky informacion paraqitet i ngjeshur, pa ndarje.</p>
+<h1>Informatikë - Mid - M3 — Kombinim: funksione + lista + kushte</h1>
+<p>Funksion që merr listë dhe kthen listë të filtruar Dictionary: çelës→vlerë, d['a']=1 Numërim me dict: d[k]=d.get(k,0)+1 enumerate() jep (indeks, vlerë) <span data-aoi="kritike" data-critical="true">Testo me raste kufitare: listë bosh</span></p>
+<h2>Kod / formulë</h2><pre><code>def frekuenca(lst):
+    d = {}
+    for x in lst:
+        d[x] = d.get(x, 0) + 1
+    return d
+print(frekuenca([1,2,2,3,3,3]))  # {1:1,2:2,3:3}</code></pre>

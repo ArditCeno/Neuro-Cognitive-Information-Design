@@ -1,2 +1,7 @@
-<h1>Informatikë - Senior - Moduli 2 (intermediate)</h1>
-<p>Fakti A: pragu është 25. Fakti B: anomalia është +45%. Fakti C: marzhi është 12%. <span data-aoi="kritike" data-critical="true">Fakti C: marzhi është 12%.</span> Ky informacion paraqitet i ngjeshur, pa ndarje.</p>
+<h1>Informatikë - Senior - M2 — Struktura të dhënash</h1>
+<p>Stack: LIFO (push/pop) Queue: FIFO Set: pa dublikatë, kërkim mesatar O(1) Dict/hash table: akses mesatar O(1) <span data-aoi="kritike" data-critical="true">Pema binare: secili nyje ka maksimum 2 fëmijë</span></p>
+<h2>Kod / formulë</h2><pre><code>stack = []
+stack.append(1); stack.append(2)
+print(stack.pop())  # 2 (LIFO)
+from collections import deque
+q = deque([1,2]); print(q.popleft())  # 1 (FIFO)</code></pre>

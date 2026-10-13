@@ -1,2 +1,10 @@
-<h1>Informatikë - Senior - Moduli 1 (basic)</h1>
-<p>Fakti A: vlera hyrëse është 10. Fakti B: totali është 30. <span data-aoi="kritike" data-critical="true">Fakti B: totali është 30.</span> Ky informacion paraqitet i ngjeshur, pa ndarje.</p>
+<h1>Informatikë - Senior - M1 — Algoritme dhe kompleksitet</h1>
+<p>Big-O përshkruan rritjen e kohës me n Kërkimi linear: O(n); binar (listë e renditur): O(log n) Renditja efikase e përgjithshme: O(n log n) Dy cikle të ndërthurura mbi n: O(n²) <span data-aoi="kritike" data-critical="true">Kërkimi binar kërkon listë të renditur</span></p>
+<h2>Kod / formulë</h2><pre><code>def binary_search(a, t):
+    lo, hi = 0, len(a)-1
+    while lo &lt;= hi:
+        mid = (lo+hi)//2
+        if a[mid] == t: return mid
+        if a[mid] &lt; t: lo = mid+1
+        else: hi = mid-1
+    return -1</code></pre>

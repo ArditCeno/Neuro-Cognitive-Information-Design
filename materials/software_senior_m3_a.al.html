@@ -1,8 +1,12 @@
-<h1>Informatikë - Senior - Moduli 3 (advanced)</h1>
-<h2>Informacion</h2>
+<h1>Informatikë - Senior - M3 — Diagnostikim (debugging)</h1>
 <ul>
-<li>Fakti A: kufiri është 48,500.</li>
-<li>Fakti B: afati 60 ditë, njoftimi i shkeljes 30 ditë.</li>
-<li data-aoi="kritike" data-critical="true">Fakti C: anomalia 55,000 kundrejt trendit 10,000.</li>
+<li>Lexo mesazhin e gabimit nga fundi (traceback)</li>
+<li>Riprodho gabimin me rast minimal</li>
+<li>Off-by-one: range(n) nuk përfshin n</li>
+<li>Provo hipotezat një nga një (print/debugger)</li>
+<li data-aoi="kritike" data-critical="true">Shkruaj test që dështon para korrigjimit</li>
 </ul>
-<p>Ky informacion është ndarë në pika të qarta dhe hapësira logjike.</p>
+<h2>Kod / formulë</h2><pre><code>a = [1,2,3]
+for i in range(len(a)+1):   # GABIM: off-by-one
+    print(a[i])
+# Rregullim: range(len(a))</code></pre>
