@@ -149,17 +149,19 @@ python analysis/clean.py --input analysis/raw --output analysis/data/processed
 ## Security (required before sharing the link)
 
 1. In Supabase, SQL editor, run [`supabase/security.sql`](supabase/security.sql).
-   This removes public reading and protects inserts with a token.
+   It removes all anonymous read/write access and creates the rate-limit helper.
 2. Create the owner account: Supabase, Authentication, Users, Add user
    (email `arditceno82@gmail.com` and a password). Only this account can read.
-3. The admin panel now requires that login (email and password).
+3. Deploy the write path: `supabase functions deploy submit --no-verify-jwt`
+   and set `APPS_SCRIPT_URL` / `APPS_SCRIPT_TOKEN` as function secrets.
+4. The admin panel requires the owner login (email and password).
 
 Notes:
-- The token lives in `js/config.js` (`storage.token`) and in
-  `email-setup/Code.gs` (`TOKEN`) and in the policy. Change it in all three if
-  you rotate it.
-- No server password is in the repository. The publishable key is client-safe.
-- The legal pages are [privacy.html](privacy.html) and [terms.html](terms.html).
+- No secret is committed: the Apps Script URL and token live only in the Edge
+  Function secrets, and the token also in the Apps Script Script Properties.
+- The Supabase publishable key in `js/config.js` is client-safe (RLS blocks it).
+- The legal pages are [privacy.html](privacy.html) and [terms.html](terms.html);
+  participants see requirements and FAQ on [study-info.html](study-info.html).
 
 ## Photos (36)
 Place the study photos in `assets/photos/` using the exact names listed in

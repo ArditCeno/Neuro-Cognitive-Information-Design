@@ -329,3 +329,13 @@ h2 { font-size: 18px; margin: 0 0 12px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
 }
+
+/* ============================================================
+   Final fit guard (study/admin): no horizontal overflow
+   ============================================================ */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg, video, iframe, table { max-width: 100%; }
+@media (max-width: 400px) {
+  #main { padding-inline: 10px; }
+  .card, .quiz-item, .tlx-item { padding: 12px; }
+}

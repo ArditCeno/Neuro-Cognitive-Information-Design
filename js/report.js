@@ -123,6 +123,8 @@ export function emailTableHTML(summary) {
   const esc = (s) => String(s == null ? "" : s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const p = summary.participant || {};
   const q = summary.quiz_results || {};
+  const s = summary.session || {};
+  const b = summary.biometric_metrics || {};
   const head = [
     ["Name and surname", p.emri_mbiemer || p["emër_mbiemër"] || ""],
     ["ID", p.id_anonim || ""],
@@ -130,6 +132,13 @@ export function emailTableHTML(summary) {
     ["Expertise", p["niveli_i_ekspertizës"] || ""],
     ["Age", p.mosha || ""],
     ["Type", summary.kind || "session"],
+    ["Session no", s.session_number != null ? s.session_number : ""],
+    ["Calibration px", s.kalibrimi_px != null ? s.kalibrimi_px : ""],
+    ["Duration min", s["kohëzgjatja_min"] != null ? s["kohëzgjatja_min"] : ""],
+    ["Browser", s.shfletuesi || ""],
+    ["Device", s.pajisja || ""],
+    ["Language", s.gjuha || ""],
+    ["Method", s.metoda || ""],
     ["Accuracy %", q.accuracy_score_pct != null ? q.accuracy_score_pct : ""],
     ["Date", summary.exported_at || ""]
   ];
@@ -163,6 +172,36 @@ export function emailTableHTML(summary) {
     }));
     html += '</table>';
   }
+
+  if (mods.length) {
+    html += '<h3>NASA-TLX and preference</h3>';
+    html += '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px">';
+    html += '<tr><th>Module</th><th>Mental</th><th>Physical</th><th>Temporal</th><th>Performance</th><th>Effort</th><th>Frustration</th><th>Preference</th></tr>';
+    mods.forEach((m) => {
+      const t = m.nasa_tlx || {};
+      html += '<tr><td>' + esc(m.module_id) + '</td><td>' + esc(t.mental) + '</td><td>' + esc(t.physical) +
+        '</td><td>' + esc(t.temporal) + '</td><td>' + esc(t.performance) + '</td><td>' + esc(t.effort) +
+        '</td><td>' + esc(t.frustration) + '</td><td>' + esc(m.preference || "") + '</td></tr>';
+    });
+    html += '</table>';
+  }
+
+  const bio = summary.biometric_metrics || {};
+  html += '<h3>Biometrics and timing</h3>';
+  html += '<table border="1" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px">';
+  [
+    ["Fixation duration (ms)", bio.fixation_duration_ms],
+    ["Saccadic regressions", bio.saccadic_regressions],
+    ["Time to first fixation (ms)", bio.time_to_first_fixation_ms],
+    ["Task completion time (s)", bio.task_completion_time_s],
+    ["Reading time (s)", bio.reading_time_s],
+    ["Blink rate / min", bio.blink_rate_per_min],
+    ["Head yaw (mean)", bio.head_pose ? bio.head_pose.yaw_mean : ""],
+    ["Head pitch (mean)", bio.head_pose ? bio.head_pose.pitch_mean : ""],
+    ["Head roll (mean)", bio.head_pose ? bio.head_pose.roll_mean : ""]
+  ].forEach((r) => { html += '<tr><td><b>' + esc(r[0]) + '</b></td><td>' + esc(r[1]) + '</td></tr>'; });
+  html += '</table>';
+
   return html;
 }
 

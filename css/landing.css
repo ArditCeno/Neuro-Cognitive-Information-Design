@@ -749,3 +749,15 @@ body { overflow-x: hidden; }
   :root { --hdr: 62px; }
   .hero-home { min-height: calc(100vh - var(--hdr)); min-height: calc(100dvh - var(--hdr)); }
 }
+
+/* ============================================================
+   Final fit guard: no horizontal overflow on any device
+   ============================================================ */
+html, body { max-width: 100%; overflow-x: hidden; }
+img, svg, video, iframe, table { max-width: 100%; }
+.table-scroll { -webkit-overflow-scrolling: touch; }
+@media (max-width: 400px) {
+  .hero2 { padding-inline: 10px; }
+  .page { padding-inline: 10px; }
+  .fields-strip { padding-inline: 8px; }
+}

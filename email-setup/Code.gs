@@ -63,6 +63,8 @@ function tableHTML(s, identity) {
   var p = s.participant || {};
   var id = identity || {};
   var q = s.quiz_results || {};
+  var meta = s.session || {};
+  var bio = s.biometric_metrics || {};
   var h = "<h2>NCID " + esc(s.kind || "session") + "</h2>";
 
   h += "<table border='1' cellspacing='0' cellpadding='6' style='border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px'>";
@@ -73,6 +75,13 @@ function tableHTML(s, identity) {
     ["Expertise", p["niveli_i_ekspertiz\u00ebs"]],
     ["Age", p.mosha],
     ["Type", s.kind],
+    ["Session no", meta.session_number],
+    ["Calibration px", meta["kalibrimi_px"]],
+    ["Duration min", meta["koh\u00ebzgjatja_min"]],
+    ["Browser", meta.shfletuesi],
+    ["Device", meta.pajisja],
+    ["Language", meta.gjuha],
+    ["Method", meta.metoda],
     ["Accuracy %", q.accuracy_score_pct],
     ["Date", s.exported_at]
   ];
@@ -88,7 +97,7 @@ function tableHTML(s, identity) {
     h += "<tr><th>Level</th><th>Version</th><th>Accuracy %</th><th>Fixation ms</th><th>Regressions</th><th>TTFF ms</th><th>Reading s</th></tr>";
     mods.forEach(function (m) {
       (m.trials || []).forEach(function (t) {
-        h += "<tr><td>" + esc(m.niveli) + "</td><td>" + esc(t.versioni) + "</td><td>" + esc(t.accuracy_score_pct) +
+        h += "<tr><td>" + esc(m.module_id) + "</td><td>" + esc(t.versioni) + "</td><td>" + esc(t.accuracy_score_pct) +
           "</td><td>" + esc(t.fixation_duration_ms) + "</td><td>" + esc(t.regresione) +
           "</td><td>" + esc(t.TTFF_ms) + "</td><td>" + esc(t.koha_e_leximit_s) + "</td></tr>";
       });
@@ -103,12 +112,38 @@ function tableHTML(s, identity) {
         var qs = t.quiz_item || [];
         (t.response || []).forEach(function (r, i) {
           var qq = qs[i] || {};
-          h += "<tr><td>" + esc(m.niveli) + "</td><td>" + esc(t.versioni) + "</td><td>" + esc(qq.pyetja) +
+          h += "<tr><td>" + esc(m.module_id) + "</td><td>" + esc(t.versioni) + "</td><td>" + esc(qq.pyetja) +
             "</td><td>" + esc(r.zgjedhja) + "</td><td>" + (r["e_sakt\u00eb"] ? "yes" : "no") + "</td></tr>";
         });
       });
     });
     h += "</table>";
   }
+
+  if (mods.length) {
+    h += "<h3>NASA-TLX and preference</h3><table border='1' cellspacing='0' cellpadding='6' style='border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px'>";
+    h += "<tr><th>Module</th><th>Mental</th><th>Physical</th><th>Temporal</th><th>Performance</th><th>Effort</th><th>Frustration</th><th>Preference</th></tr>";
+    mods.forEach(function (m) {
+      var t = m.nasa_tlx || {};
+      h += "<tr><td>" + esc(m.module_id) + "</td><td>" + esc(t.mental) + "</td><td>" + esc(t.physical) +
+        "</td><td>" + esc(t.temporal) + "</td><td>" + esc(t.performance) + "</td><td>" + esc(t.effort) +
+        "</td><td>" + esc(t.frustration) + "</td><td>" + esc(m.preference || "") + "</td></tr>";
+    });
+    h += "</table>";
+  }
+
+  h += "<h3>Biometrics and timing</h3><table border='1' cellspacing='0' cellpadding='6' style='border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px'>";
+  [["Fixation duration (ms)", bio.fixation_duration_ms],
+   ["Saccadic regressions", bio.saccadic_regressions],
+   ["Time to first fixation (ms)", bio.time_to_first_fixation_ms],
+   ["Task completion time (s)", bio.task_completion_time_s],
+   ["Reading time (s)", bio.reading_time_s],
+   ["Blink rate / min", bio.blink_rate_per_min],
+   ["Head yaw (mean)", (bio.head_pose || {}).yaw_mean],
+   ["Head pitch (mean)", (bio.head_pose || {}).pitch_mean],
+   ["Head roll (mean)", (bio.head_pose || {}).roll_mean]
+  ].forEach(function (r) { h += "<tr><td><b>" + esc(r[0]) + "</b></td><td>" + esc(r[1]) + "</td></tr>"; });
+  h += "</table>";
+
   return h;
 }
