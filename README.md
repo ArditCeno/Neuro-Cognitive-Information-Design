@@ -4,7 +4,7 @@
 
 # Neuro-Cognitive Information Design
 
-**An eye-tracking and biometric study of document readability across law, finance, business, health and software.*
+**An eye-tracking and biometric study of document readability across 12 professions and 3 expertise levels.*
 
 [![Deploy to GitHub Pages](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/deploy-pages.yml)
 [![CI](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/ci.yml/badge.svg)](https://github.com/ArditCeno/Neuro-Cognitive-Information-Design/actions/workflows/ci.yml)
@@ -59,57 +59,44 @@ the measured accuracy (use this to test a phone).
 
 ## The researcher panel
 
-Open the Admin tab. It reads the sessions from Supabase and shows:
+Open the Admin tab and sign in with the owner email, a password and a 6-digit
+code sent by email. It reads the sessions from the mailbox and shows:
 
 - a summary per profession, with each participant's answers
+- a **profession diagram**: pick a profession to compare average comprehension
+  per module (A vs B)
 - a **map**: X = tests completed, Y = average comprehension (%), one point per profession
-- full session view: node map, hashmap and a gaze **heatmap**
-- search by UUID, and CSV export
-
-Results refresh live (Realtime, with a 15 second fallback).
+- full session view: node map, hashmap and the raw JSON
+- search by name / ID and CSV export
 
 ## Email the results as a table
 
-Every registration and every finished session can be emailed to
-`arditceno82@gmail.com` as an HTML table, using a free **Google Apps Script**
-(no third-party account).
+Every finished session is emailed to `arditceno82@gmail.com` as an HTML table,
+using a free **Google Apps Script** (no third-party account). The browser posts
+straight to the Apps Script web app; no server is required. Each session is
+emailed once, at the end.
 
 The email contains **Name and surname, ID, Profession, Expertise, Age**, the
-results per level and version, and every answer.
+session data, the results per level and version, NASA-TLX, biometrics, and every
+answer.
 
-Full code and steps: [`email-setup/`](email-setup) (see `Code.gs` and its README).
-
-The browser never sees the Apps Script URL: it posts to the Supabase Edge
-Function `submit`, which owns the secret, the database insert and the email.
-
-Short version:
-
-1. Open https://script.google.com, **New project**, paste the contents of
-   [`email-setup/Code.gs`](email-setup/Code.gs).
-2. **Deploy, New deployment, Web app**, Execute as **Me**, access **Anyone**.
-3. Project Settings, **Script properties**, add **`TOKEN`** with a long random
-   value.
-4. Copy the URL that ends with `/exec` and set it on the function:
-
-```bash
-supabase functions deploy submit --no-verify-jwt
-supabase secrets set APPS_SCRIPT_URL="https://script.google.com/macros/s/.../exec"
-supabase secrets set APPS_SCRIPT_TOKEN="the-same-random-token"
-```
+Setup: open https://script.google.com and paste [`email-setup/Code.gs`](email-setup/Code.gs).
+Add a Script property `TOKEN` (the value the study sends) and set the admin
+password, then **Deploy, Web app, Execute as Me, access Anyone**. Copy the URL
+ending in `/exec` into `js/config.js` (`storage.submission.fallbackUrl`). Full
+steps: [`DEPLOY.md`](DEPLOY.md).
 
 ## Data and privacy
 
-Sessions are stored in **Supabase** (PostgreSQL). No video is stored, only gaze
-coordinates and timings, linked to an anonymous ID. An optional name is kept in
-a **separate identity table** and never enters the research payload. See
-[privacy.html](privacy.html) and [terms.html](terms.html).
+The study runs in **email mode**: each finished session is emailed to the
+researcher; nothing is stored in a database by default. No video is stored, only
+gaze coordinates and timings linked to an anonymous ID. An optional name travels
+separately from the research payload. See [privacy.html](privacy.html) and
+[terms.html](terms.html).
 
-Apply the full schema and policies in the Supabase SQL editor:
-[`supabase/security.sql`](supabase/security.sql). It creates `sessions`,
-`participant_identity`, the `submission_id` dedupe index and the rate-limit
-function, and gives read/delete access only to the owner account. Anonymous
-clients cannot read or write the tables directly — the Edge Function does the
-insert with the service role.
+An optional server path (Supabase + Edge Function with owner-only reads) is
+included for later use: apply [`supabase/security.sql`](supabase/security.sql)
+and deploy `supabase/functions/submit` (see [`DEPLOY.md`](DEPLOY.md)).
 
 ## Project layout
 
@@ -117,19 +104,18 @@ insert with the service role.
 index.html              one-page site: Home, Test and Admin tabs
 study.html              participant test
 study-info.html         what to expect, requirements, FAQ, share/QR
-admin.html              researcher panel with live results
+admin.html              researcher panel (email + password + code)
 privacy.html terms.html legal pages
-about / methodology / fields / contact .html   public pages
-materials/    A and B documents for each profession and level
-assets/       logo, figures, og-image, study-info screenshots
+materials/    216 A/B documents (108 modules, EN + AL)
+assets/       logo, hero, 108 diagrams (assets/diagrams), figures
 js/           application, config, eye-tracking, storage, visuals, report
 css/          landing, header, main, materials
 mediapipe/    FaceMesh assets for WebGazer
-vendor/       heatmap.js, jsPDF, emailjs, supabase-js (local copies)
-supabase/     security.sql + functions/submit (Edge Function write path)
-backend/      Spring Boot API (optional)
-analysis/     Python: fetch, clean, metrics, stats, figures
-email-setup/  Google Apps Script to email results
+vendor/       heatmap.js, jsPDF, supabase-js (local copies)
+supabase/     security.sql + functions/submit (optional server write path)
+analysis/     Python: metrics, stats, figures and ncid_admin.py (admin report)
+email-setup/  Google Apps Script: submissions + admin login + data
+scripts/      generators and tests (gen-diagrams, test-all, test-endpoint)
 ```
 
 ## Deployment
@@ -150,6 +136,12 @@ python analysis/fetch_supabase.py --output analysis/raw
 python analysis/clean.py --input analysis/raw --output analysis/data/processed
 ```
 
+Admin report from the mailbox (email mode):
+
+```bash
+python analysis/ncid_admin.py --user arditceno82@gmail.com --find "Ardit"
+```
+
 ---
 
 <div align="center">
@@ -160,27 +152,26 @@ python analysis/clean.py --input analysis/raw --output analysis/data/processed
 
 ## Security (required before sharing the link)
 
-1. In Supabase, SQL editor, run [`supabase/security.sql`](supabase/security.sql).
-   It removes all anonymous read/write access and creates the rate-limit helper.
-2. Create the owner account: Supabase, Authentication, Users, Add user
-   (email `arditceno82@gmail.com` and a password). Only this account can read.
-3. Deploy the write path: `supabase functions deploy submit --no-verify-jwt`
-   and set `APPS_SCRIPT_URL` / `APPS_SCRIPT_TOKEN` as function secrets.
-4. The admin panel requires the owner login (email and password).
+1. In the Apps Script project, add Script property `TOKEN` (the value the study
+   sends) and set the admin password, then **Deploy, Web app** (Execute as Me,
+   access Anyone). Copy the `/exec` URL into `js/config.js`.
+2. The admin panel requires the owner email, the password and a 6-digit code sent
+   by email; codes expire and are rate limited.
+3. Optional server path: run [`supabase/security.sql`](supabase/security.sql) and
+   deploy `supabase/functions/submit` (owner-only reads, per-IP rate limit).
 
 Notes:
-- No secret is committed: the Apps Script URL and token live only in the Edge
-  Function secrets, and the token also in the Apps Script Script Properties.
-- The Supabase publishable key in `js/config.js` is client-safe (RLS blocks it).
-- The legal pages are [privacy.html](privacy.html) and [terms.html](terms.html);
-  participants see requirements and FAQ on [study-info.html](study-info.html).
+- The Apps Script URL and token live in the client `js/config.js` (email mode);
+  keep `ADMIN_PASSWORD` only inside the Apps Script project.
+- No research database is used in email mode; nothing is stored on a server.
+- The legal pages are [privacy.html](privacy.html) and [terms.html](terms.html).
 
-## Photos (36)
-Place the study photos in `assets/photos/` using the exact names listed in
-[`assets/photos/README.md`](assets/photos/README.md) (1600x1000, under ~300 KB,
-free-licence sources, no sensitive data). Then run:
+## Diagrams (108)
+Each module shows one accurate, on-topic SVG diagram in `assets/diagrams/`, so
+every A/B document has exactly one image. Regenerate with:
 ```bash
-node scripts/apply-photos.mjs
-git add -A && git commit -m "Add study photos" && git push
+node scripts/gen-diagrams.mjs
+git add -A && git commit -m "Update diagrams" && git push
 ```
-The script inserts each photo into the matching module (A and B, EN and AL).
+The script writes `assets/diagrams/<field>_<level>_mN.svg` and injects it into
+the matching module (A and B, EN and AL).
