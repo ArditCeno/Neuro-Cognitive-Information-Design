@@ -4,9 +4,9 @@
  * a fully-featured DOM engine is the default and automatic fallback.
  */
 
-import { CONFIG } from "./config.js?v=31";
-import { tr, t } from "./i18n.js?v=31";
-import { el } from "./utils.js?v=31";
+import { CONFIG } from "./config.js?v=32";
+import { tr, t } from "./i18n.js?v=32";
+import { el } from "./utils.js?v=32";
 
 let jsPsychCtx = null;
 
