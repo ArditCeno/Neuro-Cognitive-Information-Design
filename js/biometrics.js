@@ -4,8 +4,8 @@
  * Reuses the WebGazer video feed to avoid a second camera stream.
  */
 
-import { CONFIG } from "./config.js?v=38";
-import { loadScript, mean, round } from "./utils.js?v=38";
+import { CONFIG } from "./config.js?v=39";
+import { loadScript, mean, round } from "./utils.js?v=39";
 
 const L_EYE = [33, 160, 158, 133, 153, 144];
 const R_EYE = [362, 385, 387, 263, 373, 380];
@@ -29,6 +29,7 @@ export const Biometrics = {
   _closed: false,
   _faceMesh: null,
   _video: null,
+  _low: null,
   _timer: null,
   _busy: false,
   _startT: 0,
@@ -41,7 +42,7 @@ export const Biometrics = {
         locateFile: (file) => "mediapipe/face_mesh/" + file
       });
       this._faceMesh.setOptions({
-        maxNumFaces: 1, refineLandmarks: true, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5
+        maxNumFaces: 1, refineLandmarks: false, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5
       });
       this._faceMesh.onResults((r) => this._onResults(r));
       this.ready = true;
@@ -54,20 +55,27 @@ export const Biometrics = {
   },
 
   start() {
-    if (!this.ready) return;
-    const video = document.getElementById("webgazerVideoFeed");
+    if (!this.ready || this.running) return;
+    const video = document.getElementById("webgazerVideoFeed") || document.querySelector("video");
     if (!video) return;
     this._video = video;
+    // Feed a small copy of the video so the second FaceMesh stays light on phones.
+    this._low = document.createElement("canvas");
+    this._low.width = 160; this._low.height = 120;
+    const touch = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
     this.running = true;
     this._startT = performance.now();
-    this._timer = setInterval(() => this._tick(), 120);
+    this._timer = setInterval(() => this._tick(), touch ? 260 : 130);
   },
 
   async _tick() {
-    if (!this.running || this._busy || !this._video || this._video.readyState < 2) return;
+    if (!this.running || this._busy || !this._video || this._video.readyState < 2 || !this._video.videoWidth) return;
     this._busy = true;
-    try { await this._faceMesh.send({ image: this._video }); }
-    catch (e) { /* ignore per-frame errors */ }
+    try {
+      const ctx = this._low.getContext("2d");
+      ctx.drawImage(this._video, 0, 0, this._low.width, this._low.height);
+      await this._faceMesh.send({ image: this._low });
+    } catch (e) { /* ignore per-frame errors */ }
     this._busy = false;
   },
 
@@ -99,7 +107,9 @@ export const Biometrics = {
 
   /* ---------- small dots over the face (scanning feedback) ---------- */
   _ensureCanvas() {
-    const host = document.getElementById("cameraPreview");
+    const vid = this._video || document.querySelector("video");
+    const host = (vid && vid.closest && vid.closest("#wgOverlay, #cameraPreview")) ||
+      document.getElementById("wgOverlay") || document.getElementById("cameraPreview");
     if (!host) return null;
     let c = document.getElementById("faceDots");
     if (!c) {

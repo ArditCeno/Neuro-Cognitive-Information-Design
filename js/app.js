@@ -5,22 +5,22 @@
  * modules, NASA-TLX after each module, MouseView.js plan B on calibration fail.
  */
 
-import { CONFIG } from "./config.js?v=38";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=38";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=38";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=38";
-import { EyeTracking } from "./eyetracking.js?v=38";
-import { Calibration } from "./calibration.js?v=38";
-import { Stimuli } from "./stimuli.js?v=38";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=38";
-import { Runner } from "./runner.js?v=38";
-import { Heatmap } from "./heatmap.js?v=38";
-import { Biometrics } from "./biometrics.js?v=38";
-import { Research } from "./research.js?v=38";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=38";
-import { EXPERTISE } from "./fields.js?v=38";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=38";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=38";
+import { CONFIG } from "./config.js?v=39";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=39";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=39";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=39";
+import { EyeTracking } from "./eyetracking.js?v=39";
+import { Calibration } from "./calibration.js?v=39";
+import { Stimuli } from "./stimuli.js?v=39";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=39";
+import { Runner } from "./runner.js?v=39";
+import { Heatmap } from "./heatmap.js?v=39";
+import { Biometrics } from "./biometrics.js?v=39";
+import { Research } from "./research.js?v=39";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=39";
+import { EXPERTISE } from "./fields.js?v=39";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=39";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=39";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -85,6 +85,11 @@ function mountHeaderControls() {
 
 function boot() {
   window.setLang = setLang;
+  EyeTracking.onCameraLost = () => {
+    const warn = $("deviceWarn");
+    if (warn) { warn.textContent = t("camera_lost"); warn.classList.remove("hidden"); }
+    try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
+  };
   mountHeaderControls();
   if (location.protocol === "file:") {
     const warn = document.createElement("div");
@@ -226,6 +231,7 @@ function onRegister(e) {
   Storage.addEvent("registration", { id });
   // a single report is emailed only at the very end of the session
   showStage("setup");
+  EyeTracking.preload();   // warm up WebGazer so the camera starts faster
 }
 
 /* ---------------------------- Camera & calibration ---------------------------- */
@@ -240,7 +246,9 @@ async function onEnableCamera() {
     if (preview) preview.classList.add("ready");
     $("btnCamera").classList.add("hidden");
     $("btnSetupNext").classList.remove("hidden");
-    if (!state.mock) setTimeout(async () => { await Biometrics.init(); Biometrics.start(); }, 800);
+    // Load the biometrics model now, but only START sampling during reading, so
+    // calibration runs with a single FaceMesh (keeps phones fast and stable).
+    if (!state.mock) setTimeout(() => { Biometrics.init().catch(() => {}); }, 1200);
     try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
     if (state.calibTest) { $("btnSetupNext").classList.add("hidden"); startCalibration(); }
   } catch (err) {
@@ -376,6 +384,17 @@ function startModuleIntro() {
 }
 
 /* ---------------------------- Reading trial ---------------------------- */
+let bioStarted = false;
+/** Start the biometrics sampler once, lazily, at reading time. */
+async function ensureBiometrics() {
+  if (state.mock || bioStarted) return;
+  bioStarted = true;
+  try {
+    if (!Biometrics.ready) await Biometrics.init();
+    Biometrics.start();
+  } catch (e) { /* exploratory only */ }
+}
+
 async function startReading() {
   const m = state.modulePlan[state.moduleIndex];
   const version = m.versions[state.blockIndex];
@@ -403,6 +422,7 @@ async function startReading() {
   try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
   state.readStart = performance.now();
   EyeTracking.startTrial(`${m.field.id}:${m.expertise}:${m.module.id}:${version}`);
+  ensureBiometrics();
   Storage.addEvent("reading_start", { field: m.field.id, expertise: m.expertise, module: m.module.id, version });
 }
 

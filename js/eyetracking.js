@@ -9,9 +9,9 @@
  *    points keep tracking even when the setup stage is hidden.
  */
 
-import { CONFIG } from "./config.js?v=38";
-import { loadScript } from "./utils.js?v=38";
-import { MouseView } from "./mouseview.js?v=38";
+import { CONFIG } from "./config.js?v=39";
+import { loadScript } from "./utils.js?v=39";
+import { MouseView } from "./mouseview.js?v=39";
 
 export const EyeTracking = {
   mock: false,
@@ -27,6 +27,12 @@ export const EyeTracking = {
   _mockTimer: null,
   _mockPos: null,
 
+  /** Warm up the WebGazer bundle early so the camera starts faster later. */
+  async preload() {
+    if (this.mock || this.ready || this.webgazer || typeof window === "undefined") return;
+    try { await loadScript(CONFIG.cdn.webgazer); this.webgazer = window.webgazer || null; } catch (e) { /* ignore */ }
+  },
+
   async init({ mock = false } = {}) {
     this.mock = mock;
     this.samples = [];
@@ -37,7 +43,7 @@ export const EyeTracking = {
       return true;
     }
     this.mode = "webgazer";
-    await loadScript(CONFIG.cdn.webgazer);
+    if (!window.webgazer) await loadScript(CONFIG.cdn.webgazer);
     this.webgazer = window.webgazer;
     if (!this.webgazer) throw new Error("WebGazer failed to load");
     this.ready = true;
@@ -82,21 +88,53 @@ export const EyeTracking = {
       };
     }
     try {
-      await wg.begin();               // rejects only when the camera cannot start
+      // rejects when the camera cannot start; time out so we never hang forever
+      await this._withTimeout(wg.begin(), touch ? 35000 : 20000);
     } finally {
       if (original) md.getUserMedia = original;
     }
 
     this.running = true;
-    // Show the camera feed with the FACE / EYE points (like the laptop), but no
-    // cursor/prediction dot on the page.
+    this._applyDisplay();
+    if (!touch) safe(() => wg.addMouseListener && wg.addMouseListener());   // mouse self-training (desktop only)
+    this._mountVideo();
+    this._watchStream();
+    return true;
+  },
+
+  /** Face/eye points on, cursor/prediction dot OFF (re-applied on demand). */
+  _applyDisplay() {
+    const wg = this.webgazer;
+    if (!wg) return;
+    const safe = (fn) => { try { fn(); } catch (e) { /* optional call */ } };
     safe(() => wg.showVideoPreview && wg.showVideoPreview(true));
     safe(() => wg.showFaceOverlay && wg.showFaceOverlay(true));
-    safe(() => wg.showFaceFeedbackBox && wg.showFaceFeedbackBox(true));
+    safe(() => wg.showFaceFeedbackBox && wg.showFaceFeedbackBox(false));
     safe(() => wg.showPredictionPoints && wg.showPredictionPoints(false));
-    safe(() => wg.addMouseListener && wg.addMouseListener());
-    this._mountVideo();
-    return true;
+  },
+
+  _withTimeout(promise, ms) {
+    return Promise.race([
+      promise,
+      new Promise((_, reject) => setTimeout(() => reject(new Error("camera timeout")), ms))
+    ]);
+  },
+
+  /** Watch the video track; if it stops, notify the app so it can recover. */
+  _watchStream() {
+    try {
+      const v = document.querySelector("video");
+      if (!v) return;
+      this._video = v;
+      const stream = v.srcObject;
+      const track = stream && stream.getVideoTracks && stream.getVideoTracks()[0];
+      if (track) {
+        track.onended = () => { if (typeof this.onCameraLost === "function") this.onCameraLost(); };
+        track.onmute = () => this.ensureVideoPlaying();
+        track.onunmute = () => this.ensureVideoPlaying();
+      }
+      setTimeout(() => this._applyDisplay(), 800);
+    } catch (e) { /* ignore */ }
   },
 
   /** Coarse pointer (phone / tablet). */

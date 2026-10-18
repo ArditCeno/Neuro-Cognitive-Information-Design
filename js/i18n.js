@@ -1,6 +1,6 @@
 /*
  * Bilingual interface strings (Albanian / English).
- * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=38';
+ * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=39';
  */
 
 export const I18N = {
@@ -48,6 +48,7 @@ export const I18N = {
     setup_camera_denied: "Nuk mundëm të hapim kamerën. Kontrolloni lejet e shfletuesit.",
     device_desktop_only: "Kjo pajisje nuk ka kamerë? Vazhdoni me gjurmim me prekje/miun.",
     camera_fallback: "Kamera nuk u aktivizua. Vazhdojmë me gjurmim me prekje/miun.",
+    camera_lost: "Lidhja me kamerën humbi. Vazhdoni; nëse shikimi mbetet i bllokuar, rifreskoni faqen.",
     pf_desktop_t: "Pajisja",
     pf_desktop_d: "Kompjuter, laptop ose telefon.",
     pf_camera_t: "Kamerë",
@@ -158,6 +159,7 @@ export const I18N = {
     setup_camera_denied: "Could not open the camera. Check browser permissions.",
     device_desktop_only: "No camera on this device? Continue with touch/mouse tracking.",
     camera_fallback: "Camera unavailable. Continuing with touch/mouse tracking.",
+    camera_lost: "The camera connection was lost. Continue; refresh the page if tracking stays stuck.",
     pf_desktop_t: "Device",
     pf_desktop_d: "Desktop, laptop or phone.",
     pf_camera_t: "Camera",
