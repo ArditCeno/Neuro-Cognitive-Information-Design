@@ -1,14 +1,18 @@
 /*
  * 9-point eye calibration on top of WebGazer's click-trained model.
- * Measures mean prediction error (px) against the on-screen targets.
- * On touch devices it explicitly trains the model on every tap and uses a
- * screen-relative accuracy threshold (a phone screen is much smaller).
+ *
+ * Measures the mean prediction error (px) AND the mean bias (dx, dy). The bias
+ * is applied as a gaze offset, which measurably improves alignment - important
+ * on phones, where the model tends to sit slightly off-centre.
+ *
+ * On touch devices it trains the model from taps and uses a screen-relative
+ * accuracy target (a phone screen is much smaller).
  */
 
-import { CONFIG } from "./config.js?v=32";
-import { EyeTracking } from "./eyetracking.js?v=32";
-import { t } from "./i18n.js?v=32";
-import { el, mean, round, sleep } from "./utils.js?v=32";
+import { CONFIG } from "./config.js?v=33";
+import { EyeTracking } from "./eyetracking.js?v=33";
+import { t } from "./i18n.js?v=33";
+import { el, mean, round, sleep } from "./utils.js?v=33";
 
 const GRID = [
   [0.1, 0.1], [0.5, 0.1], [0.9, 0.1],
@@ -18,11 +22,16 @@ const GRID = [
 
 export const Calibration = {
   errors: [],
+  offsets: [],
+  offset: { x: 0, y: 0 },
   accuracyPx: null,
 
   async run(areaEl, statusEl) {
     this.errors = [];
+    this.offsets = [];
+    this.offset = { x: 0, y: 0 };
     this.accuracyPx = null;
+    EyeTracking.gazeOffset = { x: 0, y: 0 };   // measure the bias from an unbiased model
     areaEl.innerHTML = "";
 
     const rect = areaEl.getBoundingClientRect();
@@ -60,6 +69,7 @@ export const Calibration = {
     const remaining = areaEl.querySelectorAll(".calib-dot:not(.done)").length;
     if (remaining === 0) {
       this.accuracyPx = this.errors.length ? round(mean(this.errors), 1) : null;
+      this._finalize();
       if (this._resolve) this._resolve(this.accuracyPx);
     }
   },
@@ -76,7 +86,21 @@ export const Calibration = {
     if (!recent.length) return null;
     const px = mean(recent.map((s) => s.x));
     const py = mean(recent.map((s) => s.y));
+    this.offsets.push({ x: px - cx, y: py - cy });
     return Math.hypot(px - cx, py - cy);
+  },
+
+  /** Mean bias -> gaze offset (only when there is enough data). */
+  _finalize() {
+    if (this.offsets.length >= 5) {
+      this.offset = {
+        x: round(mean(this.offsets.map((o) => o.x)), 1),
+        y: round(mean(this.offsets.map((o) => o.y)), 1)
+      };
+    } else {
+      this.offset = { x: 0, y: 0 };
+    }
+    EyeTracking.gazeOffset = this.offset;
   },
 
   /** Accuracy target in px, scaled to the screen (a phone screen is small). */

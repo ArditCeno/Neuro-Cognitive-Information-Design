@@ -3,12 +3,12 @@
  * AOI inspector/exporter, and a session-quality dashboard (Diagram components).
  */
 
-import { CONFIG } from "./config.js?v=32";
-import { getLang, tr, t } from "./i18n.js?v=32";
-import { el, round } from "./utils.js?v=32";
-import { stimulusMeta } from "./schema.js?v=32";
-import { Stimuli } from "./stimuli.js?v=32";
-import { Storage } from "./storage.js?v=32";
+import { CONFIG } from "./config.js?v=33";
+import { getLang, tr, t } from "./i18n.js?v=33";
+import { el, round } from "./utils.js?v=33";
+import { stimulusMeta } from "./schema.js?v=33";
+import { Stimuli } from "./stimuli.js?v=33";
+import { Storage } from "./storage.js?v=33";
 
 async function fetchText(path) {
   const res = await fetch(path, { cache: "no-store" });

@@ -9,9 +9,9 @@
  *    points keep tracking even when the setup stage is hidden.
  */
 
-import { CONFIG } from "./config.js?v=32";
-import { loadScript } from "./utils.js?v=32";
-import { MouseView } from "./mouseview.js?v=32";
+import { CONFIG } from "./config.js?v=33";
+import { loadScript } from "./utils.js?v=33";
+import { MouseView } from "./mouseview.js?v=33";
 
 export const EyeTracking = {
   mock: false,
@@ -23,12 +23,14 @@ export const EyeTracking = {
   trial: null,                 // active trial buffer
   readingRegion: null,         // { left, top, width, height, scrollLeft, scrollTop } viewport coords
   hostSelector: "#cameraPreview",
+  gazeOffset: { x: 0, y: 0 },  // calibration bias correction (px)
   _mockTimer: null,
   _mockPos: null,
 
   async init({ mock = false } = {}) {
     this.mock = mock;
     this.samples = [];
+    this.gazeOffset = { x: 0, y: 0 };
     if (mock) {
       this.mode = "mock";
       this.ready = true;
@@ -45,6 +47,7 @@ export const EyeTracking = {
   /** Plan B: switch to mouse-tracking when WebGazer accuracy is insufficient. */
   async enableMouseFallback() {
     this.mode = "mouse";
+    this.gazeOffset = { x: 0, y: 0 };   // pointer coords are already exact
     await MouseView.enable((x, y, t) => this._onGaze({ x, y }, t));
     return true;
   },
@@ -193,11 +196,13 @@ export const EyeTracking = {
 
   _onGaze(data, ts) {
     if (!data || data.x == null || data.y == null) return;
-    const s = { t: ts, x: data.x, y: data.y };
+    const off = this.gazeOffset || { x: 0, y: 0 };
+    const x = data.x - off.x, y = data.y - off.y;
+    const s = { t: ts, x, y };
     if (this.readingRegion) {
       const r = this.readingRegion;
-      s.dx = data.x - r.left + (r.scrollLeft || 0);
-      s.dy = data.y - r.top + (r.scrollTop || 0);
+      s.dx = x - r.left + (r.scrollLeft || 0);
+      s.dy = y - r.top + (r.scrollTop || 0);
     }
     this.samples.push(s);
     if (this.trial) this.trial.samples.push(s);

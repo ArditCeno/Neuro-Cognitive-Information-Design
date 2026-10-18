@@ -18,6 +18,9 @@ data/figures/
 # test artifacts
 test-output/
 
+# python admin output (contains participant data)
+analysis/out/
+
 # private config (Supabase keys / endpoints) and private documents
 js/config.local.js
 *.pdf

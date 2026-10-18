@@ -4,8 +4,8 @@
  * Reuses the WebGazer video feed to avoid a second camera stream.
  */
 
-import { CONFIG } from "./config.js?v=32";
-import { loadScript, mean, round } from "./utils.js?v=32";
+import { CONFIG } from "./config.js?v=33";
+import { loadScript, mean, round } from "./utils.js?v=33";
 
 const L_EYE = [33, 160, 158, 133, 153, 144];
 const R_EYE = [362, 385, 387, 263, 373, 380];

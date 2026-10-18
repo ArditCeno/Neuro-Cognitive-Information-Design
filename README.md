@@ -53,6 +53,8 @@ the measured accuracy (use this to test a phone).
 - [`DEPLOY.md`](DEPLOY.md) - one-time backend setup and end-to-end verification
 - [`SECURITY.md`](SECURITY.md) - 20-point hardening checklist
 - Tests: `node scripts/test-all.mjs` and `node scripts/test-report.mjs`
+- Admin (email mode, Python): `python analysis/ncid_admin.py` reads the mailbox
+  and builds a searchable report by name / ID (`--find "Ardit"`)
 
 ## The researcher panel
 

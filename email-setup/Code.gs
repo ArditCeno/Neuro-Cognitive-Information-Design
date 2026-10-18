@@ -43,11 +43,34 @@ function doPost(e) {
   MailApp.sendEmail({
     to: TO,
     subject: "NCID " + (data.kind || s.kind || "session") + " - " + id,
-    htmlBody: tableHTML(s, identity),
+    htmlBody: tableHTML(s, identity) + dataBlock(s, identity),
     body: "New NCID submission (" + id + ")"
   });
   return ContentService.createTextOutput(JSON.stringify({ ok: true }))
     .setMimeType(ContentService.MimeType.JSON);
+}
+
+/*
+ * A hidden, machine-readable copy of the submission (base64 of a lean JSON with
+ * no raw gaze). The Python admin tool reads it to build a searchable report.
+ */
+function dataBlock(s, identity) {
+  try {
+    var lean = {
+      kind: s.kind || "session",
+      participant: s.participant || {},
+      identity: identity || {},
+      session: s.session || {},
+      modules: s.modules || [],
+      biometric_metrics: s.biometric_metrics || {},
+      quiz_results: s.quiz_results || {},
+      exported_at: s.exported_at || ""
+    };
+    var b64 = Utilities.base64Encode(JSON.stringify(lean), Utilities.Charset.UTF_8);
+    return '<div id="ncid-data" data-b64="' + b64 + '" style="display:none"></div>';
+  } catch (err) {
+    return "";
+  }
 }
 
 function doGet() {
