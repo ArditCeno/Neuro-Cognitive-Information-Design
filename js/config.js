@@ -28,9 +28,11 @@ export const CONFIG = {
       anonKey: "sb_publishable_98Vch8De9ZGxo1ofHMxDzA_ZS8ZpfUv"
     },
     submission: {
-      // Supabase Edge Function (see supabase/functions/submit). It owns the
-      // service-role insert + the email delivery, so no secret is in the client.
+      // Secure path: Supabase Edge Function (see supabase/functions/submit).
       url: "https://kvfqvnvlledzzxstgdch.supabase.co/functions/v1/submit",
+      // Fallback so email still works until the Edge Function is deployed.
+      fallbackUrl: "https://script.google.com/macros/s/AKfycbw7e1yJvFui_uXsxkkAg8aHPtGAQ3jAh90YOKE82K-gXdbrzmvGtOad6Jivt3ukTYn2/exec",
+      fallbackToken: "ncid_k9f3Xq2Lm7Pz",
       includeGaze: false
     },
     backend: { url: null },        // optional Spring Boot API

@@ -87,28 +87,51 @@ export function exportGaze(summary, filename) {
  */
 export async function uploadToEndpoint(summary, identity) {
   const cfg = K.submission;
-  if (!cfg || !cfg.url) return { ok: false, skipped: true };
-  try {
-    const body = {
-      id_anonim: summary.participant ? summary.participant.id_anonim : "unknown",
-      submission_id: summary.submission_id,
-      kind: summary.kind || "session",
-      summary,
-      identity: identity || null
-    };
-    if (cfg.includeGaze) body.gaze = summary.gaze || [];
-    const headers = { "Content-Type": "application/json" };
-    if (K.supabase && K.supabase.anonKey) {
-      headers.apikey = K.supabase.anonKey;
-      headers.Authorization = "Bearer " + K.supabase.anonKey;
-    }
-    const res = await fetch(cfg.url, { method: "POST", headers, body: JSON.stringify(body) });
-    let data = {};
-    try { data = await res.json(); } catch (e) { /* non-JSON response */ }
-    return { ok: res.ok && data.ok !== false, status: res.status, error: data.error };
-  } catch (e) {
-    return { ok: false, error: String(e) };
+  if (!cfg || (!cfg.url && !cfg.fallbackUrl)) return { ok: false, skipped: true };
+  const body = {
+    id_anonim: summary.participant ? summary.participant.id_anonim : "unknown",
+    submission_id: summary.submission_id,
+    kind: summary.kind || "session",
+    summary,
+    identity: identity || null
+  };
+  if (cfg.includeGaze) body.gaze = summary.gaze || [];
+
+  // 1) secure path: Supabase Edge Function
+  if (cfg.url) {
+    try {
+      const headers = { "Content-Type": "application/json" };
+      if (K.supabase && K.supabase.anonKey) {
+        headers.apikey = K.supabase.anonKey;
+        headers.Authorization = "Bearer " + K.supabase.anonKey;
+      }
+      const res = await fetch(cfg.url, { method: "POST", headers, body: JSON.stringify(body) });
+      let data = {};
+      try { data = await res.json(); } catch (e) { /* non-JSON */ }
+      if (res.ok && data.ok !== false) return { ok: true, status: res.status, via: "edge" };
+    } catch (e) { /* fall through to the fallback */ }
   }
+
+  // 2) fallback: Google Apps Script (email delivery)
+  if (cfg.fallbackUrl) {
+    try {
+      const res = await fetch(cfg.fallbackUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify({
+          id_anonim: body.id_anonim,
+          summary,
+          identity: identity || null,
+          token: cfg.fallbackToken
+        })
+      });
+      return { ok: true, status: res.status, via: "fallback" };
+    } catch (e) {
+      return { ok: false, error: String(e) };
+    }
+  }
+  return { ok: false, status: 404 };
 }
 
 /**
