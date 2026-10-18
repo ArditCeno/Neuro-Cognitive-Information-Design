@@ -54,6 +54,8 @@ the measured accuracy (use this to test a phone).
 - [`SECURITY.md`](SECURITY.md) - 20-point hardening checklist
 - Tests: `node scripts/test-all.mjs`, `node scripts/test-report.mjs`,
   `node scripts/test-endpoint.mjs` (live Apps Script admin/submission API)
+- Send a real test submission (emails the researcher): `node scripts/test-send.mjs desktop`
+  (or `phone`). If it prints `forbidden`, set the Script property `TOKEN`.
 - Admin (email mode, Python): `python analysis/ncid_admin.py` reads the mailbox
   and builds a searchable report by name / ID (`--find "Ardit"`)
 
