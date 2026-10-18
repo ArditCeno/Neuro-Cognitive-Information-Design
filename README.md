@@ -45,6 +45,12 @@ Open `http://localhost:3000/`. The camera works on `http` or `https`, not from a
 local file. Use Chrome or Edge. Add `?mock=1` to `study.html` for a simulated
 gaze run (no webcam).
 
+## Docs and tests
+
+- [`DEPLOY.md`](DEPLOY.md) - one-time backend setup and end-to-end verification
+- [`SECURITY.md`](SECURITY.md) - 20-point hardening checklist
+- Tests: `node scripts/test-all.mjs` and `node scripts/test-report.mjs`
+
 ## The researcher panel
 
 Open the Admin tab. It reads the sessions from Supabase and shows:

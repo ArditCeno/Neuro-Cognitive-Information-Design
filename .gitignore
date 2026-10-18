@@ -15,6 +15,9 @@ raw/
 data/processed/
 data/figures/
 
+# test artifacts
+test-output/
+
 # private config (Supabase keys / endpoints) and private documents
 js/config.local.js
 *.pdf
