@@ -167,24 +167,8 @@ function splitIdentity(summary) {
   return { clean, identity: { id_anonim: id, emri_mbiemer: nome } };
 }
 
-/** The eye-tracking session needs a desktop-class device with a fine pointer. */
-function isDesktopStudyDevice() {
-  const coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
-  const narrow = window.innerWidth < 900;
-  return !coarse && !narrow;
-}
-
-function applyDeviceGate() {
-  const ok = isDesktopStudyDevice();
-  const warn = $("deviceWarn");
-  if (warn) warn.classList.toggle("hidden", ok);
-  const cam = $("btnCamera");
-  if (cam) cam.disabled = !ok;
-  if (!ok) {
-    const msg = $("setupMsg");
-    if (msg) msg.textContent = t("device_desktop_only");
-  }
-}
+/** The eye-tracking session runs on any device: desktop, laptop, tablet or phone.
+ *  When a camera is not available it falls back to touch / mouse tracking. */
 
 function copyParticipantId() {
   const el = $("doneId");
@@ -228,29 +212,14 @@ function onRegister(e) {
     s.session = { session_number: state.sessionNumber, gjuha: getLang(), metoda: state.mock ? "mock" : "eyetracking" };
   });
   Storage.addEvent("registration", { id });
-  // keep the registration even if the participant does not finish (saved + emailed)
-  const regSnapshot = {
-    kind: "registration",
-    participant: state.participant,
-    session: Storage.read().session,
-    modules: [],
-    biometric_metrics: {},
-    quiz_results: {},
-    gaze: [],
-    exported_at: new Date().toISOString()
-  };
-  const split = splitIdentity(regSnapshot);
-  submitAndQueue(split.clean, split.identity).catch(() => {});
-  if (emailConfigured()) emailReport(regSnapshot).catch(() => {});
+  // a single report is emailed only at the very end of the session
   showStage("setup");
-  applyDeviceGate();
 }
 
 /* ---------------------------- Camera & calibration ---------------------------- */
 async function onEnableCamera() {
   const msg = $("setupMsg");
   const preview = $("cameraPreview");
-  if (!isDesktopStudyDevice()) { msg.textContent = t("device_desktop_only"); return; }
   msg.textContent = t("loading");
   try {
     await EyeTracking.init({ mock: state.mock });
@@ -261,13 +230,27 @@ async function onEnableCamera() {
     $("btnSetupNext").classList.remove("hidden");
     if (!state.mock) setTimeout(async () => { await Biometrics.init(); Biometrics.start(); }, 800);
   } catch (err) {
+    // No camera (or permission denied): keep going with touch / mouse tracking so
+    // the study works on any device, phones included.
     console.warn("Camera error:", err);
-    msg.textContent = t("setup_camera_denied");
+    try { await EyeTracking.enableMouseFallback(); } catch (e) { /* ignore */ }
+    state.method = "mouse";
+    const warn = $("deviceWarn");
+    if (warn) { warn.textContent = t("camera_fallback"); warn.classList.remove("hidden"); }
+    msg.textContent = t("camera_fallback");
+    $("btnCamera").classList.add("hidden");
+    $("btnSetupNext").classList.remove("hidden");
   }
 }
 
 async function startCalibration() {
   if (state.mock) { startModules(); return; }
+  if (EyeTracking.mode === "mouse") {
+    // touch / mouse tracking needs no eye calibration
+    Storage.patch((s) => { s.session = s.session || {}; s.session.metoda = "mouse"; s.session.kalibrimi_px = null; });
+    startModules();
+    return;
+  }
   showStage("calibration");
   const status = $("calibStatus");
   $("btnCalibNext").classList.add("hidden");

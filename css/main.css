@@ -369,3 +369,36 @@ table, .hashmap { font-variant-numeric: tabular-nums; }
 .skeleton span:nth-child(4) { width: 95%; }
 .skeleton span:nth-child(5) { width: 70%; }
 @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+
+/* ============================================================
+   Works everywhere: phone, tablet, desktop - best possible fit
+   ============================================================ */
+.camera-preview { width: min(360px, 100%); height: auto; aspect-ratio: 4 / 3; }
+.task-head { flex-wrap: wrap; }
+.doc {
+  font-size: clamp(15px, 0.5vw + 13px, 17.5px);
+  line-height: 1.6;
+  padding: clamp(16px, 3.4vw, 30px);
+  -webkit-overflow-scrolling: touch;
+}
+.doc h1 { font-size: clamp(19px, 3.4vw, 22px); }
+.id-row code { word-break: break-all; }
+.summary-box, .doc pre { overflow-wrap: anywhere; }
+.heatmap-container { height: clamp(200px, 40vh, 300px); }
+.calib-area { height: min(56vh, 56dvh); min-height: 300px; }
+
+@media (pointer: coarse) { .calib-dot { width: 34px; height: 34px; } }
+
+@media (max-width: 640px) {
+  .actions { gap: 10px; }
+  .actions .btn { flex: 1 1 100%; text-align: center; }
+  .form input, .form select { font-size: 16px; }   /* stops iOS zoom on focus */
+  .quiz-opt { padding: 12px; }
+  .preflight { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .preflight-item { padding: 12px; }
+  .doc { height: min(56vh, 56dvh); }
+  .task-head .pill { font-size: 11.5px; }
+}
+@media (max-width: 380px) {
+  .preflight { grid-template-columns: 1fr; }
+}

@@ -41,9 +41,11 @@ workload, and blink rate plus head orientation (exploratory).
 npx serve .
 ```
 
-Open `http://localhost:3000/`. The camera works on `http` or `https`, not from a
-local file. Use Chrome or Edge. Add `?mock=1` to `study.html` for a simulated
-gaze run (no webcam).
+Open `http://localhost:3000/`. The camera needs `http://` or `https://`, not a
+local file. The study runs on any device (desktop, laptop, tablet or phone);
+Chrome or Edge are recommended for webcam eye-tracking, and if no camera is
+available it falls back to touch / mouse tracking. Add `?mock=1` to `study.html`
+for a simulated run.
 
 ## Docs and tests
 
