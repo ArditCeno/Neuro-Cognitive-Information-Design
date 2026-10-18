@@ -1,6 +1,6 @@
 /*
  * Bilingual interface strings (Albanian / English).
- * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=42';
+ * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=43';
  */
 
 export const I18N = {
@@ -48,7 +48,15 @@ export const I18N = {
     setup_camera_denied: "Nuk mundëm të hapim kamerën. Kontrolloni lejet e shfletuesit.",
     device_desktop_only: "Kjo pajisje nuk ka kamerë? Vazhdoni me gjurmim me prekje/miun.",
     camera_fallback: "Kamera nuk u aktivizua. Vazhdojmë me gjurmim me prekje/miun.",
-    camera_lost: "Lidhja me kamerën humbi. Vazhdoni; nëse shikimi mbetet i bllokuar, rifreskoni faqen.",
+    camera_lost: "Lidhja me kamerën humbi. Ky studim kërkon kamerën — riktheje për të vazhduar.",
+    retry_camera: "Provo përsëri kamerën",
+    camera_required: "Ky studim kërkon kamerën për të matur shikimin.",
+    camera_denied_perm: "Kamera u bllokua. Hap lejen e kamerës për këtë faqe (ikona e kyçit pranë adresës) dhe provo përsëri.",
+    camera_not_found: "Nuk u gjet kamerë në këtë pajisje.",
+    camera_in_use: "Kamera është e zënë nga një aplikacion tjetër. Mbylli aplikacionet e tjera dhe provo përsëri.",
+    camera_timeout: "Kamera nuk u hap me kohë. Provo përsëri.",
+    camera_open_browser: "Dukej se je në një shfletues brenda një aplikacioni — hape linkun në Safari ose Chrome.",
+    calib_best: "Saktësia më e mirë e kalibrimit",
     calib_test_note: "Test vetëm i kalibrimit — nuk dërgohet raport.",
     send_ok: "Raporti u dërgua te emaili i studiuesit. Faleminderit!",
     send_fail: "Nuk mundëm ta dërgojmë raportin. Trokit 'Provo përsëri'.",
@@ -57,7 +65,7 @@ export const I18N = {
     pf_desktop_t: "Pajisja",
     pf_desktop_d: "Kompjuter, laptop ose telefon.",
     pf_camera_t: "Kamerë",
-    pf_camera_d: "Kamera opsionale; nuk regjistrohet video.",
+    pf_camera_d: "Kamera e detyrueshme; nuk regjistrohet video.",
     pf_time_t: "Kohë",
     pf_time_d: "Rreth 30 minuta pa ndërprerje.",
     pf_privacy_t: "Privatësi",
@@ -164,7 +172,15 @@ export const I18N = {
     setup_camera_denied: "Could not open the camera. Check browser permissions.",
     device_desktop_only: "No camera on this device? Continue with touch/mouse tracking.",
     camera_fallback: "Camera unavailable. Continuing with touch/mouse tracking.",
-    camera_lost: "The camera connection was lost. Continue; refresh the page if tracking stays stuck.",
+    camera_lost: "The camera connection was lost. This study needs the camera - restore it to continue.",
+    retry_camera: "Try the camera again",
+    camera_required: "This study needs the camera to measure where you look.",
+    camera_denied_perm: "Camera blocked. Allow camera access for this page (lock icon by the address bar) and try again.",
+    camera_not_found: "No camera was found on this device.",
+    camera_in_use: "The camera is used by another app. Close other apps and try again.",
+    camera_timeout: "The camera did not start in time. Please try again.",
+    camera_open_browser: "It looks like an in-app browser - open the link in Safari or Chrome.",
+    calib_best: "Best calibration accuracy",
     calib_test_note: "Calibration test only — no report is sent.",
     send_ok: "Report sent to the researcher's email. Thank you!",
     send_fail: "We could not send the report. Tap 'Try again'.",
@@ -173,7 +189,7 @@ export const I18N = {
     pf_desktop_t: "Device",
     pf_desktop_d: "Desktop, laptop or phone.",
     pf_camera_t: "Camera",
-    pf_camera_d: "Camera optional; no video is recorded.",
+    pf_camera_d: "Camera required; no video is recorded.",
     pf_time_t: "Time",
     pf_time_d: "About 30 minutes without interruption.",
     pf_privacy_t: "Privacy",

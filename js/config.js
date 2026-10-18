@@ -4,7 +4,7 @@
  * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
 
-import { FIELDS, EXPERTISE } from "./fields.js?v=42";
+import { FIELDS, EXPERTISE } from "./fields.js?v=43";
 
 export const CONFIG = {
   study: {
@@ -15,8 +15,8 @@ export const CONFIG = {
     nasaTlx: "perModule",
     useJsPsych: false,
     calibrationThresholdPx: 150,
-    calibrationMaxAttempts: 2,
-    mouseFallback: true,
+    calibrationMaxAttempts: 3,
+    mouseFallback: false,
     fixationDispersionPx: 40,
     fixationMinDurationMs: 100
   },

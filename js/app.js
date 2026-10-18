@@ -5,22 +5,22 @@
  * modules, NASA-TLX after each module, MouseView.js plan B on calibration fail.
  */
 
-import { CONFIG } from "./config.js?v=42";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=42";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=42";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=42";
-import { EyeTracking } from "./eyetracking.js?v=42";
-import { Calibration } from "./calibration.js?v=42";
-import { Stimuli } from "./stimuli.js?v=42";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=42";
-import { Runner } from "./runner.js?v=42";
-import { Heatmap } from "./heatmap.js?v=42";
-import { Biometrics } from "./biometrics.js?v=42";
-import { Research } from "./research.js?v=42";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=42";
-import { EXPERTISE } from "./fields.js?v=42";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=42";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=42";
+import { CONFIG } from "./config.js?v=43";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=43";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=43";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=43";
+import { EyeTracking } from "./eyetracking.js?v=43";
+import { Calibration } from "./calibration.js?v=43";
+import { Stimuli } from "./stimuli.js?v=43";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=43";
+import { Runner } from "./runner.js?v=43";
+import { Heatmap } from "./heatmap.js?v=43";
+import { Biometrics } from "./biometrics.js?v=43";
+import { Research } from "./research.js?v=43";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=43";
+import { EXPERTISE } from "./fields.js?v=43";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=43";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=43";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -254,27 +254,37 @@ async function onEnableCamera() {
     try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
     if (state.calibTest) { $("btnSetupNext").classList.add("hidden"); startCalibration(); }
   } catch (err) {
-    // No camera (or permission denied): keep going with touch / mouse tracking so
-    // the study works on any device, phones included.
+    // Camera is mandatory: never fall back to mouse/touch. Explain and retry.
     console.warn("Camera error:", err);
-    try { await EyeTracking.enableMouseFallback(); } catch (e) { /* ignore */ }
-    state.method = "mouse";
-    const warn = $("deviceWarn");
-    if (warn) { warn.textContent = t("camera_fallback"); warn.classList.remove("hidden"); }
-    msg.textContent = t("camera_fallback");
-    $("btnCamera").classList.add("hidden");
-    $("btnSetupNext").classList.remove("hidden");
+    showCameraError(err);
+    const cam = $("btnCamera");
+    if (cam) { cam.classList.remove("hidden"); cam.disabled = false; cam.textContent = t("retry_camera"); }
+    $("btnSetupNext").classList.add("hidden");
   }
+}
+
+/** True inside in-app browsers (Instagram / Facebook / TikTok...) that block the camera. */
+function inAppBrowser() {
+  return /(FBAN|FBAV|FB_IAB|Instagram|Line\/|Twitter|WhatsApp|TikTok|Snapchat|MicroMessenger|; wv\))/i.test(navigator.userAgent || "");
+}
+
+function showCameraError(err) {
+  const name = (err && err.name) || "";
+  const more = (err && err.message) || "";
+  let text = t("camera_required");
+  if (/NotAllowed|Permission/i.test(name)) text = t("camera_denied_perm");
+  else if (/NotFound|DevicesNotFound/i.test(name)) text = t("camera_not_found");
+  else if (/NotReadable|TrackStart|Abort|SourceUnavailable/i.test(name)) text = t("camera_in_use");
+  else if (/timeout/i.test(name + " " + more)) text = t("camera_timeout");
+  if (inAppBrowser()) text += " " + t("camera_open_browser");
+  const msg = $("setupMsg");
+  if (msg) msg.textContent = text;
+  const warn = $("deviceWarn");
+  if (warn) { warn.textContent = text; warn.classList.remove("hidden"); }
 }
 
 async function startCalibration() {
   if (state.mock) { startModules(); return; }
-  if (EyeTracking.mode === "mouse" && !state.calibTest) {
-    // touch / mouse tracking needs no eye calibration
-    Storage.patch((s) => { s.session = s.session || {}; s.session.metoda = "mouse"; s.session.kalibrimi_px = null; });
-    startModules();
-    return;
-  }
   showStage("calibration");
   const status = $("calibStatus");
   const titleEl = document.querySelector("#stage-calibration h1");
@@ -291,31 +301,33 @@ async function startCalibration() {
 
   const max = CONFIG.study.calibrationMaxAttempts;
   let acc = null;
+  let best = { acc: null, offset: { x: 0, y: 0 } };
   for (let attempt = 1; attempt <= max; attempt++) {
     $("calibArea").innerHTML = "";
     status.textContent = (EyeTracking.isTouch() ? t("calib_mobile_hint") + " " : "") + `${t("calib_point")} - ${attempt}/${max}`;
     acc = await Calibration.run($("calibArea"), status);
+    if (acc != null && (best.acc == null || acc < best.acc)) {
+      best = { acc, offset: Object.assign({}, Calibration.offset) };
+    }
     if (Calibration.isGood()) break;
     status.textContent = `${t("calib_result")}: ${acc} px. ${t("calib_poor")}`;
     if (attempt < max) await sleep(1500);
   }
-
-  let method = state.mock ? "mock" : "eyetracking";
-  if (!Calibration.isGood() && CONFIG.study.mouseFallback && !state.calibTest) {
-    await EyeTracking.enableMouseFallback();
-    method = "mouse";
-    status.textContent = `${t("calib_result")}: ${acc} px. ` +
-      (getLang() === "en" ? "Switched to mouse-tracking (MouseView plan B)." : "Kaluam në gjurmim me miun (MouseView plan B).");
-  } else {
-    status.textContent = `${t("calib_result")}: ${acc} px. ` + (Calibration.isGood() ? t("calib_good") : t("calib_poor"));
+  // keep the BEST pass (and its bias offset) for the real session
+  if (best.acc != null) {
+    Calibration.accuracyPx = best.acc;
+    Calibration.offset = best.offset;
+    EyeTracking.gazeOffset = best.offset;
   }
-  Storage.patch((s) => { s.session = s.session || {}; s.session.kalibrimi_px = Calibration.accuracyPx; s.session.metoda = method; });
+
+  Storage.patch((s) => { s.session = s.session || {}; s.session.kalibrimi_px = Calibration.accuracyPx; s.session.metoda = "eyetracking"; });
   $("btnRecalib").classList.remove("hidden");
   if (state.calibTest) {
     const th = Calibration.goodThresholdPx();
     if (acc == null) status.textContent = t("calib_no_samples");
     else status.textContent = `${t("calib_result")}: ${acc} px  ` + (getLang() === "en" ? `(target < ${th} px)` : `(objektivi < ${th} px)`);
   } else {
+    status.textContent = `${t("calib_best")}: ${Calibration.accuracyPx} px. ` + (Calibration.isGood() ? t("calib_good") : t("calib_poor"));
     $("btnCalibNext").classList.remove("hidden");
   }
 }
