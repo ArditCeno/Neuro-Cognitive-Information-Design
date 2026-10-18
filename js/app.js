@@ -5,22 +5,22 @@
  * modules, NASA-TLX after each module, MouseView.js plan B on calibration fail.
  */
 
-import { CONFIG } from "./config.js?v=37";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=37";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=37";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=37";
-import { EyeTracking } from "./eyetracking.js?v=37";
-import { Calibration } from "./calibration.js?v=37";
-import { Stimuli } from "./stimuli.js?v=37";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=37";
-import { Runner } from "./runner.js?v=37";
-import { Heatmap } from "./heatmap.js?v=37";
-import { Biometrics } from "./biometrics.js?v=37";
-import { Research } from "./research.js?v=37";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=37";
-import { EXPERTISE } from "./fields.js?v=37";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=37";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=37";
+import { CONFIG } from "./config.js?v=38";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=38";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=38";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=38";
+import { EyeTracking } from "./eyetracking.js?v=38";
+import { Calibration } from "./calibration.js?v=38";
+import { Stimuli } from "./stimuli.js?v=38";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=38";
+import { Runner } from "./runner.js?v=38";
+import { Heatmap } from "./heatmap.js?v=38";
+import { Biometrics } from "./biometrics.js?v=38";
+import { Research } from "./research.js?v=38";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=38";
+import { EXPERTISE } from "./fields.js?v=38";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=38";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=38";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -118,6 +118,8 @@ function boot() {
   $("btnReadDone").addEventListener("click", onReadDone);
   $("btnDownload").addEventListener("click", () => exportSummary(buildExport()));
   $("btnDownloadGaze").addEventListener("click", () => exportGaze(buildExport()));
+  const ccBtn = $("btnCopyCalib");
+  if (ccBtn) ccBtn.addEventListener("click", copyCalibResult);
   const copyBtn = $("btnCopyId");
   if (copyBtn) copyBtn.addEventListener("click", copyParticipantId);
   const rb = $("btnResearcher");
@@ -170,6 +172,15 @@ function splitIdentity(summary) {
 
 /** The eye-tracking session runs on any device: desktop, laptop, tablet or phone.
  *  When a camera is not available it falls back to touch / mouse tracking. */
+
+/** Copy the ?calib=1 result (accuracy + diagnostics) to the clipboard. */
+function copyCalibResult() {
+  const text = (((($("calibStatus") || {}).textContent) || "") + "\n" + ((($("calibDiag") || {}).textContent) || "")).trim();
+  const btn = $("btnCopyCalib");
+  const done = () => { if (btn) { const old = btn.textContent; btn.textContent = t("copied"); setTimeout(() => { btn.textContent = old; }, 1600); } };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(done);
+  else done();
+}
 
 function copyParticipantId() {
   const el = $("doneId");
@@ -266,7 +277,7 @@ async function startCalibration() {
   if (overlay) overlay.classList.remove("hidden");
   try { if (EyeTracking.attachPreview) EyeTracking.attachPreview("#wgOverlay"); } catch (e) { /* ignore */ }
   try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
-  if (state.calibTest) startCalibDiagnostics();
+  if (state.calibTest) { startCalibDiagnostics(); if ($("btnCopyCalib")) $("btnCopyCalib").classList.remove("hidden"); }
 
   const max = CONFIG.study.calibrationMaxAttempts;
   let acc = null;
