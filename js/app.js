@@ -5,22 +5,22 @@
  * modules, NASA-TLX after each module, MouseView.js plan B on calibration fail.
  */
 
-import { CONFIG } from "./config.js?v=40";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=40";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=40";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=40";
-import { EyeTracking } from "./eyetracking.js?v=40";
-import { Calibration } from "./calibration.js?v=40";
-import { Stimuli } from "./stimuli.js?v=40";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=40";
-import { Runner } from "./runner.js?v=40";
-import { Heatmap } from "./heatmap.js?v=40";
-import { Biometrics } from "./biometrics.js?v=40";
-import { Research } from "./research.js?v=40";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=40";
-import { EXPERTISE } from "./fields.js?v=40";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=40";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=40";
+import { CONFIG } from "./config.js?v=41";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=41";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=41";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=41";
+import { EyeTracking } from "./eyetracking.js?v=41";
+import { Calibration } from "./calibration.js?v=41";
+import { Stimuli } from "./stimuli.js?v=41";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=41";
+import { Runner } from "./runner.js?v=41";
+import { Heatmap } from "./heatmap.js?v=41";
+import { Biometrics } from "./biometrics.js?v=41";
+import { Research } from "./research.js?v=41";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=41";
+import { EXPERTISE } from "./fields.js?v=41";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=41";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=41";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -125,6 +125,8 @@ function boot() {
   $("btnDownloadGaze").addEventListener("click", () => exportGaze(buildExport()));
   const ccBtn = $("btnCopyCalib");
   if (ccBtn) ccBtn.addEventListener("click", copyCalibResult);
+  const rsBtn = $("btnResend");
+  if (rsBtn) rsBtn.addEventListener("click", resendReport);
   const copyBtn = $("btnCopyId");
   if (copyBtn) copyBtn.addEventListener("click", copyParticipantId);
   const rb = $("btnResearcher");
@@ -285,7 +287,7 @@ async function startCalibration() {
   if (overlay) overlay.classList.remove("hidden");
   try { if (EyeTracking.attachPreview) EyeTracking.attachPreview("#wgOverlay"); } catch (e) { /* ignore */ }
   try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
-  if (state.calibTest) { startCalibDiagnostics(); if ($("btnCopyCalib")) $("btnCopyCalib").classList.remove("hidden"); }
+  if (state.calibTest) { if ($("calibDiag")) $("calibDiag").textContent = t("calib_test_note"); startCalibDiagnostics(); if ($("btnCopyCalib")) $("btnCopyCalib").classList.remove("hidden"); }
 
   const max = CONFIG.study.calibrationMaxAttempts;
   let acc = null;
@@ -597,6 +599,28 @@ function buildExport() {
   });
 }
 
+/** Show whether the report was actually delivered, and offer a retry. */
+function setSendStatus(delivered) {
+  const el = $("sendStatus"); if (!el) return;
+  const btn = $("btnResend");
+  const ep = (delivered && delivered.endpoint) || {};
+  const ok = !!ep.ok;
+  el.classList.remove("hidden");
+  el.textContent = ok ? t("send_ok") : t("send_fail");
+  if (btn) btn.classList.toggle("hidden", ok);
+}
+
+/** Retry sending the finished session (also flushes anything still queued). */
+async function resendReport() {
+  const el = $("sendStatus");
+  if (el) { el.textContent = t("sending"); el.classList.remove("hidden"); }
+  try { await flushPending(); } catch (e) { /* ignore */ }
+  const summary = buildExport();
+  const split = splitIdentity(summary);
+  const delivered = await submitAndQueue(split.clean, split.identity);
+  setSendStatus(delivered);
+}
+
 async function finishSession() {
   if (CONFIG.study.nasaTlx !== "perModule") state.endNasaTlx = await runTlx();
   EyeTracking.stop();
@@ -614,6 +638,7 @@ async function finishSession() {
   const split = splitIdentity(summary);
   const delivered = await submitAndQueue(split.clean, split.identity);
   if (delivered.queued) Storage.addEvent("submit_queued", { id: summary.participant.id_anonim });
+  setSendStatus(delivered);
 
   const pid = (state.participant && state.participant.id_anonim) || "";
   const idEl = $("doneId");

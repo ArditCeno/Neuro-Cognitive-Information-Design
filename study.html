@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://script.google.com https://script.googleusercontent.com https://webgazer.cs.brown.edu https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://*.supabase.co https://script.google.com https://script.googleusercontent.com https://webgazer.cs.brown.edu https://unpkg.com https://cdn.jsdelivr.net https://ncid-backend.onrender.com; worker-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' https://script.google.com https://script.googleusercontent.com https://webgazer.cs.brown.edu https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; media-src 'self' blob:; connect-src 'self' https://*.supabase.co https://script.google.com https://script.googleusercontent.com https://webgazer.cs.brown.edu https://unpkg.com https://cdn.jsdelivr.net https://ncid-backend.onrender.com; worker-src 'self' blob:; frame-src https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'self'; form-action 'self' https://script.google.com https://script.googleusercontent.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -27,9 +27,9 @@
   <link rel="alternate icon" href="assets/logo.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="css/main.css?v=40" />
-  <link rel="stylesheet" href="css/header.css?v=40" />
-  <link rel="stylesheet" href="css/materials.css?v=40" />
+  <link rel="stylesheet" href="css/main.css?v=41" />
+  <link rel="stylesheet" href="css/header.css?v=41" />
+  <link rel="stylesheet" href="css/materials.css?v=41" />
 </head>
 <body>
   <div id="site-header"></div>
@@ -182,6 +182,10 @@
     <section id="stage-done" class="stage hidden">
       <h1 data-i18n="done_title">Thank you</h1>
       <p class="lead" data-i18n="done_body"></p>
+      <p id="sendStatus" class="notice hidden"></p>
+      <div class="actions">
+        <button id="btnResend" class="btn btn-primary hidden" data-i18n="resend"></button>
+      </div>
       <pre id="doneSummary" class="summary-box"></pre>
       <div class="actions">
         <button id="btnDownload" class="btn btn-primary" data-i18n="done_download"></button>
@@ -217,8 +221,8 @@
     <span>Neuro-Cognitive Information Design · v1.0</span>
   </footer>
 
-  <script src="js/site.js?v=40"></script>
+  <script src="js/site.js?v=41"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
-  <script type="module" src="js/app.js?v=40"></script>
+  <script type="module" src="js/app.js?v=41"></script>
 </body>
 </html>

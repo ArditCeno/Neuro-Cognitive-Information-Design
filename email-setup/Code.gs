@@ -38,21 +38,40 @@ function token_() {
 
 function doPost(e) {
   var data = {};
-  try { data = JSON.parse(e.postData.contents); } catch (err) {}
+  try {
+    if (e && e.parameter && e.parameter.payload) data = JSON.parse(e.parameter.payload);
+    else if (e && e.postData && e.postData.contents) data = JSON.parse(e.postData.contents);
+  } catch (err) {}
+  return htmlResult(submitAndEmail(data));
+}
+
+/** Send the report email; return a real {ok} / {error} the page can read. */
+function submitAndEmail(data) {
   var expected = token_();
-  if (!expected || data.token !== expected) {
-    return json({ ok: false, error: "forbidden" });
+  if (!expected || String(data.token || "") !== expected) return { ok: false, error: "forbidden" };
+  try {
+    var s = data.summary || data;
+    var identity = data.identity || {};
+    var id = (s.participant && s.participant.id_anonim) || data.id_anonim || identity.id_anonim || "?";
+    MailApp.sendEmail({
+      to: TO,
+      subject: "NCID " + (data.kind || s.kind || "session") + " - " + id,
+      htmlBody: tableHTML(s, identity) + dataBlock(s, identity),
+      body: "New NCID submission (" + id + ")"
+    });
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: String(err) };
   }
-  var s = data.summary || data;
-  var identity = data.identity || {};
-  var id = (s.participant && s.participant.id_anonim) || data.id_anonim || identity.id_anonim || "?";
-  MailApp.sendEmail({
-    to: TO,
-    subject: "NCID " + (data.kind || s.kind || "session") + " - " + id,
-    htmlBody: tableHTML(s, identity) + dataBlock(s, identity),
-    body: "New NCID submission (" + id + ")"
-  });
-  return json({ ok: true });
+}
+
+/** HTML reply that messages the result back to the study page (hidden iframe post). */
+function htmlResult(obj) {
+  var json = JSON.stringify(obj);
+  var html = '<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>' +
+    '<script>(function(){try{var r=' + json + ';if(window.parent){window.parent.postMessage({ncid:true,result:r},"*");}}catch(e){}})();<\/script>' +
+    'done</body></html>';
+  return ContentService.createTextOutput(html).setMimeType(ContentService.MimeType.HTML);
 }
 
 /* Hidden, machine-readable copy of the submission (base64, no raw gaze). */

@@ -4,8 +4,8 @@
  * The export shape is assembled by js/schema.js (UML class model).
  */
 
-import { CONFIG } from "./config.js?v=40";
-import { isoNow, downloadJSON } from "./utils.js?v=40";
+import { CONFIG } from "./config.js?v=41";
+import { isoNow, downloadJSON } from "./utils.js?v=41";
 
 const K = CONFIG.storage;
 
@@ -85,6 +85,50 @@ export function exportGaze(summary, filename) {
  * sends the email report. The Apps Script URL and its token never reach the
  * browser, so the public anon key cannot be used to spam the researcher.
  */
+/**
+ * POST to the Apps Script as a hidden form (iframe) so we get a real reply via
+ * postMessage: { ok:true } or { ok:false, error }. Falls back to a fire-and-forget
+ * request if the frame is blocked or times out.
+ */
+function postViaIframe(url, payload, timeoutMs) {
+  return new Promise((resolve) => {
+    const name = "ncid_if_" + Math.random().toString(36).slice(2);
+    const iframe = document.createElement("iframe");
+    iframe.name = name;
+    iframe.setAttribute("aria-hidden", "true");
+    iframe.style.cssText = "position:absolute;width:0;height:0;border:0;visibility:hidden";
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = url;
+    form.target = name;
+    form.style.display = "none";
+    const input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "payload";
+    input.value = JSON.stringify(payload);
+    form.appendChild(input);
+
+    let settled = false;
+    const cleanup = () => {
+      try { form.remove(); } catch (e) { /* ignore */ }
+      try { iframe.remove(); } catch (e) { /* ignore */ }
+      window.removeEventListener("message", onMsg);
+    };
+    const onMsg = (ev) => {
+      const d = ev && ev.data;
+      if (!d || d.ncid !== true) return;
+      settled = true; cleanup();
+      const r = d.result || {};
+      resolve(r.ok ? { ok: true, via: "iframe" } : { ok: false, error: r.error || "server_error", definitive: true });
+    };
+    window.addEventListener("message", onMsg);
+    document.body.appendChild(iframe);
+    document.body.appendChild(form);
+    try { form.submit(); } catch (e) { if (!settled) { settled = true; cleanup(); resolve({ ok: false, error: "submit_failed" }); } }
+    setTimeout(() => { if (!settled) { settled = true; cleanup(); resolve({ ok: false, error: "timeout" }); } }, timeoutMs || 15000);
+  });
+}
+
 export async function uploadToEndpoint(summary, identity) {
   const cfg = K.submission;
   if (!cfg || (!cfg.url && !cfg.fallbackUrl)) return { ok: false, skipped: true };
@@ -112,26 +156,30 @@ export async function uploadToEndpoint(summary, identity) {
     } catch (e) { /* fall through to the fallback */ }
   }
 
-  // 2) fallback: Google Apps Script (email delivery)
+  // 2) Google Apps Script (email delivery): hidden-form post + postMessage reply
   if (cfg.fallbackUrl) {
+    const emailSummary = JSON.parse(JSON.stringify(summary));
+    if (identity && identity.emri_mbiemer && emailSummary.participant) {
+      emailSummary.participant.emri_mbiemer = identity.emri_mbiemer;
+    }
+    const payload = {
+      id_anonim: body.id_anonim,
+      summary: emailSummary,
+      identity: identity || null,
+      token: cfg.fallbackToken
+    };
+    const r = await postViaIframe(cfg.fallbackUrl, payload, 15000);
+    if (r.ok) return { ok: true, via: "iframe" };
+    // if the server clearly rejected it, report that; otherwise try a blind POST
+    if (r.definitive) return r;
     try {
-      // include the name in the summary copy too, so older scripts still show it
-      const emailSummary = JSON.parse(JSON.stringify(summary));
-      if (identity && identity.emri_mbiemer && emailSummary.participant) {
-        emailSummary.participant.emri_mbiemer = identity.emri_mbiemer;
-      }
-      const res = await fetch(cfg.fallbackUrl, {
+      await fetch(cfg.fallbackUrl, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify({
-          id_anonim: body.id_anonim,
-          summary: emailSummary,
-          identity: identity || null,
-          token: cfg.fallbackToken
-        })
+        body: JSON.stringify(payload)
       });
-      return { ok: true, status: res.status, via: "fallback" };
+      return { ok: true, via: "fallback-opaque", uncertain: true };
     } catch (e) {
       return { ok: false, error: String(e) };
     }

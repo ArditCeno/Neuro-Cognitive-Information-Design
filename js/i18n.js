@@ -1,6 +1,6 @@
 /*
  * Bilingual interface strings (Albanian / English).
- * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=40';
+ * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=41';
  */
 
 export const I18N = {
@@ -49,6 +49,11 @@ export const I18N = {
     device_desktop_only: "Kjo pajisje nuk ka kamerë? Vazhdoni me gjurmim me prekje/miun.",
     camera_fallback: "Kamera nuk u aktivizua. Vazhdojmë me gjurmim me prekje/miun.",
     camera_lost: "Lidhja me kamerën humbi. Vazhdoni; nëse shikimi mbetet i bllokuar, rifreskoni faqen.",
+    calib_test_note: "Test vetëm i kalibrimit — nuk dërgohet raport.",
+    send_ok: "Raporti u dërgua te emaili i studiuesit. Faleminderit!",
+    send_fail: "Nuk mundëm ta dërgojmë raportin. Trokit 'Provo përsëri'.",
+    sending: "Duke dërguar…",
+    resend: "Provo përsëri",
     pf_desktop_t: "Pajisja",
     pf_desktop_d: "Kompjuter, laptop ose telefon.",
     pf_camera_t: "Kamerë",
@@ -160,6 +165,11 @@ export const I18N = {
     device_desktop_only: "No camera on this device? Continue with touch/mouse tracking.",
     camera_fallback: "Camera unavailable. Continuing with touch/mouse tracking.",
     camera_lost: "The camera connection was lost. Continue; refresh the page if tracking stays stuck.",
+    calib_test_note: "Calibration test only — no report is sent.",
+    send_ok: "Report sent to the researcher's email. Thank you!",
+    send_fail: "We could not send the report. Tap 'Try again'.",
+    sending: "Sending…",
+    resend: "Try again",
     pf_desktop_t: "Device",
     pf_desktop_d: "Desktop, laptop or phone.",
     pf_camera_t: "Camera",
