@@ -4,7 +4,7 @@
  * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
 
-import { FIELDS, EXPERTISE } from "./fields.js?v=34";
+import { FIELDS, EXPERTISE } from "./fields.js?v=35";
 
 export const CONFIG = {
   study: {
@@ -32,7 +32,7 @@ export const CONFIG = {
       // emails the full report (name, ID, profession, results, NASA-TLX, answers,
       // biometrics) to the researcher. No server or Edge Function needed.
       url: null,
-      fallbackUrl: "https://script.google.com/macros/s/AKfycbw7e1yJvFui_uXsxkkAg8aHPtGAQ3jAh90YOKE82K-gXdbrzmvGtOad6Jivt3ukTYn2/exec",
+      fallbackUrl: "https://script.google.com/macros/s/AKfycbxe2T3oVrqN0P8MwVBjwGPJBjzSB8ImoaUydW3uFp6IfMGHcgLmTBirIf6OFXH8-Vs/exec",
       fallbackToken: "ncid_k9f3Xq2Lm7Pz",
       includeGaze: false
     },

@@ -19,6 +19,10 @@
 var TO = "arditceno82@gmail.com";
 var ADMIN_EMAIL = "arditceno82@gmail.com";
 
+/* Expected submission token. The study sends this exact value. Override it by
+   adding a Script property TOKEN if you want to change/rotate it. */
+var EXPECTED_TOKEN = "ncid_k9f3Xq2Lm7Pz";
+
 /* ===================================================================
    FJALEKALIMI I ADMINIT - ndrysho VETEM rreshtin poshte.
    Vendos fjalekalimin mes thonjezave, p.sh.  var ADMIN_PASSWORD = "Ardit2026!";
@@ -29,7 +33,7 @@ var ADMIN_PASSWORD = "";
 /* ============================ Submissions ============================ */
 
 function token_() {
-  return PropertiesService.getScriptProperties().getProperty("TOKEN") || "";
+  return PropertiesService.getScriptProperties().getProperty("TOKEN") || EXPECTED_TOKEN;
 }
 
 function doPost(e) {
