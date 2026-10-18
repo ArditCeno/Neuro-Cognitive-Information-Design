@@ -89,7 +89,7 @@ function boot() {
   if (location.protocol === "file:") {
     const warn = document.createElement("div");
     warn.style.cssText = "background:#7a2b12;color:#fff;padding:10px 16px;text-align:center;font-weight:600;font-size:14px";
-    warn.textContent = "Open this page through a web server (http:// or https://) — the camera and documents will not load from a file:// path.";
+    warn.textContent = "Open this page through a web server (http:// or https://) - the camera and documents will not load from a file:// path.";
     document.body.prepend(warn);
   }
   window.addEventListener("ncid:lang", onLangChange);
@@ -277,7 +277,7 @@ async function startCalibration() {
   let acc = null;
   for (let attempt = 1; attempt <= max; attempt++) {
     $("calibArea").innerHTML = "";
-    status.textContent = `${t("calib_point")} — ${attempt}/${max}`;
+    status.textContent = `${t("calib_point")} - ${attempt}/${max}`;
     acc = await Calibration.run($("calibArea"), status);
     if (Calibration.isGood()) break;
     status.textContent = `${t("calib_result")}: ${acc} px. ${t("calib_poor")}`;
@@ -360,6 +360,7 @@ async function startReading() {
   $("taskIntro").classList.add("hidden");
   $("taskReading").classList.remove("hidden");
   $("docLoading").classList.remove("hidden");
+  $("docSkeleton").classList.remove("hidden");
   $("doc").classList.add("hidden");
   $("taskVersion").textContent = `${m.module.id.toUpperCase()} · ${t("version_label")} ${version} · ${t("block")} ${state.blockIndex + 1}/${m.versions.length}`;
 
@@ -371,6 +372,7 @@ async function startReading() {
     console.warn("Material load error:", e);
   }
   $("docLoading").classList.add("hidden");
+  $("docSkeleton").classList.add("hidden");
   $("doc").classList.remove("hidden");
 
   await sleep(120);

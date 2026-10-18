@@ -62,10 +62,10 @@ const js = `/*
  * EN translations applied where scripts/en/*.json exist (others fall back to AL).
  * Copyright 2026 Ardit Ceno. All rights reserved.
  */
-export const EXPERTISE = ${JSON.stringify(EXPERTISE, null, 2)};
+export const EXPERTISE = ${JSON.stringify(EXPERTISE)};
 export const COMPLEXITY = { m1: "basic", m2: "intermediate", m3: "advanced" };
-export const PROFESSIONS = ${JSON.stringify(PROFESSIONS, null, 2)};
-export const FIELDS = ${JSON.stringify(FIELDS, null, 2)};
+export const PROFESSIONS = ${JSON.stringify(PROFESSIONS)};
+export const FIELDS = ${JSON.stringify(FIELDS)};
 `;
 writeFileSync("js/fields.js", js);
 console.log(`applied EN to ${applied} modules; fields.js rewritten`);

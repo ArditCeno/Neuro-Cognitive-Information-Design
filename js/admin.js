@@ -1,5 +1,5 @@
 /*
- * NCID Admin — researcher dashboard.
+ * NCID Admin - researcher dashboard.
  * Requires the owner login (Supabase Auth); RLS only lets that account read.
  * Groups sessions by profession, shows answers, a profession map, heatmaps.
  *
@@ -201,7 +201,7 @@
 
   function showDetail(r) {
     var p = r.payload || {};
-    $("detailTitle").textContent = "Session " + (r.id_anonim || r.id) + (r.name ? " — " + r.name : "");
+    $("detailTitle").textContent = "Session " + (r.id_anonim || r.id) + (r.name ? " - " + r.name : "");
     $("detailJson").textContent = JSON.stringify(p, null, 2);
     if (window.__viz) {
       try { window.__viz.renderNodeMap($("detailNodeMap"), p); } catch (e) {}

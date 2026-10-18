@@ -80,7 +80,7 @@ export const Research = {
     const sel = el("select");
     CONFIG.fields.forEach((f) => {
       ["A", "B"].forEach((v) => {
-        const o = el("option", { value: f.id + ":" + v, text: tr(f.name) + " — " + v });
+        const o = el("option", { value: f.id + ":" + v, text: tr(f.name) + " - " + v });
         sel.appendChild(o);
       });
     });

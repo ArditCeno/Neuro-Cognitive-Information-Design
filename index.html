@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="assets/hero.webp" fetchpriority="high" />
   <title>Neuro-Cognitive Information Design</title>
   <meta name="description" content="An eye-tracking and biometric study of document readability across law, finance, business, health and software." />
   <meta property="og:type" content="website" />
@@ -71,6 +72,17 @@
       </div>
     </section>
 
+    <!-- REAL EXAMPLE -->
+    <section class="demo" aria-labelledby="demoTitle">
+      <div class="demo-copy">
+        <span class="eyebrow" data-en="Real example" data-al="Shembull real">Real example</span>
+        <h2 id="demoTitle" data-en="One document, two presentations" data-al="Një dokument, dy paraqitje">One document, two presentations</h2>
+        <p data-en="The same facts, laid out traditionally (A) and optimised (B). Participants read both and answer which was clearer." data-al="Të njëjtat fakte, të paraqitura në mënyrë tradicionale (A) dhe të optimizuar (B). Pjesëmarrësit lexojnë të dyja dhe përgjigjen cila ishte më e qartë."></p>
+      </div>
+      <img src="assets/preview-a-vs-b.png" width="1600" height="560" loading="lazy" decoding="async"
+           alt="Side-by-side example of a traditional and an optimised document layout">
+    </section>
+
     <section class="fields-strip" id="fields">
       <div class="field-item">
         <span class="f-ico" style="--c:#0E7FB0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M8 21h8"/><path d="M5 7l-3 6a3 3 0 0 0 6 0z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0z"/></svg></span>
@@ -116,7 +128,7 @@
           <tr><td data-en="Software" data-al="Informatikë">Software</td><td data-en="Deeply nested conditionals" data-al="Kushte të thella">Deeply nested conditionals</td><td data-en="Guard clauses" data-al="Guard clauses">Guard clauses</td></tr>
         </tbody>
       </table></div></section>
-      <section class="section"><div class="three-col">
+      <section class="section"><div class="two-col">
         <article class="card"><h3>H1</h3><p data-en="Dense formats cause longer fixations and more regressions." data-al="Formatet e ngjeshura shkaktojnë fiksim më të gjatë dhe më shumë regresione."></p></article>
         <article class="card"><h3>H2</h3><p data-en="Optimised formats shorten time to first fixation and reduce errors." data-al="Formatet e optimizuara shkurtojnë kohën e gjetjes dhe reduktojnë gabimet."></p></article>
         <article class="card"><h3>H3</h3><p data-en="Comprehension is higher for structured formats." data-al="Kuptimi është më i lartë për formatet e strukturuara."></p></article>

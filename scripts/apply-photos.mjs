@@ -14,6 +14,8 @@ import { FIELDS } from "../js/fields.js";
 const DIR = "assets/photos";
 if (!existsSync(DIR)) { console.log("no assets/photos folder"); process.exit(0); }
 const files = readdirSync(DIR).filter((f) => /\.(jpg|jpeg|png|webp|svg)$/i.test(f));
+const MANIFEST = existsSync(DIR + "/manifest.json")
+  ? JSON.parse(readFileSync(DIR + "/manifest.json", "utf8")) : {};
 
 const byProfModule = {};
 for (const f of files) {
@@ -25,8 +27,11 @@ for (const f of files) {
 function inject(html, file) {
   // remove previous photo block
   html = html.replace(/<figure class="photo">[\s\S]*?<\/figure>\s*/g, "");
+  const dim = MANIFEST[file];
+  const size = dim ? ` width="${dim[0]}" height="${dim[1]}"` : "";
+  const alt = file.replace(/\.[^.]+$/, "").replace(/[_-]+/g, " ");
   // insert after the first </h1>
-  const tag = `<figure class="photo"><img src="assets/photos/${file}" alt="" loading="lazy" decoding="async"></figure>\n`;
+  const tag = `<figure class="photo"><img src="assets/photos/${file}"${size} alt="${alt}" loading="lazy" decoding="async"></figure>\n`;
   return html.replace("</h1>", "</h1>\n" + tag);
 }
 

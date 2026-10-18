@@ -1,5 +1,5 @@
 /*
- * Session schema builder — emits the exact UML class-model structure from
+ * Session schema builder - emits the exact UML class-model structure from
  * Diagram 5 (Participant / Session / Module / Stimulus / Trial / Response /
  * QuizItem / GazeSample) plus readability metadata (Diagram 5, Diagram 6).
  */

@@ -339,3 +339,33 @@ img, svg, video, iframe, table { max-width: 100%; }
   #main { padding-inline: 10px; }
   .card, .quiz-item, .tlx-item { padding: 12px; }
 }
+
+/* ============================================================
+   Taste pass (study/admin)
+   ============================================================ */
+:focus-visible { outline: 2px solid #FF6E42; outline-offset: 2px; }
+table, .hashmap { font-variant-numeric: tabular-nums; }
+.card, .quiz-item, .tlx-item, .stat {
+  background: #0f3a50 !important;
+  backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
+  border: 1px solid rgba(255, 255, 255, .10) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, .22) !important;
+}
+.btn-primary { background: #004E72 !important; color: #F9F9F9 !important; }
+.topbar { background: #0b2b3d !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
+.form input, .form select { background: #0d3247 !important; }
+
+/* skeleton loader */
+.skeleton { display: block; padding: 18px; }
+.skeleton span {
+  display: block; height: 14px; border-radius: 6px; margin: 10px 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.06), rgba(255,255,255,.13), rgba(255,255,255,.06));
+  background-size: 200% 100%; animation: shimmer 1.2s infinite linear;
+}
+.skeleton span:nth-child(1) { height: 22px; width: 60%; }
+.skeleton span:nth-child(2) { width: 92%; }
+.skeleton span:nth-child(3) { width: 88%; }
+.skeleton span:nth-child(4) { width: 95%; }
+.skeleton span:nth-child(5) { width: 70%; }
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }

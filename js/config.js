@@ -13,7 +13,7 @@ export const CONFIG = {
     modulesPerSession: 3,          // 3 modules per expertise level
     quizPerDoc: 8,
     nasaTlx: "perModule",
-    useJsPsych: true,
+    useJsPsych: false,
     calibrationThresholdPx: 150,
     calibrationMaxAttempts: 2,
     mouseFallback: true,
