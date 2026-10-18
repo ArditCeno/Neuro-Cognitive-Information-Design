@@ -39,8 +39,8 @@ follow the last section of this file.
 | 2 | Server-side write path (Edge Function with service role) | Optional | `supabase/functions/submit/index.ts`; not used in email mode |
 | 3 | Row Level Security enabled on every table | Done | `supabase/security.sql` |
 | 4 | Owner-only data access by JWT email allowlist | Done | RLS `owner read` / `owner delete` in `supabase/security.sql` |
-| 5 | Admin panel requires authentication (Supabase Auth) | Done | `admin.html`, `js/admin.js` |
-| 6 | Session is verified (authenticated email must match the allowlist) | Done | `js/admin.js` (`enterPanel`, `login`) |
+| 5 | Admin panel requires authentication (email + password + emailed code) | Done | `admin.html`, `js/admin.js`, `email-setup/Code.gs` |
+| 6 | Session verified with a short-lived token; codes expire + rate limited | Done | `email-setup/Code.gs` (`adminVerify`, `adminData`) |
 | 7 | Per-IP rate limiting on submissions | Not active (email mode) | `check_rate_limit()` activates with the Edge Function |
 | 8 | Server-side input validation (id shape, payload size, JSON) | Done | `supabase/functions/submit/index.ts` |
 | 9 | Output encoding to prevent stored XSS in the admin | Done | `js/admin.js` (`h()` escape helper) |

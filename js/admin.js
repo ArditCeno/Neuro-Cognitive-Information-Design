@@ -1,40 +1,76 @@
 /*
- * NCID Admin - researcher dashboard.
- * Requires the owner login (Supabase Auth); RLS only lets that account read.
- * Groups sessions by profession, shows answers, a profession map, heatmaps.
+ * NCID Admin - researcher dashboard (email mode).
+ * Login: email + password, then a 6-digit code sent by email. With the token,
+ * the sessions are read from the researcher's mailbox through the Apps Script
+ * endpoint. Groups sessions by profession, shows answers and a profession map.
  *
  * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  var sb = null;
   var rows = [];
   var fields = [];
   var allowed = "arditceno82@gmail.com";
   var TARGET = 10; // minimum completed tests per profession
+  var TOKEN_KEY = "ncid_admin_token";
+  var email = "";
 
-  function cfg() { return window.__cfg || { supabase: null, fields: [], adminEmail: allowed }; }
+  function cfg() { return window.__cfg || { fields: [], adminEmail: allowed, submission: null }; }
+  function endpoint() { var s = cfg().submission || {}; return s.fallbackUrl || s.url || ""; }
   function note(t) { var e = $("panelMsg"); if (e) e.textContent = t; }
   function loginMsg(t) { var e = $("loginMsg"); if (e) e.textContent = t; }
   function h(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function parse(r) { var p = r.payload; if (typeof p === "string") { try { p = JSON.parse(p); } catch (e) { p = {}; } } return p || {}; }
   function fieldName(id) { for (var i = 0; i < fields.length; i++) if (fields[i].id === id) return fields[i].name.en; return id || "unknown"; }
-  function acc(r) { var p = parse(r); var m = (p.modules || []).map(function (x) { return x.trials || []; }); var all = [].concat.apply([], m); if (!all.length) return null; var c = 0, n = 0;
-    all.forEach(function (t) { if (t.accuracy_score_pct != null) { c += t.accuracy_score_pct; n++; } }); return n ? Math.round(c / n) : null; }
-
+  function acc(r) {
+    var p = parse(r); var m = (p.modules || []).map(function (x) { return x.trials || []; });
+    var all = [].concat.apply([], m); if (!all.length) return null;
+    var c = 0, n = 0;
+    all.forEach(function (t) { if (t.accuracy_score_pct != null) { c += t.accuracy_score_pct; n++; } });
+    return n ? Math.round(c / n) : null;
+  }
   function on(id, ev, fn) { var el = $(id); if (el) el.addEventListener(ev, fn); }
 
-  function init() {
-    var c = cfg();
-    fields = c.fields || [];
-    allowed = c.adminEmail || allowed;
-    if (!window.supabase) { loginMsg("supabase-js not loaded"); return; }
-    if (!c.supabase || !c.supabase.url) { loginMsg("Supabase not configured."); return; }
-    sb = window.supabase.createClient(c.supabase.url, c.supabase.anonKey);
+  /* JSONP: Apps Script web apps cannot be read cross-origin with fetch, but a
+     script callback works. */
+  function jsonp(params) {
+    return new Promise(function (resolve, reject) {
+      var base = endpoint();
+      if (!base) { reject(new Error("endpoint not configured")); return; }
+      var cb = "ncidcb" + Math.random().toString(36).slice(2);
+      var qs = Object.keys(params).map(function (k) { return encodeURIComponent(k) + "=" + encodeURIComponent(params[k]); });
+      qs.push("callback=" + cb);
+      var s = document.createElement("script");
+      var done = false;
+      var timer = setTimeout(function () { finish(); reject(new Error("timeout")); }, 30000);
+      function finish() { if (done) return; done = true; clearTimeout(timer); try { delete window[cb]; } catch (e) { window[cb] = undefined; } if (s.parentNode) s.parentNode.removeChild(s); }
+      window[cb] = function (data) { finish(); resolve(data); };
+      s.onerror = function () { finish(); reject(new Error("network")); };
+      s.src = base + (base.indexOf("?") >= 0 ? "&" : "?") + qs.join("&");
+      document.body.appendChild(s);
+    });
+  }
 
-    on("btnLogin", "click", login);
+  var ERR = {
+    not_allowed: "This account is not allowed here.",
+    bad_password: "Wrong password.",
+    rate_limited: "Too many code requests. Try again in a few minutes.",
+    expired: "The code expired. Send a new one.",
+    bad_code: "Wrong code.",
+    too_many: "Too many attempts. Send a new code.",
+    unauthorized: "Session expired. Please sign in again."
+  };
+  function emsg(code) { return ERR[code] || ("Error: " + code); }
+
+  function init() {
+    fields = cfg().fields || [];
+    allowed = cfg().adminEmail || allowed;
+    email = allowed;
+
+    on("btnLogin", "click", sendCode);
+    on("btnVerify", "click", verify);
+    on("btnResend", "click", sendCode);
     on("btnLogout", "click", logout);
-    on("password", "keydown", function (e) { if (e.key === "Enter") login(); });
     on("btnReload", "click", load);
     on("btnFind", "click", find);
     on("q", "input", renderRows);
@@ -42,88 +78,79 @@
     on("btnCsv", "click", csv);
     on("btnCloseDetail", "click", function () { $("detail").classList.remove("open"); });
     on("detail", "click", function (e) { if (e.target.id === "detail") $("detail").classList.remove("open"); });
+    on("password", "keydown", function (e) { if (e.key === "Enter") sendCode(); });
+    on("code", "keydown", function (e) { if (e.key === "Enter") verify(); });
 
-    sb.auth.getSession().then(function (res) {
-      var session = res && res.data && res.data.session;
-      if (session && session.user && (session.user.email || "").toLowerCase() === allowed.toLowerCase()) enterPanel();
-    });
+    var saved = sessionStorage.getItem(TOKEN_KEY);
+    if (saved) { load(); } else { loginMsg("Enter email and password, then a code is emailed to you."); }
   }
 
-  async function login() {
-    var email = $("email").value.trim().toLowerCase();
-    var password = $("password").value;
-    if (email !== allowed.toLowerCase()) { loginMsg("This account is not allowed here."); return; }
-    loginMsg("Signing in…");
-    var res = await sb.auth.signInWithPassword({ email: email, password: password });
-    if (res.error) { loginMsg("Error: " + res.error.message); return; }
-    var u = res.data && res.data.user;
-    if (!u || (u.email || "").toLowerCase() !== allowed.toLowerCase()) {
-      try { await sb.auth.signOut(); } catch (e) { /* ignore */ }
-      loginMsg("This account is not allowed here.");
-      return;
-    }
-    loginMsg("");
-    enterPanel();
+  async function sendCode() {
+    var pw = $("password").value;
+    if (!pw) { loginMsg("Enter your password."); return; }
+    loginMsg("Sending code…");
+    try {
+      var res = await jsonp({ action: "login", email: email, password: pw });
+      if (!res || !res.ok) { loginMsg(emsg(res && res.error)); return; }
+      $("codeStep").classList.remove("hidden");
+      loginMsg("A 6-digit code was sent to " + email + ".");
+      try { $("code").focus(); } catch (e) {}
+    } catch (e) { loginMsg("Could not reach the server. Check the endpoint."); }
   }
 
-  async function logout() { try { await sb.auth.signOut(); } catch (e) {} location.reload(); }
+  async function verify() {
+    var code = ($("code").value || "").trim();
+    if (!/^\d{6}$/.test(code)) { loginMsg("Enter the 6-digit code."); return; }
+    loginMsg("Verifying…");
+    try {
+      var res = await jsonp({ action: "verify", email: email, code: code });
+      if (!res || !res.ok) { loginMsg(emsg(res && res.error)); return; }
+      sessionStorage.setItem(TOKEN_KEY, res.token);
+      loginMsg("");
+      enterPanel();
+    } catch (e) { loginMsg("Could not reach the server."); }
+  }
+
+  function logout() { sessionStorage.removeItem(TOKEN_KEY); location.reload(); }
 
   function enterPanel() {
-    var login = $("loginCard");
-    if (login) login.classList.add("hidden");
-    var panel = $("panel");
-    if (panel) panel.classList.remove("hidden");
+    var lc = $("loginCard"); if (lc) lc.classList.add("hidden");
+    var panel = $("panel"); if (panel) panel.classList.remove("hidden");
     load();
-    try {
-      sb.channel("ncid-sessions")
-        .on("postgres_changes", { event: "*", schema: "public", table: "sessions" }, function () { load(); })
-        .subscribe();
-    } catch (e) { /* realtime optional */ }
-    setInterval(function () { if (document.visibilityState === "visible") load(); }, 15000);
+    setInterval(function () { if (document.visibilityState === "visible") load(); }, 30000);
   }
 
   async function load() {
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    if (!token) return;
     note("Loading…");
-    var res = await sb.from("sessions").select("id,id_anonim,payload,created_at").order("created_at", { ascending: false }).limit(1000);
-    if (res.error) { note("Error: " + res.error.message); return; }
-    rows = (res.data || []).map(function (r) { return { id: r.id, id_anonim: r.id_anonim, created_at: r.created_at, payload: parse(r) }; });
-    await applyNames();
-    note(rows.length + " records");
+    var res;
+    try { res = await jsonp({ action: "data", token: token }); }
+    catch (e) { note("Could not reach the server."); return; }
+    if (!res || !res.ok) {
+      if (res && res.error === "unauthorized") { sessionStorage.removeItem(TOKEN_KEY); location.reload(); return; }
+      note(emsg(res && res.error)); return;
+    }
+    if ($("loginCard")) $("loginCard").classList.add("hidden");
+    if ($("panel")) $("panel").classList.remove("hidden");
+    rows = (res.sessions || []).map(function (r) { return { id: r.id || r.id_anonim, id_anonim: r.id_anonim || r.id, name: r.name || "", created_at: r.created_at, payload: parse(r) }; });
+    note(rows.length + " records" + (res.cached ? " (cached)" : ""));
     renderStats(); renderProfs(); renderScatter(); renderRows();
   }
 
-  /** Attach the optional names from the owner-only identity table. */
-  async function applyNames() {
-    try {
-      var res = await sb.from("participant_identity").select("id_anonim,emri_mbiemer").limit(2000);
-      if (res.error || !res.data) return;
-      var names = {};
-      res.data.forEach(function (x) { if (x.emri_mbiemer) names[x.id_anonim] = x.emri_mbiemer; });
-      rows.forEach(function (r) { r.name = names[r.id_anonim] || r.name || ""; });
-    } catch (e) { /* identity table optional */ }
-  }
-
-  async function find() {
+  function find() {
     var q = $("q").value.trim();
     if (!q) return;
-    var isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(q);
-    note("Searching…");
-    var res = isUuid
-      ? await sb.from("sessions").select("id,id_anonim,payload,created_at").eq("id", q).limit(1)
-      : await sb.from("sessions").select("id,id_anonim,payload,created_at").eq("id_anonim", q).order("created_at", { ascending: false }).limit(50);
-    if (res.error) { note("Error: " + res.error.message); return; }
-    if (!res.data || !res.data.length) { note("Not found: " + q); return; }
-    rows = res.data.map(function (r) { return { id: r.id, id_anonim: r.id_anonim, created_at: r.created_at, payload: parse(r) }; });
-    await applyNames();
-    renderStats(); renderRows();
-    note(res.data.length + " record(s) for " + q);
-    if (res.data.length === 1) showDetail(rows[0]);
+    var n = filtered().length;
+    renderRows();
+    note(n + " match(es) for " + q);
+    if (n === 1) showDetail(filtered()[0]);
   }
 
   function filtered() {
     var q = $("q").value.trim().toLowerCase();
     if (!q) return rows;
-    return rows.filter(function (r) { return [r.id, r.id_anonim, JSON.stringify(r.payload)].join(" ").toLowerCase().indexOf(q) >= 0; });
+    return rows.filter(function (r) { return [r.id, r.id_anonim, r.name, JSON.stringify(r.payload)].join(" ").toLowerCase().indexOf(q) >= 0; });
   }
 
   function grouped() {
@@ -137,8 +164,7 @@
   }
 
   function renderStats() {
-    var g = grouped();
-    var parts = {}; var full = 0; var atTarget = 0;
+    var g = grouped(); var parts = {}; var full = 0; var atTarget = 0;
     rows.forEach(function (r) { parts[r.id_anonim] = 1; var p = r.payload || {}; if (p.kind === "session" || (p.modules && p.modules.length)) full++; });
     Object.keys(g).forEach(function (fid) {
       var n = g[fid].filter(function (r) { var p = r.payload || {}; return p.kind === "session" || (p.modules && p.modules.length); }).length;
@@ -220,7 +246,7 @@
   function renderHeat(p) {
     var el = $("detailHeat"); el.innerHTML = "";
     var gaze = (p.gaze || []).filter(function (s) { return s && (s.dx != null || s.x != null); });
-    if (!gaze.length) { el.textContent = "No gaze samples for this record."; return; }
+    if (!gaze.length) { el.textContent = "No gaze samples in email mode (raw gaze is not emailed)."; return; }
     if (!window.h337) { el.textContent = "Heatmap.js not loaded."; return; }
     var useDoc = gaze.some(function (s) { return s.dx != null; });
     var xs = gaze.map(function (s) { return useDoc ? (s.dx || 0) : (s.x || 0); });
@@ -239,10 +265,9 @@
   }
 
   function csv() {
-    var cols = ["id", "id_anonim", "name", "profession", "kind", "created_at", "accuracy_pct"];
+    var cols = ["id_anonim", "name", "profession", "kind", "created_at", "accuracy_pct"];
     var out = filtered().map(function (r) { var p = r.payload || {}; return {
-      id: r.id, id_anonim: r.id_anonim, name: r.name || "",
-      profession: fieldName((p.participant && p.participant.fusha) || ""),
+      id_anonim: r.id_anonim, name: r.name || "", profession: fieldName((p.participant && p.participant.fusha) || ""),
       kind: p.kind || "", created_at: r.created_at, accuracy_pct: (acc(r) == null ? "" : acc(r)) }; });
     var csv = [cols.join(",")].concat(out.map(function (o) { return cols.map(function (c) { return '"' + String(o[c] == null ? "" : o[c]).replace(/"/g, '""') + '"'; }).join(","); })).join("\n");
     var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], { type: "text/csv" })); a.download = "ncid_sessions.csv"; a.click();

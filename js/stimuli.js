@@ -3,7 +3,7 @@
  * viewport, and derives AOI rectangles from [data-aoi] elements.
  */
 
-import { EyeTracking } from "./eyetracking.js?v=33";
+import { EyeTracking } from "./eyetracking.js?v=34";
 
 export const Stimuli = {
   docEl: null,

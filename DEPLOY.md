@@ -81,6 +81,24 @@ curl -s -o /dev/null -w "%{http_code}\n" -X POST \
 
 ---
 
+## Admin login (email + code)
+
+The admin panel signs in with email + password, then a 6-digit code sent to the
+researcher's email, and shows the sessions read from the mailbox. This needs the
+current `email-setup/Code.gs` deployed:
+
+1. Apps Script → paste the whole of `email-setup/Code.gs` → **Save**.
+2. **Project Settings → Script properties**: keep `TOKEN`, then run the function
+   `setupAdminPassword()` once (edit the password inside it first), and delete
+   the plain password afterwards. It stores a salted hash only.
+3. **Deploy → Manage deployments → edit → Version: New version → Deploy** (this
+   keeps the same `/exec` URL). Authorise the new **Gmail** access when asked.
+4. Open `/admin.html`: enter `arditceno82@gmail.com` + your password → **Send
+   code** → enter the 6-digit code from the email → the panel loads.
+
+If the panel says "Could not reach the server", the deployment URL in
+`js/config.js` (`storage.submission.fallbackUrl`) must match the `/exec` URL.
+
 ## Local checks (no backend needed)
 
 ```bash

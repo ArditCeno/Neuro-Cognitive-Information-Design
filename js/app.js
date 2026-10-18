@@ -5,22 +5,22 @@
  * modules, NASA-TLX after each module, MouseView.js plan B on calibration fail.
  */
 
-import { CONFIG } from "./config.js?v=33";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=33";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=33";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=33";
-import { EyeTracking } from "./eyetracking.js?v=33";
-import { Calibration } from "./calibration.js?v=33";
-import { Stimuli } from "./stimuli.js?v=33";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=33";
-import { Runner } from "./runner.js?v=33";
-import { Heatmap } from "./heatmap.js?v=33";
-import { Biometrics } from "./biometrics.js?v=33";
-import { Research } from "./research.js?v=33";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=33";
-import { EXPERTISE } from "./fields.js?v=33";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=33";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=33";
+import { CONFIG } from "./config.js?v=34";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=34";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=34";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=34";
+import { EyeTracking } from "./eyetracking.js?v=34";
+import { Calibration } from "./calibration.js?v=34";
+import { Stimuli } from "./stimuli.js?v=34";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=34";
+import { Runner } from "./runner.js?v=34";
+import { Heatmap } from "./heatmap.js?v=34";
+import { Biometrics } from "./biometrics.js?v=34";
+import { Research } from "./research.js?v=34";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=34";
+import { EXPERTISE } from "./fields.js?v=34";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=34";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=34";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
