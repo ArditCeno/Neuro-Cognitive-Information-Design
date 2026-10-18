@@ -4,8 +4,8 @@
  * The export shape is assembled by js/schema.js (UML class model).
  */
 
-import { CONFIG } from "./config.js";
-import { isoNow, downloadJSON } from "./utils.js";
+import { CONFIG } from "./config.js?v=31";
+import { isoNow, downloadJSON } from "./utils.js?v=31";
 
 const K = CONFIG.storage;
 

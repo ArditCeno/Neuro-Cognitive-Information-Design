@@ -9,9 +9,9 @@
  *    points keep tracking even when the setup stage is hidden.
  */
 
-import { CONFIG } from "./config.js";
-import { loadScript } from "./utils.js";
-import { MouseView } from "./mouseview.js";
+import { CONFIG } from "./config.js?v=31";
+import { loadScript } from "./utils.js?v=31";
+import { MouseView } from "./mouseview.js?v=31";
 
 export const EyeTracking = {
   mock: false,
@@ -85,10 +85,12 @@ export const EyeTracking = {
     }
 
     this.running = true;
-    // show the camera feed with the face / eye points (as on the laptop)
+    // Show the camera feed with the FACE / EYE points (like the laptop), but no
+    // cursor/prediction dot on the page.
     safe(() => wg.showVideoPreview && wg.showVideoPreview(true));
     safe(() => wg.showFaceOverlay && wg.showFaceOverlay(true));
-    safe(() => wg.showPredictionPoints && wg.showPredictionPoints(true));
+    safe(() => wg.showFaceFeedbackBox && wg.showFaceFeedbackBox(true));
+    safe(() => wg.showPredictionPoints && wg.showPredictionPoints(false));
     safe(() => wg.addMouseListener && wg.addMouseListener());
     this._mountVideo();
     return true;

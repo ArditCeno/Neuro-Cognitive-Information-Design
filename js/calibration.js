@@ -5,10 +5,10 @@
  * screen-relative accuracy threshold (a phone screen is much smaller).
  */
 
-import { CONFIG } from "./config.js";
-import { EyeTracking } from "./eyetracking.js";
-import { t } from "./i18n.js";
-import { el, mean, round, sleep } from "./utils.js";
+import { CONFIG } from "./config.js?v=31";
+import { EyeTracking } from "./eyetracking.js?v=31";
+import { t } from "./i18n.js?v=31";
+import { el, mean, round, sleep } from "./utils.js?v=31";
 
 const GRID = [
   [0.1, 0.1], [0.5, 0.1], [0.9, 0.1],

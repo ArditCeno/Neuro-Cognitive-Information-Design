@@ -6,8 +6,8 @@
  * the top-left of the scrollable document, independent of scrolling.
  */
 
-import { CONFIG } from "./config.js";
-import { mean, median, round } from "./utils.js";
+import { CONFIG } from "./config.js?v=31";
+import { mean, median, round } from "./utils.js?v=31";
 
 function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
 

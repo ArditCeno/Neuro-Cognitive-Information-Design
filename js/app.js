@@ -5,22 +5,22 @@
  * modules, NASA-TLX after each module, MouseView.js plan B on calibration fail.
  */
 
-import { CONFIG } from "./config.js";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js";
-import { EyeTracking } from "./eyetracking.js";
-import { Calibration } from "./calibration.js";
-import { Stimuli } from "./stimuli.js";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js";
-import { Runner } from "./runner.js";
-import { Heatmap } from "./heatmap.js";
-import { Biometrics } from "./biometrics.js";
-import { Research } from "./research.js";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js";
-import { EXPERTISE } from "./fields.js";
-import { renderNodeMap, renderHashmap } from "./visualize.js";
-import { downloadReport, emailReport, emailConfigured } from "./report.js";
+import { CONFIG } from "./config.js?v=31";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=31";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=31";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=31";
+import { EyeTracking } from "./eyetracking.js?v=31";
+import { Calibration } from "./calibration.js?v=31";
+import { Stimuli } from "./stimuli.js?v=31";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=31";
+import { Runner } from "./runner.js?v=31";
+import { Heatmap } from "./heatmap.js?v=31";
+import { Biometrics } from "./biometrics.js?v=31";
+import { Research } from "./research.js?v=31";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=31";
+import { EXPERTISE } from "./fields.js?v=31";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=31";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=31";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -59,11 +59,10 @@ function showStage(name) {
 
 /* ---------------------------- Boot ---------------------------- */
 window.addEventListener("error", (e) => {
-  try { alert("Gabim: " + (e.message || e.error)); } catch (x) { /* ignore */ }
+  console.error("NCID error:", e.message || e.error);
 });
 window.addEventListener("unhandledrejection", (e) => {
-  const r = e.reason || {};
-  try { alert("Gabim: " + (r.message || r)); } catch (x) { /* ignore */ }
+  console.error("NCID unhandled rejection:", (e.reason && e.reason.message) || e.reason);
 });
 console.log("NCID app v4");
 
@@ -231,7 +230,7 @@ async function onEnableCamera() {
     $("btnCamera").classList.add("hidden");
     $("btnSetupNext").classList.remove("hidden");
     if (!state.mock) setTimeout(async () => { await Biometrics.init(); Biometrics.start(); }, 800);
-    EyeTracking.ensureVideoPlaying();
+    try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
     if (state.calibTest) { $("btnSetupNext").classList.add("hidden"); startCalibration(); }
   } catch (err) {
     // No camera (or permission denied): keep going with touch / mouse tracking so
@@ -264,8 +263,9 @@ async function startCalibration() {
   // keep the camera visible (and decoding) in a small overlay from here on so
   // the face / eye points keep tracking even though the setup stage is hidden
   const overlay = $("wgOverlay");
-  if (overlay) { overlay.classList.remove("hidden"); EyeTracking.attachPreview("#wgOverlay"); }
-  EyeTracking.ensureVideoPlaying();
+  if (overlay) overlay.classList.remove("hidden");
+  try { if (EyeTracking.attachPreview) EyeTracking.attachPreview("#wgOverlay"); } catch (e) { /* ignore */ }
+  try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
   if (state.calibTest) startCalibDiagnostics();
 
   const max = CONFIG.study.calibrationMaxAttempts;
@@ -389,7 +389,7 @@ async function startReading() {
 
   await sleep(120);
   Stimuli.updateRegion($("doc"));
-  EyeTracking.ensureVideoPlaying();
+  try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
   state.readStart = performance.now();
   EyeTracking.startTrial(`${m.field.id}:${m.expertise}:${m.module.id}:${version}`);
   Storage.addEvent("reading_start", { field: m.field.id, expertise: m.expertise, module: m.module.id, version });
