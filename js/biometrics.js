@@ -4,12 +4,14 @@
  * Reuses the WebGazer video feed to avoid a second camera stream.
  */
 
-import { CONFIG } from "./config.js?v=39";
-import { loadScript, mean, round } from "./utils.js?v=39";
+import { CONFIG } from "./config.js?v=40";
+import { loadScript, mean, round } from "./utils.js?v=40";
 
 const L_EYE = [33, 160, 158, 133, 153, 144];
 const R_EYE = [362, 385, 387, 263, 373, 380];
 const EAR_THRESHOLD = 0.21;
+const FACE_OVAL = [10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288, 397, 365, 379, 378, 400, 377, 152, 148, 176, 149, 150, 136, 172, 58, 132, 93, 234, 127, 162, 21, 54, 103, 67, 109];
+const LIPS = [61, 185, 40, 39, 37, 0, 267, 269, 270, 409, 291, 375, 321, 405, 314, 17, 84, 181, 91, 146];
 
 function d(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
 
@@ -121,8 +123,8 @@ export const Biometrics = {
       c.style.height = "100%";
       c.style.pointerEvents = "none";
       c.style.zIndex = "2";
-      host.appendChild(c);
     }
+    if (c.parentElement !== host) host.appendChild(c);   // follow the video (preview -> overlay)
     const w = host.clientWidth || 320, h = host.clientHeight || 240;
     if (c.width !== w || c.height !== h) { c.width = w; c.height = h; }
     return c;
@@ -134,34 +136,56 @@ export const Biometrics = {
     const ctx = c.getContext("2d");
     const w = c.width, h = c.height;
     ctx.clearRect(0, 0, w, h);
+    const X = (i) => (1 - pts[i].x) * w;   // video is mirrored
+    const Y = (i) => pts[i].y * h;
 
-    // mesh: small blue dots
-    ctx.fillStyle = "rgba(14,127,176,.9)";
-    for (let i = 0; i < pts.length; i += 2) {
-      const x = (1 - pts[i].x) * w;  // video is mirrored
-      const y = pts[i].y * h;
-      ctx.beginPath();
-      ctx.arc(x, y, 1.4, 0, Math.PI * 2);
-      ctx.fill();
+    // full mesh: fine cyan dots
+    ctx.save();
+    ctx.globalAlpha = 0.8;
+    ctx.fillStyle = "#7fd3f0";
+    for (let i = 0; i < pts.length; i++) {
+      ctx.fillRect(X(i) - 0.6, Y(i) - 0.6, 1.2, 1.2);
     }
+    ctx.restore();
 
-    // eyes: orange, glowing
-    ctx.shadowColor = "rgba(255,110,66,.9)";
-    ctx.shadowBlur = 8;
+    // face oval outline
+    ctx.save();
+    ctx.strokeStyle = "rgba(14,127,176,.55)";
+    ctx.lineWidth = 1.2;
+    ctx.beginPath();
+    FACE_OVAL.forEach((i, k) => { const x = X(i), y = Y(i); if (k) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore();
+
+    // lips outline (warm)
+    ctx.save();
+    ctx.strokeStyle = "rgba(255,110,66,.85)";
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    LIPS.forEach((i, k) => { const x = X(i), y = Y(i); if (k) ctx.lineTo(x, y); else ctx.moveTo(x, y); });
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore();
+
+    // eyes: glowing orange points
+    ctx.save();
+    ctx.shadowColor = "rgba(255,110,66,.95)";
+    ctx.shadowBlur = 10;
     ctx.fillStyle = "#FF6E42";
-    [...L_EYE, ...R_EYE].forEach((i) => {
-      const x = (1 - pts[i].x) * w, y = pts[i].y * h;
-      ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
-    });
-    ctx.shadowBlur = 0;
+    [...L_EYE, ...R_EYE].forEach((i) => { ctx.beginPath(); ctx.arc(X(i), Y(i), 2.4, 0, Math.PI * 2); ctx.fill(); });
+    ctx.restore();
 
-    // eye centres: filled pale dots
+    // eye centres: bright white with a cyan halo
+    ctx.save();
+    ctx.shadowColor = "#8fe6ff";
+    ctx.shadowBlur = 12;
     ctx.fillStyle = "#F9F9F9";
     [[33, 133], [362, 263]].forEach((pair) => {
-      const cx = (1 - (pts[pair[0]].x + pts[pair[1]].x) / 2) * w;
-      const cy = ((pts[pair[0]].y + pts[pair[1]].y) / 2) * h;
-      ctx.beginPath(); ctx.arc(cx, cy, 2, 0, Math.PI * 2); ctx.fill();
+      const cx = (X(pair[0]) + X(pair[1])) / 2, cy = (Y(pair[0]) + Y(pair[1])) / 2;
+      ctx.beginPath(); ctx.arc(cx, cy, 2.2, 0, Math.PI * 2); ctx.fill();
     });
+    ctx.restore();
   },
 
   _clearDots() {

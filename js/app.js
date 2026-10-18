@@ -5,22 +5,22 @@
  * modules, NASA-TLX after each module, MouseView.js plan B on calibration fail.
  */
 
-import { CONFIG } from "./config.js?v=39";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=39";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=39";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=39";
-import { EyeTracking } from "./eyetracking.js?v=39";
-import { Calibration } from "./calibration.js?v=39";
-import { Stimuli } from "./stimuli.js?v=39";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=39";
-import { Runner } from "./runner.js?v=39";
-import { Heatmap } from "./heatmap.js?v=39";
-import { Biometrics } from "./biometrics.js?v=39";
-import { Research } from "./research.js?v=39";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=39";
-import { EXPERTISE } from "./fields.js?v=39";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=39";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=39";
+import { CONFIG } from "./config.js?v=40";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=40";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=40";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=40";
+import { EyeTracking } from "./eyetracking.js?v=40";
+import { Calibration } from "./calibration.js?v=40";
+import { Stimuli } from "./stimuli.js?v=40";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=40";
+import { Runner } from "./runner.js?v=40";
+import { Heatmap } from "./heatmap.js?v=40";
+import { Biometrics } from "./biometrics.js?v=40";
+import { Research } from "./research.js?v=40";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=40";
+import { EXPERTISE } from "./fields.js?v=40";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=40";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=40";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -246,9 +246,9 @@ async function onEnableCamera() {
     if (preview) preview.classList.add("ready");
     $("btnCamera").classList.add("hidden");
     $("btnSetupNext").classList.remove("hidden");
-    // Load the biometrics model now, but only START sampling during reading, so
-    // calibration runs with a single FaceMesh (keeps phones fast and stable).
-    if (!state.mock) setTimeout(() => { Biometrics.init().catch(() => {}); }, 1200);
+    // Start the light face-points sampler now so the face mesh shows throughout
+    // the session (kept light: 160x120 + slow cadence on phones).
+    ensureBiometrics();
     try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
     if (state.calibTest) { $("btnSetupNext").classList.add("hidden"); startCalibration(); }
   } catch (err) {
