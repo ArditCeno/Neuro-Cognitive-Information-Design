@@ -78,61 +78,54 @@ export function exportGaze(summary, filename) {
 }
 
 /**
- * Optional Supabase REST insert (no SDK). Expects a table `sessions(id_anonim, payload jsonb)`.
+ * Single write path: the Supabase Edge Function `submit`.
+ *
+ * The function (service role) inserts the anonymous study payload, stores the
+ * optional name in a separate identity table, applies a per-IP rate limit and
+ * sends the email report. The Apps Script URL and its token never reach the
+ * browser, so the public anon key cannot be used to spam the researcher.
  */
-export async function uploadToSupabase(summary) {
-  const cfg = K.supabase;
-  if (!cfg || !cfg.url || !cfg.anonKey) return { ok: false, skipped: true };
-  try {
-    const res = await fetch(cfg.url.replace(/\/$/, "") + "/rest/v1/sessions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        apikey: cfg.anonKey,
-        Authorization: "Bearer " + cfg.anonKey,
-        Prefer: "return=minimal"
-      },
-      body: JSON.stringify({ id_anonim: summary.participant.id_anonim, payload: summary })
-    });
-    return { ok: res.ok, status: res.status };
-  } catch (e) {
-    return { ok: false, error: String(e) };
-  }
-}
-
-/**
- * Generic JSON endpoint (Google Apps Script Web App, Formspree, own API).
- */
-export async function uploadToEndpoint(summary) {
+export async function uploadToEndpoint(summary, identity) {
   const cfg = K.submission;
   if (!cfg || !cfg.url) return { ok: false, skipped: true };
   try {
-    const payload = { id_anonim: summary.participant.id_anonim, summary, token: K.token };
-    if (cfg.includeGaze) payload.gaze = summary.gaze || [];
-    // text/plain = simple request (no CORS preflight) -> works with Google Apps Script
-    const res = await fetch(cfg.url, {
-      method: "POST",
-      mode: "no-cors",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
-    });
-    return { ok: true, status: res.status, opaque: res.type === "opaque" };
+    const body = {
+      id_anonim: summary.participant ? summary.participant.id_anonim : "unknown",
+      submission_id: summary.submission_id,
+      kind: summary.kind || "session",
+      summary,
+      identity: identity || null
+    };
+    if (cfg.includeGaze) body.gaze = summary.gaze || [];
+    const headers = { "Content-Type": "application/json" };
+    if (K.supabase && K.supabase.anonKey) {
+      headers.apikey = K.supabase.anonKey;
+      headers.Authorization = "Bearer " + K.supabase.anonKey;
+    }
+    const res = await fetch(cfg.url, { method: "POST", headers, body: JSON.stringify(body) });
+    let data = {};
+    try { data = await res.json(); } catch (e) { /* non-JSON response */ }
+    return { ok: res.ok && data.ok !== false, status: res.status, error: data.error };
   } catch (e) {
     return { ok: false, error: String(e) };
   }
 }
 
 /**
- * Spring Boot backend (POST /api/sessions).
+ * Spring Boot backend (POST /api/sessions), optional.
  */
-export async function uploadToBackend(summary) {
+export async function uploadToBackend(summary, identity) {
   const cfg = K.backend;
   if (!cfg || !cfg.url) return { ok: false, skipped: true };
   try {
     const res = await fetch(cfg.url.replace(/\/$/, "") + "/api/sessions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id_anonim: summary.participant.id_anonim, summary })
+      body: JSON.stringify({
+        id_anonim: summary.participant ? summary.participant.id_anonim : "unknown",
+        summary,
+        identity: identity || null
+      })
     });
     return { ok: res.ok, status: res.status };
   } catch (e) {
@@ -140,14 +133,26 @@ export async function uploadToBackend(summary) {
   }
 }
 
+/** Stable id so a retried submission is stored (and emailed) only once. */
+function newSubmissionId() {
+  try { if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID(); }
+  catch (e) { /* fall through */ }
+  return "sub_" + Date.now() + "_" + Math.random().toString(16).slice(2, 10);
+}
+
+function withSubmissionId(summary) {
+  if (summary && summary.submission_id) return summary;
+  return Object.assign({}, summary, { submission_id: newSubmissionId() });
+}
+
 /** Send the session to every configured backend. */
-export async function submitSession(summary) {
-  const [supabase, endpoint, backend] = await Promise.all([
-    uploadToSupabase(summary),
-    uploadToEndpoint(summary),
-    uploadToBackend(summary)
+export async function submitSession(summary, identity) {
+  const s = withSubmissionId(summary);
+  const [endpoint, backend] = await Promise.all([
+    uploadToEndpoint(s, identity),
+    uploadToBackend(s, identity)
   ]);
-  return { supabase, endpoint, backend };
+  return { endpoint, backend, summary: s };
 }
 
 /* ------------------------- Durable submission queue ------------------------- */
@@ -155,7 +160,7 @@ const PENDING_KEY = "ncid_pending_v1";
 
 export function hasTarget() {
   const s = CONFIG.storage || {};
-  return !!((s.supabase && s.supabase.url) || (s.backend && s.backend.url) || (s.submission && s.submission.url));
+  return !!((s.backend && s.backend.url) || (s.submission && s.submission.url));
 }
 
 function readQueue() {
@@ -166,9 +171,9 @@ function writeQueue(q) {
   try { localStorage.setItem(PENDING_KEY, JSON.stringify(q)); } catch (e) { /* ignore */ }
 }
 
-export function enqueue(summary) {
+export function enqueue(summary, identity) {
   const q = readQueue();
-  q.push({ id: summary.participant ? summary.participant.id_anonim : "unknown", at: Date.now(), summary });
+  q.push({ id: summary.participant ? summary.participant.id_anonim : "unknown", at: Date.now(), summary, identity: identity || null });
   writeQueue(q);
 }
 
@@ -182,8 +187,8 @@ export async function flushPending() {
   const keep = [];
   let flushed = 0;
   for (const item of q) {
-    const r = await submitSession(item.summary);
-    const ok = (r.supabase && r.supabase.ok) || (r.backend && r.backend.ok) || (r.endpoint && r.endpoint.ok);
+    const r = await submitSession(item.summary, item.identity);
+    const ok = (r.backend && r.backend.ok) || (r.endpoint && r.endpoint.ok);
     if (ok) flushed++; else keep.push(item);
   }
   writeQueue(keep);
@@ -191,9 +196,9 @@ export async function flushPending() {
 }
 
 /** Submit now; if every target fails, keep it queued for a later retry. */
-export async function submitAndQueue(summary) {
-  const r = await submitSession(summary);
-  const ok = (r.supabase && r.supabase.ok) || (r.backend && r.backend.ok) || (r.endpoint && r.endpoint.ok);
-  if (!ok && hasTarget()) enqueue(summary);
+export async function submitAndQueue(summary, identity) {
+  const r = await submitSession(summary, identity);
+  const ok = (r.backend && r.backend.ok) || (r.endpoint && r.endpoint.ok);
+  if (!ok && hasTarget()) enqueue(r.summary, identity);
   return { ...r, queued: !ok && hasTarget() };
 }

@@ -28,12 +28,12 @@ export const CONFIG = {
       anonKey: "sb_publishable_98Vch8De9ZGxo1ofHMxDzA_ZS8ZpfUv"
     },
     submission: {
-      url: "https://script.google.com/macros/s/AKfycbw7e1yJvFui_uXsxkkAg8aHPtGAQ3jAh90YOKE82K-gXdbrzmvGtOad6Jivt3ukTYn2/exec",
+      // Supabase Edge Function (see supabase/functions/submit). It owns the
+      // service-role insert + the email delivery, so no secret is in the client.
+      url: "https://kvfqvnvlledzzxstgdch.supabase.co/functions/v1/submit",
       includeGaze: false
     },
     backend: { url: null },        // optional Spring Boot API
-    // Shared token: required by the Supabase insert policy and by the Apps Script.
-    token: "ncid_k9f3Xq2Lm7Pz",
     keyName: "ncid_session_buffer_v1",
     langKey: "ncid_lang",
     counterKey: "ncid_session_counter"

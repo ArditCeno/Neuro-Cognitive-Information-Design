@@ -97,7 +97,16 @@ function boot() {
   applyI18n();
   showStage("welcome");
 
-  $("btnConsent").addEventListener("click", () => { buildSelects(); showStage("registration"); });
+  const consentCheck = $("consentCheck");
+  const consentBtn = $("btnConsent");
+  if (consentCheck && consentBtn) {
+    consentBtn.disabled = !consentCheck.checked;
+    consentCheck.addEventListener("change", () => { consentBtn.disabled = !consentCheck.checked; });
+  }
+  consentBtn.addEventListener("click", () => {
+    if (consentCheck && !consentCheck.checked) return;
+    buildSelects(); showStage("registration");
+  });
   $("btnDecline").addEventListener("click", () => { alert(t("consent_decline")); window.location.reload(); });
   $("regForm").addEventListener("submit", onRegister);
   $("btnCamera").addEventListener("click", onEnableCamera);
@@ -108,7 +117,8 @@ function boot() {
   $("btnReadDone").addEventListener("click", onReadDone);
   $("btnDownload").addEventListener("click", () => exportSummary(buildExport()));
   $("btnDownloadGaze").addEventListener("click", () => exportGaze(buildExport()));
-  $("btnWithdraw").addEventListener("click", withdraw);
+  const copyBtn = $("btnCopyId");
+  if (copyBtn) copyBtn.addEventListener("click", copyParticipantId);
   const rb = $("btnResearcher");
   if (rb) rb.addEventListener("click", () => {
     STAGES.forEach((s) => $(`stage-${s}`).classList.add("hidden"));
@@ -144,13 +154,55 @@ function buildSelects() {
   exp.value = curE;
 }
 
+/* ---------------------------- Identity & device helpers ---------------------------- */
+/**
+ * Separate the optional name from the study data, so the stored/analysed
+ * dataset stays anonymous. The name travels only as `identity` (own table).
+ */
+function splitIdentity(summary) {
+  const clean = JSON.parse(JSON.stringify(summary));
+  const id = (clean.participant && clean.participant.id_anonim) || "";
+  const nome = (clean.participant && clean.participant.emri_mbiemer) || "";
+  if (clean.participant) delete clean.participant.emri_mbiemer;
+  return { clean, identity: { id_anonim: id, emri_mbiemer: nome } };
+}
+
+/** The eye-tracking session needs a desktop-class device with a fine pointer. */
+function isDesktopStudyDevice() {
+  const coarse = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+  const narrow = window.innerWidth < 900;
+  return !coarse && !narrow;
+}
+
+function applyDeviceGate() {
+  const ok = isDesktopStudyDevice();
+  const warn = $("deviceWarn");
+  if (warn) warn.classList.toggle("hidden", ok);
+  const cam = $("btnCamera");
+  if (cam) cam.disabled = !ok;
+  if (!ok) {
+    const msg = $("setupMsg");
+    if (msg) msg.textContent = t("device_desktop_only");
+  }
+}
+
+function copyParticipantId() {
+  const el = $("doneId");
+  if (!el) return;
+  const text = el.textContent || "";
+  const done = () => { const b = $("btnCopyId"); if (b) { const old = b.textContent; b.textContent = t("copied"); setTimeout(() => { b.textContent = old; }, 1600); } };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done).catch(done);
+  else done();
+}
+
 /* ---------------------------- Registration ---------------------------- */
 function onRegister(e) {
   e.preventDefault();
   const age = parseInt($("regAge").value, 10);
   const profession = $("regProfession").value;
   const expertise = $("regExpertise").value;
-  if (!age || !profession || !expertise) { $("regErr").classList.remove("hidden"); return; }
+  $("regAgeErr").classList.toggle("hidden", !(age && age < 18));
+  if (!age || age < 18 || !profession || !expertise) { $("regErr").classList.remove("hidden"); return; }
   $("regErr").classList.add("hidden");
 
   const field = CONFIG.fields.find((f) => f.id === profession) || CONFIG.fields[0];
@@ -187,15 +239,18 @@ function onRegister(e) {
     gaze: [],
     exported_at: new Date().toISOString()
   };
-  submitAndQueue(regSnapshot).catch(() => {});
+  const split = splitIdentity(regSnapshot);
+  submitAndQueue(split.clean, split.identity).catch(() => {});
   if (emailConfigured()) emailReport(regSnapshot).catch(() => {});
   showStage("setup");
+  applyDeviceGate();
 }
 
 /* ---------------------------- Camera & calibration ---------------------------- */
 async function onEnableCamera() {
   const msg = $("setupMsg");
   const preview = $("cameraPreview");
+  if (!isDesktopStudyDevice()) { msg.textContent = t("device_desktop_only"); return; }
   msg.textContent = t("loading");
   try {
     await EyeTracking.init({ mock: state.mock });
@@ -507,8 +562,23 @@ async function finishSession() {
   });
 
   const summary = buildExport();
-  const delivered = await submitAndQueue(summary);
+  const split = splitIdentity(summary);
+  const delivered = await submitAndQueue(split.clean, split.identity);
   if (delivered.queued) Storage.addEvent("submit_queued", { id: summary.participant.id_anonim });
+
+  const pid = (state.participant && state.participant.id_anonim) || "";
+  const idEl = $("doneId");
+  if (idEl) idEl.textContent = pid;
+  const delLink = $("deletionLink");
+  if (delLink) {
+    const subject = encodeURIComponent("NCID deletion request " + pid);
+    const body = encodeURIComponent(
+      (getLang() === "en"
+        ? "Please delete all data linked to participant ID "
+        : "Ju lutem fshini të gjitha të dhënat e lidhura me ID-në e pjesëmarrësit ") + pid + "."
+    );
+    delLink.href = "mailto:arditceno82@gmail.com?subject=" + subject + "&body=" + body;
+  }
 
   $("doneSummary").textContent = JSON.stringify({
     participant: summary.participant,
@@ -550,16 +620,6 @@ async function renderReportExtras(summary) {
     const r = await emailReport(summary);
     msg.textContent = r.ok ? t("email_sent") : t("email_failed");
   }
-}
-
-/* ---------------------------- Withdraw ---------------------------- */
-function withdraw() {
-  if (!confirm(getLang() === "en" ? "Delete all collected data for this session?" : "Të fshihen të gjitha të dhënat e këtij sesioni?")) return;
-  Storage.clear();
-  EyeTracking.stop();
-  Biometrics.stop();
-  alert(t("done_withdrawn"));
-  window.location.reload();
 }
 
 boot();

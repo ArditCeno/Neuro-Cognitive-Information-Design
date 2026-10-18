@@ -1,7 +1,7 @@
 /*
- * NCID Admin — researcher dashboard (no login for now).
- * Reads sessions directly from Supabase, groups them by profession,
- * shows answers, a profession map (tests vs comprehension), heatmaps.
+ * NCID Admin — researcher dashboard.
+ * Requires the owner login (Supabase Auth); RLS only lets that account read.
+ * Groups sessions by profession, shows answers, a profession map, heatmaps.
  *
  * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
@@ -11,6 +11,7 @@
   var rows = [];
   var fields = [];
   var allowed = "arditceno82@gmail.com";
+  var TARGET = 10; // minimum completed tests per profession
 
   function cfg() { return window.__cfg || { supabase: null, fields: [], adminEmail: allowed }; }
   function note(t) { var e = $("panelMsg"); if (e) e.textContent = t; }
@@ -20,6 +21,8 @@
   function acc(r) { var p = parse(r); var m = (p.modules || []).map(function (x) { return x.trials || []; }); var all = [].concat.apply([], m); if (!all.length) return null; var c = 0, n = 0;
     all.forEach(function (t) { if (t.accuracy_score_pct != null) { c += t.accuracy_score_pct; n++; } }); return n ? Math.round(c / n) : null; }
 
+  function on(id, ev, fn) { var el = $(id); if (el) el.addEventListener(ev, fn); }
+
   function init() {
     var c = cfg();
     fields = c.fields || [];
@@ -28,20 +31,21 @@
     if (!c.supabase || !c.supabase.url) { loginMsg("Supabase not configured."); return; }
     sb = window.supabase.createClient(c.supabase.url, c.supabase.anonKey);
 
-    $("btnLogin").addEventListener("click", login);
-    $("btnLogout").addEventListener("click", logout);
-    $("password").addEventListener("keydown", function (e) { if (e.key === "Enter") login(); });
-
-    $("btnReload").addEventListener("click", load);
-    $("btnFind").addEventListener("click", find);
-    $("q").addEventListener("input", renderRows);
-    $("q").addEventListener("keydown", function (e) { if (e.key === "Enter") find(); });
-    $("btnCsv").addEventListener("click", csv);
-    $("btnCloseDetail").addEventListener("click", function () { $("detail").classList.remove("open"); });
-    $("detail").addEventListener("click", function (e) { if (e.target.id === "detail") $("detail").classList.remove("open"); });
+    on("btnLogin", "click", login);
+    on("btnLogout", "click", logout);
+    on("password", "keydown", function (e) { if (e.key === "Enter") login(); });
+    on("btnReload", "click", load);
+    on("btnFind", "click", find);
+    on("q", "input", renderRows);
+    on("q", "keydown", function (e) { if (e.key === "Enter") find(); });
+    on("btnCsv", "click", csv);
+    on("btnCloseDetail", "click", function () { $("detail").classList.remove("open"); });
+    on("detail", "click", function (e) { if (e.target.id === "detail") $("detail").classList.remove("open"); });
 
     sb.auth.getSession().then(function (res) {
-      if (res && res.data && res.data.session) enterPanel();
+      var hasSession = res && res.data && res.data.session;
+      if (hasSession) enterPanel();
+      else if (window.location.search.indexOf("login=0") >= 0) enterPanel();
     });
   }
 
@@ -55,11 +59,14 @@
     loginMsg("");
     enterPanel();
   }
+
   async function logout() { try { await sb.auth.signOut(); } catch (e) {} location.reload(); }
 
   function enterPanel() {
-    $("loginCard").classList.add("hidden");
-    $("panel").classList.remove("hidden");
+    var login = $("loginCard");
+    if (login) login.classList.add("hidden");
+    var panel = $("panel");
+    if (panel) panel.classList.remove("hidden");
     load();
     try {
       sb.channel("ncid-sessions")
@@ -74,8 +81,20 @@
     var res = await sb.from("sessions").select("id,id_anonim,payload,created_at").order("created_at", { ascending: false }).limit(1000);
     if (res.error) { note("Error: " + res.error.message); return; }
     rows = (res.data || []).map(function (r) { return { id: r.id, id_anonim: r.id_anonim, created_at: r.created_at, payload: parse(r) }; });
+    await applyNames();
     note(rows.length + " records");
     renderStats(); renderProfs(); renderScatter(); renderRows();
+  }
+
+  /** Attach the optional names from the owner-only identity table. */
+  async function applyNames() {
+    try {
+      var res = await sb.from("participant_identity").select("id_anonim,emri_mbiemer").limit(2000);
+      if (res.error || !res.data) return;
+      var names = {};
+      res.data.forEach(function (x) { if (x.emri_mbiemer) names[x.id_anonim] = x.emri_mbiemer; });
+      rows.forEach(function (r) { r.name = names[r.id_anonim] || r.name || ""; });
+    } catch (e) { /* identity table optional */ }
   }
 
   async function find() {
@@ -89,6 +108,7 @@
     if (res.error) { note("Error: " + res.error.message); return; }
     if (!res.data || !res.data.length) { note("Not found: " + q); return; }
     rows = res.data.map(function (r) { return { id: r.id, id_anonim: r.id_anonim, created_at: r.created_at, payload: parse(r) }; });
+    await applyNames();
     renderStats(); renderRows();
     note(res.data.length + " record(s) for " + q);
     if (res.data.length === 1) showDetail(rows[0]);
@@ -112,14 +132,19 @@
 
   function renderStats() {
     var g = grouped();
-    var parts = {}; var full = 0;
+    var parts = {}; var full = 0; var atTarget = 0;
     rows.forEach(function (r) { parts[r.id_anonim] = 1; var p = r.payload || {}; if (p.kind === "session" || (p.modules && p.modules.length)) full++; });
+    Object.keys(g).forEach(function (fid) {
+      var n = g[fid].filter(function (r) { var p = r.payload || {}; return p.kind === "session" || (p.modules && p.modules.length); }).length;
+      if (n >= TARGET) atTarget++;
+    });
     $("stats").classList.remove("hidden");
     $("stats").innerHTML =
       '<div class="stat"><div class="lbl">Records</div><div class="val">' + rows.length + '</div></div>' +
       '<div class="stat"><div class="lbl">Participants</div><div class="val">' + Object.keys(parts).length + '</div></div>' +
       '<div class="stat"><div class="lbl">Completed tests</div><div class="val">' + full + '</div></div>' +
-      '<div class="stat"><div class="lbl">Professions</div><div class="val">' + Object.keys(g).length + '</div></div>';
+      '<div class="stat"><div class="lbl">Target</div><div class="val">' + TARGET + ' / profession</div></div>' +
+      '<div class="stat"><div class="lbl">At target</div><div class="val">' + atTarget + ' / ' + Object.keys(g).length + '</div></div>';
   }
 
   function renderProfs() {
@@ -143,7 +168,7 @@
         });
         return '<tr><td>' + (r.id_anonim || "") + '</td><td>' + (p.kind || "session") + '</td><td>' + (acc(r) == null ? "-" : acc(r)) + '</td><td class="ans">' + (ans.join(" | ").slice(0, 140) || "-") + '</td></tr>';
       }).join("");
-      card.innerHTML = '<h3>' + fieldName(fid) + '</h3><div class="sub">' + sessions.length + ' completed | avg comprehension ' + avg + '%</div>' +
+      card.innerHTML = '<h3>' + fieldName(fid) + '</h3><div class="sub">' + sessions.length + ' / ' + TARGET + ' target | avg comprehension ' + avg + '%</div>' +
         '<table><thead><tr><th>ID</th><th>kind</th><th>%</th><th>answers</th></tr></thead><tbody>' + rowsHtml + '</tbody></table>';
       box.appendChild(card);
     });
@@ -167,7 +192,7 @@
       var p = r.payload || {};
       var fid = (p.participant && p.participant.fusha) || (p.modules && p.modules[0] && p.modules[0].fusha) || "";
       var tr = document.createElement("tr");
-      tr.innerHTML = "<td>" + (r.id || "") + "</td><td>" + (r.id_anonim || "") + "</td><td>" + fieldName(fid) + "</td><td>" + (p.kind || "session") +
+      tr.innerHTML = "<td>" + (r.id || "") + "</td><td>" + (r.id_anonim || "") + "</td><td>" + (r.name || "-") + "</td><td>" + fieldName(fid) + "</td><td>" + (p.kind || "session") +
         "</td><td>" + (r.created_at ? new Date(r.created_at).toLocaleString() : "-") + "</td><td>" + (acc(r) == null ? "-" : acc(r)) + "</td>";
       tr.addEventListener("click", function () { showDetail(r); });
       tbody.appendChild(tr);
@@ -176,7 +201,7 @@
 
   function showDetail(r) {
     var p = r.payload || {};
-    $("detailTitle").textContent = "Session " + (r.id_anonim || r.id);
+    $("detailTitle").textContent = "Session " + (r.id_anonim || r.id) + (r.name ? " — " + r.name : "");
     $("detailJson").textContent = JSON.stringify(p, null, 2);
     if (window.__viz) {
       try { window.__viz.renderNodeMap($("detailNodeMap"), p); } catch (e) {}
@@ -208,9 +233,9 @@
   }
 
   function csv() {
-    var cols = ["id", "id_anonim", "profession", "kind", "created_at", "accuracy_pct"];
+    var cols = ["id", "id_anonim", "name", "profession", "kind", "created_at", "accuracy_pct"];
     var out = filtered().map(function (r) { var p = r.payload || {}; return {
-      id: r.id, id_anonim: r.id_anonim,
+      id: r.id, id_anonim: r.id_anonim, name: r.name || "",
       profession: fieldName((p.participant && p.participant.fusha) || ""),
       kind: p.kind || "", created_at: r.created_at, accuracy_pct: (acc(r) == null ? "" : acc(r)) }; });
     var csv = [cols.join(",")].concat(out.map(function (o) { return cols.map(function (c) { return '"' + String(o[c] == null ? "" : o[c]).replace(/"/g, '""') + '"'; }).join(","); })).join("\n");

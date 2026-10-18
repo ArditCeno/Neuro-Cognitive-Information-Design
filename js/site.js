@@ -11,6 +11,7 @@
 
   var PAGES = [
     { href: "index.html", en: "Home", al: "Kryefaqja" },
+    { href: "study-info.html", en: "Study info", al: "Info i studimit" },
     { href: "about.html", en: "About", al: "Rreth" },
     { href: "methodology.html", en: "Methodology", al: "Metodologjia" },
     { href: "fields.html", en: "Fields", al: "Fushat" },
@@ -61,6 +62,7 @@
     return '' +
       '<span>Neuro-Cognitive Information Design</span>' +
       '<span class="foot-links">' +
+        '<a href="study-info.html" data-en="Study info" data-al="Info i studimit">Study info</a>' +
         '<a href="https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html" data-en="Join the study" data-al="Bashkohu me studimin">Join the study</a>' +
         '<a href="privacy.html" data-en="Privacy Policy" data-al="Politika e Privatësisë">Privacy Policy</a>' +
         '<a href="terms.html" data-en="Terms &amp; Conditions" data-al="Kushtet e Përdorimit">Terms &amp; Conditions</a>' +

@@ -67,46 +67,54 @@ results per level and version, and every answer.
 
 Full code and steps: [`email-setup/`](email-setup) (see `Code.gs` and its README).
 
+The browser never sees the Apps Script URL: it posts to the Supabase Edge
+Function `submit`, which owns the secret, the database insert and the email.
+
 Short version:
 
 1. Open https://script.google.com, **New project**, paste the contents of
    [`email-setup/Code.gs`](email-setup/Code.gs).
 2. **Deploy, New deployment, Web app**, Execute as **Me**, access **Anyone**.
-3. Copy the URL that ends with `/exec`.
-4. Add it in GitHub as the secret **`SUBMISSION_URL`** (Settings, Secrets and
-   variables, Actions). The deploy workflow injects it. For local use, put it in
-   `js/config.local.js`.
+3. Project Settings, **Script properties**, add **`TOKEN`** with a long random
+   value.
+4. Copy the URL that ends with `/exec` and set it on the function:
+
+```bash
+supabase functions deploy submit --no-verify-jwt
+supabase secrets set APPS_SCRIPT_URL="https://script.google.com/macros/s/.../exec"
+supabase secrets set APPS_SCRIPT_TOKEN="the-same-random-token"
+```
 
 ## Data and privacy
 
 Sessions are stored in **Supabase** (PostgreSQL). No video is stored, only gaze
-coordinates and timings, linked to an anonymous ID. See
+coordinates and timings, linked to an anonymous ID. An optional name is kept in
+a **separate identity table** and never enters the research payload. See
 [privacy.html](privacy.html) and [terms.html](terms.html).
 
-Required Supabase policy (SQL editor):
-
-```sql
-alter table sessions enable row level security;
-
-create policy "anon insert" on sessions for insert to anon with check (true);
-
--- temporary, so the admin panel can read without login (remove later)
-create policy "temp read" on sessions for select to anon using (true);
-```
+Apply the full schema and policies in the Supabase SQL editor:
+[`supabase/security.sql`](supabase/security.sql). It creates `sessions`,
+`participant_identity`, the `submission_id` dedupe index and the rate-limit
+function, and gives read/delete access only to the owner account. Anonymous
+clients cannot read or write the tables directly — the Edge Function does the
+insert with the service role.
 
 ## Project layout
 
 ```
 index.html              one-page site: Home, Test and Admin tabs
 study.html              participant test
+study-info.html         what to expect, requirements, FAQ, share/QR
 admin.html              researcher panel with live results
 privacy.html terms.html legal pages
 about / methodology / fields / contact .html   public pages
 materials/    A and B documents for each profession and level
+assets/       logo, figures, og-image, study-info screenshots
 js/           application, config, eye-tracking, storage, visuals, report
 css/          landing, header, main, materials
 mediapipe/    FaceMesh assets for WebGazer
 vendor/       heatmap.js, jsPDF, emailjs, supabase-js (local copies)
+supabase/     security.sql + functions/submit (Edge Function write path)
 backend/      Spring Boot API (optional)
 analysis/     Python: fetch, clean, metrics, stats, figures
 email-setup/  Google Apps Script to email results

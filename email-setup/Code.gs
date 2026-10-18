@@ -17,21 +17,33 @@
  */
 
 var TO = "arditceno82@gmail.com";
-var TOKEN = "ncid_k9f3Xq2Lm7Pz";   // must match CONFIG.storage.token in the website
+
+/*
+ * The shared token now lives in Script Properties, never in this file.
+ * Set it once: Project Settings > Script properties > Add property
+ *   TOKEN = <a long random string>
+ * The same value goes to the Edge Function secret APPS_SCRIPT_TOKEN.
+ */
+function token_() {
+  var props = PropertiesService.getScriptProperties();
+  return props.getProperty("TOKEN") || "";
+}
 
 function doPost(e) {
   var data = {};
   try { data = JSON.parse(e.postData.contents); } catch (err) {}
-  if (data.token !== TOKEN) {
+  var expected = token_();
+  if (!expected || data.token !== expected) {
     return ContentService.createTextOutput(JSON.stringify({ ok: false, error: "forbidden" }))
       .setMimeType(ContentService.MimeType.JSON);
   }
   var s = data.summary || data;
-  var id = (s.participant && s.participant.id_anonim) || data.id_anonim || "?";
+  var identity = data.identity || {};
+  var id = (s.participant && s.participant.id_anonim) || data.id_anonim || identity.id_anonim || "?";
   MailApp.sendEmail({
     to: TO,
-    subject: "NCID " + (s.kind || "session") + " - " + id,
-    htmlBody: tableHTML(s),
+    subject: "NCID " + (data.kind || s.kind || "session") + " - " + id,
+    htmlBody: tableHTML(s, identity),
     body: "New NCID submission (" + id + ")"
   });
   return ContentService.createTextOutput(JSON.stringify({ ok: true }))
@@ -47,14 +59,15 @@ function esc(x) {
     .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 }
 
-function tableHTML(s) {
+function tableHTML(s, identity) {
   var p = s.participant || {};
+  var id = identity || {};
   var q = s.quiz_results || {};
   var h = "<h2>NCID " + esc(s.kind || "session") + "</h2>";
 
   h += "<table border='1' cellspacing='0' cellpadding='6' style='border-collapse:collapse;font-family:Arial,sans-serif;font-size:13px'>";
   var ident = [
-    ["Name and surname", p.emri_mbiemer || p["em\u00ebr_mbiem\u00ebr"]],
+    ["Name and surname", id.emri_mbiemer || p.emri_mbiemer || p["em\u00ebr_mbiem\u00ebr"]],
     ["ID", p.id_anonim],
     ["Profession", p.profesioni],
     ["Expertise", p["niveli_i_ekspertiz\u00ebs"]],

@@ -282,3 +282,50 @@ h2 { font-size: 18px; margin: 0 0 12px; }
   .card, .quiz-item, .tlx-item { padding: 14px; }
   .doc { height: min(58vh, 58dvh); }
 }
+
+/* ============================================================
+   Consent checkbox, notices, pre-flight and participant ID
+   ============================================================ */
+.consent-check {
+  display: flex; gap: 10px; align-items: flex-start;
+  margin-top: 16px; font-size: 14px; color: var(--text); cursor: pointer;
+}
+.consent-check input {
+  width: 18px; height: 18px; margin-top: 3px; flex: 0 0 auto;
+  accent-color: var(--accent);
+}
+.consent-check a { color: var(--accent2); font-weight: 600; }
+
+.notice {
+  background: rgba(255, 110, 66, .12);
+  border: 1px solid rgba(255, 110, 66, .45);
+  color: #ffd9cc;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14px;
+  margin: 12px 0;
+}
+
+.preflight {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px; margin: 18px 0;
+}
+.preflight-item {
+  display: flex; flex-direction: column; gap: 6px;
+  background: var(--panel2); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px; font-size: 13px; color: var(--muted);
+}
+.preflight-item svg { width: 26px; height: 26px; color: var(--accent2); }
+.preflight-item strong { color: var(--text); font-size: 14px; }
+
+.id-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 8px 0 14px; }
+.id-row code {
+  background: var(--bg2); border: 1px solid var(--border);
+  border-radius: 8px; padding: 7px 12px; font-size: 15px; letter-spacing: .04em;
+}
+.card .hint a { color: var(--accent2); }
+
+:focus-visible { outline: 2px solid var(--accent2); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
