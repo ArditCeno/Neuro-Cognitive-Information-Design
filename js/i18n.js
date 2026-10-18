@@ -65,7 +65,8 @@ export const I18N = {
     calib_measuring: "Duke matur saktësinë…",
     calib_result: "Saktësia mesatare e kalibrimit",
     calib_good: "Kalibrimi është i mirë. Vazhdojmë.",
-    calib_poor: "Saktësia është nën standardin e rekomanduar (<150 px).",
+    calib_poor: "Saktësia është nën objektivin e rekomanduar.",
+    calib_no_samples: "Nuk u mblodhën mostra shikimi. Tracker-i nuk nisi (kontrollo kamerën dhe lejen).",
     calib_retry: "Ri-kalibro",
     calib_continue: "Vazhdo",
 
@@ -174,7 +175,8 @@ export const I18N = {
     calib_measuring: "Measuring accuracy…",
     calib_result: "Mean calibration accuracy",
     calib_good: "Calibration is good. Proceeding.",
-    calib_poor: "Accuracy is below the recommended threshold (<150 px).",
+    calib_poor: "Accuracy is below the recommended target.",
+    calib_no_samples: "No gaze samples were captured. The tracker did not start (check camera and permission).",
     calib_retry: "Recalibrate",
     calib_continue: "Continue",
 

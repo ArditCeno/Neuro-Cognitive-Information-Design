@@ -261,7 +261,12 @@ async function startCalibration() {
   if (titleEl) titleEl.textContent = state.calibTest ? t("calib_test_title") : t("calib_title");
   $("btnCalibNext").classList.add("hidden");
   $("btnRecalib").classList.add("hidden");
+  // keep the camera visible (and decoding) in a small overlay from here on so
+  // the face / eye points keep tracking even though the setup stage is hidden
+  const overlay = $("wgOverlay");
+  if (overlay) { overlay.classList.remove("hidden"); EyeTracking.attachPreview("#wgOverlay"); }
   EyeTracking.ensureVideoPlaying();
+  if (state.calibTest) startCalibDiagnostics();
 
   const max = CONFIG.study.calibrationMaxAttempts;
   let acc = null;
@@ -287,10 +292,22 @@ async function startCalibration() {
   $("btnRecalib").classList.remove("hidden");
   if (state.calibTest) {
     const th = Calibration.goodThresholdPx();
-    status.textContent += "  " + (getLang() === "en" ? `(target < ${th} px)` : `(objektivi < ${th} px)`);
+    if (acc == null) status.textContent = t("calib_no_samples");
+    else status.textContent = `${t("calib_result")}: ${acc} px  ` + (getLang() === "en" ? `(target < ${th} px)` : `(objektivi < ${th} px)`);
   } else {
     $("btnCalibNext").classList.remove("hidden");
   }
+}
+
+/** Live tracker status shown on the ?calib=1 test screen. */
+function startCalibDiagnostics() {
+  const diag = $("calibDiag");
+  clearInterval(state._diagTimer);
+  state._diagTimer = setInterval(() => {
+    if (!diag) return;
+    const d = EyeTracking.diagnostics();
+    diag.textContent = `mode ${d.mode} · samples ${d.samples} · video ${d.video} · faceOverlay ${d.faceOverlay}`;
+  }, 500);
 }
 
 /* ---------------------------- Module plan & rotation ---------------------------- */
@@ -553,6 +570,9 @@ async function finishSession() {
   if (CONFIG.study.nasaTlx !== "perModule") state.endNasaTlx = await runTlx();
   EyeTracking.stop();
   Biometrics.stop();
+  const ovOverlay = $("wgOverlay");
+  if (ovOverlay) ovOverlay.classList.add("hidden");
+  clearInterval(state._diagTimer);
   state.gazeSamples = EyeTracking.getSessionSamples().slice();
   // flush to buffer for crash recovery
   Storage.patch((s) => {

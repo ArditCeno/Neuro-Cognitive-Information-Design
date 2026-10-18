@@ -1,6 +1,12 @@
 /*
  * EyeTracking: WebGazer lifecycle, gaze sampling, trial markers and a
  * mock generator (used with ?mock=1 to validate the pipeline without a webcam).
+ *
+ * Works on desktop and phones:
+ *  - forces the front (selfie) camera and a light stream on touch devices;
+ *  - feeds taps to the model via recordClick() (WebGazer only self-trains on mouse);
+ *  - keeps the video decoding and visible in a small overlay so the face/eye
+ *    points keep tracking even when the setup stage is hidden.
  */
 
 import { CONFIG } from "./config.js";
@@ -16,6 +22,7 @@ export const EyeTracking = {
   samples: [],                 // all samples (current session)
   trial: null,                 // active trial buffer
   readingRegion: null,         // { left, top, width, height, scrollLeft, scrollTop } viewport coords
+  hostSelector: "#cameraPreview",
   _mockTimer: null,
   _mockPos: null,
 
@@ -47,10 +54,10 @@ export const EyeTracking = {
     const wg = this.webgazer;
     const safe = (fn) => { try { fn(); } catch (e) { /* optional call */ } };
     const touch = this.isTouch();
+    this.hostSelector = "#cameraPreview";
 
     // WebGazer loads the MediaPipe FaceMesh assets from this local path.
     safe(() => { if (wg.params) wg.params.faceMeshSolutionPath = "mediapipe/face_mesh"; });
-    safe(() => { if (wg.params) wg.params.showFaceOverlay = false; });
 
     safe(() => wg.setRegression("ridge"));
     safe(() => wg.setTracker("TFFacemesh"));
@@ -78,8 +85,10 @@ export const EyeTracking = {
     }
 
     this.running = true;
+    // show the camera feed with the face / eye points (as on the laptop)
     safe(() => wg.showVideoPreview && wg.showVideoPreview(true));
-    safe(() => wg.showPredictionPoints && wg.showPredictionPoints(false));
+    safe(() => wg.showFaceOverlay && wg.showFaceOverlay(true));
+    safe(() => wg.showPredictionPoints && wg.showPredictionPoints(true));
     safe(() => wg.addMouseListener && wg.addMouseListener());
     this._mountVideo();
     return true;
@@ -96,15 +105,39 @@ export const EyeTracking = {
     try { this.webgazer.recordScreenPosition(x, y, "click"); } catch (e) { /* optional */ }
   },
 
-  /** Keep the webcam stream decoding even when its container is visually hidden. */
+  /** Keep the webcam stream decoding even when its container is not on screen. */
   ensureVideoPlaying() {
     if (this.mock) return;
     try {
       document.querySelectorAll("video").forEach((v) => {
+        v.setAttribute("playsinline", "");
+        v.muted = true;
         const p = v.play();
         if (p && p.catch) p.catch(() => {});
       });
     } catch (e) { /* ignore */ }
+  },
+
+  /** Re-parent the camera preview (e.g. into a fixed overlay during calibration). */
+  attachPreview(selector) {
+    this.hostSelector = selector;
+    const host = document.querySelector(selector);
+    if (host) host.classList.remove("hidden");
+    this.ensureVideoPlaying();
+    this._mountVideo();
+  },
+
+  /** Live status for debugging (used by the ?calib=1 test screen). */
+  diagnostics() {
+    const v = document.querySelector((this.hostSelector || "") + " video") || document.querySelector("video");
+    return {
+      mode: this.mode,
+      running: this.running,
+      samples: (this.samples || []).length,
+      video: v ? `${v.videoWidth}x${v.videoHeight} ${v.paused ? "paused" : "playing"} rs${v.readyState}` : "none",
+      faceOverlay: !!document.getElementById("webgazerFaceOverlay"),
+      hasWG: !!this.webgazer
+    };
   },
 
   _injectStyles() {
@@ -117,11 +150,17 @@ export const EyeTracking = {
         width: 100% !important; height: 100% !important;
         object-fit: cover !important; border-radius: inherit;
       }
-      #webgazerFaceOverlay, #webgazerFaceFeedbackBox { display: none !important; }
       #webgazerVideoContainer.wg-mounted {
         position: absolute !important; inset: 0 !important;
         width: 100% !important; height: 100% !important;
         margin: 0 !important; z-index: 1;
+      }
+      #webgazerFaceOverlay, #webgazerFaceFeedbackBox {
+        width: 100% !important; height: 100% !important;
+        object-fit: cover !important;
+      }
+      .wg-overlay #webgazerFaceOverlay, .wg-overlay #webgazerFaceFeedbackBox {
+        object-fit: cover !important;
       }
       /* safety: never let a stray WebGazer container overflow the page */
       body > #webgazerVideoContainer { display: none !important; }
@@ -131,7 +170,7 @@ export const EyeTracking = {
 
   _mountVideo(retries = 25) {
     this._injectStyles();
-    const host = document.getElementById("cameraPreview");
+    const host = document.querySelector(this.hostSelector || "#cameraPreview");
     const vc = document.getElementById("webgazerVideoContainer") || document.getElementById("webgazerVideoFeed");
     if (host && vc) {
       vc.classList.add("wg-mounted");

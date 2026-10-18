@@ -27,9 +27,9 @@
   <link rel="alternate icon" href="assets/logo.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="css/main.css?v=28" />
-  <link rel="stylesheet" href="css/header.css?v=28" />
-  <link rel="stylesheet" href="css/materials.css?v=28" />
+  <link rel="stylesheet" href="css/main.css?v=30" />
+  <link rel="stylesheet" href="css/header.css?v=30" />
+  <link rel="stylesheet" href="css/materials.css?v=30" />
 </head>
 <body>
   <div id="site-header"></div>
@@ -141,6 +141,7 @@
       <h1 data-i18n="calib_title">Eye calibration</h1>
       <p class="lead" data-i18n="calib_instr"></p>
       <p id="calibStatus" class="msg"></p>
+      <p id="calibDiag" class="hint"></p>
       <div id="calibArea" class="calib-area"></div>
       <div class="actions">
         <button id="btnRecalib" class="btn btn-ghost hidden" data-i18n="calib_retry"></button>
@@ -208,13 +209,15 @@
 
   </main>
 
+  <!-- persistent camera preview: keeps the stream alive + shows face/eye points -->
+  <div id="wgOverlay" class="wg-overlay hidden"></div>
 
   <footer class="footer">
     <span>Neuro-Cognitive Information Design · v1.0</span>
   </footer>
 
-  <script src="js/site.js?v=29"></script>
+  <script src="js/site.js?v=30"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
-  <script type="module" src="js/app.js?v=29"></script>
+  <script type="module" src="js/app.js?v=30"></script>
 </body>
 </html>
