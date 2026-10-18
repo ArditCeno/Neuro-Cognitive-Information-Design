@@ -16,6 +16,7 @@
   function cfg() { return window.__cfg || { supabase: null, fields: [], adminEmail: allowed }; }
   function note(t) { var e = $("panelMsg"); if (e) e.textContent = t; }
   function loginMsg(t) { var e = $("loginMsg"); if (e) e.textContent = t; }
+  function h(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function parse(r) { var p = r.payload; if (typeof p === "string") { try { p = JSON.parse(p); } catch (e) { p = {}; } } return p || {}; }
   function fieldName(id) { for (var i = 0; i < fields.length; i++) if (fields[i].id === id) return fields[i].name.en; return id || "unknown"; }
   function acc(r) { var p = parse(r); var m = (p.modules || []).map(function (x) { return x.trials || []; }); var all = [].concat.apply([], m); if (!all.length) return null; var c = 0, n = 0;
@@ -43,9 +44,8 @@
     on("detail", "click", function (e) { if (e.target.id === "detail") $("detail").classList.remove("open"); });
 
     sb.auth.getSession().then(function (res) {
-      var hasSession = res && res.data && res.data.session;
-      if (hasSession) enterPanel();
-      else if (window.location.search.indexOf("login=0") >= 0) enterPanel();
+      var session = res && res.data && res.data.session;
+      if (session && session.user && (session.user.email || "").toLowerCase() === allowed.toLowerCase()) enterPanel();
     });
   }
 
@@ -56,6 +56,12 @@
     loginMsg("Signing in…");
     var res = await sb.auth.signInWithPassword({ email: email, password: password });
     if (res.error) { loginMsg("Error: " + res.error.message); return; }
+    var u = res.data && res.data.user;
+    if (!u || (u.email || "").toLowerCase() !== allowed.toLowerCase()) {
+      try { await sb.auth.signOut(); } catch (e) { /* ignore */ }
+      loginMsg("This account is not allowed here.");
+      return;
+    }
     loginMsg("");
     enterPanel();
   }
@@ -166,9 +172,9 @@
             if (chosen) ans.push((m.module_id ? m.module_id + " " : "") + t.versioni + ": " + chosen);
           });
         });
-        return '<tr><td>' + (r.id_anonim || "") + '</td><td>' + (p.kind || "session") + '</td><td>' + (acc(r) == null ? "-" : acc(r)) + '</td><td class="ans">' + (ans.join(" | ").slice(0, 140) || "-") + '</td></tr>';
+        return '<tr><td>' + h(r.id_anonim || "") + '</td><td>' + h(p.kind || "session") + '</td><td>' + (acc(r) == null ? "-" : acc(r)) + '</td><td class="ans">' + h(ans.join(" | ").slice(0, 140) || "-") + '</td></tr>';
       }).join("");
-      card.innerHTML = '<h3>' + fieldName(fid) + '</h3><div class="sub">' + sessions.length + ' / ' + TARGET + ' target | avg comprehension ' + avg + '%</div>' +
+      card.innerHTML = '<h3>' + h(fieldName(fid)) + '</h3><div class="sub">' + sessions.length + ' / ' + TARGET + ' target | avg comprehension ' + avg + '%</div>' +
         '<table><thead><tr><th>ID</th><th>kind</th><th>%</th><th>answers</th></tr></thead><tbody>' + rowsHtml + '</tbody></table>';
       box.appendChild(card);
     });
@@ -192,8 +198,8 @@
       var p = r.payload || {};
       var fid = (p.participant && p.participant.fusha) || (p.modules && p.modules[0] && p.modules[0].fusha) || "";
       var tr = document.createElement("tr");
-      tr.innerHTML = "<td>" + (r.id || "") + "</td><td>" + (r.id_anonim || "") + "</td><td>" + (r.name || "-") + "</td><td>" + fieldName(fid) + "</td><td>" + (p.kind || "session") +
-        "</td><td>" + (r.created_at ? new Date(r.created_at).toLocaleString() : "-") + "</td><td>" + (acc(r) == null ? "-" : acc(r)) + "</td>";
+      tr.innerHTML = "<td>" + h(r.id || "") + "</td><td>" + h(r.id_anonim || "") + "</td><td>" + h(r.name || "-") + "</td><td>" + h(fieldName(fid)) + "</td><td>" + h(p.kind || "session") +
+        "</td><td>" + h(r.created_at ? new Date(r.created_at).toLocaleString() : "-") + "</td><td>" + (acc(r) == null ? "-" : acc(r)) + "</td>";
       tr.addEventListener("click", function () { showDetail(r); });
       tbody.appendChild(tr);
     });

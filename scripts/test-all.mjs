@@ -1,5 +1,5 @@
 /*
- * Full self-test: structure, materials, quizzes, photos, config.
+ * Full self-test: structure, materials, quizzes, diagrams, config.
  * node scripts/test-all.mjs
  */
 import { readFileSync, existsSync, readdirSync } from "node:fs";
@@ -14,9 +14,9 @@ const ok = (cond, msg) => { if (cond) pass++; else { fail++; fails.push(msg); } 
 ok(FIELDS.length === 12, "12 professions (got " + FIELDS.length + ")");
 ok(EXPERTISE.length === 3, "3 expertise levels");
 let modules = 0, quizzes = 0, enQuestions = 0, alQuestions = 0;
-const photoRefs = new Set();
+const diagramRefs = new Set();
 const missingFiles = [];
-const missingPhotos = [];
+const missingDiagrams = [];
 
 for (const f of FIELDS) {
   ok(!!f.id && !!f.name.en && !!f.name.al, "field names: " + f.id);
@@ -39,14 +39,16 @@ for (const f of FIELDS) {
           const p = mod.materials[v][lang];
           if (!p || !existsSync(p)) { missingFiles.push(p || "null"); continue; }
           const html = readFileSync(p, "utf8");
+          ok((html.match(/class="diagram"/g) || []).length === 1, "exactly one diagram " + p);
+          ok(!/assets\/(photos|figures)\//.test(html), "no legacy image refs " + p);
           const re = /src="([^"]+)"/g;
           let m;
           while ((m = re.exec(html))) {
             const src = m[1];
             if (/^(\.\.\/|\.\/)?assets\//.test(src)) {
               const rel = src.replace(/^(\.\.\/|\.\/)/, "");
-              photoRefs.add(rel);
-              if (!existsSync(rel)) missingPhotos.push(rel);
+              diagramRefs.add(rel);
+              if (!existsSync(rel)) missingDiagrams.push(rel);
             }
           }
         }
@@ -55,15 +57,17 @@ for (const f of FIELDS) {
   }
 }
 ok(missingFiles.length === 0, "all material files exist (" + missingFiles.length + " missing)");
-ok(missingPhotos.length === 0, "all referenced photos exist (" + missingPhotos.length + " missing)");
+ok(missingDiagrams.length === 0, "all referenced diagrams exist (" + missingDiagrams.length + " missing)");
 ok(modules === 108, "108 modules (got " + modules + ")");
 ok(quizzes === 648, "648 quiz items (got " + quizzes + ")");
 ok(enQuestions > 600, "EN questions translated (" + enQuestions + ")");
 
-// photos
-const photoFiles = existsSync("assets/photos") ? readdirSync("assets/photos").filter((x) => /\.(jpg|jpeg|png|webp)$/i.test(x)) : [];
-ok(photoFiles.length === 36, "36 photos (got " + photoFiles.length + ")");
-ok(photoRefs.size > 0, "photos referenced in materials (" + photoRefs.size + " unique)");
+// diagrams
+const diagramFiles = existsSync("assets/diagrams") ? readdirSync("assets/diagrams").filter((x) => /\.svg$/i.test(x)) : [];
+ok(diagramFiles.length === 108, "108 diagrams (got " + diagramFiles.length + ")");
+ok(diagramRefs.size === 108, "108 diagrams referenced in materials (" + diagramRefs.size + " unique)");
+ok(!existsSync("assets/photos"), "legacy assets/photos removed");
+ok(!existsSync("assets/figures"), "legacy assets/figures removed");
 
 // config
 const s = CONFIG.storage || {};
@@ -73,7 +77,8 @@ ok(
   s.submission && (/functions\/v1\/submit/.test(s.submission.url || "") || /script\.google\.com/.test(s.submission.url || "")),
   "submission endpoint configured (" + ((s.submission && s.submission.url) || "none") + ")"
 );
-ok(!!s.submission.fallbackUrl || /script.google.com/.test(s.submission.url || ""), "email fallback configured");
+ok(/functions\/v1\/submit/.test(s.submission.url || ""), "secure submission endpoint (Edge Function)");
+ok(s.submission.fallbackToken == null, "no email token in the public client config");
 ok(existsSync("supabase/functions/submit/index.ts"), "Edge Function submit present");
 const edge = existsSync("supabase/functions/submit/index.ts")
   ? readFileSync("supabase/functions/submit/index.ts", "utf8") : "";
@@ -88,5 +93,5 @@ ok(CONFIG.fields.length === 12, "CONFIG fields loaded");
 
 console.log(`PASS ${pass}  FAIL ${fail}`);
 if (fails.length) { console.log("Failures:"); fails.forEach((x) => console.log(" - " + x)); }
-console.log("modules", modules, "| quiz items", quizzes, "| EN questions", enQuestions, "| photos", photoFiles.length, "| photo refs", photoRefs.size);
+console.log("modules", modules, "| quiz items", quizzes, "| EN questions", enQuestions, "| diagrams", diagramFiles.length, "| diagram refs", diagramRefs.size);
 process.exit(fail ? 1 : 0);

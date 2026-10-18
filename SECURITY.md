@@ -1,0 +1,96 @@
+# Security
+
+Neuro-Cognitive Information Design (NCID) is a static, client-side research
+study published on GitHub Pages with a Supabase backend. This document lists the
+20-point hardening checklist, the status of each item, and how to keep it that
+way.
+
+Contact for security issues: **arditceno82@gmail.com**
+
+## Threat model (short)
+
+- Public, unauthenticated participants submit an anonymous session payload.
+- The optional participant name is personal data and must never be public.
+- Only the study owner may read or delete the collected data.
+- The site is served as static files from GitHub Pages (no custom server), so
+  HTTP response headers cannot be set there; browser-enforced controls are used
+  instead and the limits are documented below.
+
+## 20-point checklist
+
+| # | Control | Status | Where |
+|---|---------|--------|-------|
+| 1 | No secrets in the client bundle (publishable/anon key only) | Done | `js/config.js`, `js/config.local.js` (gitignored) |
+| 2 | Server-side write path (Edge Function with service role) | Done | `supabase/functions/submit/index.ts` |
+| 3 | Row Level Security enabled on every table | Done | `supabase/security.sql` |
+| 4 | Owner-only data access by JWT email allowlist | Done | RLS `owner read` / `owner delete` in `supabase/security.sql` |
+| 5 | Admin panel requires authentication (Supabase Auth) | Done | `admin.html`, `js/admin.js` |
+| 6 | Session is verified (authenticated email must match the allowlist) | Done | `js/admin.js` (`enterPanel`, `login`) |
+| 7 | Per-IP rate limiting on submissions | Done | `check_rate_limit()` + Edge Function |
+| 8 | Server-side input validation (id shape, payload size, JSON) | Done | `supabase/functions/submit/index.ts` |
+| 9 | Output encoding to prevent stored XSS in the admin | Done | `js/admin.js` (`h()` escape helper) |
+| 10 | Content Security Policy (meta) | Done | `<meta http-equiv="Content-Security-Policy">` on all pages |
+| 11 | Referrer policy | Done | `<meta name="referrer" content="strict-origin-when-cross-origin">` |
+| 12 | Clickjacking protection | Partial | GitHub Pages cannot send `X-Frame-Options`/`frame-ancestors`; see limitations |
+| 13 | HTTPS enforced end to end | Done | GitHub Pages forces HTTPS (`arditceno.github.io`) |
+| 14 | Personal data isolated (name in a separate owner-only table) | Done | `participant_identity` table; name stripped from `sessions.payload` |
+| 15 | Data minimisation (gaze capture off by default) | Done | `includeGaze: false` in `js/config.js` |
+| 16 | Idempotent submissions (dedupe on retry) | Done | unique `submission_id`; `23505` handled as success |
+| 17 | Dependencies pinned / vendored locally | Done | `vendor/`, `mediapipe/` shipped with the repo |
+| 18 | Errors handled without leaking internals | Done | Edge Function returns generic error codes |
+| 19 | Least privilege: service role key never reaches the browser | Done | key only in Supabase function secrets |
+| 20 | Documented security posture + disclosure contact | Done | this file |
+
+## What changed in the hardening pass
+
+- **Removed the public email token.** The Google Apps Script URL and its shared
+  token are no longer in the browser bundle; the Edge Function holds the token in
+  its own secrets and forwards the report.
+- **Writes are server-side only.** The `anon insert` and `pilot read` policies
+  were removed; the Edge Function inserts with the service role and only the
+  owner account can read.
+- **Admin panel is locked.** The login card is shown first; the panel stays
+  hidden until a valid Supabase session whose email matches
+  `CONFIG.adminEmail` is present. The previous `?login=0` bypass was removed.
+- **Stored-XSS fixes.** Every value rendered into the admin via `innerHTML` is
+  now escaped.
+- **CSP + referrer policy** added to `index.html`, `study.html`, `admin.html`,
+  `privacy.html`, `terms.html`.
+- **Rate limiting** table + `check_rate_limit()` function added to the schema.
+
+## Known limitations (GitHub Pages)
+
+GitHub Pages serves static files and cannot send custom HTTP response headers.
+Therefore:
+
+- `X-Frame-Options` and CSP `frame-ancestors` cannot be set (the `<meta>` CSP
+  ignores `frame-ancestors`). Clickjacking protection is therefore partial.
+- `Strict-Transport-Security` (HSTS) is not sent, though GitHub Pages does
+  redirect HTTP to HTTPS.
+
+To get real response headers, put the site behind a small reverse proxy or CDN
+(e.g. Cloudflare) that injects them. Until then, the `<meta>` CSP still blocks
+external script origins, `object`/`embed`, and form posts to other origins.
+
+## Deployment checklist (requires the Supabase account)
+
+```bash
+# 1. Apply the schema (SQL editor or CLI)
+#    paste supabase/security.sql and run it
+
+# 2. Set the function secrets
+supabase secrets set \
+  APPS_SCRIPT_URL="https://script.google.com/macros/s/<id>/exec" \
+  APPS_SCRIPT_TOKEN="<the same token Code.gs expects>"
+
+# 3. Deploy the write path
+supabase functions deploy submit --no-verify-jwt
+```
+
+After deploying, submit one test session and confirm it appears in the admin
+panel (logged in) and arrives by email. Then re-run `node scripts/test-all.mjs`.
+
+## Reporting
+
+Email **arditceno82@gmail.com**. Please do not open a public issue for
+security-sensitive reports.

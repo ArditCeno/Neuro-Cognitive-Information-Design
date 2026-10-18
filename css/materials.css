@@ -82,13 +82,9 @@
 /* AOI debug outlines */
 body.debug-aoi [data-aoi] { outline: 2px dashed #6ea8fe; background: rgba(110,168,254,.08); }
 
-/* figures inside the stimulus documents */
-.doc .fig { display: block; width: 100%; max-width: 640px; height: auto; margin: 12px 0; border-radius: 8px; border: 1px solid #e0e0d8; }
-
-/* placed photos inside the stimulus documents */
-.doc figure.photo { margin: 14px 0; }
-.doc figure.photo img {
+/* single accurate diagram inside each stimulus document */
+.doc figure.diagram { margin: 14px 0; }
+.doc figure.diagram img {
   display: block; width: 100%; max-width: 640px; height: auto;
   border-radius: 10px; border: 1px solid #e0e0d8;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, .12);
 }

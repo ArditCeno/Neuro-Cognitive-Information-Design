@@ -28,11 +28,13 @@ export const CONFIG = {
       anonKey: "sb_publishable_98Vch8De9ZGxo1ofHMxDzA_ZS8ZpfUv"
     },
     submission: {
-      // Secure path: Supabase Edge Function (see supabase/functions/submit).
+      // Only write path: Supabase Edge Function (see supabase/functions/submit).
+      // It inserts with the service role, rate-limits by IP and sends the email.
       url: "https://kvfqvnvlledzzxstgdch.supabase.co/functions/v1/submit",
-      // Fallback so email still works until the Edge Function is deployed.
-      fallbackUrl: "https://script.google.com/macros/s/AKfycbw7e1yJvFui_uXsxkkAg8aHPtGAQ3jAh90YOKE82K-gXdbrzmvGtOad6Jivt3ukTYn2/exec",
-      fallbackToken: "ncid_k9f3Xq2Lm7Pz",
+      // Optional stopgap only if the Edge Function is unavailable.
+      // Set these from js/config.local.js (gitignored) - never commit a real token.
+      fallbackUrl: null,
+      fallbackToken: null,
       includeGaze: false
     },
     backend: { url: null },        // optional Spring Boot API
@@ -43,6 +45,7 @@ export const CONFIG = {
 
   // Only this account may read the data (admin login).
   adminEmail: "arditceno82@gmail.com",
+  adminAuth: true,   // require Supabase login for the admin panel
 
   // Email delivery of the full report (PDF with node map + hashmap).
   email: {

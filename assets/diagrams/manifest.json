@@ -1,0 +1,434 @@
+{
+ "biologist_fillestar_m1.svg": [
+  640,
+  450
+ ],
+ "biologist_fillestar_m2.svg": [
+  640,
+  276
+ ],
+ "biologist_fillestar_m3.svg": [
+  640,
+  276
+ ],
+ "biologist_mid_m1.svg": [
+  640,
+  242
+ ],
+ "biologist_mid_m2.svg": [
+  640,
+  372
+ ],
+ "biologist_mid_m3.svg": [
+  640,
+  316
+ ],
+ "biologist_senior_m1.svg": [
+  640,
+  270
+ ],
+ "biologist_senior_m2.svg": [
+  640,
+  286
+ ],
+ "biologist_senior_m3.svg": [
+  640,
+  354
+ ],
+ "biotech_fillestar_m1.svg": [
+  640,
+  244
+ ],
+ "biotech_fillestar_m2.svg": [
+  640,
+  260
+ ],
+ "biotech_fillestar_m3.svg": [
+  640,
+  262
+ ],
+ "biotech_mid_m1.svg": [
+  640,
+  282
+ ],
+ "biotech_mid_m2.svg": [
+  640,
+  252
+ ],
+ "biotech_mid_m3.svg": [
+  640,
+  270
+ ],
+ "biotech_senior_m1.svg": [
+  640,
+  270
+ ],
+ "biotech_senior_m2.svg": [
+  640,
+  266
+ ],
+ "biotech_senior_m3.svg": [
+  640,
+  292
+ ],
+ "business_fillestar_m1.svg": [
+  640,
+  252
+ ],
+ "business_fillestar_m2.svg": [
+  640,
+  188
+ ],
+ "business_fillestar_m3.svg": [
+  640,
+  310
+ ],
+ "business_mid_m1.svg": [
+  640,
+  350
+ ],
+ "business_mid_m2.svg": [
+  640,
+  318
+ ],
+ "business_mid_m3.svg": [
+  640,
+  224
+ ],
+ "business_senior_m1.svg": [
+  640,
+  292
+ ],
+ "business_senior_m2.svg": [
+  640,
+  252
+ ],
+ "business_senior_m3.svg": [
+  640,
+  310
+ ],
+ "chemist_fillestar_m1.svg": [
+  640,
+  214
+ ],
+ "chemist_fillestar_m2.svg": [
+  640,
+  252
+ ],
+ "chemist_fillestar_m3.svg": [
+  640,
+  200
+ ],
+ "chemist_mid_m1.svg": [
+  640,
+  252
+ ],
+ "chemist_mid_m2.svg": [
+  640,
+  260
+ ],
+ "chemist_mid_m3.svg": [
+  640,
+  252
+ ],
+ "chemist_senior_m1.svg": [
+  640,
+  272
+ ],
+ "chemist_senior_m2.svg": [
+  640,
+  376
+ ],
+ "chemist_senior_m3.svg": [
+  640,
+  250
+ ],
+ "cook_fillestar_m1.svg": [
+  640,
+  228
+ ],
+ "cook_fillestar_m2.svg": [
+  640,
+  288
+ ],
+ "cook_fillestar_m3.svg": [
+  640,
+  310
+ ],
+ "cook_mid_m1.svg": [
+  640,
+  286
+ ],
+ "cook_mid_m2.svg": [
+  640,
+  284
+ ],
+ "cook_mid_m3.svg": [
+  640,
+  252
+ ],
+ "cook_senior_m1.svg": [
+  640,
+  284
+ ],
+ "cook_senior_m2.svg": [
+  640,
+  268
+ ],
+ "cook_senior_m3.svg": [
+  640,
+  354
+ ],
+ "electrical_fillestar_m1.svg": [
+  640,
+  262
+ ],
+ "electrical_fillestar_m2.svg": [
+  640,
+  246
+ ],
+ "electrical_fillestar_m3.svg": [
+  640,
+  252
+ ],
+ "electrical_mid_m1.svg": [
+  640,
+  268
+ ],
+ "electrical_mid_m2.svg": [
+  640,
+  262
+ ],
+ "electrical_mid_m3.svg": [
+  640,
+  250
+ ],
+ "electrical_senior_m1.svg": [
+  640,
+  250
+ ],
+ "electrical_senior_m2.svg": [
+  640,
+  298
+ ],
+ "electrical_senior_m3.svg": [
+  640,
+  292
+ ],
+ "finance_fillestar_m1.svg": [
+  640,
+  214
+ ],
+ "finance_fillestar_m2.svg": [
+  640,
+  252
+ ],
+ "finance_fillestar_m3.svg": [
+  640,
+  280
+ ],
+ "finance_mid_m1.svg": [
+  640,
+  282
+ ],
+ "finance_mid_m2.svg": [
+  640,
+  282
+ ],
+ "finance_mid_m3.svg": [
+  640,
+  318
+ ],
+ "finance_senior_m1.svg": [
+  640,
+  242
+ ],
+ "finance_senior_m2.svg": [
+  640,
+  292
+ ],
+ "finance_senior_m3.svg": [
+  640,
+  214
+ ],
+ "health_fillestar_m1.svg": [
+  640,
+  160
+ ],
+ "health_fillestar_m2.svg": [
+  640,
+  244
+ ],
+ "health_fillestar_m3.svg": [
+  640,
+  284
+ ],
+ "health_mid_m1.svg": [
+  640,
+  270
+ ],
+ "health_mid_m2.svg": [
+  640,
+  184
+ ],
+ "health_mid_m3.svg": [
+  640,
+  270
+ ],
+ "health_senior_m1.svg": [
+  640,
+  250
+ ],
+ "health_senior_m2.svg": [
+  640,
+  268
+ ],
+ "health_senior_m3.svg": [
+  640,
+  282
+ ],
+ "legal_fillestar_m1.svg": [
+  640,
+  312
+ ],
+ "legal_fillestar_m2.svg": [
+  640,
+  184
+ ],
+ "legal_fillestar_m3.svg": [
+  640,
+  250
+ ],
+ "legal_mid_m1.svg": [
+  640,
+  372
+ ],
+ "legal_mid_m2.svg": [
+  640,
+  270
+ ],
+ "legal_mid_m3.svg": [
+  640,
+  250
+ ],
+ "legal_senior_m1.svg": [
+  640,
+  260
+ ],
+ "legal_senior_m2.svg": [
+  640,
+  250
+ ],
+ "legal_senior_m3.svg": [
+  640,
+  270
+ ],
+ "nurse_fillestar_m1.svg": [
+  640,
+  400
+ ],
+ "nurse_fillestar_m2.svg": [
+  640,
+  270
+ ],
+ "nurse_fillestar_m3.svg": [
+  640,
+  286
+ ],
+ "nurse_mid_m1.svg": [
+  640,
+  244
+ ],
+ "nurse_mid_m2.svg": [
+  640,
+  276
+ ],
+ "nurse_mid_m3.svg": [
+  640,
+  244
+ ],
+ "nurse_senior_m1.svg": [
+  640,
+  320
+ ],
+ "nurse_senior_m2.svg": [
+  640,
+  234
+ ],
+ "nurse_senior_m3.svg": [
+  640,
+  318
+ ],
+ "pedagogue_fillestar_m1.svg": [
+  640,
+  150
+ ],
+ "pedagogue_fillestar_m2.svg": [
+  640,
+  212
+ ],
+ "pedagogue_fillestar_m3.svg": [
+  640,
+  286
+ ],
+ "pedagogue_mid_m1.svg": [
+  640,
+  286
+ ],
+ "pedagogue_mid_m2.svg": [
+  640,
+  186
+ ],
+ "pedagogue_mid_m3.svg": [
+  640,
+  324
+ ],
+ "pedagogue_senior_m1.svg": [
+  640,
+  282
+ ],
+ "pedagogue_senior_m2.svg": [
+  640,
+  284
+ ],
+ "pedagogue_senior_m3.svg": [
+  640,
+  288
+ ],
+ "software_fillestar_m1.svg": [
+  640,
+  242
+ ],
+ "software_fillestar_m2.svg": [
+  640,
+  392
+ ],
+ "software_fillestar_m3.svg": [
+  640,
+  258
+ ],
+ "software_mid_m1.svg": [
+  640,
+  242
+ ],
+ "software_mid_m2.svg": [
+  640,
+  258
+ ],
+ "software_mid_m3.svg": [
+  640,
+  312
+ ],
+ "software_senior_m1.svg": [
+  640,
+  300
+ ],
+ "software_senior_m2.svg": [
+  640,
+  260
+ ],
+ "software_senior_m3.svg": [
+  640,
+  292
+ ]
+}
