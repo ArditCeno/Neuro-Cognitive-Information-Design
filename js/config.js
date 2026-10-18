@@ -28,13 +28,12 @@ export const CONFIG = {
       anonKey: "sb_publishable_98Vch8De9ZGxo1ofHMxDzA_ZS8ZpfUv"
     },
     submission: {
-      // Only write path: Supabase Edge Function (see supabase/functions/submit).
-      // It inserts with the service role, rate-limits by IP and sends the email.
-      url: "https://kvfqvnvlledzzxstgdch.supabase.co/functions/v1/submit",
-      // Optional stopgap only if the Edge Function is unavailable.
-      // Set these from js/config.local.js (gitignored) - never commit a real token.
-      fallbackUrl: null,
-      fallbackToken: null,
+      // Direct path: the browser posts to the Google Apps Script endpoint, which
+      // emails the full report (name, ID, profession, results, NASA-TLX, answers,
+      // biometrics) to the researcher. No server or Edge Function needed.
+      url: null,
+      fallbackUrl: "https://script.google.com/macros/s/AKfycbw7e1yJvFui_uXsxkkAg8aHPtGAQ3jAh90YOKE82K-gXdbrzmvGtOad6Jivt3ukTYn2/exec",
+      fallbackToken: "ncid_k9f3Xq2Lm7Pz",
       includeGaze: false
     },
     backend: { url: null },        // optional Spring Boot API

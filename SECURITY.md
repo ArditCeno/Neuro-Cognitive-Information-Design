@@ -7,11 +7,26 @@ way.
 
 Contact for security issues: **arditceno82@gmail.com**
 
+## Current mode: email-only (direct Apps Script)
+
+The study currently sends every submission straight from the browser to a Google
+Apps Script endpoint, which emails the full report to the researcher. There is no
+server-side database write, so the researcher panel (`admin.html`) stays empty.
+
+This is a deliberate, documented trade-off chosen for simplicity:
+
+- the Apps Script URL + token live in `js/config.js` and are therefore public;
+- anyone who reads the source could post to the endpoint and email the researcher
+  (mitigation: rotate the Apps Script `TOKEN` script property and the config value);
+- there is no server-side rate limiting or dedupe in this mode.
+
+To upgrade to the hardened model (server write + owner-only DB + rate limiting),
+follow the last section of this file.
+
 ## Threat model (short)
 
 - Public, unauthenticated participants submit an anonymous session payload.
-- The optional participant name is personal data and must never be public.
-- Only the study owner may read or delete the collected data.
+- The optional participant name is emailed to the researcher; it is not published.
 - The site is served as static files from GitHub Pages (no custom server), so
   HTTP response headers cannot be set there; browser-enforced controls are used
   instead and the limits are documented below.
@@ -20,13 +35,13 @@ Contact for security issues: **arditceno82@gmail.com**
 
 | # | Control | Status | Where |
 |---|---------|--------|-------|
-| 1 | No secrets in the client bundle (publishable/anon key only) | Done | `js/config.js`, `js/config.local.js` (gitignored) |
-| 2 | Server-side write path (Edge Function with service role) | Done | `supabase/functions/submit/index.ts` |
+| 1 | No secrets in the client bundle | Accepted (email mode) | Apps Script URL + token are in `js/config.js`; see "Current mode" |
+| 2 | Server-side write path (Edge Function with service role) | Optional | `supabase/functions/submit/index.ts`; not used in email mode |
 | 3 | Row Level Security enabled on every table | Done | `supabase/security.sql` |
 | 4 | Owner-only data access by JWT email allowlist | Done | RLS `owner read` / `owner delete` in `supabase/security.sql` |
 | 5 | Admin panel requires authentication (Supabase Auth) | Done | `admin.html`, `js/admin.js` |
 | 6 | Session is verified (authenticated email must match the allowlist) | Done | `js/admin.js` (`enterPanel`, `login`) |
-| 7 | Per-IP rate limiting on submissions | Done | `check_rate_limit()` + Edge Function |
+| 7 | Per-IP rate limiting on submissions | Not active (email mode) | `check_rate_limit()` activates with the Edge Function |
 | 8 | Server-side input validation (id shape, payload size, JSON) | Done | `supabase/functions/submit/index.ts` |
 | 9 | Output encoding to prevent stored XSS in the admin | Done | `js/admin.js` (`h()` escape helper) |
 | 10 | Content Security Policy (meta) | Done | `<meta http-equiv="Content-Security-Policy">` on all pages |
@@ -43,12 +58,13 @@ Contact for security issues: **arditceno82@gmail.com**
 
 ## What changed in the hardening pass
 
-- **Removed the public email token.** The Google Apps Script URL and its shared
-  token are no longer in the browser bundle; the Edge Function holds the token in
-  its own secrets and forwards the report.
-- **Writes are server-side only.** The `anon insert` and `pilot read` policies
-  were removed; the Edge Function inserts with the service role and only the
-  owner account can read.
+- **Email delivery.** In the default mode the browser posts directly to the Apps
+  Script endpoint (`js/config.js`); the CSP `connect-src` allows both
+  `script.google.com` and the `script.googleusercontent.com` redirect target.
+  In the optional secure mode the Edge Function holds the token in its secrets.
+- **Optional server-side writes.** `supabase/security.sql` removes the
+  `anon insert` / `pilot read` policies; when the Edge Function is deployed it
+  inserts with the service role and only the owner account can read.
 - **Admin panel is locked.** The login card is shown first; the panel stays
   hidden until a valid Supabase session whose email matches
   `CONFIG.adminEmail` is present. The previous `?login=0` bypass was removed.
@@ -72,7 +88,7 @@ To get real response headers, put the site behind a small reverse proxy or CDN
 (e.g. Cloudflare) that injects them. Until then, the `<meta>` CSP still blocks
 external script origins, `object`/`embed`, and form posts to other origins.
 
-## Deployment checklist (requires the Supabase account)
+## Optional upgrade: secure server-side mode (requires the Supabase account)
 
 ```bash
 # 1. Apply the schema (SQL editor or CLI)

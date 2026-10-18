@@ -188,7 +188,8 @@ const PENDING_KEY = "ncid_pending_v1";
 
 export function hasTarget() {
   const s = CONFIG.storage || {};
-  return !!((s.backend && s.backend.url) || (s.submission && s.submission.url));
+  const sub = s.submission || {};
+  return !!((s.backend && s.backend.url) || sub.url || sub.fallbackUrl);
 }
 
 function readQueue() {

@@ -74,11 +74,13 @@ const s = CONFIG.storage || {};
 ok(s.supabase && /supabase\.co/.test(s.supabase.url || ""), "Supabase URL configured");
 ok(s.supabase && /^sb_publishable_/.test(s.supabase.anonKey || ""), "Supabase publishable key");
 ok(
-  s.submission && (/functions\/v1\/submit/.test(s.submission.url || "") || /script\.google\.com/.test(s.submission.url || "")),
-  "submission endpoint configured (" + ((s.submission && s.submission.url) || "none") + ")"
+  s.submission && (/functions\/v1\/submit/.test(s.submission.url || "") ||
+    /script\.google\.com/.test(s.submission.url || "") ||
+    /script\.google\.com/.test(s.submission.fallbackUrl || "")),
+  "submission/email endpoint configured"
 );
-ok(/functions\/v1\/submit/.test(s.submission.url || ""), "secure submission endpoint (Edge Function)");
-ok(s.submission.fallbackToken == null, "no email token in the public client config");
+ok(/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(s.submission.fallbackUrl || ""), "Apps Script email endpoint configured");
+ok(!!s.submission.fallbackToken, "email token configured (documented tradeoff)");
 ok(existsSync("supabase/functions/submit/index.ts"), "Edge Function submit present");
 const edge = existsSync("supabase/functions/submit/index.ts")
   ? readFileSync("supabase/functions/submit/index.ts", "utf8") : "";
