@@ -115,13 +115,18 @@ export async function uploadToEndpoint(summary, identity) {
   // 2) fallback: Google Apps Script (email delivery)
   if (cfg.fallbackUrl) {
     try {
+      // include the name in the summary copy too, so older scripts still show it
+      const emailSummary = JSON.parse(JSON.stringify(summary));
+      if (identity && identity.emri_mbiemer && emailSummary.participant) {
+        emailSummary.participant.emri_mbiemer = identity.emri_mbiemer;
+      }
       const res = await fetch(cfg.fallbackUrl, {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify({
           id_anonim: body.id_anonim,
-          summary,
+          summary: emailSummary,
           identity: identity || null,
           token: cfg.fallbackToken
         })

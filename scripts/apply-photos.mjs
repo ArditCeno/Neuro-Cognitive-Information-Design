@@ -26,7 +26,7 @@ function inject(html, file) {
   // remove previous photo block
   html = html.replace(/<figure class="photo">[\s\S]*?<\/figure>\s*/g, "");
   // insert after the first </h1>
-  const tag = `<figure class="photo"><img src="../assets/photos/${file}" alt="" loading="lazy" decoding="async"></figure>\n`;
+  const tag = `<figure class="photo"><img src="assets/photos/${file}" alt="" loading="lazy" decoding="async"></figure>\n`;
   return html.replace("</h1>", "</h1>\n" + tag);
 }
 

@@ -38,7 +38,7 @@
       '<a class="brand" href="index.html">' +
         '<span class="brand-mark">' +
           '<span class="mono" aria-hidden="true"></span>' +
-          '<img class="logo-img" src="assets/logo.svg" alt="NCID">' +
+          '<img class="logo-img" src="assets/logo.png" alt="NCID">' +
         '</span>' +
         '<span class="brand-text"><strong>Neuro-Cognitive</strong><small>Information Design</small></span>' +
       '</a>' +
@@ -117,7 +117,7 @@
   function initLogo() {
     var img = document.querySelector(".logo-img");
     if (!img) return;
-    var list = ["assets/logo.svg", "assets/logo.png", "assets/logo.webp"];
+    var list = ["assets/logo.png", "assets/logo.jpg", "assets/logo.webp", "assets/logo.svg"];
     var i = 0;
     img.addEventListener("load", function () { img.parentNode.classList.add("has-logo"); });
     img.addEventListener("error", function () {

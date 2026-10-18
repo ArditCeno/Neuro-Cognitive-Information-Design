@@ -120,7 +120,7 @@ for (const f of readdirSync("materials")) {
   const path = "materials/" + f;
   let html = readFileSync(path, "utf8");
   if (html.indexOf("assets/figures") >= 0) continue;
-  html = html.replace("</h1>", `</h1>\n<img class="fig" src="../assets/figures/${id}.svg" alt="${id} figure">`);
+  html = html.replace("</h1>", `</h1>\n<img class="fig" src="assets/figures/${id}.svg" alt="${id} figure">`);
   writeFileSync(path, html);
   injected++;
 }

@@ -43,8 +43,8 @@ for (const f of FIELDS) {
           let m;
           while ((m = re.exec(html))) {
             const src = m[1];
-            if (src.indexOf("../assets/") === 0) {
-              const rel = src.replace(/^\.\.\//, "");
+            if (/^(\.\.\/|\.\/)?assets\//.test(src)) {
+              const rel = src.replace(/^(\.\.\/|\.\/)/, "");
               photoRefs.add(rel);
               if (!existsSync(rel)) missingPhotos.push(rel);
             }
