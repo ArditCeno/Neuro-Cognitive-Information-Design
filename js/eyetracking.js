@@ -46,19 +46,65 @@ export const EyeTracking = {
     if (this.mock) return true;
     const wg = this.webgazer;
     const safe = (fn) => { try { fn(); } catch (e) { /* optional call */ } };
-    // WebGazer loads the MediaPipe FaceMesh assets from this path.
+    const touch = this.isTouch();
+
+    // WebGazer loads the MediaPipe FaceMesh assets from this local path.
     safe(() => { if (wg.params) wg.params.faceMeshSolutionPath = "mediapipe/face_mesh"; });
+    safe(() => { if (wg.params) wg.params.showFaceOverlay = false; });
+
     safe(() => wg.setRegression("ridge"));
     safe(() => wg.setTracker("TFFacemesh"));
     safe(() => wg.applyKalmanFilter && wg.applyKalmanFilter(true));
     safe(() => wg.setGazeListener((data, ts) => this._onGaze(data, ts)));
-    await wg.begin();                 // rejects only when the camera cannot start
+
+    // Force the FRONT (selfie) camera and a light stream - crucial on phones,
+    // where WebGazer would otherwise pick the rear camera (no face) or a heavy stream.
+    const md = (typeof navigator !== "undefined") ? navigator.mediaDevices : null;
+    const original = md && md.getUserMedia ? md.getUserMedia.bind(md) : null;
+    if (original) {
+      md.getUserMedia = (constraints) => {
+        const c = Object.assign({}, constraints || {});
+        const v = (constraints && typeof constraints.video === "object") ? Object.assign({}, constraints.video) : {};
+        v.facingMode = { ideal: "user" };
+        if (touch) { v.width = { ideal: 320 }; v.height = { ideal: 240 }; v.frameRate = { ideal: 24, max: 30 }; }
+        c.video = v;
+        return original(c);
+      };
+    }
+    try {
+      await wg.begin();               // rejects only when the camera cannot start
+    } finally {
+      if (original) md.getUserMedia = original;
+    }
+
     this.running = true;
     safe(() => wg.showVideoPreview && wg.showVideoPreview(true));
     safe(() => wg.showPredictionPoints && wg.showPredictionPoints(false));
     safe(() => wg.addMouseListener && wg.addMouseListener());
     this._mountVideo();
     return true;
+  },
+
+  /** Coarse pointer (phone / tablet). */
+  isTouch() {
+    return typeof window !== "undefined" && window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+  },
+
+  /** Feed a screen position to WebGazer's model. Works for mouse clicks AND taps. */
+  recordClick(x, y) {
+    if (this.mock || !this.webgazer) return;
+    try { this.webgazer.recordScreenPosition(x, y, "click"); } catch (e) { /* optional */ }
+  },
+
+  /** Keep the webcam stream decoding even when its container is visually hidden. */
+  ensureVideoPlaying() {
+    if (this.mock) return;
+    try {
+      document.querySelectorAll("video").forEach((v) => {
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      });
+    } catch (e) { /* ignore */ }
   },
 
   _injectStyles() {

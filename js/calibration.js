@@ -1,6 +1,8 @@
 /*
  * 9-point eye calibration on top of WebGazer's click-trained model.
  * Measures mean prediction error (px) against the on-screen targets.
+ * On touch devices it explicitly trains the model on every tap and uses a
+ * screen-relative accuracy threshold (a phone screen is much smaller).
  */
 
 import { CONFIG } from "./config.js";
@@ -43,8 +45,15 @@ export const Calibration = {
 
   async _onClick(dot, tg, areaEl) {
     dot.classList.add("done");
-    // let WebGazer process the click as a training sample, then read prediction
-    await sleep(280);
+    const touch = EyeTracking.isTouch();
+    // Feed the tap position to the model explicitly: WebGazer only self-trains
+    // on mouse events, so taps would otherwise never calibrate the model.
+    if (touch) {
+      const r = dot.getBoundingClientRect();
+      EyeTracking.recordClick(r.left + r.width / 2, r.top + r.height / 2);
+    }
+    // let WebGazer process the training sample (longer on phones)
+    await sleep(touch ? 700 : 280);
     const err = await this._sampleError(dot);
     if (err != null) this.errors.push(err);
 
@@ -62,14 +71,24 @@ export const Calibration = {
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
     const now = performance.now();
-    const recent = EyeTracking.samples.filter((s) => now - s.t < 400 && s.x != null);
+    const win = EyeTracking.isTouch() ? 900 : 400;
+    const recent = EyeTracking.samples.filter((s) => now - s.t < win && s.x != null);
     if (!recent.length) return null;
     const px = mean(recent.map((s) => s.x));
     const py = mean(recent.map((s) => s.y));
     return Math.hypot(px - cx, py - cy);
   },
 
+  /** Accuracy target in px, scaled to the screen (a phone screen is small). */
+  goodThresholdPx() {
+    const w = (typeof window !== "undefined" && window.innerWidth) || 1024;
+    const h = (typeof window !== "undefined" && window.innerHeight) || 768;
+    const minDim = Math.min(w, h);
+    const ratio = EyeTracking.isTouch() ? 0.30 : 0.19;
+    return Math.max(60, Math.min(CONFIG.study.calibrationThresholdPx || 150, ratio * minDim));
+  },
+
   isGood() {
-    return this.accuracyPx != null && this.accuracyPx < CONFIG.study.calibrationThresholdPx;
+    return this.accuracyPx != null && this.accuracyPx < this.goodThresholdPx();
   }
 };

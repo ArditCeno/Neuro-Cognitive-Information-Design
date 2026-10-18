@@ -59,6 +59,8 @@ export const I18N = {
 
     calib_title: "Kalibrimi i syrit (9 pika)",
     calib_instr: "Shikoni me sy pikën e verdhë dhe klikoni mbi të. Përsëriteni për të nëntë pikat.",
+    calib_test_title: "Test i saktësisë (kamerë)",
+    calib_mobile_hint: "Mbaje telefonin i palëvizur, vertikal, me fytyrën të ndriçuar mirë.",
     calib_point: "Pika",
     calib_measuring: "Duke matur saktësinë…",
     calib_result: "Saktësia mesatare e kalibrimit",
@@ -166,6 +168,8 @@ export const I18N = {
 
     calib_title: "Eye calibration (9 points)",
     calib_instr: "Look at the yellow dot and click on it. Repeat for all nine points.",
+    calib_test_title: "Camera accuracy test",
+    calib_mobile_hint: "Hold the phone steady, upright, with your face well lit.",
     calib_point: "Point",
     calib_measuring: "Measuring accuracy…",
     calib_result: "Mean calibration accuracy",

@@ -45,7 +45,8 @@ Open `http://localhost:3000/`. The camera needs `http://` or `https://`, not a
 local file. The study runs on any device (desktop, laptop, tablet or phone);
 Chrome or Edge are recommended for webcam eye-tracking, and if no camera is
 available it falls back to touch / mouse tracking. Add `?mock=1` to `study.html`
-for a simulated run.
+for a simulated run, or `?calib=1` to run only the camera calibration and read
+the measured accuracy (use this to test a phone).
 
 ## Docs and tests
 

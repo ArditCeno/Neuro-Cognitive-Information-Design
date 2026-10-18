@@ -26,6 +26,7 @@ const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done
 
 const state = {
   mock: new URLSearchParams(location.search).get("mock") === "1",
+  calibTest: new URLSearchParams(location.search).get("calib") === "1",
   participant: null,
   sessionNumber: null,
   startedAt: null,
@@ -105,7 +106,8 @@ function boot() {
   }
   consentBtn.addEventListener("click", () => {
     if (consentCheck && !consentCheck.checked) return;
-    buildSelects(); showStage("registration");
+    buildSelects();
+    showStage(state.calibTest ? "setup" : "registration");
   });
   $("btnDecline").addEventListener("click", () => { alert(t("consent_decline")); window.location.reload(); });
   $("regForm").addEventListener("submit", onRegister);
@@ -229,6 +231,8 @@ async function onEnableCamera() {
     $("btnCamera").classList.add("hidden");
     $("btnSetupNext").classList.remove("hidden");
     if (!state.mock) setTimeout(async () => { await Biometrics.init(); Biometrics.start(); }, 800);
+    EyeTracking.ensureVideoPlaying();
+    if (state.calibTest) { $("btnSetupNext").classList.add("hidden"); startCalibration(); }
   } catch (err) {
     // No camera (or permission denied): keep going with touch / mouse tracking so
     // the study works on any device, phones included.
@@ -245,7 +249,7 @@ async function onEnableCamera() {
 
 async function startCalibration() {
   if (state.mock) { startModules(); return; }
-  if (EyeTracking.mode === "mouse") {
+  if (EyeTracking.mode === "mouse" && !state.calibTest) {
     // touch / mouse tracking needs no eye calibration
     Storage.patch((s) => { s.session = s.session || {}; s.session.metoda = "mouse"; s.session.kalibrimi_px = null; });
     startModules();
@@ -253,14 +257,17 @@ async function startCalibration() {
   }
   showStage("calibration");
   const status = $("calibStatus");
+  const titleEl = document.querySelector("#stage-calibration h1");
+  if (titleEl) titleEl.textContent = state.calibTest ? t("calib_test_title") : t("calib_title");
   $("btnCalibNext").classList.add("hidden");
   $("btnRecalib").classList.add("hidden");
+  EyeTracking.ensureVideoPlaying();
 
   const max = CONFIG.study.calibrationMaxAttempts;
   let acc = null;
   for (let attempt = 1; attempt <= max; attempt++) {
     $("calibArea").innerHTML = "";
-    status.textContent = `${t("calib_point")} - ${attempt}/${max}`;
+    status.textContent = (EyeTracking.isTouch() ? t("calib_mobile_hint") + " " : "") + `${t("calib_point")} - ${attempt}/${max}`;
     acc = await Calibration.run($("calibArea"), status);
     if (Calibration.isGood()) break;
     status.textContent = `${t("calib_result")}: ${acc} px. ${t("calib_poor")}`;
@@ -268,7 +275,7 @@ async function startCalibration() {
   }
 
   let method = state.mock ? "mock" : "eyetracking";
-  if (!Calibration.isGood() && CONFIG.study.mouseFallback) {
+  if (!Calibration.isGood() && CONFIG.study.mouseFallback && !state.calibTest) {
     await EyeTracking.enableMouseFallback();
     method = "mouse";
     status.textContent = `${t("calib_result")}: ${acc} px. ` +
@@ -277,8 +284,13 @@ async function startCalibration() {
     status.textContent = `${t("calib_result")}: ${acc} px. ` + (Calibration.isGood() ? t("calib_good") : t("calib_poor"));
   }
   Storage.patch((s) => { s.session = s.session || {}; s.session.kalibrimi_px = Calibration.accuracyPx; s.session.metoda = method; });
-  $("btnCalibNext").classList.remove("hidden");
   $("btnRecalib").classList.remove("hidden");
+  if (state.calibTest) {
+    const th = Calibration.goodThresholdPx();
+    status.textContent += "  " + (getLang() === "en" ? `(target < ${th} px)` : `(objektivi < ${th} px)`);
+  } else {
+    $("btnCalibNext").classList.remove("hidden");
+  }
 }
 
 /* ---------------------------- Module plan & rotation ---------------------------- */
@@ -360,6 +372,7 @@ async function startReading() {
 
   await sleep(120);
   Stimuli.updateRegion($("doc"));
+  EyeTracking.ensureVideoPlaying();
   state.readStart = performance.now();
   EyeTracking.startTrial(`${m.field.id}:${m.expertise}:${m.module.id}:${version}`);
   Storage.addEvent("reading_start", { field: m.field.id, expertise: m.expertise, module: m.module.id, version });
