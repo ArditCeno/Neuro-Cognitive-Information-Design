@@ -23,3 +23,9 @@ js/config.local.js
 .env
 backend/.env
 js/config.local.js
+
+.agents/
+agent/
+data/skills/
+skills-lock.json
+.claude/
