@@ -92,7 +92,7 @@ export async function uploadToSupabase(summary) {
         Authorization: "Bearer " + cfg.anonKey,
         Prefer: "return=minimal"
       },
-      body: JSON.stringify({ id_anonim: summary.participant.id_anonim, payload: summary, client_token: K.token })
+      body: JSON.stringify({ id_anonim: summary.participant.id_anonim, payload: summary })
     });
     return { ok: res.ok, status: res.status };
   } catch (e) {
