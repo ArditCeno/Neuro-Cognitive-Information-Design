@@ -19,6 +19,13 @@
 var TO = "arditceno82@gmail.com";
 var ADMIN_EMAIL = "arditceno82@gmail.com";
 
+/* ===================================================================
+   FJALEKALIMI I ADMINIT - ndrysho VETEM rreshtin poshte.
+   Vendos fjalekalimin mes thonjezave, p.sh.  var ADMIN_PASSWORD = "Ardit2026!";
+   (Nese e lesh "" bosh, perdoret property ADMIN_PASSWORD / ADMIN_PASSWORD_HASH.)
+   =================================================================== */
+var ADMIN_PASSWORD = "";
+
 /* ============================ Submissions ============================ */
 
 function token_() {
@@ -113,11 +120,13 @@ function setupAdminPassword() {
 /* Password check: uses a salted hash (ADMIN_PASSWORD_HASH) if set, otherwise a
    plain ADMIN_PASSWORD script property. Both live only in Script properties. */
 function adminPasswordOk(password) {
+  password = String(password || "");
+  if (ADMIN_PASSWORD) return password === ADMIN_PASSWORD;   // set at the top of this file
   var props = PropertiesService.getScriptProperties();
   var hash = props.getProperty("ADMIN_PASSWORD_HASH");
-  if (hash) return hashPassword(password || "") === hash;
+  if (hash) return hashPassword(password) === hash;
   var plain = props.getProperty("ADMIN_PASSWORD");
-  if (plain) return String(password || "") === plain;
+  if (plain) return password === plain;
   return false;
 }
 
