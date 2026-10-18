@@ -1,0 +1,38 @@
+# Photo credits (Wikimedia Commons)
+
+- **software_m1_ide.jpg** — File:Computer monitor screen image simulated.jpg · unknown · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Computer_monitor_screen_image_simulated.jpg
+- **software_m2_stack_queue.png** — File:Call stack layout ja.png · Melan · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Call_stack_layout_ja.png
+- **software_m3_traceback.png** — File:Error Message Example vbs.png · Blobbie244 · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Error_Message_Example_vbs.png
+- **legal_m1_gazette.png** — File:Allgemeine Preussische Staatszeitung 18190102.png · Königreich Preußen · Public domain · https://commons.wikimedia.org/wiki/File:Allgemeine_Preussische_Staatszeitung_18190102.png
+- **legal_m2_appeal_route.jpg** — File:CourthousePostOfficeTampa01.jpg · Ebyabe · CC BY 2.5 · https://commons.wikimedia.org/wiki/File:CourthousePostOfficeTampa01.jpg
+- **legal_m3_printed_code.jpg** — File:Book cover of "A History of Murphy's Law".jpg · Periscope Film LLC · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Book_cover_of_%22A_History_of_Murphy%27s_Law%22.jpg
+- **finance_m1_pl_excel.png** — File:Aandelenkoers TWX.png · Empoor at Dutch Wikipedia · Public domain · https://commons.wikimedia.org/wiki/File:Aandelenkoers_TWX.png
+- **finance_m2_budget_chart.png** — File:Candlestick chart EURUSD October 2009.PNG · Lyakhovskiy Pavel · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Candlestick_chart_EURUSD_October_2009.PNG
+- **finance_m3_invoice.jpg** — File:Bill of Lading - Southern Railway Company front.jpg · Scanned by SCEhardt on 12-29-2004 · Public domain · https://commons.wikimedia.org/wiki/File:Bill_of_Lading_-_Southern_Railway_Company_front.jpg
+- **business_m1_swot.jpg** — File:One Day Function Theory Meeting 2010 MMB 01 Dan Nicks.jpg · mattbuck (category) · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:One_Day_Function_Theory_Meeting_2010_MMB_01_Dan_Nicks.jpg
+- **business_m2_kpi_dashboard.jpg** — File:Well Organized Dashboard Example.jpg · BrainsMcFadden · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Well_Organized_Dashboard_Example.jpg
+- **business_m3_bmc.jpg** — File:FEMA - 21563 - Photograph by Robert Kaufmann taken on 01-20-2006 in Louisiana.jpg · Robert Kaufmann · Public domain · https://commons.wikimedia.org/wiki/File:FEMA_-_21563_-_Photograph_by_Robert_Kaufmann_taken_on_01-20-2006_in_Louisiana.jpg
+- **health_m1_anatomy.png** — File:Breast anatomy drawing.png · User:YolanC · Public domain · https://commons.wikimedia.org/wiki/File:Breast_anatomy_drawing.png
+- **health_m2_ecg.jpg** — File:Electrocardiogram of a healthy man, 21 years old.jpg · unknown · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Electrocardiogram_of_a_healthy_man,_21_years_old.jpg
+- **health_m3_devices.jpg** — File:Sphygmomanometer&Cuff.JPG · ML5 at English Wikipedia · Public domain · https://commons.wikimedia.org/wiki/File:Sphygmomanometer%26Cuff.JPG
+- **nurse_m1_handwash.jpg** — File:Hand washing comic.jpg · CAWST · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Hand_washing_comic.jpg
+- **nurse_m2_gcs_card.jpg** — File:Believers-Church-Medical-College-Hospital-staff.jpg · Gospel For Asia · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Believers-Church-Medical-College-Hospital-staff.jpg
+- **nurse_m3_med_chart.jpg** — File:Medication blister pack.jpg · Sprinno · CC0 · https://commons.wikimedia.org/wiki/File:Medication_blister_pack.jpg
+- **pedagogue_m1_concept_map.jpg** — File:Concept Map Showing Clusters.jpg · National Cancer Institute · Public domain · https://commons.wikimedia.org/wiki/File:Concept_Map_Showing_Clusters.jpg
+- **pedagogue_m2_rubric.jpg** — File:Third- and fourth-grade clases at the Lincoln School, Centralia, Illinois, 1916-1917 (scl-mss064-0434~1).jpg · Unknown authorUnknown author · Public domain · https://commons.wikimedia.org/wiki/File:Third-_and_fourth-grade_clases_at_the_Lincoln_School,_Centralia,_Illinois,_1916-1917_(scl-mss064-0434~1).jpg
+- **pedagogue_m3_lesson_plan.png** — File:Triple A Lesson Plan Model.png · Taylor Daigneault · CC0 · https://commons.wikimedia.org/wiki/File:Triple_A_Lesson_Plan_Model.png
+- **biologist_m1_cell.jpg** — File:Wilson1900Fig2.jpg · Edmund Beecher Wilson · Public domain · https://commons.wikimedia.org/wiki/File:Wilson1900Fig2.jpg
+- **biologist_m2_mitosis.jpg** — File:Cell division - Mitosis -- Smart-Servier.jpg · Laboratoires Servier · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Cell_division_-_Mitosis_--_Smart-Servier.jpg
+- **biologist_m3_foodchain.jpg** — File:Food chain.jpg · unknown · Public domain · https://commons.wikimedia.org/wiki/File:Food_chain.jpg
+- **biotech_m1_gel.jpg** — File:Gel Electrophoresis Chamber with Agarose gel inside.jpg · Joseph Elsbernd · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Gel_Electrophoresis_Chamber_with_Agarose_gel_inside.jpg
+- **biotech_m2_pcr.jpg** — File:Primitive PCR machine for scrap.JPG · Agesworth · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Primitive_PCR_machine_for_scrap.JPG
+- **biotech_m3_plasmid.jpg** — File:Plasmid em-nl.jpg · unknown · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Plasmid_em-nl.jpg
+- **chemist_m1_ph_chart.png** — File:11 key indicators of global warming from State of the Climate 2009 (Kennedy et al., 2010).png · J. J. Kennedy, P. W. Thorne, T. C. Peterson, R. A. Ruedy, P. A. Stott, D. E. Parker, S. A. Good, H. A. Titchner, and K. M. Willett · Public domain · https://commons.wikimedia.org/wiki/File:11_key_indicators_of_global_warming_from_State_of_the_Climate_2009_(Kennedy_et_al.,_2010).png
+- **chemist_m2_titration.jpg** — File:Acid and Base Titration.jpg · Kengksn · CC BY-SA 4.0 · https://commons.wikimedia.org/wiki/File:Acid_and_Base_Titration.jpg
+- **chemist_m3_periodic_table.png** — File:Compact Periodic table with Hydrogen in Group 13.png · The 2nd Red Guy · CC BY 4.0 · https://commons.wikimedia.org/wiki/File:Compact_Periodic_table_with_Hydrogen_in_Group_13.png
+- **electrical_m1_breadboard.jpg** — File:Breadboard.JPG · en:User:LukeSurl · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Breadboard.JPG
+- **electrical_m2_oscilloscope.jpg** — File:Triangular wave and square wave on oscilloscope screen.jpg · User:Xato · CC0 · https://commons.wikimedia.org/wiki/File:Triangular_wave_and_square_wave_on_oscilloscope_screen.jpg
+- **electrical_m3_multimeter.jpg** — File:Digital Multimeter Aka.jpg · André Karwath aka Aka · CC BY-SA 2.5 · https://commons.wikimedia.org/wiki/File:Digital_Multimeter_Aka.jpg
+- **cook_m1_mise_en_place.png** — File:Ingredients carbonade.png · The original uploader was Romary at French Wikipedia. · CC BY-SA 3.0 · https://commons.wikimedia.org/wiki/File:Ingredients_carbonade.png
+- **cook_m2_cuts.jpg** — File:Carrots Julienne.jpg · frank wouters from antwerpen, belgium · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Carrots_Julienne.jpg
+- **cook_m3_thermometer.jpg** — File:Meat thermometer.jpg · Bev Sykes from Davis, CA, USA · CC BY 2.0 · https://commons.wikimedia.org/wiki/File:Meat_thermometer.jpg

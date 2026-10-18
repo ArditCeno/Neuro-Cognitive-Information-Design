@@ -8,10 +8,12 @@ import { writeFileSync, mkdirSync, readFileSync, readdirSync } from "node:fs";
 
 const B = "#0E7FB0", O = "#FF6E42", N = "#092634", W = "#F9F9F9", G = "#2F7FA0";
 
+const escXml = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
 function wrap(inner, title) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 260" width="640" height="260" font-family="Arial, sans-serif">
   <rect width="640" height="260" fill="${W}"/>
-  <text x="16" y="26" font-size="15" font-weight="700" fill="${N}">${title}</text>
+  <text x="16" y="26" font-size="15" font-weight="700" fill="${N}">${escXml(title)}</text>
   <g transform="translate(0,34)">${inner}</g>
 </svg>`;
 }

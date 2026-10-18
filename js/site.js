@@ -117,7 +117,7 @@
   function initLogo() {
     var img = document.querySelector(".logo-img");
     if (!img) return;
-    var list = ["assets/logo.svg", "assets/logo.png", "assets/logo.webp", "assets/logo.jpg", "assets/logo.jpeg"];
+    var list = ["assets/logo.svg", "assets/logo.png", "assets/logo.webp"];
     var i = 0;
     img.addEventListener("load", function () { img.parentNode.classList.add("has-logo"); });
     img.addEventListener("error", function () {
