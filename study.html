@@ -7,7 +7,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <title>Neuro-Cognitive Information Design</title>
-  <link rel="icon" href="assets/logo.png" />
+  <meta name="description" content="A 30-minute eye-tracking study on document readability. Desktop, webcam and Chrome or Edge required." />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Neuro-Cognitive Information Design" />
+  <meta property="og:title" content="Neuro-Cognitive Information Design — Study" />
+  <meta property="og:description" content="A 30-minute eye-tracking study on document readability. Desktop, webcam and Chrome or Edge required." />
+  <meta property="og:url" content="https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html" />
+  <meta property="og:image" content="https://arditceno.github.io/Neuro-Cognitive-Information-Design/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Neuro-Cognitive Information Design — Study" />
+  <meta name="twitter:description" content="A 30-minute eye-tracking study on document readability." />
+  <meta name="twitter:image" content="https://arditceno.github.io/Neuro-Cognitive-Information-Design/assets/og-image.jpg" />
+  <meta name="theme-color" content="#092634" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="alternate icon" href="assets/logo.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="css/header.css" />
@@ -32,11 +48,19 @@
           <li data-i18n="consent_point_2"></li>
           <li data-i18n="consent_point_3"></li>
           <li data-i18n="consent_point_4"></li>
+          <li data-i18n="consent_point_5"></li>
         </ul>
+        <label class="consent-check">
+          <input type="checkbox" id="consentCheck" />
+          <span>
+            <span data-i18n="consent_checkbox"></span>
+            <a href="privacy.html" target="_blank" rel="noopener" data-i18n="privacy_link"></a>
+          </span>
+        </label>
       </div>
       <div class="actions">
         <button id="btnDecline" class="btn btn-ghost" data-i18n="consent_decline"></button>
-        <button id="btnConsent" class="btn btn-primary" data-i18n="consent_accept"></button>
+        <button id="btnConsent" class="btn btn-primary" data-i18n="consent_accept" disabled></button>
       </div>
     </section>
 
@@ -51,8 +75,10 @@
         </label>
         <label class="field">
           <span data-i18n="reg_age"></span>
-          <input type="number" id="regAge" min="16" max="99" required />
+          <input type="number" id="regAge" min="18" max="99" required />
+          <small class="hint" data-i18n="reg_age_hint"></small>
         </label>
+        <p class="err hidden" id="regAgeErr" data-i18n="reg_age_required"></p>
         <label class="field">
           <span data-i18n="reg_profession"></span>
           <select id="regProfession" required></select>
@@ -72,6 +98,32 @@
     <section id="stage-setup" class="stage hidden">
       <h1 data-i18n="setup_title">Device setup</h1>
       <p class="lead" data-i18n="setup_body"></p>
+
+      <div id="deviceWarn" class="notice hidden" data-i18n="device_desktop_only"></div>
+
+      <div class="preflight">
+        <div class="preflight-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="4" width="19" height="12.5" rx="2"/><path d="M9 20h6"/><path d="M12 16.5V20"/></svg>
+          <strong data-i18n="pf_desktop_t"></strong>
+          <span data-i18n="pf_desktop_d"></span>
+        </div>
+        <div class="preflight-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l1.2-2h7.6L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.2"/></svg>
+          <strong data-i18n="pf_camera_t"></strong>
+          <span data-i18n="pf_camera_d"></span>
+        </div>
+        <div class="preflight-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/></svg>
+          <strong data-i18n="pf_time_t"></strong>
+          <span data-i18n="pf_time_d"></span>
+        </div>
+        <div class="preflight-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v6c0 4.2-2.9 7.5-7 9-4.1-1.5-7-4.8-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+          <strong data-i18n="pf_privacy_t"></strong>
+          <span data-i18n="pf_privacy_d"></span>
+        </div>
+      </div>
+
       <div class="camera-preview" id="cameraPreview">
         <div id="cameraPlaceholder" class="camera-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h2l1.2-2h7.6L17 6h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="12.5" r="3.2"/></svg></div>
       </div>
@@ -129,8 +181,18 @@
       <div class="actions">
         <button id="btnDownload" class="btn btn-primary" data-i18n="done_download"></button>
         <button id="btnDownloadGaze" class="btn btn-ghost" data-i18n="download_gaze"></button>
-        <button id="btnWithdraw" class="btn btn-danger" data-i18n="done_withdraw"></button>
       </div>
+
+      <div class="card">
+        <h2 data-i18n="done_id_title">Your participant ID</h2>
+        <p class="hint" data-i18n="done_id_body"></p>
+        <div class="id-row">
+          <code id="doneId"></code>
+          <button id="btnCopyId" class="btn btn-ghost btn-sm" data-i18n="copy_id"></button>
+        </div>
+        <a id="deletionLink" class="btn btn-ghost" href="mailto:arditceno82@gmail.com" data-i18n="done_delete_request"></a>
+      </div>
+
       <div class="card">
         <h2 data-i18n="panel_title">Researcher panel</h2>
         <p class="hint" data-i18n="panel_heatmap"></p>
@@ -148,8 +210,8 @@
     <span>Neuro-Cognitive Information Design · v1.0</span>
   </footer>
 
-  <script src="js/site.js?v=18"></script>
+  <script src="js/site.js?v=19"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
-  <script type="module" src="js/app.js?v=18"></script>
+  <script type="module" src="js/app.js?v=19"></script>
 </body>
 </html>

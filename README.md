@@ -152,3 +152,13 @@ Notes:
   you rotate it.
 - No server password is in the repository. The publishable key is client-safe.
 - The legal pages are [privacy.html](privacy.html) and [terms.html](terms.html).
+
+## Photos (36)
+Place the study photos in `assets/photos/` using the exact names listed in
+[`assets/photos/README.md`](assets/photos/README.md) (1600x1000, under ~300 KB,
+free-licence sources, no sensitive data). Then run:
+```bash
+node scripts/apply-photos.mjs
+git add -A && git commit -m "Add study photos" && git push
+```
+The script inserts each photo into the matching module (A and B, EN and AL).
