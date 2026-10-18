@@ -51,7 +51,10 @@
 .doc pre .kw { color: #ff8ab3; }
 .doc pre .ret { color: #9ae6b4; }
 .doc pre .cmt { color: #8a8fa8; }
-.doc code { background: #eef; padding: 1px 5px; border-radius: 4px; }
+.doc code { background: #eef; color: #16181d; padding: 1px 5px; border-radius: 4px; }
+/* code inside a code block: light text on the dark block (was light-on-light) */
+.doc pre code { background: transparent; color: inherit; padding: 0; border-radius: 0; }
+@media (max-width: 640px) { .doc pre { font-size: 14px; } }
 
 /* Clinical / triage (health) */
 .triage {

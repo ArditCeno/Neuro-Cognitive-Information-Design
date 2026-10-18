@@ -1,6 +1,6 @@
 /*
  * Bilingual interface strings (Albanian / English).
- * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=36';
+ * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=37';
  */
 
 export const I18N = {
