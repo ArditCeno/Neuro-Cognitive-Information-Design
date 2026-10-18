@@ -2,8 +2,8 @@
  * Heatmap.js wrapper (researcher illustration view).
  */
 
-import { CONFIG } from "./config.js?v=35";
-import { loadScript } from "./utils.js?v=35";
+import { CONFIG } from "./config.js?v=36";
+import { loadScript } from "./utils.js?v=36";
 
 let loaded = false;
 

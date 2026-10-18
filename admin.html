@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/main.css?v=35" />
-  <link rel="stylesheet" href="css/header.css?v=35" />
+  <link rel="stylesheet" href="css/main.css?v=36" />
+  <link rel="stylesheet" href="css/header.css?v=36" />
   <style>
     .admin-wrap { max-width: 1280px; margin: 0 auto; padding: 24px clamp(14px, 4vw, 32px) 70px; }
     .grid-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin: 16px 0; }
@@ -20,6 +20,7 @@
     .stat .val { font-size: 24px; font-weight: 800; color: var(--accent2); }
     .toolbar { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; margin: 14px 0; }
     .toolbar input { min-width: 260px; }
+    .toolbar select { padding: 10px 12px; border-radius: 10px; background: #0d3247; color: #F9F9F9; border: 1px solid rgba(255,255,255,.14); font-size: 15px; min-width: 220px; }
     .profs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
     .prof { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); border-radius: 14px; padding: 16px; }
     .prof h3 { margin: 0 0 4px; font-size: 16px; }
@@ -81,6 +82,13 @@
     <p class="admin-note">Sessions grouped by the participant's profession, with their answers.</p>
     <div id="profs" class="profs"></div>
 
+    <h2 class="sec">Profession diagram</h2>
+    <p class="admin-note">Pick a profession to see the average comprehension per module (A vs B).</p>
+    <div class="toolbar">
+      <label class="field"><span>Profession</span><select id="profSelect"></select></label>
+    </div>
+    <div id="profChart" class="scatter"></div>
+
     <h2 class="sec">Map: tests done (X) vs comprehension (Y)</h2>
     <p class="admin-note">Each point is a profession. X = number of completed tests, Y = average comprehension (%).</p>
     <div id="scatter" class="scatter"></div>
@@ -113,7 +121,7 @@
   </div>
 
   <script src="vendor/heatmap.min.js"></script>
-  <script src="js/site.js?v=35"></script>
+  <script src="js/site.js?v=36"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
   <script type="module">
     import { CONFIG } from "./js/config.js";
@@ -121,6 +129,6 @@
     window.__cfg = { fields: CONFIG.fields, adminEmail: CONFIG.adminEmail, submission: CONFIG.storage.submission };
     window.__viz = { renderNodeMap, renderHashmap, renderScatter };
   </script>
-  <script src="js/admin.js?v=35"></script>
+  <script src="js/admin.js?v=36"></script>
 </body>
 </html>

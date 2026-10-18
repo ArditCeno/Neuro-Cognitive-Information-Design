@@ -76,6 +76,7 @@
     on("q", "input", renderRows);
     on("q", "keydown", function (e) { if (e.key === "Enter") find(); });
     on("btnCsv", "click", csv);
+    on("profSelect", "change", renderProfessionDiagram);
     on("btnCloseDetail", "click", function () { $("detail").classList.remove("open"); });
     on("detail", "click", function (e) { if (e.target.id === "detail") $("detail").classList.remove("open"); });
     on("password", "keydown", function (e) { if (e.key === "Enter") sendCode(); });
@@ -135,7 +136,7 @@
     if ($("panel")) $("panel").classList.remove("hidden");
     rows = (res.sessions || []).map(function (r) { return { id: r.id || r.id_anonim, id_anonim: r.id_anonim || r.id, name: r.name || "", created_at: r.created_at, payload: parse(r) }; });
     note(rows.length + " records" + (res.cached ? " (cached)" : ""));
-    renderStats(); renderProfs(); renderScatter(); renderRows();
+    renderStats(); renderProfs(); renderScatter(); renderRows(); renderProfessionDiagram();
   }
 
   function find() {
@@ -216,6 +217,74 @@
     }).filter(function (p) { return p.x > 0; });
     if (!points.length) { $("scatter").textContent = "No completed tests yet."; return; }
     if (window.__viz && window.__viz.renderScatter) window.__viz.renderScatter($("scatter"), points);
+  }
+
+  function pct(arr) { if (!arr.length) return 0; return Math.round(arr.reduce(function (a, b) { return a + b; }, 0) / arr.length); }
+
+  function renderProfessionDiagram() {
+    var sel = $("profSelect"), box = $("profChart");
+    if (!sel || !box) return;
+    var g = grouped();
+    var keys = Object.keys(g).sort(function (a, b) { return fieldName(a).localeCompare(fieldName(b)); });
+    var cur = sel.value;
+    sel.innerHTML = '<option value="">All professions</option>' +
+      keys.map(function (k) { return '<option value="' + h(k) + '">' + h(fieldName(k)) + '</option>'; }).join("");
+    if (cur && keys.indexOf(cur) >= 0) sel.value = cur; else if (cur === "" || cur == null) sel.value = keys.length ? keys[0] : "";
+
+    var fid = sel.value;
+    var list = rows.filter(function (r) {
+      var p = parse(r);
+      var f = (p.participant && p.participant.fusha) || (p.modules && p.modules[0] && p.modules[0].fusha) || "unknown";
+      return fid ? f === fid : true;
+    });
+    var sessions = list.filter(function (r) { var p = parse(r); return p.kind === "session" || (p.modules && p.modules.length); });
+
+    var byMod = {};
+    sessions.forEach(function (r) {
+      var p = parse(r);
+      (p.modules || []).forEach(function (m) {
+        (m.trials || []).forEach(function (t) {
+          var mid = String(m.module_id || "?").toUpperCase();
+          byMod[mid] = byMod[mid] || { A: [], B: [] };
+          if (t.accuracy_score_pct != null) byMod[mid][t.versioni === "B" ? "B" : "A"].push(t.accuracy_score_pct);
+        });
+      });
+    });
+    var mods = Object.keys(byMod).sort();
+    var accs = sessions.map(acc).filter(function (a) { return a != null; });
+    var avg = accs.length ? Math.round(accs.reduce(function (a, b) { return a + b; }, 0) / accs.length) : 0;
+    var head = '<div class="admin-note" style="margin-bottom:10px"><b>' + (fid ? h(fieldName(fid)) : "All professions") + '</b> · ' +
+      sessions.length + ' completed · avg comprehension <b style="color:#FF6E42">' + avg + '%</b> · target ' + TARGET + '</div>';
+
+    if (!mods.length) { box.innerHTML = head + '<p class="admin-note">No completed tests yet.</p>'; return; }
+    var data = mods.map(function (mid) { return { label: mid, a: pct(byMod[mid].A), b: pct(byMod[mid].B) }; });
+    box.innerHTML = head + barChart(data) +
+      '<div style="margin-top:8px;display:flex;gap:18px;font-size:12.5px">' +
+      '<span style="color:#0E7FB0">\u25a0 A structured</span><span style="color:#FF6E42">\u25a0 B compressed</span></div>';
+  }
+
+  function barChart(data) {
+    var W = 640, H = 260, padL = 40, padR = 20, top = 30, baseY = H - 40;
+    var n = Math.max(1, data.length), gw = (W - padL - padR) / n;
+    var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" width="100%" height="' + H + '" font-family="Arial,Helvetica,sans-serif" role="img" aria-label="comprehension by module">';
+    [0, 25, 50, 75, 100].forEach(function (v) {
+      var y = baseY - (v / 100) * (baseY - top);
+      s += '<line x1="' + padL + '" y1="' + y + '" x2="' + (W - padR) + '" y2="' + y + '" stroke="rgba(255,255,255,.10)"/>' +
+        '<text x="' + (padL - 6) + '" y="' + (y + 4) + '" fill="#9fb8c6" font-size="10" text-anchor="end">' + v + '%</text>';
+    });
+    s += '<line x1="' + padL + '" y1="' + baseY + '" x2="' + (W - padR) + '" y2="' + baseY + '" stroke="rgba(255,255,255,.3)"/>';
+    data.forEach(function (d, i) {
+      var x0 = padL + i * gw, bw = Math.min(46, gw * 0.30);
+      var ax = x0 + gw / 2 - bw - 3, bx = x0 + gw / 2 + 3;
+      var ah = (d.a / 100) * (baseY - top), bh = (d.b / 100) * (baseY - top);
+      s += '<rect x="' + ax + '" y="' + (baseY - ah) + '" width="' + bw + '" height="' + ah + '" rx="4" fill="#0E7FB0"/>';
+      s += '<rect x="' + bx + '" y="' + (baseY - bh) + '" width="' + bw + '" height="' + bh + '" rx="4" fill="#FF6E42"/>';
+      s += '<text x="' + (ax + bw / 2) + '" y="' + (baseY - ah - 5) + '" fill="#9fb8c6" font-size="10" text-anchor="middle">' + d.a + '</text>';
+      s += '<text x="' + (bx + bw / 2) + '" y="' + (baseY - bh - 5) + '" fill="#FF6E42" font-size="10" text-anchor="middle">' + d.b + '</text>';
+      s += '<text x="' + (x0 + gw / 2) + '" y="' + (baseY + 18) + '" fill="#F9F9F9" font-size="12" text-anchor="middle">' + h(d.label) + '</text>';
+    });
+    s += '</svg>';
+    return s;
   }
 
   function renderRows() {
