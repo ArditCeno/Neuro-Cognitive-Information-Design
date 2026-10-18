@@ -110,12 +110,21 @@ function setupAdminPassword() {
   Logger.log("Admin password set.");
 }
 
+/* Password check: uses a salted hash (ADMIN_PASSWORD_HASH) if set, otherwise a
+   plain ADMIN_PASSWORD script property. Both live only in Script properties. */
+function adminPasswordOk(password) {
+  var props = PropertiesService.getScriptProperties();
+  var hash = props.getProperty("ADMIN_PASSWORD_HASH");
+  if (hash) return hashPassword(password || "") === hash;
+  var plain = props.getProperty("ADMIN_PASSWORD");
+  if (plain) return String(password || "") === plain;
+  return false;
+}
+
 function adminLogin(email, password) {
   email = String(email || "").toLowerCase();
   if (email !== ADMIN_EMAIL) return { ok: false, error: "not_allowed" };
-  if (hashPassword(password || "") !== (PropertiesService.getScriptProperties().getProperty("ADMIN_PASSWORD_HASH") || "")) {
-    return { ok: false, error: "bad_password" };
-  }
+  if (!adminPasswordOk(password)) return { ok: false, error: "bad_password" };
   var cache = CacheService.getScriptCache();
   var rk = "rl_" + email;
   var n = Number(cache.get(rk) || 0);
