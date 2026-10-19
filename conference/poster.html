@@ -45,6 +45,11 @@
 
   .footer{ grid-row:8; background:var(--navy); border-radius:6mm; color:#fff; display:flex; align-items:center; justify-content:space-between; padding:0 9mm; font-size:3.6mm; }
   .ph{ color:#b03a1e; }
+  .print-btn{ position:fixed; right:18px; bottom:18px; z-index:99; border:0; cursor:pointer;
+    background:#FF6E42; color:#fff; font-weight:800; font-size:15px; padding:14px 20px; border-radius:999px;
+    box-shadow:0 10px 26px rgba(0,0,0,.28); font-family:"Segoe UI",Arial,sans-serif; }
+  .print-btn:hover{ filter:brightness(1.07) }
+  @media print{ .print-btn{ display:none !important } }
 </style>
 </head>
 <body>
@@ -191,5 +196,6 @@
     <span>Ardit Ceno · arditceno1@gmail.com</span>
   </footer>
 </div>
+<button class="print-btn" onclick="window.print()">⬇ Download PDF</button>
 </body>
 </html>
