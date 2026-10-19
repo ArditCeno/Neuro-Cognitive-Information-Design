@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>KShSN-UT 2026 — Presentation — Ardit Ceno</title>
+<style>
+  :root{ --navy:#092634; --blue:#0E7FB0; --blue2:#004E72; --orange:#FF6E42; --ink:#12202a; --muted:#5b6b76; --line:#d8e0e6; --wash:#E8F1F7; }
+  *{box-sizing:border-box}
+  @page{ size:13.333in 7.5in; margin:0; }
+  html,body{margin:0;padding:0;background:#dde3e8;font-family:"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);}
+  .slide{ position:relative; width:13.333in; height:7.5in; background:#fff; overflow:hidden; page-break-after:always; padding:0.62in 0.8in; }
+  .slide:last-child{ page-break-after:auto; }
+  .kicker{ font-size:11pt; letter-spacing:.14em; text-transform:uppercase; color:var(--blue); font-weight:800; }
+  h2{ font-size:30pt; line-height:1.12; margin:6px 0 16px; color:var(--navy); }
+  p,li{ font-size:15pt; line-height:1.45; color:var(--ink); }
+  ul{ margin:0; padding-left:22px; } li{ margin-bottom:8px; }
+  .muted{ color:var(--muted); }
+  .bar{ position:absolute; left:0; top:0; width:100%; height:10px; background:linear-gradient(90deg,var(--blue) 0 62%,var(--orange) 62% 100%); }
+  .foot{ position:absolute; left:0.8in; right:0.8in; bottom:0.34in; display:flex; justify-content:space-between; font-size:9pt; color:var(--muted); border-top:1px solid var(--line); padding-top:6px; }
+  .cols{ display:grid; grid-template-columns:1fr 1fr; gap:34px; align-items:start; }
+  .card{ background:#f7fafc; border:1px solid var(--line); border-radius:14px; padding:20px; }
+  .pill{ display:inline-block; background:var(--wash); border:1px solid #cfe0ea; color:var(--blue2); border-radius:999px; padding:4px 14px; font-size:12pt; font-weight:700; margin:4px 8px 4px 0; }
+  .ph{ color:#b03a1e; }
+
+  /* Title slide */
+  .title{ background:var(--navy); color:#fff; padding:0.9in 1in; }
+  .title .kicker{ color:#9fd7ef; }
+  .title h1{ font-size:40pt; line-height:1.12; margin:14px 0 20px; color:#fff; max-width:92%; }
+  .title .au{ font-size:18pt; font-weight:800; }
+  .title .af{ font-size:13pt; color:#cfe0ea; }
+  .title .logos{ position:absolute; right:0.9in; top:0.7in; display:flex; gap:14px; }
+  .title .slot{ height:56px; min-width:78px; border:1px dashed rgba(255,255,255,.5); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:9pt; color:#cfe0ea; padding:0 8px; }
+
+  .big{ font-size:46pt; font-weight:800; color:var(--orange); }
+</style>
+</head>
+<body>
+
+<!-- 1. TITLE -->
+<section class="slide title">
+  <div class="bar" style="background:linear-gradient(90deg,var(--orange),var(--blue))"></div>
+  <div class="logos">
+    <div class="slot"><img src="../assets/logo.png" alt="NCID" style="height:46px" /></div>
+    <div class="slot">Institution</div>
+    <div class="slot">Conference</div>
+  </div>
+  <div class="kicker">KShSN-UT 2026 · University of Tirana</div>
+  <h1>Neuro-Cognitive Information Design: Structured vs. Compressed Document Formats Across 12 Professions</h1>
+  <div class="au">Ardit Ceno</div>
+  <div class="af"><span class="ph">[Institution, Faculty, City]</span> · arditceno1@gmail.com</div>
+</section>
+
+<!-- 2. INTRODUCTION -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Introduction</div>
+  <h2>Why document format matters</h2>
+  <div class="cols">
+    <div>
+      <p>Professionals read dense documents every day, but their visual layout is rarely designed with evidence from reading research.</p>
+      <p>Two opposing strategies coexist:</p>
+      <ul>
+        <li><b>Structured (A):</b> generous spacing, clear visual hierarchy.</li>
+        <li><b>Compressed (B):</b> maximum content per page.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <p class="muted" style="margin-top:0">Formatting influences where readers look, how fast they find information, and how much mental effort they spend (Rayner, 1998; Sweller, 2011).</p>
+      <p class="muted" style="margin-bottom:0"><b>Gap:</b> existing guidance is mostly stylistic or based on non-professional texts.</p>
+    </div>
+  </div>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+<!-- 3. AIM & OBJECTIVES -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Aim &amp; Objectives</div>
+  <h2>What we measure and compare</h2>
+  <p style="font-size:17pt"><b>Aim:</b> quantify how format affects comprehension, reading effort and mental workload across professions and expertise.</p>
+  <div class="cols" style="margin-top:10px">
+    <ul>
+      <li>Comprehension accuracy (quiz per format)</li>
+      <li>Eye-movement effort (fixations, regressions)</li>
+    </ul>
+    <ul>
+      <li>Perceived workload (NASA-TLX)</li>
+      <li>Interaction with profession &amp; expertise</li>
+    </ul>
+  </div>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+<!-- 4. METHODOLOGY -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Methodology</div>
+  <h2>Counterbalanced A/B, in the browser</h2>
+  <div class="cols">
+    <div>
+      <p><b>Design.</b> Within-subjects, counterbalanced. 12 professions × 3 expertise × 3 modules × 2 formats.</p>
+      <p><b>Materials.</b> 108 documents (A + B versions of the same content).</p>
+      <p><b>Platform.</b> WebGazer + MediaPipe FaceMesh; calibration with bias correction.</p>
+    </div>
+    <svg viewBox="0 0 520 200" width="100%" role="img" aria-label="Session flow">
+      <g font-family="Segoe UI, Arial" font-size="15" fill="#12202a">
+        <rect x="6"   y="66" width="92" height="54" rx="10" fill="#E8F1F7" stroke="#0E7FB0"/><text x="52" y="98" text-anchor="middle">Consent</text>
+        <rect x="126" y="66" width="92" height="54" rx="10" fill="#E8F1F7" stroke="#0E7FB0"/><text x="172" y="92" text-anchor="middle">Camera +</text><text x="172" y="110" text-anchor="middle">calibration</text>
+        <rect x="246" y="66" width="100" height="54" rx="10" fill="#FFE3D9" stroke="#FF6E42"/><text x="296" y="92" text-anchor="middle">Read A / B</text><text x="296" y="110" text-anchor="middle">3 modules</text>
+        <rect x="374" y="66" width="100" height="54" rx="10" fill="#E8F1F7" stroke="#0E7FB0"/><text x="424" y="92" text-anchor="middle">Quiz +</text><text x="424" y="110" text-anchor="middle">NASA-TLX</text>
+        <path d="M98 93 h24" stroke="#092634" stroke-width="2" marker-end="url(#m)"/>
+        <path d="M218 93 h24" stroke="#092634" stroke-width="2" marker-end="url(#m)"/>
+        <path d="M346 93 h24" stroke="#092634" stroke-width="2" marker-end="url(#m)"/>
+      </g>
+      <defs><marker id="m" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="#092634"/></marker></defs>
+    </svg>
+  </div>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+<!-- 5. RESULTS (chart) -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Results</div>
+  <h2>Comprehension by module — A vs B</h2>
+  <div class="cols">
+    <svg viewBox="0 0 420 250" width="100%" role="img" aria-label="Comprehension A vs B">
+      <line x1="40" y1="210" x2="410" y2="210" stroke="#c9d4db"/>
+      <line x1="40" y1="210" x2="40" y2="20" stroke="#c9d4db"/>
+      <g font-family="Segoe UI, Arial" font-size="12" fill="#5b6b76"><text x="34" y="214" text-anchor="end">0</text><text x="34" y="119" text-anchor="end">50</text><text x="34" y="24" text-anchor="end">100</text></g>
+      <rect x="70"  y="76" width="36" height="134" rx="5" fill="#0E7FB0"/><rect x="110" y="54" width="36" height="156" rx="5" fill="#FF6E42"/>
+      <rect x="190" y="84" width="36" height="126" rx="5" fill="#0E7FB0"/><rect x="230" y="46" width="36" height="164" rx="5" fill="#FF6E42"/>
+      <rect x="310" y="94" width="36" height="116" rx="5" fill="#0E7FB0"/><rect x="350" y="40" width="36" height="170" rx="5" fill="#FF6E42"/>
+      <g font-family="Segoe UI, Arial" font-size="12" fill="#12202a" text-anchor="middle"><text x="88" y="230">M1</text><text x="208" y="230">M2</text><text x="328" y="230">M3</text></g>
+      <g font-family="Segoe UI, Arial" font-size="11" text-anchor="middle"><text x="88" y="70" fill="#0E7FB0">A</text><text x="128" y="48" fill="#FF6E42">B</text><text x="208" y="78" fill="#0E7FB0">A</text><text x="248" y="40" fill="#FF6E42">B</text><text x="328" y="88" fill="#0E7FB0">A</text><text x="368" y="34" fill="#FF6E42">B</text></g>
+    </svg>
+    <div>
+      <p class="muted">Illustrative values — replace with the study's results.</p>
+      <span class="pill"><span style="color:#0E7FB0">■</span> A structured</span>
+      <span class="pill"><span style="color:#FF6E42">■</span> B compressed</span>
+      <p class="ph" style="margin-top:16px">[ Insert measured outcomes and significance here. ]</p>
+    </div>
+  </div>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+<!-- 6. RESULTS (table) -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Results</div>
+  <h2>Measures and what they capture</h2>
+  <div class="cols">
+    <table style="width:100%;border-collapse:collapse;font-size:14pt">
+      <tr><th style="background:#E8F1F7;color:#004E72;border:1px solid #d8e0e6;padding:8px 12px;text-align:left">Measure</th><th style="background:#E8F1F7;color:#004E72;border:1px solid #d8e0e6;padding:8px 12px;text-align:left">Captures</th></tr>
+      <tr><td style="border:1px solid #d8e0e6;padding:8px 12px">Comprehension (%)</td><td style="border:1px solid #d8e0e6;padding:8px 12px">Quiz accuracy</td></tr>
+      <tr><td style="border:1px solid #d8e0e6;padding:8px 12px">Fixation duration</td><td style="border:1px solid #d8e0e6;padding:8px 12px">Processing effort</td></tr>
+      <tr><td style="border:1px solid #d8e0e6;padding:8px 12px">Saccadic regressions</td><td style="border:1px solid #d8e0e6;padding:8px 12px">Re-reading / difficulty</td></tr>
+      <tr><td style="border:1px solid #d8e0e6;padding:8px 12px">TTFF · reading time</td><td style="border:1px solid #d8e0e6;padding:8px 12px">Search · speed</td></tr>
+      <tr><td style="border:1px solid #d8e0e6;padding:8px 12px">NASA-TLX</td><td style="border:1px solid #d8e0e6;padding:8px 12px">Perceived workload</td></tr>
+    </table>
+    <div class="card">
+      <p class="muted" style="margin-top:0">Blink rate and head pose are recorded as exploratory biometrics.</p>
+      <p class="ph" style="margin-bottom:0">[ Add a figure, heatmap, or platform screenshot here. ]</p>
+    </div>
+  </div>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+<!-- 7. RESULTS (expected) -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Results · direction</div>
+  <h2>What we expect to find</h2>
+  <ul>
+    <li>Format <b>A</b> (structured) supports <b>comprehension</b> and reduces re-reading, especially for <b>lower-expertise</b> readers.</li>
+    <li>Experts show <b>smaller format effects</b> (domain schemas compensate for density).</li>
+    <li>Compressed format (B) increases <b>scanning effort</b> (regressions, fixation duration).</li>
+    <li>Workload (NASA-TLX) is higher for <b>B</b> in information-heavy modules.</li>
+  </ul>
+  <p class="ph">[ These are hypotheses to be tested, not results. Replace with the study's findings. ]</p>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+<!-- 8. DISCUSSION -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Discussion</div>
+  <h2>Format is a cognitive design decision</h2>
+  <div class="cols">
+    <div>
+      <p>If A improves accuracy and reduces re-reading for non-experts, professional and educational documents should prioritise <b>hierarchy and spacing</b> over density.</p>
+      <p>Format effects that differ by <b>profession</b> show that no single universal rule suffices.</p>
+    </div>
+    <div class="card">
+      <p class="muted" style="margin-top:0"><b>Practical implication:</b> a checklist for professional documents — clear headings, lists, whitespace, controlled line length.</p>
+      <p class="ph" style="margin-bottom:0">[ Link findings to concrete design guidance. ]</p>
+    </div>
+  </div>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+<!-- 9. CONCLUSION -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Conclusion</div>
+  <h2>Evidence-based document design</h2>
+  <p style="font-size:18pt">This work provides <b>cross-domain, evidence-based guidance</b> for how information should be organised visually, and a <b>reproducible web-based eye-tracking instrument</b> that runs in the browser.</p>
+  <p class="ph">[ Final conclusion to be added after data collection. ]</p>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+<!-- 10. FUTURE + ACK -->
+<section class="slide">
+  <div class="bar"></div>
+  <div class="kicker">Future Research &amp; Acknowledgements</div>
+  <h2>Next steps</h2>
+  <div class="cols">
+    <ul>
+      <li><b>Adaptive formats</b> personalised to expertise and gaze.</li>
+      <li><b>Predictive models</b>: can gaze predict comprehension?</li>
+      <li>Longer, multi-page and cross-language documents.</li>
+      <li><b>Validation</b> against a dedicated eye-tracker.</li>
+    </ul>
+    <div class="card">
+      <p class="muted" style="margin-top:0"><b>Acknowledgements.</b> Thanks to the participants and the organisers of KShSN-UT 2026.</p>
+      <p class="muted" style="margin-bottom:0"><span class="ph">[Add supervisor / institutional acknowledgment.]</span></p>
+      <p style="margin-top:16px"><b>Contact:</b> arditceno1@gmail.com</p>
+    </div>
+  </div>
+  <div class="foot"><span>KShSN-UT 2026</span><span>Ardit Ceno</span></div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>KShSN-UT 2026 — Extended Abstract — Ardit Ceno</title>
+<style>
+  :root{
+    --navy:#092634; --blue:#0E7FB0; --blue2:#004E72; --orange:#FF6E42;
+    --ink:#12202a; --muted:#5b6b76; --line:#d8e0e6; --wash:#E8F1F7;
+  }
+  *{box-sizing:border-box}
+  @page{ size:A4; margin:16mm 15mm 14mm; }
+  html,body{margin:0;padding:0;background:#f4f6f8;color:var(--ink);
+    font:10.5pt/1.45 "Segoe UI",Roboto,Arial,sans-serif;}
+  .sheet{ background:#fff; width:210mm; min-height:297mm; margin:0 auto; padding:0; }
+
+  /* Header */
+  .head{ background:var(--navy); color:#fff; padding:14mm 15mm 9mm; }
+  .brand{ display:flex; align-items:center; gap:12px; margin-bottom:10px; }
+  .brand img{ height:40px; }
+  .brand .conf{ font-weight:800; letter-spacing:.4px; font-size:10.5pt; color:#fff; opacity:.95 }
+  .brand .conf span{ color:var(--orange) }
+  h1.title{ font-size:19pt; line-height:1.2; margin:6px 0 10px; color:#fff; font-weight:800; }
+  .authors{ font-size:11pt; font-weight:700; color:#fff; }
+  .affil{ font-size:9.5pt; color:#cfe0ea; margin-top:3px; }
+  .affil a{ color:#9fd7ef }
+
+  .body{ padding:10mm 15mm 14mm; }
+  h2{ font-size:10.5pt; text-transform:uppercase; letter-spacing:.10em; color:var(--blue2);
+      margin:12px 0 4px; padding-bottom:3px; border-bottom:2px solid var(--wash); }
+  h2:first-of-type{ margin-top:0 }
+  .abstract{ background:var(--wash); border-left:4px solid var(--blue); border-radius:6px; padding:10px 12px; }
+  .abstract p{ margin:0 0 8px }
+  .kw{ font-size:9.5pt; color:var(--muted) }
+  .kw b{ color:var(--blue2) }
+  p{ margin:0 0 7px; text-align:justify; }
+  .lead-note{ font-size:8.6pt; color:var(--muted); font-style:italic; }
+  .refs p{ text-indent:-14px; padding-left:14px; margin:0 0 5px; font-size:9.3pt; }
+  .ack{ font-size:9.3pt; color:var(--muted) }
+  .foot{ margin-top:10px; border-top:1px solid var(--line); padding-top:6px; font-size:8.4pt; color:var(--muted); display:flex; justify-content:space-between; }
+  .ph{ color:#b03a1e; } /* placeholder highlight */
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="head">
+    <div class="brand">
+      <img src="../assets/logo.png" alt="NCID" />
+      <div class="conf">KShSN-UT 2026 · <span>4th International Student Scientific Conference</span> · University of Tirana</div>
+    </div>
+    <h1 class="title">Neuro-Cognitive Information Design: The Effect of Structured vs. Compressed Document Formats on Reading and Comprehension Across 12 Professions</h1>
+    <div class="authors">Ardit Ceno</div>
+    <div class="affil"><span class="ph">[Institution, Faculty, City]</span> · arditceno1@gmail.com</div>
+  </header>
+
+  <main class="body">
+
+    <div class="abstract">
+      <h2 style="margin-top:0">Abstract</h2>
+      <p>This study investigates how the visual format of a document affects reading and comprehension. We compare a structured, well-spaced format (A) with a compressed, high-density format (B) containing the same information, across twelve professional domains and three levels of expertise. Using a browser-based eye-tracking system (WebGazer with MediaPipe FaceMesh), we record gaze coordinates, fixation duration, saccadic regressions and time to first fixation while participants read each document, and we measure comprehension with a separate quiz for each format. Perceived mental workload is captured with the NASA-TLX after every module, while blink rate and head orientation are recorded as exploratory biometrics. A counterbalanced A/B design controls for order and fatigue effects. The objective is to identify which format best supports comprehension, for which professions and expertise levels, and to translate the results into evidence-based guidance for the design of professional and educational documents.</p>
+      <p class="kw"><b>Keywords:</b> eye-tracking, document design, readability, cognitive load, NASA-TLX, comprehension.</p>
+    </div>
+
+    <h2>Introduction</h2>
+    <p>Professionals in law, medicine, engineering, finance and many other fields read dense documents every day, yet the visual organisation of these documents is rarely designed with evidence from reading research. Formatting choices — line length, spacing, headings, lists, emphasis and information density — influence how easily a reader finds, processes and remembers information (Rayner, 1998; Sweller, 2011). Two common, opposing strategies coexist: a structured format that uses generous spacing and explicit visual hierarchy, and a compressed format that maximises the amount of content per page. The first may reduce search and scanning cost, while the second may reduce scrolling and paper use but increase cognitive load. Because professional reading is embedded in specific domains with their own vocabulary and conventions, the effect of format is likely to differ by profession and by expertise. Most existing guidance is either purely stylistic or based on non-professional texts. This study addresses that gap by measuring the effect of format on comprehension and on eye-movement behaviour across twelve professional domains, using a single, reproducible web-based platform.</p>
+
+    <h2>Objective</h2>
+    <p>The objective is to quantify and compare the effect of a structured format (A) and a compressed format (B) of the same content on (i) reading comprehension, (ii) eye-movement indicators of reading effort, and (iii) perceived mental workload, across twelve professions and three expertise levels. A secondary objective is to determine whether a consistent format advantage exists or whether the optimal format depends on the domain and the reader's experience.</p>
+
+    <h2>Data / Methodology</h2>
+    <p>The study uses a within-subjects, counterbalanced A/B design delivered entirely in the browser. Participants select one of twelve professions (e.g., law, medicine, nursing, engineering, software, biology, chemistry, pedagogy, finance, business, culinary, biotechnology) and one of three expertise levels (beginner, intermediate, advanced). Each participant reads three domain-specific modules in both formats; the order of formats is balanced across participants. Comprehension is measured with a three-item quiz administered separately for each format, so each format is evaluated on its own. Eye movements are recorded with WebGazer combined with MediaPipe FaceMesh, from which we derive fixation duration, saccadic regressions, time to first fixation and reading time. After each module, participants complete the NASA-TLX workload questionnaire (Hart &amp; Staveland, 1988). Blink rate and head orientation (yaw, pitch, roll) are logged as exploratory biometric indicators. A calibration step per participant and a bias-correction offset are applied to improve gaze accuracy. The study materials comprise 108 documents (12 professions × 3 levels × 3 modules) in structured and compressed versions.</p>
+
+    <h2>Results / Findings</h2>
+    <p class="lead-note">Work in progress — the analysis will be completed before the conference; the platform, materials and pipeline are finished and verified. </p>
+    <p>We will report (i) comprehension accuracy by format, by profession and by expertise; (ii) differences in fixation duration, saccadic regressions and time to first fixation between formats; (iii) NASA-TLX differences per module; and (iv) exploratory patterns in blink rate and head orientation. <span class="ph">[Insert the key result numbers and the figure/table once the data are collected.]</span> Preliminary expectations, based on the design and reading literature, are that the structured format will reduce scanning effort and improve accuracy for lower-expertise readers, while expert readers may be less sensitive to format. These expectations will be tested rather than assumed.</p>
+
+    <h2>Future Research</h2>
+    <p>Future work will extend the platform in three directions. First, we will add adaptive formats that personalise spacing and density to the reader's measured expertise and eye-movement behaviour. Second, we will model the relationship between gaze features and comprehension using predictive models, to explore whether gaze can serve as an early indicator of reading difficulty. Third, we will test longer, multi-page documents and cross-language conditions, and validate the browser-based measurements against a dedicated eye-tracker to quantify the limits of webcam eye-tracking. The long-term aim is a reusable, open instrument for evidence-based document design across professional and educational contexts.</p>
+
+    <h2>Acknowledgment</h2>
+    <p class="ack">The author thanks the participants and the organisers of KShSN-UT 2026. <span class="ph">[Add any supervisor or institutional acknowledgment here.]</span></p>
+
+    <h2>References</h2>
+    <div class="refs">
+      <p>Hart, S. G., &amp; Staveland, L. E. (1988). Development of NASA-TLX (Task Load Index): Results of empirical and theoretical research. In P. A. Hancock &amp; N. Meshkati (Eds.), <i>Human mental workload</i> (pp. 139–183). North-Holland.</p>
+      <p>Papoutsaki, A., Sangkloy, P., Laskey, J., Bakker, C., Huang, J., &amp; Hays, J. (2016). WebGazer: Scalable webcam eye tracking using user interactions. In <i>Proceedings of the 25th International Joint Conference on Artificial Intelligence</i> (pp. 3839–3845). IJCAI.</p>
+      <p>Rayner, K. (1998). Eye movements in reading and information processing: 20 years of research. <i>Psychological Bulletin, 124</i>(3), 372–422.</p>
+      <p>Sweller, J. (2011). Cognitive load theory. In J. P. Mestre &amp; B. H. Ross (Eds.), <i>The psychology of learning and motivation</i> (Vol. 55, pp. 37–76). Academic Press.</p>
+      <p>Lugtig, P., &amp; Toepoel, V. (2016). The use of eye-tracking in survey methodology. <i>Social Science Computer Review, 34</i>(6), 739–750.</p>
+    </div>
+
+    <div class="foot">
+      <span>KShSN-UT 2026 · University of Tirana · Extended Abstract</span>
+      <span>Ardit Ceno · arditceno1@gmail.com</span>
+    </div>
+  </main>
+</div>
+</body>
+</html>
