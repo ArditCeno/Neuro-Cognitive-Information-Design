@@ -39,8 +39,8 @@ for (const f of FIELDS) {
           const p = mod.materials[v][lang];
           if (!p || !existsSync(p)) { missingFiles.push(p || "null"); continue; }
           const html = readFileSync(p, "utf8");
-          ok((html.match(/class="diagram"/g) || []).length === 1, "exactly one diagram " + p);
-          ok(!/assets\/(photos|figures)\//.test(html), "no legacy image refs " + p);
+          ok((html.match(/class="(?:diagram|photo)"/g) || []).length === 1, "exactly one figure " + p);
+          ok(!/assets\/figures\//.test(html), "no legacy figure refs " + p);
           const re = /src="([^"]+)"/g;
           let m;
           while ((m = re.exec(html))) {
@@ -65,8 +65,10 @@ ok(enQuestions > 600, "EN questions translated (" + enQuestions + ")");
 // diagrams
 const diagramFiles = existsSync("assets/diagrams") ? readdirSync("assets/diagrams").filter((x) => /\.svg$/i.test(x)) : [];
 ok(diagramFiles.length === 108, "108 diagrams (got " + diagramFiles.length + ")");
-ok(diagramRefs.size === 108, "108 diagrams referenced in materials (" + diagramRefs.size + " unique)");
-ok(!existsSync("assets/photos"), "legacy assets/photos removed");
+const photoFiles = existsSync("assets/photos") ? readdirSync("assets/photos").filter((x) => /\.(jpg|jpeg|png|webp|svg)$/i.test(x)) : [];
+ok(photoFiles.length === 5, "5 approved photos (got " + photoFiles.length + ")");
+ok(diagramRefs.size === 108, "image refs in materials (" + diagramRefs.size + " unique: 103 diagrams + 5 photos)");
+ok(existsSync("assets/photos/CREDITS.md"), "photo credits present");
 ok(!existsSync("assets/figures"), "legacy assets/figures removed");
 
 // config

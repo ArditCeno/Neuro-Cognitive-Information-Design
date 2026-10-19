@@ -4,8 +4,8 @@
  * QuizItem / GazeSample) plus readability metadata (Diagram 5, Diagram 6).
  */
 
-import { round } from "./utils.js?v=44";
-import { tr } from "./i18n.js?v=44";
+import { round } from "./utils.js?v=45";
+import { tr } from "./i18n.js?v=45";
 
 const VOWELS = /[aeiouyëáéíóúàèìòù]/;
 
