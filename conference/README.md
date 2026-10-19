@@ -9,7 +9,11 @@ in a browser and **Print → Save as PDF**.
 | `poster.html` | Conference poster | **A1 portrait** |
 | `slides.html` | 10-slide presentation | **16:9** |
 
-Open live (or locally by double-clicking the file):
+Open the single hub link (everything in one place):
+
+- **https://arditceno.github.io/Neuro-Cognitive-Information-Design/conference/**
+
+Direct files:
 
 - https://arditceno.github.io/Neuro-Cognitive-Information-Design/conference/abstract.html
 - https://arditceno.github.io/Neuro-Cognitive-Information-Design/conference/poster.html
@@ -38,6 +42,7 @@ Word keeps the headings and text; adjust fonts if you wish.
 ## Files
 ```
 conference/
+  index.html      hub: all materials in one link
   abstract.html   A4 extended abstract
   poster.html     A1 poster
   slides.html     16:9 presentation

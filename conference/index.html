@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KShSN-UT 2026 — Conference materials — Ardit Ceno</title>
+<style>
+  :root{ --navy:#092634; --blue:#0E7FB0; --blue2:#004E72; --orange:#FF6E42;
+    --ink:#12202a; --muted:#9fb8c6; --line:rgba(255,255,255,.14); --wash:#E8F1F7; }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--navy);color:#F9F9F9;font-family:"Segoe UI",Roboto,Arial,sans-serif;}
+  .wrap{max-width:1080px;margin:0 auto;padding:48px clamp(16px,4vw,40px) 72px;}
+  header{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  header img{height:52px}
+  .conf{font-weight:800;letter-spacing:.4px;color:#9fd7ef;font-size:14px}
+  .conf span{color:var(--orange)}
+  h1{font-size:clamp(24px,3.4vw,36px);line-height:1.15;margin:18px 0 8px}
+  .au{color:var(--muted);font-size:15px}
+  .au a{color:#9fd7ef;text-decoration:none}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:34px}
+  .card{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column}
+  .card h2{margin:0 0 6px;font-size:20px}
+  .card p{color:var(--muted);font-size:14px;line-height:1.5;flex:1;margin:0 0 18px}
+  .tag{display:inline-block;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--orange);margin-bottom:12px}
+  .btn{display:inline-block;text-align:center;text-decoration:none;font-weight:800;font-size:15px;
+    padding:13px 18px;border-radius:12px;background:var(--blue);color:#fff;border:1px solid transparent}
+  .btn.primary{background:var(--orange)}
+  .btn:hover{filter:brightness(1.08)}
+  .row2{display:flex;gap:10px;flex-wrap:wrap}
+  .row2 .btn{flex:1 1 auto}
+  .hint{margin-top:30px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:18px 20px;color:var(--muted);font-size:13.5px;line-height:1.6}
+  .hint b{color:#F9F9F9}
+  footer{margin-top:34px;color:var(--muted);font-size:12.5px;border-top:1px solid var(--line);padding-top:16px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="../assets/logo.png" alt="NCID" />
+    <div class="conf">KShSN-UT 2026 · <span>4th International Student Scientific Conference</span> · University of Tirana</div>
+  </header>
+
+  <h1>Neuro-Cognitive Information Design: Structured vs. Compressed Document Formats Across 12 Professions</h1>
+  <div class="au">Ardit Ceno · <a href="mailto:arditceno1@gmail.com">arditceno1@gmail.com</a></div>
+
+  <div class="grid">
+    <div class="card">
+      <span class="tag">Extended Abstract · A4</span>
+      <h2>Extended abstract</h2>
+      <p>Two pages: abstract, keywords, Introduction, Objective, Data/Methodology, Results, Future Research, References (APA).</p>
+      <div class="row2">
+        <a class="btn primary" href="abstract.html" target="_blank" rel="noopener">Open</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Poster · A1 portrait</span>
+      <h2>Conference poster</h2>
+      <p>Official layout (Header 15% · Results 35% …), one chart + table, ~40% text / 60% visual. Logos and photos to be added.</p>
+      <div class="row2">
+        <a class="btn primary" href="poster.html" target="_blank" rel="noopener">Open</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag">Presentation · 16:9</span>
+      <h2>10 slides</h2>
+      <p>Title → Introduction → Aim &amp; Objectives → Methodology → Results → Discussion → Conclusion → Future &amp; Acknowledgements.</p>
+      <div class="row2">
+        <a class="btn primary" href="slides.html" target="_blank" rel="noopener">Open</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint">
+    <b>Export to PDF (no software to install):</b> open a file above, press <b>Ctrl/Cmd + P</b>,
+    choose <b>Save as PDF</b>, set Margins to <b>None</b> and enable <b>Background graphics</b>.
+    Use paper <b>A4</b> for the abstract, <b>A1</b> for the poster, <b>16:9</b> for the slides.
+    <br><br>
+    <b>Word:</b> open <code>abstract.html</code> in Microsoft Word and save as <b>.docx</b>.
+  </div>
+
+  <footer>
+    All materials: English · single author Ardit Ceno · KShSN-UT 2026, University of Tirana.
+  </footer>
+</div>
+</body>
+</html>
