@@ -9,9 +9,9 @@
  *    points keep tracking even when the setup stage is hidden.
  */
 
-import { CONFIG } from "./config.js?v=45";
-import { loadScript } from "./utils.js?v=45";
-import { MouseView } from "./mouseview.js?v=45";
+import { CONFIG } from "./config.js?v=46";
+import { loadScript } from "./utils.js?v=46";
+import { MouseView } from "./mouseview.js?v=46";
 
 export const EyeTracking = {
   mock: false,
