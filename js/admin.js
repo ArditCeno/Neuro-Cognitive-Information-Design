@@ -113,6 +113,18 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDetail(); });
 
     var saved = sessionStorage.getItem(TOKEN_KEY);
+
+    // Demo preview for screenshots/preview only (no login, no real data).
+    if (new URLSearchParams(location.search).get("demo") === "1") {
+      if ($("loginCard")) $("loginCard").classList.add("hidden");
+      if ($("panel")) $("panel").classList.remove("hidden");
+      rows = demoRows();
+      demoOn = true;
+      note("Demo preview — sample data only, not real participants.");
+      renderDash();
+      return;
+    }
+
     if (saved) load();
     else loginMsg("Enter email and password, then a code is emailed to you.");
   }

@@ -4,8 +4,8 @@
  * MouseView.js from CDN, and always provides a native dwell sampler.
  */
 
-import { CONFIG } from "./config.js?v=46";
-import { loadScript } from "./utils.js?v=46";
+import { CONFIG } from "./config.js?v=47";
+import { loadScript } from "./utils.js?v=47";
 
 export const MouseView = {
   active: false,
