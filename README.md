@@ -163,6 +163,7 @@ scripts/      generators, screenshot capture and tests
 - [`assets/photos/CREDITS.md`](assets/photos/CREDITS.md) — photo licences and authors
 
 ```bash
+npm test                         # all local checks below (no install needed)
 node scripts/test-all.mjs        # structure, materials, config, one-email guards
 node scripts/test-links.mjs      # local links, ids, alt text, EN/AL pairing
 node scripts/test-seo.mjs        # canonical, OG, manifest, sitemap, security.txt
@@ -174,7 +175,7 @@ node scripts/capture-screenshots.mjs # regenerate the README gallery
 python -m unittest discover -s analysis -p "test_*.py"  # analysis unit tests
 ```
 
-**Current status:** 2 617 + 379 + 109 + 6 + 88 checks passing, including
+**Current status:** 2 617 + 379 + 111 + 6 + 88 checks passing, including
 one-email idempotency, calibration (1/1), link/HTML, SEO/PWA and AOI checks;
 CI and Pages deploy green.
 

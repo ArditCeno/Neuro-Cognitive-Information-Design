@@ -1,9 +1,9 @@
 # Security
 
 Neuro-Cognitive Information Design (NCID) is a static, client-side research
-study published on GitHub Pages with a Supabase backend. This document lists the
-20-point hardening checklist, the status of each item, and how to keep it that
-way.
+study published on GitHub Pages with an optional Supabase backend. This document
+lists the 20-point hardening checklist, the status of each item, and how to keep
+it that way.
 
 Contact for security issues: **arditceno82@gmail.com**
 
@@ -112,3 +112,7 @@ panel (logged in) and arrives by email. Then re-run `node scripts/test-all.mjs`.
 
 Email **arditceno82@gmail.com**. Please do not open a public issue for
 security-sensitive reports.
+
+A machine-readable contact is published at
+`/.well-known/security.txt` (with a root fallback at `/security.txt`, because the
+GitHub Pages artifact uploader skips dot-folders). Expiry: 2027-10-30.
