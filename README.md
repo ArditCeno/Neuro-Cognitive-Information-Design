@@ -57,7 +57,7 @@ Each participant picks a profession and an expertise level, then reads the **sam
 
 **Measured:** fixation duration (ms), saccadic regressions, time to first fixation (ms), comprehension accuracy (%), reading and task time (s), NASA-TLX workload, plus blink rate and head orientation (exploratory).
 
-**Design:** within-subjects, **counterbalanced A/B** (four sequences), a **separate quiz for each format**, and **NASA-TLX after every module**.
+**Design:** within-subjects, **counterbalanced A/B** (session-parity rotation), a **separate quiz for each format**, and **NASA-TLX after every module**.
 
 ## The 12 professions
 
@@ -72,7 +72,7 @@ Consent → Participant details → Camera + calibration → Read three modules 
         → Quiz per format → NASA-TLX → one report emailed to the researcher
 ```
 
-The camera is **required** for eye tracking. The study runs in the browser, on desktop or phone (Chrome, Edge or Safari), and needs about **10–15 minutes**.
+The camera is **required** for eye tracking. The study runs in the browser, on desktop or phone (Chrome, Edge or Safari), and needs about **30 minutes**.
 
 ---
 
@@ -101,6 +101,8 @@ Open `/admin.html` and sign in with the owner email, a password, and a **6-digit
 
 Every finished session is emailed to `arditceno82@gmail.com` as an HTML table — **one email per participant, at the end** — using a free **Google Apps Script**. No server is required.
 
+Retries and resends reuse the same `submission_id`; the script stores a durable `sent_<submission_id>` marker (and a `sent_id_<id_anonim>` marker) under `LockService`, so a timeout or a second click can never produce a second email.
+
 The email includes **name and surname, ID, profession, expertise, age**, session data, results per level and version, NASA-TLX, biometrics, and every answer.
 
 Setup: paste [`email-setup/Code.gs`](email-setup/Code.gs) into a new Apps Script project, set `ADMIN_PASSWORD` (and optionally a `TOKEN` script property), then **Deploy → Web app → Execute as Me → Anyone**. Copy the `/exec` URL into `js/config.js` (`storage.submission.fallbackUrl`). Full steps: [`DEPLOY.md`](DEPLOY.md).
@@ -116,7 +118,7 @@ For **KShSN-UT 2026** (University of Tirana):
 
 ## Data and privacy
 
-The study runs in **email mode**: each finished session is emailed to the researcher; nothing is stored in a database by default. No video is stored, only gaze coordinates and timings linked to an anonymous ID. An optional name travels separately from the research payload. See [privacy.html](privacy.html) and [terms.html](terms.html).
+The study runs in **email mode**: each finished session is emailed to the researcher; nothing is stored in a database by default. No video is stored, only gaze coordinates and timings linked to an anonymous ID. The optional name appears in that email report only; the anonymous analysis payload itself never contains it. See [privacy.html](privacy.html) and [terms.html](terms.html).
 
 An optional server path (Supabase + Edge Function with owner-only reads) is included for later use: apply [`supabase/security.sql`](supabase/security.sql) and deploy `supabase/functions/submit` (see [`DEPLOY.md`](DEPLOY.md)).
 
@@ -130,7 +132,7 @@ admin.html                researcher dashboard (email + password + code)
 privacy.html terms.html   legal pages
 about.html methodology.html fields.html contact.html   public pages
 
-materials/    216 documents (108 modules × A/B × EN/AL)
+materials/    432 documents (108 modules × A/B × EN/AL)
 assets/
   diagrams/   108 on-topic SVG diagrams (one per module)
   photos/     5 approved real photos + CREDITS.md
@@ -160,7 +162,7 @@ node scripts/test-send.mjs desktop   # send a real test submission (or: phone)
 node scripts/capture-screenshots.mjs # regenerate the README gallery
 ```
 
-**Current status:** 2 595 + 88 assertions passing, CI and Pages deploy green.
+**Current status:** 2 610 + 88 assertions passing, including one-email idempotency checks; CI and Pages deploy green.
 
 ## Deployment
 
@@ -172,7 +174,7 @@ node scripts/capture-screenshots.mjs # regenerate the README gallery
 
 1. The Apps Script project holds the admin password and sends the code; the email token lives there too.
 2. The dashboard requires the owner email, the password, and a **6-digit code**; codes expire and are rate limited.
-3. The browser bundle contains only the publishable Apps Script endpoint — no service keys.
+3. The browser bundle contains no database service keys. The Apps Script URL/token are public by design; the endpoint rejects duplicate reports (one email per participant) and the admin API is code-protected and rate limited.
 4. Optional server path: run [`supabase/security.sql`](supabase/security.sql) and deploy `supabase/functions/submit` (owner-only reads, per-IP rate limit).
 
 See [`SECURITY.md`](SECURITY.md) for the full checklist and known limits of GitHub Pages.

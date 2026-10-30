@@ -1,26 +1,26 @@
 /*
  * App controller: drives the full session flow.
  *   welcome/consent -> registration -> setup -> calibration -> task -> done
- * Design: within-subjects (each participant reads both A and B), 3 of 5
- * modules, NASA-TLX after each module, MouseView.js plan B on calibration fail.
+ * Design: within-subjects (each participant reads both A and B), 3 modules
+ * (basic/intermediate/advanced), NASA-TLX after each module.
  */
 
-import { CONFIG } from "./config.js?v=47";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=47";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=47";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=47";
-import { EyeTracking } from "./eyetracking.js?v=47";
-import { Calibration } from "./calibration.js?v=47";
-import { Stimuli } from "./stimuli.js?v=47";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=47";
-import { Runner } from "./runner.js?v=47";
-import { Heatmap } from "./heatmap.js?v=47";
-import { Biometrics } from "./biometrics.js?v=47";
-import { Research } from "./research.js?v=47";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=47";
-import { EXPERTISE } from "./fields.js?v=47";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=47";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=47";
+import { CONFIG } from "./config.js?v=48";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=48";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=48";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=48";
+import { EyeTracking } from "./eyetracking.js?v=48";
+import { Calibration } from "./calibration.js?v=48";
+import { Stimuli } from "./stimuli.js?v=48";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=48";
+import { Runner } from "./runner.js?v=48";
+import { Heatmap } from "./heatmap.js?v=48";
+import { Biometrics } from "./biometrics.js?v=48";
+import { Research } from "./research.js?v=48";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=48";
+import { EXPERTISE } from "./fields.js?v=48";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=48";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=48";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -607,7 +607,8 @@ function buildExport() {
       correct_answers: totalC,
       accuracy_score_pct: totalQ ? round((totalC / totalQ) * 100, 1) : 0
     },
-    gaze: alignGazeSamples(state.gazeSamples, Biometrics.samples)
+    gaze: alignGazeSamples(state.gazeSamples, Biometrics.samples),
+    submissionId: Storage.ensureSubmissionId()
   });
 }
 
@@ -617,20 +618,33 @@ function setSendStatus(delivered) {
   const btn = $("btnResend");
   const ep = (delivered && delivered.endpoint) || {};
   const ok = !!ep.ok;
+  const uncertain = !!(delivered && delivered.uncertain);
   el.classList.remove("hidden");
-  el.textContent = ok ? t("send_ok") : t("send_fail");
-  if (btn) btn.classList.toggle("hidden", ok);
+  el.textContent = ok ? t("send_ok") : (uncertain ? t("send_uncertain") : t("send_fail"));
+  if (btn) {
+    btn.classList.toggle("hidden", ok);
+    btn.disabled = false;
+  }
 }
 
-/** Retry sending the finished session (also flushes anything still queued). */
+/** Retry sending the finished session with the same id (server dedupes it). */
 async function resendReport() {
   const el = $("sendStatus");
+  const btn = $("btnResend");
+  if (state.sending) return;               // never send two copies at once
+  state.sending = true;
+  if (btn) btn.disabled = true;
   if (el) { el.textContent = t("sending"); el.classList.remove("hidden"); }
-  try { await flushPending(); } catch (e) { /* ignore */ }
-  const summary = buildExport();
-  const split = splitIdentity(summary);
-  const delivered = await submitAndQueue(split.clean, split.identity);
-  setSendStatus(delivered);
+  try {
+    // Reuses the same submission_id, so the server ignores a duplicate.
+    const summary = buildExport();
+    const split = splitIdentity(summary);
+    const delivered = await submitAndQueue(split.clean, split.identity);
+    setSendStatus(delivered);
+  } finally {
+    state.sending = false;
+    if (btn) btn.disabled = false;
+  }
 }
 
 async function finishSession() {
@@ -644,6 +658,8 @@ async function finishSession() {
   // flush to buffer for crash recovery
   Storage.patch((s) => {
     s.gaze = state.gazeSamples.map((p) => ({ t: round(p.t, 1), x: round(p.x, 1), y: round(p.y, 1) }));
+    s.modules = state.moduleResults;
+    s.submission_id = s.submission_id || Storage.ensureSubmissionId();
   });
 
   const summary = buildExport();
@@ -700,7 +716,9 @@ async function renderReportExtras(summary) {
   box.querySelector("#btnPdf").addEventListener("click", () => {
     downloadReport(summary).catch((e) => alert("PDF error: " + e.message));
   });
-  if (emailConfigured()) {
+  // Only use EmailJS when no primary submission target exists, otherwise the
+  // same report would be emailed twice (Apps Script + EmailJS).
+  if (emailConfigured() && !hasTarget()) {
     const msg = box.querySelector("#emailMsg");
     msg.textContent = t("email_sending");
     const r = await emailReport(summary);

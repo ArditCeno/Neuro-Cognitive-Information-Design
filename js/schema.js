@@ -4,8 +4,8 @@
  * QuizItem / GazeSample) plus readability metadata (Diagram 5, Diagram 6).
  */
 
-import { round } from "./utils.js?v=47";
-import { tr } from "./i18n.js?v=47";
+import { round } from "./utils.js?v=48";
+import { tr } from "./i18n.js?v=48";
 
 const VOWELS = /[aeiouyëáéíóúàèìòù]/;
 
@@ -122,8 +122,8 @@ export function buildModule({ field, expertise, moduleId, complexity, preference
   };
 }
 
-export function assembleSession({ participant, session, modules, biometricMetrics, quizResults, gaze }) {
-  return {
+export function assembleSession({ participant, session, modules, biometricMetrics, quizResults, gaze, submissionId }) {
+  const out = {
     kind: "session",
     participant,
     session,
@@ -133,4 +133,6 @@ export function assembleSession({ participant, session, modules, biometricMetric
     gaze: gaze || [],
     exported_at: new Date().toISOString()
   };
+  if (submissionId) out.submission_id = submissionId;
+  return out;
 }

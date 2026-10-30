@@ -14,7 +14,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Neuro-Cognitive Information Design" />
   <meta property="og:title" content="Neuro-Cognitive Information Design" />
-  <meta property="og:description" content="An eye-tracking study of document readability across 12 professions and 3 levels of expertise. Join in about 10-15 minutes." />
+  <meta property="og:description" content="An eye-tracking study of document readability across 12 professions and 3 levels of expertise. Join in about 30 minutes." />
   <meta property="og:url" content="https://arditceno.github.io/Neuro-Cognitive-Information-Design/" />
   <meta property="og:image" content="https://arditceno.github.io/Neuro-Cognitive-Information-Design/assets/og-image.jpg" />
   <meta property="og:image:width" content="1200" />
@@ -62,9 +62,9 @@
           </p>
           <h1 class="hero-line2 grad" data-en="Clearer Minds." data-al="Mendje më të Qarta.">Clearer Minds.</h1>
           <div class="hero2-cta">
-            <a class="btn btn-primary btn-lg" href="https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html" data-view="test"><span data-en="Start the study" data-al="Fillo studimin">Start the study</span></a>
+            <a class="btn btn-primary btn-lg" href="study.html" data-view="test"><span data-en="Start the study" data-al="Fillo studimin">Start the study</span></a>
             <a class="btn btn-ghost btn-lg" href="study-info.html"><span data-en="What to expect" data-al="Çfarë të presësh">What to expect</span></a>
-            <a class="btn btn-ghost btn-lg" href="https://arditceno.github.io/Neuro-Cognitive-Information-Design/admin.html" data-view="admin"><span data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</span></a>
+            <a class="btn btn-ghost btn-lg" href="admin.html" data-view="admin"><span data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</span></a>
           </div>
           <div class="clarify">
             <span data-en="From complexity" data-al="Nga kompleksiteti">From complexity</span><br>
@@ -107,6 +107,10 @@
         <h4 data-en="Software" data-al="Informatikë">Software</h4><p data-en="Source code" data-al="Kod burim">Source code</p>
       </div>
     </section>
+    <p class="fields-note" data-en="The full study covers 12 professions: the five above plus nursing, pedagogy, biology, biotechnology, chemistry, electrical engineering and culinary arts."
+       data-al="Studimi i plotë mbulon 12 profesione: pesë më sipër plus infermieri, pedagogji, biologji, bioteknologji, kimi, inxhinieri elektrike dhe kuzhinieri.">
+       The full study covers 12 professions: the five above plus nursing, pedagogy, biology, biotechnology, chemistry, electrical engineering and culinary arts.
+    </p>
 
     <div class="page" id="about">
       <header class="page-head"><span class="eyebrow" data-en="About" data-al="Rreth">About</span>
@@ -129,7 +133,11 @@
           <tr><td data-en="Health" data-al="Mjekësi">Health</td><td data-en="Unstructured clinical note" data-al="Shënim klinik pa strukturë">Unstructured clinical note</td><td data-en="Structured clinical note" data-al="Shënim klinik i strukturuar">Structured clinical note</td></tr>
           <tr><td data-en="Software" data-al="Informatikë">Software</td><td data-en="Deeply nested conditionals" data-al="Kushte të thella">Deeply nested conditionals</td><td data-en="Guard clauses" data-al="Guard clauses">Guard clauses</td></tr>
         </tbody>
-      </table></div></section>
+      </table></div>
+      <p class="fields-note" data-en="These five domains illustrate the method. The full study runs the same A/B comparison across 12 professions and 3 expertise levels."
+         data-al="Këto pesë fusha ilustrojnë metodën. Studimi i plotë zbaton të njëjtin krahasim A/B në 12 profesione dhe 3 nivele ekspertize.">
+         These five domains illustrate the method. The full study runs the same A/B comparison across 12 professions and 3 expertise levels.
+      </p></section>
       <section class="section"><div class="two-col">
         <article class="card"><h3>H1</h3><p data-en="Dense formats cause longer fixations and more regressions." data-al="Formatet e ngjeshura shkaktojnë fiksim më të gjatë dhe më shumë regresione."></p></article>
         <article class="card"><h3>H2</h3><p data-en="Optimised formats shorten time to first fixation and reduce errors." data-al="Formatet e optimizuara shkurtojnë kohën e gjetjes dhe reduktojnë gabimet."></p></article>
@@ -159,7 +167,7 @@
 </main>
 
 <div id="site-footer"></div>
-<script src="js/site.js?v=47"></script>
+<script src="js/site.js?v=48"></script>
 <script>
   (function () {
     var frames = { test: "testFrame", admin: "adminFrame" };
@@ -186,7 +194,7 @@
       if (v !== "home") {
         var f = document.getElementById(frames[v]);
         if (f && !f.getAttribute("src")) {
-          f.setAttribute("src", "https://arditceno.github.io/Neuro-Cognitive-Information-Design/" + files[v] + "?embed=1");
+          f.setAttribute("src", files[v] + "?embed=1");
         }
         document.body.classList.add("fullscreen-view");
         if (document.getElementById("site-footer")) document.getElementById("site-footer").style.display = "none";

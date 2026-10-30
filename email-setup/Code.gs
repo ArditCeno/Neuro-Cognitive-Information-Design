@@ -45,23 +45,58 @@ function doPost(e) {
   return htmlResult(submitAndEmail(data));
 }
 
+/** Stable id for one report (retries/resends reuse it). */
+function submissionKey_(data, s) {
+  var sid = (data && data.submission_id) || (s && s.submission_id) || "";
+  return String(sid).slice(0, 120);
+}
+
+/** One email per participant: a sent marker blocks every retry. */
+function alreadySent_(sid, id) {
+  var props = PropertiesService.getScriptProperties();
+  if (sid && props.getProperty("sent_" + sid)) return true;
+  if (id && id !== "?") {
+    var perId = props.getProperty("sent_id_" + id);
+    if (perId) return true;
+  }
+  return false;
+}
+
+function markSent_(sid, id) {
+  var props = PropertiesService.getScriptProperties();
+  var at = String(new Date().getTime());
+  if (sid) props.setProperty("sent_" + sid, at);
+  if (id && id !== "?") props.setProperty("sent_id_" + id, at);
+}
+
 /** Send the report email; return a real {ok} / {error} the page can read. */
 function submitAndEmail(data) {
   var expected = token_();
   if (!expected || String(data.token || "") !== expected) return { ok: false, error: "forbidden" };
+  var s = data.summary || data;
+  var identity = data.identity || {};
+  var id = (s.participant && s.participant.id_anonim) || data.id_anonim || identity.id_anonim || "?";
+  var sid = submissionKey_(data, s);
+
+  // Serialize duplicate requests and check the durable "already sent" markers.
+  var lock = LockService.getScriptLock();
+  var locked = false;
+  try { locked = lock.tryLock(15000); } catch (e) { locked = false; }
+  if (!locked) return { ok: false, error: "busy" };
   try {
-    var s = data.summary || data;
-    var identity = data.identity || {};
-    var id = (s.participant && s.participant.id_anonim) || data.id_anonim || identity.id_anonim || "?";
+    if (alreadySent_(sid, id)) return { ok: true, duplicate: true };
     MailApp.sendEmail({
       to: TO,
       subject: "NCID " + (data.kind || s.kind || "session") + " - " + id,
       htmlBody: tableHTML(s, identity) + dataBlock(s, identity),
       body: "New NCID submission (" + id + ")"
     });
+    markSent_(sid, id);
     return { ok: true };
   } catch (err) {
     return { ok: false, error: String(err) };
+  } finally {
+    try { lock.releaseLock(); } catch (e) { /* ignore */ }
   }
 }
 

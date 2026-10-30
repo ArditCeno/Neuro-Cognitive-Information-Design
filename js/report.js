@@ -2,9 +2,9 @@
  * Report: PDF (with node map + hashmap) and email delivery.
  * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
-import { CONFIG } from "./config.js?v=47";
-import { loadScript } from "./utils.js?v=47";
-import { flatten, layoutTree } from "./visualize.js?v=47";
+import { CONFIG } from "./config.js?v=48";
+import { loadScript } from "./utils.js?v=48";
+import { flatten, layoutTree } from "./visualize.js?v=48";
 
 async function loadJsPDF() {
   if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;

@@ -1,7 +1,7 @@
 # Email results with Google Apps Script
 
-Every registration and every finished session is emailed to
-`arditceno82@gmail.com` as an HTML table. No third-party account is needed.
+Every finished session is emailed **once** to `arditceno82@gmail.com` as an HTML
+table. No third-party account is needed.
 
 The table includes: **Name and surname, ID, Profession, Expertise, Age**, the
 results per level and version, and every answer.
@@ -35,5 +35,8 @@ as a table.
 ## Notes
 
 - The script sends from your own Gmail account, so no external service is needed.
-- Emails are sent when the participant registers and when the session finishes.
+- Emails are sent **once**, when the session finishes.
+- Retries and resends are deduplicated: the script stores a `sent_<submission_id>`
+  marker and a `sent_id_<id_anonim>` marker in Script Properties, so one
+  participant can never produce two emails.
 - If you change the script, deploy a **new version** (Deploy, Manage deployments).

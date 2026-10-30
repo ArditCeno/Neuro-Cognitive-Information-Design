@@ -16,9 +16,11 @@ server-side database write, so the researcher panel (`admin.html`) stays empty.
 This is a deliberate, documented trade-off chosen for simplicity:
 
 - the Apps Script URL + token live in `js/config.js` and are therefore public;
-- anyone who reads the source could post to the endpoint and email the researcher
-  (mitigation: rotate the Apps Script `TOKEN` script property and the config value);
-- there is no server-side rate limiting or dedupe in this mode.
+- anyone who reads the source could post to the endpoint (mitigation: rotate the
+  Apps Script `TOKEN` script property and the config value; the endpoint still
+  rejects duplicate reports);
+- there is no per-IP rate limiting in this mode, but duplicate submissions are
+  deduplicated server-side (`sent_<submission_id>` and `sent_id_<id_anonim>`).
 
 To upgrade to the hardened model (server write + owner-only DB + rate limiting),
 follow the last section of this file.
@@ -50,7 +52,7 @@ follow the last section of this file.
 | 13 | HTTPS enforced end to end | Done | GitHub Pages forces HTTPS (`arditceno.github.io`) |
 | 14 | Personal data isolated (name in a separate owner-only table) | Done | `participant_identity` table; name stripped from `sessions.payload` |
 | 15 | Data minimisation (gaze capture off by default) | Done | `includeGaze: false` in `js/config.js` |
-| 16 | Idempotent submissions (dedupe on retry) | Done | unique `submission_id`; `23505` handled as success |
+| 16 | Idempotent submissions (dedupe on retry) | Done | Apps Script `sent_<submission_id>` + `sent_id_<id_anonim>` markers under `LockService`; Edge `23505` handled as success |
 | 17 | Dependencies pinned / vendored locally | Done | `vendor/`, `mediapipe/` shipped with the repo |
 | 18 | Errors handled without leaking internals | Done | Edge Function returns generic error codes |
 | 19 | Least privilege: service role key never reaches the browser | Done | key only in Supabase function secrets |

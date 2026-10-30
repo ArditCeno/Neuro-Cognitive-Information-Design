@@ -40,7 +40,7 @@
     </article>
     <article class="card">
       <h3>How the data is kept apart</h3>
-      <p>The research dataset contains only the anonymous identifier and the measurements. If you provide your name, it is stored in a separate identity table, linked to the identifier, and is never part of the exported or analysed dataset. Only the researcher can open that table.</p>
+      <p>The research dataset contains only the anonymous identifier and the measurements. If you provide your name, it appears only in the report emailed to the researcher and is kept apart from the anonymous analysis payload. If the optional database path is enabled, the name is stored in a separate, owner-only identity table. It is never part of the analysed dataset.</p>
     </article>
     <article class="card">
       <h3>Purpose and legal basis</h3>
@@ -48,7 +48,7 @@
     </article>
     <article class="card">
       <h3>Storage, processors and access</h3>
-      <p>Data is stored in a Supabase (PostgreSQL) database hosted in the European Union, and reports are emailed through Google Workspace. Both act as data processors. Access is limited to the researcher: the database is protected by row-level security and only the owner account can read it.</p>
+      <p>In the default email mode, sessions are delivered to the researcher's Google Workspace mailbox through a Google Apps Script; no database copy is created. If the optional Supabase path is enabled, data is stored in a Supabase (PostgreSQL) database hosted in the European Union. Both providers act as data processors. Access is limited to the researcher; when the database is used, row-level security restricts reads to the owner account.</p>
     </article>
     <article class="card">
       <h3>Retention</h3>

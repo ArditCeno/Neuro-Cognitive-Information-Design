@@ -33,6 +33,8 @@ body {
   line-height: 1.55;
   overflow-x: hidden;
 }
+::selection { background: rgba(255, 110, 66, .28); color: #fff; }
+#about, #methodology, #contact, #fields, .page-head, .section { scroll-margin-top: 88px; }
 
 /* ---------- Nav ---------- */
 .nav {
@@ -263,6 +265,11 @@ body {
 }
 .field-item h4 { margin: 12px 0 6px; font-size: 15px; }
 .field-item p { margin: 0; color: var(--muted); font-size: 12.5px; line-height: 1.5; }
+.fields-note {
+  max-width: 1240px; margin: 0 auto 8px; padding: 0 30px;
+  color: var(--muted); font-size: 13px; line-height: 1.6; text-align: center;
+}
+.fields-note b { color: var(--cyan); font-weight: 700; }
 
 /* scroll hint */
 .scroll-hint { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 26px; color: var(--muted); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; position: relative; }

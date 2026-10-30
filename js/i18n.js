@@ -1,6 +1,6 @@
 /*
  * Bilingual interface strings (Albanian / English).
- * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=47';
+ * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=48';
  */
 
 export const I18N = {
@@ -60,6 +60,7 @@ export const I18N = {
     calib_test_note: "Test vetëm i kalibrimit — nuk dërgohet raport.",
     send_ok: "Raporti u dërgua te emaili i studiuesit. Faleminderit!",
     send_fail: "Nuk mundëm ta dërgojmë raportin. Trokit 'Provo përsëri'.",
+    send_uncertain: "Raporti u dërgua (nuk u konfirmua menjëherë). Nëse nuk mbërriti, trokit 'Provo përsëri' - nuk do të dërgohet dy herë.",
     sending: "Duke dërguar…",
     resend: "Provo përsëri",
     pf_desktop_t: "Pajisja",
@@ -184,6 +185,7 @@ export const I18N = {
     calib_test_note: "Calibration test only — no report is sent.",
     send_ok: "Report sent to the researcher's email. Thank you!",
     send_fail: "We could not send the report. Tap 'Try again'.",
+    send_uncertain: "The report was sent (not confirmed immediately). If it did not arrive, tap 'Try again' - it will not be emailed twice.",
     sending: "Sending…",
     resend: "Try again",
     pf_desktop_t: "Device",

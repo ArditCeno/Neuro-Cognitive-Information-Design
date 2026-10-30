@@ -4,8 +4,8 @@
  * The export shape is assembled by js/schema.js (UML class model).
  */
 
-import { CONFIG } from "./config.js?v=47";
-import { isoNow, downloadJSON } from "./utils.js?v=47";
+import { CONFIG } from "./config.js?v=48";
+import { isoNow, downloadJSON } from "./utils.js?v=48";
 
 const K = CONFIG.storage;
 
@@ -21,13 +21,26 @@ export const Storage = {
       this.write({
         __id: sessionId,
         created_at: isoNow(),
+        submission_id: newSubmissionId(),
         events: [],
         trials: [],
         gaze: [],
         participant: null,
         session: null
       });
+    } else if (!existing.submission_id) {
+      this.patch((s) => { s.submission_id = newSubmissionId(); });
     }
+  },
+
+  /** One stable id per session: retries and resends reuse it, so one report = one email. */
+  ensureSubmissionId() {
+    if (!this.sessionId) return null;
+    const s = this.read();
+    if (s && s.submission_id) return s.submission_id;
+    const id = newSubmissionId();
+    this.patch((x) => { x.submission_id = id; });
+    return id;
   },
 
   read() {
@@ -114,9 +127,16 @@ function postViaIframe(url, payload, timeoutMs) {
       try { iframe.remove(); } catch (e) { /* ignore */ }
       window.removeEventListener("message", onMsg);
     };
+    const trustedOrigin = (origin) => {
+      if (!origin || origin === "null") return true;   // opaque/sandboxed Google frame
+      return /^https:\/\/script\.google\.com$/.test(origin) ||
+             /^https:\/\/[a-z0-9-]+\.googleusercontent\.com$/.test(origin);
+    };
     const onMsg = (ev) => {
       const d = ev && ev.data;
       if (!d || d.ncid !== true) return;
+      if (ev.source && ev.source !== iframe.contentWindow) return;
+      if (!trustedOrigin(ev.origin)) return;
       settled = true; cleanup();
       const r = d.result || {};
       resolve(r.ok ? { ok: true, via: "iframe" } : { ok: false, error: r.error || "server_error", definitive: true });
@@ -170,19 +190,10 @@ export async function uploadToEndpoint(summary, identity) {
     };
     const r = await postViaIframe(cfg.fallbackUrl, payload, 15000);
     if (r.ok) return { ok: true, via: "iframe" };
-    // if the server clearly rejected it, report that; otherwise try a blind POST
+    // A timeout is ambiguous: the server may still have delivered the email.
+    // Never blind-post a second copy - the idempotent server ignores retries.
     if (r.definitive) return r;
-    try {
-      await fetch(cfg.fallbackUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: { "Content-Type": "text/plain;charset=utf-8" },
-        body: JSON.stringify(payload)
-      });
-      return { ok: true, via: "fallback-opaque", uncertain: true };
-    } catch (e) {
-      return { ok: false, error: String(e) };
-    }
+    return { ok: false, error: r.error || "timeout", uncertain: true };
   }
   return { ok: false, status: 404 };
 }
@@ -217,8 +228,12 @@ function newSubmissionId() {
 }
 
 function withSubmissionId(summary) {
-  if (summary && summary.submission_id) return summary;
-  return Object.assign({}, summary, { submission_id: newSubmissionId() });
+  if (!summary) return summary;
+  if (summary.submission_id) return summary;
+  // Reuse the id created at registration so a retry/resend is the same report.
+  let stable = null;
+  try { stable = Storage.ensureSubmissionId(); } catch (e) { /* ignore */ }
+  return Object.assign({}, summary, { submission_id: stable || newSubmissionId() });
 }
 
 /** Send the session to every configured backend. */
@@ -250,6 +265,9 @@ function writeQueue(q) {
 
 export function enqueue(summary, identity) {
   const q = readQueue();
+  const sid = summary && summary.submission_id;
+  // Never queue the same report twice (same submission id).
+  if (sid && q.some((it) => it.summary && it.summary.submission_id === sid)) return;
   q.push({ id: summary.participant ? summary.participant.id_anonim : "unknown", at: Date.now(), summary, identity: identity || null });
   writeQueue(q);
 }
@@ -276,6 +294,9 @@ export async function flushPending() {
 export async function submitAndQueue(summary, identity) {
   const r = await submitSession(summary, identity);
   const ok = (r.backend && r.backend.ok) || (r.endpoint && r.endpoint.ok);
-  if (!ok && hasTarget()) enqueue(r.summary, identity);
-  return { ...r, queued: !ok && hasTarget() };
+  // Ambiguous delivery is never auto-retried: a retry could duplicate the email.
+  // The participant can press "Try again" and the server will dedupe it.
+  const uncertain = !!((r.endpoint && r.endpoint.uncertain) || (r.backend && r.backend.uncertain));
+  if (!ok && !uncertain && hasTarget()) enqueue(r.summary, identity);
+  return { ...r, queued: !ok && !uncertain && hasTarget(), uncertain };
 }
