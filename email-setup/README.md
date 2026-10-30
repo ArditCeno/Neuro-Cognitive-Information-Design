@@ -40,3 +40,6 @@ as a table.
   marker and a `sent_id_<id_anonim>` marker in Script Properties, so one
   participant can never produce two emails.
 - If you change the script, deploy a **new version** (Deploy, Manage deployments).
+- **Never hardcode the admin password** in `Code.gs`. Store it in Script
+  properties (`ADMIN_PASSWORD` or the salted `ADMIN_PASSWORD_HASH`). If it was
+  ever shared or committed, rotate it immediately.

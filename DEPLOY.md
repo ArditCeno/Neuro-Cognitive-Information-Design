@@ -91,6 +91,11 @@ current `email-setup/Code.gs` deployed:
 2. **Project Settings → Script properties**: add **`TOKEN`** = `ncid_k9f3Xq2Lm7Pz`
    (the value the study sends; without it every submission is rejected) and set
    the admin password (`ADMIN_PASSWORD`, or run `setupAdminPassword()` once).
+
+> **Never hardcode the admin password in `Code.gs` or commit it.** Keep it in
+> Script Properties only. If the password has ever been shared, pasted into a
+> chat, or committed to git, rotate it now: set a new `ADMIN_PASSWORD` (or run
+> `setupAdminPassword()` with a new value) and deploy a new version.
 3. **Deploy → Manage deployments → edit → Version: New version → Deploy** (this
    keeps the same `/exec` URL). Authorise the new **Gmail** access when asked.
 4. Open `/admin.html`: enter `arditceno82@gmail.com` + your password → **Send
