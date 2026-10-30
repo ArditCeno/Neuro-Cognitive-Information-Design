@@ -18,9 +18,14 @@ window.NCID_LOCAL = {
       anonKey: null       // "YOUR_PUBLIC_ANON_KEY"
     },
 
-    // Option C - any other JSON endpoint (Google Apps Script, Formspree, own API).
-    // Best for "email me a table": paste your Apps Script Web App URL here.
-    submission: { url: null, includeGaze: false }
+    // Option C - Google Apps Script email delivery (the default path).
+    // The endpoint is public; no token is needed.
+    submission: {
+      url: null,               // optional JSON endpoint (Edge Function)
+      fallbackUrl: null,       // "https://script.google.com/macros/s/.../exec"
+      fallbackToken: null,     // optional/legacy; leave null
+      includeGaze: false
+    }
   },
 
   // Email delivery of the full report as an HTML table.

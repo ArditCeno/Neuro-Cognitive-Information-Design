@@ -15,12 +15,13 @@ server-side database write, so the researcher panel (`admin.html`) stays empty.
 
 This is a deliberate, documented trade-off chosen for simplicity:
 
-- the Apps Script URL + token live in `js/config.js` and are therefore public;
-- anyone who reads the source could post to the endpoint (mitigation: rotate the
-  Apps Script `TOKEN` script property and the config value; the endpoint still
-  rejects duplicate reports);
-- there is no per-IP rate limiting in this mode, but duplicate submissions are
-  deduplicated server-side (`sent_<submission_id>` and `sent_id_<id_anonim>`).
+- the Apps Script URL is public and the submission endpoint is **public by
+  design**; there is no submission secret in the repository or the page;
+- abuse controls are the one-email dedupe markers below and Google Apps
+  Script's own MailApp/Gmail quotas; there is **no per-IP rate limiting** in
+  this mode;
+- duplicate submissions are deduplicated server-side
+  (`sent_<submission_id>` and `sent_id_<id_anonim>`).
 
 To upgrade to the hardened model (server write + owner-only DB + rate limiting),
 follow the last section of this file.
@@ -37,7 +38,7 @@ follow the last section of this file.
 
 | # | Control | Status | Where |
 |---|---------|--------|-------|
-| 1 | No secrets in the client bundle | Accepted (email mode) | Apps Script URL + token are in `js/config.js`; see "Current mode" |
+| 1 | No secrets in the client bundle | Done | No token or database key; public endpoint with dedupe + quotas |
 | 2 | Server-side write path (Edge Function with service role) | Optional | `supabase/functions/submit/index.ts`; not used in email mode |
 | 3 | Row Level Security enabled on every table | Done | `supabase/security.sql` |
 | 4 | Owner-only data access by JWT email allowlist | Done | RLS `owner read` / `owner delete` in `supabase/security.sql` |
@@ -99,7 +100,7 @@ external script origins, `object`/`embed`, and form posts to other origins.
 # 2. Set the function secrets
 supabase secrets set \
   APPS_SCRIPT_URL="https://script.google.com/macros/s/<id>/exec" \
-  APPS_SCRIPT_TOKEN="<the same token Code.gs expects>"
+  APPS_SCRIPT_TOKEN="optional-non-empty-value"   # Code.gs ignores it; the Edge fn only checks it exists
 
 # 3. Deploy the write path
 supabase functions deploy submit --no-verify-jwt
@@ -127,8 +128,7 @@ GitHub Pages artifact uploader skips dot-folders). Expiry: 2027-10-30.
   versions are updated weekly.
 - Workflows run with least privilege (`contents: read`) and do not persist git
   credentials in the checkout.
-- The tokenless submission migration (no shared token, no database key in the
-  repository) is staged on the `security/remove-secrets` branch. It is merged
-  only after the tokenless Apps Script version is live; until then `main` keeps
-  the legacy token so participants can submit.
-- The admin password lives only in Script Properties.
+- No submission token or database key is stored in the repository. The endpoint
+  is public by design; dedupe and Google quotas are the abuse controls.
+- The admin password lives only in Script Properties (or the private Apps Script
+  editor), never in the repository.

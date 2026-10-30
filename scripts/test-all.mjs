@@ -73,8 +73,8 @@ ok(!existsSync("assets/figures"), "legacy assets/figures removed");
 
 // config
 const s = CONFIG.storage || {};
-ok(s.supabase && /supabase\.co/.test(s.supabase.url || ""), "Supabase URL configured");
-ok(s.supabase && /^sb_publishable_/.test(s.supabase.anonKey || ""), "Supabase publishable key");
+ok(!s.supabase || !s.supabase.url || /supabase\.co/.test(s.supabase.url), "Supabase URL optional (injected at deploy)");
+ok(!s.supabase || !s.supabase.anonKey || /^sb_publishable_/.test(s.supabase.anonKey), "Supabase key optional (injected at deploy)");
 ok(
   s.submission && (/functions\/v1\/submit/.test(s.submission.url || "") ||
     /script\.google\.com/.test(s.submission.url || "") ||
@@ -82,7 +82,8 @@ ok(
   "submission/email endpoint configured"
 );
 ok(/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(s.submission.fallbackUrl || ""), "Apps Script email endpoint configured");
-ok(!!s.submission.fallbackToken, "email token configured (documented tradeoff)");
+ok(!s.submission.fallbackToken, "email token is not committed (injected as SUBMISSION_TOKEN)");
+ok(/js\/config\.local\.js/.test(readFileSync(".gitignore", "utf8")), "private config is gitignored");
 ok(existsSync("supabase/functions/submit/index.ts"), "Edge Function submit present");
 const edge = existsSync("supabase/functions/submit/index.ts")
   ? readFileSync("supabase/functions/submit/index.ts", "utf8") : "";
