@@ -18,22 +18,19 @@ results per level and version, and every answer.
    - **Who has access: Anyone**
 4. Click **Deploy**, authorise the script, and copy the **Web app URL**
    (it ends with `/exec`).
-5. Set the admin password in **Project Settings → Script properties**
-   (`ADMIN_PASSWORD`, or run `setupAdminPassword()` once). **No submission
-   token is used**; the endpoint is public and deduplicated by the script.
-6. For local testing, create `js/config.local.js` (gitignored):
-   ```js
-   window.NCID_LOCAL = {
-     storage: {
-       submission: {
-         fallbackUrl: "PASTE_THE_/exec_URL_HERE",
-         includeGaze: false
-       }
-     }
-   };
-   ```
+5. Give that URL to the website, in one of two ways:
+   - **Published site:** in GitHub, go to Settings, Secrets and variables,
+     Actions, and add a secret named **`SUBMISSION_URL`** with the URL. The
+     deploy workflow injects it automatically.
+   - **Local:** create `js/config.local.js`:
+     ```js
+     window.NCID_LOCAL = {
+       storage: { submission: { url: "PASTE_THE_/exec_URL_HERE", includeGaze: false } }
+     };
+     ```
 
-The next finished session will arrive **once** in your inbox as a table.
+The next registration and the end of the next session will arrive in your inbox
+as a table.
 
 ## Notes
 

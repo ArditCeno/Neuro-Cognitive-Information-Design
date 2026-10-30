@@ -35,6 +35,3 @@ agent/
 data/skills/
 skills-lock.json
 .claude/
-
-# local one-time secrets
-.secrets.local

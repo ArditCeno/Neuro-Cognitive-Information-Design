@@ -10,12 +10,7 @@
 import { CONFIG } from "../js/config.js";
 
 const URL = CONFIG.storage.submission.fallbackUrl;
-const TOKEN = CONFIG.storage.submission.fallbackToken || process.env.SUBMISSION_TOKEN || "";
-
-if (!URL) {
-  console.error("No Apps Script URL configured. Set js/config.local.js or SUBMISSION_URL.");
-  process.exit(1);
-}
+const TOKEN = CONFIG.storage.submission.fallbackToken;
 
 const rnd = (a, b, d = 0) => Number((a + Math.random() * (b - a)).toFixed(d));
 

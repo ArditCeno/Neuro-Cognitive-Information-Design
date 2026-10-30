@@ -19,9 +19,9 @@
 var TO = "arditceno82@gmail.com";
 var ADMIN_EMAIL = "arditceno82@gmail.com";
 
-/* The submission endpoint is public by design (a public study). Abuse controls
-   are the one-email dedupe markers below plus Google Apps Script's own quotas.
-   No submission token/secret is stored in this file or in the website. */
+/* Expected submission token. The study sends this exact value. Override it by
+   adding a Script property TOKEN if you want to change/rotate it. */
+var EXPECTED_TOKEN = "ncid_k9f3Xq2Lm7Pz";
 
 /* ===================================================================
    FJALEKALIMI I ADMINIT - ndrysho VETEM rreshtin poshte.
@@ -31,6 +31,10 @@ var ADMIN_EMAIL = "arditceno82@gmail.com";
 var ADMIN_PASSWORD = "";
 
 /* ============================ Submissions ============================ */
+
+function token_() {
+  return PropertiesService.getScriptProperties().getProperty("TOKEN") || EXPECTED_TOKEN;
+}
 
 function doPost(e) {
   var data = {};
@@ -67,6 +71,8 @@ function markSent_(sid, id) {
 
 /** Send the report email; return a real {ok} / {error} the page can read. */
 function submitAndEmail(data) {
+  var expected = token_();
+  if (!expected || String(data.token || "") !== expected) return { ok: false, error: "forbidden" };
   var s = data.summary || data;
   var identity = data.identity || {};
   var id = (s.participant && s.participant.id_anonim) || data.id_anonim || identity.id_anonim || "?";
