@@ -49,15 +49,16 @@ for (const page of PAGES) {
   ok(sitemap.includes("<loc>" + url + "</loc>"), "sitemap includes " + page);
 }
 
-// security.txt
+// security.txt (the .well-known copy is canonical; the root copy is the
+// GitHub Pages fallback because the artifact uploader skips dot-folders)
+ok(existsSync(".well-known/security.txt"), "security.txt (.well-known) present");
+ok(existsSync("security.txt"), "security.txt root fallback present");
 const sec = ".well-known/security.txt";
-ok(existsSync(sec), "security.txt present");
-if (existsSync(sec)) {
-  const body = readFileSync(sec, "utf8");
-  ok(/^Contact:/m.test(body), "security.txt Contact");
-  ok(/^Expires:/m.test(body), "security.txt Expires");
-  ok(/^Canonical:/m.test(body), "security.txt Canonical");
-}
+const body = readFileSync(sec, "utf8");
+ok(/^Contact:/m.test(body), "security.txt Contact");
+ok(/^Expires:/m.test(body), "security.txt Expires");
+ok(/^Canonical:/m.test(body), "security.txt Canonical");
+ok(readFileSync("security.txt", "utf8") === body, "root security.txt matches .well-known copy");
 
 console.log("SEO/metadata checks: PASS " + pass + "  FAIL " + fail);
 if (fails.length) {
