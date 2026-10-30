@@ -38,7 +38,7 @@ follow the last section of this file.
 
 | # | Control | Status | Where |
 |---|---------|--------|-------|
-| 1 | No secrets in the client bundle | Accepted (email mode) | Apps Script URL + token are in `js/config.js`; see "Current mode" |
+| 1 | No secrets in the client bundle | Done | No token or database key; public endpoint with dedupe + quotas |
 | 2 | Server-side write path (Edge Function with service role) | Optional | `supabase/functions/submit/index.ts`; not used in email mode |
 | 3 | Row Level Security enabled on every table | Done | `supabase/security.sql` |
 | 4 | Owner-only data access by JWT email allowlist | Done | RLS `owner read` / `owner delete` in `supabase/security.sql` |
@@ -128,8 +128,7 @@ GitHub Pages artifact uploader skips dot-folders). Expiry: 2027-10-30.
   versions are updated weekly.
 - Workflows run with least privilege (`contents: read`) and do not persist git
   credentials in the checkout.
-- The tokenless submission migration (no shared token, no database key in the
-  repository) is staged on the `security/remove-secrets` branch. It is merged
-  only after the tokenless Apps Script version is live; until then `main` keeps
-  the legacy token so participants can submit.
-- The admin password lives only in Script Properties.
+- No submission token or database key is stored in the repository. The endpoint
+  is public by design; dedupe and Google quotas are the abuse controls.
+- The admin password lives only in Script Properties (or the private Apps Script
+  editor), never in the repository.
