@@ -4,7 +4,7 @@
  * Copyright (c) 2026 Ardit Ceno. All rights reserved.
  */
 
-import { FIELDS, EXPERTISE } from "./fields.js?v=48";
+import { FIELDS, EXPERTISE } from "./fields.js?v=49";
 
 export const CONFIG = {
   study: {

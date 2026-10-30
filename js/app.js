@@ -5,28 +5,29 @@
  * (basic/intermediate/advanced), NASA-TLX after each module.
  */
 
-import { CONFIG } from "./config.js?v=48";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=48";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=48";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=48";
-import { EyeTracking } from "./eyetracking.js?v=48";
-import { Calibration } from "./calibration.js?v=48";
-import { Stimuli } from "./stimuli.js?v=48";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=48";
-import { Runner } from "./runner.js?v=48";
-import { Heatmap } from "./heatmap.js?v=48";
-import { Biometrics } from "./biometrics.js?v=48";
-import { Research } from "./research.js?v=48";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=48";
-import { EXPERTISE } from "./fields.js?v=48";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=48";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=48";
+import { CONFIG } from "./config.js?v=49";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=49";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=49";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=49";
+import { EyeTracking } from "./eyetracking.js?v=49";
+import { Calibration } from "./calibration.js?v=49";
+import { Stimuli } from "./stimuli.js?v=49";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=49";
+import { Runner } from "./runner.js?v=49";
+import { Heatmap } from "./heatmap.js?v=49";
+import { Biometrics } from "./biometrics.js?v=49";
+import { Research } from "./research.js?v=49";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=49";
+import { EXPERTISE } from "./fields.js?v=49";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=49";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=49";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
 const state = {
   mock: new URLSearchParams(location.search).get("mock") === "1",
   calibTest: new URLSearchParams(location.search).get("calib") === "1",
+  forceResend: new URLSearchParams(location.search).get("force") === "1",
   participant: null,
   sessionNumber: null,
   startedAt: null,
@@ -619,10 +620,12 @@ function setSendStatus(delivered) {
   const ep = (delivered && delivered.endpoint) || {};
   const ok = !!ep.ok;
   const uncertain = !!(delivered && delivered.uncertain);
+  if (ok || uncertain) Storage.markReportSent(Storage.ensureSubmissionId());
   el.classList.remove("hidden");
   el.textContent = ok ? t("send_ok") : (uncertain ? t("send_uncertain") : t("send_fail"));
   if (btn) {
-    btn.classList.toggle("hidden", ok);
+    // No manual retry once the report was sent (or may have been sent).
+    btn.classList.toggle("hidden", ok || uncertain);
     btn.disabled = false;
   }
 }
@@ -631,7 +634,15 @@ function setSendStatus(delivered) {
 async function resendReport() {
   const el = $("sendStatus");
   const btn = $("btnResend");
+  const sid = Storage.ensureSubmissionId();
   if (state.sending) return;               // never send two copies at once
+  // At-most-once: after a successful or ambiguous send, never send again
+  // unless the researcher explicitly opens the page with ?force=1.
+  if (sid && Storage.reportWasSent(sid) && !state.forceResend) {
+    if (el) { el.textContent = t("send_ok"); el.classList.remove("hidden"); }
+    if (btn) btn.classList.add("hidden");
+    return;
+  }
   state.sending = true;
   if (btn) btn.disabled = true;
   if (el) { el.textContent = t("sending"); el.classList.remove("hidden"); }

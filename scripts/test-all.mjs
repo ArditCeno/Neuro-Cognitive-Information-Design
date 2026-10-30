@@ -98,6 +98,7 @@ ok(CONFIG.fields.length === 12, "CONFIG fields loaded");
 // one-email guarantees (client + Apps Script)
 const storageSrc = readFileSync("js/storage.js", "utf8");
 ok(/ensureSubmissionId/.test(storageSrc), "stable submission id persisted");
+ok(/markReportSent/.test(storageSrc) && /reportWasSent/.test(storageSrc), "client at-most-once marker");
 ok(/uncertain: true/.test(storageSrc), "ambiguous send is not blind-retried");
 ok(!/mode:\s*["']no-cors["']/.test(storageSrc), "no blind no-cors POST");
 ok(/ev\.source\s*&&\s*ev\.source\s*!==\s*iframe\.contentWindow/.test(storageSrc), "iframe reply origin checked");
@@ -108,6 +109,7 @@ ok(/duplicate: true/.test(gs), "duplicate submissions return a success reply");
 const appSrc = readFileSync("js/app.js", "utf8");
 ok(/submissionId:\s*Storage\.ensureSubmissionId\(\)/.test(appSrc), "export carries the stable submission id");
 ok(/state\.sending/.test(appSrc), "resend cannot run twice at once");
+ok(/reportWasSent\(sid\)/.test(appSrc), "resend respects the sent marker");
 
 // content truth (no contradictory numbers)
 const readme = readFileSync("README.md", "utf8");

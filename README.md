@@ -86,6 +86,7 @@ Open `http://localhost:3000/`. The camera needs `http://` or `https://`, not a l
 
 - `study.html?mock=1` — simulated run (no webcam), useful for development
 - `study.html?calib=1` — calibration only, shows the measured accuracy in pixels
+- `study.html?force=1` — researcher override for a deliberate resend (normal retries are deduplicated)
 - `admin.html?demo=1` — dashboard preview with sample data (no login, no real data)
 
 ## Researcher dashboard

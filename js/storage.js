@@ -4,8 +4,8 @@
  * The export shape is assembled by js/schema.js (UML class model).
  */
 
-import { CONFIG } from "./config.js?v=48";
-import { isoNow, downloadJSON } from "./utils.js?v=48";
+import { CONFIG } from "./config.js?v=49";
+import { isoNow, downloadJSON } from "./utils.js?v=49";
 
 const K = CONFIG.storage;
 
@@ -41,6 +41,24 @@ export const Storage = {
     const id = newSubmissionId();
     this.patch((x) => { x.submission_id = id; });
     return id;
+  },
+
+  /** Client-side at-most-once marker (extra safety before the server redeploy). */
+  markReportSent(sid) {
+    if (!sid) return;
+    try {
+      const m = JSON.parse(localStorage.getItem("ncid_sent_v1") || "{}");
+      m[sid] = Date.now();
+      localStorage.setItem("ncid_sent_v1", JSON.stringify(m));
+    } catch (e) { /* ignore */ }
+  },
+
+  reportWasSent(sid) {
+    if (!sid) return false;
+    try {
+      const m = JSON.parse(localStorage.getItem("ncid_sent_v1") || "{}");
+      return !!m[sid];
+    } catch (e) { return false; }
   },
 
   read() {
