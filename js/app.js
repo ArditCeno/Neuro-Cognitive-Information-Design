@@ -5,22 +5,22 @@
  * (basic/intermediate/advanced), NASA-TLX after each module.
  */
 
-import { CONFIG } from "./config.js?v=53";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=53";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=53";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=53";
-import { EyeTracking } from "./eyetracking.js?v=53";
-import { Calibration } from "./calibration.js?v=53";
-import { Stimuli } from "./stimuli.js?v=53";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=53";
-import { Runner } from "./runner.js?v=53";
-import { Heatmap } from "./heatmap.js?v=53";
-import { Biometrics } from "./biometrics.js?v=53";
-import { Research } from "./research.js?v=53";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=53";
-import { EXPERTISE } from "./fields.js?v=53";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=53";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=53";
+import { CONFIG } from "./config.js?v=55";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=55";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=55";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=55";
+import { EyeTracking } from "./eyetracking.js?v=55";
+import { Calibration } from "./calibration.js?v=55";
+import { Stimuli } from "./stimuli.js?v=55";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=55";
+import { Runner } from "./runner.js?v=55";
+import { Heatmap } from "./heatmap.js?v=55";
+import { Biometrics } from "./biometrics.js?v=55";
+import { Research } from "./research.js?v=55";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=55";
+import { EXPERTISE } from "./fields.js?v=55";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=55";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=55";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -670,11 +670,15 @@ async function finishSession() {
   clearInterval(state._diagTimer);
   state.gazeSamples = EyeTracking.getSessionSamples().slice();
   // flush to buffer for crash recovery
-  Storage.patch((s) => {
+  const saved = Storage.patch((s) => {
     s.gaze = state.gazeSamples.map((p) => ({ t: round(p.t, 1), x: round(p.x, 1), y: round(p.y, 1) }));
     s.modules = state.moduleResults;
     s.submission_id = s.submission_id || Storage.ensureSubmissionId();
   });
+  if (!saved) {
+    const warn = $("deviceWarn");
+    if (warn) { warn.textContent = t("storage_full"); warn.classList.remove("hidden"); }
+  }
 
   const summary = buildExport();
   const split = splitIdentity(summary);

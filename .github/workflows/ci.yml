@@ -26,6 +26,8 @@ jobs:
         run: node scripts/test-links.mjs
       - name: AOI engine unit checks
         run: node scripts/test-aoi.mjs
+      - name: SEO, metadata and PWA checks
+        run: node scripts/test-seo.mjs
       - name: End-to-end report test (named participant)
         run: node scripts/test-report.mjs
       - name: Live endpoint check (admin/submission API)
@@ -54,3 +56,5 @@ jobs:
           import pandas, numpy, scipy, statsmodels, matplotlib
           print("deps ok")
           PY
+      - name: Unit tests (analysis)
+        run: python -m unittest discover -s analysis -p "test_*.py"

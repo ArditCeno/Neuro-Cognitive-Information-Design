@@ -1,0 +1,19 @@
+{
+  "name": "Neuro-Cognitive Information Design",
+  "short_name": "NCID",
+  "description": "An eye-tracking study of document readability across 12 professions and 3 levels of expertise.",
+  "lang": "en",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#092634",
+  "theme_color": "#092634",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

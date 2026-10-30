@@ -1,6 +1,6 @@
 /*
  * Bilingual interface strings (Albanian / English).
- * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=53';
+ * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=55';
  */
 
 export const I18N = {
@@ -62,6 +62,7 @@ export const I18N = {
     send_fail: "Nuk mundëm ta dërgojmë raportin. Trokit 'Provo përsëri'.",
     send_uncertain: "Raporti u dërgua (nuk u konfirmua menjëherë). Nëse nuk mbërriti, trokit 'Provo përsëri' - nuk do të dërgohet dy herë.",
     sending: "Duke dërguar…",
+    storage_full: "Ruajtja lokale është plot. Shkarko raportin tani ose mbyll disa skeda dhe provo përsëri.",
     resend: "Provo përsëri",
     pf_desktop_t: "Pajisja",
     pf_desktop_d: "Kompjuter, laptop ose telefon.",
@@ -187,6 +188,7 @@ export const I18N = {
     send_fail: "We could not send the report. Tap 'Try again'.",
     send_uncertain: "The report was sent (not confirmed immediately). If it did not arrive, tap 'Try again' - it will not be emailed twice.",
     sending: "Sending…",
+    storage_full: "Local storage is full. Download the report now or close some tabs and try again.",
     resend: "Try again",
     pf_desktop_t: "Device",
     pf_desktop_d: "Desktop, laptop or phone.",

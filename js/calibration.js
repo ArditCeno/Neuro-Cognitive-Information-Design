@@ -9,10 +9,10 @@
  * accuracy target (a phone screen is much smaller).
  */
 
-import { CONFIG } from "./config.js?v=53";
-import { EyeTracking } from "./eyetracking.js?v=53";
-import { t } from "./i18n.js?v=53";
-import { el, mean, round, sleep } from "./utils.js?v=53";
+import { CONFIG } from "./config.js?v=55";
+import { EyeTracking } from "./eyetracking.js?v=55";
+import { t } from "./i18n.js?v=55";
+import { el, mean, round, sleep } from "./utils.js?v=55";
 
 const GRID = [
   [0.1, 0.1], [0.5, 0.1], [0.9, 0.1],
@@ -71,6 +71,7 @@ export const Calibration = {
 
   async _onClick(dot, tg, areaEl) {
     dot.classList.add("done");
+    try { if (navigator.vibrate) navigator.vibrate(12); } catch (e) { /* haptics are optional */ }
     const total = this._total || areaEl.querySelectorAll(".calib-dot").length;
     const done = total - areaEl.querySelectorAll(".calib-dot:not(.done)").length;
     // Keep the attempt label fixed (e.g. "Point - 1/1"); show point progress separately.

@@ -154,6 +154,8 @@ scripts/      generators, screenshot capture and tests
 - [`docs/PROTOCOL.md`](docs/PROTOCOL.md) — design, hypotheses, procedure, ethics
 - [`docs/ANALYSIS_PLAN.md`](docs/ANALYSIS_PLAN.md) — outcomes, models, multiplicity
 - [`docs/CODEBOOK.md`](docs/CODEBOOK.md) — every exported field and unit
+- [`docs/POWER.md`](docs/POWER.md) — sample-size planning (draft to fill)
+- [`docs/PREREGISTRATION.md`](docs/PREREGISTRATION.md) — OSF registration template
 - [`QUALITY.md`](QUALITY.md) — evidence-based scorecard and remaining gaps
 - [`ACCESSIBILITY.md`](ACCESSIBILITY.md) — targets, features and known limits
 - [`DEPLOY.md`](DEPLOY.md) — one-time backend setup and verification
@@ -163,15 +165,18 @@ scripts/      generators, screenshot capture and tests
 ```bash
 node scripts/test-all.mjs        # structure, materials, config, one-email guards
 node scripts/test-links.mjs      # local links, ids, alt text, EN/AL pairing
+node scripts/test-seo.mjs        # canonical, OG, manifest, sitemap, security.txt
 node scripts/test-aoi.mjs        # fixation/AOI unit checks
 node scripts/test-report.mjs     # end-to-end report with a named participant
 node scripts/test-endpoint.mjs   # live Apps Script admin/submission API
 node scripts/test-send.mjs desktop   # send a real test submission (or: phone)
 node scripts/capture-screenshots.mjs # regenerate the README gallery
+python -m unittest discover -s analysis -p "test_*.py"  # analysis unit tests
 ```
 
-**Current status:** 2 617 + 88 + 6 assertions passing, including one-email
-idempotency, calibration (1/1), link/HTML and AOI checks; CI and Pages deploy green.
+**Current status:** 2 617 + 379 + 109 + 6 + 88 checks passing, including
+one-email idempotency, calibration (1/1), link/HTML, SEO/PWA and AOI checks;
+CI and Pages deploy green.
 
 ## Deployment
 

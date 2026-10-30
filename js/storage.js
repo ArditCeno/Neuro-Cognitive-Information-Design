@@ -4,8 +4,8 @@
  * The export shape is assembled by js/schema.js (UML class model).
  */
 
-import { CONFIG } from "./config.js?v=53";
-import { isoNow, downloadJSON } from "./utils.js?v=53";
+import { CONFIG } from "./config.js?v=55";
+import { isoNow, downloadJSON } from "./utils.js?v=55";
 
 const K = CONFIG.storage;
 
@@ -67,14 +67,21 @@ export const Storage = {
   },
 
   write(s) {
-    try { localStorage.setItem(key(this.sessionId), JSON.stringify(s)); }
-    catch (e) { console.warn("Storage write failed", e); }
+    try {
+      localStorage.setItem(key(this.sessionId), JSON.stringify(s));
+      this.lastError = null;
+      return true;
+    } catch (e) {
+      this.lastError = e;
+      console.warn("Storage write failed", e);
+      return false;
+    }
   },
 
   patch(updater) {
     const s = this.read() || {};
     updater(s);
-    this.write(s);
+    return this.write(s);
   },
 
   addEvent(type, data) {
