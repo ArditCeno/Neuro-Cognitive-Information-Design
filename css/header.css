@@ -69,3 +69,12 @@
   .nav.nav-open .nav-links .nav-cta-link { display: block; font-weight: 700; color: #FF6E42; }
   .nav.nav-open .nav-links .nav-cta-link::after { display: none; }
 }
+
+/* Keyboard-only skip link (never visible unless focused) */
+.skip-link {
+  position: absolute; left: 8px; top: -60px; z-index: 200;
+  background: #0b2b3d; color: #F9F9F9; border: 1px solid rgba(255,255,255,.35);
+  border-radius: 10px; padding: 10px 14px; font-weight: 700; text-decoration: none;
+  transition: top .15s ease;
+}
+.skip-link:focus { top: 8px; outline: 3px solid #FF6E42; outline-offset: 2px; }

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this instrument or its materials, please cite it as below."
+title: "Neuro-Cognitive Information Design: an eye-tracking study of document readability"
+abstract: "A browser-based within-subjects eye-tracking study comparing structured and compressed document layouts across 12 professions and 3 levels of expertise."
+authors:
+  - family-names: "Ceno"
+    given-names: "Ardit"
+year: 2026
+version: 1.1.0
+url: "https://arditceno.github.io/Neuro-Cognitive-Information-Design/"
+repository-code: "https://github.com/ArditCeno/Neuro-Cognitive-Information-Design"
+license: "LicenseRef-Proprietary"
+keywords:
+  - eye tracking
+  - readability
+  - cognitive load
+  - information design
+  - NASA-TLX

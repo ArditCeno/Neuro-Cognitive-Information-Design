@@ -90,6 +90,9 @@ ok(/APPS_SCRIPT_URL/.test(edge) && /APPS_SCRIPT_TOKEN/.test(edge), "Edge Functio
 ok(existsSync("supabase/security.sql"), "security.sql present");
 ok(CONFIG.adminEmail === "arditceno82@gmail.com", "admin email configured");
 ok(CONFIG.fields.length === 12, "CONFIG fields loaded");
+ok(CONFIG.study.calibrationMaxAttempts === 1, "one calibration pass (9 points, no 3x repeat)");
+const calibCss = readFileSync("css/main.css", "utf8");
+ok(/calibPulse/.test(calibCss) && /width: 44px; height: 44px/.test(calibCss), "phone calibration targets are 44px+");
 
 // pages
 ["index.html", "study.html", "admin.html", "privacy.html", "terms.html"].forEach((p) =>
@@ -110,6 +113,10 @@ const appSrc = readFileSync("js/app.js", "utf8");
 ok(/submissionId:\s*Storage\.ensureSubmissionId\(\)/.test(appSrc), "export carries the stable submission id");
 ok(/state\.sending/.test(appSrc), "resend cannot run twice at once");
 ok(/reportWasSent\(sid\)/.test(appSrc), "resend respects the sent marker");
+const studySrc = readFileSync("study.html", "utf8");
+ok(/id="calibProgress"/.test(studySrc), "calibration progress element present");
+ok(appSrc.includes('${t("calib_point")} - ${attempt}/${max}'), "calibration label is X/Y (1/1 with one pass)");
+ok(appSrc.includes("Calibration.run($(\"calibArea\"), status, progress)"), "calibration receives the progress element");
 
 // content truth (no contradictory numbers)
 const readme = readFileSync("README.md", "utf8");

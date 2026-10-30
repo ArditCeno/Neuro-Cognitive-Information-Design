@@ -35,6 +35,7 @@
       '<a class="nav-cta-link" href="admin.html" data-view="admin" data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</a>';
 
     return '' +
+      '<a class="skip-link" href="#main" data-en="Skip to content" data-al="Kalo te përmbajtja">Skip to content</a>' +
       '<a class="brand" href="index.html">' +
         '<span class="brand-mark">' +
           '<span class="mono" aria-hidden="true"></span>' +

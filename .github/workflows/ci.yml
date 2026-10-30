@@ -22,6 +22,10 @@ jobs:
           exit $fail
       - name: Self-tests (structure, materials, diagrams, config)
         run: node scripts/test-all.mjs
+      - name: Link and HTML quality checks
+        run: node scripts/test-links.mjs
+      - name: AOI engine unit checks
+        run: node scripts/test-aoi.mjs
       - name: End-to-end report test (named participant)
         run: node scripts/test-report.mjs
       - name: Live endpoint check (admin/submission API)

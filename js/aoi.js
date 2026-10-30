@@ -6,8 +6,8 @@
  * the top-left of the scrollable document, independent of scrolling.
  */
 
-import { CONFIG } from "./config.js?v=49";
-import { mean, median, round } from "./utils.js?v=49";
+import { CONFIG } from "./config.js?v=52";
+import { mean, median, round } from "./utils.js?v=52";
 
 function dist(a, b) { return Math.hypot(a.x - b.x, a.y - b.y); }
 
@@ -22,11 +22,16 @@ export function detectFixations(samples, opts = {}) {
   let i = 0;
   while (i < pts.length - 1) {
     let j = i + 1;
+    // Incremental min/max: same result as slicing on every step, without
+    // allocating arrays inside the inner loop (large sessions run smoothly).
+    let minX = pts[i].dx, maxX = pts[i].dx;
+    let minY = pts[i].dy, maxY = pts[i].dy;
     while (j < pts.length) {
-      const xs = pts.slice(i, j + 1).map((p) => p.dx);
-      const ys = pts.slice(i, j + 1).map((p) => p.dy);
-      const d = (Math.max(...xs) - Math.min(...xs)) + (Math.max(...ys) - Math.min(...ys));
-      if (d <= disp) j++;
+      const p = pts[j];
+      const nx = Math.min(minX, p.dx), xx = Math.max(maxX, p.dx);
+      const ny = Math.min(minY, p.dy), yy = Math.max(maxY, p.dy);
+      const d = (xx - nx) + (yy - ny);
+      if (d <= disp) { minX = nx; maxX = xx; minY = ny; maxY = yy; j++; }
       else break;
     }
     const dur = pts[j - 1].t - pts[i].t;

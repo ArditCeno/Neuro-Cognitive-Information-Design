@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+
+Sitemap: https://arditceno.github.io/Neuro-Cognitive-Information-Design/sitemap.xml

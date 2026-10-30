@@ -5,22 +5,22 @@
  * (basic/intermediate/advanced), NASA-TLX after each module.
  */
 
-import { CONFIG } from "./config.js?v=49";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=49";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=49";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=49";
-import { EyeTracking } from "./eyetracking.js?v=49";
-import { Calibration } from "./calibration.js?v=49";
-import { Stimuli } from "./stimuli.js?v=49";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=49";
-import { Runner } from "./runner.js?v=49";
-import { Heatmap } from "./heatmap.js?v=49";
-import { Biometrics } from "./biometrics.js?v=49";
-import { Research } from "./research.js?v=49";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=49";
-import { EXPERTISE } from "./fields.js?v=49";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=49";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=49";
+import { CONFIG } from "./config.js?v=52";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=52";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=52";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=52";
+import { EyeTracking } from "./eyetracking.js?v=52";
+import { Calibration } from "./calibration.js?v=52";
+import { Stimuli } from "./stimuli.js?v=52";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=52";
+import { Runner } from "./runner.js?v=52";
+import { Heatmap } from "./heatmap.js?v=52";
+import { Biometrics } from "./biometrics.js?v=52";
+import { Research } from "./research.js?v=52";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=52";
+import { EXPERTISE } from "./fields.js?v=52";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=52";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=52";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -300,13 +300,15 @@ async function startCalibration() {
   try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
   if (state.calibTest) { if ($("calibDiag")) $("calibDiag").textContent = t("calib_test_note"); startCalibDiagnostics(); if ($("btnCopyCalib")) $("btnCopyCalib").classList.remove("hidden"); }
 
-  const max = CONFIG.study.calibrationMaxAttempts;
+  const max = Math.max(1, CONFIG.study.calibrationMaxAttempts || 1);
   let acc = null;
   let best = { acc: null, offset: { x: 0, y: 0 } };
+  const progress = $("calibProgress");
   for (let attempt = 1; attempt <= max; attempt++) {
     $("calibArea").innerHTML = "";
-    status.textContent = (EyeTracking.isTouch() ? t("calib_mobile_hint") + " " : "") + `${t("calib_point")} - ${attempt}/${max}`;
-    acc = await Calibration.run($("calibArea"), status);
+    const hint = EyeTracking.isTouch() ? t("calib_mobile_hint") + " " : "";
+    status.textContent = hint + `${t("calib_point")} - ${attempt}/${max}`;
+    acc = await Calibration.run($("calibArea"), status, progress);
     if (acc != null && (best.acc == null || acc < best.acc)) {
       best = { acc, offset: Object.assign({}, Calibration.offset) };
     }
@@ -328,7 +330,8 @@ async function startCalibration() {
     if (acc == null) status.textContent = t("calib_no_samples");
     else status.textContent = `${t("calib_result")}: ${acc} px  ` + (getLang() === "en" ? `(target < ${th} px)` : `(objektivi < ${th} px)`);
   } else {
-    status.textContent = `${t("calib_best")}: ${Calibration.accuracyPx} px. ` + (Calibration.isGood() ? t("calib_good") : t("calib_poor"));
+    const label = max > 1 ? t("calib_best") : t("calib_result");
+    status.textContent = `${label}: ${Calibration.accuracyPx} px. ` + (Calibration.isGood() ? t("calib_good") : t("calib_poor"));
     $("btnCalibNext").classList.remove("hidden");
   }
 }

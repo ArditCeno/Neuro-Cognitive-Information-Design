@@ -9,10 +9,10 @@
  * accuracy target (a phone screen is much smaller).
  */
 
-import { CONFIG } from "./config.js?v=49";
-import { EyeTracking } from "./eyetracking.js?v=49";
-import { t } from "./i18n.js?v=49";
-import { el, mean, round, sleep } from "./utils.js?v=49";
+import { CONFIG } from "./config.js?v=52";
+import { EyeTracking } from "./eyetracking.js?v=52";
+import { t } from "./i18n.js?v=52";
+import { el, mean, round, sleep } from "./utils.js?v=52";
 
 const GRID = [
   [0.1, 0.1], [0.5, 0.1], [0.9, 0.1],
@@ -26,7 +26,7 @@ export const Calibration = {
   offset: { x: 0, y: 0 },
   accuracyPx: null,
 
-  async run(areaEl, statusEl) {
+  async run(areaEl, statusEl, progressEl) {
     this.errors = [];
     this.offsets = [];
     this.offset = { x: 0, y: 0 };
@@ -35,17 +35,34 @@ export const Calibration = {
     areaEl.innerHTML = "";
 
     const rect = areaEl.getBoundingClientRect();
+    // Keep the edge dots fully inside the panel, especially on phones where a
+    // 40-44 px target plus its glow would otherwise be clipped.
+    const pad = Math.min(56, Math.max(34, rect.width * 0.14));
     const targets = GRID.map(([fx, fy], i) => ({
       i,
-      x: rect.width * fx,
-      y: rect.height * fy
+      x: Math.min(Math.max(rect.width * fx, pad), Math.max(pad, rect.width - pad)),
+      y: Math.min(Math.max(rect.height * fy, pad), Math.max(pad, rect.height - pad))
     }));
 
+    this._statusEl = statusEl;
+    this._progressEl = progressEl || null;
+    this._total = targets.length;
+    if (this._progressEl) this._progressEl.textContent = "0 / " + targets.length;
     targets.forEach((tg) => {
-      const dot = el("div", { class: "calib-dot", title: t("calib_point") + " " + (tg.i + 1) });
+      const label = t("calib_point") + " " + (tg.i + 1);
+      const dot = el("div", {
+        class: "calib-dot",
+        role: "button",
+        tabindex: "0",
+        "aria-label": label,
+        title: label
+      });
       dot.style.left = tg.x + "px";
       dot.style.top = tg.y + "px";
       dot.addEventListener("click", () => this._onClick(dot, tg, areaEl), { once: true });
+      dot.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); dot.click(); }
+      });
       areaEl.appendChild(dot);
     });
 
@@ -54,6 +71,10 @@ export const Calibration = {
 
   async _onClick(dot, tg, areaEl) {
     dot.classList.add("done");
+    const total = this._total || areaEl.querySelectorAll(".calib-dot").length;
+    const done = total - areaEl.querySelectorAll(".calib-dot:not(.done)").length;
+    // Keep the attempt label fixed (e.g. "Point - 1/1"); show point progress separately.
+    if (this._progressEl) this._progressEl.textContent = done + " / " + total;
     const touch = EyeTracking.isTouch();
     // Feed the tap position to the model explicitly: WebGazer only self-trains
     // on mouse events, so taps would otherwise never calibrate the model.
