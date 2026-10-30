@@ -17,6 +17,11 @@
   --radius: 18px;
 }
 
+@media (prefers-contrast: more) {
+  :root { --muted: #dbeaf2; --border: rgba(255, 255, 255, .35); }
+  .btn-ghost { border-width: 2px; }
+}
+
 * { box-sizing: border-box; }
 html {
   scroll-behavior: smooth;

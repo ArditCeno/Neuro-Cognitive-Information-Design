@@ -15,6 +15,11 @@
   --shadow: 0 10px 30px rgba(0, 0, 0, .4);
 }
 
+@media (prefers-contrast: more) {
+  :root { --muted: #dbeaf2; --border: #4f8aa6; }
+  .btn-ghost { border-width: 2px; }
+}
+
 * { box-sizing: border-box; }
 
 html, body {

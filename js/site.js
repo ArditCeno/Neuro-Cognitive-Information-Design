@@ -43,7 +43,7 @@
         '</span>' +
         '<span class="brand-text"><strong>Neuro-Cognitive</strong><small>Information Design</small></span>' +
       '</a>' +
-      '<nav class="nav-links">' + links + '</nav>' +
+      '<nav class="nav-links" aria-label="Primary">' + links + '</nav>' +
       '<div class="nav-actions">' +
         '<div class="langswitch" role="group" aria-label="Language">' +
           '<button data-lang="en" class="langbtn" aria-pressed="false">EN</button>' +
