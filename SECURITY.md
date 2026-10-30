@@ -15,12 +15,13 @@ server-side database write, so the researcher panel (`admin.html`) stays empty.
 
 This is a deliberate, documented trade-off chosen for simplicity:
 
-- the Apps Script URL + token live in `js/config.js` and are therefore public;
-- anyone who reads the source could post to the endpoint (mitigation: rotate the
-  Apps Script `TOKEN` script property and the config value; the endpoint still
-  rejects duplicate reports);
-- there is no per-IP rate limiting in this mode, but duplicate submissions are
-  deduplicated server-side (`sent_<submission_id>` and `sent_id_<id_anonim>`).
+- the Apps Script URL is public and the submission endpoint is **public by
+  design**; there is no submission secret in the repository or the page;
+- abuse controls are the one-email dedupe markers below and Google Apps
+  Script's own MailApp/Gmail quotas; there is **no per-IP rate limiting** in
+  this mode;
+- duplicate submissions are deduplicated server-side
+  (`sent_<submission_id>` and `sent_id_<id_anonim>`).
 
 To upgrade to the hardened model (server write + owner-only DB + rate limiting),
 follow the last section of this file.
@@ -99,7 +100,7 @@ external script origins, `object`/`embed`, and form posts to other origins.
 # 2. Set the function secrets
 supabase secrets set \
   APPS_SCRIPT_URL="https://script.google.com/macros/s/<id>/exec" \
-  APPS_SCRIPT_TOKEN="<the same token Code.gs expects>"
+  APPS_SCRIPT_TOKEN="optional-non-empty-value"   # Code.gs ignores it; the Edge fn only checks it exists
 
 # 3. Deploy the write path
 supabase functions deploy submit --no-verify-jwt
