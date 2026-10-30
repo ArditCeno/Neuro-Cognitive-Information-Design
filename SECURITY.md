@@ -116,3 +116,19 @@ security-sensitive reports.
 A machine-readable contact is published at
 `/.well-known/security.txt` (with a root fallback at `/security.txt`, because the
 GitHub Pages artifact uploader skips dot-folders). Expiry: 2027-10-30.
+
+## Repository hardening (enabled)
+
+- `main` is protected: force pushes and deletions are blocked, and the CI checks
+  **Web (JS syntax)** and **Python (analysis)** must pass before a pull request
+  can merge. Admin enforcement is on.
+- Secret scanning and push protection are enabled.
+- Dependabot alerts and automated security fixes are enabled; GitHub Actions
+  versions are updated weekly.
+- Workflows run with least privilege (`contents: read`) and do not persist git
+  credentials in the checkout.
+- The tokenless submission migration (no shared token, no database key in the
+  repository) is staged on the `security/remove-secrets` branch. It is merged
+  only after the tokenless Apps Script version is live; until then `main` keeps
+  the legacy token so participants can submit.
+- The admin password lives only in Script Properties.
