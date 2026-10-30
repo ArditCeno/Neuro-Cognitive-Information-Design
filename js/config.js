@@ -21,19 +21,21 @@ export const CONFIG = {
     fixationMinDurationMs: 100
   },
 
-  // Where the session is stored. Supabase publishable key = client-safe (RLS insert-only).
+  // Optional storage. Keys are injected at deploy time via js/config.local.js
+  // (gitignored) and never committed. The email endpoint is public by design.
   storage: {
     supabase: {
-      url: "https://kvfqvnvlledzzxstgdch.supabase.co",
-      anonKey: "sb_publishable_98Vch8De9ZGxo1ofHMxDzA_ZS8ZpfUv"
+      url: null,
+      anonKey: null
     },
     submission: {
       // Direct path: the browser posts to the Google Apps Script endpoint, which
       // emails the full report (name, ID, profession, results, NASA-TLX, answers,
       // biometrics) to the researcher. No server or Edge Function needed.
+      // Public endpoint: dedupe + Apps Script quotas are the abuse controls.
       url: null,
       fallbackUrl: "https://script.google.com/macros/s/AKfycbzGQ-_kIJ0lu2f5bGYDLPdW4u27dzDYaKHW88xEZFOZojDcD_fcBWfNqWapQioP_ZQf/exec",
-      fallbackToken: "ncid_k9f3Xq2Lm7Pz",
+      fallbackToken: "",
       includeGaze: false
     },
     backend: { url: null },        // optional Spring Boot API

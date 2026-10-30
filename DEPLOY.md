@@ -4,7 +4,7 @@ Everything in the code is ready. These steps wire the live backend (storing
 sessions + emailing the report) and prove it works end to end. Until step 5 is
 done, submissions only sit in the participant's browser and are lost.
 
-Project ref: `kvfqvnvlledzzxstgdch` (https://kvfqvnvlledzzxstgdch.supabase.co)
+Project ref: `<your-supabase-project-ref>` (https://`<your-project-ref>`.supabase.co)
 
 ---
 
@@ -37,8 +37,9 @@ Only this email can read data (`CONFIG.adminEmail`).
 
 1. https://script.google.com → **New project**.
 2. Replace the sample code with the whole of `email-setup/Code.gs`.
-3. **Project Settings → Script properties → Add property**:
-   `TOKEN = <a long random string>`.
+3. **Project Settings → Script properties**: set the admin password
+   (`ADMIN_PASSWORD`, or run `setupAdminPassword()` once). No submission token
+   is used; the endpoint is public and deduplicated by the script.
 4. **Deploy → New deployment → Web app**:
    Execute as **Me**, Who has access **Anyone**.
 5. Copy the **Web app URL** (ends with `/exec`).
@@ -50,7 +51,7 @@ Install the CLI once, then log in and deploy:
 ```bash
 npm i -g supabase
 supabase login                       # opens the browser
-supabase link --project-ref kvfqvnvlledzzxstgdch
+supabase link --project-ref <your-supabase-project-ref>
 
 supabase secrets set \
   APPS_SCRIPT_URL="<the /exec URL from step 3>" \
@@ -63,7 +64,7 @@ Confirm it is live (should return JSON, not 404):
 
 ```bash
 curl -s -o /dev/null -w "%{http_code}\n" -X POST \
-  "https://kvfqvnvlledzzxstgdch.supabase.co/functions/v1/submit" \
+  "https://<your-project-ref>.supabase.co/functions/v1/submit" \
   -H "Content-Type: application/json" -d '{"id_anonim":"SMOKE_TEST_0001"}'
 ```
 
@@ -88,9 +89,9 @@ researcher's email, and shows the sessions read from the mailbox. This needs the
 current `email-setup/Code.gs` deployed:
 
 1. Apps Script → paste the whole of `email-setup/Code.gs` → **Save**.
-2. **Project Settings → Script properties**: add **`TOKEN`** = `ncid_k9f3Xq2Lm7Pz`
-   (the value the study sends; without it every submission is rejected) and set
-   the admin password (`ADMIN_PASSWORD`, or run `setupAdminPassword()` once).
+2. **Project Settings → Script properties**: set the admin password
+   (`ADMIN_PASSWORD`, or run `setupAdminPassword()` once). No submission token
+   is used or stored in the repository.
 
 > **Never hardcode the admin password in `Code.gs` or commit it.** Keep it in
 > Script Properties only. If the password has ever been shared, pasted into a
@@ -120,8 +121,8 @@ node scripts/test-report.mjs   # end-to-end report with a named participant
 
 - [ ] Step 1 schema run
 - [ ] Step 2 admin user created and confirmed
-- [ ] Step 3 Apps Script deployed with the TOKEN property
-- [ ] Step 4 Edge Function deployed, `curl` returns 200
+- [ ] Step 3 Apps Script deployed with the admin password property
+- [ ] Step 4 Edge Function deployed (optional), `curl` returns 200
 - [ ] Step 5 one real session stored + emailed, test row deleted
-- [ ] Tried the study on a phone (should show the desktop-only notice) and a laptop
+- [ ] Tried the study on a phone (it runs; laptop is recommended) and a laptop
 - [ ] Recruit toward ~10 completed participants per profession (12 × 10 = 120)
