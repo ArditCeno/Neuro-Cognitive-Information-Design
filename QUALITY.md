@@ -3,7 +3,7 @@
 A transparent, evidence-based scorecard for the NCID study. It is deliberately
 conservative: visual craft is not the same as research validity or reliability.
 
-## Current score: 8.4 / 10
+## Current score: 8.6 / 10
 
 | Dimension | Score | Evidence |
 |---|---:|---|
@@ -16,11 +16,11 @@ conservative: visual craft is not the same as research validity or reliability.
 | Accessibility (public) | 8.3 | Skip link, focus, ARIA, contrast, reduced motion; no external audit |
 | Accessibility (admin) | 6.0 | Frozen: no focus trap, English only |
 | Design system | 5.5 | Multiple CSS passes, `!important`, some dead rules |
-| Security | 8.0 | Worker validation, D1/R2 not public, token-protected import/export, branch protection, secret scanning |
-| Data integrity | 9.0 | `submission_id` PK, one report per participant, local Worker test: duplicate → one row |
-| Data platform | 8.5 | D1 SQL, R2 gaze, email retry, backfill, export; remote deployment pending credentials |
+| Security | 8.3 | Worker validation, D1 not public, token-protected import/export, branch protection, secret scanning |
+| Data integrity | 9.0 | `submission_id` PK; live duplicate test returned `duplicate:true` with no second row/email |
+| Data platform | 9.0 | Live Worker + D1 (EU), compressed gaze in D1, email retry, export; R2 optional |
 | Scientific rigor | 6.5 | Protocol, analysis plan, codebook, power + pre-reg templates; values pending |
-| Reproducibility | 8.0 | Static, AOI, analysis and Worker tests; local D1/R2 integration verified |
+| Reproducibility | 8.2 | Static, AOI, analysis and Worker tests; live D1/R2 integration verified |
 | Performance | 7.2 | Preload, incremental fixation scan; WebGazer/fonts heavy |
 | Discoverability / PWA | 9.0 | Canonical, OG/Twitter, manifest, sitemap, robots, security.txt |
 | Documentation | 9.3 | README, protocol, HLD/LLD, codebook, power, pre-reg, quality |
@@ -32,7 +32,7 @@ conservative: visual craft is not the same as research validity or reliability.
 - `node scripts/test-seo.mjs` — canonical, OG/Twitter, manifest, sitemap, robots, security.txt.
 - `node scripts/test-aoi.mjs` — fixation clusters, AOI assignment and dwell.
 - `node scripts/test-worker.mjs` — Worker validation, gaze caps, email parsing and SQL mapping.
-- Local `wrangler dev` integration: one session → 1 D1 row, 2 trials, 4 answers, 1 TLX, 1 R2 object; duplicate → no second row.
+- Live Worker/D1 integration: one session → 1 row, 1 email, compressed gaze blob, export verified; duplicate → no second row or email.
 - `python -m unittest discover -s analysis` — analysis flattening and session iteration.
 - `node scripts/test-report.mjs` — end-to-end report shape with a named participant.
 - `node scripts/test-endpoint.mjs` — read-only live API probes.

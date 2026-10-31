@@ -104,7 +104,7 @@ report (`sessions.payload_json`) and normalized tables for analysis.
 | `identity.emri_mbiemer` | `identity.full_name` (private) |
 | `session.*` | `sessions.*` |
 | `modules[]` | `modules`, `trials`, `responses`, `module_tlx` |
-| `gaze[]` | R2 object; `gaze_objects` metadata |
+| `gaze[]` | compressed D1 blob by default (R2 optional); `gaze_objects` metadata |
 | `quiz_results.accuracy_score_pct` | `sessions.accuracy_pct` |
 
 Column names are ASCII (`profession`, `expertise`) to avoid Unicode identifiers
