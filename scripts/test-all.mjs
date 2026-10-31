@@ -89,10 +89,12 @@ const sqlSrc = readFileSync("sql/0001_init.sql", "utf8");
 ok(/submission_id\s+TEXT PRIMARY KEY/.test(sqlSrc), "SQL submission_id is the primary key");
 ok(/id_anonim\s+TEXT NOT NULL UNIQUE/.test(sqlSrc), "SQL enforces one report per participant");
 ok(/CREATE TABLE gaze_objects/.test(sqlSrc), "SQL stores gaze metadata");
+ok(/data_gz\s+BLOB/.test(sqlSrc) && /storage\s+TEXT/.test(sqlSrc), "SQL supports D1/R2 gaze storage");
 ok(/CREATE VIEW v_accuracy_by_format/.test(sqlSrc), "SQL analysis views present");
 const workerSrc = readFileSync("worker/src/index.js", "utf8");
 ok(/INSERT OR IGNORE INTO sessions/.test(workerSrc), "Worker uses idempotent session insert");
 ok(/storeGaze/.test(workerSrc) && /gaze_objects/.test(workerSrc), "Worker persists gaze metadata");
+ok(/MAX_D1_GAZE_BYTES/.test(workerSrc) && /storage, data_gz/.test(workerSrc), "Worker falls back to D1 when R2 is absent");
 ok(s.submission.includeGaze === true, "client sends raw gaze to the Worker");
 ok(existsSync("supabase/functions/submit/index.ts"), "Edge Function submit present");
 const edge = existsSync("supabase/functions/submit/index.ts")

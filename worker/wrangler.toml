@@ -8,13 +8,15 @@ workers_dev = true
 [[d1_databases]]
 binding = "DB"
 database_name = "ncid-db"
-database_id = "REPLACE_WITH_D1_DATABASE_ID"
+database_id = "6c6feb79-444d-4ff1-8fec-5890c03bdc88"
 migrations_dir = "../sql"
 
-# Create with: npx wrangler r2 bucket create ncid-gaze
-[[r2_buckets]]
-binding = "GAZE"
-bucket_name = "ncid-gaze"
+# R2 is OPTIONAL. Without this binding the Worker stores compressed gaze in D1
+# (free, no card). To enable R2 later, create the bucket, uncomment these lines,
+# and redeploy.
+# [[r2_buckets]]
+# binding = "GAZE"
+# bucket_name = "ncid-gaze"
 
 # Retry pending emails every 5 minutes.
 [triggers]
