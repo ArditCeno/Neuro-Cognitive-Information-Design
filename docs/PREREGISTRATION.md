@@ -33,7 +33,9 @@ recalibration allowed.
 ## 6. Sample
 
 - Population: adults 18+ working in, or training for, one of the 12 professions.
-- Target N: _to fill_ (see `docs/POWER.md`).
+- Target N: **80** after attrition (65 required before attrition; see
+  `docs/POWER.md`). Recruitment goal: 120 (10 per profession) for descriptive
+  coverage.
 - Exclusion: calibration error above threshold, gaze coverage < 60%, session
   shorter than the pilot minimum, consent withdrawn.
 

@@ -1,0 +1,26 @@
+name: Uptime monitor
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Worker health
+        run: |
+          curl -fsS --retry 3 --retry-delay 5 --max-time 20 \
+            https://ncid-api.ncid-study.workers.dev/health | grep -q '"ok":true'
+      - name: Study page
+        run: |
+          curl -fsS --retry 3 --retry-delay 5 --max-time 25 \
+            https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html > /dev/null
+      - name: Admin page reachable
+        run: |
+          curl -fsS --retry 3 --retry-delay 5 --max-time 25 \
+            https://arditceno.github.io/Neuro-Cognitive-Information-Design/admin.html > /dev/null

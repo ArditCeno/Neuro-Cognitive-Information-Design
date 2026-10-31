@@ -46,6 +46,15 @@ export default {
     if (url.pathname === "/import" && request.method === "POST") {
       return handleImport(request, env, origin);
     }
+    if (url.pathname === "/admin/login" && request.method === "POST") {
+      return handleAdmin(request, env, origin, "login");
+    }
+    if (url.pathname === "/admin/verify" && request.method === "POST") {
+      return handleAdmin(request, env, origin, "verify");
+    }
+    if (url.pathname === "/admin/data" && request.method === "POST") {
+      return handleAdmin(request, env, origin, "data");
+    }
     if (url.pathname === "/export/sessions" && request.method === "GET") {
       return handleExportSessions(request, env, origin);
     }
@@ -62,6 +71,34 @@ export default {
     ctx.waitUntil(retryPendingEmails(env));
   }
 };
+
+/**
+ * Proxy the Apps Script admin API through the Worker so the browser never puts
+ * the password in a JSONP URL. The Worker calls Google server-side and returns
+ * plain JSON. Apps Script keeps its own password/code/rate limits.
+ */
+async function handleAdmin(request, env, origin, action) {
+  if (!env.APPS_SCRIPT_URL) return jsonResponse({ ok: false, error: "missing_apps_script_url" }, 503, origin);
+  let body = {};
+  try { body = await request.json(); } catch (e) { return jsonResponse({ ok: false, error: "invalid_json" }, 400, origin); }
+
+  const target = new URL(env.APPS_SCRIPT_URL);
+  target.searchParams.set("action", action);
+  for (const key of ["email", "password", "code", "token"]) {
+    if (body[key] != null && body[key] !== "") target.searchParams.set(key, String(body[key]));
+  }
+
+  try {
+    const res = await fetch(target.toString(), { redirect: "follow", headers: { accept: "application/json" } });
+    const text = await res.text();
+    let data;
+    try { data = JSON.parse(text); }
+    catch (e) { return jsonResponse({ ok: false, error: "bad_upstream_response" }, 502, origin); }
+    return jsonResponse(data, res.ok ? 200 : 502, origin);
+  } catch (e) {
+    return jsonResponse({ ok: false, error: "upstream_unreachable" }, 502, origin);
+  }
+}
 
 async function handleSubmit(request, env, origin) {
   const len = Number(request.headers.get("content-length") || 0);

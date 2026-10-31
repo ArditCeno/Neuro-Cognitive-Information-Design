@@ -3,7 +3,7 @@
 A transparent, evidence-based scorecard for the NCID study. It is deliberately
 conservative: visual craft is not the same as research validity or reliability.
 
-## Current score: 8.6 / 10
+## Current score: 8.8 / 10
 
 | Dimension | Score | Evidence |
 |---|---:|---|
@@ -11,19 +11,19 @@ conservative: visual craft is not the same as research validity or reliability.
 | Landing page | 8.0 | Clear narrative, 12 professions, example A/B |
 | Study flow | 8.7 | Consent → setup → calibration → reading → quiz → TLX → report |
 | Calibration / mobile | 9.0 | One pass (1/1), 9 targets, 44 px, haptics, live progress |
-| Admin dashboard | 8.0 | Card dashboard, rings, A/B charts, drawer; frozen by request |
+| Admin dashboard | 8.8 | Card dashboard, focus trap, aria modal, POST proxy; English UI remains |
 | Content consistency | 8.7 | 12 professions, 3 levels, 3 modules, 30 minutes, phone |
 | Accessibility (public) | 8.3 | Skip link, focus, ARIA, contrast, reduced motion; no external audit |
-| Accessibility (admin) | 6.0 | Frozen: no focus trap, English only |
+| Accessibility (admin) | 8.0 | Focus trap, dialog semantics, status live region; English only |
 | Design system | 5.5 | Multiple CSS passes, `!important`, some dead rules |
-| Security | 8.3 | Worker validation, D1 not public, token-protected import/export, branch protection, secret scanning |
+| Security | 8.6 | Admin POST proxy, Worker validation, D1 not public, token-protected import/export, branch protection, secret scanning |
 | Data integrity | 9.0 | `submission_id` PK; live duplicate test returned `duplicate:true` with no second row/email |
 | Data platform | 9.0 | Live Worker + D1 (EU), compressed gaze in D1, email retry, export; R2 optional |
-| Scientific rigor | 6.5 | Protocol, analysis plan, codebook, power + pre-reg templates; values pending |
+| Scientific rigor | 7.0 | Power analysis N=80, prereg sample filled, audit/pilot plan; ethics/pilot pending |
 | Reproducibility | 8.2 | Static, AOI, analysis and Worker tests; live D1/R2 integration verified |
 | Performance | 7.2 | Preload, incremental fixation scan; WebGazer/fonts heavy |
 | Discoverability / PWA | 9.0 | Canonical, OG/Twitter, manifest, sitemap, robots, security.txt |
-| Documentation | 9.3 | README, protocol, HLD/LLD, codebook, power, pre-reg, quality |
+| Documentation | 9.4 | README, protocol, HLD/LLD, codebook, power, prereg, audit plan, quality |
 
 ## What is verified
 
