@@ -3,7 +3,7 @@
 A transparent, evidence-based scorecard for the NCID study. It is deliberately
 conservative: visual craft is not the same as research validity or reliability.
 
-## Current score: 8.8 / 10
+## Current score: 8.9 / 10
 
 | Dimension | Score | Evidence |
 |---|---:|---|
