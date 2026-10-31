@@ -1,7 +1,7 @@
 # Deploy and verify
 
-Current architecture: **GitHub Pages → Cloudflare Worker → D1 (SQL) + R2 (gaze) → Google Apps Script (email)**.
-Local analysis exports D1/R2 to `data/raw/` and reuses `analysis/`.
+Current architecture: **GitHub Pages → Cloudflare Worker → D1 (SQL + compressed gaze; R2 optional) → Google Apps Script (email)**.
+Local analysis exports D1 (and R2 if enabled) to `data/raw/` and reuses `analysis/`.
 
 The old Supabase + Edge Function path is legacy and not required (see the end).
 
@@ -18,7 +18,7 @@ The old Supabase + Edge Function path is legacy and not required (see the end).
 > Never hardcode the admin password in `Code.gs` or commit it. If it was ever
 > shared or committed, rotate it and deploy a new version.
 
-## 2. Cloudflare Worker + D1 + R2
+## 2. Cloudflare Worker + D1 (R2 optional)
 
 ```bash
 cd worker
@@ -27,7 +27,8 @@ npx wrangler login
 npx wrangler d1 create ncid-db
 # paste database_id into worker/wrangler.toml
 
-npx wrangler r2 bucket create ncid-gaze
+# Optional only if R2 is enabled and the token has R2 permission:
+# npx wrangler r2 bucket create ncid-gaze
 
 npx wrangler d1 migrations apply ncid-db --remote
 
@@ -40,7 +41,7 @@ npx wrangler deploy
 ```
 
 Copy the Worker URL. It looks like
-`https://ncid-api.<account>.workers.dev`.
+`https://ncid-api.ncid-study.workers.dev`.
 
 ## 3. Point the site at the Worker
 
@@ -49,7 +50,7 @@ In `js/config.js` (or the gitignored `js/config.local.js`):
 ```js
 storage: {
   submission: {
-    url: "https://ncid-api.<account>.workers.dev/submit",
+    url: "https://ncid-api.ncid-study.workers.dev/submit",
     fallbackUrl: "https://script.google.com/macros/s/.../exec",
     includeGaze: true
   }
@@ -62,7 +63,7 @@ is still emailed and can be backfilled later.
 ## 4. Verify
 
 ```bash
-curl https://ncid-api.<account>.workers.dev/health
+curl https://ncid-api.ncid-study.workers.dev/health
 # {"ok":true,"service":"ncid-api","version":"1.0.0"}
 
 curl "https://script.google.com/macros/s/<id>/exec"
@@ -88,7 +89,7 @@ Export the sessions from the admin panel or mailbox to
 
 ```bash
 cd worker
-IMPORT_TOKEN=... WORKER_URL=https://ncid-api.<account>.workers.dev \
+IMPORT_TOKEN=... WORKER_URL=https://ncid-api.ncid-study.workers.dev \
   node ../scripts/backfill.mjs ../data/raw/mailbox-sessions.json
 ```
 
@@ -98,10 +99,10 @@ skipped. Verify counts against the mailbox.
 ## 6. Local analysis export
 
 ```bash
-WORKER_URL=https://ncid-api.<account>.workers.dev EXPORT_TOKEN=... \
+WORKER_URL=https://ncid-api.ncid-study.workers.dev EXPORT_TOKEN=... \
   node scripts/export_d1.mjs
 
-WORKER_URL=https://ncid-api.<account>.workers.dev EXPORT_TOKEN=... \
+WORKER_URL=https://ncid-api.ncid-study.workers.dev EXPORT_TOKEN=... \
   node scripts/export_r2.mjs
 ```
 
@@ -125,10 +126,10 @@ function secrets. Do not put the service role key in the browser.
 
 - [ ] Apps Script deployed and `/exec` returns `2.0-tokenless`
 - [ ] D1 created, migration applied
-- [ ] R2 bucket created
+- [ ] (Optional) R2 bucket created and binding enabled
 - [ ] Worker deployed; `/health` returns `1.0.0`
 - [ ] `js/config.js` points to `/submit`
-- [ ] One test session → 1 DB row, 1 email, gaze in R2
+- [ ] One test session → 1 DB row, 1 email, gaze stored (D1 or R2)
 - [ ] Duplicate submission → `duplicate:true`, no second row/email
 - [ ] Backfill counts match the mailbox
 - [ ] Export produces `data/raw/session_*.json`

@@ -62,7 +62,7 @@
     </article>
     <article class="card">
       <h3>Storage, processors and access</h3>
-      <p>Sessions are stored in a Cloudflare D1 (SQL) database, raw gaze objects are stored in Cloudflare R2, and the report is emailed through Google Apps Script / Google Workspace. Cloudflare and Google act as data processors. Access is limited to the researcher; database exports are protected by a separate access token, and the identity table is kept apart from the analysis data.</p>
+      <p>Sessions are stored in a Cloudflare D1 (SQL) database, raw gaze is stored compressed in Cloudflare D1 (or Cloudflare R2 when enabled), and the report is emailed through Google Apps Script / Google Workspace. Cloudflare and Google act as data processors. Access is limited to the researcher; database exports are protected by a separate access token, and the identity table is kept apart from the analysis data.</p>
     </article>
     <article class="card">
       <h3>Retention</h3>

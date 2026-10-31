@@ -29,9 +29,8 @@ export const CONFIG = {
       anonKey: null
     },
     submission: {
-      // Primary: Cloudflare Worker (D1 + R2 + email). Set this after deploying
-      // worker/: "https://ncid-api.<account>.workers.dev/submit".
-      url: null,
+      // Primary: Cloudflare Worker (D1 + compressed gaze + email).
+      url: "https://ncid-api.ncid-study.workers.dev/submit",
       // Fallback: existing Apps Script email path (no database write).
       fallbackUrl: "https://script.google.com/macros/s/AKfycbzGQ-_kIJ0lu2f5bGYDLPdW4u27dzDYaKHW88xEZFOZojDcD_fcBWfNqWapQioP_ZQf/exec",
       fallbackToken: "",

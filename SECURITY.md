@@ -7,20 +7,20 @@ it that way.
 
 Contact for security issues: **arditceno82@gmail.com**
 
-## Current mode: Worker (D1 + R2) with an email fallback
+## Current mode: Worker (D1 + optional R2) with an email fallback
 
 The browser posts to a Cloudflare Worker, which writes structured data to D1,
-raw gaze to R2 and then calls the Apps Script endpoint to email the report. The
-Apps Script fallback remains available if the Worker is unreachable; those
-sessions can be backfilled later.
+compressed raw gaze to D1 (or R2 when enabled) and then calls the Apps Script
+endpoint to email the report. The Apps Script fallback remains available if the
+Worker is unreachable; those sessions can be backfilled later.
 
 Controls in this mode:
 
 - the Worker validates identifiers, body size, gaze sample count and CORS;
 - `submission_id` is a primary key and `id_anonim` is UNIQUE, so one participant
   produces one row and one email;
-- D1 and R2 are not public; `/submit` and `/health` are public, `/import` and
-  `/export/*` require server-side secrets;
+- D1 (and R2 when enabled) are not public; `/submit` and `/health` are public,
+  `/import` and `/export/*` require server-side secrets;
 - names live in a separate `identity` table and are excluded from analysis
   exports;
 - pending emails are retried by a Cron Trigger; Apps Script's

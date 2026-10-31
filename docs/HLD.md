@@ -12,9 +12,9 @@ analysis — with one email per participant.
 Participant browser
   │  HTTPS (JSON)
   ▼
-Cloudflare Worker  ──►  Cloudflare D1 (SQL)
+Cloudflare Worker  ──►  Cloudflare D1 (SQL + compressed gaze)
   │                        │
-  ├──► Cloudflare R2       └── /export ──► analysis/ (local)
+  ├──► R2 (optional)       └── /export ──► analysis/ (local)
   └──► Google Apps Script (email)
 ```
 
@@ -24,8 +24,8 @@ Components:
 |---|---|---|
 | GitHub Pages | Static site (study, admin, docs) | Free |
 | Cloudflare Worker | Validation, idempotency, orchestration, CORS, export | Free tier |
-| D1 | Structured SQL records + full report JSON | Free tier |
-| R2 | Raw gaze objects (gzip) | Free tier |
+| D1 | Structured SQL records, full report JSON, compressed gaze | Free tier |
+| R2 | Raw gaze objects (gzip), optional | Free tier |
 | Google Apps Script | Email delivery + mailbox admin | Free |
 | Local analysis (`analysis/`) | Cleaning, metrics, statistics, figures | Free |
 
@@ -38,19 +38,21 @@ Components:
    `INSERT OR IGNORE` on `submission_id`.
 4. If the insert changed 0 rows → duplicate; no email, no second row.
 5. Worker inserts modules, trials, responses and module-level NASA-TLX.
-6. Worker gzips the gaze array and writes `gaze/<submission_id>.json.gz` to R2;
-   D1 stores the key and metadata.
+6. Worker gzips the gaze array and stores it in R2 when the binding exists;
+   without R2 it stores the compressed blob in D1 (`gaze_objects.data_gz`).
 7. Worker calls Apps Script with the clean summary and the name; Apps Script
    emails the report. Its own `sent_<submission_id>` marker is a second guard.
 8. On email failure, `email_status='pending'` and a Cron Trigger retries every
    5 minutes (max 5 attempts).
-9. Local export reads D1 (`payload_json`, structured views) and R2 (gaze).
+9. Local export reads D1 (`payload_json`, structured views, D1 gaze) and R2
+   (gaze) when enabled.
 
 ## Trust boundaries
 
 - The browser is untrusted: size caps, identifier checks and duplicate rules run
   in the Worker.
-- D1/R2 are never exposed publicly; the Worker is the only write path.
+- D1 (and R2 when enabled) are never exposed publicly; the Worker is the only
+  write path.
 - The export routes require `EXPORT_TOKEN`; the backfill route requires
   `IMPORT_TOKEN`.
 - The admin password lives only in Apps Script Script Properties.
@@ -71,7 +73,7 @@ Components:
 |---|---|
 | Duplicate click / retry | `submission_id` PK → one row, one email |
 | Worker 5xx | Client falls back to Apps Script email; later backfill imports the email |
-| R2 unavailable | Session still stored; `gaze_status='failed'` |
+| R2 unavailable | Gaze is stored compressed in D1 (default); no data loss |
 | Email fails | Row stays `pending`; Cron retries; Apps Script dedupes |
 | D1 insert fails mid-way | Compensating delete; client can retry |
 

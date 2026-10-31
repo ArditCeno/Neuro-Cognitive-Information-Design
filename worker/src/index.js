@@ -19,6 +19,7 @@ import {
 
 const EMAIL_RETRY_MINUTES = 5;
 const EMAIL_MAX_ATTEMPTS = 5;
+const MAX_D1_GAZE_BYTES = 950000; // D1 row limit safety margin
 
 export default {
   async fetch(request, env) {
@@ -141,7 +142,7 @@ async function handleExportSessions(request, env, origin) {
   if (!exportAuth(request, env)) return jsonResponse({ ok: false, error: "unauthorized" }, 401, origin);
   const rows = await env.DB.prepare(
     `SELECT s.payload_json, s.submission_id, s.email_status, s.gaze_status,
-            g.r2_key AS gaze_key
+            g.r2_key AS gaze_key, g.storage AS gaze_storage
      FROM sessions s LEFT JOIN gaze_objects g ON g.submission_id = s.submission_id
      ORDER BY s.created_at DESC LIMIT 5000`
   ).all();
@@ -153,6 +154,7 @@ async function handleExportSessions(request, env, origin) {
       email_status: r.email_status,
       gaze_status: r.gaze_status,
       gaze_key: r.gaze_key || null,
+      gaze_storage: r.gaze_storage || null,
       payload
     };
   });
@@ -171,7 +173,31 @@ async function handleExportGaze(request, env) {
   if (!exportAuth(request, env)) return new Response("unauthorized", { status: 401 });
   const url = new URL(request.url);
   const key = decodeURIComponent(url.pathname.slice("/export/gaze/".length));
+
+  if (key.startsWith("d1:")) {
+    const sid = key.slice(3);
+    const row = await env.DB.prepare(
+      "SELECT data_gz, compressed FROM gaze_objects WHERE submission_id=?"
+    ).bind(sid).first();
+    if (!row || !row.data_gz) return new Response("not_found", { status: 404 });
+    // D1 may return the BLOB as ArrayBuffer, typed array or a Blob-like object.
+    let body = row.data_gz;
+    if (body && typeof body.arrayBuffer === "function") body = await body.arrayBuffer();
+    if (body instanceof ArrayBuffer) body = new Uint8Array(body);
+    else if (ArrayBuffer.isView(body)) body = new Uint8Array(body.buffer, body.byteOffset, body.byteLength);
+    else if (Array.isArray(body)) body = new Uint8Array(body);
+    return new Response(body, {
+      headers: {
+        "content-type": row.compressed ? "application/gzip" : "application/json",
+        "content-disposition": 'attachment; filename="' + sid + (row.compressed ? ".json.gz" : ".json") + '"',
+        "content-length": String((body && body.byteLength) || 0),
+        "cache-control": "no-store"
+      }
+    });
+  }
+
   if (!key.startsWith("gaze/")) return new Response("bad_key", { status: 400 });
+  if (!env.GAZE) return new Response("r2_not_enabled", { status: 404 });
   const obj = await env.GAZE.get(key);
   if (!obj) return new Response("not_found", { status: 404 });
   return new Response(obj.body, {
@@ -308,23 +334,41 @@ async function persistSession(env, v, opts) {
 async function storeGaze(env, sid, gaze) {
   if (!Array.isArray(gaze) || !gaze.length) return;
   if (gaze.length > MAX_GAZE_SAMPLES) return;
-  if (!env.GAZE) {
-    await env.DB.prepare("UPDATE sessions SET gaze_status='failed' WHERE submission_id=?").bind(sid).run();
-    return;
-  }
   try {
     const meta = gazeMeta(gaze);
     const gz = await gzipJson(gaze);
-    const key = "gaze/" + sid + (gz.compressed ? ".json.gz" : ".json");
-    await env.GAZE.put(key, gz.body, {
-      httpMetadata: { contentType: gz.compressed ? "application/gzip" : "application/json" }
-    });
+
+    if (env.GAZE) {
+      const key = "gaze/" + sid + (gz.compressed ? ".json.gz" : ".json");
+      await env.GAZE.put(key, gz.body, {
+        httpMetadata: { contentType: gz.compressed ? "application/gzip" : "application/json" }
+      });
+      await env.DB.batch([
+        env.DB.prepare(
+          `INSERT OR REPLACE INTO gaze_objects
+            (submission_id, r2_key, sample_count, duration_ms, bytes, sha256, compressed, storage, data_gz)
+           VALUES (?, ?, ?, ?, ?, ?, ?, 'r2', NULL)`
+        ).bind(sid, key, meta.count, meta.duration_ms, gz.bytes, gz.sha256, gz.compressed ? 1 : 0),
+        env.DB.prepare("UPDATE sessions SET gaze_status='stored' WHERE submission_id=?").bind(sid)
+      ]);
+      return;
+    }
+
+    // No R2 binding: keep the compressed gaze in D1 (free tier, no card).
+    if (gz.bytes > MAX_D1_GAZE_BYTES) {
+      await env.DB.prepare("UPDATE sessions SET gaze_status='failed' WHERE submission_id=?").bind(sid).run();
+      return;
+    }
+    const key = "d1:" + sid;
     await env.DB.batch([
       env.DB.prepare(
         `INSERT OR REPLACE INTO gaze_objects
-          (submission_id, r2_key, sample_count, duration_ms, bytes, sha256, compressed)
-         VALUES (?, ?, ?, ?, ?, ?, ?)`
-      ).bind(sid, key, meta.count, meta.duration_ms, gz.bytes, gz.sha256, gz.compressed ? 1 : 0),
+          (submission_id, r2_key, sample_count, duration_ms, bytes, sha256, compressed, storage, data_gz)
+         VALUES (?, ?, ?, ?, ?, ?, ?, 'd1', ?)`
+      ).bind(
+        sid, key, meta.count, meta.duration_ms, gz.bytes, gz.sha256, gz.compressed ? 1 : 0,
+        new Uint8Array(gz.body)
+      ),
       env.DB.prepare("UPDATE sessions SET gaze_status='stored' WHERE submission_id=?").bind(sid)
     ]);
   } catch (e) {

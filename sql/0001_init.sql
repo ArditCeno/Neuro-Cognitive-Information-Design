@@ -102,6 +102,8 @@ CREATE TABLE gaze_objects (
   bytes           INTEGER CHECK (bytes IS NULL OR bytes >= 0),
   sha256          TEXT,
   compressed      INTEGER NOT NULL DEFAULT 1 CHECK (compressed IN (0,1)),
+  storage         TEXT NOT NULL DEFAULT 'd1' CHECK (storage IN ('r2','d1')),
+  data_gz         BLOB,
   created_at      TEXT NOT NULL DEFAULT (strftime('%Y-%m-%dT%H:%M:%fZ','now'))
 );
 

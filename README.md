@@ -119,7 +119,7 @@ For **KShSN-UT 2026** (University of Tirana):
 
 ## Data and privacy
 
-Each finished session is stored once in **Cloudflare D1 (SQL)**, raw gaze is stored as a compressed object in **Cloudflare R2**, and the report is emailed to the researcher through **Google Apps Script**. No video is stored. Gaze coordinates and timings are linked to an anonymous ID. The optional name is stored in a separate, access-restricted `identity` table and appears in the email; it is excluded from the analysis export. See [privacy.html](privacy.html) and [terms.html](terms.html).
+Each finished session is stored once in **Cloudflare D1 (SQL)**, raw gaze is stored compressed in **Cloudflare D1** (or **R2** when enabled), and the report is emailed to the researcher through **Google Apps Script**. No video is stored. Gaze coordinates and timings are linked to an anonymous ID. The optional name is stored in a separate, access-restricted `identity` table and appears in the email; it is excluded from the analysis export. See [privacy.html](privacy.html) and [terms.html](terms.html).
 
 The Worker, schema and setup are in [`worker/README.md`](worker/README.md) and [`sql/0001_init.sql`](sql/0001_init.sql); the Apps Script email path remains the fallback (see [`DEPLOY.md`](DEPLOY.md)).
 
@@ -178,7 +178,7 @@ node scripts/capture-screenshots.mjs # regenerate the README gallery
 python -m unittest discover -s analysis -p "test_*.py"  # analysis unit tests
 ```
 
-**Current status:** 2 626 + 379 + 111 + 6 + 16 + 88 checks passing, including
+**Current status:** 2 628 + 379 + 111 + 6 + 16 + 88 checks passing, including
 one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI and Worker
 checks; CI and Pages deploy green.
 

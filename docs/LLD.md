@@ -87,9 +87,11 @@ layer.
 
 - Native WebGazer rate; no upsampling.
 - Cap: 250 000 samples per session; body cap 25 MB.
-- Stored as gzip JSON in R2: `gaze/<submission_id>.json.gz`.
-- D1: `gaze_objects(submission_id, r2_key, sample_count, duration_ms, bytes, sha256, compressed)`.
-- If R2 fails, the session is kept and `gaze_status='failed'`.
+- Stored as gzip JSON in D1 (`gaze_objects.data_gz`, `storage='d1'`) by default;
+  with R2 enabled it is stored as `gaze/<submission_id>.json.gz` (`storage='r2'`).
+- D1: `gaze_objects(submission_id, r2_key, sample_count, duration_ms, bytes, sha256, compressed, storage, data_gz)`.
+- Cap for the D1 fallback: ~950 KB compressed per session; larger sessions are
+  marked `gaze_status='failed'` (R2 removes this cap).
 
 ## Schema
 
@@ -107,7 +109,7 @@ Key tables:
 | `trials` | `trial_uid` | A/B metrics |
 | `responses` | `response_uid` | answers |
 | `module_tlx` | `module_uid` | NASA-TLX |
-| `gaze_objects` | `submission_id` | R2 pointer + metadata |
+| `gaze_objects` | `submission_id` | compressed gaze (D1) or R2 pointer + metadata |
 | `email_log` / `audit_log` / `deletion_log` | — | traceability |
 
 Views: `v_session_summary`, `v_trial_metrics`, `v_accuracy_by_format`,
@@ -115,8 +117,8 @@ Views: `v_session_summary`, `v_trial_metrics`, `v_accuracy_by_format`,
 
 ## Configuration
 
-- `worker/wrangler.toml`: D1 + R2 bindings, `APPS_SCRIPT_URL`, `ALLOWED_ORIGIN`,
-  Cron.
+- `worker/wrangler.toml`: D1 binding, optional R2 binding, `APPS_SCRIPT_URL`,
+  `ALLOWED_ORIGIN`, Cron.
 - Secrets: `IMPORT_TOKEN`, `EXPORT_TOKEN`, optional `APPS_SCRIPT_TOKEN`.
 - Client: `js/config.js` → `storage.submission.url` = Worker `/submit`;
   `includeGaze: true`; Apps Script remains the fallback.
@@ -132,6 +134,6 @@ Views: `v_session_summary`, `v_trial_metrics`, `v_accuracy_by_format`,
 
 - Daily: `node scripts/export_d1.mjs`, `node scripts/export_r2.mjs`.
 - Backup: export + D1 Time Travel (if available).
-- Deletion: delete `sessions` (cascade for related rows) + R2 key; log in
-  `deletion_log`.
+- Deletion: delete `sessions` (cascade for related rows) + D1 gaze blob / R2
+  key; log in `deletion_log`.
 - Monitoring: `wrangler tail`, `email_status='pending'` count, `gaze_status='failed'`.
