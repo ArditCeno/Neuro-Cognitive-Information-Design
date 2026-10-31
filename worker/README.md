@@ -68,7 +68,8 @@ IMPORT_TOKEN=... WORKER_URL=https://ncid-api.ncid-study.workers.dev \
 ```
 
 Both paths skip existing `submission_id` rows and mark backfilled sessions
-`email_status='sent'`, so no old email is resent.
+`email_status='sent'`, so no old email is resent. Synthetic test sessions
+(`TEST_*`, `LIVE_TEST_*`, `LOCAL_*`) are skipped automatically.
 
 ## Local development
 

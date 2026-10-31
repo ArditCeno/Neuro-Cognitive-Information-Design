@@ -158,12 +158,20 @@ async function importSessions(env, sessions) {
   for (const item of sessions.slice(0, 300)) {
     try {
       const summary = item.payload || item.summary || item;
+      const pid = String((summary.participant && summary.participant.id_anonim) || "");
+      const sid = String(item.submission_id || summary.submission_id || item.id ||
+        ("legacy_" + pid));
+      // Never import synthetic test sessions from the mailbox.
+      if (/^(TEST_|LIVE_TEST_|LOCAL_TEST_|LOCAL_D1_|BACKFILL_TEST_)/.test(sid) ||
+          /^(USR_LIVE_|USR_D1_|USR_LOCAL_|USR_BACK_)/.test(pid)) {
+        failed++;
+        continue;
+      }
       const identity = {
         emri_mbiemer: (item.name || (summary.participant && summary.participant.emri_mbiemer) || null)
       };
       const v = validateSubmission({
-        submission_id: item.submission_id || summary.submission_id || item.id ||
-          ("legacy_" + (summary.participant && summary.participant.id_anonim)),
+        submission_id: sid,
         summary,
         identity,
         gaze: []
