@@ -105,6 +105,10 @@ const studyHtml = readFileSync("study.html", "utf8");
 const cspAllowsWorker = (html) => /connect-src[^"]*https:\/\/ncid-api\.ncid-study\.workers\.dev/.test(html);
 ok(cspAllowsWorker(adminHtml), "admin CSP allows the Worker origin");
 ok(cspAllowsWorker(studyHtml), "study CSP allows the Worker origin");
+const indexHtml = readFileSync("index.html", "utf8");
+const studyInfoHtml = readFileSync("study-info.html", "utf8");
+ok(/"ResearchProject"/.test(indexHtml), "landing has ResearchProject JSON-LD");
+ok(/"FAQPage"/.test(studyInfoHtml), "study-info has FAQPage JSON-LD");
 ok(existsSync("supabase/functions/submit/index.ts"), "Edge Function submit present");
 const edge = existsSync("supabase/functions/submit/index.ts")
   ? readFileSync("supabase/functions/submit/index.ts", "utf8") : "";
