@@ -365,7 +365,7 @@ node scripts/capture-screenshots.mjs # regenerate the README gallery
 python -m unittest discover -s analysis -p "test_*.py"  # analysis unit tests
 ```
 
-**Current status:** **2,631 + 379 + 111 + 6 + 16 + 88** checks passing — including one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI, Worker and live API checks. CI, Pages deploy and the uptime monitor are green.
+**Current status:** **2,633 + 379 + 111 + 6 + 16 + 88** checks passing — including one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI, Worker and live API checks. CI, Pages deploy and the uptime monitor are green.
 
 ---
 

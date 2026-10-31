@@ -100,6 +100,11 @@ ok(/\/admin\/sync/.test(workerSrc), "Worker admin sync route present");
 ok(s.submission.includeGaze === true, "client sends raw gaze to the Worker");
 const adminSrc = readFileSync("js/admin.js", "utf8");
 ok(/postAdmin\("login"/.test(adminSrc) && /aria-modal/.test(adminSrc), "admin uses POST proxy and modal focus");
+const adminHtml = readFileSync("admin.html", "utf8");
+const studyHtml = readFileSync("study.html", "utf8");
+const cspAllowsWorker = (html) => /connect-src[^"]*https:\/\/ncid-api\.ncid-study\.workers\.dev/.test(html);
+ok(cspAllowsWorker(adminHtml), "admin CSP allows the Worker origin");
+ok(cspAllowsWorker(studyHtml), "study CSP allows the Worker origin");
 ok(existsSync("supabase/functions/submit/index.ts"), "Edge Function submit present");
 const edge = existsSync("supabase/functions/submit/index.ts")
   ? readFileSync("supabase/functions/submit/index.ts", "utf8") : "";
