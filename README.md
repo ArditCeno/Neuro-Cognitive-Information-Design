@@ -343,6 +343,7 @@ supabase/                 legacy optional path (not used by the live site)
 | [QUALITY.md](QUALITY.md) | Evidence-based scorecard and remaining gaps |
 | [ACCESSIBILITY.md](ACCESSIBILITY.md) | Targets, features and known limits |
 | [DEPLOY.md](DEPLOY.md) | One-time backend setup and verification |
+| [docs/DOMAIN.md](docs/DOMAIN.md) | Recommended `.com` domain and exact DNS/Pages migration |
 | [SECURITY.md](SECURITY.md) | 20-point hardening checklist |
 | [worker/README.md](worker/README.md) | Worker, D1, R2, secrets, backfill |
 | [assets/photos/CREDITS.md](assets/photos/CREDITS.md) | Photo licences and authors |
@@ -442,6 +443,7 @@ The analysis export contains the anonymous ID and measurements only; names stay 
 | 5 | R2 for raw gaze (optional) | Ready; enable the binding and redeploy |
 | 6 | Playwright + axe + Lighthouse CI | Planned |
 | 7 | CSS token consolidation | Known debt — see [QUALITY.md](QUALITY.md) |
+| 8 | Branded `.com` domain | Recommended: `ncidresearch.com` — [docs/DOMAIN.md](docs/DOMAIN.md) |
 
 ---
 
