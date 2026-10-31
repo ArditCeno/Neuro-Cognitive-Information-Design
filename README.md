@@ -156,8 +156,9 @@ scripts/      generators, screenshot capture and tests
 - [`docs/HLD.md`](docs/HLD.md) — high-level architecture and trust boundaries
 - [`docs/LLD.md`](docs/LLD.md) — API, schema, idempotency and retry details
 - [`docs/CODEBOOK.md`](docs/CODEBOOK.md) — every exported field and unit
-- [`docs/POWER.md`](docs/POWER.md) — sample-size planning (draft to fill)
+- [`docs/POWER.md`](docs/POWER.md) — sample-size planning (paired approximation: N=80)
 - [`docs/PREREGISTRATION.md`](docs/PREREGISTRATION.md) — OSF registration template
+- [`docs/AUDIT.md`](docs/AUDIT.md) — accessibility, security, pilot and release audit plan
 - [`QUALITY.md`](QUALITY.md) — evidence-based scorecard and remaining gaps
 - [`ACCESSIBILITY.md`](ACCESSIBILITY.md) — targets, features and known limits
 - [`DEPLOY.md`](DEPLOY.md) — one-time backend setup and verification
@@ -178,7 +179,7 @@ node scripts/capture-screenshots.mjs # regenerate the README gallery
 python -m unittest discover -s analysis -p "test_*.py"  # analysis unit tests
 ```
 
-**Current status:** 2 628 + 379 + 111 + 6 + 16 + 88 checks passing, including
+**Current status:** 2 630 + 379 + 111 + 6 + 16 + 88 checks passing, including
 one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI and Worker
 checks; CI and Pages deploy green.
 

@@ -95,7 +95,10 @@ const workerSrc = readFileSync("worker/src/index.js", "utf8");
 ok(/INSERT OR IGNORE INTO sessions/.test(workerSrc), "Worker uses idempotent session insert");
 ok(/storeGaze/.test(workerSrc) && /gaze_objects/.test(workerSrc), "Worker persists gaze metadata");
 ok(/MAX_D1_GAZE_BYTES/.test(workerSrc) && /storage, data_gz/.test(workerSrc), "Worker falls back to D1 when R2 is absent");
+ok(/handleAdmin/.test(workerSrc) && /\/admin\/login/.test(workerSrc), "Worker proxies the admin API");
 ok(s.submission.includeGaze === true, "client sends raw gaze to the Worker");
+const adminSrc = readFileSync("js/admin.js", "utf8");
+ok(/postAdmin\("login"/.test(adminSrc) && /aria-modal/.test(adminSrc), "admin uses POST proxy and modal focus");
 ok(existsSync("supabase/functions/submit/index.ts"), "Edge Function submit present");
 const edge = existsSync("supabase/functions/submit/index.ts")
   ? readFileSync("supabase/functions/submit/index.ts", "utf8") : "";

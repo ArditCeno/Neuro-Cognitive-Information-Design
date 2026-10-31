@@ -18,6 +18,7 @@
   var TARGET = 10;
   var TOKEN_KEY = "ncid_admin_token";
   var email = "";
+  var lastFocus = null;
   var LOW_ACCURACY_PX = 150;
   var COLORS = ["#0E7FB0", "#FF6E42", "#2F7FA0", "#004E72"];
 
@@ -58,7 +59,30 @@
     return by;
   }
 
-  /* ============================ JSONP ============================ */
+  /* ============================ Admin API ============================ */
+  function apiBase() {
+    var s = cfg().submission || {};
+    var u = s.url || "";
+    return u.replace(/\/submit\/?$/, "");
+  }
+
+  /* Prefer the Worker proxy: the password travels in a POST body, never a
+     JSONP URL. Fall back to the legacy JSONP path only if no Worker is set. */
+  async function postAdmin(action, params) {
+    var base = apiBase();
+    if (!base) return jsonp(Object.assign({ action: action }, params));
+    var res = await fetch(base + "/admin/" + action, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(params || {})
+    });
+    var data = {};
+    try { data = await res.json(); } catch (e) { /* ignore */ }
+    if (!res.ok) throw new Error(data.error || ("http_" + res.status));
+    return data;
+  }
+
+  /* Legacy JSONP (only when no Worker URL is configured). */
   function jsonp(params) {
     return new Promise(function (resolve, reject) {
       var base = endpoint();
@@ -111,6 +135,17 @@
       if (card) openProfession(card.getAttribute("data-fid"));
     });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDetail(); });
+    document.addEventListener("keydown", function (e) {
+      var d = $("detail");
+      if (!d || !d.classList.contains("open")) return;
+      if (e.key === "Escape") { closeDetail(); return; }
+      if (e.key !== "Tab") return;
+      var f = d.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
 
     var saved = sessionStorage.getItem(TOKEN_KEY);
 
@@ -134,7 +169,7 @@
     if (!pw) { loginMsg("Enter your password."); return; }
     loginMsg("Sending code…");
     try {
-      var res = await jsonp({ action: "login", email: email, password: pw });
+      var res = await postAdmin("login", { email: email, password: pw });
       if (!res || !res.ok) { loginMsg(emsg(res && res.error)); return; }
       $("codeStep").classList.remove("hidden");
       loginMsg("A 6-digit code was sent to " + email + ".");
@@ -147,7 +182,7 @@
     if (!/^\d{6}$/.test(code)) { loginMsg("Enter the 6-digit code."); return; }
     loginMsg("Verifying…");
     try {
-      var res = await jsonp({ action: "verify", email: email, code: code });
+      var res = await postAdmin("verify", { email: email, code: code });
       if (!res || !res.ok) { loginMsg(emsg(res && res.error)); return; }
       sessionStorage.setItem(TOKEN_KEY, res.token);
       loginMsg("");
@@ -169,7 +204,7 @@
     if (!token) return;
     if (!silent) note("Loading…");
     var res;
-    try { res = await jsonp({ action: "data", token: token }); }
+    try { res = await postAdmin("data", { token: token }); }
     catch (e) { note("Could not reach the server."); return; }
     if (!res || !res.ok) {
       if (res && res.error === "unauthorized") { sessionStorage.removeItem(TOKEN_KEY); location.reload(); return; }
@@ -358,8 +393,13 @@
       (details ? '<div class="panel"><h3>Answers, NASA-TLX and biometrics</h3>' + details + '</div>' : "");
 
     var drawer = $("detail");
+    lastFocus = document.activeElement;
     drawer.classList.add("open");
     drawer.setAttribute("aria-hidden", "false");
+    drawer.setAttribute("role", "dialog");
+    drawer.setAttribute("aria-modal", "true");
+    var close = $("btnCloseDetail");
+    if (close) { try { close.focus(); } catch (e) { /* ignore */ } }
   }
 
   function stat(lbl, val, sub) {
@@ -404,7 +444,14 @@
 
   function closeDetail() {
     var d = $("detail");
-    if (d) { d.classList.remove("open"); d.setAttribute("aria-hidden", "true"); }
+    if (d) {
+      d.classList.remove("open");
+      d.setAttribute("aria-hidden", "true");
+      d.removeAttribute("aria-modal");
+    }
+    if (lastFocus && document.contains(lastFocus)) {
+      try { lastFocus.focus(); } catch (e) { /* ignore */ }
+    }
   }
 
   function barChart(data) {
