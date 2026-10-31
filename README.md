@@ -119,9 +119,9 @@ For **KShSN-UT 2026** (University of Tirana):
 
 ## Data and privacy
 
-The study runs in **email mode**: each finished session is emailed to the researcher; nothing is stored in a database by default. No video is stored, only gaze coordinates and timings linked to an anonymous ID. The optional name appears in that email report only; the anonymous analysis payload itself never contains it. See [privacy.html](privacy.html) and [terms.html](terms.html).
+Each finished session is stored once in **Cloudflare D1 (SQL)**, raw gaze is stored as a compressed object in **Cloudflare R2**, and the report is emailed to the researcher through **Google Apps Script**. No video is stored. Gaze coordinates and timings are linked to an anonymous ID. The optional name is stored in a separate, access-restricted `identity` table and appears in the email; it is excluded from the analysis export. See [privacy.html](privacy.html) and [terms.html](terms.html).
 
-An optional server path (Supabase + Edge Function with owner-only reads) is included for later use: apply [`supabase/security.sql`](supabase/security.sql) and deploy `supabase/functions/submit` (see [`DEPLOY.md`](DEPLOY.md)).
+The Worker, schema and setup are in [`worker/README.md`](worker/README.md) and [`sql/0001_init.sql`](sql/0001_init.sql); the Apps Script email path remains the fallback (see [`DEPLOY.md`](DEPLOY.md)).
 
 ## Project layout
 
@@ -153,6 +153,8 @@ scripts/      generators, screenshot capture and tests
 
 - [`docs/PROTOCOL.md`](docs/PROTOCOL.md) — design, hypotheses, procedure, ethics
 - [`docs/ANALYSIS_PLAN.md`](docs/ANALYSIS_PLAN.md) — outcomes, models, multiplicity
+- [`docs/HLD.md`](docs/HLD.md) — high-level architecture and trust boundaries
+- [`docs/LLD.md`](docs/LLD.md) — API, schema, idempotency and retry details
 - [`docs/CODEBOOK.md`](docs/CODEBOOK.md) — every exported field and unit
 - [`docs/POWER.md`](docs/POWER.md) — sample-size planning (draft to fill)
 - [`docs/PREREGISTRATION.md`](docs/PREREGISTRATION.md) — OSF registration template
@@ -168,6 +170,7 @@ node scripts/test-all.mjs        # structure, materials, config, one-email guard
 node scripts/test-links.mjs      # local links, ids, alt text, EN/AL pairing
 node scripts/test-seo.mjs        # canonical, OG, manifest, sitemap, security.txt
 node scripts/test-aoi.mjs        # fixation/AOI unit checks
+node scripts/test-worker.mjs     # Worker validation, caps and email parsing
 node scripts/test-report.mjs     # end-to-end report with a named participant
 node scripts/test-endpoint.mjs   # live Apps Script admin/submission API
 node scripts/test-send.mjs desktop   # send a real test submission (or: phone)
@@ -175,9 +178,9 @@ node scripts/capture-screenshots.mjs # regenerate the README gallery
 python -m unittest discover -s analysis -p "test_*.py"  # analysis unit tests
 ```
 
-**Current status:** 2 617 + 379 + 111 + 6 + 88 checks passing, including
-one-email idempotency, calibration (1/1), link/HTML, SEO/PWA and AOI checks;
-CI and Pages deploy green.
+**Current status:** 2 626 + 379 + 111 + 6 + 16 + 88 checks passing, including
+one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI and Worker
+checks; CI and Pages deploy green.
 
 ## Deployment
 

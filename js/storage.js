@@ -177,33 +177,33 @@ function postViaIframe(url, payload, timeoutMs) {
 export async function uploadToEndpoint(summary, identity) {
   const cfg = K.submission;
   if (!cfg || (!cfg.url && !cfg.fallbackUrl)) return { ok: false, skipped: true };
+  // The analysis payload never carries the name or the raw gaze. Gaze travels
+  // in its own field only to the Worker, which stores it in R2.
+  const cleanSummary = JSON.parse(JSON.stringify(summary));
+  delete cleanSummary.gaze;
   const body = {
     id_anonim: summary.participant ? summary.participant.id_anonim : "unknown",
     submission_id: summary.submission_id,
     kind: summary.kind || "session",
-    summary,
+    summary: cleanSummary,
     identity: identity || null
   };
-  if (cfg.includeGaze) body.gaze = summary.gaze || [];
+  if (cfg.includeGaze && cfg.url) body.gaze = summary.gaze || [];
 
-  // 1) secure path: Supabase Edge Function
+  // 1) primary path: Cloudflare Worker (D1 + R2 + email)
   if (cfg.url) {
     try {
       const headers = { "Content-Type": "application/json" };
-      if (K.supabase && K.supabase.anonKey) {
-        headers.apikey = K.supabase.anonKey;
-        headers.Authorization = "Bearer " + K.supabase.anonKey;
-      }
       const res = await fetch(cfg.url, { method: "POST", headers, body: JSON.stringify(body) });
       let data = {};
       try { data = await res.json(); } catch (e) { /* non-JSON */ }
-      if (res.ok && data.ok !== false) return { ok: true, status: res.status, via: "edge" };
-    } catch (e) { /* fall through to the fallback */ }
+      if (res.ok && data.ok !== false) return { ok: true, status: res.status, via: "worker", duplicate: !!data.duplicate };
+    } catch (e) { /* fall through to the Apps Script fallback */ }
   }
 
-  // 2) Google Apps Script (email delivery): hidden-form post + postMessage reply
+  // 2) Google Apps Script fallback (email only): hidden-form post + postMessage reply
   if (cfg.fallbackUrl) {
-    const emailSummary = JSON.parse(JSON.stringify(summary));
+    const emailSummary = JSON.parse(JSON.stringify(cleanSummary));
     if (identity && identity.emri_mbiemer && emailSummary.participant) {
       emailSummary.participant.emri_mbiemer = identity.emri_mbiemer;
     }

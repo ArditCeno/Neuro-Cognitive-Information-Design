@@ -89,3 +89,23 @@ must not be renamed without a schema version bump).
 | `kind` | string | Always `session` |
 | `submission_id` | string | Stable id; one report per id |
 | `exported_at` | ISO timestamp | When the report was assembled |
+
+## SQL storage (D1)
+
+The JSON export remains the canonical report format. D1 stores both the full
+report (`sessions.payload_json`) and normalized tables for analysis.
+
+| JSON | SQL |
+|---|---|
+| `participant.id_anonim` | `participants.id_anonim` / `sessions.id_anonim` |
+| `participant.mosha` | `participants.age` |
+| `participant.profesioni` | `participants.profession` |
+| `participant.niveli_i_ekspertizës` | `participants.expertise` |
+| `identity.emri_mbiemer` | `identity.full_name` (private) |
+| `session.*` | `sessions.*` |
+| `modules[]` | `modules`, `trials`, `responses`, `module_tlx` |
+| `gaze[]` | R2 object; `gaze_objects` metadata |
+| `quiz_results.accuracy_score_pct` | `sessions.accuracy_pct` |
+
+Column names are ASCII (`profession`, `expertise`) to avoid Unicode identifiers
+in SQL; the JSON keys keep the original Albanian names.

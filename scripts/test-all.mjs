@@ -84,6 +84,16 @@ ok(
 ok(/^https:\/\/script\.google\.com\/macros\/s\/.+\/exec$/.test(s.submission.fallbackUrl || ""), "Apps Script email endpoint configured");
 ok(!s.submission.fallbackToken, "email token is not committed (injected as SUBMISSION_TOKEN)");
 ok(/js\/config\.local\.js/.test(readFileSync(".gitignore", "utf8")), "private config is gitignored");
+ok(existsSync("sql/0001_init.sql"), "SQL schema present");
+const sqlSrc = readFileSync("sql/0001_init.sql", "utf8");
+ok(/submission_id\s+TEXT PRIMARY KEY/.test(sqlSrc), "SQL submission_id is the primary key");
+ok(/id_anonim\s+TEXT NOT NULL UNIQUE/.test(sqlSrc), "SQL enforces one report per participant");
+ok(/CREATE TABLE gaze_objects/.test(sqlSrc), "SQL stores gaze metadata");
+ok(/CREATE VIEW v_accuracy_by_format/.test(sqlSrc), "SQL analysis views present");
+const workerSrc = readFileSync("worker/src/index.js", "utf8");
+ok(/INSERT OR IGNORE INTO sessions/.test(workerSrc), "Worker uses idempotent session insert");
+ok(/storeGaze/.test(workerSrc) && /gaze_objects/.test(workerSrc), "Worker persists gaze metadata");
+ok(s.submission.includeGaze === true, "client sends raw gaze to the Worker");
 ok(existsSync("supabase/functions/submit/index.ts"), "Edge Function submit present");
 const edge = existsSync("supabase/functions/submit/index.ts")
   ? readFileSync("supabase/functions/submit/index.ts", "utf8") : "";

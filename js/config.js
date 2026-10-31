@@ -29,14 +29,13 @@ export const CONFIG = {
       anonKey: null
     },
     submission: {
-      // Direct path: the browser posts to the Google Apps Script endpoint, which
-      // emails the full report (name, ID, profession, results, NASA-TLX, answers,
-      // biometrics) to the researcher. No server or Edge Function needed.
-      // Public endpoint: dedupe + Apps Script quotas are the abuse controls.
+      // Primary: Cloudflare Worker (D1 + R2 + email). Set this after deploying
+      // worker/: "https://ncid-api.<account>.workers.dev/submit".
       url: null,
+      // Fallback: existing Apps Script email path (no database write).
       fallbackUrl: "https://script.google.com/macros/s/AKfycbzGQ-_kIJ0lu2f5bGYDLPdW4u27dzDYaKHW88xEZFOZojDcD_fcBWfNqWapQioP_ZQf/exec",
       fallbackToken: "",
-      includeGaze: false
+      includeGaze: true
     },
     backend: { url: null },        // optional Spring Boot API
     keyName: "ncid_session_buffer_v1",

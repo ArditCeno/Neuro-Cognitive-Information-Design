@@ -38,3 +38,18 @@ skills-lock.json
 
 # local one-time secrets
 .secrets.local
+
+# Cloudflare Worker / D1 / R2 local state
+worker/.dev.vars
+.wrangler/
+worker/.wrangler/
+
+# local SQL learning database
+learning/
+*.db
+*.db-journal
+*.db-wal
+
+# exported research data (may contain identifiable material)
+data/raw/
+data/private/

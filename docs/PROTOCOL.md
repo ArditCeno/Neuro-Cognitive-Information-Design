@@ -72,11 +72,19 @@ Each format has its **own quiz** on the same content (8 items per document).
 
 ## 8. Data handling
 
-Default **email mode**: one HTML report per session to the researcher's mailbox.
-No video is stored. Gaze coordinates and timings are linked to an anonymous ID.
-The optional name appears only in the email report, never in the analysis payload.
-An optional Supabase path exists for later use. Deletion requests use the
-participant ID and are handled within 30 days.
+Each session is stored once in a Cloudflare D1 (SQL) database, with raw gaze
+stored as a compressed object in Cloudflare R2 and the report also emailed to the
+researcher through Google Apps Script. No video is stored.
+
+Gaze coordinates, blink samples and head orientation are linked to an anonymous
+ID. The optional name is stored in a separate, access-restricted `identity` table
+and in the email report; it is excluded from the analysis export. Older
+email-only sessions are backfilled idempotently by `submission_id` (or
+`id_anonim` for legacy reports).
+
+Deletion requests use the participant ID and remove the session, its rows, the
+R2 object and email copies within 30 days; the action is recorded in
+`deletion_log`.
 
 ## 9. Ethics
 

@@ -1,0 +1,28 @@
+name = "ncid-api"
+main = "src/index.js"
+compatibility_date = "2026-10-30"
+workers_dev = true
+
+# Create with: npx wrangler d1 create ncid-db
+# Then paste the database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "ncid-db"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
+migrations_dir = "../sql"
+
+# Create with: npx wrangler r2 bucket create ncid-gaze
+[[r2_buckets]]
+binding = "GAZE"
+bucket_name = "ncid-gaze"
+
+# Retry pending emails every 5 minutes.
+[triggers]
+crons = ["*/5 * * * *"]
+
+[vars]
+APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzGQ-_kIJ0lu2f5bGYDLPdW4u27dzDYaKHW88xEZFOZojDcD_fcBWfNqWapQioP_ZQf/exec"
+ALLOWED_ORIGIN = "https://arditceno.github.io"
+
+[observability]
+enabled = true
