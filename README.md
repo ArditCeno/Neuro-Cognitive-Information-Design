@@ -344,6 +344,7 @@ supabase/                 legacy optional path (not used by the live site)
 | [ACCESSIBILITY.md](ACCESSIBILITY.md) | Targets, features and known limits |
 | [DEPLOY.md](DEPLOY.md) | One-time backend setup and verification |
 | [docs/DOMAIN.md](docs/DOMAIN.md) | Recommended `.com` domain and exact DNS/Pages migration |
+| [docs/SEO.md](docs/SEO.md) | Keyword map, structured data, backlinks and 90-day SEO plan |
 | [SECURITY.md](SECURITY.md) | 20-point hardening checklist |
 | [worker/README.md](worker/README.md) | Worker, D1, R2, secrets, backfill |
 | [assets/photos/CREDITS.md](assets/photos/CREDITS.md) | Photo licences and authors |
@@ -366,7 +367,7 @@ node scripts/capture-screenshots.mjs # regenerate the README gallery
 python -m unittest discover -s analysis -p "test_*.py"  # analysis unit tests
 ```
 
-**Current status:** **2,633 + 379 + 111 + 6 + 16 + 88** checks passing — including one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI, Worker and live API checks. CI, Pages deploy and the uptime monitor are green.
+**Current status:** **2,635 + 379 + 111 + 6 + 16 + 88** checks passing — including one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI, Worker and live API checks. CI, Pages deploy and the uptime monitor are green.
 
 ---
 
@@ -443,7 +444,8 @@ The analysis export contains the anonymous ID and measurements only; names stay 
 | 5 | R2 for raw gaze (optional) | Ready; enable the binding and redeploy |
 | 6 | Playwright + axe + Lighthouse CI | Planned |
 | 7 | CSS token consolidation | Known debt — see [QUALITY.md](QUALITY.md) |
-| 8 | Branded `.com` domain | Recommended: `ncidresearch.com` — [docs/DOMAIN.md](docs/DOMAIN.md) |
+| 8 | Branded `.com` domain | Recommended: `ncidlab.com` / `readlytics.com` — [docs/DOMAIN.md](docs/DOMAIN.md) |
+| 9 | SEO growth | Structured data + keyword map ready — [docs/SEO.md](docs/SEO.md) |
 
 ---
 

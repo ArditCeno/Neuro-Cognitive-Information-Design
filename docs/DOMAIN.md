@@ -6,28 +6,30 @@
 
 | Rank | Domain | Why |
 |---:|---|---|
-| 1 | **ncidresearch.com** | Exact project acronym + "research"; authoritative, short, easy to say |
-| 2 | **ncidstudy.com** | Shorter, participant-friendly, still exact |
-| 3 | **cognitivelayout.com** | Descriptive of the science; memorable |
-| 4 | **designforcognition.com** | Mission-driven; good for talks and citations |
-| 5 | **readabilityscience.com** | Clear scientific framing; longer |
-| 6 | **ncidlab.com** | Very short; good for a lab identity |
-| 7 | **readablelab.com** | Brandable, less acronym-heavy |
-| 8 | **layoutclarity.com** | Plain-language description |
-| 9 | **readmindlab.com** | Brandable; less formal |
-| 10 | **eyereadlab.com** | Eye-tracking flavour |
+| 1 | **ncidlab.com** | 7 letters; short, academic, extensible lab identity |
+| 2 | **readlytics.com** | 10 letters; "reading analytics", brandable and topical |
+| 3 | **gazelytics.com** | 11 letters; eye-tracking analytics niche |
+| 4 | **ncidresearch.com** | Exact acronym + "research"; authoritative, longer |
+| 5 | **readneuro.com** | 9 letters; cognitive reading, slightly informal |
+| 6 | **ncidhq.com** | 6 letters; very short and brandable |
+| 7 | **ncidl.com** | 5 letters; shortest, but cryptic and possibly premium |
+| 8 | **ncidapp.com** | 7 letters; product-style, clear |
+| 9 | **eyereadlab.com** | 11 letters; descriptive eye-tracking lab |
+| 10 | **layoutmetrics.com** | 14 letters; descriptive, longer |
 
-Available at check time: `ncidresearch.com`, `ncidstudy.com`, `ncidlab.com`,
-`ncidlabs.com`, `ncidproject.com`, `ncidresearchlab.com`,
-`readabilityscience.com`, `cognitivelayout.com`, `designforcognition.com`,
-`readmindlab.com`, `eyereadlab.com`, `neuroreadlab.com`, `cognitivereading.com`,
-`readablelab.com`, `layoutclarity.com`.
+Available at check time: `ncidlab.com`, `readlytics.com`, `gazelytics.com`,
+`ncidresearch.com`, `readneuro.com`, `ncidhq.com`, `ncidl.com`, `ncidapp.com`,
+`eyereadlab.com`, `layoutmetrics.com`, `ncidlabs.com`, `ncidproject.com`,
+`ncidresearchlab.com`, `readabilityscience.com`, `cognitivelayout.com`,
+`designforcognition.com`, `readmindlab.com`, `neuroreadlab.com`,
+`cognitivereading.com`, `readablelab.com`, `layoutclarity.com`.
 
 Not available at check time: `readabilitylab.com`, `readclarity.com`,
 `clearlayout.com`, `readingclarity.com`, `clarityreading.com`, `readlab.com`,
 `neurodesignlab.com`, `ncid.com`.
 
-**Recommended choice:** **ncidresearch.com**.
+**Recommended choice:** **ncidlab.com** for a short lab brand, or
+**readlytics.com** if you want the domain to signal the topic.
 
 ## Why a .com
 
