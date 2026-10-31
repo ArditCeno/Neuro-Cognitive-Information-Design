@@ -31,6 +31,8 @@ jobs:
         run: node scripts/test-links.mjs
       - name: AOI engine unit checks
         run: node scripts/test-aoi.mjs
+      - name: Worker unit checks (validation, caps, email parsing)
+        run: node scripts/test-worker.mjs
       - name: SEO, metadata and PWA checks
         run: node scripts/test-seo.mjs
       - name: End-to-end report test (named participant)

@@ -7,24 +7,28 @@ it that way.
 
 Contact for security issues: **arditceno82@gmail.com**
 
-## Current mode: email-only (direct Apps Script)
+## Current mode: Worker (D1 + R2) with an email fallback
 
-The study currently sends every submission straight from the browser to a Google
-Apps Script endpoint, which emails the full report to the researcher. There is no
-server-side database write, so the researcher panel (`admin.html`) stays empty.
+The browser posts to a Cloudflare Worker, which writes structured data to D1,
+raw gaze to R2 and then calls the Apps Script endpoint to email the report. The
+Apps Script fallback remains available if the Worker is unreachable; those
+sessions can be backfilled later.
 
-This is a deliberate, documented trade-off chosen for simplicity:
+Controls in this mode:
 
-- the Apps Script URL is public and the submission endpoint is **public by
-  design**; there is no submission secret in the repository or the page;
-- abuse controls are the one-email dedupe markers below and Google Apps
-  Script's own MailApp/Gmail quotas; there is **no per-IP rate limiting** in
-  this mode;
-- duplicate submissions are deduplicated server-side
-  (`sent_<submission_id>` and `sent_id_<id_anonim>`).
+- the Worker validates identifiers, body size, gaze sample count and CORS;
+- `submission_id` is a primary key and `id_anonim` is UNIQUE, so one participant
+  produces one row and one email;
+- D1 and R2 are not public; `/submit` and `/health` are public, `/import` and
+  `/export/*` require server-side secrets;
+- names live in a separate `identity` table and are excluded from analysis
+  exports;
+- pending emails are retried by a Cron Trigger; Apps Script's
+  `sent_<submission_id>` marker is a second guard;
+- there is **no per-IP rate limiting in the Worker**; add a Cloudflare WAF
+  rate-limit rule if the study is widely advertised.
 
-To upgrade to the hardened model (server write + owner-only DB + rate limiting),
-follow the last section of this file.
+Free-tier quotas are documented in `docs/HLD.md`.
 
 ## Threat model (short)
 

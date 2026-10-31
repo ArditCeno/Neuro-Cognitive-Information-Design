@@ -1,128 +1,135 @@
-# Deploy and verify (one-time)
+# Deploy and verify
 
-Everything in the code is ready. These steps wire the live backend (storing
-sessions + emailing the report) and prove it works end to end. Until step 5 is
-done, submissions only sit in the participant's browser and are lost.
+Current architecture: **GitHub Pages → Cloudflare Worker → D1 (SQL) + R2 (gaze) → Google Apps Script (email)**.
+Local analysis exports D1/R2 to `data/raw/` and reuses `analysis/`.
 
-Project ref: `<your-supabase-project-ref>` (https://`<your-project-ref>`.supabase.co)
+The old Supabase + Edge Function path is legacy and not required (see the end).
 
----
+## 1. Apps Script (email sender)
 
-## 0. Repository / Pages
-
-- Repository must be **public**.
-- Settings → Pages → **Source = GitHub Actions** (no branch), custom domain empty.
-- The `Deploy to GitHub Pages` workflow publishes on every push to `main`.
-
----
-
-## 1. Create the schema
-
-Supabase → **SQL Editor** → New query → paste all of `supabase/security.sql` → **Run**.
-
-This creates `sessions`, `participant_identity`, `rate_limit`, the
-`check_rate_limit()` function, and locks reads to the owner only.
-
-## 2. Create the admin (researcher) login
-
-Supabase → **Authentication → Users → Add user**:
-
-- Email: `arditceno82@gmail.com`
-- Password: a strong password (this is what you type on `admin.html`)
-- Confirm the user (toggle "Auto confirm").
-
-Only this email can read data (`CONFIG.adminEmail`).
-
-## 3. Google Apps Script (email sender)
-
-1. https://script.google.com → **New project**.
-2. Replace the sample code with the whole of `email-setup/Code.gs`.
+1. https://script.google.com → open the existing project.
+2. Replace the code with `email-setup/Code.gs` → **Save**.
 3. **Project Settings → Script properties**: set the admin password
-   (`ADMIN_PASSWORD`, or run `setupAdminPassword()` once). No submission token
-   is used; the endpoint is public and deduplicated by the script.
-4. **Deploy → New deployment → Web app**:
-   Execute as **Me**, Who has access **Anyone**.
-5. Copy the **Web app URL** (ends with `/exec`).
+   (`ADMIN_PASSWORD`, or run `setupAdminPassword()` once). No submission token is
+   used; the endpoint is public and deduplicated.
+4. **Deploy → Manage deployments → Edit → Version: New version → Deploy**.
+5. Copy the `/exec` URL; it must match `worker/wrangler.toml` (`APPS_SCRIPT_URL`).
 
-## 4. Deploy the Edge Function
+> Never hardcode the admin password in `Code.gs` or commit it. If it was ever
+> shared or committed, rotate it and deploy a new version.
 
-Install the CLI once, then log in and deploy:
-
-```bash
-npm i -g supabase
-supabase login                       # opens the browser
-supabase link --project-ref <your-supabase-project-ref>
-
-supabase secrets set \
-  APPS_SCRIPT_URL="<the /exec URL from step 3>" \
-  APPS_SCRIPT_TOKEN="<the same TOKEN as step 3>"
-
-supabase functions deploy submit --no-verify-jwt
-```
-
-Confirm it is live (should return JSON, not 404):
+## 2. Cloudflare Worker + D1 + R2
 
 ```bash
-curl -s -o /dev/null -w "%{http_code}\n" -X POST \
-  "https://<your-project-ref>.supabase.co/functions/v1/submit" \
-  -H "Content-Type: application/json" -d '{"id_anonim":"SMOKE_TEST_0001"}'
+cd worker
+npx wrangler login
+
+npx wrangler d1 create ncid-db
+# paste database_id into worker/wrangler.toml
+
+npx wrangler r2 bucket create ncid-gaze
+
+npx wrangler d1 migrations apply ncid-db --remote
+
+npx wrangler secret put IMPORT_TOKEN
+npx wrangler secret put EXPORT_TOKEN
+# optional, only if Code.gs enforces a TOKEN:
+# npx wrangler secret put APPS_SCRIPT_TOKEN
+
+npx wrangler deploy
 ```
 
-## 5. Verify end to end
+Copy the Worker URL. It looks like
+`https://ncid-api.<account>.workers.dev`.
 
-1. Open the live study on a desktop with a camera:
-   https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html
-2. Complete one session, **enter a name and surname**.
-3. Check:
-   - the report email arrives at `arditceno82@gmail.com` (name, ID, profession,
-     expertise, age, session data, results, NASA-TLX, biometrics, every answer);
-   - the row appears in the admin panel after signing in at `/admin.html`.
-4. Delete the test row: in the admin panel find its `id_anonim`, or in Supabase
-   run `delete from sessions where id_anonim = '<id>';`.
+## 3. Point the site at the Worker
 
----
+In `js/config.js` (or the gitignored `js/config.local.js`):
 
-## Admin login (email + code)
+```js
+storage: {
+  submission: {
+    url: "https://ncid-api.<account>.workers.dev/submit",
+    fallbackUrl: "https://script.google.com/macros/s/.../exec",
+    includeGaze: true
+  }
+}
+```
 
-The admin panel signs in with email + password, then a 6-digit code sent to the
-researcher's email, and shows the sessions read from the mailbox. This needs the
-current `email-setup/Code.gs` deployed:
+The Apps Script fallback stays as a safety net; if the Worker is down the report
+is still emailed and can be backfilled later.
 
-1. Apps Script → paste the whole of `email-setup/Code.gs` → **Save**.
-2. **Project Settings → Script properties**: set the admin password
-   (`ADMIN_PASSWORD`, or run `setupAdminPassword()` once). No submission token
-   is used or stored in the repository.
-
-> **Never hardcode the admin password in `Code.gs` or commit it.** Keep it in
-> Script Properties only. If the password has ever been shared, pasted into a
-> chat, or committed to git, rotate it now: set a new `ADMIN_PASSWORD` (or run
-> `setupAdminPassword()` with a new value) and deploy a new version.
-3. **Deploy → Manage deployments → edit → Version: New version → Deploy** (this
-   keeps the same `/exec` URL). Authorise the new **Gmail** access when asked.
-4. Open `/admin.html`: enter `arditceno82@gmail.com` + your password → **Send
-   code** → enter the 6-digit code from the email → the panel loads.
-
-If the panel says "Could not reach the server", the deployment URL in
-`js/config.js` (`storage.submission.fallbackUrl`) must match the `/exec` URL.
-
-## Local checks (no backend needed)
+## 4. Verify
 
 ```bash
-node scripts/test-all.mjs      # structure, 108 materials, 108 diagrams, config
-node scripts/test-report.mjs   # end-to-end report with a named participant
+curl https://ncid-api.<account>.workers.dev/health
+# {"ok":true,"service":"ncid-api","version":"1.0.0"}
+
+curl "https://script.google.com/macros/s/<id>/exec"
+# {"ok":true,"service":"ncid","version":"2.0-tokenless"}
 ```
 
-`test-report.mjs` writes inspectable samples to `test-output/` (open
-`test-output/email.html` in a browser to see exactly what the email looks like).
+Submit one test session from `study.html`. Then:
 
----
+```bash
+cd worker
+npx wrangler d1 execute ncid-db --remote --command \
+  "SELECT submission_id, email_status, gaze_status FROM sessions ORDER BY created_at DESC LIMIT 5;"
+```
 
-## Before you distribute
+Expected: one row, `email_status='sent'`, `gaze_status='stored'`.
+Send the **same** submission twice: the second must return
+`{"ok":true,"duplicate":true}` and must not create a row or email.
 
-- [ ] Step 1 schema run
-- [ ] Step 2 admin user created and confirmed
-- [ ] Step 3 Apps Script deployed with the admin password property
-- [ ] Step 4 Edge Function deployed (optional), `curl` returns 200
-- [ ] Step 5 one real session stored + emailed, test row deleted
-- [ ] Tried the study on a phone (it runs; laptop is recommended) and a laptop
-- [ ] Recruit toward ~10 completed participants per profession (12 × 10 = 120)
+## 5. Backfill old sessions
+
+Export the sessions from the admin panel or mailbox to
+`data/raw/mailbox-sessions.json`, then:
+
+```bash
+cd worker
+IMPORT_TOKEN=... WORKER_URL=https://ncid-api.<account>.workers.dev \
+  node ../scripts/backfill.mjs ../data/raw/mailbox-sessions.json
+```
+
+Rows are inserted with `source='backfill'`, `email_status='sent'`; duplicates are
+skipped. Verify counts against the mailbox.
+
+## 6. Local analysis export
+
+```bash
+WORKER_URL=https://ncid-api.<account>.workers.dev EXPORT_TOKEN=... \
+  node scripts/export_d1.mjs
+
+WORKER_URL=https://ncid-api.<account>.workers.dev EXPORT_TOKEN=... \
+  node scripts/export_r2.mjs
+```
+
+Analysis payloads: `data/raw/session_*.json` (no names).
+Names: `data/private/identity.json` (gitignored, never in the analysis dataset).
+
+## 7. GitHub Pages source
+
+- The repo includes `.nojekyll` for the legacy branch build.
+- Recommended: Settings → Pages → **Source = GitHub Actions**; the existing
+  `deploy-pages.yml` then becomes the single source of truth.
+- Do not keep both a branch build and a workflow build active.
+
+## Legacy: Supabase (optional)
+
+The old Supabase path is not used and can be ignored. If you ever revive it:
+apply `supabase/security.sql`, deploy `supabase/functions/submit`, and set the
+function secrets. Do not put the service role key in the browser.
+
+## Checklist
+
+- [ ] Apps Script deployed and `/exec` returns `2.0-tokenless`
+- [ ] D1 created, migration applied
+- [ ] R2 bucket created
+- [ ] Worker deployed; `/health` returns `1.0.0`
+- [ ] `js/config.js` points to `/submit`
+- [ ] One test session → 1 DB row, 1 email, gaze in R2
+- [ ] Duplicate submission → `duplicate:true`, no second row/email
+- [ ] Backfill counts match the mailbox
+- [ ] Export produces `data/raw/session_*.json`
+- [ ] Admin login works with the Script Property password

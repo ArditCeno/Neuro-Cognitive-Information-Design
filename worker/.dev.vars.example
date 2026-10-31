@@ -1,0 +1,5 @@
+# Copy to .dev.vars (gitignored) and fill in.
+IMPORT_TOKEN=change-me-to-a-long-random-string
+EXPORT_TOKEN=change-me-to-another-long-random-string
+# Optional: only needed if Code.gs enforces a TOKEN property.
+APPS_SCRIPT_TOKEN=
