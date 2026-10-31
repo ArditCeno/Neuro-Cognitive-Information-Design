@@ -55,6 +55,9 @@ export default {
     if (url.pathname === "/admin/data" && request.method === "POST") {
       return handleAdmin(request, env, origin, "data");
     }
+    if (url.pathname === "/admin/sync" && request.method === "POST") {
+      return handleAdminSync(request, env, origin);
+    }
     if (url.pathname === "/export/sessions" && request.method === "GET") {
       return handleExportSessions(request, env, origin);
     }
@@ -146,6 +149,11 @@ async function handleImport(request, env, origin) {
   const sessions = Array.isArray(body) ? body : (body && body.sessions);
   if (!Array.isArray(sessions)) return jsonResponse({ ok: false, error: "expected_sessions_array" }, 400, origin);
 
+  const counts = await importSessions(env, sessions);
+  return jsonResponse({ ok: true, ...counts }, 200, origin);
+}
+
+async function importSessions(env, sessions) {
   let inserted = 0, duplicate = 0, failed = 0;
   for (const item of sessions.slice(0, 300)) {
     try {
@@ -167,7 +175,30 @@ async function handleImport(request, env, origin) {
       failed++;
     }
   }
-  return jsonResponse({ ok: true, inserted, duplicate, failed }, 200, origin);
+  return { inserted, duplicate, failed, total: sessions.length };
+}
+
+async function handleAdminSync(request, env, origin) {
+  if (!env.APPS_SCRIPT_URL) return jsonResponse({ ok: false, error: "missing_apps_script_url" }, 503, origin);
+  let body = {};
+  try { body = await request.json(); } catch (e) { return jsonResponse({ ok: false, error: "invalid_json" }, 400, origin); }
+  const token = String(body.token || "");
+  if (!token) return jsonResponse({ ok: false, error: "unauthorized" }, 401, origin);
+
+  const target = new URL(env.APPS_SCRIPT_URL);
+  target.searchParams.set("action", "data");
+  target.searchParams.set("token", token);
+  try {
+    const res = await fetch(target.toString(), { redirect: "follow", headers: { accept: "application/json" } });
+    const data = await res.json();
+    if (!data || !data.ok) {
+      return jsonResponse({ ok: false, error: (data && data.error) || "unauthorized" }, 401, origin);
+    }
+    const counts = await importSessions(env, data.sessions || []);
+    return jsonResponse({ ok: true, ...counts }, 200, origin);
+  } catch (e) {
+    return jsonResponse({ ok: false, error: "upstream_unreachable" }, 502, origin);
+  }
 }
 
 function exportAuth(request, env) {

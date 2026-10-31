@@ -124,6 +124,7 @@
     on("btnLogout", "click", logout);
     on("btnReload", "click", function () { load(); });
     on("btnCsv", "click", csv);
+    on("btnSync", "click", syncToD1);
     on("btnDemo", "click", toggleDemo);
     on("q", "input", renderDash);
     on("btnCloseDetail", "click", closeDetail);
@@ -191,6 +192,22 @@
   }
 
   function logout() { sessionStorage.removeItem(TOKEN_KEY); location.reload(); }
+
+  async function syncToD1() {
+    var token = sessionStorage.getItem(TOKEN_KEY);
+    if (!token) return;
+    if (!window.confirm("Import all mailbox sessions into the D1 database? This is safe to run more than once.")) return;
+    note("Syncing to D1…");
+    try {
+      var res = await postAdmin("sync", { token: token });
+      if (!res || !res.ok) { note(emsg(res && res.error)); return; }
+      note("D1 sync: " + (res.inserted || 0) + " new, " + (res.duplicate || 0) +
+        " skipped" + (res.failed ? ", " + res.failed + " failed" : "") + ".");
+      if ((res.total || 0) >= 300) note("Synced the first 300; run again for the rest.");
+    } catch (e) {
+      note("Sync failed. Try again.");
+    }
+  }
 
   function enterPanel() {
     if ($("loginCard")) $("loginCard").classList.add("hidden");

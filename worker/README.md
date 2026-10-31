@@ -56,16 +56,19 @@ Expected: `{"ok":true,"service":"ncid-api","version":"1.0.0"}`
 
 ## Backfill from the mailbox
 
-Export the existing sessions from the admin panel (or your mailbox) to a JSON
-file, then:
+**One click:** log in to `admin.html` and press **Sync to D1** in the dashboard
+header. It reads the mailbox through Apps Script and imports every session
+idempotently. For more than 300 sessions, press it again.
+
+**Script alternative:** export the sessions to JSON and run:
 
 ```bash
 IMPORT_TOKEN=... WORKER_URL=https://ncid-api.ncid-study.workers.dev \
   node scripts/backfill.mjs data/raw/mailbox-sessions.json
 ```
 
-The importer is idempotent: existing `submission_id` rows are skipped, and
-backfilled sessions are marked `email_status='sent'` so no old email is resent.
+Both paths skip existing `submission_id` rows and mark backfilled sessions
+`email_status='sent'`, so no old email is resent.
 
 ## Local development
 
