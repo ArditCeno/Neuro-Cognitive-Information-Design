@@ -30,13 +30,20 @@
   <link rel="alternate icon" href="assets/logo.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="css/main.css?v=55" />
-  <link rel="stylesheet" href="css/header.css?v=55" />
-  <link rel="stylesheet" href="css/materials.css?v=55" />
+  <link rel="stylesheet" href="css/main.css?v=58" />
+  <link rel="stylesheet" href="css/header.css?v=58" />
+  <link rel="stylesheet" href="css/materials.css?v=58" />
   <link rel="canonical" href="https://arditceno.github.io/Neuro-Cognitive-Information-Design/study.html" />
   <link rel="manifest" href="site.webmanifest" />
 </head>
 <body>
+  <div class="study-bg" id="studyBg" aria-hidden="true">
+    <video id="studyVideo" muted loop playsinline preload="none" poster="assets/video/poster.jpg" disablepictureinpicture>
+      <source src="assets/video/study-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="study-bg-scrim"></div>
+  </div>
+  <button id="btnBgToggle" class="bg-toggle" type="button" aria-pressed="true" data-i18n="bg_pause">Pause background</button>
   <div id="site-header"></div>
 
   <div class="progressbar"><div id="progressFill"></div></div>
@@ -227,8 +234,8 @@
     <span>Neuro-Cognitive Information Design · v1.0</span>
   </footer>
 
-  <script src="js/site.js?v=55"></script>
+  <script src="js/site.js?v=58"></script>
   <script src="js/config.local.js" onerror="void 0"></script>
-  <script type="module" src="js/app.js?v=55"></script>
+  <script type="module" src="js/app.js?v=58"></script>
 </body>
 </html>

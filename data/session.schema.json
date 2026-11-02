@@ -24,7 +24,9 @@
         "gjuha": { "type": "string", "enum": ["al", "en"] },
         "metoda": { "type": "string", "enum": ["eyetracking", "mouse", "mock"], "description": "mouse = MouseView.js plan B" },
         "rendi_modulave": { "type": "array", "items": { "type": "string" } },
-        "fusha": { "type": "array", "items": { "type": "string" } }
+        "fusha": { "type": "array", "items": { "type": "string" } },
+        "background_video": { "type": "integer", "enum": [0, 1], "description": "1 if the muted ambient loop played" },
+        "background_video_paused": { "type": "integer", "enum": [0, 1], "description": "1 if the participant paused the ambient loop" }
       }
     },
     "modules": {
