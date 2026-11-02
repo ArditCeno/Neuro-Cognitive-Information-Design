@@ -27,6 +27,8 @@ must not be renamed without a schema version bump).
 | `kohëzgjatja_min` | number | Session duration in minutes |
 | `shfletuesi` | string | Browser name |
 | `pajisja` | string | Device class |
+| `background_video` | 0 \| 1 | Muted ambient loop played during the session |
+| `background_video_paused` | 0 \| 1 | Participant paused the ambient loop |
 
 ## Module
 

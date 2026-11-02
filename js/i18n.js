@@ -1,6 +1,6 @@
 /*
  * Bilingual interface strings (Albanian / English).
- * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=55';
+ * Usage: import { t, getLang, setLang, applyI18n } from './i18n.js?v=58';
  */
 
 export const I18N = {
@@ -124,6 +124,8 @@ export const I18N = {
     email_failed: "Dërgimi me email dështoi (kontrollo konfigurimin).",
 
     panel_title: "Panel kërkuesi",
+    bg_pause: "Pauzo sfondin",
+    bg_play: "Luaj sfondin",
     panel_heatmap: "Harta e nxehtësisë",
     panel_metrics: "Metrikat e provës",
     session_counter: "Numri i sesionit",
@@ -243,6 +245,8 @@ export const I18N = {
     done_delete_request: "Request data deletion",
 
     panel_title: "Researcher panel",
+    bg_pause: "Pause background",
+    bg_play: "Play background",
     panel_heatmap: "Heatmap",
     panel_metrics: "Trial metrics",
     session_counter: "Session number",

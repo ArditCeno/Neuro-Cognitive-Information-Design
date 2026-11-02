@@ -70,11 +70,18 @@ Each format has its **own quiz** on the same content (8 items per document).
 5. Three modules; each: read A → quiz A → read B → quiz B → preference → NASA-TLX.
 6. Report emailed once to the researcher; participant sees their ID.
 
+A muted, 20-second ambient background video loops from the start of the study.
+It is dimmed and paused during calibration and fades out on the done screen; a
+visible pause control is provided. `background_video` and
+`background_video_paused` flags are stored with each session so the analysis can
+account for the ambient condition. The video carries no audio.
+
 ## 8. Data handling
 
 Each session is stored once in a Cloudflare D1 (SQL) database, with raw gaze
-stored as a compressed object in Cloudflare R2 and the report also emailed to the
-researcher through Google Apps Script. No video is stored.
+stored as a compressed blob in D1 (or R2 when enabled) and the report also emailed
+to the researcher through Google Apps Script. No camera video is stored; the
+ambient background video is a static site asset, not participant data.
 
 Gaze coordinates, blink samples and head orientation are linked to an anonymous
 ID. The optional name is stored in a separate, access-restricted `identity` table

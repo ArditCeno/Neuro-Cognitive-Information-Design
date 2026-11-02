@@ -5,22 +5,22 @@
  * (basic/intermediate/advanced), NASA-TLX after each module.
  */
 
-import { CONFIG } from "./config.js?v=55";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=55";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=55";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=55";
-import { EyeTracking } from "./eyetracking.js?v=55";
-import { Calibration } from "./calibration.js?v=55";
-import { Stimuli } from "./stimuli.js?v=55";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=55";
-import { Runner } from "./runner.js?v=55";
-import { Heatmap } from "./heatmap.js?v=55";
-import { Biometrics } from "./biometrics.js?v=55";
-import { Research } from "./research.js?v=55";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=55";
-import { EXPERTISE } from "./fields.js?v=55";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=55";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=55";
+import { CONFIG } from "./config.js?v=58";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=58";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=58";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=58";
+import { EyeTracking } from "./eyetracking.js?v=58";
+import { Calibration } from "./calibration.js?v=58";
+import { Stimuli } from "./stimuli.js?v=58";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=58";
+import { Runner } from "./runner.js?v=58";
+import { Heatmap } from "./heatmap.js?v=58";
+import { Biometrics } from "./biometrics.js?v=58";
+import { Research } from "./research.js?v=58";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=58";
+import { EXPERTISE } from "./fields.js?v=58";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=58";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=58";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -43,7 +43,9 @@ const state = {
   readStart: 0,
   readingSec: 0,
   gazeSamples: [],
-  heatPoints: []
+  heatPoints: [],
+  videoEnabled: false,
+  videoPaused: false
 };
 
 const $ = (id) => document.getElementById(id);
@@ -56,7 +58,113 @@ function showStage(name) {
   $("progressFill").style.width = (idx / (STAGES.length - 1)) * 100 + "%";
   $("progressText").textContent = `${t("step")} ${idx + 1} ${t("of")} ${STAGES.length}`;
   window.scrollTo({ top: 0, behavior: "smooth" });
+  BackgroundVideo.onStage(name);
 }
+
+/* Ambient background video: muted, looping, paused/dimmed during calibration,
+   faded out on the done screen. There is deliberately no unmute control. */
+const BackgroundVideo = (() => {
+  const KEY = "ncid_bg_paused";
+  let video = null, wrap = null, btn = null;
+  let userPaused = false, inCalibration = false, finished = false, enabled = false;
+  const reduce = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : { matches: false };
+  const saveData = !!(navigator.connection && navigator.connection.saveData);
+
+  function setLabel() {
+    if (!btn) return;
+    const paused = !video || video.paused;
+    const key = paused ? "bg_play" : "bg_pause";
+    btn.setAttribute("data-i18n", key);
+    btn.setAttribute("aria-label", t(key));
+    btn.setAttribute("aria-pressed", paused ? "false" : "true");
+    btn.textContent = t(key);
+  }
+
+  function canPlay() {
+    return !userPaused && !inCalibration && !finished && !reduce.matches && !saveData;
+  }
+
+  function play() {
+    if (!video || !canPlay()) { setLabel(); return; }
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+    video.play().then(() => {
+      enabled = true;
+      state.videoEnabled = true;
+      document.body.classList.add("study-video");
+      setLabel();
+    }).catch(() => setLabel());
+  }
+
+  function pause() {
+    if (video) video.pause();
+    setLabel();
+  }
+
+  function onStage(name) {
+    if (!video) return;
+    inCalibration = name === "calibration";
+    if (wrap) wrap.classList.toggle("calib-dim", inCalibration);
+    if (inCalibration) {
+      pause();
+    } else if (name === "done") {
+      finished = true;
+      if (wrap) wrap.classList.add("done-fade");
+      pause();
+    } else {
+      play();
+    }
+    if (btn) btn.classList.toggle("hidden", inCalibration || finished || reduce.matches || saveData);
+  }
+
+  function toggle() {
+    if (!video || inCalibration || finished) return;
+    if (video.paused) {
+      userPaused = false;
+    } else {
+      userPaused = true;
+      video.pause();
+    }
+    state.videoPaused = userPaused;
+    try { localStorage.setItem(KEY, userPaused ? "1" : "0"); } catch (e) { /* ignore */ }
+    if (userPaused) pause(); else play();
+    setLabel();
+  }
+
+  function init() {
+    video = $("studyVideo");
+    wrap = $("studyBg");
+    btn = $("btnBgToggle");
+    if (!video) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+    try { userPaused = localStorage.getItem(KEY) === "1"; } catch (e) { userPaused = false; }
+    state.videoPaused = userPaused;
+    if (btn && (reduce.matches || saveData)) btn.classList.add("hidden");
+    if (btn) btn.addEventListener("click", toggle);
+    video.addEventListener("play", setLabel);
+    video.addEventListener("pause", setLabel);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) pause();
+      else if (!finished) play();
+    });
+    if (reduce.addEventListener) {
+      reduce.addEventListener("change", () => {
+        if (btn) btn.classList.toggle("hidden", reduce.matches || saveData);
+        if (reduce.matches) pause(); else play();
+      });
+    }
+    // The study page is opened by the landing "Start the study" click.
+    play();
+    setLabel();
+    // If the browser blocked autoplay, the first interaction starts it.
+    document.addEventListener("click", () => { if (!enabled) play(); }, { once: true });
+  }
+
+  return { init, onStage };
+})();
 
 /* ---------------------------- Boot ---------------------------- */
 window.addEventListener("error", (e) => {
@@ -101,6 +209,7 @@ function boot() {
   window.addEventListener("ncid:lang", onLangChange);
   buildSelects();
   applyI18n();
+  BackgroundVideo.init();
   showStage("welcome");
 
   const consentCheck = $("consentCheck");
@@ -594,7 +703,9 @@ function buildExport() {
   const session = Object.assign({}, Storage.read().session, {
     "kohëzgjatja_min": state.startedAt ? round((performance.now() - state.startedAt) / 60000, 2) : null,
     shfletuesi: detectBrowser().name,
-    pajisja: detectBrowser().device
+    pajisja: detectBrowser().device,
+    background_video: state.videoEnabled ? 1 : 0,
+    background_video_paused: state.videoPaused ? 1 : 0
   });
 
   return assembleSession({
@@ -742,6 +853,11 @@ async function renderReportExtras(summary) {
     const r = await emailReport(summary);
     msg.textContent = r.ok ? t("email_sent") : t("email_failed");
   }
+}
+
+if (["localhost", "127.0.0.1"].includes(location.hostname)) {
+  window.__ncidShowStage = showStage;
+  window.__ncidBg = BackgroundVideo;
 }
 
 boot();

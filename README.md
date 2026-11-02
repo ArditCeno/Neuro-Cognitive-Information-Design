@@ -65,6 +65,7 @@ An eye-tracking and biometric study across **12 professions**, **3 expertise lev
 | **Session** | Consent → setup → 1/1 calibration → 3 modules → TLX → report |
 | **Duration** | About 30 minutes |
 | **Eye tracking** | WebGazer + MediaPipe FaceMesh (blink and head pose) |
+| **Ambient** | Muted 20s background loop; dimmed/paused during calibration, fades on done |
 | **Data** | Cloudflare D1 (SQL, EU) + compressed gaze; Apps Script email |
 | **Guarantee** | One report per participant; retries never send a second email |
 | **Cost** | 0 — GitHub Pages, Workers, D1, Apps Script free tiers |
@@ -367,7 +368,7 @@ node scripts/capture-screenshots.mjs # regenerate the README gallery
 python -m unittest discover -s analysis -p "test_*.py"  # analysis unit tests
 ```
 
-**Current status:** **2,635 + 379 + 111 + 6 + 16 + 88** checks passing — including one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI, Worker and live API checks. CI, Pages deploy and the uptime monitor are green.
+**Current status:** **2,639 + 379 + 111 + 6 + 16 + 88** checks passing — including one-email idempotency, calibration (1/1), link/HTML, SEO/PWA, AOI, Worker and live API checks. CI, Pages deploy and the uptime monitor are green.
 
 ---
 
