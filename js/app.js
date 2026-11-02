@@ -5,22 +5,22 @@
  * (basic/intermediate/advanced), NASA-TLX after each module.
  */
 
-import { CONFIG } from "./config.js?v=58";
-import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=58";
-import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=58";
-import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=58";
-import { EyeTracking } from "./eyetracking.js?v=58";
-import { Calibration } from "./calibration.js?v=58";
-import { Stimuli } from "./stimuli.js?v=58";
-import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=58";
-import { Runner } from "./runner.js?v=58";
-import { Heatmap } from "./heatmap.js?v=58";
-import { Biometrics } from "./biometrics.js?v=58";
-import { Research } from "./research.js?v=58";
-import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=58";
-import { EXPERTISE } from "./fields.js?v=58";
-import { renderNodeMap, renderHashmap } from "./visualize.js?v=58";
-import { downloadReport, emailReport, emailConfigured } from "./report.js?v=58";
+import { CONFIG } from "./config.js?v=61";
+import { t, tr, getLang, setLang, applyI18n } from "./i18n.js?v=61";
+import { anonId, now, round, detectBrowser, sleep, mean, el } from "./utils.js?v=61";
+import { Storage, exportSummary, exportGaze, submitAndQueue, flushPending, hasTarget } from "./storage.js?v=61";
+import { EyeTracking } from "./eyetracking.js?v=61";
+import { Calibration } from "./calibration.js?v=61";
+import { Stimuli } from "./stimuli.js?v=61";
+import { computeMetrics, summarizeSessionMetrics } from "./aoi.js?v=61";
+import { Runner } from "./runner.js?v=61";
+import { Heatmap } from "./heatmap.js?v=61";
+import { Biometrics } from "./biometrics.js?v=61";
+import { Research } from "./research.js?v=61";
+import { stimulusMeta, alignGazeSamples, buildTrial, buildModule, assembleSession } from "./schema.js?v=61";
+import { EXPERTISE } from "./fields.js?v=61";
+import { renderNodeMap, renderHashmap } from "./visualize.js?v=61";
+import { downloadReport, emailReport, emailConfigured } from "./report.js?v=61";
 
 const STAGES = ["welcome", "registration", "setup", "calibration", "task", "done"];
 
@@ -183,12 +183,14 @@ function mountHeaderControls() {
   badge.className = "badge badge-warn" + (state.mock ? "" : " hidden");
   badge.setAttribute("data-i18n", "mock_on");
   badge.textContent = t("mock_on");
-  const btn = document.createElement("button");
-  btn.id = "btnResearcher";
-  btn.className = "btn btn-ghost btn-sm";
-  btn.setAttribute("data-i18n", "panel_title");
-  btn.textContent = t("panel_title");
-  actions.insertBefore(btn, actions.firstChild);
+  if (new URLSearchParams(location.search).get("researcher") === "1") {
+    const btn = document.createElement("button");
+    btn.id = "btnResearcher";
+    btn.className = "btn btn-ghost btn-sm";
+    btn.setAttribute("data-i18n", "panel_title");
+    btn.textContent = t("panel_title");
+    actions.insertBefore(btn, actions.firstChild);
+  }
   actions.insertBefore(badge, actions.firstChild);
 }
 
@@ -200,6 +202,10 @@ function boot() {
     try { if (EyeTracking.ensureVideoPlaying) EyeTracking.ensureVideoPlaying(); } catch (e) { /* ignore */ }
   };
   mountHeaderControls();
+  if (new URLSearchParams(location.search).get("researcher") === "1") {
+    const researcherCard = $("researcherDoneCard");
+    if (researcherCard) researcherCard.classList.remove("hidden");
+  }
   if (location.protocol === "file:") {
     const warn = document.createElement("div");
     warn.style.cssText = "background:#7a2b12;color:#fff;padding:10px 16px;text-align:center;font-weight:600;font-size:14px";

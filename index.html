@@ -29,12 +29,12 @@
   <link rel="icon" href="assets/logo.png" type="image/png" />
   <link rel="alternate icon" href="assets/logo.png" />
   <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-  <link rel="stylesheet" href="css/landing.css?v=58" />
-  <link rel="stylesheet" href="css/header.css?v=58" />
+  <link rel="stylesheet" href="css/landing.css?v=61" />
+  <link rel="stylesheet" href="css/header.css?v=61" />
   <style>
     .view { padding: 0; }
     .view.hidden { display: none; }
-    #testFrame, #adminFrame { width: 100%; border: 0; display: block; height: calc(100vh - 64px); height: calc(100dvh - 64px); background: #092634; }
+    #testFrame { width: 100%; border: 0; display: block; height: calc(100vh - 64px); height: calc(100dvh - 64px); background: #092634; }
     body.fullscreen-view { overflow: hidden; }
     body.fullscreen-view #site-footer { display: none; }
     body.fullscreen-view .view { height: calc(100vh - 64px); height: calc(100dvh - 64px); }
@@ -97,7 +97,6 @@
           <div class="hero2-cta">
             <a class="btn btn-primary btn-lg" href="study.html" data-view="test"><span data-en="Start the study" data-al="Fillo studimin">Start the study</span></a>
             <a class="btn btn-ghost btn-lg" href="study-info.html"><span data-en="What to expect" data-al="Çfarë të presësh">What to expect</span></a>
-            <a class="btn btn-ghost btn-lg" href="admin.html" data-view="admin"><span data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</span></a>
           </div>
           <div class="clarify">
             <span data-en="From complexity" data-al="Nga kompleksiteti">From complexity</span><br>
@@ -193,18 +192,14 @@
     <iframe id="testFrame" title="Test"></iframe>
   </section>
 
-  <!-- ADMIN -->
-  <section id="view-admin" class="view hidden">
-    <iframe id="adminFrame" title="Admin"></iframe>
-  </section>
 </main>
 
 <div id="site-footer"></div>
-<script src="js/site.js?v=58"></script>
+<script src="js/site.js?v=61"></script>
 <script>
   (function () {
-    var frames = { test: "testFrame", admin: "adminFrame" };
-    var files = { test: "study.html", admin: "admin.html" };
+    var frames = { test: "testFrame" };
+    var files = { test: "study.html" };
     function navHeight() {
       var h = document.querySelector("#site-header .nav");
       return h ? h.offsetHeight : 64;
@@ -220,7 +215,7 @@
     window.addEventListener("orientationchange", function () { setTimeout(resizeFrames, 400); });
 
     function show(v) {
-      ["view-home", "view-test", "view-admin"].forEach(function (id) {
+      ["view-home", "view-test"].forEach(function (id) {
         var el = document.getElementById(id);
         if (el) el.classList.toggle("hidden", id !== "view-" + v);
       });
@@ -247,7 +242,6 @@
       if (!a) return;
       var href = a.getAttribute("href") || "";
       if (/study\.html/.test(href)) { e.preventDefault(); show("test"); return; }
-      if (/admin\.html/.test(href)) { e.preventDefault(); show("admin"); return; }
       if (/^(about|methodology|fields|contact)\.html$/.test(href)) {
         e.preventDefault(); show("home");
         var sec = document.getElementById(href.replace(".html", ""));
