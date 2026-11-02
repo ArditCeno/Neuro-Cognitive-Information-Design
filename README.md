@@ -98,6 +98,14 @@ An eye-tracking and biometric study across **12 professions**, **3 expertise lev
   <tr>
     <td colspan="2" align="center"><sub>Researcher dashboard: 12 professions, A vs. B per module, live delivery</sub></td>
   </tr>
+  <tr>
+    <td width="50%"><img src="assets/screenshots/study-video-desktop.png" alt="Study page with ambient video" width="100%" /></td>
+    <td width="50%"><img src="assets/screenshots/study-video-mobile.png" alt="Study page with ambient video on a phone" width="100%" /></td>
+  </tr>
+  <tr>
+    <td align="center"><sub>Ambient video background — desktop</sub></td>
+    <td align="center"><sub>Ambient video background — phone</sub></td>
+  </tr>
 </table>
 
 ---

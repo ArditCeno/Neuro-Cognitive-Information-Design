@@ -463,16 +463,11 @@ table, .hashmap { font-variant-numeric: tabular-nums; }
 }
 .study-bg video {
   width: 100%; height: 100%; object-fit: cover;
-  opacity: .26; transform: scale(1.04);
-  filter: blur(7px) saturate(.75) brightness(.62);
+  opacity: 1; transform: scale(1.01);
+  filter: none;
 }
-.study-bg-scrim {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(1200px 800px at 75% -10%, rgba(14, 127, 176, .22), transparent 62%),
-    linear-gradient(180deg, rgba(5, 7, 12, .55), rgba(5, 7, 12, .82));
-}
-.study-bg.calib-dim { opacity: .18; }
+.study-bg-scrim { position: absolute; inset: 0; background: none; }
+.study-bg.calib-dim { opacity: .22; }
 .study-bg.calib-dim video { filter: blur(12px) saturate(.5) brightness(.35); }
 .study-bg.done-fade { opacity: 0; }
 body.study-video { background: #05070c; }
@@ -480,9 +475,15 @@ body.study-video #main,
 body.study-video .progressbar,
 body.study-video .progresslabel,
 body.study-video .footer { position: relative; z-index: 1; }
+body.study-video #main .stage > h1,
+body.study-video #main .stage > p.lead,
+body.study-video .progresslabel,
+body.study-video .footer { text-shadow: 0 1px 2px #000, 0 0 10px rgba(0, 0, 0, .95), 0 0 26px rgba(0, 0, 0, .8); }
+body.study-video #main .stage > p.lead { color: #F9F9F9; }
+body.study-video .progresslabel { color: #dbeaf2; }
 
 .bg-toggle {
-  position: fixed; left: 12px; bottom: 12px; z-index: 70;
+  position: fixed; right: 16px; top: 74px; z-index: 70;
   padding: 7px 11px; border-radius: 10px; cursor: pointer;
   background: rgba(9, 38, 52, .82); color: var(--text);
   border: 1px solid var(--border); font: inherit; font-size: 12px;
@@ -492,8 +493,8 @@ body.study-video .footer { position: relative; z-index: 1; }
 .bg-toggle:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 
 @media (max-width: 640px) {
-  .study-bg video { opacity: .20; filter: blur(9px) saturate(.7) brightness(.55); }
-  .bg-toggle { left: 10px; bottom: 10px; font-size: 11px; padding: 6px 9px; }
+  .study-bg video { opacity: 1; filter: none; }
+  .bg-toggle { right: 10px; top: 106px; font-size: 11px; padding: 6px 9px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
