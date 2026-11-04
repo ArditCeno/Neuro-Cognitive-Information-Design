@@ -9,10 +9,10 @@
  * accuracy target (a phone screen is much smaller).
  */
 
-import { CONFIG } from "./config.js?v=61";
-import { EyeTracking } from "./eyetracking.js?v=61";
-import { t } from "./i18n.js?v=61";
-import { el, mean, round, sleep } from "./utils.js?v=61";
+import { CONFIG } from "./config.js?v=62";
+import { EyeTracking } from "./eyetracking.js?v=62";
+import { t } from "./i18n.js?v=62";
+import { el, mean, round, sleep } from "./utils.js?v=62";
 
 const GRID = [
   [0.1, 0.1], [0.5, 0.1], [0.9, 0.1],
