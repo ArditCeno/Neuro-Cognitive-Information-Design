@@ -31,7 +31,8 @@
         '" data-en="' + p.en + '" data-al="' + p.al + '">' + p.en + "</a>";
     }).join("") +
       // shown only inside the mobile menu
-      '<a class="nav-cta-link" href="study.html" data-view="test" data-en="Start study" data-al="Fillo studimin">Start study</a>';
+      '<a class="nav-cta-link" href="study.html" data-view="test" data-en="Start study" data-al="Fillo studimin">Start study</a>' +
+      '<a class="nav-cta-link" href="admin.html" data-view="admin" data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</a>';
 
     return '' +
       '<a class="skip-link" href="#main" data-en="Skip to content" data-al="Kalo te përmbajtja">Skip to content</a>' +
@@ -50,6 +51,9 @@
         '</div>' +
         '<a class="btn btn-primary pill" href="study.html">' +
           '<span data-en="Start study" data-al="Fillo studimin">Start study</span>' +
+        '</a>' +
+        '<a class="btn btn-ghost pill" href="admin.html">' +
+          '<span data-en="Admin panel" data-al="Paneli i Adminit">Admin panel</span>' +
         '</a>' +
         '<button class="nav-toggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>' +
       '</div>';
